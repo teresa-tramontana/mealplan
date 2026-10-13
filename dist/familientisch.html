@@ -72,6 +72,16 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
   .day .kid { grid-column: 1 / -1; margin-top: 0; }
 }
 
+.sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+.sync i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.sync.on i { background: var(--sage); box-shadow: 0 0 0 3px var(--sage-soft); }
+.sync.err i { background: var(--clay); }
+.sheet p, .sheet ol { font-size: 0.88rem; margin: 0 0 10px; }
+.sheet ol { padding-left: 20px; display: grid; gap: 6px; }
+.sheet code { font-size: 0.8rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 5px; word-break: break-all; }
+.sheet input[type="url"] { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.88rem; margin-bottom: 10px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+
 /* Einkaufsliste */
 .shop-head { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
 .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px 28px; }
@@ -162,6 +172,7 @@ footer.src a { color: var(--muted); }
     <div class="brand">
       <h1>Familientisch</h1>
       <p>Abendessen für zwei Große und ein Kleines · jedes Gericht unter 30 Minuten</p>
+      <button class="sync" id="sync-status" type="button"><i></i><span>Nur auf diesem Handy</span></button>
     </div>
     <nav class="tabs" role="tablist">
       <button id="tab-week" role="tab" aria-selected="true">Woche</button>
@@ -560,7 +571,7 @@ const RECIPES = [
     if (p) openPlayer(byId[p.dataset.play]);
     if (s) openSwap(+s.dataset.swap);
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); renderWeek(); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); renderWeek(); Sync.put("", { plan, checked, pantryBuy }); toast("Neue Woche ist geplant"); });
 
   function openSwap(dayIdx) {
     const others = RECIPES.filter(r => !plan.includes(r.id));
@@ -570,7 +581,7 @@ const RECIPES = [
       <button class="ghost" id="sheet-close" style="margin-top:6px">Abbrechen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
       const pk = e.target.closest("[data-pick]");
-      if (pk) { plan[dayIdx] = pk.dataset.pick; renderWeek(); }
+      if (pk) { plan[dayIdx] = pk.dataset.pick; renderWeek(); Sync.put("plan", plan); }
       if (pk || e.target.id === "sheet-bg" || e.target.id === "sheet-close") $("#sheet-root").innerHTML = "";
     });
   }
@@ -604,11 +615,11 @@ const RECIPES = [
   }
   $("#shop-grid").addEventListener("change", e => {
     const k = e.target.dataset.key; if (!k) return;
-    if (e.target.dataset.p === "1") { pantryBuy[k] = e.target.checked; store.set("pantryBuy", pantryBuy); }
-    else { checked[k] = e.target.checked; store.set("checked", checked); }
+    if (e.target.dataset.p === "1") { pantryBuy[k] = e.target.checked; store.set("pantryBuy", pantryBuy); Sync.put("pantryBuy/" + k, e.target.checked || null); }
+    else { checked[k] = e.target.checked; store.set("checked", checked); Sync.put("checked/" + k, e.target.checked || null); }
     renderShop();
   });
-  $("#reset-list").addEventListener("click", () => { checked = {}; store.set("checked", checked); renderShop(); toast("Alle Haken entfernt"); });
+  $("#reset-list").addEventListener("click", () => { checked = {}; store.set("checked", checked); renderShop(); Sync.put("checked", null); toast("Alle Haken entfernt"); });
 
   function listText() {
     const list = buildList().filter(i => i.aisle === "pantry" ? pantryBuy[i.key] : !checked[i.key]);
@@ -714,6 +725,98 @@ const RECIPES = [
   function speak() { if (!P || !P.voice || !P.playing) return; stopSpeak(); sayRaw(P.r.steps[P.i].text); }
   function stopSpeak() { try { speechSynthesis.cancel(); } catch (e) {} }
 
+  // ---------- Gemeinsam speichern (Google Firebase Realtime Database) ----------
+  // Die Datenbank-Adresse steht nicht im Code (die Seite ist öffentlich), sondern nur auf
+  // den Handys der Familie. Sie kommt per Einstellungen oder per Familien-Link (?db=...).
+  const Sync = {
+    url: "", es: null, poll: 0, pullT: 0,
+    base() { return this.url ? this.url + "/familientisch" : ""; },
+    setUrl(u) {
+      u = (u || "").trim().replace(/\/+$/, "");
+      if (u && !/^https:\/\/[a-z0-9-]+(\.[a-z0-9-]+)*\.(firebaseio\.com|firebasedatabase\.app)$/i.test(u)) return false;
+      this.url = u; store.set("syncUrl", u); this.start(); return true;
+    },
+    status(kind, text) { const b = $("#sync-status"); b.className = "sync" + (kind ? " " + kind : ""); b.querySelector("span").textContent = text; },
+    async put(path, value) {
+      if (!this.url) return;
+      const enc = path.split("/").filter(Boolean).map(encodeURIComponent).join("/");
+      try {
+        const r = await fetch(this.base() + (enc ? "/" + enc : "") + ".json", { method: "PUT", body: JSON.stringify(value) });
+        if (!r.ok) throw new Error(r.status);
+        this.status("on", "Mit der Familie verbunden");
+      } catch (e) { this.status("err", "Nicht gespeichert – kein Netz?"); }
+    },
+    async pull() {
+      if (!this.url) return;
+      try {
+        const r = await fetch(this.base() + ".json");
+        if (!r.ok) throw new Error(r.status);
+        const d = await r.json();
+        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy }); return; }
+        if (d.plan.length === 7 && d.plan.every(id => byId[id])) plan = d.plan;
+        checked = d.checked || {}; pantryBuy = d.pantryBuy || {};
+        store.set("checked", checked); store.set("pantryBuy", pantryBuy);
+        renderWeek();
+        this.status("on", "Mit der Familie verbunden");
+      } catch (e) { this.status("err", "Verbindung klappt nicht"); }
+    },
+    soon() { clearTimeout(this.pullT); this.pullT = setTimeout(() => this.pull(), 300); },
+    start() {
+      try { this.es && this.es.close(); } catch (e) {}
+      clearInterval(this.poll); this.es = null;
+      if (!this.url) { this.status("", "Nur auf diesem Handy"); return; }
+      this.status("", "Verbinde …");
+      this.pull();
+      // Live-Updates: Firebase schickt Änderungen sofort. Zur Sicherheit zusätzlich alle 30 Sekunden nachsehen.
+      try {
+        this.es = new EventSource(this.base() + ".json");
+        ["put", "patch"].forEach(ev => this.es.addEventListener(ev, () => this.soon()));
+      } catch (e) {}
+      this.poll = setInterval(() => { if (!document.hidden) this.pull(); }, 30000);
+    },
+    familyLink() { return location.origin + location.pathname + "?db=" + encodeURIComponent(this.url); }
+  };
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) Sync.pull(); });
+
+  async function copyText(txt, okMsg) {
+    try { await navigator.clipboard.writeText(txt); toast(okMsg); return true; } catch (e) { return false; }
+  }
+
+  function openSyncSheet() {
+    const on = !!Sync.url;
+    $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet" role="dialog" aria-label="Mit der Familie teilen">
+      <h2>Mit der Familie teilen</h2>
+      ${on ? `<p>Dieses Handy ist verbunden. Haken und getauschte Gerichte sind auf allen verbundenen Handys gleich.</p>
+        <p><b>Weiteres Handy verbinden:</b> Schick diesen Link an dich oder deine Familie und öffne ihn dort einmal.</p>
+        <div class="row" style="margin-bottom:14px"><button class="primary" id="sync-copy" type="button">Familien-Link kopieren</button><button class="ghost" id="sync-off" type="button">Trennen</button></div>
+        <input type="url" id="sync-link" readonly value="${esc(Sync.familyLink())}" aria-label="Familien-Link">`
+      : `<p>Damit alle Handys dieselbe Liste sehen, braucht die App einen kleinen kostenlosen Speicher bei Google. Einmalig etwa 5 Minuten:</p>
+        <ol>
+          <li>Öffne <a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a> und melde dich mit Google an.</li>
+          <li>„Projekt erstellen“, Name z. B. <code>familientisch</code>. Google Analytics kannst du ausschalten.</li>
+          <li>Links im Menü: „Build“ → „Realtime Database“ → „Datenbank erstellen“. Standort Europa, dann „Im gesperrten Modus starten“.</li>
+          <li>Oben auf „Regeln“ klicken, alles ersetzen durch<br><code>{"rules":{"familientisch":{".read":true,".write":true}}}</code><br>und „Veröffentlichen“.</li>
+          <li>Oben steht die Adresse, sie endet auf <code>firebasedatabase.app</code>. Kopieren und hier einfügen:</li>
+        </ol>
+        <input type="url" id="sync-url" placeholder="https://familientisch-…firebasedatabase.app" autocomplete="off">
+        <div class="row"><button class="primary" id="sync-save" type="button">Verbinden</button></div>`}
+      <button class="ghost" id="sheet-close" type="button" style="margin-top:12px">Schließen</button></div></div>`;
+    const bg = $("#sheet-bg");
+    bg.addEventListener("click", async e => {
+      const id = e.target.id;
+      if (id === "sheet-bg" || id === "sheet-close") { $("#sheet-root").innerHTML = ""; return; }
+      if (id === "sync-save") {
+        if (Sync.setUrl($("#sync-url").value)) { toast("Verbunden"); openSyncSheet(); }
+        else toast("Das ist keine Firebase-Adresse");
+      }
+      if (id === "sync-off") { Sync.setUrl(""); toast("Getrennt"); openSyncSheet(); }
+      if (id === "sync-copy") {
+        if (!(await copyText(Sync.familyLink(), "Link kopiert"))) { const i = $("#sync-link"); i.focus(); i.select(); toast("Link markiert – jetzt kopieren"); }
+      }
+    });
+  }
+  $("#sync-status").addEventListener("click", openSyncSheet);
+
   // Start
   renderWeek();
   showTab(store.get("tab", "week") === "shop" ? "shop" : "week");
@@ -721,5 +824,13 @@ const RECIPES = [
   const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
   const f = x => x.toLocaleDateString("de-DE", { day: "numeric", month: "short" });
   $("#week-label").textContent = `Woche ${f(mon)} – ${f(sun)}`;
+  let linkDb = null;
+  try { linkDb = new URLSearchParams(location.search).get("db"); } catch (e) {}
+  if (linkDb) {
+    try { history.replaceState(null, "", location.pathname); } catch (e) {}
+    if (Sync.setUrl(linkDb)) toast("Mit der Familie verbunden");
+  } else {
+    Sync.setUrl(store.get("syncUrl", ""));
+  }
 })();
 </script>
