@@ -19,6 +19,9 @@ frag = app.replace("/*RECIPES*/", js)
 open("dist/familientisch.html", "w", encoding="utf-8").write(frag)
 page = ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+        '<meta name="description" content="Wochenplan, Koch-Anleitungen und Einkaufsliste für zwei Große und ein Kleines.">\n'
+        '<meta name="theme-color" content="#F4F2EE">\n'
+        '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2715%27 fill=%27%23FBFAF8%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2710%27 fill=%27none%27 stroke=%27%23E2DFD8%27/%3E%3Cellipse cx=%2713%27 cy=%2714%27 rx=%275%27 ry=%274%27 fill=%27%238FA48B%27/%3E%3Cellipse cx=%2719%27 cy=%2719%27 rx=%274%27 ry=%273.5%27 fill=%27%23C98D6B%27/%3E%3C/svg%3E">\n'
         '<style>[hidden]{display:none!important}body{margin:0}</style>\n</head>\n<body>\n'
         + frag + '\n</body>\n</html>\n')
 open("index.html", "w", encoding="utf-8").write(page)

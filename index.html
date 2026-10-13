@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Wochenplan, Koch-Anleitungen und Einkaufsliste für zwei Große und ein Kleines.">
+<meta name="theme-color" content="#F4F2EE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2715%27 fill=%27%23FBFAF8%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2710%27 fill=%27none%27 stroke=%27%23E2DFD8%27/%3E%3Cellipse cx=%2713%27 cy=%2714%27 rx=%275%27 ry=%274%27 fill=%27%238FA48B%27/%3E%3Cellipse cx=%2719%27 cy=%2719%27 rx=%274%27 ry=%273.5%27 fill=%27%23C98D6B%27/%3E%3C/svg%3E">
 <style>[hidden]{display:none!important}body{margin:0}</style>
 </head>
 <body>
@@ -16,7 +19,7 @@
   --bg: #F4F2EE;        /* Leinen */
   --surface: #FBFAF8;   /* Birke */
   --ink: #2E3230;       /* Schiefer */
-  --muted: #7A7F7A;     /* Nebel */
+  --muted: #5F645F;     /* Nebel (dunkler für gute Lesbarkeit) */
   --line: #E2DFD8;
   --sage: #8FA48B;      /* Salbei */
   --sage-soft: #E3E9DF;
@@ -48,18 +51,18 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; 
 header.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
 .brand h1 { font-size: 2.1rem; letter-spacing: -0.01em; line-height: 1.1; }
 .brand p { margin: 4px 0 0; color: var(--muted); font-size: 0.9rem; }
-.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+.tabs { display: flex; gap: 4px; background: var(--surface); border-radius: 999px; padding: 4px; }
 .tabs button { border: 0; background: transparent; padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; color: var(--muted); }
 .tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
 .tabs .count { font-variant-numeric: tabular-nums; opacity: 0.7; margin-left: 4px; }
 
-.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--muted); }
+.label { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
 .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-.ghost { border: 1px solid var(--line); background: var(--surface); padding: 8px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+.ghost { background: var(--surface); padding: 8px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
 .ghost:hover { border-color: var(--sage); }
 .primary { border: 0; background: var(--ink); color: var(--bg); padding: 11px 18px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; }
 
-.days { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.days { display: grid; gap: 1px; background: var(--line); border-radius: 18px; overflow: hidden; }
 .day { background: var(--surface); display: grid; grid-template-columns: 56px 72px 1fr auto; align-items: center; gap: 16px; padding: 14px 16px; }
 .day .dname { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .day .dname b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.4rem; letter-spacing: 0; text-transform: none; color: var(--ink); line-height: 1.1; }
@@ -71,7 +74,7 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 4px; color: var(--muted); font-size: 0.8rem; }
 .meta span { display: inline-flex; align-items: center; gap: 4px; }
 .actions { display: flex; gap: 6px; }
-.icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; }
+.icon-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; }
 .icon-btn:hover { border-color: var(--sage); }
 .icon-btn.play { background: var(--sage); border-color: var(--sage); color: #fff; }
 .icon-btn svg { width: 18px; height: 18px; }
@@ -89,30 +92,30 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
   .day .kid, .day .steps, .day .day-share { grid-column: 1 / -1; margin-top: 0; }
 }
 
-.sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+.sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border-radius: 999px; padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
 .sync i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
-.sync.on i { background: var(--sage); box-shadow: 0 0 0 3px var(--sage-soft); }
+.sync.on i { background: var(--sage); }
 .sync.err i { background: var(--clay); }
 .sheet p, .sheet ol { font-size: 0.88rem; margin: 0 0 10px; }
 .sheet ol { padding-left: 20px; display: grid; gap: 6px; }
-.sheet code { font-size: 0.8rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 5px; word-break: break-all; }
-.sheet input[type="url"] { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.88rem; margin-bottom: 10px; }
+.sheet code { font-size: 0.8rem; background: var(--surface); border-radius: 6px; padding: 1px 5px; word-break: break-all; }
+.sheet input[type="url"] { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.88rem; margin-bottom: 10px; } /* taste-skill-ignore: Formularfeld */
 .row { display: flex; gap: 8px; flex-wrap: wrap; }
 
 /* Herz & Teilen */
 .mini-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-.mini { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.76rem; font-weight: 700; text-decoration: none; }
+.mini { display: inline-flex; align-items: center; gap: 5px; background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.76rem; font-weight: 700; text-decoration: none; }
 .mini svg { width: 14px; height: 14px; }
 .mini:hover { border-color: var(--sage); }
 .mini.on { color: var(--heart); border-color: var(--heart); }
 .mini.wa svg { color: var(--wa); }
 
 /* Entdecken */
-.seg { display: inline-flex; gap: 2px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px; }
+.seg { display: inline-flex; gap: 2px; background: var(--surface); border-radius: 999px; padding: 3px; }
 .seg button { border: 0; background: transparent; border-radius: 999px; padding: 6px 14px; font-size: 0.84rem; font-weight: 700; color: var(--muted); }
 .seg button[aria-pressed="true"] { background: var(--sage-soft); color: var(--ink); }
 .deck { position: relative; height: min(470px, 56vh); max-width: 380px; margin: 6px auto 0; }
-.card { position: absolute; inset: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; touch-action: pan-y; user-select: none; -webkit-user-select: none; transition: transform .25s ease; box-shadow: 0 10px 30px -18px rgba(30,34,32,.45); --like: 0; --nope: 0; }
+.card { position: absolute; inset: 0; background: var(--surface); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; touch-action: pan-y; user-select: none; -webkit-user-select: none; transition: transform .25s ease; --like: 0; --nope: 0; }
 .card.top { cursor: grab; }
 .card.under { transform: scale(.95) translateY(14px); }
 .card.under2 { transform: scale(.9) translateY(28px); opacity: .7; }
@@ -132,9 +135,8 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .stamp.nope { right: 16px; color: var(--muted); transform: rotate(12deg); opacity: var(--nope); }
 .stamp, .badge, .heart-btn { z-index: 1; }
 .badge { position: absolute; left: 14px; bottom: 14px; background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.74rem; font-weight: 700; }
-.badge::before { content: "✦ "; color: var(--clay); }
 .deck-btns { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 22px; }
-.round { border: 1px solid var(--line); background: var(--surface); border-radius: 50%; width: 60px; height: 60px; display: grid; place-items: center; box-shadow: 0 6px 18px -12px rgba(30,34,32,.5); }
+.round { background: var(--surface); border-radius: 50%; width: 60px; height: 60px; display: grid; place-items: center; }
 .round svg { width: 26px; height: 26px; }
 .round.info { width: 46px; height: 46px; }
 .round.info svg { width: 20px; height: 20px; }
@@ -144,7 +146,7 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .deck-done { position: absolute; inset: 0; display: grid; place-content: center; gap: 12px; text-align: center; border: 1px dashed var(--line); border-radius: 24px; padding: 20px; }
 .deck-done h2 { font-size: 1.4rem; }
 .filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 12px; scrollbar-width: none; }
-.filters button { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+.filters button { flex: none; background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
 .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .board { columns: 2; column-gap: 12px; }
 @media (min-width: 700px) { .board { columns: 3; column-gap: 16px; } }
@@ -164,32 +166,32 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .d-hero .plate { width: auto; height: 82%; }
 .sheet h4 { font-family: var(--body); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 16px 0 6px; }
 .sheet ul.ing { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: 0.88rem; }
-.sheet ul.ing li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+.sheet ul.ing li { display: flex; justify-content: space-between; gap: 10px; padding-block: 3px; }
 .sheet ul.ing span { color: var(--muted); font-variant-numeric: tabular-nums; }
 .daypick { display: flex; gap: 6px; flex-wrap: wrap; }
-.daypick button { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; width: 42px; height: 36px; font-weight: 700; font-size: 0.8rem; }
+.daypick button { background: var(--surface); border-radius: 10px; width: 42px; height: 36px; font-weight: 700; font-size: 0.8rem; }
 .daypick button:hover { border-color: var(--sage); }
 .sheet .kid { font-size: 0.84rem; background: var(--sage-soft); border-radius: 10px; padding: 8px 12px; margin-top: 14px; }
 
 /* Einkaufsliste */
 .shop-head { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
 .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px 28px; }
-.aisle h3 { font-family: var(--body); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-bottom: 6px; border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+.aisle h3 { font-family: var(--body); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-bottom: 2px; margin-bottom: 4px; }
 .item { display: flex; align-items: center; gap: 10px; padding: 7px 0; cursor: pointer; }
 .item input { width: 18px; height: 18px; accent-color: var(--sage); flex: none; }
 .item .n { flex: 1; min-width: 0; }
 .item .q { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.85rem; white-space: nowrap; }
-.item .buy { flex: none; font-size: 0.74rem; font-weight: 700; color: var(--sage); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; }
+.item .buy { flex: none; font-size: 0.74rem; font-weight: 700; color: var(--sage); text-decoration: none; border-radius: 999px; padding: 3px 9px; }
 .item .buy:hover { border-color: var(--sage); }
 .item.done .buy { visibility: hidden; }
 .item.done .n { text-decoration: line-through; color: var(--muted); }
 .aisle.pantry .item .n::after { content: ""; }
-.note { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 0.86rem; color: var(--muted); margin-top: 22px; }
+.note { background: var(--surface); border-radius: 14px; padding: 14px 16px; font-size: 0.86rem; color: var(--muted); margin-top: 22px; }
 .note b { color: var(--ink); }
 .shops { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-.shops a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sage); font-weight: 600; }
+.shops a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--sage); text-underline-offset: 3px; font-weight: 600; }
 .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; z-index: 50; }
-textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 12px; font: inherit; font-size: 0.85rem; }
+textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 12px; font: inherit; font-size: 0.85rem; } /* taste-skill-ignore: Formularfeld */
 
 /* Tauschen-Dialog */
 .sheet { position: relative; }
@@ -235,7 +237,7 @@ textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius:
 @keyframes chop { 0%,100% { transform: rotate(-18deg) } 50% { transform: rotate(4deg) } }
 .slice { animation: slide 1.1s ease-out infinite; }
 @keyframes slide { 0% { transform: translateX(0); opacity: 1 } 100% { transform: translateX(-18px); opacity: 0 } }
-.bubble { animation: bubble 1.6s ease-in infinite; }
+.bubble { animation: bubble 1.6s ease-out infinite; }
 .bubble:nth-of-type(2) { animation-delay: .5s } .bubble:nth-of-type(3) { animation-delay: 1s }
 @keyframes bubble { 0% { transform: translateY(0); opacity: 0 } 20% { opacity: 1 } 100% { transform: translateY(-34px); opacity: 0 } }
 .steam { animation: steam 2.4s ease-in-out infinite; }
@@ -260,22 +262,83 @@ footer.src { margin-top: 36px; font-size: 0.78rem; color: var(--muted); }
 footer.src a { color: var(--muted); }
 
 /* Spätere Funktionen: Master-Chef-Kennzeichen, Aktionen, Einkaufsliste nach Tagen */
-.mc-tag { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
+.mc-tag { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border-radius: 999px; padding: 1px 8px; }
 .day .steps .tm { font-size: 0.78rem; }
 .shop-head .seg { margin-left: auto; }
 .dayblock .dish { margin: 2px 0 4px; font-family: var(--display); font-weight: 400; font-size: 1rem; }
 .from-pantry { margin: 4px 0 0; font-size: 0.78rem; color: var(--muted); }
 /* Aktionen */
 .deal { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; margin: -2px 0 6px 28px; font-size: 0.78rem; color: var(--muted); }
-.deal a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sage); }
+.deal a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--sage); text-underline-offset: 3px; }
 .deal .pr { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
 .deal s { opacity: .7; }
 .deal .mk { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--sage-soft); color: var(--ink); border-radius: 999px; padding: 1px 7px; }
-.deals-note { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; font-size: 0.86rem; color: var(--muted); margin-bottom: 18px; }
+.deals-note { background: var(--surface); border-radius: 14px; padding: 12px 16px; font-size: 0.86rem; color: var(--muted); margin-bottom: 18px; }
 .deals-note b { color: var(--ink); }
 
+
+/* ---------- Redesign (redesign-skill + minimalist-ui): gleiche Seele, ruhiger und klarer ---------- */
+/* Rundungen abgestuft statt überall Pillen: Behälter 18px, Bedienelemente 12px, Kleinteile 8px */
+.tabs { border-radius: 16px; background: color-mix(in srgb, var(--ink) 5%, var(--bg)); }
+.tabs button { border-radius: 12px; }
+.tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); }
+.ghost, .primary { border-radius: 12px; }
+.ghost { background: color-mix(in srgb, var(--ink) 5%, var(--bg)); }
+.mini, .seg, .filters button, .sync, .item .buy, .daypick button { border-radius: 8px; }
+.seg button { border-radius: 6px; }
+.mini, .item .buy, .daypick button { background: color-mix(in srgb, var(--ink) 5%, var(--bg)); }
+/* Tage als einzelne, randlose Flächen mit Luft dazwischen */
+.days { background: none; gap: 12px; border-radius: 0; overflow: visible; }
+.day { border-radius: 18px; padding: 18px 18px; }
+.icon-btn { background: var(--bg); }
+.icon-btn.play { background: var(--sage); }
+.note, .deals-note { background: var(--surface); }
+.pick { background: var(--surface); }
+/* Überschriften mit Präsenz, Texte gut lesbar */
+.brand h1 { font-size: clamp(2.2rem, 7vw, 2.8rem); letter-spacing: -0.02em; line-height: 1.05; }
+h2, h3 { letter-spacing: -0.01em; }
+p, li { text-wrap: pretty; }
+.day .dname { text-transform: none; letter-spacing: 0; font-weight: 600; font-size: 0.8rem; }
+.aisle h3, .sheet h4 { text-transform: none; letter-spacing: 0; font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-top: 6px; }
+.aisle { background: var(--surface); border-radius: 18px; padding: 16px 18px 10px; }
+.item .q { font-variant-numeric: tabular-nums; }
+.c-body .label, .p-cap span { font-size: 0.8rem; }
+/* Rückmeldung bei Berührung */
+button, .mini, .pin, .item .buy, a.wa { transition: background-color .2s ease-out, transform .15s ease-out, color .2s ease-out; }
+button:active, .mini:active, .pin:active { transform: scale(0.98); }
+.ghost:hover, .mini:hover, .item .buy:hover, .filters button:hover { background: color-mix(in srgb, var(--ink) 10%, var(--bg)); }
+.icon-btn:hover { background: color-mix(in srgb, var(--ink) 8%, var(--bg)); }
+.icon-btn.play:hover, .primary:hover { filter: brightness(0.94); }
+.pin:hover .p-img { outline: 0; transform: translateY(-2px); }
+.p-img { transition: transform .25s ease-out; }
+/* Zum Inhalt springen (Tastatur) */
+.skip { position: absolute; left: 16px; top: -48px; background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 8px; z-index: 60; text-decoration: none; }
+.skip:focus { top: 12px; }
+/* Sanftes, gestaffeltes Einblenden – nur wenn Bewegung erwünscht ist */
+@media (prefers-reduced-motion: no-preference) {
+  .day { animation: enter .5s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(var(--i, 0) * 50ms); }
+  @keyframes enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+}
+
+/* Lesbarkeit (Messwerte aus taste-skill inspect): Fließtext 16px, nichts unter 13px, Zeilen nicht zu lang */
+body { font-size: 16px; }
+.meta, .mini, .tags span, .deal, .deal .mk, .badge, .item .buy, .from-pantry, .label, .sync, .hint, .day .dname,
+.p-cap span, .c-body .kidline, .item .q, .seg button, .filters button, .daypick button, .tabs .count, .day .steps .tm, .mc-tag {
+  font-size: 0.82rem;
+}
+.mc-tag { text-transform: none; letter-spacing: 0; font-weight: 600; padding: 0; border: 0; color: var(--sage); }
+.day .steps, .day .kid { max-width: 65ch; }
+.brand p { max-width: 60ch; }
+.skip { top: auto; left: -9999px; }
+.skip:focus { left: 16px; top: 12px; }
+footer.src { font-size: 0.82rem; max-width: 65ch; }
+.day .steps { font-size: 1rem; color: var(--ink); }
+.day .kid, .sheet .kid { font-size: 0.95rem; }
+.sheet ul.ing, .sheet ol.steps-d { font-size: 1rem !important; }
+.ghost, .icon-btn, .mini, .sync, .round, .seg, .filters button, .daypick button, .heart-btn, .tabs { border: 0; }
 </style>
 
+<a class="skip" href="#main">Zum Inhalt springen</a>
 <div class="wrap">
   <header class="top">
     <div class="brand">
@@ -290,10 +353,10 @@ footer.src a { color: var(--muted); }
     </nav>
   </header>
 
-  <main>
+  <main id="main">
     <section id="view-week">
       <div class="toolbar">
-        <span class="eyebrow" id="week-label">Diese Woche</span>
+        <span class="label" id="week-label">Diese Woche</span>
         <button class="ghost" id="reshuffle">Neue Woche mischen</button>
       </div>
       <div class="days" id="days"></div>
@@ -305,7 +368,7 @@ footer.src a { color: var(--muted); }
           <button id="mode-swipe" type="button" aria-pressed="true">Swipen</button>
           <button id="mode-board" type="button" aria-pressed="false">Pinnwand</button>
         </div>
-        <span class="eyebrow" id="fav-count"></span>
+        <span class="label" id="fav-count"></span>
       </div>
       <div id="swipe-wrap">
         <div class="deck" id="deck"></div>
@@ -2507,6 +2570,16 @@ const ANGEBOTE = {
 "angebote": [
 {
 "markt": "BILLA",
+"name": "Iglo Polar-Dorsch natur",
+"menge": "400 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
+},
+{
+"markt": "BILLA",
 "name": "Ja! Natürlich Zwiebel gelb",
 "menge": "750 g",
 "preis": 1.29,
@@ -2634,16 +2707,6 @@ const ANGEBOTE = {
 "hinweis": "",
 "bis": null,
 "link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Polar-Dorsch natur",
-"menge": "400 g",
-"preis": 6.99,
-"statt": 8.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
 },
 {
 "markt": "BILLA",
@@ -3387,6 +3450,296 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
+"name": "Kelly's Chips Classic Gesalzen",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Dinkelvollkornweckerl",
+"menge": "100 g",
+"preis": 1.03,
+"statt": 1.28,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-dinkelvollkornweckerl-00846484"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Erdnuss Snips",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
+"menge": "370 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
+},
+{
+"markt": "BILLA",
+"name": "Felix Ketchup ohne Zuckerzusatz",
+"menge": "960 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Marillen Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Sour Cream",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Ketchup",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Gemüsesuppe Würfel",
+"menge": "126 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Jumpys Paprika",
+"menge": "75 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Gartenerdbeeren Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Salz",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Paprika",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo mit Basilikum",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Rosmarin",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
+},
+{
+"markt": "BILLA",
+"name": "Lorenz Nic Nac's Partypack",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Tofu Natur",
+"menge": "250 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-tofu-natur-00345125"
+},
+{
+"markt": "BILLA",
+"name": "Felix Tomatenketchup Mild",
+"menge": "1000 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Preiselbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Popcornchips Salz",
+"menge": "140 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
+},
+{
+"markt": "BILLA",
+"name": "Bona Öl",
+"menge": "0.75 liter",
+"preis": 2.32,
+"statt": 3.49,
+"hinweis": "Bei 3 Flaschen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bona-oel-00408228"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Himbeer Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo Arrabbiata",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Ofen Chips Paprika",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Erdbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-erdbeer-konfituere-00540"
+},
+{
+"markt": "BILLA",
+"name": "efko Apfelmus Pur",
+"menge": "350 g",
+"preis": 1.79,
+"statt": 2.39,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/efko-apfelmus-pur-00811412"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Ofen Chips Sour Cream",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-ofen-chips-sour-cream-00574901"
+},
+{
+"markt": "BILLA",
 "name": "Iglo Polar-Dorsch natur",
 "menge": "400 g",
 "preis": 6.99,
@@ -3707,6 +4060,56 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
+"name": "MAGGI Magic Asia Noodle Cup Chicken Taste",
+"menge": "63 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maggi-magic-asia-noodle-cup-chicken-taste-00303260"
+},
+{
+"markt": "BILLA",
+"name": "MAGGI Magic Asia Saucy Noodls Teriyaki Cup",
+"menge": "75 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodls-teriyaki-cup-00381674"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Die Schnelle Feine Tomatencremesuppe",
+"menge": "1",
+"preis": 1.12,
+"statt": 1.69,
+"hinweis": "Bei 3 Beutel je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-die-schnelle-feine-tomatencremesuppe-00412232"
+},
+{
+"markt": "BILLA",
+"name": "MAGGI Magic Asia Saucy Noodles Sweet Chili Cup",
+"menge": "75 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodles-sweet-chili-cup-00381679"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Kaiserteller Minestrone",
+"menge": "1",
+"preis": 1.12,
+"statt": 1.69,
+"hinweis": "Bei 3 Beutel je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-kaiserteller-minestrone-00963120"
+},
+{
+"markt": "BILLA",
 "name": "Kelly's Chips Classic Gesalzen",
 "menge": "150 g",
 "preis": 2.19,
@@ -4006,344 +4409,14 @@ const ANGEBOTE = {
 "link": "https://shop.billa.at/produkte/storck-knoppers-nussriegel-3er-00663690"
 },
 {
-"markt": "BILLA",
-"name": "Kelly's Chips Classic Gesalzen",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
+"markt": "Gurkerl",
+"name": "BIO Champignon creme",
+"menge": "200 g",
+"preis": 2.6,
+"statt": 2.89,
+"hinweis": "-10 % für dich",
 "bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Dinkelvollkornweckerl",
-"menge": "100 g",
-"preis": 1.03,
-"statt": 1.28,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-dinkelvollkornweckerl-00846484"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Erdnuss Snips",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
-"menge": "370 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
-},
-{
-"markt": "BILLA",
-"name": "Felix Ketchup ohne Zuckerzusatz",
-"menge": "960 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Marillen Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Sour Cream",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Ketchup",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Gemüsesuppe Würfel",
-"menge": "126 g",
-"preis": 1.26,
-"statt": 1.89,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Jumpys Paprika",
-"menge": "75 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Gartenerdbeeren Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Salz",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Paprika",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo mit Basilikum",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Rosmarin",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
-},
-{
-"markt": "BILLA",
-"name": "Lorenz Nic Nac's Partypack",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 5.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Tofu Natur",
-"menge": "250 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-tofu-natur-00345125"
-},
-{
-"markt": "BILLA",
-"name": "Felix Tomatenketchup Mild",
-"menge": "1000 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Preiselbeer Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Popcornchips Salz",
-"menge": "140 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
-},
-{
-"markt": "BILLA",
-"name": "Bona Öl",
-"menge": "0.75 liter",
-"preis": 2.32,
-"statt": 3.49,
-"hinweis": "Bei 3 Flaschen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/bona-oel-00408228"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Feigen",
-"menge": "250 g",
-"preis": 2.49,
-"statt": 5.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Himbeer Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel Chips",
-"menge": "70 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo Arrabbiata",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Ofen Chips Paprika",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Erdbeer Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-erdbeer-konfituere-00540"
-},
-{
-"markt": "BILLA",
-"name": "efko Apfelmus Pur",
-"menge": "350 g",
-"preis": 1.79,
-"statt": 2.39,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/efko-apfelmus-pur-00811412"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Ofen Chips Sour Cream",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-ofen-chips-sour-cream-00574901"
-},
-{
-"markt": "BILLA",
-"name": "MAGGI Magic Asia Noodle Cup Chicken Taste",
-"menge": "63 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 3 Becher je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/maggi-magic-asia-noodle-cup-chicken-taste-00303260"
-},
-{
-"markt": "BILLA",
-"name": "MAGGI Magic Asia Saucy Noodls Teriyaki Cup",
-"menge": "75 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 3 Becher je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodls-teriyaki-cup-00381674"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Die Schnelle Feine Tomatencremesuppe",
-"menge": "1",
-"preis": 1.12,
-"statt": 1.69,
-"hinweis": "Bei 3 Beutel je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-die-schnelle-feine-tomatencremesuppe-00412232"
-},
-{
-"markt": "BILLA",
-"name": "MAGGI Magic Asia Saucy Noodles Sweet Chili Cup",
-"menge": "75 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 3 Becher je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodles-sweet-chili-cup-00381679"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Kaiserteller Minestrone",
-"menge": "1",
-"preis": 1.12,
-"statt": 1.69,
-"hinweis": "Bei 3 Beutel je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-kaiserteller-minestrone-00963120"
+"link": "https://www.gurkerl.at/30320-bio-champignon-creme"
 },
 {
 "markt": "Gurkerl",
@@ -4367,16 +4440,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "BIO Champignon creme",
-"menge": "200 g",
-"preis": 2.6,
-"statt": 2.89,
-"hinweis": "-10 % für dich",
-"bis": null,
-"link": "https://www.gurkerl.at/30320-bio-champignon-creme"
-},
-{
-"markt": "Gurkerl",
 "name": "Michi Bauers Schwarzkohl - Palmkohl",
 "menge": "300 g",
 "preis": 1.99,
@@ -4387,16 +4450,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "BIO Knoblauch",
-"menge": "ca. 50 g",
-"preis": 0.83,
-"statt": 0.93,
-"hinweis": "-10 % für dich",
-"bis": null,
-"link": "https://www.gurkerl.at/19008-bio-knoblauch"
-},
-{
-"markt": "Gurkerl",
 "name": "BIO Apfel Gala, lose",
 "menge": "ca. 140 g",
 "preis": 0.45,
@@ -4404,6 +4457,16 @@ const ANGEBOTE = {
 "hinweis": "-10 % für dich",
 "bis": null,
 "link": "https://www.gurkerl.at/19924-bio-apfel-gala-lose"
+},
+{
+"markt": "Gurkerl",
+"name": "BIO Knoblauch",
+"menge": "ca. 50 g",
+"preis": 0.83,
+"statt": 0.93,
+"hinweis": "-10 % für dich",
+"bis": null,
+"link": "https://www.gurkerl.at/19008-bio-knoblauch"
 },
 {
 "markt": "Gurkerl",
@@ -4447,16 +4510,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Atelier Délices Mini Vanille Krapfen",
-"menge": "210 g",
-"preis": 5.27,
-"statt": 6.59,
-"hinweis": "-20 %",
-"bis": "2026-10-17",
-"link": "https://www.gurkerl.at/48934-atelier-delices-mini-vanille-krapfen"
-},
-{
-"markt": "Gurkerl",
 "name": "Stabinger Tiramisu Schnitte",
 "menge": "100 g",
 "preis": 2.39,
@@ -4464,6 +4517,16 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-16",
 "link": "https://www.gurkerl.at/47367-stabinger-tiramisu-schnitte"
+},
+{
+"markt": "Gurkerl",
+"name": "Atelier Délices Mini Vanille Krapfen",
+"menge": "210 g",
+"preis": 5.27,
+"statt": 6.59,
+"hinweis": "-20 %",
+"bis": "2026-10-17",
+"link": "https://www.gurkerl.at/48934-atelier-delices-mini-vanille-krapfen"
 },
 {
 "markt": "Gurkerl",
@@ -4507,16 +4570,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Ölz Landbrot Dinkel geschnitten",
-"menge": "450 g",
-"preis": 3.11,
-"statt": 3.89,
-"hinweis": "-20 %",
-"bis": "2026-10-17",
-"link": "https://www.gurkerl.at/23776-oelz-landbrot-dinkel-geschnitten"
-},
-{
-"markt": "Gurkerl",
 "name": "Ölz Topfen Golatschen",
 "menge": "200 g",
 "preis": 3.03,
@@ -4527,6 +4580,16 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
+"name": "Ölz Landbrot Dinkel geschnitten",
+"menge": "450 g",
+"preis": 3.11,
+"statt": 3.89,
+"hinweis": "-20 %",
+"bis": "2026-10-17",
+"link": "https://www.gurkerl.at/23776-oelz-landbrot-dinkel-geschnitten"
+},
+{
+"markt": "Gurkerl",
 "name": "Konditorei Zauner Englischer Teekuchen",
 "menge": "500 g",
 "preis": 23.99,
@@ -4534,16 +4597,6 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-15",
 "link": "https://www.gurkerl.at/45023-konditorei-zauner-englischer-teekuchen"
-},
-{
-"markt": "Gurkerl",
-"name": "Stiegl BIO Hausbier Gipfelstürmer",
-"menge": "0,75 l",
-"preis": 3.99,
-"statt": 5.19,
-"hinweis": "-23 %",
-"bis": "2026-11-05",
-"link": "https://www.gurkerl.at/34930-stiegl-bio-hausbier-gipfelstuermer"
 },
 {
 "markt": "Gurkerl",
@@ -4574,6 +4627,16 @@ const ANGEBOTE = {
 "hinweis": "-17 %",
 "bis": "2026-10-15",
 "link": "https://www.gurkerl.at/26679-gimar-lachs-tatar"
+},
+{
+"markt": "Gurkerl",
+"name": "Stiegl BIO Hausbier Gipfelstürmer",
+"menge": "0,75 l",
+"preis": 3.99,
+"statt": 5.19,
+"hinweis": "-23 %",
+"bis": "2026-11-05",
+"link": "https://www.gurkerl.at/34930-stiegl-bio-hausbier-gipfelstuermer"
 },
 {
 "markt": "Gurkerl",
@@ -4849,7 +4912,7 @@ const ANGEBOTE = {
     const dateOf = i => { const x = new Date(now); x.setDate(now.getDate() - today + i); return x.toLocaleDateString("de-DE", { day: "numeric", month: "numeric" }); };
     $("#days").innerHTML = plan.map((id, i) => {
       const r = byId[id];
-      return `<article class="day${i === today ? " today" : ""}">
+      return `<article class="day${i === today ? " today" : ""}" style="--i:${i}">
         <div class="dname">${i === today ? "Heute" : dateOf(i)}<b>${DAYS[i].slice(0, 2)}</b></div>
         <div class="thumb" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</div>
         <div class="info"><h3>${esc(r.name)}</h3>
@@ -4860,7 +4923,7 @@ const ANGEBOTE = {
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
         <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}</div>
-        <ol class="steps">${r.steps.map(st => `<li>${esc(st.text)}${st.timer ? ` <span class="tm">⏱ ${Math.round(st.timer / 60)} Min.</span>` : ""}</li>`).join("")}</ol>
+        <ol class="steps">${r.steps.map(st => `<li>${esc(st.text)}${st.timer ? ` <span class="tm">· ${Math.round(st.timer / 60)} Min.</span>` : ""}</li>`).join("")}</ol>
         ${r.kid ? `<div class="kid">${esc(r.kid)}</div>` : ""}
       </article>`;
     }).join("");
@@ -4986,7 +5049,7 @@ const ANGEBOTE = {
     let out = "Einkaufsliste Familientisch\n";
     order.forEach(a => {
       const items = list.filter(i => i.aisle === a);
-      if (items.length) out += `\n${AISLES[a].replace(" (hast du vermutlich)", "")}\n` + items.map(i => { const d = dealsFor(i.name)[0]; return `☐ ${i.name}${i.qty ? " – " + fmtQty(i.qty, i.unit) : ""}${d ? ` (Aktion ${d.markt}: ${euro(d.preis)})` : ""}`; }).join("\n") + "\n";
+      if (items.length) out += `\n${AISLES[a].replace(" (hast du vermutlich)", "")}\n` + items.map(i => { const d = dealsFor(i.name)[0]; return `- ${i.name}${i.qty ? " – " + fmtQty(i.qty, i.unit) : ""}${d ? ` (Aktion ${d.markt}: ${euro(d.preis)})` : ""}`; }).join("\n") + "\n";
     });
     return out;
   }
@@ -5037,7 +5100,7 @@ const ANGEBOTE = {
   }
   function drawToggle() { $("#p-toggle").innerHTML = P.playing ? ICON.pause : ICON.play; }
   function drawVoice() { $("#p-voice").innerHTML = P.voice ? ICON.voiceOn : ICON.voiceOff; }
-  const mmss = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+  const mmss = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; // taste-skill-ignore: Uhrzeit des Kochweckers
   function go(n) {
     if (!P) return;
     if (n >= P.r.steps.length) { P.playing = false; drawToggle(); return; }
@@ -5183,10 +5246,10 @@ const ANGEBOTE = {
     return `<button class="${cls}${on ? " on" : ""}" type="button" data-fav="${id}" aria-pressed="${on}" aria-label="${on ? "Herz entfernen" : "Herz geben"}">${on ? ICON.heartFill : ICON.heart}${cls === "mini" ? (on ? "Lieblingsgericht" : "Merken") : ""}</button>`;
   }
   function shareText(r) {
-    return `🍽️ ${r.name}\n${r.origin} · ${timeLabel(r)} · für 2 Große + 1 Kleines\n\n🛒 Zutaten:\n` +
+    return `${r.name}\n${r.origin} · ${timeLabel(r)} · für 2 Große + 1 Kleines\n\nZutaten:\n` +
       r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(q, u) : ""}`).join("\n") +
-      `\n\n👩‍🍳 So geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
-      (r.kid ? `\n\n👶 Fürs Kind: ${r.kid}` : "") + `\n\n${APP_URL}#${r.id}`;
+      `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
+      (r.kid ? `\n\nFürs Kind: ${r.kid}` : "") + `\n\n${APP_URL}#${r.id}`;
   }
   const shareBtn = r => `<a class="mini wa" href="https://wa.me/?text=${encodeURIComponent(shareText(r))}" target="_blank" rel="noopener" aria-label="${esc(r.name)} per WhatsApp teilen">${ICON.share}Teilen</a>`;
 
@@ -5245,7 +5308,7 @@ const ANGEBOTE = {
   function cardHTML(r, cls) {
     return `<div class="card ${cls}" data-id="${r.id}" style="--tint:${tint(r)}">
       <div class="c-img">${plateSVG(r)}${photo(r, cls === "top")}<span class="stamp like">Mag ich</span><span class="stamp nope">Weiter</span>${fits(r) ? '<span class="badge">Passt zu euch</span>' : ""}</div>
-      <div class="c-body">${mcTag(r) ? `<div>${mcTag(r)}</div>` : ""}<span class="eyebrow">${esc(r.origin)} · ${timeLabel(r)}</span><h2>${esc(r.name)}</h2>
+      <div class="c-body">${mcTag(r) ? `<div>${mcTag(r)}</div>` : ""}<span class="label">${esc(r.origin)} · ${timeLabel(r)}</span><h2>${esc(r.name)}</h2>
         <div class="tags">${r.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>
         ${r.kid ? `<p class="kidline">Fürs Kind: ${esc(r.kid)}</p>` : ""}</div></div>`;
   }
@@ -5298,14 +5361,14 @@ const ANGEBOTE = {
   });
 
   // ---------- Entdecken: Pinnwand ----------
-  const FILTERS = [["alle", "Alle"], ["herz", "♥ Herzen"], ["passt", "Passt zu euch"], ["masterchef", "Master Chef"], ["österreichisch", "Österreich"], ["faschiert", "Faschiertes"], ["onepot", "One-Pot"], ["auflauf", "Aufläufe"], ["rahm", "Mit Rahm"], ["fingerfood", "Fingerfood"], ["vegetarisch", "Vegetarisch"], ["huhn", "Hendl"], ["fisch", "Fisch"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["süß", "Süß"]];
+  const FILTERS = [["alle", "Alle"], ["herz", "Herzen"], ["passt", "Passt zu euch"], ["masterchef", "Master Chef"], ["österreichisch", "Österreich"], ["faschiert", "Faschiertes"], ["onepot", "One-Pot"], ["auflauf", "Aufläufe"], ["rahm", "Mit Rahm"], ["fingerfood", "Fingerfood"], ["vegetarisch", "Vegetarisch"], ["huhn", "Hendl"], ["fisch", "Fisch"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["süß", "Süß"]];
   let filter = "alle";
   const RATIOS = ["1 / 1", "4 / 5", "4 / 3", "3 / 4", "1 / 1.2"];
   function renderBoard() {
     $("#filters").innerHTML = FILTERS.map(([k, l]) => `<button type="button" data-filter="${k}" aria-pressed="${k === filter}">${esc(l)}</button>`).join("");
     const list = RECIPES.filter(r => filter === "alle" || (filter === "herz" ? favs[r.id] : filter === "passt" ? fits(r) : r.tags.includes(filter)))
       .sort((a, b) => (favs[b.id] ? 1 : 0) - (favs[a.id] ? 1 : 0) || similarity(b) - similarity(a));
-    $("#board").innerHTML = list.length ? list.map((r, i) => `<article class="pin" data-open="${r.id}">
+    $("#board").innerHTML = list.length ? list.map((r, i) => `<article class="pin" data-open="${r.id}" style="--i:${Math.min(i, 12)}">
         <div class="p-img" style="--tint:${tint(r)};aspect-ratio:${RATIOS[(r.id.length + i) % RATIOS.length]}">${plateSVG(r)}${photo(r)}${favBtn(r.id, "heart-btn")}${fits(r) ? '<span class="badge">Passt zu euch</span>' : ""}</div>
         <div class="p-cap">${mcTag(r) ? `<div>${mcTag(r)}</div>` : ""}<b>${esc(r.name)}</b><span>${esc(r.origin)} · ${timeLabel(r)}</span></div></article>`).join("")
       : `<p style="color:var(--muted)">${filter === "herz" ? "Noch keine Herzen. Tippe bei einem Gericht auf das Herz." : filter === "passt" ? "Gib erst ein paar Herzen, dann zeige ich hier passende Gerichte." : "Keine Gerichte in dieser Auswahl."}</p>`;
