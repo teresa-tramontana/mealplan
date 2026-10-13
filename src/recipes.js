@@ -71,7 +71,7 @@ const RECIPES = [
     colors: ["#A8674A", "#F1E6C8", "#A9C29A", "#F7F3EA"],
     kid: "Bällchen halbieren. Feta ist salzig, fürs Kind nur ein paar Krümel.",
     ingredients: [
-      ["Rinderhack", 400, "g", "meat"], ["Orzo (Reisnudeln)", 250, "g", "dry"], ["Zucchini", 1, "Stk", "veg"],
+      ["Rinderhack", 400, "g", "meat"], ["Orzo (Kritharaki)", 250, "g", "dry"], ["Zucchini", 1, "Stk", "veg"],
       ["Zitrone", 1, "Stk", "veg"], ["Feta", 100, "g", "fresh"], ["Eier", 1, "Stk", "fresh"],
       ["Gemüsebrühe (salzarm)", 600, "ml", "pantry"], ["Oregano", 1, "TL", "pantry"]
     ],
