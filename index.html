@@ -12,7 +12,7 @@
 <title>Familientisch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,500;0,600;0,700;1,500&display=swap">
 <style>
 /* Layout: ruhige Scandi-Spalte, Wochentage als Liste mit Teller-Illustrationen, Koch-Player als Vollbild-Story */
 :root {
@@ -342,7 +342,7 @@ footer.src { font-size: 0.82rem; max-width: 65ch; }
 :root {
   --bg: #FFFFFF; --surface: #FBF6F4; --ink: #4E4B4B; --muted: #6F6A69; --line: #EADBD5;
   --sage: #64313E; --sage-soft: #F0DAD3; --clay: #834A58; --heart: #834A58; --olive: #B2AC88; --plate: #FFFFFF;
-  --display: "Noto Serif Display", Georgia, "Times New Roman", serif;
+  --display: "Noto Serif", Georgia, "Times New Roman", serif;
   --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
@@ -356,7 +356,7 @@ footer.src { font-size: 0.82rem; max-width: 65ch; }
   --sage: #D9A5B2; --sage-soft: #3A2A2E; --clay: #D9A5B2; --heart: #D9A5B2; --olive: #A8A27E; --plate: #2E2627; color-scheme: dark;
 }
 body { font-family: var(--body); font-size: 17px; line-height: 1.6; }
-h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-body h2, .sheet h2 { font-family: var(--display); font-weight: 500; letter-spacing: -0.005em; }
+h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-body h2, .sheet h2 { font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; }
 .brand h1 { font-size: clamp(2.4rem, 8vw, 3.2rem); color: var(--sage); line-height: 1.05; }
 .brand p { color: var(--muted); }
 /* Navigation wie ein Rezeptblog: kleine Großbuchstaben, gesperrt, Pflaume, aktiver Reiter unterstrichen */
@@ -400,6 +400,9 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
 .deal .mk { background: var(--sage-soft); color: var(--sage); }
 .sync.on i { background: var(--olive); }
 .day .icon-btn:not(.play), .day .mini, .sheet .mini, .aisle .item .buy { background: var(--bg); }
+.brand h1 { font-weight: 600; letter-spacing: -0.02em; }
+.day h3 { font-size: 1.25rem; }
+.p-cap b { font-size: 1.05rem; }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -2901,56 +2904,6 @@ const ANGEBOTE = {
 "angebote": [
 {
 "markt": "BILLA",
-"name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
-"menge": "7",
-"preis": 1.4,
-"statt": 2.79,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sesamstrasse-abby-kekse-mit-vanille-und-hafer-00734561"
-},
-{
-"markt": "BILLA",
-"name": "Sesamstrasse Krümelmonster Kekse mit Schokostückchen",
-"menge": "7",
-"preis": 1.4,
-"statt": 2.79,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sesamstrasse-kruemelmonster-kekse-mit-schokostueckchen-00734562"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel-Birne-Kirsche",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
-},
-{
-"markt": "BILLA",
-"name": "Fruchtbar Bio Herznudeln",
-"menge": "300 g",
-"preis": 1.19,
-"statt": 2.37,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel mit Banane & Dinkel",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
-},
-{
-"markt": "BILLA",
 "name": "Ja! Natürlich Zwiebel gelb",
 "menge": "750 g",
 "preis": 1.29,
@@ -3028,6 +2981,56 @@ const ANGEBOTE = {
 "hinweis": "",
 "bis": null,
 "link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
+},
+{
+"markt": "BILLA",
+"name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-abby-kekse-mit-vanille-und-hafer-00734561"
+},
+{
+"markt": "BILLA",
+"name": "Sesamstrasse Krümelmonster Kekse mit Schokostückchen",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-kruemelmonster-kekse-mit-schokostueckchen-00734562"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel-Birne-Kirsche",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
+},
+{
+"markt": "BILLA",
+"name": "Fruchtbar Bio Herznudeln",
+"menge": "300 g",
+"preis": 1.19,
+"statt": 2.37,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel mit Banane & Dinkel",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
 },
 {
 "markt": "BILLA",
@@ -3268,6 +3271,26 @@ const ANGEBOTE = {
 "hinweis": "",
 "bis": null,
 "link": "https://shop.billa.at/produkte/billa-salami-snack-box-00897953"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Polar-Dorsch natur",
+"menge": "400 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
+},
+{
+"markt": "BILLA",
+"name": "Milka Alpenmilch",
+"menge": "90 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 6 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
 },
 {
 "markt": "BILLA",
@@ -3541,23 +3564,243 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Iglo Polar-Dorsch natur",
+"name": "Ja! Natürlich Skyr",
 "menge": "400 g",
-"preis": 6.99,
-"statt": 8.99,
-"hinweis": "ab 2 Packungen",
+"preis": 1.49,
+"statt": 1.69,
+"hinweis": "ab 2 Becher",
 "bis": null,
-"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
+"link": "https://shop.billa.at/produkte/ja-natuerlich-skyr-00443586"
 },
 {
 "markt": "BILLA",
-"name": "Milka Alpenmilch",
-"menge": "90 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 6 Stk je",
+"name": "Salakis Schafkäse Light",
+"menge": "180 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
 "bis": null,
-"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
+"link": "https://shop.billa.at/produkte/salakis-schafkaese-light-00437248"
+},
+{
+"markt": "BILLA",
+"name": "Salakis Schafkäse Natur",
+"menge": "180 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/salakis-schafkaese-natur-00427838"
+},
+{
+"markt": "BILLA",
+"name": "Peppersweet mit Frischkäse - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/peppersweet-mit-frischkaese-die-kaesemacher-00439664"
+},
+{
+"markt": "BILLA",
+"name": "Schärdinger Österkron",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 3.19,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/schaerdinger-oesterkron-00936709"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Mango",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-mango-0017803"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Maracuja",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-maracuja-0017804"
+},
+{
+"markt": "BILLA",
+"name": "Bonbel Cremig-Würzig",
+"menge": "170 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bonbel-cremigwuerzig-00888573"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Erdbeer",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-erdbeer-00407678"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Kokos-Ananas",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-kokosananas-00797611"
+},
+{
+"markt": "BILLA",
+"name": "Peppersweet Pikant mit Frischkäse - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/peppersweet-pikant-mit-frischkaese-die-kaesemacher-00885548"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Bergkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-bergkaese-00320584"
+},
+{
+"markt": "BILLA",
+"name": "Salakis Bio Schafkäse",
+"menge": "150 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/salakis-bio-schafkaese-00729442"
+},
+{
+"markt": "BILLA",
+"name": "Peppersweet Kräuter der Provence - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/peppersweet-kraeuter-der-provence-die-kaesemacher-00295782"
+},
+{
+"markt": "BILLA",
+"name": "Sunnypepp mit Frischkäse - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sunnypepp-mit-frischkaese-die-kaesemacher-00899608"
+},
+{
+"markt": "BILLA",
+"name": "Yellobell mit Frischkäse",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/yellobell-mit-frischkaese-00439742"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Mango Pfirsich Zero",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-mango-pfirsich-zero-00718644"
+},
+{
+"markt": "BILLA",
+"name": "Käse-Gemüse-Tricolore - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kaesegemuesetricolore-die-kaesemacher-00725379"
+},
+{
+"markt": "BILLA",
+"name": "Alma Dorfkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-dorfkaese-00598393"
+},
+{
+"markt": "BILLA",
+"name": "Salakis Feta fassgereift",
+"menge": "150 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/salakis-feta-fassgereift-00388582"
+},
+{
+"markt": "BILLA",
+"name": "Obersteirische Molkerei Weinkäse",
+"menge": "250 g",
+"preis": 2.99,
+"statt": 3.89,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/obersteirische-molkerei-weinkaese-00769818"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Ringelblumenkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-ringelblumenkaese-00360203"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Sennkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-sennkaese-00957417"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Brennnesselkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-brennnesselkaese-00360196"
 },
 {
 "markt": "BILLA",
@@ -4161,246 +4404,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Ja! Natürlich Skyr",
-"menge": "400 g",
-"preis": 1.49,
-"statt": 1.69,
-"hinweis": "ab 2 Becher",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-skyr-00443586"
-},
-{
-"markt": "BILLA",
-"name": "Salakis Schafkäse Light",
-"menge": "180 g",
-"preis": 2.52,
-"statt": 3.79,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/salakis-schafkaese-light-00437248"
-},
-{
-"markt": "BILLA",
-"name": "Salakis Schafkäse Natur",
-"menge": "180 g",
-"preis": 2.52,
-"statt": 3.79,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/salakis-schafkaese-natur-00427838"
-},
-{
-"markt": "BILLA",
-"name": "Peppersweet mit Frischkäse - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/peppersweet-mit-frischkaese-die-kaesemacher-00439664"
-},
-{
-"markt": "BILLA",
-"name": "Schärdinger Österkron",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 3.19,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/schaerdinger-oesterkron-00936709"
-},
-{
-"markt": "BILLA",
-"name": "Lattella Mango",
-"menge": "500 ml",
-"preis": 0.92,
-"statt": 1.39,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lattella-mango-0017803"
-},
-{
-"markt": "BILLA",
-"name": "Lattella Maracuja",
-"menge": "500 ml",
-"preis": 0.92,
-"statt": 1.39,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lattella-maracuja-0017804"
-},
-{
-"markt": "BILLA",
-"name": "Bonbel Cremig-Würzig",
-"menge": "170 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/bonbel-cremigwuerzig-00888573"
-},
-{
-"markt": "BILLA",
-"name": "Lattella Erdbeer",
-"menge": "500 ml",
-"preis": 0.92,
-"statt": 1.39,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lattella-erdbeer-00407678"
-},
-{
-"markt": "BILLA",
-"name": "Lattella Kokos-Ananas",
-"menge": "500 ml",
-"preis": 0.92,
-"statt": 1.39,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lattella-kokosananas-00797611"
-},
-{
-"markt": "BILLA",
-"name": "Peppersweet Pikant mit Frischkäse - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/peppersweet-pikant-mit-frischkaese-die-kaesemacher-00885548"
-},
-{
-"markt": "BILLA",
-"name": "Alma Vorarlberger Bergkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-vorarlberger-bergkaese-00320584"
-},
-{
-"markt": "BILLA",
-"name": "Salakis Bio Schafkäse",
-"menge": "150 g",
-"preis": 2.52,
-"statt": 3.79,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/salakis-bio-schafkaese-00729442"
-},
-{
-"markt": "BILLA",
-"name": "Peppersweet Kräuter der Provence - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/peppersweet-kraeuter-der-provence-die-kaesemacher-00295782"
-},
-{
-"markt": "BILLA",
-"name": "Sunnypepp mit Frischkäse - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sunnypepp-mit-frischkaese-die-kaesemacher-00899608"
-},
-{
-"markt": "BILLA",
-"name": "Yellobell mit Frischkäse",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/yellobell-mit-frischkaese-00439742"
-},
-{
-"markt": "BILLA",
-"name": "Lattella Mango Pfirsich Zero",
-"menge": "500 ml",
-"preis": 0.92,
-"statt": 1.39,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lattella-mango-pfirsich-zero-00718644"
-},
-{
-"markt": "BILLA",
-"name": "Käse-Gemüse-Tricolore - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kaesegemuesetricolore-die-kaesemacher-00725379"
-},
-{
-"markt": "BILLA",
-"name": "Alma Dorfkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-dorfkaese-00598393"
-},
-{
-"markt": "BILLA",
-"name": "Salakis Feta fassgereift",
-"menge": "150 g",
-"preis": 2.52,
-"statt": 3.79,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/salakis-feta-fassgereift-00388582"
-},
-{
-"markt": "BILLA",
-"name": "Obersteirische Molkerei Weinkäse",
-"menge": "250 g",
-"preis": 2.99,
-"statt": 3.89,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/obersteirische-molkerei-weinkaese-00769818"
-},
-{
-"markt": "BILLA",
-"name": "Alma Vorarlberger Ringelblumenkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-vorarlberger-ringelblumenkaese-00360203"
-},
-{
-"markt": "BILLA",
-"name": "Alma Vorarlberger Sennkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-vorarlberger-sennkaese-00957417"
-},
-{
-"markt": "BILLA",
-"name": "Alma Vorarlberger Brennnesselkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-vorarlberger-brennnesselkaese-00360196"
-},
-{
-"markt": "BILLA",
 "name": "Kelly's Chips Classic Gesalzen",
 "menge": "150 g",
 "preis": 2.19,
@@ -4801,16 +4804,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "BE-SANE Karotten Mandel Muffin Getreidefrei",
-"menge": "75 g",
-"preis": 3.19,
-"statt": 3.99,
-"hinweis": "-20 %",
-"bis": "2026-10-24",
-"link": "https://www.gurkerl.at/44793-be-sane-karotten-mandel-muffin-getreidefrei"
-},
-{
-"markt": "Gurkerl",
 "name": "Stabinger Ricottatorte",
 "menge": "0,9 kg",
 "preis": 15.99,
@@ -4828,6 +4821,16 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-18",
 "link": "https://www.gurkerl.at/47368-stabinger-schokoladentorte-sacher"
+},
+{
+"markt": "Gurkerl",
+"name": "Volante Torta Caprese Schokomandeltorte glutenfrei",
+"menge": "85 g",
+"preis": 5.19,
+"statt": 6.49,
+"hinweis": "-20 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/47860-volante-torta-caprese-schokomandeltorte-glutenfrei"
 },
 {
 "markt": "Gurkerl",
@@ -4851,13 +4854,13 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Volante Torta Caprese Schokomandeltorte glutenfrei",
-"menge": "85 g",
-"preis": 5.19,
-"statt": 6.49,
+"name": "BE-SANE Karotten Mandel Muffin Getreidefrei",
+"menge": "75 g",
+"preis": 3.19,
+"statt": 3.99,
 "hinweis": "-20 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/47860-volante-torta-caprese-schokomandeltorte-glutenfrei"
+"bis": "2026-10-24",
+"link": "https://www.gurkerl.at/44793-be-sane-karotten-mandel-muffin-getreidefrei"
 },
 {
 "markt": "Gurkerl",
@@ -4878,16 +4881,6 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-15",
 "link": "https://www.gurkerl.at/18172-oelz-marmor-muffin"
-},
-{
-"markt": "Gurkerl",
-"name": "BE-SANE Haselnuss Muffin Getreidefrei",
-"menge": "75 g",
-"preis": 3.19,
-"statt": 3.99,
-"hinweis": "-20 %",
-"bis": "2026-10-21",
-"link": "https://www.gurkerl.at/44792-be-sane-haselnuss-muffin-getreidefrei"
 },
 {
 "markt": "Gurkerl",
@@ -4918,6 +4911,16 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/4507-oelz-topfen-golatschen"
+},
+{
+"markt": "Gurkerl",
+"name": "BE-SANE Haselnuss Muffin Getreidefrei",
+"menge": "75 g",
+"preis": 3.19,
+"statt": 3.99,
+"hinweis": "-20 %",
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/44792-be-sane-haselnuss-muffin-getreidefrei"
 },
 {
 "markt": "Gurkerl",
@@ -5001,16 +5004,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Schweine Faschiertes mit Zusatzstoffen",
-"menge": "500 g",
-"preis": 2.19,
-"statt": 3.99,
-"hinweis": "-45 %",
-"bis": "2026-10-14",
-"link": "https://www.gurkerl.at/42178-schweine-faschiertes-mit-zusatzstoffen"
-},
-{
-"markt": "Gurkerl",
 "name": "Wanderhuhn EiHero Eier aus mobiler Freilandhaltung M-L 6 Stück",
 "menge": "6 Stk",
 "preis": 3.2,
@@ -5018,6 +5011,16 @@ const ANGEBOTE = {
 "hinweis": "-17 %",
 "bis": "2026-10-18",
 "link": "https://www.gurkerl.at/47313-wanderhuhn-eihero-eier-aus-mobiler-freilandhaltung-m-l-6-stueck"
+},
+{
+"markt": "Gurkerl",
+"name": "Schweine Faschiertes mit Zusatzstoffen",
+"menge": "500 g",
+"preis": 2.19,
+"statt": 3.99,
+"hinweis": "-45 %",
+"bis": "2026-10-14",
+"link": "https://www.gurkerl.at/42178-schweine-faschiertes-mit-zusatzstoffen"
 },
 {
 "markt": "Gurkerl",
