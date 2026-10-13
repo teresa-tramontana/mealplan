@@ -770,6 +770,257 @@ const RECIPES = [
       { icon: "serve", text: "Mit Apfelmus und Apfelspalten servieren.", items: ["Apfelmus"] }
     ]
   }
+  ,{
+    id: "blechhuhn", name: "Blech-Hähnchen mit Ofengemüse & Kräuterjoghurt", origin: "Deutschland", flag: "DE", time: 30,
+    colors: ["#D9A066", "#E58B5A", "#8FAE7F", "#F4EFE4"],
+    kid: "Hähnchen klein schneiden, Gemüse weich gebacken ist perfektes Fingerfood.",
+    ingredients: [
+      ["Hähnchenbrust", 400, "g", "meat"], ["Kartoffeln", 500, "g", "veg"], ["Karotten", 3, "Stk", "veg"],
+      ["Rote Zwiebel", 1, "Stk", "veg"], ["Brokkoli", 1, "Stk", "veg"], ["Naturjoghurt", 200, "g", "fresh"],
+      ["Schnittlauch", 1, "Bund", "veg"], ["Paprikapulver edelsüß", 1, "TL", "pantry"], ["Olivenöl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 220 Grad. Kartoffeln und Karotten klein würfeln.", items: ["Kartoffeln", "Karotten"] },
+      { icon: "oven", text: "Mit Öl aufs Blech. 10 Minuten vorbacken.", timer: 600, items: ["Olivenöl"] },
+      { icon: "mix", text: "Hähnchen würfeln, mit Paprika und Öl mischen. Brokkoli und Zwiebel klein schneiden.", items: ["Hähnchen", "Paprika", "Brokkoli"] },
+      { icon: "oven", text: "Alles aufs Blech. Noch 15 Minuten backen.", timer: 900, items: [] },
+      { icon: "serve", text: "Joghurt mit Schnittlauch verrühren und dazu servieren.", items: ["Joghurt", "Schnittlauch"] }
+    ]
+  },
+  {
+    id: "eiernockerl", name: "Eiernockerl mit grünem Salat", origin: "Österreich", flag: "AT", time: 20,
+    colors: ["#F0D27A", "#9FC57F", "#F6F1E4", "#E8C9A0"],
+    kid: "Ei gut durchgaren. Nockerl sind weich und leicht zu kauen.",
+    ingredients: [
+      ["Mehl", 300, "g", "pantry"], ["Eier", 6, "Stk", "fresh"], ["Milch", 200, "ml", "fresh"],
+      ["Kopfsalat", 1, "Stk", "veg"], ["Schnittlauch", 1, "Bund", "veg"], ["Butter", 30, "g", "pantry"],
+      ["Apfelessig", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Mehl, 3 Eier und Milch zu zähem Teig verrühren.", items: ["Mehl", "Eier", "Milch"] },
+      { icon: "boil", text: "Mit einem Löffel kleine Nockerl ins kochende Wasser streichen. 3 Minuten kochen.", timer: 180, items: [] },
+      { icon: "pan", text: "Nockerl in Butter schwenken, 3 Eier verquirlt drüber. Rühren, bis alles gestockt ist.", timer: 240, items: ["Butter", "Eier"] },
+      { icon: "chop", text: "Salat waschen, mit Essig und Öl anmachen.", items: ["Salat", "Essig"] },
+      { icon: "serve", text: "Mit Schnittlauch bestreuen.", items: ["Schnittlauch"] }
+    ]
+  },
+  {
+    id: "macncheese", name: "Brokkoli-Mac-&-Cheese", origin: "USA", flag: "US", time: 20,
+    colors: ["#F0C75E", "#7FA36E", "#F6F1E4", "#E8B86A"],
+    kid: "Brokkoli in kleine Röschen schneiden. Ohne zusätzliches Salz.",
+    ingredients: [
+      ["Hörnchennudeln", 300, "g", "dry"], ["Brokkoli", 1, "Stk", "veg"], ["Milch", 300, "ml", "fresh"],
+      ["Geriebener Bergkäse", 150, "g", "fresh"], ["Mehl", 2, "EL", "pantry"], ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Nudeln kochen. Die letzten 4 Minuten Brokkoli-Röschen dazu.", timer: 600, items: ["Nudeln", "Brokkoli"] },
+      { icon: "pan", text: "Butter schmelzen, Mehl einrühren, 1 Minute anschwitzen.", timer: 60, items: ["Butter", "Mehl"] },
+      { icon: "mix", text: "Milch nach und nach einrühren, 3 Minuten köcheln, Käse schmelzen.", timer: 180, items: ["Milch", "Käse"] },
+      { icon: "serve", text: "Nudeln und Brokkoli untermischen.", items: [] }
+    ]
+  },
+  {
+    id: "kokoscurry", name: "Hähnchen-Kokos-Curry mit Süßkartoffel", origin: "Sri Lanka", flag: "LK", time: 30,
+    colors: ["#E5A54A", "#F4EEDF", "#7FA37A", "#D98A4B"],
+    kid: "Mild würzen, Chili nur für die Großen.",
+    ingredients: [
+      ["Hähnchenbrust", 400, "g", "meat"], ["Süßkartoffel", 400, "g", "veg"], ["Kokosmilch", 400, "ml", "dry"],
+      ["Babyspinat", 100, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Ingwer", 1, "Stk", "veg"],
+      ["Basmatireis", 250, "g", "dry"], ["Currypulver mild", 2, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "rice", text: "Reis aufsetzen, 15 Minuten.", timer: 900, items: ["Reis"] },
+      { icon: "chop", text: "Zwiebel, Ingwer hacken. Süßkartoffel und Hähnchen klein würfeln.", items: ["Zwiebel", "Süßkartoffel", "Hähnchen"] },
+      { icon: "pan", text: "Zwiebel, Ingwer und Hähnchen mit Curry 5 Minuten anbraten.", timer: 300, items: ["Curry"] },
+      { icon: "boil", text: "Süßkartoffel und Kokosmilch dazu. 15 Minuten köcheln.", timer: 900, items: ["Kokosmilch"] },
+      { icon: "serve", text: "Spinat unterrühren, mit Reis servieren.", items: ["Spinat"] }
+    ]
+  },
+  {
+    id: "udon", name: "Udon-Nudelsuppe mit Ei & Gemüse", origin: "Japan", flag: "JP", time: 20,
+    colors: ["#F2E3C2", "#8FB08C", "#E8B86A", "#F6F2E8"],
+    kid: "Nudeln mit der Schere klein schneiden. Brühe abkühlen lassen.",
+    ingredients: [
+      ["Udon-Nudeln", 3, "Pck", "dry"], ["Eier", 3, "Stk", "fresh"], ["Pak Choi", 2, "Stk", "veg"],
+      ["Champignons", 200, "g", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Gemüsebrühe (salzarm)", 1200, "ml", "pantry"],
+      ["Sojasauce (salzreduziert)", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Eier 8 Minuten kochen, abschrecken und schälen.", timer: 480, items: ["Eier"] },
+      { icon: "chop", text: "Pilze in Scheiben, Pak Choi und Lauchzwiebeln klein schneiden.", items: ["Champignons", "Pak Choi"] },
+      { icon: "boil", text: "Brühe aufkochen, Pilze und Pak Choi 4 Minuten mitkochen.", timer: 240, items: ["Brühe"] },
+      { icon: "boil", text: "Udon dazu, 3 Minuten ziehen lassen.", timer: 180, items: ["Udon"] },
+      { icon: "serve", text: "In Schalen, halbe Eier drauf. Soja nur für die Großen.", items: ["Sojasauce"] }
+    ]
+  },
+  {
+    id: "burritobowl", name: "Burrito-Bowl mit Bohnen & Mais", origin: "Mexiko", flag: "MX", time: 25,
+    colors: ["#E2A44C", "#7FA36E", "#C9553F", "#F4EFE4"],
+    kid: "Bohnen leicht zerdrücken, Tomaten vierteln, alles getrennt auf den Teller.",
+    ingredients: [
+      ["Reis", 250, "g", "dry"], ["Schwarze Bohnen", 1, "Dose", "dry"], ["Mais", 1, "Dose", "dry"],
+      ["Avocado", 1, "Stk", "veg"], ["Cherrytomaten", 250, "g", "veg"], ["Geriebener Käse", 100, "g", "fresh"],
+      ["Sauerrahm", 100, "g", "fresh"], ["Limette", 1, "Stk", "veg"], ["Kreuzkümmel", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "rice", text: "Reis aufsetzen, 15 Minuten.", timer: 900, items: ["Reis"] },
+      { icon: "pan", text: "Bohnen und Mais mit Kreuzkümmel 5 Minuten erwärmen.", timer: 300, items: ["Bohnen", "Mais"] },
+      { icon: "chop", text: "Avocado und Tomaten würfeln.", items: ["Avocado", "Tomaten"] },
+      { icon: "serve", text: "Alles in Schalen. Käse, Sauerrahm und Limette drauf.", items: ["Käse", "Sauerrahm", "Limette"] }
+    ]
+  },
+  {
+    id: "polenta", name: "Cremige Polenta mit Linsen-Tomaten-Ragout", origin: "Italien", flag: "IT", time: 25,
+    colors: ["#F0CF73", "#C9553F", "#8FAE7F", "#F6F1E4"],
+    kid: "Polenta ist weich und gut zu löffeln. Etwas abkühlen lassen.",
+    ingredients: [
+      ["Instant-Polenta", 200, "g", "dry"], ["Rote Linsen", 100, "g", "dry"], ["Passierte Tomaten", 500, "g", "dry"],
+      ["Karotten", 2, "Stk", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Parmesan", 40, "g", "fresh"],
+      ["Gemüsebrühe (salzarm)", 800, "ml", "pantry"], ["Olivenöl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebel und Karotten fein würfeln.", items: ["Zwiebel", "Karotten"] },
+      { icon: "pan", text: "In Öl 4 Minuten anschwitzen.", timer: 240, items: ["Olivenöl"] },
+      { icon: "boil", text: "Linsen, Tomaten und 200 ml Wasser dazu. 15 Minuten köcheln.", timer: 900, items: ["Linsen", "Tomaten"] },
+      { icon: "boil", text: "Brühe aufkochen, Polenta einrühren. 5 Minuten quellen lassen.", timer: 300, items: ["Polenta", "Brühe"] },
+      { icon: "serve", text: "Parmesan in die Polenta, Ragout drüber.", items: ["Parmesan"] }
+    ]
+  },
+  {
+    id: "pitapizza", name: "Pita-Pizzen zum Selberbelegen", origin: "Italien", flag: "IT", time: 20,
+    colors: ["#D9533F", "#F2E3C2", "#8FAE7F", "#E9C97A"],
+    kid: "Selber belegen lassen! Oliven und Tomaten klein schneiden.",
+    ingredients: [
+      ["Pita-Brote", 6, "Stk", "bread"], ["Passierte Tomaten", 200, "g", "dry"], ["Mozzarella", 250, "g", "fresh"],
+      ["Gelbe Paprika", 1, "Stk", "veg"], ["Champignons", 150, "g", "veg"], ["Kochschinken", 100, "g", "meat"],
+      ["Rucola", 1, "Pck", "veg"], ["Oregano", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 220 Grad. Paprika, Pilze, Schinken und Mozzarella klein schneiden.", items: ["Paprika", "Champignons", "Schinken", "Mozzarella"] },
+      { icon: "mix", text: "Pitas mit Tomaten bestreichen, Oregano drauf.", items: ["Pita", "Tomaten", "Oregano"] },
+      { icon: "mix", text: "Jeder belegt seine eigene Pizza.", items: [] },
+      { icon: "oven", text: "10 Minuten backen.", timer: 600, items: [] },
+      { icon: "serve", text: "Rucola für die Großen drüber.", items: ["Rucola"] }
+    ]
+  },
+  {
+    id: "hummus", name: "Hummus-Teller mit Ofengemüse", origin: "Libanon", flag: "LB", time: 25,
+    colors: ["#E8D7B0", "#D98A4B", "#7FA36E", "#F4EFE3"],
+    kid: "Hummus ist ein toller Dip für Gemüsesticks und Brot.",
+    ingredients: [
+      ["Kichererbsen", 1, "Dose", "dry"], ["Tahin", 2, "EL", "dry"], ["Zitrone", 1, "Stk", "veg"],
+      ["Zucchini", 1, "Stk", "veg"], ["Rote Paprika", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"],
+      ["Fladenbrot", 1, "Stk", "bread"], ["Knoblauch", 1, "Zehe", "veg"], ["Olivenöl", 4, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 220 Grad. Gemüse in Stifte schneiden.", items: ["Zucchini", "Paprika", "Karotten"] },
+      { icon: "oven", text: "Mit Öl aufs Blech, 18 Minuten backen.", timer: 1080, items: ["Olivenöl"] },
+      { icon: "mix", text: "Kichererbsen, Tahin, Zitrone, Knoblauch und etwas Wasser cremig pürieren.", items: ["Kichererbsen", "Tahin", "Zitrone"] },
+      { icon: "serve", text: "Hummus auf Teller streichen, Gemüse und Brot dazu.", items: ["Fladenbrot"] }
+    ]
+  },
+  {
+    id: "bacalhau", name: "Ofen-Kabeljau mit Tomaten & Kartoffeln", origin: "Portugal", flag: "PT", time: 30,
+    colors: ["#F4EFE6", "#D9533F", "#E8C98A", "#8FAE7F"],
+    kid: "Fisch auf Gräten prüfen und zerpflücken.",
+    ingredients: [
+      ["Kabeljaufilet", 400, "g", "meat"], ["Kartoffeln", 500, "g", "veg"], ["Cherrytomaten", 250, "g", "veg"],
+      ["Rote Zwiebel", 1, "Stk", "veg"], ["Petersilie", 1, "Bund", "veg"], ["Zitrone", 1, "Stk", "veg"],
+      ["Olivenöl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 210 Grad. Kartoffeln in dünne Scheiben, Zwiebel in Ringe.", items: ["Kartoffeln", "Zwiebel"] },
+      { icon: "oven", text: "Mit Öl in eine Form, 12 Minuten backen.", timer: 720, items: ["Olivenöl"] },
+      { icon: "mix", text: "Fisch und Tomaten drauflegen, Zitrone drüber.", items: ["Kabeljau", "Tomaten", "Zitrone"] },
+      { icon: "oven", text: "Noch 14 Minuten backen.", timer: 840, items: [] },
+      { icon: "serve", text: "Mit Petersilie bestreuen.", items: ["Petersilie"] }
+    ]
+  },
+  {
+    id: "erbsensuppe", name: "Erbsen-Minz-Suppe mit Käsetoast", origin: "England", flag: "GB", time: 20,
+    colors: ["#9FC57F", "#F4EFE4", "#E8B86A", "#7FA36E"],
+    kid: "Toast in Streifen schneiden, zum Tunken.",
+    ingredients: [
+      ["Erbsen", 600, "g", "frozen"], ["Kartoffeln", 200, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Minze", 1, "Topf", "veg"], ["Vollkorntoast", 1, "Pck", "bread"], ["Geriebener Käse", 100, "g", "fresh"],
+      ["Gemüsebrühe (salzarm)", 800, "ml", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebel und Kartoffel klein würfeln.", items: ["Zwiebel", "Kartoffeln"] },
+      { icon: "boil", text: "Mit Brühe 10 Minuten kochen.", timer: 600, items: ["Brühe"] },
+      { icon: "boil", text: "Erbsen dazu, 4 Minuten kochen.", timer: 240, items: ["Erbsen"] },
+      { icon: "mix", text: "Mit Minzblättern fein pürieren.", items: ["Minze"] },
+      { icon: "oven", text: "Toast mit Käse belegen und 5 Minuten überbacken.", timer: 300, items: ["Toast", "Käse"] }
+    ]
+  },
+  {
+    id: "padthai", name: "Milder Pad Thai mit Tofu", origin: "Thailand", flag: "TH", time: 25,
+    colors: ["#E8C98A", "#E58B5A", "#86AC74", "#F5F0E4"],
+    kid: "Nudeln kurz schneiden. Erdnüsse nur gehackt und ohne Allergie.",
+    ingredients: [
+      ["Reisbandnudeln", 250, "g", "dry"], ["Tofu natur", 200, "g", "fresh"], ["Eier", 2, "Stk", "fresh"],
+      ["Karotten", 2, "Stk", "veg"], ["Sojasprossen", 150, "g", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"],
+      ["Limette", 1, "Stk", "veg"], ["Erdnüsse ungesalzen", 40, "g", "dry"], ["Sojasauce (salzreduziert)", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Nudeln mit heißem Wasser übergießen, 8 Minuten ziehen lassen.", timer: 480, items: ["Reisnudeln"] },
+      { icon: "pan", text: "Tofu würfeln und 6 Minuten knusprig braten.", timer: 360, items: ["Tofu"] },
+      { icon: "pan", text: "Karotten-Streifen dazu, Eier hinein und verrühren.", items: ["Karotten", "Eier"] },
+      { icon: "mix", text: "Nudeln, Sprossen, Soja und Limette untermischen.", items: ["Sprossen", "Sojasauce", "Limette"] },
+      { icon: "serve", text: "Gehackte Erdnüsse und Lauchzwiebel drüber.", items: ["Erdnüsse"] }
+    ]
+  },
+  {
+    id: "pyttipanna", name: "Pyttipanna mit Ei", origin: "Schweden", flag: "SE", time: 30,
+    colors: ["#E2B566", "#C2414B", "#F2D98B", "#9DB59A"],
+    kid: "Ei für das Kind beidseitig braten, bis das Eigelb fest ist.",
+    ingredients: [
+      ["Kartoffeln", 600, "g", "veg"], ["Kochschinken", 150, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Rote Paprika", 1, "Stk", "veg"], ["Eier", 3, "Stk", "fresh"], ["Rote Bete (vorgegart)", 1, "Pck", "veg"],
+      ["Olivenöl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Kartoffeln klein würfeln, Zwiebel, Paprika und Schinken auch.", items: ["Kartoffeln", "Zwiebel", "Paprika", "Schinken"] },
+      { icon: "pan", text: "Kartoffeln mit Deckel 12 Minuten braten, öfter wenden.", timer: 720, items: ["Olivenöl"] },
+      { icon: "pan", text: "Zwiebel, Paprika und Schinken dazu, 6 Minuten.", timer: 360, items: [] },
+      { icon: "pan", text: "Eier daneben braten, gut durch.", timer: 240, items: ["Eier"] },
+      { icon: "serve", text: "Mit Rote-Bete-Würfeln servieren.", items: ["Rote Bete"] }
+    ]
+  },
+  {
+    id: "palatschinken", name: "Topfen-Palatschinken mit Beeren", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#F2D9A0", "#B5475A", "#F6F1E6", "#7E9E6E"],
+    kid: "Aufrollen und in Stücke schneiden. Beeren halbieren.",
+    ingredients: [
+      ["Mehl", 200, "g", "pantry"], ["Eier", 3, "Stk", "fresh"], ["Milch", 400, "ml", "fresh"],
+      ["Topfen (Quark)", 250, "g", "fresh"], ["Beeren (TK)", 300, "g", "frozen"], ["Banane", 1, "Stk", "veg"],
+      ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Mehl, Eier und Milch zu dünnem Teig verrühren.", items: ["Mehl", "Eier", "Milch"] },
+      { icon: "pan", text: "In Butter dünne Palatschinken backen, je Seite 1 Minute.", timer: 600, items: ["Butter"] },
+      { icon: "mix", text: "Topfen mit zerdrückter Banane verrühren.", items: ["Topfen", "Banane"] },
+      { icon: "pan", text: "Beeren kurz in einem Topf erwärmen.", timer: 180, items: ["Beeren"] },
+      { icon: "serve", text: "Palatschinken füllen, rollen, Beeren drüber.", items: [] }
+    ]
+  },
+  {
+    id: "bulgur", name: "Bulgur-Hackpfanne mit Paprika", origin: "Türkei", flag: "TR", time: 25,
+    colors: ["#C98B5E", "#D9533F", "#F2E3C2", "#8FAE7F"],
+    kid: "Joghurt dazu macht es milder.",
+    ingredients: [
+      ["Rinderhack", 300, "g", "meat"], ["Bulgur", 200, "g", "dry"], ["Rote Paprika", 2, "Stk", "veg"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Tomatenmark", 2, "EL", "dry"], ["Naturjoghurt", 200, "g", "fresh"],
+      ["Petersilie", 1, "Bund", "veg"], ["Gemüsebrühe (salzarm)", 450, "ml", "pantry"], ["Paprikapulver edelsüß", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebel und Paprika würfeln.", items: ["Zwiebel", "Paprika"] },
+      { icon: "pan", text: "Hack mit Zwiebel 5 Minuten krümelig braten.", timer: 300, items: ["Hack"] },
+      { icon: "pan", text: "Paprika, Tomatenmark und Gewürz dazu, 2 Minuten.", timer: 120, items: ["Tomatenmark"] },
+      { icon: "boil", text: "Bulgur und Brühe dazu. Deckel drauf, 12 Minuten quellen lassen.", timer: 720, items: ["Bulgur", "Brühe"] },
+      { icon: "serve", text: "Mit Joghurt und Petersilie servieren.", items: ["Joghurt", "Petersilie"] }
+    ]
+  }
 ];
 
 // Merkmale für "Passt zu euch": je mehr Merkmale ein Gericht mit euren Herz-Gerichten teilt, desto öfter wird es vorgeschlagen.
@@ -786,7 +1037,15 @@ const TAGS = {
   falafel: ["vegetarisch", "ofen", "orientalisch", "fingerfood"], koettbullar: ["fleisch", "pfanne", "nordisch"],
   sommerrolle: ["huhn", "asiatisch", "bowl", "kalt"], gemuesepasta: ["vegetarisch", "pasta", "mediterran", "topf"],
   souvlaki: ["huhn", "pfanne", "mediterran"], laibchen: ["vegetarisch", "pfanne", "fingerfood", "österreichisch"],
-  kaiserschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch", "ei"]
+  kaiserschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch", "ei"],
+  blechhuhn: ["huhn", "ofen", "fingerfood"], eiernockerl: ["vegetarisch", "ei", "pfanne", "österreichisch"],
+  macncheese: ["vegetarisch", "pasta", "topf"], kokoscurry: ["huhn", "reis", "indisch", "topf"],
+  udon: ["vegetarisch", "ei", "suppe", "asiatisch"], burritobowl: ["vegetarisch", "reis", "lateinamerika", "bowl"],
+  polenta: ["vegetarisch", "topf", "mediterran"], pitapizza: ["fleisch", "ofen", "fingerfood", "mediterran"],
+  hummus: ["vegetarisch", "ofen", "orientalisch", "fingerfood"], bacalhau: ["fisch", "ofen", "mediterran"],
+  erbsensuppe: ["vegetarisch", "suppe", "topf"], padthai: ["vegetarisch", "asiatisch", "pfanne", "ei"],
+  pyttipanna: ["fleisch", "ei", "pfanne", "nordisch"], palatschinken: ["vegetarisch", "süß", "pfanne", "österreichisch"],
+  bulgur: ["fleisch", "pfanne", "orientalisch"]
 };
 RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
 
