@@ -64,12 +64,15 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .icon-btn:hover { border-color: var(--sage); }
 .icon-btn.play { background: var(--sage); border-color: var(--sage); color: #fff; }
 .icon-btn svg { width: 18px; height: 18px; }
+.day .steps { grid-column: 3 / -1; margin: -4px 0 0; padding-left: 18px; font-size: 0.86rem; display: grid; gap: 3px; }
+.day .steps li::marker { color: var(--sage); }
+.day .steps .tm { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .day .kid { grid-column: 3 / -1; margin-top: -6px; font-size: 0.82rem; color: var(--ink); background: var(--sage-soft); border-radius: 10px; padding: 8px 12px; }
 .day .kid::before { content: "Fürs Kind · "; font-weight: 700; }
 @media (max-width: 560px) {
   .day { grid-template-columns: 56px 1fr auto; gap: 10px 12px; }
   .day .plate { display: none; }
-  .day .kid { grid-column: 1 / -1; margin-top: 0; }
+  .day .kid, .day .steps { grid-column: 1 / -1; margin-top: 0; }
 }
 
 .sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
@@ -90,6 +93,9 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .item input { width: 18px; height: 18px; accent-color: var(--sage); flex: none; }
 .item .n { flex: 1; min-width: 0; }
 .item .q { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.85rem; white-space: nowrap; }
+.item .buy { flex: none; font-size: 0.74rem; font-weight: 700; color: var(--sage); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; }
+.item .buy:hover { border-color: var(--sage); }
+.item.done .buy { visibility: hidden; }
 .item.done .n { text-decoration: line-through; color: var(--muted); }
 .aisle.pantry .item .n::after { content: ""; }
 .note { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 0.86rem; color: var(--muted); margin-top: 22px; }
@@ -196,13 +202,10 @@ footer.src a { color: var(--muted); }
       </div>
       <div class="shop-grid" id="shop-grid"></div>
       <div class="note">
-        <b>So bestellst du:</b> Tippe auf „Liste kopieren“ und füge sie in Google Notizen (Keep) oder direkt in die Suche deines Lieferdienstes ein.
+        <b>So bestellst du bei Gurkerl:</b> Tippe neben jeder Zutat auf „Gurkerl“. Die passende Suche öffnet sich, du legst das Produkt in den Warenkorb und hakst es hier ab. Zum Schluss bei Gurkerl auf Bestellen.
         <div class="shops">
+          <a href="https://www.gurkerl.at" target="_blank" rel="noopener">Gurkerl öffnen</a>
           <a href="https://keep.google.com" target="_blank" rel="noopener">Google Notizen</a>
-          <a href="https://shop.rewe.de" target="_blank" rel="noopener">REWE Lieferservice</a>
-          <a href="https://www.knuspr.de" target="_blank" rel="noopener">Knuspr</a>
-          <a href="https://www.goflink.com" target="_blank" rel="noopener">Flink</a>
-          <a href="https://www.picnic.app/de" target="_blank" rel="noopener">Picnic</a>
         </div>
         <textarea class="copy" id="copy-fallback" hidden readonly aria-label="Einkaufsliste zum Kopieren"></textarea>
       </div>
@@ -559,6 +562,7 @@ const RECIPES = [
           <button class="icon-btn" data-swap="${i}" aria-label="Anderes Gericht für ${DAYS[i]}" title="Anderes Gericht">${ICON.swap}</button>
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
+        <ol class="steps">${r.steps.map(st => `<li>${esc(st.text)}${st.timer ? ` <span class="tm">⏱ ${Math.round(st.timer / 60)} Min.</span>` : ""}</li>`).join("")}</ol>
         <div class="kid">${esc(r.kid)}</div>
       </article>`;
     }).join("");
@@ -596,6 +600,7 @@ const RECIPES = [
     }));
     return [...map.values()];
   }
+  const gurkerl = name => "https://www.gurkerl.at/suche?q=" + encodeURIComponent(name.replace(/\s*\(.*?\)/g, ""));
   const fmtQty = (q, u) => `${Math.round(q * 10) / 10} ${u}`.replace(".", ",");
 
   function renderShop() {
@@ -609,7 +614,7 @@ const RECIPES = [
       const isP = a === "pantry";
       return `<div class="aisle${isP ? " pantry" : ""}"><h3>${AISLES[a]}</h3>${items.map(i => {
         const on = isP ? !!pantryBuy[i.key] : !!checked[i.key];
-        return `<label class="item${!isP && on ? " done" : ""}"><input type="checkbox" id="chk-${esc(i.key)}" data-key="${esc(i.key)}" data-p="${isP ? 1 : 0}" ${on ? "checked" : ""}><span class="n">${esc(i.name)}</span><span class="q">${fmtQty(i.qty, i.unit)}</span></label>`;
+        return `<label class="item${!isP && on ? " done" : ""}"><input type="checkbox" id="chk-${esc(i.key)}" data-key="${esc(i.key)}" data-p="${isP ? 1 : 0}" ${on ? "checked" : ""}><span class="n">${esc(i.name)}</span><span class="q">${fmtQty(i.qty, i.unit)}</span>${isP ? "" : `<a class="buy" href="${gurkerl(i.name)}" target="_blank" rel="noopener" title="${esc(i.name)} bei Gurkerl suchen">Gurkerl</a>`}</label>`;
       }).join("")}${isP ? `<p style="font-size:.78rem;color:var(--muted);margin:6px 0 0">Haken = muss doch gekauft werden</p>` : ""}</div>`;
     }).join("");
   }
