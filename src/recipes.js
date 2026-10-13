@@ -84,23 +84,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "shakshuka", name: "Shakshuka mit Feta & Fladenbrot", origin: "Nahost", flag: "IL", time: 25,
-    colors: ["#C9553F", "#F6E7B8", "#8DAA82", "#E9D9BD"],
-    kid: "Ei fürs Kind ganz durchgaren lassen. Brot zum Tunken ist perfekt.",
-    ingredients: [
-      ["Eier", 5, "Stk", "fresh"], ["Passierte Tomaten", 500, "g", "dry"], ["Rote Paprika", 2, "Stk", "veg"],
-      ["Zwiebel", 1, "Stk", "veg"], ["Feta", 100, "g", "fresh"], ["Fladenbrot", 1, "Stk", "bread"],
-      ["Petersilie", 1, "Bund", "veg"], ["Kreuzkümmel", 1, "TL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Paprika und Zwiebel in Streifen schneiden.", items: ["Paprika", "Zwiebel"] },
-      { icon: "pan", text: "In der Pfanne 5 Minuten weich braten.", timer: 300, items: [] },
-      { icon: "boil", text: "Tomaten und Kreuzkümmel dazu. 5 Minuten köcheln.", timer: 300, items: ["Tomaten", "Kreuzkümmel"] },
-      { icon: "pan", text: "Mulden machen, Eier hinein. Deckel drauf, 8 Minuten.", timer: 480, items: ["Eier"] },
-      { icon: "serve", text: "Feta und Petersilie drüber. Mit Brot servieren.", items: ["Feta", "Petersilie", "Brot"] }
-    ]
-  },
-  {
     id: "quesadilla", name: "Süßkartoffel-Bohnen-Quesadillas", origin: "Mexiko", flag: "MX", time: 25,
     colors: ["#E58F4E", "#F2D98B", "#7E9E6E", "#F4EDE0"],
     kid: "In schmale Streifen schneiden. Das ideale Fingerfood.",
@@ -116,22 +99,6 @@ const RECIPES = [
       { icon: "pan", text: "Auf Tortilla streichen, Käse drauf, zuklappen. Je Seite 3 Minuten braten.", timer: 360, items: ["Tortillas", "Käse"] },
       { icon: "mix", text: "Avocado mit Limette zerdrücken.", items: ["Avocado", "Limette"] },
       { icon: "serve", text: "In Dreiecke schneiden und dippen.", items: [] }
-    ]
-  },
-  {
-    id: "gnocchi", name: "Blech-Gnocchi mit Ofengemüse", origin: "Italien", flag: "IT", time: 25,
-    colors: ["#E4C27A", "#D9533F", "#90AE7F", "#F6F1E6"],
-    kid: "Cherrytomaten und Mozzarella-Kugeln immer vierteln (Verschluckgefahr).",
-    ingredients: [
-      ["Gnocchi", 800, "g", "fresh"], ["Cherrytomaten", 250, "g", "veg"], ["Zucchini", 1, "Stk", "veg"],
-      ["Gelbe Paprika", 1, "Stk", "veg"], ["Mini-Mozzarella", 125, "g", "fresh"], ["Basilikum", 1, "Topf", "veg"],
-      ["Olivenöl", 3, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Ofen auf 220 Grad. Zucchini und Paprika würfeln.", items: ["Zucchini", "Paprika"] },
-      { icon: "mix", text: "Gnocchi, Gemüse und Tomaten mit Öl aufs Blech.", items: ["Gnocchi", "Tomaten", "Öl"] },
-      { icon: "oven", text: "20 Minuten backen. Nach der Hälfte einmal wenden.", timer: 1200, items: [] },
-      { icon: "serve", text: "Mozzarella und Basilikum drüber.", items: ["Mozzarella", "Basilikum"] }
     ]
   },
   {
@@ -203,23 +170,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "lohikeitto", name: "Cremige Lachssuppe Lohikeitto", origin: "Finnland", flag: "FI", time: 30,
-    colors: ["#F0B79A", "#F6F2E8", "#E2A458", "#9DB89A"],
-    kid: "Suppe etwas abkühlen lassen. Brot zum Tunken dazu.",
-    ingredients: [
-      ["Lachsfilet", 350, "g", "meat"], ["Kartoffeln", 500, "g", "veg"], ["Karotten", 2, "Stk", "veg"],
-      ["Lauch", 1, "Stk", "veg"], ["Sahne", 200, "ml", "fresh"], ["Dill", 1, "Bund", "veg"],
-      ["Vollkorn-Roggenbrot", 1, "Pck", "bread"], ["Gemüsebrühe (salzarm)", 800, "ml", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Lauch in Ringe, Kartoffeln und Karotten würfeln.", items: ["Lauch", "Kartoffeln", "Karotten"] },
-      { icon: "pan", text: "Lauch im Topf 3 Minuten anschwitzen.", timer: 180, items: [] },
-      { icon: "boil", text: "Gemüse und Brühe dazu. 12 Minuten köcheln.", timer: 720, items: ["Brühe"] },
-      { icon: "boil", text: "Lachs würfeln, in die Suppe. 5 Minuten ziehen lassen.", timer: 300, items: ["Lachs"] },
-      { icon: "serve", text: "Sahne und Dill einrühren. Mit Brot servieren.", items: ["Sahne", "Dill", "Brot"] }
-    ]
-  },
-  {
     id: "erbsenpasta", name: "Erbsen-Ricotta-Pasta mit Zitrone", origin: "Italien", flag: "IT", time: 15,
     colors: ["#E9D7A0", "#9FC57F", "#F7F4EC", "#E6D45E"],
     kid: "Erbsen für ganz Kleine kurz zerdrücken.",
@@ -232,39 +182,6 @@ const RECIPES = [
       { icon: "boil", text: "Die letzten 3 Minuten Erbsen mitkochen.", timer: 180, items: ["Erbsen"] },
       { icon: "mix", text: "Ricotta, Zitronenschale und Parmesan mit etwas Nudelwasser verrühren.", items: ["Ricotta", "Zitrone", "Parmesan"] },
       { icon: "serve", text: "Pasta untermischen, Spinat dazu. Fertig.", items: ["Spinat"] }
-    ]
-  },
-  {
-    id: "tortilla", name: "Spanische Kartoffel-Tortilla mit Salat", origin: "Spanien", flag: "ES", time: 30,
-    colors: ["#F0CF73", "#E0A05C", "#93B489", "#D8533F"],
-    kid: "Ei ganz durchgaren. Tortilla in kleine Würfel, Tomaten vierteln.",
-    ingredients: [
-      ["Eier", 6, "Stk", "fresh"], ["Kartoffeln", 400, "g", "veg"], ["Rote Paprika", 1, "Stk", "veg"],
-      ["Zwiebel", 1, "Stk", "veg"], ["Gurke", 1, "Stk", "veg"], ["Cherrytomaten", 250, "g", "veg"],
-      ["Olivenöl", 3, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Kartoffeln in dünne Scheiben, Zwiebel und Paprika würfeln.", items: ["Kartoffeln", "Zwiebel", "Paprika"] },
-      { icon: "pan", text: "Mit Öl in die Pfanne. Deckel drauf, 12 Minuten weich garen.", timer: 720, items: ["Olivenöl"] },
-      { icon: "mix", text: "Eier verquirlen und darüber gießen.", items: ["Eier"] },
-      { icon: "pan", text: "Mit Deckel 6 Minuten stocken lassen. Mit Teller wenden, 3 Minuten.", timer: 540, items: [] },
-      { icon: "serve", text: "Gurke und Tomaten als Salat. In Stücke schneiden.", items: ["Gurke", "Tomaten"] }
-    ]
-  }
-  ,{
-    id: "frittata", name: "Mini-Frittatas aus dem Muffinblech", origin: "England", flag: "GB", time: 25,
-    colors: ["#F0CF6B", "#8FB07E", "#D9533F", "#F6F1E4"],
-    kid: "Perfekt zum Selberhalten. Abkühlen lassen, innen wird es heiß.",
-    ingredients: [
-      ["Eier", 6, "Stk", "fresh"], ["Milch", 50, "ml", "fresh"], ["Rote Paprika", 1, "Stk", "veg"],
-      ["Babyspinat", 60, "g", "veg"], ["Geriebener Käse", 80, "g", "fresh"], ["Vollkorn-Roggenbrot", 1, "Pck", "bread"],
-      ["Gurke", 1, "Stk", "veg"], ["Olivenöl", 1, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Ofen auf 190 Grad. Paprika klein würfeln, Spinat hacken.", items: ["Paprika", "Spinat"] },
-      { icon: "mix", text: "Eier mit Milch und Käse verquirlen, Gemüse unterrühren.", items: ["Eier", "Milch", "Käse"] },
-      { icon: "oven", text: "Muffinblech einölen, Masse einfüllen. 18 Minuten backen.", timer: 1080, items: ["Olivenöl"] },
-      { icon: "serve", text: "Mit Brot und Gurkensticks servieren.", items: ["Brot", "Gurke"] }
     ]
   },
   {
@@ -300,23 +217,6 @@ const RECIPES = [
       { icon: "pan", text: "Alles zur Seite schieben, Eier in die Lücke und verrühren.", items: ["Eier"] },
       { icon: "rice", text: "Reis dazu und 4 Minuten mitbraten.", timer: 240, items: ["Reis"] },
       { icon: "serve", text: "Sesamöl, Lauchzwiebel und etwas Soja für die Großen.", items: ["Sesamöl", "Sojasauce"] }
-    ]
-  },
-  {
-    id: "kuerbissuppe", name: "Kürbis-Kokos-Suppe mit Linsen", origin: "Thailand", flag: "TH", time: 30,
-    colors: ["#E7934A", "#F3E9D2", "#8FAE84", "#EFC38A"],
-    kid: "Etwas abkühlen lassen. Brotstreifen zum Tunken dazu.",
-    ingredients: [
-      ["Hokkaido-Kürbis", 800, "g", "veg"], ["Kokosmilch", 400, "ml", "dry"], ["Rote Linsen", 100, "g", "dry"],
-      ["Zwiebel", 1, "Stk", "veg"], ["Ingwer", 1, "Stk", "veg"], ["Fladenbrot", 1, "Stk", "bread"],
-      ["Gemüsebrühe (salzarm)", 600, "ml", "pantry"], ["Currypulver mild", 1, "TL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Kürbis mit Schale würfeln. Zwiebel und Ingwer hacken.", items: ["Kürbis", "Zwiebel", "Ingwer"] },
-      { icon: "pan", text: "Zwiebel, Ingwer und Curry 3 Minuten anschwitzen.", timer: 180, items: ["Curry"] },
-      { icon: "boil", text: "Kürbis, Linsen und Brühe dazu. 18 Minuten köcheln.", timer: 1080, items: ["Linsen", "Brühe"] },
-      { icon: "mix", text: "Kokosmilch dazu und alles fein pürieren.", items: ["Kokosmilch"] },
-      { icon: "serve", text: "Mit Brot servieren.", items: ["Brot"] }
     ]
   },
   {
@@ -371,23 +271,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "gemuesepasta", name: "Pasta mit versteckter Gemüsesoße", origin: "Italien", flag: "IT", time: 25,
-    colors: ["#D9533F", "#E9C97A", "#8FAE7F", "#F6F0E4"],
-    kid: "Die Soße schmeckt nach Tomate. Das Gemüse sieht man nicht.",
-    ingredients: [
-      ["Vollkorn-Pasta", 300, "g", "dry"], ["Passierte Tomaten", 500, "g", "dry"], ["Rote Paprika", 1, "Stk", "veg"],
-      ["Karotten", 2, "Stk", "veg"], ["Zucchini", 1, "Stk", "veg"], ["Zwiebel", 1, "Stk", "veg"],
-      ["Parmesan", 40, "g", "fresh"], ["Olivenöl", 2, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Zwiebel, Paprika, Karotten und Zucchini grob würfeln.", items: ["Zwiebel", "Paprika", "Karotten", "Zucchini"] },
-      { icon: "pan", text: "Gemüse 5 Minuten in Öl anbraten.", timer: 300, items: ["Olivenöl"] },
-      { icon: "boil", text: "Tomaten dazu, 12 Minuten köcheln. Parallel Pasta kochen.", timer: 720, items: ["Tomaten", "Pasta"] },
-      { icon: "mix", text: "Soße fein pürieren.", items: [] },
-      { icon: "serve", text: "Mit Pasta mischen, Parmesan drüber.", items: ["Parmesan"] }
-    ]
-  },
-  {
     id: "souvlaki", name: "Hähnchen-Souvlaki mit Tzatziki", origin: "Griechenland", flag: "GR", time: 25,
     colors: ["#D9A066", "#F4F1E8", "#86A97A", "#E35D4A"],
     kid: "Fleisch in kleine Stücke, Knoblauch im Tzatziki sparsam.",
@@ -437,8 +320,8 @@ const RECIPES = [
       { icon: "chop", text: "Äpfel in Spalten schneiden.", items: ["Äpfel"] },
       { icon: "serve", text: "Mit Apfelmus und Apfelspalten servieren.", items: ["Apfelmus"] }
     ]
-  }
-  ,{
+  },
+  {
     id: "blechhuhn", name: "Blech-Hähnchen mit Ofengemüse & Kräuterjoghurt", origin: "Deutschland", flag: "DE", time: 30,
     colors: ["#D9A066", "#E58B5A", "#8FAE7F", "#F4EFE4"],
     kid: "Hähnchen klein schneiden, Gemüse weich gebacken ist perfektes Fingerfood.",
@@ -505,23 +388,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "udon", name: "Udon-Nudelsuppe mit Ei & Gemüse", origin: "Japan", flag: "JP", time: 20,
-    colors: ["#F2E3C2", "#8FB08C", "#E8B86A", "#F6F2E8"],
-    kid: "Nudeln mit der Schere klein schneiden. Brühe abkühlen lassen.",
-    ingredients: [
-      ["Udon-Nudeln", 3, "Pck", "dry"], ["Eier", 3, "Stk", "fresh"], ["Pak Choi", 2, "Stk", "veg"],
-      ["Champignons", 200, "g", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Gemüsebrühe (salzarm)", 1200, "ml", "pantry"],
-      ["Sojasauce (salzreduziert)", 1, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "boil", text: "Eier 8 Minuten kochen, abschrecken und schälen.", timer: 480, items: ["Eier"] },
-      { icon: "chop", text: "Pilze in Scheiben, Pak Choi und Lauchzwiebeln klein schneiden.", items: ["Champignons", "Pak Choi"] },
-      { icon: "boil", text: "Brühe aufkochen, Pilze und Pak Choi 4 Minuten mitkochen.", timer: 240, items: ["Brühe"] },
-      { icon: "boil", text: "Udon dazu, 3 Minuten ziehen lassen.", timer: 180, items: ["Udon"] },
-      { icon: "serve", text: "In Schalen, halbe Eier drauf. Soja nur für die Großen.", items: ["Sojasauce"] }
-    ]
-  },
-  {
     id: "burritobowl", name: "Burrito-Bowl mit Bohnen & Mais", origin: "Mexiko", flag: "MX", time: 25,
     colors: ["#E2A44C", "#7FA36E", "#C9553F", "#F4EFE4"],
     kid: "Bohnen leicht zerdrücken, Tomaten vierteln, alles getrennt auf den Teller.",
@@ -555,39 +421,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "pitapizza", name: "Pita-Pizzen zum Selberbelegen", origin: "Italien", flag: "IT", time: 20,
-    colors: ["#D9533F", "#F2E3C2", "#8FAE7F", "#E9C97A"],
-    kid: "Selber belegen lassen! Oliven und Tomaten klein schneiden.",
-    ingredients: [
-      ["Pita-Brote", 6, "Stk", "bread"], ["Passierte Tomaten", 200, "g", "dry"], ["Mozzarella", 250, "g", "fresh"],
-      ["Gelbe Paprika", 1, "Stk", "veg"], ["Champignons", 150, "g", "veg"], ["Kochschinken", 100, "g", "meat"],
-      ["Rucola", 1, "Pck", "veg"], ["Oregano", 1, "TL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Ofen auf 220 Grad. Paprika, Pilze, Schinken und Mozzarella klein schneiden.", items: ["Paprika", "Champignons", "Schinken", "Mozzarella"] },
-      { icon: "mix", text: "Pitas mit Tomaten bestreichen, Oregano drauf.", items: ["Pita", "Tomaten", "Oregano"] },
-      { icon: "mix", text: "Jeder belegt seine eigene Pizza.", items: [] },
-      { icon: "oven", text: "10 Minuten backen.", timer: 600, items: [] },
-      { icon: "serve", text: "Rucola für die Großen drüber.", items: ["Rucola"] }
-    ]
-  },
-  {
-    id: "hummus", name: "Hummus-Teller mit Ofengemüse", origin: "Libanon", flag: "LB", time: 25,
-    colors: ["#E8D7B0", "#D98A4B", "#7FA36E", "#F4EFE3"],
-    kid: "Hummus ist ein toller Dip für Gemüsesticks und Brot.",
-    ingredients: [
-      ["Kichererbsen", 1, "Dose", "dry"], ["Tahin", 2, "EL", "dry"], ["Zitrone", 1, "Stk", "veg"],
-      ["Zucchini", 1, "Stk", "veg"], ["Rote Paprika", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"],
-      ["Fladenbrot", 1, "Stk", "bread"], ["Knoblauch", 1, "Zehe", "veg"], ["Olivenöl", 4, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Ofen auf 220 Grad. Gemüse in Stifte schneiden.", items: ["Zucchini", "Paprika", "Karotten"] },
-      { icon: "oven", text: "Mit Öl aufs Blech, 18 Minuten backen.", timer: 1080, items: ["Olivenöl"] },
-      { icon: "mix", text: "Kichererbsen, Tahin, Zitrone, Knoblauch und etwas Wasser cremig pürieren.", items: ["Kichererbsen", "Tahin", "Zitrone"] },
-      { icon: "serve", text: "Hummus auf Teller streichen, Gemüse und Brot dazu.", items: ["Fladenbrot"] }
-    ]
-  },
-  {
     id: "bacalhau", name: "Ofen-Kabeljau mit Tomaten & Kartoffeln", origin: "Portugal", flag: "PT", time: 30,
     colors: ["#F4EFE6", "#D9533F", "#E8C98A", "#8FAE7F"],
     kid: "Fisch auf Gräten prüfen und zerpflücken.",
@@ -602,23 +435,6 @@ const RECIPES = [
       { icon: "mix", text: "Fisch und Tomaten drauflegen, Zitrone drüber.", items: ["Kabeljau", "Tomaten", "Zitrone"] },
       { icon: "oven", text: "Noch 14 Minuten backen.", timer: 840, items: [] },
       { icon: "serve", text: "Mit Petersilie bestreuen.", items: ["Petersilie"] }
-    ]
-  },
-  {
-    id: "erbsensuppe", name: "Erbsen-Minz-Suppe mit Käsetoast", origin: "England", flag: "GB", time: 20,
-    colors: ["#9FC57F", "#F4EFE4", "#E8B86A", "#7FA36E"],
-    kid: "Toast in Streifen schneiden, zum Tunken.",
-    ingredients: [
-      ["Erbsen", 600, "g", "frozen"], ["Kartoffeln", 200, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"],
-      ["Minze", 1, "Topf", "veg"], ["Vollkorntoast", 1, "Pck", "bread"], ["Geriebener Käse", 100, "g", "fresh"],
-      ["Gemüsebrühe (salzarm)", 800, "ml", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Zwiebel und Kartoffel klein würfeln.", items: ["Zwiebel", "Kartoffeln"] },
-      { icon: "boil", text: "Mit Brühe 10 Minuten kochen.", timer: 600, items: ["Brühe"] },
-      { icon: "boil", text: "Erbsen dazu, 4 Minuten kochen.", timer: 240, items: ["Erbsen"] },
-      { icon: "mix", text: "Mit Minzblättern fein pürieren.", items: ["Minze"] },
-      { icon: "oven", text: "Toast mit Käse belegen und 5 Minuten überbacken.", timer: 300, items: ["Toast", "Käse"] }
     ]
   },
   {
@@ -639,23 +455,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "pyttipanna", name: "Pyttipanna mit Ei", origin: "Schweden", flag: "SE", time: 30,
-    colors: ["#E2B566", "#C2414B", "#F2D98B", "#9DB59A"],
-    kid: "Ei für das Kind beidseitig braten, bis das Eigelb fest ist.",
-    ingredients: [
-      ["Kartoffeln", 600, "g", "veg"], ["Kochschinken", 150, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"],
-      ["Rote Paprika", 1, "Stk", "veg"], ["Eier", 3, "Stk", "fresh"], ["Rote Bete (vorgegart)", 1, "Pck", "veg"],
-      ["Olivenöl", 3, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Kartoffeln klein würfeln, Zwiebel, Paprika und Schinken auch.", items: ["Kartoffeln", "Zwiebel", "Paprika", "Schinken"] },
-      { icon: "pan", text: "Kartoffeln mit Deckel 12 Minuten braten, öfter wenden.", timer: 720, items: ["Olivenöl"] },
-      { icon: "pan", text: "Zwiebel, Paprika und Schinken dazu, 6 Minuten.", timer: 360, items: [] },
-      { icon: "pan", text: "Eier daneben braten, gut durch.", timer: 240, items: ["Eier"] },
-      { icon: "serve", text: "Mit Rote-Bete-Würfeln servieren.", items: ["Rote Bete"] }
-    ]
-  },
-  {
     id: "palatschinken", name: "Topfen-Palatschinken mit Beeren", origin: "Österreich", flag: "AT", time: 25,
     colors: ["#F2D9A0", "#B5475A", "#F6F1E6", "#7E9E6E"],
     kid: "Aufrollen und in Stücke schneiden. Beeren halbieren.",
@@ -672,21 +471,335 @@ const RECIPES = [
       { icon: "serve", text: "Palatschinken füllen, rollen, Beeren drüber.", items: [] }
     ]
   },
-  {
-    id: "bulgur", name: "Bulgur-Hackpfanne mit Paprika", origin: "Türkei", flag: "TR", time: 25,
-    colors: ["#C98B5E", "#D9533F", "#F2E3C2", "#8FAE7F"],
-    kid: "Joghurt dazu macht es milder.",
+{
+    id: "paprikahendl", name: "Paprikahendl mit Nockerl", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#C8743F", "#F3E6D3", "#8C5A3C", "#E9D2B4"],
+    kid: "Nur edelsüßes Paprikapulver verwenden, das ist nicht scharf. Hendl klein schneiden.",
     ingredients: [
-      ["Rinderhack", 300, "g", "meat"], ["Bulgur", 200, "g", "dry"], ["Rote Paprika", 2, "Stk", "veg"],
-      ["Zwiebel", 1, "Stk", "veg"], ["Tomatenmark", 2, "EL", "dry"], ["Naturjoghurt", 200, "g", "fresh"],
-      ["Petersilie", 1, "Bund", "veg"], ["Gemüsebrühe (salzarm)", 450, "ml", "pantry"], ["Paprikapulver edelsüß", 1, "TL", "pantry"]
+      ["Hendlbrust oder Hendlkeulen ohne Knochen", 500, "g", "meat"], ["Zwiebel", 2, "Stk", "veg"], ["Sauerrahm", 250, "g", "fresh"],
+      ["Schlagobers", 100, "ml", "fresh"], ["Frische Nockerl oder Spätzle", 500, "g", "fresh"], ["Paprikapulver edelsüß", 2, "EL", "pantry"],
+      ["Mehl", 1, "EL", "pantry"], ["Butter", 20, "g", "pantry"]
     ],
     steps: [
-      { icon: "chop", text: "Zwiebel und Paprika würfeln.", items: ["Zwiebel", "Paprika"] },
-      { icon: "pan", text: "Hack mit Zwiebel 5 Minuten krümelig braten.", timer: 300, items: ["Hack"] },
-      { icon: "pan", text: "Paprika, Tomatenmark und Gewürz dazu, 2 Minuten.", timer: 120, items: ["Tomatenmark"] },
-      { icon: "boil", text: "Bulgur und Brühe dazu. Deckel drauf, 12 Minuten quellen lassen.", timer: 720, items: ["Bulgur", "Brühe"] },
-      { icon: "serve", text: "Mit Joghurt und Petersilie servieren.", items: ["Joghurt", "Petersilie"] }
+      { icon: "chop", text: "Zwiebeln fein hacken, Hendl in Stücke schneiden.", items: ["Zwiebel", "Hendl"] },
+      { icon: "pan", text: "Zwiebeln in Butter 5 Minuten goldig rösten.", timer: 300, items: ["Butter"] },
+      { icon: "pan", text: "Hendl dazu, kurz anbraten. Paprikapulver drüber und gleich mit 300 ml Wasser ablöschen.", items: ["Paprikapulver"] },
+      { icon: "boil", text: "Zugedeckt 15 Minuten leise köcheln.", timer: 900, items: [] },
+      { icon: "mix", text: "Sauerrahm mit Mehl und Obers glatt rühren, einrühren, kurz aufkochen.", items: ["Sauerrahm", "Obers", "Mehl"] },
+      { icon: "serve", text: "Nockerl in Butter schwenken und mit dem Hendl servieren.", items: ["Nockerl"] }
+    ]
+  },
+  {
+    id: "faschiertelaibchen", name: "Faschierte Laibchen mit Erdäpfelpüree", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#8C5A3C", "#F3E9D8", "#B9A27E", "#E7D3B8"],
+    kid: "Laibchen klein formen. Gurkensalat ohne Essig für die Kleinen.",
+    ingredients: [
+      ["Faschiertes gemischt", 500, "g", "meat"], ["Semmel vom Vortag", 1, "Stk", "bread"], ["Eier", 1, "Stk", "fresh"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Petersilie", 1, "Bund", "veg"], ["Erdäpfel mehlig", 800, "g", "veg"],
+      ["Milch", 200, "ml", "fresh"], ["Gurke", 1, "Stk", "veg"], ["Sauerrahm", 100, "g", "fresh"],
+      ["Senf", 1, "TL", "pantry"], ["Butter", 30, "g", "pantry"], ["Öl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Erdäpfel schälen, würfeln und 15 Minuten kochen.", timer: 900, items: ["Erdäpfel"] },
+      { icon: "mix", text: "Semmel einweichen, ausdrücken. Mit Faschiertem, Ei, Zwiebel, Petersilie und Senf verkneten.", items: ["Faschiertes", "Semmel", "Ei"] },
+      { icon: "pan", text: "Laibchen formen, je Seite 5 Minuten braten.", timer: 600, items: ["Öl"] },
+      { icon: "mix", text: "Erdäpfel mit warmer Milch und Butter stampfen.", items: ["Milch", "Butter"] },
+      { icon: "serve", text: "Gurke hobeln, mit Sauerrahm mischen. Alles anrichten.", items: ["Gurke", "Sauerrahm"] }
+    ]
+  },
+  {
+    id: "faschiertebaellchen", name: "Faschierte Bällchen in Tomatensauce", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#B5482F", "#8C5A3C", "#F3E6D3", "#E8D2B0"],
+    kid: "Bällchen halbieren. Die Sauce ist mild und süßlich.",
+    ingredients: [
+      ["Faschiertes gemischt", 400, "g", "meat"], ["Eier", 1, "Stk", "fresh"], ["Semmelbrösel", 3, "EL", "pantry"],
+      ["Passierte Tomaten", 700, "g", "dry"], ["Zwiebel", 1, "Stk", "veg"], ["Spiralnudeln", 300, "g", "dry"],
+      ["Parmesan", 40, "g", "fresh"], ["Basilikum", 1, "Topf", "veg"]
+    ],
+    steps: [
+      { icon: "mix", text: "Faschiertes mit Ei und Bröseln mischen, kleine Bällchen formen.", items: ["Faschiertes", "Ei", "Brösel"] },
+      { icon: "pan", text: "Zwiebel hacken und in einem breiten Topf 3 Minuten anschwitzen.", timer: 180, items: ["Zwiebel"] },
+      { icon: "boil", text: "Tomaten dazu, Bällchen hineinlegen. Zugedeckt 15 Minuten ziehen lassen.", timer: 900, items: ["Tomaten"] },
+      { icon: "boil", text: "Parallel die Nudeln kochen.", timer: 600, items: ["Nudeln"] },
+      { icon: "serve", text: "Mit Basilikum und Parmesan servieren.", items: ["Basilikum", "Parmesan"] }
+    ]
+  },
+  {
+    id: "faschierterbraten", name: "Faschierter Braten mit Erdäpfelpüree", origin: "Österreich", flag: "AT", time: 20, wait: 40,
+    colors: ["#7A4E33", "#F3E9D8", "#9FB07E", "#D9BC94"],
+    kid: "In dünne Scheiben schneiden. Reste schmecken am nächsten Tag kalt aufs Brot.",
+    ingredients: [
+      ["Faschiertes gemischt", 700, "g", "meat"], ["Semmel vom Vortag", 2, "Stk", "bread"], ["Eier", 2, "Stk", "fresh"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"], ["Erdäpfel mehlig", 800, "g", "veg"],
+      ["Milch", 250, "ml", "fresh"], ["Senf", 1, "TL", "pantry"], ["Majoran", 1, "TL", "pantry"], ["Butter", 30, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 180 Grad. Semmeln einweichen, Zwiebel und Karotte fein reiben.", items: ["Semmel", "Zwiebel", "Karotten"] },
+      { icon: "mix", text: "Alles mit Faschiertem, Eiern, Senf und Majoran verkneten. Zu einem Laib formen.", items: ["Faschiertes", "Eier", "Majoran"] },
+      { icon: "oven", text: "In einer Form 40 Minuten backen. Ab und zu mit etwas Wasser begießen.", timer: 2400, items: [] },
+      { icon: "boil", text: "In der Zwischenzeit Erdäpfel kochen, mit Milch und Butter zu Püree stampfen.", timer: 900, items: ["Erdäpfel", "Milch"] },
+      { icon: "serve", text: "Braten in Scheiben schneiden, mit Püree und Bratensaft servieren.", items: [] }
+    ]
+  },
+  {
+    id: "onepotbolo", name: "One-Pot-Pasta Bolognese", origin: "Italien", flag: "IT", time: 25,
+    colors: ["#A8442E", "#8C5A3C", "#F3E6D3", "#E3C9A5"],
+    kid: "Ein Topf, kein Abseihen. Fürs Kind mit wenig Parmesan.",
+    ingredients: [
+      ["Faschiertes Rind", 400, "g", "meat"], ["Penne", 350, "g", "dry"], ["Passierte Tomaten", 500, "g", "dry"],
+      ["Karotten", 2, "Stk", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Parmesan", 40, "g", "fresh"], ["Olivenöl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebel und Karotten fein reiben.", items: ["Zwiebel", "Karotten"] },
+      { icon: "pan", text: "Faschiertes im großen Topf 5 Minuten krümelig braten, Gemüse dazu.", timer: 300, items: ["Faschiertes"] },
+      { icon: "boil", text: "Tomaten, Penne und 700 ml Wasser dazu. 12 Minuten köcheln, oft umrühren.", timer: 720, items: ["Penne", "Tomaten"] },
+      { icon: "serve", text: "Wenn die Nudeln weich sind: Parmesan drüber, fertig.", items: ["Parmesan"] }
+    ]
+  },
+  {
+    id: "onepotpesto", name: "One-Pot-Pesto-Pasta mit Brokkoli", origin: "Italien", flag: "IT", time: 15,
+    colors: ["#6F8F4E", "#F3E9D8", "#C7A46B", "#E6D6B8"],
+    kid: "Pesto enthält oft Nüsse. Nur geben, wenn keine Allergie bekannt ist.",
+    ingredients: [
+      ["Spaghetti oder Trofie", 350, "g", "dry"], ["Brokkoli", 1, "Stk", "veg"], ["Basilikum-Pesto", 1, "Glas", "dry"],
+      ["Cherrytomaten", 250, "g", "veg"], ["Mini-Mozzarella", 125, "g", "fresh"], ["Parmesan", 30, "g", "fresh"]
+    ],
+    steps: [
+      { icon: "boil", text: "Nudeln im großen Topf kochen. Die letzten 4 Minuten Brokkoli-Röschen dazu.", timer: 600, items: ["Nudeln", "Brokkoli"] },
+      { icon: "mix", text: "Eine Tasse Nudelwasser aufheben, dann abseihen.", items: [] },
+      { icon: "mix", text: "Zurück in den Topf, Pesto und etwas Nudelwasser unterrühren.", items: ["Pesto"] },
+      { icon: "serve", text: "Tomaten und Mozzarella vierteln, drüber. Parmesan drauf.", items: ["Tomaten", "Mozzarella", "Parmesan"] }
+    ]
+  },
+  {
+    id: "onepotrahm", name: "One-Pot Schinken-Erbsen-Rahmnudeln", origin: "Österreich", flag: "AT", time: 20,
+    colors: ["#E9C98E", "#8DAA6A", "#D99C8A", "#F4ECDF"],
+    kid: "Kinderliebling. Schinken klein würfeln.",
+    ingredients: [
+      ["Hörnchen oder Farfalle", 350, "g", "dry"], ["Beinschinken", 150, "g", "meat"], ["Erbsen", 200, "g", "frozen"],
+      ["Schlagobers", 150, "ml", "fresh"], ["Parmesan", 40, "g", "fresh"], ["Gemüsebrühe (salzarm)", 800, "ml", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Schinken klein würfeln.", items: ["Schinken"] },
+      { icon: "boil", text: "Nudeln mit Brühe im Topf 8 Minuten köcheln, oft umrühren.", timer: 480, items: ["Nudeln", "Brühe"] },
+      { icon: "boil", text: "Erbsen, Schinken und Obers dazu, noch 3 Minuten.", timer: 180, items: ["Erbsen", "Obers"] },
+      { icon: "serve", text: "Parmesan einrühren, fertig.", items: ["Parmesan"] }
+    ]
+  },
+  {
+    id: "onepotlachs", name: "One-Pot Lachs-Spinat-Pasta", origin: "Schweden", flag: "SE", time: 20,
+    colors: ["#E9967A", "#5F7F4A", "#F4EDE0", "#D7C2A0"],
+    kid: "Lachs zerpflücken und auf Gräten prüfen.",
+    ingredients: [
+      ["Bandnudeln", 350, "g", "dry"], ["Lachsfilet ohne Haut", 300, "g", "meat"], ["Blattspinat (TK)", 300, "g", "frozen"],
+      ["Frischkäse", 150, "g", "fresh"], ["Zitrone", 1, "Stk", "veg"], ["Gemüsebrühe (salzarm)", 900, "ml", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Nudeln mit Brühe und Spinat in einen Topf. 8 Minuten köcheln, oft umrühren.", timer: 480, items: ["Nudeln", "Spinat", "Brühe"] },
+      { icon: "chop", text: "Lachs in Würfel schneiden.", items: ["Lachs"] },
+      { icon: "boil", text: "Lachs und Frischkäse dazu, 4 Minuten ziehen lassen.", timer: 240, items: ["Frischkäse"] },
+      { icon: "serve", text: "Mit Zitronenschale und etwas Saft abschmecken.", items: ["Zitrone"] }
+    ]
+  },
+  {
+    id: "kartoffelauflauf", name: "Erdäpfel-Brokkoli-Auflauf", origin: "Österreich", flag: "AT", time: 15, wait: 35,
+    colors: ["#E2B866", "#6F8F4E", "#F3E6D3", "#C69A6A"],
+    kid: "Weich und mild. Etwas abkühlen lassen, innen sehr heiß.",
+    ingredients: [
+      ["Erdäpfel festkochend", 800, "g", "veg"], ["Brokkoli", 1, "Stk", "veg"], ["Beinschinken", 150, "g", "meat"],
+      ["Schlagobers", 200, "ml", "fresh"], ["Milch", 200, "ml", "fresh"], ["Geriebener Bergkäse", 120, "g", "fresh"],
+      ["Eier", 2, "Stk", "fresh"], ["Muskatnuss", 1, "Prise", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 200 Grad. Erdäpfel hauchdünn hobeln, Brokkoli in kleine Röschen.", items: ["Erdäpfel", "Brokkoli"] },
+      { icon: "mix", text: "Obers, Milch, Eier und Muskat verquirlen.", items: ["Obers", "Milch", "Eier"] },
+      { icon: "mix", text: "Erdäpfel, Brokkoli und Schinken in eine Form schichten, Guss drüber, Käse drauf.", items: ["Schinken", "Käse"] },
+      { icon: "oven", text: "35 Minuten goldbraun backen.", timer: 2100, items: [] },
+      { icon: "serve", text: "5 Minuten rasten lassen, dann schneiden.", items: [] }
+    ]
+  },
+  {
+    id: "zucchiniquiche", name: "Zucchini-Faschiertes-Quiche", origin: "Frankreich", flag: "FR", time: 15, wait: 30,
+    colors: ["#D9B37A", "#6F8F4E", "#8C5A3C", "#F3E9D8"],
+    kid: "In kleine Stücke schneiden. Schmeckt auch lauwarm.",
+    ingredients: [
+      ["Mürbteig oder Blätterteig (Kühlregal)", 1, "Pck", "fresh"], ["Faschiertes Rind", 300, "g", "meat"], ["Zucchini", 2, "Stk", "veg"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Eier", 3, "Stk", "fresh"], ["Sauerrahm", 200, "g", "fresh"],
+      ["Geriebener Käse", 100, "g", "fresh"], ["Grüner Salat", 1, "Stk", "veg"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 190 Grad. Zucchini grob raspeln und ausdrücken, Zwiebel hacken.", items: ["Zucchini", "Zwiebel"] },
+      { icon: "pan", text: "Faschiertes mit Zwiebel 6 Minuten braten.", timer: 360, items: ["Faschiertes"] },
+      { icon: "mix", text: "Teig in die Form legen. Eier, Sauerrahm und Käse verrühren, mit Zucchini und Faschiertem mischen.", items: ["Teig", "Eier", "Sauerrahm"] },
+      { icon: "oven", text: "Einfüllen und 30 Minuten backen.", timer: 1800, items: [] },
+      { icon: "serve", text: "Mit grünem Salat servieren.", items: ["Salat"] }
+    ]
+  },
+  {
+    id: "pikantepalatschinken", name: "Pikante Palatschinken mit Rahmsauce", origin: "Österreich", flag: "AT", time: 25, wait: 15,
+    colors: ["#E8C48A", "#F4ECDF", "#7F9E5E", "#D99C8A"],
+    kid: "In Scheiben schneiden. Die Rahmsauce ist mild.",
+    ingredients: [
+      ["Mehl", 200, "g", "pantry"], ["Eier", 3, "Stk", "fresh"], ["Milch", 400, "ml", "fresh"],
+      ["Beinschinken", 200, "g", "meat"], ["Blattspinat (TK)", 300, "g", "frozen"], ["Geriebener Käse", 150, "g", "fresh"],
+      ["Sauerrahm", 250, "g", "fresh"], ["Schlagobers", 100, "ml", "fresh"], ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Ofen auf 200 Grad. Mehl, Eier und Milch zu dünnem Teig verrühren.", items: ["Mehl", "Eier", "Milch"] },
+      { icon: "pan", text: "In Butter dünne Palatschinken backen.", timer: 600, items: ["Butter"] },
+      { icon: "mix", text: "Spinat auftauen und ausdrücken. Palatschinken mit Schinken, Spinat und etwas Käse füllen und rollen.", items: ["Schinken", "Spinat", "Käse"] },
+      { icon: "mix", text: "In eine Form legen. Sauerrahm mit Obers verrühren, drübergießen, Rest-Käse drauf.", items: ["Sauerrahm", "Obers"] },
+      { icon: "oven", text: "15 Minuten überbacken.", timer: 900, items: [] }
+    ]
+  },
+  {
+    id: "wuerstel", name: "Würstel mit Dillrahmsauce & Erdäpfeln", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#B86A4A", "#F4ECDF", "#7F9E5E", "#E2C9A0"],
+    kid: "Würstel immer der Länge nach vierteln (Verschluckgefahr). Würstel sind salzig, Sauce nicht nachsalzen.",
+    ingredients: [
+      ["Frankfurter oder Wiener Würstel", 6, "Stk", "meat"], ["Erdäpfel festkochend", 700, "g", "veg"], ["Dill", 1, "Bund", "veg"],
+      ["Sauerrahm", 250, "g", "fresh"], ["Schlagobers", 100, "ml", "fresh"], ["Gemüsebrühe (salzarm)", 200, "ml", "pantry"],
+      ["Mehl", 1, "EL", "pantry"], ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Erdäpfel würfeln und 15 Minuten kochen.", timer: 900, items: ["Erdäpfel"] },
+      { icon: "pan", text: "Mehl in Butter kurz anschwitzen, mit Brühe und Obers aufgießen, 3 Minuten köcheln.", timer: 180, items: ["Butter", "Mehl", "Obers"] },
+      { icon: "mix", text: "Sauerrahm und viel gehackten Dill einrühren.", items: ["Sauerrahm", "Dill"] },
+      { icon: "boil", text: "Würstel in der Sauce 5 Minuten heiß werden lassen (nicht kochen).", timer: 300, items: ["Würstel"] },
+      { icon: "serve", text: "Mit Erdäpfeln servieren. Fürs Kind Würstel längs vierteln.", items: [] }
+    ]
+  },
+  {
+    id: "kartoffelgulasch", name: "Erdäpfelgulasch mit Würstel", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#B5552F", "#E2B866", "#8C5A3C", "#F3E6D3"],
+    kid: "Würstel längs vierteln. Nur edelsüßes Paprikapulver, nicht scharf.",
+    ingredients: [
+      ["Erdäpfel speckig", 900, "g", "veg"], ["Zwiebel", 2, "Stk", "veg"], ["Frankfurter Würstel", 4, "Stk", "meat"],
+      ["Tomatenmark", 1, "EL", "dry"], ["Paprikapulver edelsüß", 2, "EL", "pantry"], ["Majoran", 1, "TL", "pantry"],
+      ["Kümmel gemahlen", 0.5, "TL", "pantry"], ["Schwarzbrot", 1, "Stk", "bread"], ["Öl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebeln fein hacken, Erdäpfel in Würfel.", items: ["Zwiebel", "Erdäpfel"] },
+      { icon: "pan", text: "Zwiebeln in Öl 6 Minuten goldbraun rösten.", timer: 360, items: ["Öl"] },
+      { icon: "pan", text: "Tomatenmark und Paprika kurz mitrühren, sofort mit 700 ml Wasser aufgießen.", items: ["Tomatenmark", "Paprikapulver"] },
+      { icon: "boil", text: "Erdäpfel, Majoran und Kümmel dazu. 18 Minuten köcheln, bis es sämig wird.", timer: 1080, items: ["Majoran", "Kümmel"] },
+      { icon: "serve", text: "Würstel in Scheiben 3 Minuten mitziehen lassen. Mit Brot servieren.", items: ["Würstel", "Brot"] }
+    ]
+  },
+  {
+    id: "tantanmen", name: "Tantanmen-Nudeln mit Faschiertem", origin: "Japan", flag: "JP", time: 20,
+    colors: ["#C8743F", "#F3E6D3", "#6F8F4E", "#8C5A3C"],
+    kid: "Ohne Chili fürs Kind, Nudeln mit der Schere kürzen. Chiliöl nur bei den Großen.",
+    ingredients: [
+      ["Ramen-Nudeln", 3, "Pck", "dry"], ["Faschiertes Schwein oder Rind", 300, "g", "meat"], ["Tahin (Sesampaste)", 3, "EL", "dry"],
+      ["Pak Choi", 2, "Stk", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"],
+      ["Ingwer", 1, "Stk", "veg"], ["Sojasauce (salzreduziert)", 2, "EL", "pantry"], ["Chiliöl (nur Erwachsene)", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Knoblauch und Ingwer hacken, Pak Choi halbieren, Lauchzwiebel in Ringe.", items: ["Knoblauch", "Ingwer", "Pak Choi"] },
+      { icon: "pan", text: "Faschiertes mit Knoblauch und Ingwer 6 Minuten knusprig braten, 1 EL Soja dazu.", timer: 360, items: ["Faschiertes", "Sojasauce"] },
+      { icon: "boil", text: "Nudeln und Pak Choi 3 Minuten kochen. 200 ml Kochwasser aufheben.", timer: 180, items: ["Ramen-Nudeln"] },
+      { icon: "mix", text: "Tahin, restliche Soja und das Kochwasser zu cremiger Sauce verrühren.", items: ["Tahin"] },
+      { icon: "serve", text: "Nudeln in die Sauce, Faschiertes und Lauchzwiebel drauf. Chiliöl für die Großen.", items: ["Chiliöl"] }
+    ]
+  },
+  {
+    id: "kasnocken", name: "Kasnocken mit Röstzwiebeln", origin: "Österreich", flag: "AT", time: 20,
+    colors: ["#E8C27A", "#A0703F", "#7F9E5E", "#F4ECDF"],
+    kid: "Käse ist salzig: fürs Kind eine kleinere Portion und viel Salat dazu.",
+    ingredients: [
+      ["Frische Spätzle oder Nockerl", 600, "g", "fresh"], ["Geriebener Bergkäse", 150, "g", "fresh"], ["Zwiebel", 2, "Stk", "veg"],
+      ["Schnittlauch", 1, "Bund", "veg"], ["Grüner Salat", 1, "Stk", "veg"], ["Butter", 30, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebeln in feine Ringe schneiden.", items: ["Zwiebel"] },
+      { icon: "pan", text: "Zwiebeln in Butter 10 Minuten langsam goldbraun rösten, rausnehmen.", timer: 600, items: ["Butter"] },
+      { icon: "pan", text: "Nockerl in der Pfanne 4 Minuten erhitzen, Käse drüber und schmelzen lassen.", timer: 240, items: ["Nockerl", "Käse"] },
+      { icon: "serve", text: "Röstzwiebeln und Schnittlauch drauf. Salat dazu.", items: ["Schnittlauch", "Salat"] }
+    ]
+  },
+  {
+    id: "grenadiermarsch", name: "Grenadiermarsch", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#E2B866", "#B86A4A", "#F3E6D3", "#7F9E5E"],
+    kid: "Klassisches Resteessen, das Kinder lieben. Mit Gurkensalat.",
+    ingredients: [
+      ["Erdäpfel festkochend", 500, "g", "veg"], ["Fleckerl oder kurze Nudeln", 250, "g", "dry"], ["Beinschinken", 150, "g", "meat"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Eier", 2, "Stk", "fresh"], ["Gurke", 1, "Stk", "veg"], ["Majoran", 1, "TL", "pantry"],
+      ["Öl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Erdäpfel würfeln und 12 Minuten kochen. Nudeln parallel kochen.", timer: 720, items: ["Erdäpfel", "Nudeln"] },
+      { icon: "pan", text: "Zwiebel und Schinken in Öl 4 Minuten rösten.", timer: 240, items: ["Zwiebel", "Schinken"] },
+      { icon: "pan", text: "Erdäpfel und Nudeln dazu, 5 Minuten knusprig braten, Majoran drüber.", timer: 300, items: ["Majoran"] },
+      { icon: "pan", text: "Eier verquirlen, drübergießen und durchstocken lassen.", items: ["Eier"] },
+      { icon: "serve", text: "Mit Gurkensalat servieren.", items: ["Gurke"] }
+    ]
+  },
+  {
+    id: "schinkenfleckerl", name: "Überbackene Schinkenfleckerl", origin: "Österreich", flag: "AT", time: 15, wait: 20,
+    colors: ["#E9C98E", "#D99C8A", "#F4ECDF", "#7F9E5E"],
+    kid: "Ein Wiener Kinderklassiker. Mit grünem Salat.",
+    ingredients: [
+      ["Fleckerl", 300, "g", "dry"], ["Beinschinken", 200, "g", "meat"], ["Sauerrahm", 250, "g", "fresh"],
+      ["Eier", 2, "Stk", "fresh"], ["Geriebener Käse", 80, "g", "fresh"], ["Grüner Salat", 1, "Stk", "veg"], ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Ofen auf 200 Grad. Fleckerl kochen und abseihen.", timer: 600, items: ["Fleckerl"] },
+      { icon: "chop", text: "Schinken klein würfeln.", items: ["Schinken"] },
+      { icon: "mix", text: "Sauerrahm mit Eiern verrühren, mit Fleckerl und Schinken mischen.", items: ["Sauerrahm", "Eier"] },
+      { icon: "oven", text: "In eine gebutterte Form, Käse drüber, 20 Minuten backen.", timer: 1200, items: ["Käse", "Butter"] },
+      { icon: "serve", text: "Mit grünem Salat servieren.", items: ["Salat"] }
+    ]
+  },
+  {
+    id: "hendlstreifen", name: "Knusprige Hendlstreifen mit Erdäpfelsalat", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D9A35E", "#F3E6D3", "#7F9E5E", "#C69A6A"],
+    kid: "Panierte Streifen zum Selberhalten. Erdäpfelsalat mild abmachen.",
+    ingredients: [
+      ["Hendlbrust", 500, "g", "meat"], ["Semmelbrösel", 100, "g", "pantry"], ["Eier", 2, "Stk", "fresh"],
+      ["Erdäpfel speckig", 700, "g", "veg"], ["Rote Zwiebel", 1, "Stk", "veg"], ["Vogerlsalat", 1, "Pck", "veg"],
+      ["Zitrone", 1, "Stk", "veg"], ["Gemüsebrühe (salzarm)", 150, "ml", "pantry"], ["Mehl", 3, "EL", "pantry"], ["Öl", 6, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Erdäpfel in der Schale 18 Minuten kochen.", timer: 1080, items: ["Erdäpfel"] },
+      { icon: "chop", text: "Hendl in Streifen schneiden. In Mehl, Ei und Bröseln wenden.", items: ["Hendl", "Mehl", "Eier", "Brösel"] },
+      { icon: "pan", text: "In Öl je Seite 3 Minuten goldbraun braten.", timer: 360, items: ["Öl"] },
+      { icon: "mix", text: "Erdäpfel schälen, in Scheiben, mit warmer Brühe und feiner Zwiebel marinieren.", items: ["Brühe", "Zwiebel"] },
+      { icon: "serve", text: "Vogerlsalat unterheben, mit Zitronenspalten servieren.", items: ["Vogerlsalat", "Zitrone"] }
+    ]
+  },
+  {
+    id: "griessschmarrn", name: "Grießschmarrn mit Apfelkompott", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#EBCB8B", "#C98B5E", "#F4ECDF", "#B5C99A"],
+    kid: "Ohne Staubzucker. Das Kompott macht ihn süß genug.",
+    ingredients: [
+      ["Weizengrieß", 200, "g", "dry"], ["Milch", 500, "ml", "fresh"], ["Eier", 2, "Stk", "fresh"],
+      ["Äpfel", 4, "Stk", "veg"], ["Zimt", 1, "TL", "pantry"], ["Butter", 40, "g", "pantry"], ["Rosinen", 30, "g", "dry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Milch aufkochen, Grieß einrühren, 3 Minuten dick werden lassen. Abkühlen lassen.", timer: 180, items: ["Milch", "Grieß"] },
+      { icon: "chop", text: "Äpfel schälen und würfeln.", items: ["Äpfel"] },
+      { icon: "boil", text: "Mit wenig Wasser und Zimt 8 Minuten weich dünsten.", timer: 480, items: ["Zimt"] },
+      { icon: "mix", text: "Eier und Rosinen unter den Grieß rühren.", items: ["Eier", "Rosinen"] },
+      { icon: "pan", text: "In Butter 10 Minuten rösten und mit zwei Gabeln zerreißen.", timer: 600, items: ["Butter"] },
+      { icon: "serve", text: "Mit Apfelkompott servieren.", items: [] }
+    ]
+  },
+  {
+    id: "spinatknoedel", name: "Spinatknödel mit brauner Butter", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#5F7F4A", "#E8C27A", "#F4ECDF", "#A0703F"],
+    kid: "Knödel klein schneiden. Parmesan nur wenig.",
+    ingredients: [
+      ["Knödelbrot", 250, "g", "bread"], ["Blattspinat (TK)", 300, "g", "frozen"], ["Milch", 250, "ml", "fresh"],
+      ["Eier", 2, "Stk", "fresh"], ["Zwiebel", 1, "Stk", "veg"], ["Parmesan", 50, "g", "fresh"],
+      ["Grüner Salat", 1, "Stk", "veg"], ["Butter", 50, "g", "pantry"], ["Mehl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Knödelbrot mit warmer Milch übergießen, 10 Minuten ziehen lassen.", timer: 600, items: ["Knödelbrot", "Milch"] },
+      { icon: "pan", text: "Zwiebel hacken, in Butter anschwitzen, Spinat dazu, bis er aufgetaut ist. Gut ausdrücken.", items: ["Zwiebel", "Spinat"] },
+      { icon: "mix", text: "Alles mit Eiern, Mehl und der Hälfte vom Parmesan verkneten. 8 Knödel formen.", items: ["Eier", "Mehl", "Parmesan"] },
+      { icon: "boil", text: "In leicht wallendem Wasser 12 Minuten ziehen lassen.", timer: 720, items: [] },
+      { icon: "serve", text: "Butter bräunen, drüber, Parmesan drauf. Salat dazu.", items: ["Butter", "Salat"] }
     ]
   }
 ];
@@ -713,6 +826,16 @@ const TAGS = {
   hummus: ["vegetarisch", "ofen", "orientalisch", "fingerfood"], bacalhau: ["fisch", "ofen", "mediterran"],
   erbsensuppe: ["vegetarisch", "suppe", "topf"], padthai: ["vegetarisch", "asiatisch", "pfanne", "ei"],
   pyttipanna: ["fleisch", "ei", "pfanne", "nordisch"], palatschinken: ["vegetarisch", "süß", "pfanne", "österreichisch"],
-  bulgur: ["fleisch", "pfanne", "orientalisch"]
+  bulgur: ["fleisch", "pfanne", "orientalisch"],
+  paprikahendl: ["huhn", "pfanne", "österreichisch", "rahm"], faschiertelaibchen: ["faschiert", "pfanne", "österreichisch", "fingerfood"],
+  faschiertebaellchen: ["faschiert", "topf", "österreichisch", "pasta"], faschierterbraten: ["faschiert", "ofen", "österreichisch"],
+  onepotbolo: ["faschiert", "onepot", "pasta", "mediterran"], onepotpesto: ["vegetarisch", "onepot", "pasta", "mediterran"],
+  onepotrahm: ["fleisch", "onepot", "pasta", "rahm", "österreichisch"], onepotlachs: ["fisch", "onepot", "pasta", "rahm"],
+  kartoffelauflauf: ["fleisch", "ofen", "auflauf", "österreichisch", "rahm"], zucchiniquiche: ["faschiert", "ofen", "auflauf"],
+  pikantepalatschinken: ["fleisch", "ofen", "auflauf", "österreichisch", "rahm"], wuerstel: ["fleisch", "rahm", "österreichisch", "topf"],
+  kartoffelgulasch: ["fleisch", "topf", "österreichisch"], tantanmen: ["faschiert", "asiatisch", "pasta"],
+  kasnocken: ["vegetarisch", "pfanne", "österreichisch"], grenadiermarsch: ["fleisch", "pfanne", "österreichisch", "ei"],
+  schinkenfleckerl: ["fleisch", "ofen", "auflauf", "österreichisch", "pasta"], hendlstreifen: ["huhn", "pfanne", "österreichisch", "fingerfood"],
+  griessschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch"], spinatknoedel: ["vegetarisch", "topf", "österreichisch"]
 };
 RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });

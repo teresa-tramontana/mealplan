@@ -1,0 +1,1300 @@
+[
+ {
+  "id": "suesskartoffel-sourcream-ahornsirup",
+  "number": 1,
+  "title": "Süßkartoffel Sourcream Ahornsirup",
+  "servings": 4,
+  "ingredients": [
+   "4 Süßkartoffeln",
+   "200 g Sourcream",
+   "2 EL Ahornsirup",
+   "1 Bund Koriander",
+   "1 Prise Salz",
+   "1 Prise Pfeffer"
+  ],
+  "instructions": [
+   "Süßkartoffeln mehrmals mit einer Gabel einstechen.",
+   "Im Ofen bei 200 °C Ober-/Unterhitze ca. 45 Minuten weich backen.",
+   "Sourcream mit Ahornsirup verrühren, mit Salz und Pfeffer abschmecken.",
+   "Die fertigen Kartoffeln längs aufschneiden, leicht aufdrücken, die Creme darauf verteilen und mit gehacktem Koriander garnieren."
+  ],
+  "cuisine": "International",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "nacho-platter-mit-hackfleisch",
+  "number": 2,
+  "title": "Nacho Platter mit Hackfleisch",
+  "servings": 4,
+  "ingredients": [
+   "1 Packung Tortilla Chips",
+   "300 g Rinderhackfleisch",
+   "1 Packung Reibekäse",
+   "1 Dose Mais",
+   "1 Dose Kidneybohnen",
+   "1 Avocado",
+   "1 Tomate",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "1 TL Chilipulver"
+  ],
+  "instructions": [
+   "Rinderhackfleisch in einer Pfanne scharf anbraten, mit Salz, Pfeffer und Chilipulver würzen.",
+   "Tortilla Chips gleichmäßig auf einem Backblech verteilen.",
+   "Das angebratene Fleisch, abgetropften Mais und Bohnen über den Chips verteilen.",
+   "Mit Reibekäse bestreuen und bei 180 °C für ca. 10 Minuten überbacken, bis der Käse geschmolzen ist.",
+   "Mit gewürfelter Avocado und Tomaten frisch servieren."
+  ],
+  "cuisine": "Mexikanisch",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "safran-reis-mit-datteln",
+  "number": 3,
+  "title": "Safran Reis mit Datteln",
+  "servings": 4,
+  "ingredients": [
+   "300 g Basmatireis",
+   "10 Datteln (entsteint)",
+   "1 Prise Safranfäden",
+   "1 Zwiebel",
+   "2 EL Butter",
+   "500 ml Gemüsebrühe",
+   "1 Prise Salz"
+  ],
+  "instructions": [
+   "Safranfäden in 2 EL warmem Wasser einweichen und ziehen lassen.",
+   "Zwiebel fein würfeln und in einem Topf mit Butter glasig dünsten.",
+   "Basmatireis und gehackte Datteln hinzufügen, kurz mitdünsten.",
+   "Mit Gemüsebrühe und dem Safranwasser aufgießen, salzen.",
+   "Bei geringer Hitze abgedeckt ca. 15 Minuten quellen lassen, bis die Flüssigkeit absorbiert ist."
+  ],
+  "cuisine": "Orientalisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "gochujang-shrimp-pasta",
+  "number": 4,
+  "title": "Gochujang Shrimp Pasta",
+  "servings": 2,
+  "ingredients": [
+   "200 g Spaghetti",
+   "200 g Garnelen (entdarmt)",
+   "2 EL Gochujang (koreanische Chilipaste)",
+   "2 Knoblauchzehen",
+   "100 ml Obers",
+   "1 EL Sesamöl",
+   "2 Stängel Frühlingszwiebeln"
+  ],
+  "instructions": [
+   "Spaghetti in Salzwasser al dente kochen, etwas Nudelwasser aufbewahren.",
+   "Knoblauch fein hacken, in einer Pfanne mit Sesamöl anbraten und die Garnelen dazugeben, bis sie sich verfärben.",
+   "Gochujang-Paste und Obers einrühren, glatt rühren und kurz köcheln lassen.",
+   "Die Pasta direkt in die Sauce geben, gut durchschwenken, bei Bedarf etwas Nudelwasser hinzufügen.",
+   "Mit in Ringe geschnittenen Frühlingszwiebeln garniert servieren."
+  ],
+  "cuisine": "Asiatisch Fusion",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "spiced-braised-short-ribs-with-creamy-potatoes",
+  "number": 5,
+  "title": "Spiced Braised Short Ribs with Creamy Potatoes",
+  "servings": 4,
+  "ingredients": [
+   "1.5 kg Rinder-Short Ribs",
+   "1 Zwiebel",
+   "2 Karotten",
+   "2 Knoblauchzehen",
+   "500 ml Rinderfond",
+   "250 ml Rotwein",
+   "2 EL Tomatenmark",
+   "1 TL Zimt",
+   "2 Stück Sternanis",
+   "3 Stück Piment",
+   "1 kg Kartoffeln (mehlig)",
+   "50 g Butter",
+   "100 ml Milch"
+  ],
+  "instructions": [
+   "Short Ribs salzen und in einem Bräter rundherum scharf anbraten, danach herausnehmen.",
+   "Zwiebel, Karotten und Knoblauch würfeln, im Bratfett kräftig anrösten.",
+   "Tomatenmark unterrühren, mit Rotwein und Rinderfond ablöschen.",
+   "Fleisch, Zimt, Sternanis und Piment dazugeben, abgedeckt bei 160 °C im Ofen für ca. 3 Stunden schmoren.",
+   "Kartoffeln schälen, kochen und anschließend heiß mit Butter und Milch zu einem cremigen Püree stampfen."
+  ],
+  "cuisine": "International",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "bone-marrow-bolognese-a-la-evan-funke",
+  "number": 6,
+  "title": "Bone Marrow Bolognese a la Evan Funke",
+  "servings": 6,
+  "ingredients": [
+   "4 Stück Markknochen",
+   "500 g Rinderhackfleisch",
+   "250 g Schweinehackfleisch",
+   "1 Zwiebel",
+   "1 Karotte",
+   "1 Stangensellerie",
+   "2 EL Tomatenmark",
+   "250 ml Weißwein",
+   "500 ml Rinderbrühe",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "1 Prise Muskatnuss"
+  ],
+  "instructions": [
+   "Markknochen im Ofen bei 200 °C für ca. 15 Minuten rösten, das weiche Mark herauskratzen.",
+   "Zwiebel, Karotte und Sellerie extrem fein hacken (Soffritto).",
+   "Das Knochenmark in einem großen Topf zerlassen, das Gemüse darin bei mittlerer Hitze weich dünsten.",
+   "Rinder- und Schweinehackfleisch hinzufügen und gleichmäßig braun anbraten.",
+   "Tomatenmark einrühren, kurz mitrösten und mit Weißwein ablöschen.",
+   "Rinderbrühe schrittweise angießen und das Ragù bei kleinster Hitze offen mindestens 4 Stunden köcheln lassen.",
+   "Mit Salz, Pfeffer und frisch geriebener Muskatnuss abschmecken."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "eierschwammerl-tagliatelle",
+  "number": 7,
+  "title": "Eierschwammerl Tagliatelle",
+  "servings": 2,
+  "ingredients": [
+   "300 g Eierschwammerl (Pfifferlinge)",
+   "250 g Tagliatelle",
+   "1 Zwiebel (klein)",
+   "1 Knoblauchzehe",
+   "150 ml Obers",
+   "1 Schuss Weißwein",
+   "1 Bund Petersilie (frisch)",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "30 g Butter"
+  ],
+  "instructions": [
+   "Tagliatelle in reichlich Salzwasser bissfest kochen.",
+   "Eierschwammerl gründlich putzen und bei Bedarf kleiner schneiden.",
+   "Zwiebel und Knoblauch fein hacken, in einer Pfanne mit geschmolzener Butter anschwitzen.",
+   "Schwammerl hinzufügen und bei hoher Hitze scharf anbraten.",
+   "Mit Weißwein ablöschen, das Obers dazugießen und die Sauce leicht einkochen lassen.",
+   "Mit Salz und Pfeffer würzen, Nudeln und frisch gehackte Petersilie untermengen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "peanut-noodles",
+  "number": 8,
+  "title": "Peanut Noodles",
+  "servings": 2,
+  "ingredients": [
+   "200 g Mie-Nudeln",
+   "3 EL Erdnussbutter",
+   "2 EL Sojasauce",
+   "1 EL Sesamöl",
+   "1 EL Ahornsirup",
+   "1 Knoblauchzehe",
+   "1 TL Ingwer (gerieben)",
+   "50 ml warmes Wasser",
+   "30 g Erdnüsse (gehackt)",
+   "2 Stängel Frühlingszwiebeln"
+  ],
+  "instructions": [
+   "Mie-Nudeln nach Packungsanleitung kochen, abgießen.",
+   "Erdnussbutter, Sojasauce, Sesamöl, Ahornsirup, gepressten Knoblauch und Ingwer in einer Schüssel verrühren.",
+   "Mit etwas warmem Wasser zu einer sämigen, glatten Sauce verrühren.",
+   "Die warmen Nudeln direkt mit der Erdnusssauce vermengen.",
+   "Mit gehackten Erdnüssen und in Ringe geschnittenen Frühlingszwiebeln bestreuen."
+  ],
+  "cuisine": "Asiatisch Fusion",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "beef-rendang",
+  "number": 9,
+  "title": "Beef Rendang",
+  "servings": 4,
+  "ingredients": [
+   "1 kg Rindfleisch (Wade)",
+   "400 ml Kokosmilch",
+   "2 Stängel Zitronengras",
+   "4 Kaffirlimettenblätter",
+   "1 EL Tamarindenpaste",
+   "3 Schalotten",
+   "3 Knoblauchzehen",
+   "2 Chilischoten",
+   "1 Stück Ingwer",
+   "1 Stück Galgant",
+   "1 TL Kurkuma"
+  ],
+  "instructions": [
+   "Schalotten, Knoblauch, Chilis, Ingwer, Galgant und Kurkuma im Mixer zu einer feinen Paste verarbeiten.",
+   "Die Paste in einem großen Topf ohne zusätzliches Öl anrösten, bis sie duftet.",
+   "Das Rindfleisch in ca. 3 cm große Würfel schneiden und dazugeben, kurz mit anbraten.",
+   "Kokosmilch, flach geklopftes Zitronengras, Kaffirlimettenblätter und Tamarindenpaste hinzufügen.",
+   "Bei geringer Hitze im offenen Topf ca. 3 Stunden köcheln lassen, bis die Flüssigkeit komplett verdampft ist und das Fleisch im eigenen Öl brät."
+  ],
+  "cuisine": "Indonesisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "the-stew-a-la-alison-roman",
+  "number": 10,
+  "title": "The Stew a la Alison Roman",
+  "servings": 4,
+  "ingredients": [
+   "2 Dosen Kichererbsen",
+   "1 Zwiebel",
+   "4 Knoblauchzehen",
+   "1 Stück Ingwer",
+   "1 TL Kurkuma",
+   "1 TL Chiliflocken",
+   "2 Dosen Kokosmilch",
+   "500 ml Gemüsebrühe",
+   "1 Bund Mangold (oder Spinat)",
+   "1 Bund Minze",
+   "200 g griechischer Joghurt"
+  ],
+  "instructions": [
+   "Zwiebel, Knoblauch und Ingwer fein hacken und in reichlich Olivenöl andünsten.",
+   "Kurkuma und Chiliflocken unterrühren.",
+   "Abgetropfte Kichererbsen hinzufügen und mit einem Löffel leicht zerdrücken, bis sie knusprig braun werden; etwas Kichererbsen für die Deko entnehmen.",
+   "Mit Kokosmilch und Gemüsebrühe aufgießen, ca. 30 Minuten sämig einkochen lassen.",
+   "Mangold oder Spinat unterrühren, bis das Gemüse zusammenfällt.",
+   "In Schalen mit einem Klecks Joghurt, den knusprigen Kichererbsen und frischer Minze anrichten."
+  ],
+  "cuisine": "International",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "beef-wellington",
+  "number": 11,
+  "title": "Beef Wellington",
+  "servings": 4,
+  "ingredients": [
+   "800 g Rinderfilet (Mittelstück)",
+   "400 g Champignons",
+   "12 Scheiben Prosciutto",
+   "1 Packung Blätterteig",
+   "2 EL Senf (Englisch)",
+   "2 Eigelb",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "2 EL Olivenöl"
+  ],
+  "instructions": [
+   "Rinderfilet salzen, pfeffern, in einer Pfanne rundherum heiß anbraten und sofort dünn mit Senf bestreichen.",
+   "Champignons im Mixer extrem fein zerkleinern und in einer trockenen Pfanne rösten, bis alle Flüssigkeit vollständig verdampft ist (Duxelles).",
+   "Frischhaltefolie auslegen, Prosciutto-Scheiben leicht überlappend darauf anordnen.",
+   "Die Pilzmasse gleichmäßig auf dem Schinken verstreichen, das Filet mittig platzieren und stramm einrollen; 30 Minuten kühlen.",
+   "Blätterteig ausrollen, die Fleischrolle aus der Folie nehmen, fest im Teig einwickeln und Ränder versiegeln.",
+   "Mit Eigelb bestreichen und bei 200 °C ca. 30 Minuten backen, bis eine Kerntemperatur von 52 °C erreicht ist."
+  ],
+  "cuisine": "Englisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "risotto-alla-milanese",
+  "number": 12,
+  "title": "Risotto alla Milanese",
+  "servings": 4,
+  "ingredients": [
+   "300 g Carnaroli-Reis",
+   "1 Prise Safranfäden",
+   "1 Zwiebel",
+   "150 ml Weißwein",
+   "1.2 l Rinderbrühe",
+   "50 g Rindermark (oder Butter)",
+   "80 g Parmesan (gerieben)",
+   "50 g Butter (kalt)"
+  ],
+  "instructions": [
+   "Safranfäden in einer kleinen Schöpfkelle warmer Brühe auflösen und beiseitestellen.",
+   "Zwiebel fein würfeln, im Topf mit geschmolzenem Rindermark oder Butter glasig dünsten.",
+   "Reis hinzufügen und unter Rühren mitlaufen lassen, bis die Körner glasig sind.",
+   "Mit Weißwein ablöschen und vollständig verkochen lassen.",
+   "Kochende Brühe nach und nach dazugießen, immer erst nachgießen, wenn die Flüssigkeit aufgesaugt ist; dabei ständig rühren.",
+   "Nach halber Kochzeit die Safranflüssigkeit einrühren.",
+   "Nach ca. 18 Minuten den Topf vom Herd nehmen, kalte Butter und Parmesan kräftig unterrühren, bis das Risotto cremig-schlotzig bindet."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "tantanmen-ramen",
+  "number": 13,
+  "title": "Tantanmen Ramen",
+  "servings": 2,
+  "ingredients": [
+   "2 Portionen Ramen-Nudeln",
+   "200 g Schweinehackfleisch",
+   "2 EL Sojasauce",
+   "1 EL Shaoxing-Wein",
+   "1 TL Ingwer (gerieben)",
+   "2 EL Sesampaste (Zhi Ma Jiang)",
+   "2 EL Chiliöl (Rayu)",
+   "400 ml Sojamilch (ungesüßt)",
+   "400 ml Hühnerbrühe",
+   "1 Bund Pak Choi"
+  ],
+  "instructions": [
+   "Schweinehackfleisch mit Ingwer anbraten, mit 1 EL Sojasauce und Shaoxing-Wein ablöschen.",
+   "Für die Suppenbasis Sesampaste, die restliche Sojasauce und Chiliöl direkt gleichmäßig auf die zwei Servierschüsseln aufteilen.",
+   "Sojamilch und Hühnerbrühe zusammen in einem Topf erhitzen, aber nicht kochen lassen.",
+   "Pak Choi kurz blanchieren, Ramen-Nudeln separat kochen und abgießen.",
+   "Die heiße Brühenmischung in die Schüsseln zur Paste gießen und gut verrühren.",
+   "Nudeln hineingeben, das Hackfleisch und den Pak Choi dekorativ darauf anrichten."
+  ],
+  "cuisine": "Japanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "chili-con-carne-a-la-markus",
+  "number": 14,
+  "title": "Chili con Carne a la Markus",
+  "servings": 6,
+  "ingredients": [
+   "1 kg Rinderhackfleisch",
+   "2 Zwiebeln",
+   "3 Knoblauchzehen",
+   "2 Dosen Tomaten (gehackt)",
+   "2 Dosen Kidneybohnen",
+   "1 Dose Mais",
+   "2 EL Kakaopulver (ungesüßt)",
+   "1 TL Kreuzkümmel",
+   "1 TL Zimt",
+   "1 TL Chiliflocken",
+   "250 ml Rinderbrühe"
+  ],
+  "instructions": [
+   "Zwiebeln und Knoblauch fein würfeln und in einem großen Topf anbraten.",
+   "Rinderhackfleisch dazugeben und kräftig krümelig braun braten.",
+   "Kreuzkümmel, Zimt, Chiliflocken und Kakaopulver hinzufügen und kurz mitrösten.",
+   "Mit den gehackten Tomaten und der Rinderbrühe aufgießen.",
+   "Bei kleiner Hitze abgedeckt ca. 2 Stunden sanft köcheln lassen.",
+   "Etwa 30 Minuten vor Kochende die abgetropften Bohnen und den Mais unterrühren."
+  ],
+  "cuisine": "Mexikanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "ragu-alla-bolognese",
+  "number": 15,
+  "title": "Ragù alla Bolognese",
+  "servings": 6,
+  "ingredients": [
+   "500 g Rinderhackfleisch (grob)",
+   "250 g Schweinebauch (fein gehackt)",
+   "50 g Karotte",
+   "50 g Stangensellerie",
+   "50 g Zwiebel",
+   "200 g Passata",
+   "125 ml Weißwein",
+   "125 ml Vollmilch",
+   "200 ml Rinderbrühe",
+   "2 EL Olivenöl",
+   "1 Prise Salz",
+   "1 Prise Pfeffer"
+  ],
+  "instructions": [
+   "Fein gehackten Schweinebauch im Topf auslassen, Olivenöl hinzufügen.",
+   "Karotte, Sellerie und Zwiebel extrem fein würfeln, dazugeben und sanft weich dünsten (Soffritto).",
+   "Rinderhackfleisch zufügen und unter Rühren anbraten, bis es die Farbe verliert.",
+   "Mit Weißwein ablöschen und diesen vollständig einkochen lassen.",
+   "Passata einrühren, etwas Brühe angießen und das Ragù zugedeckt bei kleinster Hitze 3 Stunden köcheln lassen; bei Bedarf Brühe nachgießen.",
+   "Am Ende der Kochzeit die Vollmilch unterrühren, kurz miterhitzen und mit Salz und Pfeffer abschmecken."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "one-pan-creamy-parmesan-tuscan-chicken",
+  "number": 16,
+  "title": "One-Pan Creamy Parmesan Tuscan Chicken",
+  "servings": 4,
+  "ingredients": [
+   "4 Hühnerbrustfilets",
+   "2 Knoblauchzehen",
+   "100 g getrocknete Tomaten (in Öl)",
+   "200 ml Obers",
+   "100 ml Hühnerbrühe",
+   "50 g Parmesan (gerieben)",
+   "100 g Babyspinat",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "1 TL italienische Kräuter"
+  ],
+  "instructions": [
+   "Hühnerbrustfilets salzen, pfeffern und in einer Pfanne mit etwas Öl der getrockneten Tomaten beidseitig scharf anbraten, danach herausnehmen.",
+   "Gehackten Knoblauch und klein geschnittene getrocknete Tomaten im verbliebenen Fett anschwitzen.",
+   "Mit Hühnerbrühe und Obers aufgießen, italienische Kräuter hinzufügen und kurz aufkochen lassen.",
+   "Geriedenen Parmesan einrühren, bis die Sauce eindickt.",
+   "Babyspinat unterrühren, bis er zusammenfällt, das Fleisch zurück in die Pfanne geben und ca. 5 Minuten gar ziehen lassen."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "coq-au-vin-a-la-julia-child",
+  "number": 17,
+  "title": "Coq au Vin a la Julia Child",
+  "servings": 4,
+  "ingredients": [
+   "1 Packung Hühnerteile (Keulen, Brüste)",
+   "100 g Speck (gewürfelt)",
+   "20 Perlzwiebeln",
+   "250 g Champignons",
+   "2 Knoblauchzehen",
+   "500 ml Rotwein (Burgunder)",
+   "300 ml Geflügelfond",
+   "2 EL Cognac",
+   "1 Zweig Thymian",
+   "1 Stück Lorbeerblatt",
+   "20 g Butter",
+   "20 g Mehl"
+  ],
+  "instructions": [
+   "Speckwürfel in einem Bräter kross auslassen, herausnehmen.",
+   "Hühnerteile im verbliebenen Speckfett rundherum goldbraun anbraten.",
+   "Gehackten Knoblauch zufügen, mit Cognac beträufeln und vorsichtig flambieren.",
+   "Mit Rotwein und Geflügelfond aufgießen, Thymian und Lorbeerblatt hineingeben; abgedeckt ca. 40 Minuten schmoren.",
+   "Währenddessen Perlzwiebeln und geviertelte Champignons separat in einer Pfanne mit etwas Butter braun anbraten.",
+   "Huhn herausnehmen, die Sauce durch ein Sieb gießen, mit einer Mehlbutter (geknetete Butter und Mehl) sämig binden.",
+   "Fleisch, Speck, Zwiebeln und Pilze wieder in die Sauce geben und kurz erwärmen."
+  ],
+  "cuisine": "Französisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "khachapuri",
+  "number": 18,
+  "title": "Khachapuri",
+  "servings": 2,
+  "ingredients": [
+   "300 g Weizenmehl",
+   "1 TL Trockenhefe",
+   "1 TL Zucker",
+   "150 ml Wasser (lauwarm)",
+   "50 ml Milch",
+   "150 g Sulguni-Käse (oder Mozzarella)",
+   "150 g Feta-Käse",
+   "2 Eier",
+   "20 g Butter"
+  ],
+  "instructions": [
+   "Aus Mehl, Hefe, Zucker, Wasser, Milch und einer Prise Salz einen geschmeidigen Hefeteig kneten; 1 Stunde abgedeckt gehen lassen.",
+   "Sulguni und Feta grob reiben und miteinander vermischen.",
+   "Den Teig in zwei Hälften teilen und jeweils oval ausrollen.",
+   "Die Längsränder mit etwas Käsemischung belegen und nach innen einrollen, sodass eine Schiffchenform entsteht; Enden fest zwirbeln.",
+   "Die Mitte großzügig mit dem restlichen Käse füllen, bei 220 °C ca. 15 Minuten goldbraun backen.",
+   "Herausnehmen, eine Mulde in den heißen Käse drücken, je ein rohes Ei hineingleiten lassen, ein Stück Butter dazugeben und weitere 2 Minuten backen (das Eigelb muss flüssig bleiben)."
+  ],
+  "cuisine": "Georgisch",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "boeuf-bourguignon-a-la-julia-child",
+  "number": 19,
+  "title": "Boeuf Bourguignon a la Julia Child",
+  "servings": 6,
+  "ingredients": [
+   "1.5 kg Rindfleisch (Wade oder Schulter)",
+   "150 g Speck (gewürfelt)",
+   "1 Zwiebel",
+   "1 Karotte",
+   "2 EL Mehl",
+   "750 ml Rotwein (kräftig)",
+   "500 ml Rinderfond",
+   "1 EL Tomatenmark",
+   "2 Knoblauchzehen",
+   "1 Zweig Thymian",
+   "1 Stück Lorbeerblatt",
+   "20 Perlzwiebeln",
+   "250 g Champignons",
+   "30 g Butter"
+  ],
+  "instructions": [
+   "Speckwürfel auslassen, aus dem Bräter nehmen. Das Rindfleisch in großen Würfeln portionsweise im Fett scharf anbraten, herausnehmen.",
+   "Geschnittene Zwiebel und Karotte im verbliebenen Fett anrösten.",
+   "Fleisch zurückgeben, mit Mehl bestäuben und im Ofen bei 220 °C unbedeckt zweimal 4 Minuten anrösten, dazwischen wenden.",
+   "Mit Rotwein und Rinderfond auffüllen, bis das Fleisch bedeckt ist; Tomatenmark, Knoblauch und Kräuter dazugeben.",
+   "Abgedeckt bei 160 °C für ca. 3 Stunden im Ofen schmoren.",
+   "Perlzwiebeln und Pilze in einer separaten Pfanne mit Butter braun dünsten, in den letzten 30 Minuten zum Schmorfleisch hinzufügen."
+  ],
+  "cuisine": "Französisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "chicken-marbella",
+  "number": 20,
+  "title": "Chicken Marbella",
+  "servings": 4,
+  "ingredients": [
+   "1.5 kg Hühnerteile (mit Knochen)",
+   "4 Knoblauchzehen",
+   "2 EL Oregano (getrocknet)",
+   "60 ml Rotweinessig",
+   "60 ml Olivenöl",
+   "100 g Backpflaumen (entsteint)",
+   "50 g grüne Oliven (entsteint)",
+   "2 EL Kapern (mit Saft)",
+   "3 Stück Lorbeerblätter",
+   "50 g brauner Zucker",
+   "125 ml Weißwein",
+   "1 Bund Koriander (frisch)"
+  ],
+  "instructions": [
+   "Gepressten Knoblauch, Oregano, Essig, Olivenöl, Backpflaumen, Oliven, Kapern samt Saft und Lorbeerblätter verrühren.",
+   "Die Hühnerteile in dieser Marinade wenden und abgedeckt über Nacht im Kühlschrank ziehen lassen.",
+   "Hühnerteile mitsamt der kompletten Marinade in eine große Auflaufform schichten.",
+   "Das Fleisch gleichmäßig mit braunem Zucker bestreuen, den Weißwein vorsichtig außen herum angießen.",
+   "Bei 180 °C ca. 50 bis 60 Minuten backen, bis das Fleisch durchgebacken ist; dabei ab und zu mit dem Fond übergießen.",
+   "Vor dem Servieren mit frischem Koriander bestreuen."
+  ],
+  "cuisine": "International",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "chicken-coconut-milk-chickpeas",
+  "number": 21,
+  "title": "Chicken Coconut Milk & Chickpeas",
+  "servings": 4,
+  "ingredients": [
+   "600 g Hühneroberkeulen (ausgelöst)",
+   "1 Dose Kichererbsen",
+   "1 Dose Kokosmilch",
+   "1 Zwiebel",
+   "2 Knoblauchzehen",
+   "1 EL Currypulver",
+   "1 TL Kreuzkümmel",
+   "1 TL Ingwer (gerieben)",
+   "200 g Spinat (frisch)",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "2 EL Pflanzenöl"
+  ],
+  "instructions": [
+   "Hühnerfleisch in mundgerechte Stücke schneiden, salzen, pfeffern und in einer Pfanne rundherum anbraten, danach herausnehmen.",
+   "Gehackte Zwiebel, Knoblauch und Ingwer im verbliebenen Öl glasig dünsten.",
+   "Currypulver und Kreuzkümmel hinzufügen und kurz mitrösten, bis es duftet.",
+   "Mit Kokosmilch aufgießen, abgetropfte Kichererbsen und das Fleisch wieder dazugeben.",
+   "Bei mittlerer Hitze ca. 15 Minuten köcheln lassen, zum Schluss den Spinat unterrühren, bis er zusammenfällt."
+  ],
+  "cuisine": "Asiatisch Fusion",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "wraps",
+  "number": 22,
+  "title": "Wraps",
+  "servings": 4,
+  "ingredients": [
+   "4 Tortilla-Wraps (groß)",
+   "400 g Hühnerbruststreifen",
+   "1 Paprika",
+   "1 rote Zwiebel",
+   "1 Dose Mais",
+   "1 Avocado",
+   "150 g Sauerrahm",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "1 TL Paprikapulver"
+  ],
+  "instructions": [
+   "Hühnerbruststreifen mit Salz, Pfeffer und Paprikapulver würzen und in einer Pfanne scharf anbraten.",
+   "Paprika und rote Zwiebel in feine Streifen schneiden.",
+   "Avocado mit einer Gabel zerdrücken, mit Sauerrahm, Salz und Pfeffer zu einer glatten Creme rühren.",
+   "Tortilla-Wraps kurz in einer trockenen Pfanne oder der Mikrowelle erwärmen.",
+   "Mit der Avocadocreme bestreichen, Fleisch, Gemüse und Mais mittig darauf verteilen und fest aufrollen."
+  ],
+  "cuisine": "International",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "pasta-primavera",
+  "number": 23,
+  "title": "Pasta Primavera",
+  "servings": 4,
+  "ingredients": [
+   "400 g Penne",
+   "1 Zucchini",
+   "1 Paprika",
+   "200 g Spargel",
+   "150 g Erbsen",
+   "200 g Kirschtomaten",
+   "3 EL Olivenöl",
+   "2 Knoblauchzehen",
+   "1 Saft einer Zitrone",
+   "50 g Parmesan",
+   "1 Bund Baslikum (frisch)"
+  ],
+  "instructions": [
+   "Penne in reichlich Salzwasser al dente kochen.",
+   "Zucchini, Paprika und Spargel in mundgerechte Stücke schneiden.",
+   "Das Gemüse in einer großen Pfanne mit Olivenöl knackig anbraten.",
+   "Gehackten Knoblauch, Erbsen und halbierte Kirschtomaten für die letzten Minuten miterhitzen.",
+   "Die Pasta abgießen, direkt zum Gemüse in die Pfanne geben, mit Zitronensaft, Parmesan und frischem Basilikum vermengen."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "pasta-puttanesca",
+  "number": 24,
+  "title": "Pasta Puttanesca",
+  "servings": 2,
+  "ingredients": [
+   "250 g Spaghetti",
+   "4 EL Olivenöl",
+   "3 Knoblauchzehen",
+   "4 Sardellenfilets",
+   "1 Prise Chiliflocken",
+   "2 EL Kapern",
+   "100 g schwarze Oliven (entsteint)",
+   "1 Dose Tomaten (gehackt)",
+   "1 Prise Salz",
+   "1 Bund Petersilie"
+  ],
+  "instructions": [
+   "Spaghetti in kochendem Salzwasser al dente zubereiten.",
+   "Knoblauch fein hacken, Sardellenfilets zerkleinern und beides in einer Pfanne mit Olivenöl sanft erhitzen, bis die Sardellen komplett zerfallen.",
+   "Chiliflocken, Kapern und halbierte Oliven kurz mitbraten.",
+   "Gehackte Tomaten hinzufügen, die Sauce ca. 15 Minuten ohne Deckel einkochen lassen.",
+   "Nudeln abgießen, direkt in die Sauce geben, durchschwenken und mit gehackter Petersilie bestreuen."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "schweinsbraten-a-la-julia",
+  "number": 25,
+  "title": "Schweinsbraten a la Julia",
+  "servings": 4,
+  "ingredients": [
+   "1.5 kg Schweineschopf (mit Schwarte)",
+   "4 Knoblauchzehen",
+   "1 EL Kümmel (ganz)",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "2 Zwiebeln",
+   "250 ml Rinderbrühe",
+   "250 ml Bier (Märzen)"
+  ],
+  "instructions": [
+   "Die Schwarte des Schweineschopfs rautenförmig einschneiden, ohne das Fleisch zu verletzen.",
+   "Knoblauch pressen, mit Kümmel, Salz und Pfeffer vermischen und das Fleisch kräftig damit einreiben.",
+   "Zwiebeln vierteln, in einer Bratform verteilen, das Fleisch mit der Schwarte nach oben darauf platzieren.",
+   "Etwas Rinderbrühe angießen, im Ofen bei 160 °C für ca. 2.5 Stunden garen.",
+   "Währenddessen regelmäßig mit Bier und dem austretenden Bratensaft übergießen.",
+   "Für die letzten 15 Minuten die Temperatur auf 230 °C erhöhen, damit die Kruste aufpoppt."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "cobb-salad",
+  "number": 27,
+  "title": "Cobb Salad",
+  "servings": 2,
+  "ingredients": [
+   "1 Römersalat",
+   "200 g Hühnerbrustfilet",
+   "4 Scheiben Bacon",
+   "2 Eier",
+   "1 Avocado",
+   "100 g Kirschtomaten",
+   "50 g Roquefort-Käse",
+   "3 EL Olivenöl",
+   "1 EL Rotweinessig",
+   "1 TL Senf",
+   "1 Prise Salz",
+   "1 Prise Pfeffer"
+  ],
+  "instructions": [
+   "Hühnerbrust braten, würzen und in Streifen schneiden; Bacon in einer Pfanne knusprig auslassen.",
+   "Eier hart kochen, abschrecken und pellen.",
+   "Römersalat putzen, hacken und flach auf einer großen Servierplatte auslegen.",
+   "Hühnerfleisch, zerbröselten Bacon, gehackte Eier, gewürfelte Avocado, halbierte Kirschtomaten und zerbröselten Roquefort in sauberen, parallelen Streifen nebeneinander auf dem Salat anordnen.",
+   "Olivenöl, Rotweinessig, Senf, Salz und Pfeffer zu einem Dressing verrühren und separat dazu reichen."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "tom-kha-gai",
+  "number": 28,
+  "title": "Tom Kha Gai",
+  "servings": 2,
+  "ingredients": [
+   "400 ml Kokosmilch",
+   "250 ml Hühnerbrühe",
+   "300 g Hühnerbrustfilet",
+   "1 Stängel Zitronengras",
+   "3 Kaffirlimettenblätter",
+   "1 Stück Galgant",
+   "150 g Champignons",
+   "2 EL Fischsauce",
+   "1 EL Limettensaft",
+   "1 TL Palmzucker",
+   "1 Bund Koriander",
+   "1 Chilischote"
+  ],
+  "instructions": [
+   "Kokosmilch und Hühnerbrühe in einem Topf zum Kochen bringen.",
+   "Zitronengras flach klopfen, Galgant in Scheiben schneiden, zusammen mit den Kaffirlimettenblättern in die Brühe geben; 10 Minuten köcheln lassen.",
+   "Hühnerbrustfilet in feine Streifen, Champignons in Scheiben schneiden und in der Suppe ca. 5 bis 7 Minuten gar ziehen lassen.",
+   "Die Suppe mit Fischsauce, Limettensaft und Palmzucker harmonisch abschmecken.",
+   "Zitronengras und Galgantscheiben entfernen, mit Koriander und Chili garniert servieren."
+  ],
+  "cuisine": "Thailändisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "huehnersuppe-a-la-david",
+  "number": 29,
+  "title": "Hühnersuppe a la David",
+  "servings": 6,
+  "ingredients": [
+   "1 Suppenhuhn (ganz)",
+   "1 Bund Suppengrün",
+   "1 Zwiebel",
+   "2 Stück Lorbeerblätter",
+   "1 TL Pfefferkörner",
+   "1 Prise Salz",
+   "150 g Suppennudeln"
+  ],
+  "instructions": [
+   "Zwiebel ungeschält halbieren und die Schnittflächen im großen Topf ohne Fett dunkelbraun anrösten.",
+   "Das gewaschene Suppenhuhn, Lorbeerblätter, Pfefferkörner und Salz hinzufügen, komplett mit kaltem Wasser bedecken.",
+   "Aufkochen lassen und bei kleiner Hitze ca. 2 Stunden leicht simmern lassen; entstehenden Schaum regelmäßig abschöpfen.",
+   "Suppengrün putzen, klein schneiden und während der letzten Stunde der Kochzeit mitgaren.",
+   "Huhn herausnehmen, das Fleisch vom Knochen lösen und klein schneiden; die Suppe durch ein Sieb gießen.",
+   "Fleisch und Gemüse zurück in die Brühe geben, mit separat gekochten Suppennudeln servieren."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "vietnamese-summer-rolls",
+  "number": 30,
+  "title": "Vietnamese Summer Rolls",
+  "servings": 2,
+  "ingredients": [
+   "8 Blätter Reispapier",
+   "100 g Glasnudeln",
+   "150 g Garnelen (gegart)",
+   "1 Gurke",
+   "1 Karotte",
+   "1 Avocado",
+   "1 Bund Minze",
+   "1 Bund Koriander",
+   "100 ml Erdnusssauce"
+  ],
+  "instructions": [
+   "Glasnudeln nach Packungsbeilage zubereiten und abtropfen lassen.",
+   "Gurke und Karotte in feine Stifte (Julienne) hobeln, die Avocado in dünne Scheiben schneiden.",
+   "Ein Blatt Reispapier für wenige Sekunden in lauwarmes Wasser tauchen, flach auf ein feuchtes Arbeitstuch legen.",
+   "Mittig mit Kräutern, Nudeln, Gemüsestiften, Avocado und Garnelen belegen.",
+   "Die Seitenränder über die Füllung klappen und von unten nach oben stramm aufrollen; mit Erdnusssauce als Dip servieren."
+  ],
+  "cuisine": "Vietnamesisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "banana-pudding-a-la-magnolia-bakery",
+  "number": 31,
+  "title": "Banana Pudding a la Magnolia Bakery",
+  "servings": 8,
+  "ingredients": [
+   "1 Dose Milchmädchen (397 g)",
+   "350 ml Wasser (eiskalt)",
+   "1 Packung Vanille-Anrührpuddingpulver (Instant)",
+   "700 ml Obers",
+   "1 Packung Nilla Wafers (oder Vanillekekse)",
+   "4 reife Bananen"
+  ],
+  "instructions": [
+   "Gezuckerte Kondensmilch und eiskaltes Wasser in einer Schüssel gründlich verrühren.",
+   "Das Instant-Puddingpulver klumpenfrei unterrühren, die Mischung abdecken und für mindestens 4 Stunden kalt stellen.",
+   "Das Obers mit dem Handmixer steif schlagen.",
+   "Den fest gewordenen Pudding aus dem Kühlschrank holen und vorsichtig unter das geschlagene Obers heben.",
+   "In einer großen gläsernen Auflaufform abwechselnd Kekse, Bananenscheiben und Creme aufschichten, mit Creme abschließen.",
+   "Mindestens 4 Stunden kühl lagern, damit die Kekse die richtige, kuchenartige Konsistenz annehmen."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "tiramisu-a-la-hias",
+  "number": 32,
+  "title": "Tiramisu a la Hias",
+  "servings": 6,
+  "ingredients": [
+   "500 g Mascarpone",
+   "4 Eidotter",
+   "2 Eiweiß",
+   "100 g Zucker",
+   "300 ml Espresso (stark, abgekühlt)",
+   "4 EL Amaretto",
+   "250 g Biskotten",
+   "3 EL Kakaopulver"
+  ],
+  "instructions": [
+   "Eidotter mit dem Zucker cremig weiß aufschlagen, danach die Mascarpone löffelweise unterrühren.",
+   "Eiweiß in einer sauberen Schüssel steif schlagen und behutsam unter die Mascarponecreme heben.",
+   "Den kalten Espresso mit Amaretto in einer flachen Schale mischen.",
+   "Biskotten ganz kurz in den Kaffee tauchen und den Boden einer eckigen Form damit lückenlos auslegen.",
+   "Die Hälfte der Creme auf den Biskotten glatt verstreichen, eine weitere Schicht getauchte Biskotten darauflegen.",
+   "Mit der restlichen Creme abschließen, mindestens 5 Stunden kalt stellen und vor dem Servieren mit Kakaopulver bestreuen."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "strawberry-cobbler",
+  "number": 33,
+  "title": "Strawberry Cobbler",
+  "servings": 4,
+  "ingredients": [
+   "600 g Erdbeeren (frisch)",
+   "100 g Zucker",
+   "1 EL Speisestärke",
+   "1 EL Zitronensaft",
+   "150 g Weizenmehl",
+   "1 TL Backpulver",
+   "1 Prise Salz",
+   "70 g Butter (kalt)",
+   "100 ml Milch"
+  ],
+  "instructions": [
+   "Erdbeeren putzen, halbieren, mit 50 g Zucker, Speisestärke und Zitronensaft vermengen und in eine Auflaufform füllen.",
+   "Für den Teig das Mehl mit den restlichen 50 g Zucker, Backpulver und Salz in einer Schüssel mischen.",
+   "Die kalte Butter in kleinen Stücken dazugeben und mit den Fingerspitzen rasch zu einer krümeligen Konsistenz reiben.",
+   "Die Milch hinzugeben und kurz zu einem zähen, klebrigen Teig verrühren.",
+   "Den Teig in Form von unregelmäßigen Kleksen auf den Erdbeeren verteilen.",
+   "Bei 190 °C ca. 35 Minuten backen, bis die Oberfläche goldbraun ist und die Fruchtmasse am Rand blubbert."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "cheese-cake-a-la-inko-nito",
+  "number": 34,
+  "title": "Cheese Cake a la Inko Nito",
+  "servings": 6,
+  "ingredients": [
+   "600 g Frischkäse (Doppelrahm)",
+   "150 g Zucker",
+   "3 Eier",
+   "200 g Sauerrahm",
+   "1 EL Speisestärke",
+   "1 TL Vanilleextrakt",
+   "1 Saft einer halben Zitrone"
+  ],
+  "instructions": [
+   "Sicherstellen, dass alle Zutaten Zimmertemperatur haben.",
+   "Frischkäse und Zucker mit dem Handmixer glattrühren, die Eier einzeln nacheinander unterrühren.",
+   "Sauerrahm, Speisestärke, Vanilleextrakt und Zitronensaft dazugeben und zügig zu einer homogenen Masse rühren.",
+   "Eine Springform (20 cm) komplett mit Backpapier auskleiden, die Masse hineingießen.",
+   "Bei 200 °C ca. 30 bis 35 Minuten backen, bis die Oberfläche kräftig dunkelbraun ist, der Kern aber noch sichtlich wackelt.",
+   "Den Kuchen komplett abkühlen lassen und vor dem Anschneiden im Kühlschrank vollständig durchkühlen lassen."
+  ],
+  "cuisine": "International",
+  "type": "Dessert"
+ },
+ {
+  "id": "buttermilch-nussbutter-kuchen",
+  "number": 35,
+  "title": "Buttermilch Nussbutter Kuchen",
+  "servings": 8,
+  "ingredients": [
+   "250 g Weizenmehl",
+   "200 g Zucker",
+   "1 Packung Backpulver",
+   "1 Prise Salz",
+   "250 ml Buttermilch",
+   "2 Eier",
+   "100 g Butter",
+   "100 g Mandeln (gehobelt)"
+  ],
+  "instructions": [
+   "Butter in einem kleinen Topf schmelzen und köcheln lassen, bis sich braune Pünktchen bilden und sie nussig duftet (Nussbutter); abkühlen lassen.",
+   "Weizenmehl, 150 g Zucker, Backpulver und eine Prise Salz in einer Rührschüssel trocken vermischen.",
+   "Buttermilch, Eier und die flüssige Nussbutter hinzugeben und rasch zu einem glatten Teig verrühren.",
+   "Den Teig auf ein kleines, mit Backpapier ausgelegtes Backblech streichen.",
+   "Gleichmäßig mit den gehobelten Mandeln und den restlichen 50 g Zucker bestreuen.",
+   "Im vorgeheizten Ofen bei 180 °C für ca. 25 bis 30 Minuten goldgelb backen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "cinnamon-rolls",
+  "number": 36,
+  "title": "Cinnamon Rolls",
+  "servings": 12,
+  "ingredients": [
+   "500 g Weizenmehl",
+   "1 Packung Trockenhefe",
+   "160 g Zucker",
+   "140 g Butter",
+   "250 ml Milch (lauwarm)",
+   "1 Ei",
+   "2 EL Zimt",
+   "100 g Frischkäse",
+   "80 g Staubzucker"
+  ],
+  "instructions": [
+   "Aus Mehl, Hefe, 60 g Zucker, 60 g geschmolzener Butter, Milch und Ei einen Hefeteig kneten; 1 Stunde warm gehen lassen.",
+   "Den Teig auf einer bemehlten Arbeitsfläche rechteckig ausrollen, mit 80 g weicher Butter flächig bestreichen.",
+   "Die verbliebenen 100 g braunen Zucker mit dem Zimt mischen, gleichmäßig auf die Butter streuen.",
+   "Den Teig von der langen Seite her stramm aufrollen und in ca. 3 bis 4 cm dicke Scheiben schneiden.",
+   "Die Schnecken in eine gefettete Auflaufform setzen und abgedeckt weitere 30 Minuten gehen lassen.",
+   "Bei 180 °C ca. 25 Minuten goldbraun backen. Aus Frischkäse, weicher Butter (50 g) und Staubzucker das Frosting rühren und warm bestreichen."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "shakshuka",
+  "number": 37,
+  "title": "Shakshuka",
+  "servings": 2,
+  "ingredients": [
+   "1 Zwiebel",
+   "1 Paprika (rot)",
+   "2 Knoblauchzehen",
+   "1 Dose Tomaten (gehackt)",
+   "1 TL Kreuzkümmel",
+   "1 TL Paprikapulver",
+   "1 Prise Chiliflocken",
+   "4 Eier",
+   "50 g Feta-Käse",
+   "1 Bund Koriander",
+   "2 EL Olivenöl"
+  ],
+  "instructions": [
+   "Zwiebel und Paprika in feine Würfel schneiden, Knoblauch hacken.",
+   "Das Gemüse in einer Pfanne mit Olivenöl bei mittlerer Hitze weich dünsten.",
+   "Kreuzkümmel, Paprikapulver und Chiliflocken unterrühren, kurz mitrösten.",
+   "Mit den gehackten Tomaten aufgießen, mit Salz und Pfeffer würzen und offen ca. 15 Minuten dicklich einkochen lassen.",
+   "Mit einem Löffel vier kleine Mulden in die Sauce drücken und jeweils ein Ei hineinschlagen.",
+   "Einen Deckel aufsetzen und bei geringer Hitze 6 bis 8 Minuten garen, bis das Eiweiß fest, das Eigelb aber noch flüssig ist; mit Feta und Koriander bestreuen."
+  ],
+  "cuisine": "Orientalisch",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "kaiserschmarrn",
+  "number": 38,
+  "title": "Kaiserschmarrn",
+  "servings": 2,
+  "ingredients": [
+   "150 g Weizenmehl",
+   "250 ml Milch",
+   "4 Eier",
+   "30 g Kristallzucker",
+   "1 Prise Salz",
+   "50 g Butter",
+   "30 g Rosinen",
+   "2 EL Staubzucker"
+  ],
+  "instructions": [
+   "Weizenmehl, Milch, Eidotter und eine Prise Salz zu einem glatten, klumpenfreien Teig verrühren.",
+   "Das Eiweiß in einer separaten Schüssel mit dem Kristallzucker steif schlagen.",
+   "Den Eischnee vorsichtig unter den flüssigen Teig heben.",
+   "Butter in einer großen Pfanne aufschäumen lassen, den Teig eingießen, optional mit Rosinen bestreuen.",
+   "Bei mittlerer Hitze anbacken lassen, vierteln, wenden und auf der Rückseite fertigbacken.",
+   "Mit zwei Gabeln in mundgerechte Stücke zerreißen, mit etwas Zucker in der Pfanne kurz karamellisieren lassen; mit Staubzucker bestreuen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "club-sandwich",
+  "number": 39,
+  "title": "Club Sandwich",
+  "servings": 1,
+  "ingredients": [
+   "3 Scheiben Toastbrot",
+   "100 g Hühnerbrustfilet",
+   "3 Scheiben Bacon",
+   "1 Tomate",
+   "2 Blätter Salat",
+   "2 EL Mayonnaise",
+   "1 Prise Salz",
+   "1 Prise Pfeffer"
+  ],
+  "instructions": [
+   "Die drei Toastbrotscheiben im Toaster goldbraun rösten.",
+   "Hühnerbrustfilet und Bacon in einer Pfanne knusprig braten, das Fleisch salzen, pfeffern und in dünne Scheiben schneiden.",
+   "Die Tomate in dünne Scheiben schneiden, den Salat waschen.",
+   "Die erste Toastscheibe mit Mayonnaise bestreichen, mit Salat, Hühnerfleisch und Tomaten belegen.",
+   "Die zweite Toastscheibe darauflegen, erneut bestreichen, mit Bacon, Salat und Tomate belegen.",
+   "Mit der dritten Toastscheibe deckeln, das Sandwich diagonal durchschneiden und mit Holzspießen fixieren."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "smash-burger",
+  "number": 40,
+  "title": "Smash Burger",
+  "servings": 2,
+  "ingredients": [
+   "2 Burger Buns",
+   "300 g Rinderhackfleisch (frisch, hoher Fettanteil)",
+   "2 Scheiben Cheddar-Käse",
+   "1 Zwiebel",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "4 EL Burgersauce"
+  ],
+  "instructions": [
+   "Das Hackfleisch zügig zu zwei lockeren Kugeln à 150 g formen, dabei keineswegs kneten.",
+   "Eine gusseiserne Pfanne ohne Fett extrem stark erhitzen.",
+   "Die Fleischkugeln in die Pfanne setzen und sofort mit einem flachen Wender bombenfest auf den Pfannenboden pressen.",
+   "Die hauchdünnen Patties kräftig salzen, pfeffern und ca. 2 Minuten braten, bis sich eine dunkle Kruste gebildet hat.",
+   "Wenden, sofort mit je einer Scheibe Cheddar belegen und 1 weitere Minute braten, bis der Käse zerläuft.",
+   "Die aufgeschnittenen Buns anrösten, mit Sauce, feinen Zwiebelwürfeln und den Patties zusammensetzen."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "pad-thai",
+  "number": 41,
+  "title": "Pad Thai",
+  "servings": 2,
+  "ingredients": [
+   "120 g Reisbandnudeln",
+   "150 g Garnelen (oder Tofu)",
+   "2 Knoblauchzehen",
+   "2 Eier",
+   "100 g Sojasprossen",
+   "3 EL Erdnüsse (geröstet, gehackt)",
+   "3 EL Tamarindenpaste",
+   "2 EL Fischsauce",
+   "2 EL Palmzucker",
+   "2 Stängel Frühlingszwiebeln"
+  ],
+  "instructions": [
+   "Reisbandnudeln in einer Schüssel mit warmem Wasser für ca. 30 Minuten einweichen.",
+   "Für die Sauce Tamarindenpaste, Fischsauce und Palmzucker in einem kleinen Topf leicht erwärmen, bis der Zucker geschmolzen ist.",
+   "Gehackten Knoblauch mit Garnelen oder Tofu im heißen Wok scharf anbraten, danach an den Rand schieben.",
+   "Die Eier in die freie Mitte des Woks schlagen und unter Rühren anstocken lassen.",
+   "Die abgetropften Nudeln und die Sauce hinzufügen, alles intensiv vermengen, bis die Nudeln die Flüssigkeit aufgesaugt haben.",
+   "Sojasprossen und in Stücke geschnittene Frühlingszwiebeln unterrühren, mit Erdnüssen bestreuen."
+  ],
+  "cuisine": "Thailändisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "asiatischer-schweinebraten",
+  "number": 42,
+  "title": "Asiatischer Schweinebraten",
+  "servings": 4,
+  "ingredients": [
+   "1.2 kg Schweineschopf",
+   "4 EL Sojasauce",
+   "2 EL Hoisin-Sauce",
+   "1 EL Honig",
+   "1 TL Fünf-Gewürze-Pulver",
+   "3 Knoblauchzehen",
+   "1 TL Ingwer (gerieben)",
+   "200 ml Geflügelbrühe"
+  ],
+  "instructions": [
+   "Knoblauch pressen, mit Sojasauce, Hoisin-Sauce, Honig, Fünf-Gewürze-Pulver und Ingwer zu einer Marinade anrühren.",
+   "Den Schweineschopf rundherum dick mit der Marinade einreiben und idealerweise mehrere Stunden abgedeckt ziehen lassen.",
+   "Das Fleisch in einen Bräter setzen, die Geflügelbrühe auf den Pfannenboden gießen.",
+   "Im Ofen bei 160 °C für ca. 2 Stunden garen.",
+   "Dabei das Fleisch in regelmäßigen Abständen mit der restlichen Marinade und dem Bratensaft bepinseln.",
+   "Vor dem Aufschneiden ca. 10 Minuten ruhen lassen."
+  ],
+  "cuisine": "Asiatisch Fusion",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "apfelstrudel",
+  "number": 43,
+  "title": "Apfelstrudel",
+  "servings": 4,
+  "ingredients": [
+   "250 g Weizenmehl (glatt)",
+   "1 Prise Salz",
+   "1 EL Pflanzenöl",
+   "125 ml Wasser (lauwarm)",
+   "1.2 kg Äpfel (säuerlich)",
+   "100 g Semmelbrösel",
+   "100 g Butter",
+   "80 g Kristallzucker",
+   "1 TL Zimt",
+   "50 g Rosinen",
+   "1 Saft einer halben Zitrone"
+  ],
+  "instructions": [
+   "Aus Weizenmehl, Salz, Pflanzenöl und lauwarmem Wasser einen geschmeidigen Strudelteig kneten; 30 bis 60 Minuten abgedeckt rasten lassen.",
+   "Semmelbrösel in einer Pfanne mit geschmolzener Butter goldbraun rösten.",
+   "Äpfel schälen, entkernen, blättrig schneiden und sofort mit Zitronensaft, Zimt, Kristallzucker und Rosinen mischen.",
+   "Den Strudelteig auf einem bemehlten Tuch hauchdünn ausziehen, bis er durchscheinend ist.",
+   "Teigfläche mit flüssiger Butter bestreichen, mit den gerösteten Bröseln bestreuen und die Apfelmischung darauf verteilen.",
+   "Den Strudel mithilfe des Tuchs vorsichtig einrollen, Enden verschließen und bei 190 °C ca. 40 Minuten goldbraun backen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "coconut-banana-cream-pudding",
+  "number": 44,
+  "title": "Coconut Banana Cream Pudding",
+  "servings": 4,
+  "ingredients": [
+   "400 ml Kokosmilch (Vollfett)",
+   "250 ml Obers",
+   "100 g Zucker",
+   "3 Eigelb",
+   "30 g Maisstärke",
+   "1 TL Vanilleextrakt",
+   "1 Prise Salz",
+   "4 reife Bananen",
+   "30 g Kokosraspeln",
+   "1 Packung Butterkekse"
+  ],
+  "instructions": [
+   "Kokosmilch und Obers in einem Topf bei mittlerer Hitze erwärmen.",
+   "In einer Schüssel Eigelb, Zucker, Maisstärke und Salz gründlich verschlagen.",
+   "Eine Kelle der heißen Kokosmilch langsam unter die Eimasse rühren, um diese zu temperieren, danach alles zurück in den Topf gießen.",
+   "Unter ständigem Rühren auf dem Herd eindicken lassen, bis ein sämiger Pudding entsteht; vom Herd nehmen und Vanilleextrakt einrühren.",
+   "In Gläsern oder einer Form abwechselnd Butterkekse, Bananenscheiben und den abgekühlten Pudding aufschichten.",
+   "Mit in einer trockenen Pfanne gerösteten Kokosraspeln garnieren und mindestens 3 Stunden im Kühlschrank fest werden lassen."
+  ],
+  "cuisine": "International",
+  "type": "Dessert"
+ },
+ {
+  "id": "roasted-chickpea-joghurt-spread",
+  "number": 45,
+  "title": "Roasted Chickpea Joghurt Spread",
+  "servings": null,
+  "ingredients": [
+   "400 g griechischer Joghurt (vollfett)",
+   "1/2 Bund frischer Dill",
+   "1/2 Bund frische Minze",
+   "Saft einer 1/2 Zitrone",
+   "1 Dose Kichererbsen (ca. 240 g Abtropfgewicht)",
+   "2 EL Olivenöl",
+   "1 TL Paprikapulver (edelsüß)",
+   "300 g Faschiertes (gemischt, Rind oder Lamm nach Wahl; alternativ Hühner- oder Putenfaschiertes)",
+   "200 g Champignons",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "100 g Hummus",
+   "50 g Feta-Käse",
+   "1 Gurke",
+   "2 EL Weißweinessig",
+   "1 EL Zucker",
+   "2 Pitabrote oder 200 g Fladenbrot"
+  ],
+  "instructions": [
+   "Die Kräuter (Dill und Minze) waschen, trocken schütteln und fein hacken. In einer Schüssel 400 g griechischen Joghurt mit dem Saft einer halben Zitrone, dem 1/2 Bund gehackten Dill und dem 1/2 Bund gehackten Minze verrühren. Mit 1 Prise Salz und 1 Prise Pfeffer abschmecken und beiseitestellen.",
+   "1 Dose Kichererbsen abgießen, gründlich abspülen und gut trocken tupfen. Die Kichererbsen auf einem Backblech verteilen, mit 1 EL Olivenöl und 1 TL Paprikapulver vermischen. Bei 200 °C Ober-/Unterhitze für ca. 20 Minuten im Ofen rösten, bis sie leicht knusprig sind. Optional für die letzten 5 Minuten die Grillfunktion aktivieren. Danach mit 1 Prise Salz und 1 Prise Pfeffer würzen.",
+   "Die 200 g Champignons putzen und in Scheiben oder Viertel schneiden. 1 EL Olivenöl in einer Pfanne erhitzen. Das 300 g Faschierte (oder deine Wahl) dazugeben und krümelig scharf anbraten. Anschließend die Champignons hinzufügen und mitbraten, bis sie gar sind. Das Faschierte mit 1 Prise Salz und 1 Prise Pfeffer würzen.",
+   "Für die marinierten Gurken: Die 1 Gurke waschen und in dünne Scheiben hobeln oder schneiden. In einer kleinen Schüssel die Gurkenscheiben mit 2 EL Weißweinessig, 1 EL Zucker und einer Prise Salz vermischen und kurz ziehen lassen.",
+   "Die 2 Pitabrote oder 200 g Fladenbrot nach Packungsanleitung toasten oder in einer Pfanne erwärmen.",
+   "Zum Anrichten den Kräuterjoghurt auf dem Boden zweier tiefer Teller oder Schüsseln verteilen. Darauf die gerösteten Kichererbsen und das Faschierte mit Champignons schichten.",
+   "Anschließend 100 g Hummus in Klecksen auf die Platte geben, den 50 g Feta-Käse darüber bröseln und die marinierten Gurkenscheiben dazu legen. Das Ganze mit dem Pitabrot servieren."
+  ],
+  "cuisine": "Israelisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "hollersaft",
+  "number": 46,
+  "title": "Hollersaft",
+  "servings": null,
+  "ingredients": [
+   "3 Liter Wasser",
+   "3 Kilo Zucker",
+   "100 Gramm Zitronensäure",
+   "45 Holunderblüten",
+   "3 Orangen (ungespritzt)",
+   "3 Zitronen (ungespritzt)"
+  ],
+  "instructions": [
+   "3 Liter Wasser zum Kochen bringen.",
+   "3 Kilo Zucker darin auflösen und 100 Gramm Zitronensäure ebenfalls einrühren und auflösen.",
+   "Den Sirup abkühlen lassen.",
+   "45 Holunderblüten (möglichst Insekten leicht abgeschüttelt) mit 3 Orangen (ungespritzt) und 3 Zitronen (ungespritzt) – jeweils in Scheiben geschnitten – in einen großen Topf geben.",
+   "Den abgekühlten Sirup darüber schütten und mit Tellern und z.B. Milchtüten beschweren. Darauf achten, dass alles vom Sirup bedeckt ist, um Schimmelbildung zu vermeiden.",
+   "In den kühlen Keller stellen und 3-4 Tage ziehen lassen.",
+   "Nach 3-4 Tagen durch ein Tuch absieben, den Sirup nochmal aufkochen und heiß in Flaschen füllen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Getränk"
+ },
+ {
+  "id": "orzo-mit-garnelen",
+  "number": 47,
+  "title": "Orzo mit Garnelen",
+  "servings": null,
+  "ingredients": [
+   "170 g Orzo",
+   "200 g rohe geschälte Garnelen",
+   "1 Knoblauchzehe",
+   "100 g Feta",
+   "2 TL Fenchelsamen",
+   "Chiliflocken nach Belieben",
+   "Abrieb von 1 Bio-Orange",
+   "400 g stückige Tomaten (Dose)",
+   "ca. 200 ml Gemüsebrühe",
+   "1 Handvoll Basilikumblätter",
+   "ca. 6 EL Olivenöl",
+   "Salz",
+   "Pfeffer"
+  ],
+  "instructions": [
+   "Zuerst wird der 100 g Feta kurz mariniert. Dafür 2 TL Fenchelsamen in einer Pfanne ohne Fett leicht anrösten, anschließend im Mörser leicht zerstoßen. Den Feta in kleine Würfel schneiden und mit 2 EL Olivenöl, der Hälfte der Fenchelsamen (1 TL) und etwas Chiliflocken (je nach gewünschter Schärfe) in einer Schüssel vermischen und beiseite stellen.",
+   "Falls tiefgefrorene Garnelen verwendet werden: In ein Sieb geben, Wasser darüber laufen lassen und abtropfen lassen. Die 1 Knoblauchzehe schälen und ganz fein hacken, die 1 Handvoll Basilikumblätter waschen und ebenfalls hacken. Nun in einer Pfanne oder einem Topf mit Deckel 2 EL Olivenöl erhitzen und die 170 g Orzo-Nudeln mit etwas Salz und Pfeffer hinzugeben. Etwa vier Minuten lang anrösten, dann herausnehmen und beiseite stellen.",
+   "Im selben Topf oder derselben Pfanne etwas Olivenöl erhitzen. Etwas Chiliflocken (nach Belieben), die restlichen Fenchelsamen (1 TL), gehackten Knoblauch und den Abrieb von 1 Bio-Orange hineingeben und leicht andünsten. Die 400 g stückigen Tomaten und die circa 200 ml Gemüsebrühe angießen. Mit Salz und Pfeffer würzen und zum Kochen bringen. Dann kommen die Orzo dazu. Die Hitze reduzieren und etwa 15 Minuten köcheln lassen – eventuell noch Flüssigkeit dazugeben und zwischendurch mal umrühren.",
+   "Nach 15 Minuten den Deckel abnehmen. Die Konsistenz sollte an Risotto erinnern. Wenn es noch zu flüssig ist, einfach noch ein bisschen offen köcheln lassen. Die 200 g Garnelen dazugeben und etwa 3 Minuten garen. Dann kommen der gehackte Basilikum und der marinierte Feta dazu – umrühren, servieren, genießen!"
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "bananenbrot-a-la-maria-panzer",
+  "number": 48,
+  "title": "Bananenbrot a la Maria Panzer",
+  "servings": null,
+  "ingredients": [
+   "etwas Butter für die Form",
+   "3 reife Bananen",
+   "80 ml neutrales Öl",
+   "110 g brauner Zucker",
+   "2 Eier",
+   "200 g Weizenmehl Type 405",
+   "3 TL Backpulver",
+   "1 Prise Salz",
+   "1 Vanilleschote",
+   "1 Prise Zimt"
+  ],
+  "instructions": [
+   "Den Ofen auf 180 °C Ober-/Unterhitze (Umluft: 160 °C) vorheizen. Eine Kastenform (Innenmaße 23 x 10 cm) gut mit etwas Butter einfetten.",
+   "Die 3 reifen Bananen schälen und mit einer Gabel in einer Schüssel zerdrücken. Beiseitestellen.",
+   "Die 1 Vanilleschote der Länge nach einritzen und das Mark mit dem Messerrücken auskratzen.",
+   "In einer großen Schüssel 80 ml neutrales Öl, 110 g brauner Zucker und 2 Eier verquirlen.",
+   "In einer separaten Schüssel 200 g Weizenmehl, 3 TL Backpulver, 1 Prise Salz, 1 Prise Zimt und das ausgekratzte Vanillemark gut vermischen.",
+   "Die Mehlmischung zur Öl-Eiermasse geben und nur kurz verrühren, bis sich alles gerade so verbunden hat. Nicht überrühren!",
+   "Das Bananen-Püree zugeben und ebenfalls kurz unterrühren.",
+   "Den Teig in die vorbereitete Kastenform füllen und glattstreichen.",
+   "Im vorgeheizten Ofen etwa 55 Minuten backen. Mache eine Stäbchenprobe, um sicherzustellen, dass das Brot durchgebacken ist.",
+   "Das Bananenbrot nach dem Backen vollständig auskühlen lassen, bevor du es aus der Form nimmst."
+  ],
+  "cuisine": "International",
+  "type": "Dessert"
+ }
+]

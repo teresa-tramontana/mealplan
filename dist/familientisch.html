@@ -1,37 +1,41 @@
 <title>Familientisch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout: ruhige Scandi-Spalte, Wochentage als Liste mit Teller-Illustrationen, Koch-Player als Vollbild-Story */
+/* Layout: ruhige Rezeptarchiv-Spalte im Stil von Tramontana Master Chef – Creme, Weiß, Tinte, Rostbraun */
 :root {
-  --bg: #F4F2EE;        /* Leinen */
-  --surface: #FBFAF8;   /* Birke */
-  --ink: #2E3230;       /* Schiefer */
-  --muted: #7A7F7A;     /* Nebel */
-  --line: #E2DFD8;
-  --sage: #8FA48B;      /* Salbei */
-  --sage-soft: #E3E9DF;
-  --clay: #C98D6B;      /* Ton */
+  --bg: #F4F1EA;        /* Creme */
+  --surface: #FFFFFF;   /* Weiß */
+  --ink: #1A1816;       /* Tinte */
+  --muted: #5E564B;     /* Walnuss */
+  --faint: #A39788;     /* Sand */
+  --line: #D8D3C8;
+  --sage: #9C3527;      /* Akzent: Rostbraun (Name aus der ersten Version beibehalten) */
+  --sage-soft: #EBE6DA; /* Creme dunkel */
+  --clay: #9C3527;
   --plate: #FFFFFF;
-  --heart: #C4564F;     /* Hagebutte */
+  --heart: #9C3527;
   --wa: #2C9E5B;
-  --display: "Young Serif", Georgia, "Times New Roman", serif;
-  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 3px;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "EB Garamond", Garamond, "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #1C1F1D; --surface: #242826; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
-    --sage: #A5BBA1; --sage-soft: #2F3A30; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
+    --bg: #1A1816; --surface: #23201D; --ink: #F4F1EA; --muted: #BFB4A6; --faint: #8A7F72; --line: #3A352F;
+    --sage: #D0705F; --sage-soft: #2E2924; --clay: #D0705F; --plate: #2B2723; --heart: #D0705F; --wa: #4CC27E; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #1C1F1D; --surface: #242826; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
-  --sage: #A5BBA1; --sage-soft: #2F3A30; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
+  --bg: #1A1816; --surface: #23201D; --ink: #F4F1EA; --muted: #BFB4A6; --faint: #8A7F72; --line: #3A352F;
+  --sage: #D0705F; --sage-soft: #2E2924; --clay: #D0705F; --plate: #2B2723; --heart: #D0705F; --wa: #4CC27E; color-scheme: dark;
 }
+::selection { background: color-mix(in srgb, var(--sage) 25%, transparent); }
 * { box-sizing: border-box; }
 html, body { background: var(--bg); color: var(--ink); }
-body { font-family: var(--body); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 .wrap { max-width: 760px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 80px; }
 button { font: inherit; color: inherit; cursor: pointer; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
@@ -40,18 +44,18 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; 
 header.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
 .brand h1 { font-size: 2.1rem; letter-spacing: -0.01em; line-height: 1.1; }
 .brand p { margin: 4px 0 0; color: var(--muted); font-size: 0.9rem; }
-.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
-.tabs button { border: 0; background: transparent; padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; color: var(--muted); }
+.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 4px; }
+.tabs button { border: 0; background: transparent; padding: 8px 16px; border-radius: var(--r); font-weight: 600; font-size: 0.88rem; color: var(--muted); }
 .tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
 .tabs .count { font-variant-numeric: tabular-nums; opacity: 0.7; margin-left: 4px; }
 
-.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--muted); }
+.eyebrow { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.66rem; font-weight: 500; color: var(--muted); }
 .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-.ghost { border: 1px solid var(--line); background: var(--surface); padding: 8px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+.ghost { border: 1px solid var(--line); background: var(--surface); padding: 8px 14px; border-radius: var(--r); font-size: 0.85rem; font-weight: 600; }
 .ghost:hover { border-color: var(--sage); }
-.primary { border: 0; background: var(--ink); color: var(--bg); padding: 11px 18px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; }
+.primary { border: 0; background: var(--ink); color: var(--bg); padding: 11px 18px; border-radius: var(--r); font-weight: 700; font-size: 0.9rem; }
 
-.days { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.days { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
 .day { background: var(--surface); display: grid; grid-template-columns: 56px 72px 1fr auto; align-items: center; gap: 16px; padding: 14px 16px; }
 .day .dname { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .day .dname b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.4rem; letter-spacing: 0; text-transform: none; color: var(--ink); line-height: 1.1; }
@@ -71,7 +75,7 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .day .steps { grid-column: 3 / -1; margin: -4px 0 0; padding-left: 18px; font-size: 0.86rem; display: grid; gap: 3px; }
 .day .steps li::marker { color: var(--sage); }
 .day .steps .tm { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.day .kid { grid-column: 3 / -1; margin-top: -6px; font-size: 0.82rem; color: var(--ink); background: var(--sage-soft); border-radius: 10px; padding: 8px 12px; }
+.day .kid { grid-column: 3 / -1; margin-top: -6px; font-size: 0.82rem; color: var(--ink); background: var(--sage-soft); border-radius: var(--r); padding: 8px 12px; }
 .day .kid::before { content: "Fürs Kind · "; font-weight: 700; }
 @media (max-width: 560px) {
   .day { grid-template-columns: 56px 1fr auto; gap: 10px 12px; }
@@ -81,49 +85,49 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
   .day .kid, .day .steps, .day .day-share { grid-column: 1 / -1; margin-top: 0; }
 }
 
-.sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+.sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
 .sync i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
 .sync.on i { background: var(--sage); box-shadow: 0 0 0 3px var(--sage-soft); }
 .sync.err i { background: var(--clay); }
 .sheet p, .sheet ol { font-size: 0.88rem; margin: 0 0 10px; }
 .sheet ol { padding-left: 20px; display: grid; gap: 6px; }
 .sheet code { font-size: 0.8rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 5px; word-break: break-all; }
-.sheet input[type="url"] { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.88rem; margin-bottom: 10px; }
+.sheet input[type="url"] { width: 100%; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.88rem; margin-bottom: 10px; }
 .row { display: flex; gap: 8px; flex-wrap: wrap; }
 
 /* Herz & Teilen */
 .mini-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-.mini { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.76rem; font-weight: 700; text-decoration: none; }
+.mini { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: var(--r); padding: 4px 10px; font-size: 0.76rem; font-weight: 700; text-decoration: none; }
 .mini svg { width: 14px; height: 14px; }
 .mini:hover { border-color: var(--sage); }
 .mini.on { color: var(--heart); border-color: var(--heart); }
 .mini.wa svg { color: var(--wa); }
 
 /* Entdecken */
-.seg { display: inline-flex; gap: 2px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px; }
-.seg button { border: 0; background: transparent; border-radius: 999px; padding: 6px 14px; font-size: 0.84rem; font-weight: 700; color: var(--muted); }
+.seg { display: inline-flex; gap: 2px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); padding: 3px; }
+.seg button { border: 0; background: transparent; border-radius: var(--r); padding: 6px 14px; font-size: 0.84rem; font-weight: 700; color: var(--muted); }
 .seg button[aria-pressed="true"] { background: var(--sage-soft); color: var(--ink); }
 .deck { position: relative; height: min(470px, 56vh); max-width: 380px; margin: 6px auto 0; }
-.card { position: absolute; inset: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; touch-action: pan-y; user-select: none; -webkit-user-select: none; transition: transform .25s ease; box-shadow: 0 10px 30px -18px rgba(30,34,32,.45); --like: 0; --nope: 0; }
+.card { position: absolute; inset: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; touch-action: pan-y; user-select: none; -webkit-user-select: none; transition: transform .25s ease; box-shadow: 0 10px 30px -18px rgba(30,34,32,.45); --like: 0; --nope: 0; }
 .card.top { cursor: grab; }
 .card.under { transform: scale(.95) translateY(14px); }
 .card.under2 { transform: scale(.9) translateY(28px); opacity: .7; }
 .c-img { position: relative; flex: 1; min-height: 0; display: grid; place-items: center; background: var(--tint); }
 .c-img .plate, .p-img .plate, .d-hero .plate { width: 64%; height: auto; max-height: 92%; }
 .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; user-select: none; pointer-events: none; }
-.thumb { position: relative; width: 72px; height: 72px; border-radius: 16px; overflow: hidden; background: var(--tint); display: grid; place-items: center; flex: none; }
+.thumb { position: relative; width: 72px; height: 72px; border-radius: var(--r); overflow: hidden; background: var(--tint); display: grid; place-items: center; flex: none; }
 .thumb .plate { width: 80%; height: auto; }
-.thumb.sm { width: 52px; height: 52px; border-radius: 12px; }
+.thumb.sm { width: 52px; height: 52px; border-radius: var(--r); }
 .c-body { padding: 16px 18px 18px; display: grid; gap: 6px; }
 .c-body h2 { font-size: 1.45rem; line-height: 1.2; }
 .c-body .kidline { margin: 0; font-size: 0.84rem; color: var(--muted); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tags span { font-size: 0.72rem; font-weight: 700; color: var(--muted); background: var(--bg); border-radius: 999px; padding: 2px 9px; }
-.stamp { position: absolute; top: 18px; font-family: var(--display); font-size: 1.5rem; padding: 4px 14px; border: 3px solid; border-radius: 10px; background: var(--surface); }
+.tags span { font-size: 0.72rem; font-weight: 700; color: var(--muted); background: var(--bg); border-radius: var(--r); padding: 2px 9px; }
+.stamp { position: absolute; top: 18px; font-family: var(--display); font-size: 1.5rem; padding: 4px 14px; border: 3px solid; border-radius: var(--r); background: var(--surface); }
 .stamp.like { left: 16px; color: var(--heart); transform: rotate(-12deg); opacity: var(--like); }
 .stamp.nope { right: 16px; color: var(--muted); transform: rotate(12deg); opacity: var(--nope); }
 .stamp, .badge, .heart-btn { z-index: 1; }
-.badge { position: absolute; left: 14px; bottom: 14px; background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.74rem; font-weight: 700; }
+.badge { position: absolute; left: 14px; bottom: 14px; background: var(--surface); color: var(--ink); border-radius: var(--r); padding: 4px 10px; font-size: 0.74rem; font-weight: 700; }
 .badge::before { content: "✦ "; color: var(--clay); }
 .deck-btns { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 22px; }
 .round { border: 1px solid var(--line); background: var(--surface); border-radius: 50%; width: 60px; height: 60px; display: grid; place-items: center; box-shadow: 0 6px 18px -12px rgba(30,34,32,.5); }
@@ -133,15 +137,15 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .round.yes { color: var(--heart); }
 .round.no { color: var(--muted); }
 .hint { text-align: center; color: var(--muted); font-size: 0.8rem; margin: 14px 0 0; }
-.deck-done { position: absolute; inset: 0; display: grid; place-content: center; gap: 12px; text-align: center; border: 1px dashed var(--line); border-radius: 24px; padding: 20px; }
+.deck-done { position: absolute; inset: 0; display: grid; place-content: center; gap: 12px; text-align: center; border: 1px dashed var(--line); border-radius: var(--r); padding: 20px; }
 .deck-done h2 { font-size: 1.4rem; }
 .filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 12px; scrollbar-width: none; }
-.filters button { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+.filters button { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); padding: 6px 12px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
 .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .board { columns: 2; column-gap: 12px; }
 @media (min-width: 700px) { .board { columns: 3; column-gap: 16px; } }
 .pin { break-inside: avoid; margin-bottom: 14px; cursor: pointer; }
-.p-img { position: relative; border-radius: 18px; overflow: hidden; background: var(--tint); display: grid; place-items: center; max-width: 100%; }
+.p-img { position: relative; border-radius: var(--r); overflow: hidden; background: var(--tint); display: grid; place-items: center; max-width: 100%; }
 .pin:hover .p-img { outline: 2px solid var(--sage); outline-offset: 2px; }
 .p-cap { padding: 8px 4px 0; display: grid; gap: 1px; }
 .p-cap b { font-weight: 700; font-size: 0.9rem; line-height: 1.3; }
@@ -152,16 +156,16 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .p-img .badge { left: 8px; bottom: 8px; font-size: 0.68rem; }
 
 /* Rezept-Detail */
-.d-hero { position: relative; overflow: hidden; border-radius: 18px; background: var(--tint); display: grid; place-items: center; aspect-ratio: 4 / 3; max-width: 100%; margin-bottom: 14px; }
+.d-hero { position: relative; overflow: hidden; border-radius: var(--r); background: var(--tint); display: grid; place-items: center; aspect-ratio: 4 / 3; max-width: 100%; margin-bottom: 14px; }
 .d-hero .plate { width: auto; height: 82%; }
 .sheet h4 { font-family: var(--body); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 16px 0 6px; }
 .sheet ul.ing { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: 0.88rem; }
 .sheet ul.ing li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
 .sheet ul.ing span { color: var(--muted); font-variant-numeric: tabular-nums; }
 .daypick { display: flex; gap: 6px; flex-wrap: wrap; }
-.daypick button { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; width: 42px; height: 36px; font-weight: 700; font-size: 0.8rem; }
+.daypick button { border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); width: 42px; height: 36px; font-weight: 700; font-size: 0.8rem; }
 .daypick button:hover { border-color: var(--sage); }
-.sheet .kid { font-size: 0.84rem; background: var(--sage-soft); border-radius: 10px; padding: 8px 12px; margin-top: 14px; }
+.sheet .kid { font-size: 0.84rem; background: var(--sage-soft); border-radius: var(--r); padding: 8px 12px; margin-top: 14px; }
 
 /* Einkaufsliste */
 .shop-head { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -171,24 +175,24 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .item input { width: 18px; height: 18px; accent-color: var(--sage); flex: none; }
 .item .n { flex: 1; min-width: 0; }
 .item .q { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.85rem; white-space: nowrap; }
-.item .buy { flex: none; font-size: 0.74rem; font-weight: 700; color: var(--sage); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; }
+.item .buy { flex: none; font-size: 0.74rem; font-weight: 700; color: var(--sage); text-decoration: none; border: 1px solid var(--line); border-radius: var(--r); padding: 3px 9px; }
 .item .buy:hover { border-color: var(--sage); }
 .item.done .buy { visibility: hidden; }
 .item.done .n { text-decoration: line-through; color: var(--muted); }
 .aisle.pantry .item .n::after { content: ""; }
-.note { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 0.86rem; color: var(--muted); margin-top: 22px; }
+.note { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; font-size: 0.86rem; color: var(--muted); margin-top: 22px; }
 .note b { color: var(--ink); }
 .shops { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .shops a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sage); font-weight: 600; }
-.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; z-index: 50; }
-textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 12px; font: inherit; font-size: 0.85rem; }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: var(--r); font-weight: 600; font-size: 0.88rem; z-index: 50; }
+textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 12px; font: inherit; font-size: 0.85rem; }
 
 /* Tauschen-Dialog */
 .sheet { position: relative; }
 .sheet-bg { position: fixed; inset: 0; background: rgba(20,22,21,0.45); z-index: 30; display: grid; place-items: end center; }
-.sheet { background: var(--bg); width: min(560px, 100%); max-height: 80%; overflow: auto; border-radius: 22px 22px 0 0; padding-inline: 20px; padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); }
+.sheet { background: var(--bg); width: min(560px, 100%); max-height: 80%; overflow: auto; border-radius: var(--r) var(--r) 0 0; padding-inline: 20px; padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); }
 .sheet h2 { font-size: 1.3rem; margin-bottom: 12px; }
-.pick { display: flex; gap: 12px; align-items: center; width: 100%; text-align: left; border: 0; background: var(--surface); border-radius: 14px; padding: 10px; margin-bottom: 8px; }
+.pick { display: flex; gap: 12px; align-items: center; width: 100%; text-align: left; border: 0; background: var(--surface); border-radius: var(--r); padding: 10px; margin-bottom: 8px; }
 .pick:hover { outline: 1px solid var(--sage); }
 .pick .plate { width: 48px; height: 48px; flex: none; }
 
@@ -209,10 +213,10 @@ textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius:
 .step-no { font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.74rem; opacity: 0.6; }
 .step-text { font-family: var(--display); font-size: clamp(1.45rem, 4.6vw, 2.2rem); line-height: 1.25; text-wrap: balance; }
 .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; min-height: 30px; }
-.chips span { background: rgba(255,255,255,0.7); padding: 5px 12px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; animation: pop .5s both; }
+.chips span { background: rgba(255,255,255,0.7); padding: 5px 12px; border-radius: var(--r); font-size: 0.85rem; font-weight: 600; animation: pop .5s both; }
 .chips span:nth-child(2) { animation-delay: .12s } .chips span:nth-child(3) { animation-delay: .24s } .chips span:nth-child(4) { animation-delay: .36s }
 @keyframes pop { from { opacity: 0; transform: translateY(10px) scale(.9) } to { opacity: 1; transform: none } }
-.timer { display: inline-flex; align-items: center; gap: 10px; border: 0; background: #2E3230; color: #F4F2EE; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.timer { display: inline-flex; align-items: center; gap: 10px; border: 0; background: #2E3230; color: #F4F2EE; border-radius: var(--r); padding: 10px 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .timer.running { background: #C98D6B; }
 .p-controls { display: flex; justify-content: center; align-items: center; gap: 14px; }
 .p-controls .big { width: 60px; height: 60px; background: #2E3230; color: #F4F2EE; }
@@ -250,13 +254,31 @@ textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius:
 }
 footer.src { margin-top: 36px; font-size: 0.78rem; color: var(--muted); }
 footer.src a { color: var(--muted); }
+
+/* Master-Chef-Typografie: Labels, Knöpfe und Zahlen in Mono, Titel in Fraunces */
+.tabs button, .ghost, .primary, .mini, .seg button, .filters button, .meta, .tags span, .badge, .chips span, .timer,
+.day .dname, .step-no, .p-top .t small, .item .q, .item .buy, .aisle h3, .sheet h4, .daypick button, .sync, .hint, .p-cap span, .day .steps .tm {
+  font-family: var(--mono); letter-spacing: 0.02em;
+}
+.tabs button, .ghost, .primary, .seg button, .filters button { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+.mini, .sync, .badge { font-size: 0.66rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+.meta, .p-cap span, .tags span, .item .q, .item .buy, .daypick button { font-size: 0.68rem; }
+.brand h1 { font-family: var(--display); font-weight: 500; font-size: 2.6rem; letter-spacing: -0.02em; font-variation-settings: "opsz" 144; }
+.brand p { font-style: italic; font-size: 1.02rem; }
+h1, h2, h3 { font-weight: 500; font-variation-settings: "opsz" 72; letter-spacing: -0.01em; }
+.day h3 { font-size: 1.18rem; }
+.day .steps { font-size: 0.98rem; }
+.day .steps .tm { font-size: 0.66rem; }
+.day .kid, .sheet .kid { font-size: 0.95rem; }
+.primary, .tabs button[aria-selected="true"], .filters button[aria-pressed="true"] { background: var(--sage); border-color: var(--sage); color: #FFFFFF; }
+.mc-tag { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage); border: 1px solid currentColor; border-radius: var(--r); padding: 1px 6px; }
 </style>
 
 <div class="wrap">
   <header class="top">
     <div class="brand">
       <h1>Familientisch</h1>
-      <p>Abendessen für zwei Große und ein Kleines · jedes Gericht unter 30 Minuten</p>
+      <p>Abendessen für zwei Große und ein Kleines · schnelle Familienküche und euer Master-Chef-Archiv</p>
       <button class="sync" id="sync-status" type="button"><i></i><span>Nur auf diesem Handy</span></button>
     </div>
     <nav class="tabs" role="tablist">
@@ -416,23 +438,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "shakshuka", name: "Shakshuka mit Feta & Fladenbrot", origin: "Nahost", flag: "IL", time: 25,
-    colors: ["#C9553F", "#F6E7B8", "#8DAA82", "#E9D9BD"],
-    kid: "Ei fürs Kind ganz durchgaren lassen. Brot zum Tunken ist perfekt.",
-    ingredients: [
-      ["Eier", 5, "Stk", "fresh"], ["Passierte Tomaten", 500, "g", "dry"], ["Rote Paprika", 2, "Stk", "veg"],
-      ["Zwiebel", 1, "Stk", "veg"], ["Feta", 100, "g", "fresh"], ["Fladenbrot", 1, "Stk", "bread"],
-      ["Petersilie", 1, "Bund", "veg"], ["Kreuzkümmel", 1, "TL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Paprika und Zwiebel in Streifen schneiden.", items: ["Paprika", "Zwiebel"] },
-      { icon: "pan", text: "In der Pfanne 5 Minuten weich braten.", timer: 300, items: [] },
-      { icon: "boil", text: "Tomaten und Kreuzkümmel dazu. 5 Minuten köcheln.", timer: 300, items: ["Tomaten", "Kreuzkümmel"] },
-      { icon: "pan", text: "Mulden machen, Eier hinein. Deckel drauf, 8 Minuten.", timer: 480, items: ["Eier"] },
-      { icon: "serve", text: "Feta und Petersilie drüber. Mit Brot servieren.", items: ["Feta", "Petersilie", "Brot"] }
-    ]
-  },
-  {
     id: "quesadilla", name: "Süßkartoffel-Bohnen-Quesadillas", origin: "Mexiko", flag: "MX", time: 25,
     colors: ["#E58F4E", "#F2D98B", "#7E9E6E", "#F4EDE0"],
     kid: "In schmale Streifen schneiden. Das ideale Fingerfood.",
@@ -448,22 +453,6 @@ const RECIPES = [
       { icon: "pan", text: "Auf Tortilla streichen, Käse drauf, zuklappen. Je Seite 3 Minuten braten.", timer: 360, items: ["Tortillas", "Käse"] },
       { icon: "mix", text: "Avocado mit Limette zerdrücken.", items: ["Avocado", "Limette"] },
       { icon: "serve", text: "In Dreiecke schneiden und dippen.", items: [] }
-    ]
-  },
-  {
-    id: "gnocchi", name: "Blech-Gnocchi mit Ofengemüse", origin: "Italien", flag: "IT", time: 25,
-    colors: ["#E4C27A", "#D9533F", "#90AE7F", "#F6F1E6"],
-    kid: "Cherrytomaten und Mozzarella-Kugeln immer vierteln (Verschluckgefahr).",
-    ingredients: [
-      ["Gnocchi", 800, "g", "fresh"], ["Cherrytomaten", 250, "g", "veg"], ["Zucchini", 1, "Stk", "veg"],
-      ["Gelbe Paprika", 1, "Stk", "veg"], ["Mini-Mozzarella", 125, "g", "fresh"], ["Basilikum", 1, "Topf", "veg"],
-      ["Olivenöl", 3, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Ofen auf 220 Grad. Zucchini und Paprika würfeln.", items: ["Zucchini", "Paprika"] },
-      { icon: "mix", text: "Gnocchi, Gemüse und Tomaten mit Öl aufs Blech.", items: ["Gnocchi", "Tomaten", "Öl"] },
-      { icon: "oven", text: "20 Minuten backen. Nach der Hälfte einmal wenden.", timer: 1200, items: [] },
-      { icon: "serve", text: "Mozzarella und Basilikum drüber.", items: ["Mozzarella", "Basilikum"] }
     ]
   },
   {
@@ -535,23 +524,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "lohikeitto", name: "Cremige Lachssuppe Lohikeitto", origin: "Finnland", flag: "FI", time: 30,
-    colors: ["#F0B79A", "#F6F2E8", "#E2A458", "#9DB89A"],
-    kid: "Suppe etwas abkühlen lassen. Brot zum Tunken dazu.",
-    ingredients: [
-      ["Lachsfilet", 350, "g", "meat"], ["Kartoffeln", 500, "g", "veg"], ["Karotten", 2, "Stk", "veg"],
-      ["Lauch", 1, "Stk", "veg"], ["Sahne", 200, "ml", "fresh"], ["Dill", 1, "Bund", "veg"],
-      ["Vollkorn-Roggenbrot", 1, "Pck", "bread"], ["Gemüsebrühe (salzarm)", 800, "ml", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Lauch in Ringe, Kartoffeln und Karotten würfeln.", items: ["Lauch", "Kartoffeln", "Karotten"] },
-      { icon: "pan", text: "Lauch im Topf 3 Minuten anschwitzen.", timer: 180, items: [] },
-      { icon: "boil", text: "Gemüse und Brühe dazu. 12 Minuten köcheln.", timer: 720, items: ["Brühe"] },
-      { icon: "boil", text: "Lachs würfeln, in die Suppe. 5 Minuten ziehen lassen.", timer: 300, items: ["Lachs"] },
-      { icon: "serve", text: "Sahne und Dill einrühren. Mit Brot servieren.", items: ["Sahne", "Dill", "Brot"] }
-    ]
-  },
-  {
     id: "erbsenpasta", name: "Erbsen-Ricotta-Pasta mit Zitrone", origin: "Italien", flag: "IT", time: 15,
     colors: ["#E9D7A0", "#9FC57F", "#F7F4EC", "#E6D45E"],
     kid: "Erbsen für ganz Kleine kurz zerdrücken.",
@@ -564,39 +536,6 @@ const RECIPES = [
       { icon: "boil", text: "Die letzten 3 Minuten Erbsen mitkochen.", timer: 180, items: ["Erbsen"] },
       { icon: "mix", text: "Ricotta, Zitronenschale und Parmesan mit etwas Nudelwasser verrühren.", items: ["Ricotta", "Zitrone", "Parmesan"] },
       { icon: "serve", text: "Pasta untermischen, Spinat dazu. Fertig.", items: ["Spinat"] }
-    ]
-  },
-  {
-    id: "tortilla", name: "Spanische Kartoffel-Tortilla mit Salat", origin: "Spanien", flag: "ES", time: 30,
-    colors: ["#F0CF73", "#E0A05C", "#93B489", "#D8533F"],
-    kid: "Ei ganz durchgaren. Tortilla in kleine Würfel, Tomaten vierteln.",
-    ingredients: [
-      ["Eier", 6, "Stk", "fresh"], ["Kartoffeln", 400, "g", "veg"], ["Rote Paprika", 1, "Stk", "veg"],
-      ["Zwiebel", 1, "Stk", "veg"], ["Gurke", 1, "Stk", "veg"], ["Cherrytomaten", 250, "g", "veg"],
-      ["Olivenöl", 3, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Kartoffeln in dünne Scheiben, Zwiebel und Paprika würfeln.", items: ["Kartoffeln", "Zwiebel", "Paprika"] },
-      { icon: "pan", text: "Mit Öl in die Pfanne. Deckel drauf, 12 Minuten weich garen.", timer: 720, items: ["Olivenöl"] },
-      { icon: "mix", text: "Eier verquirlen und darüber gießen.", items: ["Eier"] },
-      { icon: "pan", text: "Mit Deckel 6 Minuten stocken lassen. Mit Teller wenden, 3 Minuten.", timer: 540, items: [] },
-      { icon: "serve", text: "Gurke und Tomaten als Salat. In Stücke schneiden.", items: ["Gurke", "Tomaten"] }
-    ]
-  }
-  ,{
-    id: "frittata", name: "Mini-Frittatas aus dem Muffinblech", origin: "England", flag: "GB", time: 25,
-    colors: ["#F0CF6B", "#8FB07E", "#D9533F", "#F6F1E4"],
-    kid: "Perfekt zum Selberhalten. Abkühlen lassen, innen wird es heiß.",
-    ingredients: [
-      ["Eier", 6, "Stk", "fresh"], ["Milch", 50, "ml", "fresh"], ["Rote Paprika", 1, "Stk", "veg"],
-      ["Babyspinat", 60, "g", "veg"], ["Geriebener Käse", 80, "g", "fresh"], ["Vollkorn-Roggenbrot", 1, "Pck", "bread"],
-      ["Gurke", 1, "Stk", "veg"], ["Olivenöl", 1, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Ofen auf 190 Grad. Paprika klein würfeln, Spinat hacken.", items: ["Paprika", "Spinat"] },
-      { icon: "mix", text: "Eier mit Milch und Käse verquirlen, Gemüse unterrühren.", items: ["Eier", "Milch", "Käse"] },
-      { icon: "oven", text: "Muffinblech einölen, Masse einfüllen. 18 Minuten backen.", timer: 1080, items: ["Olivenöl"] },
-      { icon: "serve", text: "Mit Brot und Gurkensticks servieren.", items: ["Brot", "Gurke"] }
     ]
   },
   {
@@ -632,23 +571,6 @@ const RECIPES = [
       { icon: "pan", text: "Alles zur Seite schieben, Eier in die Lücke und verrühren.", items: ["Eier"] },
       { icon: "rice", text: "Reis dazu und 4 Minuten mitbraten.", timer: 240, items: ["Reis"] },
       { icon: "serve", text: "Sesamöl, Lauchzwiebel und etwas Soja für die Großen.", items: ["Sesamöl", "Sojasauce"] }
-    ]
-  },
-  {
-    id: "kuerbissuppe", name: "Kürbis-Kokos-Suppe mit Linsen", origin: "Thailand", flag: "TH", time: 30,
-    colors: ["#E7934A", "#F3E9D2", "#8FAE84", "#EFC38A"],
-    kid: "Etwas abkühlen lassen. Brotstreifen zum Tunken dazu.",
-    ingredients: [
-      ["Hokkaido-Kürbis", 800, "g", "veg"], ["Kokosmilch", 400, "ml", "dry"], ["Rote Linsen", 100, "g", "dry"],
-      ["Zwiebel", 1, "Stk", "veg"], ["Ingwer", 1, "Stk", "veg"], ["Fladenbrot", 1, "Stk", "bread"],
-      ["Gemüsebrühe (salzarm)", 600, "ml", "pantry"], ["Currypulver mild", 1, "TL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Kürbis mit Schale würfeln. Zwiebel und Ingwer hacken.", items: ["Kürbis", "Zwiebel", "Ingwer"] },
-      { icon: "pan", text: "Zwiebel, Ingwer und Curry 3 Minuten anschwitzen.", timer: 180, items: ["Curry"] },
-      { icon: "boil", text: "Kürbis, Linsen und Brühe dazu. 18 Minuten köcheln.", timer: 1080, items: ["Linsen", "Brühe"] },
-      { icon: "mix", text: "Kokosmilch dazu und alles fein pürieren.", items: ["Kokosmilch"] },
-      { icon: "serve", text: "Mit Brot servieren.", items: ["Brot"] }
     ]
   },
   {
@@ -703,23 +625,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "gemuesepasta", name: "Pasta mit versteckter Gemüsesoße", origin: "Italien", flag: "IT", time: 25,
-    colors: ["#D9533F", "#E9C97A", "#8FAE7F", "#F6F0E4"],
-    kid: "Die Soße schmeckt nach Tomate. Das Gemüse sieht man nicht.",
-    ingredients: [
-      ["Vollkorn-Pasta", 300, "g", "dry"], ["Passierte Tomaten", 500, "g", "dry"], ["Rote Paprika", 1, "Stk", "veg"],
-      ["Karotten", 2, "Stk", "veg"], ["Zucchini", 1, "Stk", "veg"], ["Zwiebel", 1, "Stk", "veg"],
-      ["Parmesan", 40, "g", "fresh"], ["Olivenöl", 2, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Zwiebel, Paprika, Karotten und Zucchini grob würfeln.", items: ["Zwiebel", "Paprika", "Karotten", "Zucchini"] },
-      { icon: "pan", text: "Gemüse 5 Minuten in Öl anbraten.", timer: 300, items: ["Olivenöl"] },
-      { icon: "boil", text: "Tomaten dazu, 12 Minuten köcheln. Parallel Pasta kochen.", timer: 720, items: ["Tomaten", "Pasta"] },
-      { icon: "mix", text: "Soße fein pürieren.", items: [] },
-      { icon: "serve", text: "Mit Pasta mischen, Parmesan drüber.", items: ["Parmesan"] }
-    ]
-  },
-  {
     id: "souvlaki", name: "Hähnchen-Souvlaki mit Tzatziki", origin: "Griechenland", flag: "GR", time: 25,
     colors: ["#D9A066", "#F4F1E8", "#86A97A", "#E35D4A"],
     kid: "Fleisch in kleine Stücke, Knoblauch im Tzatziki sparsam.",
@@ -769,8 +674,8 @@ const RECIPES = [
       { icon: "chop", text: "Äpfel in Spalten schneiden.", items: ["Äpfel"] },
       { icon: "serve", text: "Mit Apfelmus und Apfelspalten servieren.", items: ["Apfelmus"] }
     ]
-  }
-  ,{
+  },
+  {
     id: "blechhuhn", name: "Blech-Hähnchen mit Ofengemüse & Kräuterjoghurt", origin: "Deutschland", flag: "DE", time: 30,
     colors: ["#D9A066", "#E58B5A", "#8FAE7F", "#F4EFE4"],
     kid: "Hähnchen klein schneiden, Gemüse weich gebacken ist perfektes Fingerfood.",
@@ -837,23 +742,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "udon", name: "Udon-Nudelsuppe mit Ei & Gemüse", origin: "Japan", flag: "JP", time: 20,
-    colors: ["#F2E3C2", "#8FB08C", "#E8B86A", "#F6F2E8"],
-    kid: "Nudeln mit der Schere klein schneiden. Brühe abkühlen lassen.",
-    ingredients: [
-      ["Udon-Nudeln", 3, "Pck", "dry"], ["Eier", 3, "Stk", "fresh"], ["Pak Choi", 2, "Stk", "veg"],
-      ["Champignons", 200, "g", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Gemüsebrühe (salzarm)", 1200, "ml", "pantry"],
-      ["Sojasauce (salzreduziert)", 1, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "boil", text: "Eier 8 Minuten kochen, abschrecken und schälen.", timer: 480, items: ["Eier"] },
-      { icon: "chop", text: "Pilze in Scheiben, Pak Choi und Lauchzwiebeln klein schneiden.", items: ["Champignons", "Pak Choi"] },
-      { icon: "boil", text: "Brühe aufkochen, Pilze und Pak Choi 4 Minuten mitkochen.", timer: 240, items: ["Brühe"] },
-      { icon: "boil", text: "Udon dazu, 3 Minuten ziehen lassen.", timer: 180, items: ["Udon"] },
-      { icon: "serve", text: "In Schalen, halbe Eier drauf. Soja nur für die Großen.", items: ["Sojasauce"] }
-    ]
-  },
-  {
     id: "burritobowl", name: "Burrito-Bowl mit Bohnen & Mais", origin: "Mexiko", flag: "MX", time: 25,
     colors: ["#E2A44C", "#7FA36E", "#C9553F", "#F4EFE4"],
     kid: "Bohnen leicht zerdrücken, Tomaten vierteln, alles getrennt auf den Teller.",
@@ -887,39 +775,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "pitapizza", name: "Pita-Pizzen zum Selberbelegen", origin: "Italien", flag: "IT", time: 20,
-    colors: ["#D9533F", "#F2E3C2", "#8FAE7F", "#E9C97A"],
-    kid: "Selber belegen lassen! Oliven und Tomaten klein schneiden.",
-    ingredients: [
-      ["Pita-Brote", 6, "Stk", "bread"], ["Passierte Tomaten", 200, "g", "dry"], ["Mozzarella", 250, "g", "fresh"],
-      ["Gelbe Paprika", 1, "Stk", "veg"], ["Champignons", 150, "g", "veg"], ["Kochschinken", 100, "g", "meat"],
-      ["Rucola", 1, "Pck", "veg"], ["Oregano", 1, "TL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Ofen auf 220 Grad. Paprika, Pilze, Schinken und Mozzarella klein schneiden.", items: ["Paprika", "Champignons", "Schinken", "Mozzarella"] },
-      { icon: "mix", text: "Pitas mit Tomaten bestreichen, Oregano drauf.", items: ["Pita", "Tomaten", "Oregano"] },
-      { icon: "mix", text: "Jeder belegt seine eigene Pizza.", items: [] },
-      { icon: "oven", text: "10 Minuten backen.", timer: 600, items: [] },
-      { icon: "serve", text: "Rucola für die Großen drüber.", items: ["Rucola"] }
-    ]
-  },
-  {
-    id: "hummus", name: "Hummus-Teller mit Ofengemüse", origin: "Libanon", flag: "LB", time: 25,
-    colors: ["#E8D7B0", "#D98A4B", "#7FA36E", "#F4EFE3"],
-    kid: "Hummus ist ein toller Dip für Gemüsesticks und Brot.",
-    ingredients: [
-      ["Kichererbsen", 1, "Dose", "dry"], ["Tahin", 2, "EL", "dry"], ["Zitrone", 1, "Stk", "veg"],
-      ["Zucchini", 1, "Stk", "veg"], ["Rote Paprika", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"],
-      ["Fladenbrot", 1, "Stk", "bread"], ["Knoblauch", 1, "Zehe", "veg"], ["Olivenöl", 4, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Ofen auf 220 Grad. Gemüse in Stifte schneiden.", items: ["Zucchini", "Paprika", "Karotten"] },
-      { icon: "oven", text: "Mit Öl aufs Blech, 18 Minuten backen.", timer: 1080, items: ["Olivenöl"] },
-      { icon: "mix", text: "Kichererbsen, Tahin, Zitrone, Knoblauch und etwas Wasser cremig pürieren.", items: ["Kichererbsen", "Tahin", "Zitrone"] },
-      { icon: "serve", text: "Hummus auf Teller streichen, Gemüse und Brot dazu.", items: ["Fladenbrot"] }
-    ]
-  },
-  {
     id: "bacalhau", name: "Ofen-Kabeljau mit Tomaten & Kartoffeln", origin: "Portugal", flag: "PT", time: 30,
     colors: ["#F4EFE6", "#D9533F", "#E8C98A", "#8FAE7F"],
     kid: "Fisch auf Gräten prüfen und zerpflücken.",
@@ -934,23 +789,6 @@ const RECIPES = [
       { icon: "mix", text: "Fisch und Tomaten drauflegen, Zitrone drüber.", items: ["Kabeljau", "Tomaten", "Zitrone"] },
       { icon: "oven", text: "Noch 14 Minuten backen.", timer: 840, items: [] },
       { icon: "serve", text: "Mit Petersilie bestreuen.", items: ["Petersilie"] }
-    ]
-  },
-  {
-    id: "erbsensuppe", name: "Erbsen-Minz-Suppe mit Käsetoast", origin: "England", flag: "GB", time: 20,
-    colors: ["#9FC57F", "#F4EFE4", "#E8B86A", "#7FA36E"],
-    kid: "Toast in Streifen schneiden, zum Tunken.",
-    ingredients: [
-      ["Erbsen", 600, "g", "frozen"], ["Kartoffeln", 200, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"],
-      ["Minze", 1, "Topf", "veg"], ["Vollkorntoast", 1, "Pck", "bread"], ["Geriebener Käse", 100, "g", "fresh"],
-      ["Gemüsebrühe (salzarm)", 800, "ml", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Zwiebel und Kartoffel klein würfeln.", items: ["Zwiebel", "Kartoffeln"] },
-      { icon: "boil", text: "Mit Brühe 10 Minuten kochen.", timer: 600, items: ["Brühe"] },
-      { icon: "boil", text: "Erbsen dazu, 4 Minuten kochen.", timer: 240, items: ["Erbsen"] },
-      { icon: "mix", text: "Mit Minzblättern fein pürieren.", items: ["Minze"] },
-      { icon: "oven", text: "Toast mit Käse belegen und 5 Minuten überbacken.", timer: 300, items: ["Toast", "Käse"] }
     ]
   },
   {
@@ -971,23 +809,6 @@ const RECIPES = [
     ]
   },
   {
-    id: "pyttipanna", name: "Pyttipanna mit Ei", origin: "Schweden", flag: "SE", time: 30,
-    colors: ["#E2B566", "#C2414B", "#F2D98B", "#9DB59A"],
-    kid: "Ei für das Kind beidseitig braten, bis das Eigelb fest ist.",
-    ingredients: [
-      ["Kartoffeln", 600, "g", "veg"], ["Kochschinken", 150, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"],
-      ["Rote Paprika", 1, "Stk", "veg"], ["Eier", 3, "Stk", "fresh"], ["Rote Bete (vorgegart)", 1, "Pck", "veg"],
-      ["Olivenöl", 3, "EL", "pantry"]
-    ],
-    steps: [
-      { icon: "chop", text: "Kartoffeln klein würfeln, Zwiebel, Paprika und Schinken auch.", items: ["Kartoffeln", "Zwiebel", "Paprika", "Schinken"] },
-      { icon: "pan", text: "Kartoffeln mit Deckel 12 Minuten braten, öfter wenden.", timer: 720, items: ["Olivenöl"] },
-      { icon: "pan", text: "Zwiebel, Paprika und Schinken dazu, 6 Minuten.", timer: 360, items: [] },
-      { icon: "pan", text: "Eier daneben braten, gut durch.", timer: 240, items: ["Eier"] },
-      { icon: "serve", text: "Mit Rote-Bete-Würfeln servieren.", items: ["Rote Bete"] }
-    ]
-  },
-  {
     id: "palatschinken", name: "Topfen-Palatschinken mit Beeren", origin: "Österreich", flag: "AT", time: 25,
     colors: ["#F2D9A0", "#B5475A", "#F6F1E6", "#7E9E6E"],
     kid: "Aufrollen und in Stücke schneiden. Beeren halbieren.",
@@ -1004,21 +825,335 @@ const RECIPES = [
       { icon: "serve", text: "Palatschinken füllen, rollen, Beeren drüber.", items: [] }
     ]
   },
-  {
-    id: "bulgur", name: "Bulgur-Hackpfanne mit Paprika", origin: "Türkei", flag: "TR", time: 25,
-    colors: ["#C98B5E", "#D9533F", "#F2E3C2", "#8FAE7F"],
-    kid: "Joghurt dazu macht es milder.",
+{
+    id: "paprikahendl", name: "Paprikahendl mit Nockerl", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#C8743F", "#F3E6D3", "#8C5A3C", "#E9D2B4"],
+    kid: "Nur edelsüßes Paprikapulver verwenden, das ist nicht scharf. Hendl klein schneiden.",
     ingredients: [
-      ["Rinderhack", 300, "g", "meat"], ["Bulgur", 200, "g", "dry"], ["Rote Paprika", 2, "Stk", "veg"],
-      ["Zwiebel", 1, "Stk", "veg"], ["Tomatenmark", 2, "EL", "dry"], ["Naturjoghurt", 200, "g", "fresh"],
-      ["Petersilie", 1, "Bund", "veg"], ["Gemüsebrühe (salzarm)", 450, "ml", "pantry"], ["Paprikapulver edelsüß", 1, "TL", "pantry"]
+      ["Hendlbrust oder Hendlkeulen ohne Knochen", 500, "g", "meat"], ["Zwiebel", 2, "Stk", "veg"], ["Sauerrahm", 250, "g", "fresh"],
+      ["Schlagobers", 100, "ml", "fresh"], ["Frische Nockerl oder Spätzle", 500, "g", "fresh"], ["Paprikapulver edelsüß", 2, "EL", "pantry"],
+      ["Mehl", 1, "EL", "pantry"], ["Butter", 20, "g", "pantry"]
     ],
     steps: [
-      { icon: "chop", text: "Zwiebel und Paprika würfeln.", items: ["Zwiebel", "Paprika"] },
-      { icon: "pan", text: "Hack mit Zwiebel 5 Minuten krümelig braten.", timer: 300, items: ["Hack"] },
-      { icon: "pan", text: "Paprika, Tomatenmark und Gewürz dazu, 2 Minuten.", timer: 120, items: ["Tomatenmark"] },
-      { icon: "boil", text: "Bulgur und Brühe dazu. Deckel drauf, 12 Minuten quellen lassen.", timer: 720, items: ["Bulgur", "Brühe"] },
-      { icon: "serve", text: "Mit Joghurt und Petersilie servieren.", items: ["Joghurt", "Petersilie"] }
+      { icon: "chop", text: "Zwiebeln fein hacken, Hendl in Stücke schneiden.", items: ["Zwiebel", "Hendl"] },
+      { icon: "pan", text: "Zwiebeln in Butter 5 Minuten goldig rösten.", timer: 300, items: ["Butter"] },
+      { icon: "pan", text: "Hendl dazu, kurz anbraten. Paprikapulver drüber und gleich mit 300 ml Wasser ablöschen.", items: ["Paprikapulver"] },
+      { icon: "boil", text: "Zugedeckt 15 Minuten leise köcheln.", timer: 900, items: [] },
+      { icon: "mix", text: "Sauerrahm mit Mehl und Obers glatt rühren, einrühren, kurz aufkochen.", items: ["Sauerrahm", "Obers", "Mehl"] },
+      { icon: "serve", text: "Nockerl in Butter schwenken und mit dem Hendl servieren.", items: ["Nockerl"] }
+    ]
+  },
+  {
+    id: "faschiertelaibchen", name: "Faschierte Laibchen mit Erdäpfelpüree", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#8C5A3C", "#F3E9D8", "#B9A27E", "#E7D3B8"],
+    kid: "Laibchen klein formen. Gurkensalat ohne Essig für die Kleinen.",
+    ingredients: [
+      ["Faschiertes gemischt", 500, "g", "meat"], ["Semmel vom Vortag", 1, "Stk", "bread"], ["Eier", 1, "Stk", "fresh"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Petersilie", 1, "Bund", "veg"], ["Erdäpfel mehlig", 800, "g", "veg"],
+      ["Milch", 200, "ml", "fresh"], ["Gurke", 1, "Stk", "veg"], ["Sauerrahm", 100, "g", "fresh"],
+      ["Senf", 1, "TL", "pantry"], ["Butter", 30, "g", "pantry"], ["Öl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Erdäpfel schälen, würfeln und 15 Minuten kochen.", timer: 900, items: ["Erdäpfel"] },
+      { icon: "mix", text: "Semmel einweichen, ausdrücken. Mit Faschiertem, Ei, Zwiebel, Petersilie und Senf verkneten.", items: ["Faschiertes", "Semmel", "Ei"] },
+      { icon: "pan", text: "Laibchen formen, je Seite 5 Minuten braten.", timer: 600, items: ["Öl"] },
+      { icon: "mix", text: "Erdäpfel mit warmer Milch und Butter stampfen.", items: ["Milch", "Butter"] },
+      { icon: "serve", text: "Gurke hobeln, mit Sauerrahm mischen. Alles anrichten.", items: ["Gurke", "Sauerrahm"] }
+    ]
+  },
+  {
+    id: "faschiertebaellchen", name: "Faschierte Bällchen in Tomatensauce", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#B5482F", "#8C5A3C", "#F3E6D3", "#E8D2B0"],
+    kid: "Bällchen halbieren. Die Sauce ist mild und süßlich.",
+    ingredients: [
+      ["Faschiertes gemischt", 400, "g", "meat"], ["Eier", 1, "Stk", "fresh"], ["Semmelbrösel", 3, "EL", "pantry"],
+      ["Passierte Tomaten", 700, "g", "dry"], ["Zwiebel", 1, "Stk", "veg"], ["Spiralnudeln", 300, "g", "dry"],
+      ["Parmesan", 40, "g", "fresh"], ["Basilikum", 1, "Topf", "veg"]
+    ],
+    steps: [
+      { icon: "mix", text: "Faschiertes mit Ei und Bröseln mischen, kleine Bällchen formen.", items: ["Faschiertes", "Ei", "Brösel"] },
+      { icon: "pan", text: "Zwiebel hacken und in einem breiten Topf 3 Minuten anschwitzen.", timer: 180, items: ["Zwiebel"] },
+      { icon: "boil", text: "Tomaten dazu, Bällchen hineinlegen. Zugedeckt 15 Minuten ziehen lassen.", timer: 900, items: ["Tomaten"] },
+      { icon: "boil", text: "Parallel die Nudeln kochen.", timer: 600, items: ["Nudeln"] },
+      { icon: "serve", text: "Mit Basilikum und Parmesan servieren.", items: ["Basilikum", "Parmesan"] }
+    ]
+  },
+  {
+    id: "faschierterbraten", name: "Faschierter Braten mit Erdäpfelpüree", origin: "Österreich", flag: "AT", time: 20, wait: 40,
+    colors: ["#7A4E33", "#F3E9D8", "#9FB07E", "#D9BC94"],
+    kid: "In dünne Scheiben schneiden. Reste schmecken am nächsten Tag kalt aufs Brot.",
+    ingredients: [
+      ["Faschiertes gemischt", 700, "g", "meat"], ["Semmel vom Vortag", 2, "Stk", "bread"], ["Eier", 2, "Stk", "fresh"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"], ["Erdäpfel mehlig", 800, "g", "veg"],
+      ["Milch", 250, "ml", "fresh"], ["Senf", 1, "TL", "pantry"], ["Majoran", 1, "TL", "pantry"], ["Butter", 30, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 180 Grad. Semmeln einweichen, Zwiebel und Karotte fein reiben.", items: ["Semmel", "Zwiebel", "Karotten"] },
+      { icon: "mix", text: "Alles mit Faschiertem, Eiern, Senf und Majoran verkneten. Zu einem Laib formen.", items: ["Faschiertes", "Eier", "Majoran"] },
+      { icon: "oven", text: "In einer Form 40 Minuten backen. Ab und zu mit etwas Wasser begießen.", timer: 2400, items: [] },
+      { icon: "boil", text: "In der Zwischenzeit Erdäpfel kochen, mit Milch und Butter zu Püree stampfen.", timer: 900, items: ["Erdäpfel", "Milch"] },
+      { icon: "serve", text: "Braten in Scheiben schneiden, mit Püree und Bratensaft servieren.", items: [] }
+    ]
+  },
+  {
+    id: "onepotbolo", name: "One-Pot-Pasta Bolognese", origin: "Italien", flag: "IT", time: 25,
+    colors: ["#A8442E", "#8C5A3C", "#F3E6D3", "#E3C9A5"],
+    kid: "Ein Topf, kein Abseihen. Fürs Kind mit wenig Parmesan.",
+    ingredients: [
+      ["Faschiertes Rind", 400, "g", "meat"], ["Penne", 350, "g", "dry"], ["Passierte Tomaten", 500, "g", "dry"],
+      ["Karotten", 2, "Stk", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Parmesan", 40, "g", "fresh"], ["Olivenöl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebel und Karotten fein reiben.", items: ["Zwiebel", "Karotten"] },
+      { icon: "pan", text: "Faschiertes im großen Topf 5 Minuten krümelig braten, Gemüse dazu.", timer: 300, items: ["Faschiertes"] },
+      { icon: "boil", text: "Tomaten, Penne und 700 ml Wasser dazu. 12 Minuten köcheln, oft umrühren.", timer: 720, items: ["Penne", "Tomaten"] },
+      { icon: "serve", text: "Wenn die Nudeln weich sind: Parmesan drüber, fertig.", items: ["Parmesan"] }
+    ]
+  },
+  {
+    id: "onepotpesto", name: "One-Pot-Pesto-Pasta mit Brokkoli", origin: "Italien", flag: "IT", time: 15,
+    colors: ["#6F8F4E", "#F3E9D8", "#C7A46B", "#E6D6B8"],
+    kid: "Pesto enthält oft Nüsse. Nur geben, wenn keine Allergie bekannt ist.",
+    ingredients: [
+      ["Spaghetti oder Trofie", 350, "g", "dry"], ["Brokkoli", 1, "Stk", "veg"], ["Basilikum-Pesto", 1, "Glas", "dry"],
+      ["Cherrytomaten", 250, "g", "veg"], ["Mini-Mozzarella", 125, "g", "fresh"], ["Parmesan", 30, "g", "fresh"]
+    ],
+    steps: [
+      { icon: "boil", text: "Nudeln im großen Topf kochen. Die letzten 4 Minuten Brokkoli-Röschen dazu.", timer: 600, items: ["Nudeln", "Brokkoli"] },
+      { icon: "mix", text: "Eine Tasse Nudelwasser aufheben, dann abseihen.", items: [] },
+      { icon: "mix", text: "Zurück in den Topf, Pesto und etwas Nudelwasser unterrühren.", items: ["Pesto"] },
+      { icon: "serve", text: "Tomaten und Mozzarella vierteln, drüber. Parmesan drauf.", items: ["Tomaten", "Mozzarella", "Parmesan"] }
+    ]
+  },
+  {
+    id: "onepotrahm", name: "One-Pot Schinken-Erbsen-Rahmnudeln", origin: "Österreich", flag: "AT", time: 20,
+    colors: ["#E9C98E", "#8DAA6A", "#D99C8A", "#F4ECDF"],
+    kid: "Kinderliebling. Schinken klein würfeln.",
+    ingredients: [
+      ["Hörnchen oder Farfalle", 350, "g", "dry"], ["Beinschinken", 150, "g", "meat"], ["Erbsen", 200, "g", "frozen"],
+      ["Schlagobers", 150, "ml", "fresh"], ["Parmesan", 40, "g", "fresh"], ["Gemüsebrühe (salzarm)", 800, "ml", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Schinken klein würfeln.", items: ["Schinken"] },
+      { icon: "boil", text: "Nudeln mit Brühe im Topf 8 Minuten köcheln, oft umrühren.", timer: 480, items: ["Nudeln", "Brühe"] },
+      { icon: "boil", text: "Erbsen, Schinken und Obers dazu, noch 3 Minuten.", timer: 180, items: ["Erbsen", "Obers"] },
+      { icon: "serve", text: "Parmesan einrühren, fertig.", items: ["Parmesan"] }
+    ]
+  },
+  {
+    id: "onepotlachs", name: "One-Pot Lachs-Spinat-Pasta", origin: "Schweden", flag: "SE", time: 20,
+    colors: ["#E9967A", "#5F7F4A", "#F4EDE0", "#D7C2A0"],
+    kid: "Lachs zerpflücken und auf Gräten prüfen.",
+    ingredients: [
+      ["Bandnudeln", 350, "g", "dry"], ["Lachsfilet ohne Haut", 300, "g", "meat"], ["Blattspinat (TK)", 300, "g", "frozen"],
+      ["Frischkäse", 150, "g", "fresh"], ["Zitrone", 1, "Stk", "veg"], ["Gemüsebrühe (salzarm)", 900, "ml", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Nudeln mit Brühe und Spinat in einen Topf. 8 Minuten köcheln, oft umrühren.", timer: 480, items: ["Nudeln", "Spinat", "Brühe"] },
+      { icon: "chop", text: "Lachs in Würfel schneiden.", items: ["Lachs"] },
+      { icon: "boil", text: "Lachs und Frischkäse dazu, 4 Minuten ziehen lassen.", timer: 240, items: ["Frischkäse"] },
+      { icon: "serve", text: "Mit Zitronenschale und etwas Saft abschmecken.", items: ["Zitrone"] }
+    ]
+  },
+  {
+    id: "kartoffelauflauf", name: "Erdäpfel-Brokkoli-Auflauf", origin: "Österreich", flag: "AT", time: 15, wait: 35,
+    colors: ["#E2B866", "#6F8F4E", "#F3E6D3", "#C69A6A"],
+    kid: "Weich und mild. Etwas abkühlen lassen, innen sehr heiß.",
+    ingredients: [
+      ["Erdäpfel festkochend", 800, "g", "veg"], ["Brokkoli", 1, "Stk", "veg"], ["Beinschinken", 150, "g", "meat"],
+      ["Schlagobers", 200, "ml", "fresh"], ["Milch", 200, "ml", "fresh"], ["Geriebener Bergkäse", 120, "g", "fresh"],
+      ["Eier", 2, "Stk", "fresh"], ["Muskatnuss", 1, "Prise", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 200 Grad. Erdäpfel hauchdünn hobeln, Brokkoli in kleine Röschen.", items: ["Erdäpfel", "Brokkoli"] },
+      { icon: "mix", text: "Obers, Milch, Eier und Muskat verquirlen.", items: ["Obers", "Milch", "Eier"] },
+      { icon: "mix", text: "Erdäpfel, Brokkoli und Schinken in eine Form schichten, Guss drüber, Käse drauf.", items: ["Schinken", "Käse"] },
+      { icon: "oven", text: "35 Minuten goldbraun backen.", timer: 2100, items: [] },
+      { icon: "serve", text: "5 Minuten rasten lassen, dann schneiden.", items: [] }
+    ]
+  },
+  {
+    id: "zucchiniquiche", name: "Zucchini-Faschiertes-Quiche", origin: "Frankreich", flag: "FR", time: 15, wait: 30,
+    colors: ["#D9B37A", "#6F8F4E", "#8C5A3C", "#F3E9D8"],
+    kid: "In kleine Stücke schneiden. Schmeckt auch lauwarm.",
+    ingredients: [
+      ["Mürbteig oder Blätterteig (Kühlregal)", 1, "Pck", "fresh"], ["Faschiertes Rind", 300, "g", "meat"], ["Zucchini", 2, "Stk", "veg"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Eier", 3, "Stk", "fresh"], ["Sauerrahm", 200, "g", "fresh"],
+      ["Geriebener Käse", 100, "g", "fresh"], ["Grüner Salat", 1, "Stk", "veg"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 190 Grad. Zucchini grob raspeln und ausdrücken, Zwiebel hacken.", items: ["Zucchini", "Zwiebel"] },
+      { icon: "pan", text: "Faschiertes mit Zwiebel 6 Minuten braten.", timer: 360, items: ["Faschiertes"] },
+      { icon: "mix", text: "Teig in die Form legen. Eier, Sauerrahm und Käse verrühren, mit Zucchini und Faschiertem mischen.", items: ["Teig", "Eier", "Sauerrahm"] },
+      { icon: "oven", text: "Einfüllen und 30 Minuten backen.", timer: 1800, items: [] },
+      { icon: "serve", text: "Mit grünem Salat servieren.", items: ["Salat"] }
+    ]
+  },
+  {
+    id: "pikantepalatschinken", name: "Pikante Palatschinken mit Rahmsauce", origin: "Österreich", flag: "AT", time: 25, wait: 15,
+    colors: ["#E8C48A", "#F4ECDF", "#7F9E5E", "#D99C8A"],
+    kid: "In Scheiben schneiden. Die Rahmsauce ist mild.",
+    ingredients: [
+      ["Mehl", 200, "g", "pantry"], ["Eier", 3, "Stk", "fresh"], ["Milch", 400, "ml", "fresh"],
+      ["Beinschinken", 200, "g", "meat"], ["Blattspinat (TK)", 300, "g", "frozen"], ["Geriebener Käse", 150, "g", "fresh"],
+      ["Sauerrahm", 250, "g", "fresh"], ["Schlagobers", 100, "ml", "fresh"], ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Ofen auf 200 Grad. Mehl, Eier und Milch zu dünnem Teig verrühren.", items: ["Mehl", "Eier", "Milch"] },
+      { icon: "pan", text: "In Butter dünne Palatschinken backen.", timer: 600, items: ["Butter"] },
+      { icon: "mix", text: "Spinat auftauen und ausdrücken. Palatschinken mit Schinken, Spinat und etwas Käse füllen und rollen.", items: ["Schinken", "Spinat", "Käse"] },
+      { icon: "mix", text: "In eine Form legen. Sauerrahm mit Obers verrühren, drübergießen, Rest-Käse drauf.", items: ["Sauerrahm", "Obers"] },
+      { icon: "oven", text: "15 Minuten überbacken.", timer: 900, items: [] }
+    ]
+  },
+  {
+    id: "wuerstel", name: "Würstel mit Dillrahmsauce & Erdäpfeln", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#B86A4A", "#F4ECDF", "#7F9E5E", "#E2C9A0"],
+    kid: "Würstel immer der Länge nach vierteln (Verschluckgefahr). Würstel sind salzig, Sauce nicht nachsalzen.",
+    ingredients: [
+      ["Frankfurter oder Wiener Würstel", 6, "Stk", "meat"], ["Erdäpfel festkochend", 700, "g", "veg"], ["Dill", 1, "Bund", "veg"],
+      ["Sauerrahm", 250, "g", "fresh"], ["Schlagobers", 100, "ml", "fresh"], ["Gemüsebrühe (salzarm)", 200, "ml", "pantry"],
+      ["Mehl", 1, "EL", "pantry"], ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Erdäpfel würfeln und 15 Minuten kochen.", timer: 900, items: ["Erdäpfel"] },
+      { icon: "pan", text: "Mehl in Butter kurz anschwitzen, mit Brühe und Obers aufgießen, 3 Minuten köcheln.", timer: 180, items: ["Butter", "Mehl", "Obers"] },
+      { icon: "mix", text: "Sauerrahm und viel gehackten Dill einrühren.", items: ["Sauerrahm", "Dill"] },
+      { icon: "boil", text: "Würstel in der Sauce 5 Minuten heiß werden lassen (nicht kochen).", timer: 300, items: ["Würstel"] },
+      { icon: "serve", text: "Mit Erdäpfeln servieren. Fürs Kind Würstel längs vierteln.", items: [] }
+    ]
+  },
+  {
+    id: "kartoffelgulasch", name: "Erdäpfelgulasch mit Würstel", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#B5552F", "#E2B866", "#8C5A3C", "#F3E6D3"],
+    kid: "Würstel längs vierteln. Nur edelsüßes Paprikapulver, nicht scharf.",
+    ingredients: [
+      ["Erdäpfel speckig", 900, "g", "veg"], ["Zwiebel", 2, "Stk", "veg"], ["Frankfurter Würstel", 4, "Stk", "meat"],
+      ["Tomatenmark", 1, "EL", "dry"], ["Paprikapulver edelsüß", 2, "EL", "pantry"], ["Majoran", 1, "TL", "pantry"],
+      ["Kümmel gemahlen", 0.5, "TL", "pantry"], ["Schwarzbrot", 1, "Stk", "bread"], ["Öl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebeln fein hacken, Erdäpfel in Würfel.", items: ["Zwiebel", "Erdäpfel"] },
+      { icon: "pan", text: "Zwiebeln in Öl 6 Minuten goldbraun rösten.", timer: 360, items: ["Öl"] },
+      { icon: "pan", text: "Tomatenmark und Paprika kurz mitrühren, sofort mit 700 ml Wasser aufgießen.", items: ["Tomatenmark", "Paprikapulver"] },
+      { icon: "boil", text: "Erdäpfel, Majoran und Kümmel dazu. 18 Minuten köcheln, bis es sämig wird.", timer: 1080, items: ["Majoran", "Kümmel"] },
+      { icon: "serve", text: "Würstel in Scheiben 3 Minuten mitziehen lassen. Mit Brot servieren.", items: ["Würstel", "Brot"] }
+    ]
+  },
+  {
+    id: "tantanmen", name: "Tantanmen-Nudeln mit Faschiertem", origin: "Japan", flag: "JP", time: 20,
+    colors: ["#C8743F", "#F3E6D3", "#6F8F4E", "#8C5A3C"],
+    kid: "Ohne Chili fürs Kind, Nudeln mit der Schere kürzen. Chiliöl nur bei den Großen.",
+    ingredients: [
+      ["Ramen-Nudeln", 3, "Pck", "dry"], ["Faschiertes Schwein oder Rind", 300, "g", "meat"], ["Tahin (Sesampaste)", 3, "EL", "dry"],
+      ["Pak Choi", 2, "Stk", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"],
+      ["Ingwer", 1, "Stk", "veg"], ["Sojasauce (salzreduziert)", 2, "EL", "pantry"], ["Chiliöl (nur Erwachsene)", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Knoblauch und Ingwer hacken, Pak Choi halbieren, Lauchzwiebel in Ringe.", items: ["Knoblauch", "Ingwer", "Pak Choi"] },
+      { icon: "pan", text: "Faschiertes mit Knoblauch und Ingwer 6 Minuten knusprig braten, 1 EL Soja dazu.", timer: 360, items: ["Faschiertes", "Sojasauce"] },
+      { icon: "boil", text: "Nudeln und Pak Choi 3 Minuten kochen. 200 ml Kochwasser aufheben.", timer: 180, items: ["Ramen-Nudeln"] },
+      { icon: "mix", text: "Tahin, restliche Soja und das Kochwasser zu cremiger Sauce verrühren.", items: ["Tahin"] },
+      { icon: "serve", text: "Nudeln in die Sauce, Faschiertes und Lauchzwiebel drauf. Chiliöl für die Großen.", items: ["Chiliöl"] }
+    ]
+  },
+  {
+    id: "kasnocken", name: "Kasnocken mit Röstzwiebeln", origin: "Österreich", flag: "AT", time: 20,
+    colors: ["#E8C27A", "#A0703F", "#7F9E5E", "#F4ECDF"],
+    kid: "Käse ist salzig: fürs Kind eine kleinere Portion und viel Salat dazu.",
+    ingredients: [
+      ["Frische Spätzle oder Nockerl", 600, "g", "fresh"], ["Geriebener Bergkäse", 150, "g", "fresh"], ["Zwiebel", 2, "Stk", "veg"],
+      ["Schnittlauch", 1, "Bund", "veg"], ["Grüner Salat", 1, "Stk", "veg"], ["Butter", 30, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebeln in feine Ringe schneiden.", items: ["Zwiebel"] },
+      { icon: "pan", text: "Zwiebeln in Butter 10 Minuten langsam goldbraun rösten, rausnehmen.", timer: 600, items: ["Butter"] },
+      { icon: "pan", text: "Nockerl in der Pfanne 4 Minuten erhitzen, Käse drüber und schmelzen lassen.", timer: 240, items: ["Nockerl", "Käse"] },
+      { icon: "serve", text: "Röstzwiebeln und Schnittlauch drauf. Salat dazu.", items: ["Schnittlauch", "Salat"] }
+    ]
+  },
+  {
+    id: "grenadiermarsch", name: "Grenadiermarsch", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#E2B866", "#B86A4A", "#F3E6D3", "#7F9E5E"],
+    kid: "Klassisches Resteessen, das Kinder lieben. Mit Gurkensalat.",
+    ingredients: [
+      ["Erdäpfel festkochend", 500, "g", "veg"], ["Fleckerl oder kurze Nudeln", 250, "g", "dry"], ["Beinschinken", 150, "g", "meat"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Eier", 2, "Stk", "fresh"], ["Gurke", 1, "Stk", "veg"], ["Majoran", 1, "TL", "pantry"],
+      ["Öl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Erdäpfel würfeln und 12 Minuten kochen. Nudeln parallel kochen.", timer: 720, items: ["Erdäpfel", "Nudeln"] },
+      { icon: "pan", text: "Zwiebel und Schinken in Öl 4 Minuten rösten.", timer: 240, items: ["Zwiebel", "Schinken"] },
+      { icon: "pan", text: "Erdäpfel und Nudeln dazu, 5 Minuten knusprig braten, Majoran drüber.", timer: 300, items: ["Majoran"] },
+      { icon: "pan", text: "Eier verquirlen, drübergießen und durchstocken lassen.", items: ["Eier"] },
+      { icon: "serve", text: "Mit Gurkensalat servieren.", items: ["Gurke"] }
+    ]
+  },
+  {
+    id: "schinkenfleckerl", name: "Überbackene Schinkenfleckerl", origin: "Österreich", flag: "AT", time: 15, wait: 20,
+    colors: ["#E9C98E", "#D99C8A", "#F4ECDF", "#7F9E5E"],
+    kid: "Ein Wiener Kinderklassiker. Mit grünem Salat.",
+    ingredients: [
+      ["Fleckerl", 300, "g", "dry"], ["Beinschinken", 200, "g", "meat"], ["Sauerrahm", 250, "g", "fresh"],
+      ["Eier", 2, "Stk", "fresh"], ["Geriebener Käse", 80, "g", "fresh"], ["Grüner Salat", 1, "Stk", "veg"], ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Ofen auf 200 Grad. Fleckerl kochen und abseihen.", timer: 600, items: ["Fleckerl"] },
+      { icon: "chop", text: "Schinken klein würfeln.", items: ["Schinken"] },
+      { icon: "mix", text: "Sauerrahm mit Eiern verrühren, mit Fleckerl und Schinken mischen.", items: ["Sauerrahm", "Eier"] },
+      { icon: "oven", text: "In eine gebutterte Form, Käse drüber, 20 Minuten backen.", timer: 1200, items: ["Käse", "Butter"] },
+      { icon: "serve", text: "Mit grünem Salat servieren.", items: ["Salat"] }
+    ]
+  },
+  {
+    id: "hendlstreifen", name: "Knusprige Hendlstreifen mit Erdäpfelsalat", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D9A35E", "#F3E6D3", "#7F9E5E", "#C69A6A"],
+    kid: "Panierte Streifen zum Selberhalten. Erdäpfelsalat mild abmachen.",
+    ingredients: [
+      ["Hendlbrust", 500, "g", "meat"], ["Semmelbrösel", 100, "g", "pantry"], ["Eier", 2, "Stk", "fresh"],
+      ["Erdäpfel speckig", 700, "g", "veg"], ["Rote Zwiebel", 1, "Stk", "veg"], ["Vogerlsalat", 1, "Pck", "veg"],
+      ["Zitrone", 1, "Stk", "veg"], ["Gemüsebrühe (salzarm)", 150, "ml", "pantry"], ["Mehl", 3, "EL", "pantry"], ["Öl", 6, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Erdäpfel in der Schale 18 Minuten kochen.", timer: 1080, items: ["Erdäpfel"] },
+      { icon: "chop", text: "Hendl in Streifen schneiden. In Mehl, Ei und Bröseln wenden.", items: ["Hendl", "Mehl", "Eier", "Brösel"] },
+      { icon: "pan", text: "In Öl je Seite 3 Minuten goldbraun braten.", timer: 360, items: ["Öl"] },
+      { icon: "mix", text: "Erdäpfel schälen, in Scheiben, mit warmer Brühe und feiner Zwiebel marinieren.", items: ["Brühe", "Zwiebel"] },
+      { icon: "serve", text: "Vogerlsalat unterheben, mit Zitronenspalten servieren.", items: ["Vogerlsalat", "Zitrone"] }
+    ]
+  },
+  {
+    id: "griessschmarrn", name: "Grießschmarrn mit Apfelkompott", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#EBCB8B", "#C98B5E", "#F4ECDF", "#B5C99A"],
+    kid: "Ohne Staubzucker. Das Kompott macht ihn süß genug.",
+    ingredients: [
+      ["Weizengrieß", 200, "g", "dry"], ["Milch", 500, "ml", "fresh"], ["Eier", 2, "Stk", "fresh"],
+      ["Äpfel", 4, "Stk", "veg"], ["Zimt", 1, "TL", "pantry"], ["Butter", 40, "g", "pantry"], ["Rosinen", 30, "g", "dry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Milch aufkochen, Grieß einrühren, 3 Minuten dick werden lassen. Abkühlen lassen.", timer: 180, items: ["Milch", "Grieß"] },
+      { icon: "chop", text: "Äpfel schälen und würfeln.", items: ["Äpfel"] },
+      { icon: "boil", text: "Mit wenig Wasser und Zimt 8 Minuten weich dünsten.", timer: 480, items: ["Zimt"] },
+      { icon: "mix", text: "Eier und Rosinen unter den Grieß rühren.", items: ["Eier", "Rosinen"] },
+      { icon: "pan", text: "In Butter 10 Minuten rösten und mit zwei Gabeln zerreißen.", timer: 600, items: ["Butter"] },
+      { icon: "serve", text: "Mit Apfelkompott servieren.", items: [] }
+    ]
+  },
+  {
+    id: "spinatknoedel", name: "Spinatknödel mit brauner Butter", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#5F7F4A", "#E8C27A", "#F4ECDF", "#A0703F"],
+    kid: "Knödel klein schneiden. Parmesan nur wenig.",
+    ingredients: [
+      ["Knödelbrot", 250, "g", "bread"], ["Blattspinat (TK)", 300, "g", "frozen"], ["Milch", 250, "ml", "fresh"],
+      ["Eier", 2, "Stk", "fresh"], ["Zwiebel", 1, "Stk", "veg"], ["Parmesan", 50, "g", "fresh"],
+      ["Grüner Salat", 1, "Stk", "veg"], ["Butter", 50, "g", "pantry"], ["Mehl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Knödelbrot mit warmer Milch übergießen, 10 Minuten ziehen lassen.", timer: 600, items: ["Knödelbrot", "Milch"] },
+      { icon: "pan", text: "Zwiebel hacken, in Butter anschwitzen, Spinat dazu, bis er aufgetaut ist. Gut ausdrücken.", items: ["Zwiebel", "Spinat"] },
+      { icon: "mix", text: "Alles mit Eiern, Mehl und der Hälfte vom Parmesan verkneten. 8 Knödel formen.", items: ["Eier", "Mehl", "Parmesan"] },
+      { icon: "boil", text: "In leicht wallendem Wasser 12 Minuten ziehen lassen.", timer: 720, items: [] },
+      { icon: "serve", text: "Butter bräunen, drüber, Parmesan drauf. Salat dazu.", items: ["Butter", "Salat"] }
     ]
   }
 ];
@@ -1045,9 +1180,1402 @@ const TAGS = {
   hummus: ["vegetarisch", "ofen", "orientalisch", "fingerfood"], bacalhau: ["fisch", "ofen", "mediterran"],
   erbsensuppe: ["vegetarisch", "suppe", "topf"], padthai: ["vegetarisch", "asiatisch", "pfanne", "ei"],
   pyttipanna: ["fleisch", "ei", "pfanne", "nordisch"], palatschinken: ["vegetarisch", "süß", "pfanne", "österreichisch"],
-  bulgur: ["fleisch", "pfanne", "orientalisch"]
+  bulgur: ["fleisch", "pfanne", "orientalisch"],
+  paprikahendl: ["huhn", "pfanne", "österreichisch", "rahm"], faschiertelaibchen: ["faschiert", "pfanne", "österreichisch", "fingerfood"],
+  faschiertebaellchen: ["faschiert", "topf", "österreichisch", "pasta"], faschierterbraten: ["faschiert", "ofen", "österreichisch"],
+  onepotbolo: ["faschiert", "onepot", "pasta", "mediterran"], onepotpesto: ["vegetarisch", "onepot", "pasta", "mediterran"],
+  onepotrahm: ["fleisch", "onepot", "pasta", "rahm", "österreichisch"], onepotlachs: ["fisch", "onepot", "pasta", "rahm"],
+  kartoffelauflauf: ["fleisch", "ofen", "auflauf", "österreichisch", "rahm"], zucchiniquiche: ["faschiert", "ofen", "auflauf"],
+  pikantepalatschinken: ["fleisch", "ofen", "auflauf", "österreichisch", "rahm"], wuerstel: ["fleisch", "rahm", "österreichisch", "topf"],
+  kartoffelgulasch: ["fleisch", "topf", "österreichisch"], tantanmen: ["faschiert", "asiatisch", "pasta"],
+  kasnocken: ["vegetarisch", "pfanne", "österreichisch"], grenadiermarsch: ["fleisch", "pfanne", "österreichisch", "ei"],
+  schinkenfleckerl: ["fleisch", "ofen", "auflauf", "österreichisch", "pasta"], hendlstreifen: ["huhn", "pfanne", "österreichisch", "fingerfood"],
+  griessschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch"], spinatknoedel: ["vegetarisch", "topf", "österreichisch"]
 };
 RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
+
+const MASTERCHEF = [
+ {
+  "id": "suesskartoffel-sourcream-ahornsirup",
+  "number": 1,
+  "title": "Süßkartoffel Sourcream Ahornsirup",
+  "servings": 4,
+  "ingredients": [
+   "4 Süßkartoffeln",
+   "200 g Sourcream",
+   "2 EL Ahornsirup",
+   "1 Bund Koriander",
+   "1 Prise Salz",
+   "1 Prise Pfeffer"
+  ],
+  "instructions": [
+   "Süßkartoffeln mehrmals mit einer Gabel einstechen.",
+   "Im Ofen bei 200 °C Ober-/Unterhitze ca. 45 Minuten weich backen.",
+   "Sourcream mit Ahornsirup verrühren, mit Salz und Pfeffer abschmecken.",
+   "Die fertigen Kartoffeln längs aufschneiden, leicht aufdrücken, die Creme darauf verteilen und mit gehacktem Koriander garnieren."
+  ],
+  "cuisine": "International",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "nacho-platter-mit-hackfleisch",
+  "number": 2,
+  "title": "Nacho Platter mit Hackfleisch",
+  "servings": 4,
+  "ingredients": [
+   "1 Packung Tortilla Chips",
+   "300 g Rinderhackfleisch",
+   "1 Packung Reibekäse",
+   "1 Dose Mais",
+   "1 Dose Kidneybohnen",
+   "1 Avocado",
+   "1 Tomate",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "1 TL Chilipulver"
+  ],
+  "instructions": [
+   "Rinderhackfleisch in einer Pfanne scharf anbraten, mit Salz, Pfeffer und Chilipulver würzen.",
+   "Tortilla Chips gleichmäßig auf einem Backblech verteilen.",
+   "Das angebratene Fleisch, abgetropften Mais und Bohnen über den Chips verteilen.",
+   "Mit Reibekäse bestreuen und bei 180 °C für ca. 10 Minuten überbacken, bis der Käse geschmolzen ist.",
+   "Mit gewürfelter Avocado und Tomaten frisch servieren."
+  ],
+  "cuisine": "Mexikanisch",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "safran-reis-mit-datteln",
+  "number": 3,
+  "title": "Safran Reis mit Datteln",
+  "servings": 4,
+  "ingredients": [
+   "300 g Basmatireis",
+   "10 Datteln (entsteint)",
+   "1 Prise Safranfäden",
+   "1 Zwiebel",
+   "2 EL Butter",
+   "500 ml Gemüsebrühe",
+   "1 Prise Salz"
+  ],
+  "instructions": [
+   "Safranfäden in 2 EL warmem Wasser einweichen und ziehen lassen.",
+   "Zwiebel fein würfeln und in einem Topf mit Butter glasig dünsten.",
+   "Basmatireis und gehackte Datteln hinzufügen, kurz mitdünsten.",
+   "Mit Gemüsebrühe und dem Safranwasser aufgießen, salzen.",
+   "Bei geringer Hitze abgedeckt ca. 15 Minuten quellen lassen, bis die Flüssigkeit absorbiert ist."
+  ],
+  "cuisine": "Orientalisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "gochujang-shrimp-pasta",
+  "number": 4,
+  "title": "Gochujang Shrimp Pasta",
+  "servings": 2,
+  "ingredients": [
+   "200 g Spaghetti",
+   "200 g Garnelen (entdarmt)",
+   "2 EL Gochujang (koreanische Chilipaste)",
+   "2 Knoblauchzehen",
+   "100 ml Obers",
+   "1 EL Sesamöl",
+   "2 Stängel Frühlingszwiebeln"
+  ],
+  "instructions": [
+   "Spaghetti in Salzwasser al dente kochen, etwas Nudelwasser aufbewahren.",
+   "Knoblauch fein hacken, in einer Pfanne mit Sesamöl anbraten und die Garnelen dazugeben, bis sie sich verfärben.",
+   "Gochujang-Paste und Obers einrühren, glatt rühren und kurz köcheln lassen.",
+   "Die Pasta direkt in die Sauce geben, gut durchschwenken, bei Bedarf etwas Nudelwasser hinzufügen.",
+   "Mit in Ringe geschnittenen Frühlingszwiebeln garniert servieren."
+  ],
+  "cuisine": "Asiatisch Fusion",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "spiced-braised-short-ribs-with-creamy-potatoes",
+  "number": 5,
+  "title": "Spiced Braised Short Ribs with Creamy Potatoes",
+  "servings": 4,
+  "ingredients": [
+   "1.5 kg Rinder-Short Ribs",
+   "1 Zwiebel",
+   "2 Karotten",
+   "2 Knoblauchzehen",
+   "500 ml Rinderfond",
+   "250 ml Rotwein",
+   "2 EL Tomatenmark",
+   "1 TL Zimt",
+   "2 Stück Sternanis",
+   "3 Stück Piment",
+   "1 kg Kartoffeln (mehlig)",
+   "50 g Butter",
+   "100 ml Milch"
+  ],
+  "instructions": [
+   "Short Ribs salzen und in einem Bräter rundherum scharf anbraten, danach herausnehmen.",
+   "Zwiebel, Karotten und Knoblauch würfeln, im Bratfett kräftig anrösten.",
+   "Tomatenmark unterrühren, mit Rotwein und Rinderfond ablöschen.",
+   "Fleisch, Zimt, Sternanis und Piment dazugeben, abgedeckt bei 160 °C im Ofen für ca. 3 Stunden schmoren.",
+   "Kartoffeln schälen, kochen und anschließend heiß mit Butter und Milch zu einem cremigen Püree stampfen."
+  ],
+  "cuisine": "International",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "bone-marrow-bolognese-a-la-evan-funke",
+  "number": 6,
+  "title": "Bone Marrow Bolognese a la Evan Funke",
+  "servings": 6,
+  "ingredients": [
+   "4 Stück Markknochen",
+   "500 g Rinderhackfleisch",
+   "250 g Schweinehackfleisch",
+   "1 Zwiebel",
+   "1 Karotte",
+   "1 Stangensellerie",
+   "2 EL Tomatenmark",
+   "250 ml Weißwein",
+   "500 ml Rinderbrühe",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "1 Prise Muskatnuss"
+  ],
+  "instructions": [
+   "Markknochen im Ofen bei 200 °C für ca. 15 Minuten rösten, das weiche Mark herauskratzen.",
+   "Zwiebel, Karotte und Sellerie extrem fein hacken (Soffritto).",
+   "Das Knochenmark in einem großen Topf zerlassen, das Gemüse darin bei mittlerer Hitze weich dünsten.",
+   "Rinder- und Schweinehackfleisch hinzufügen und gleichmäßig braun anbraten.",
+   "Tomatenmark einrühren, kurz mitrösten und mit Weißwein ablöschen.",
+   "Rinderbrühe schrittweise angießen und das Ragù bei kleinster Hitze offen mindestens 4 Stunden köcheln lassen.",
+   "Mit Salz, Pfeffer und frisch geriebener Muskatnuss abschmecken."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "eierschwammerl-tagliatelle",
+  "number": 7,
+  "title": "Eierschwammerl Tagliatelle",
+  "servings": 2,
+  "ingredients": [
+   "300 g Eierschwammerl (Pfifferlinge)",
+   "250 g Tagliatelle",
+   "1 Zwiebel (klein)",
+   "1 Knoblauchzehe",
+   "150 ml Obers",
+   "1 Schuss Weißwein",
+   "1 Bund Petersilie (frisch)",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "30 g Butter"
+  ],
+  "instructions": [
+   "Tagliatelle in reichlich Salzwasser bissfest kochen.",
+   "Eierschwammerl gründlich putzen und bei Bedarf kleiner schneiden.",
+   "Zwiebel und Knoblauch fein hacken, in einer Pfanne mit geschmolzener Butter anschwitzen.",
+   "Schwammerl hinzufügen und bei hoher Hitze scharf anbraten.",
+   "Mit Weißwein ablöschen, das Obers dazugießen und die Sauce leicht einkochen lassen.",
+   "Mit Salz und Pfeffer würzen, Nudeln und frisch gehackte Petersilie untermengen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "peanut-noodles",
+  "number": 8,
+  "title": "Peanut Noodles",
+  "servings": 2,
+  "ingredients": [
+   "200 g Mie-Nudeln",
+   "3 EL Erdnussbutter",
+   "2 EL Sojasauce",
+   "1 EL Sesamöl",
+   "1 EL Ahornsirup",
+   "1 Knoblauchzehe",
+   "1 TL Ingwer (gerieben)",
+   "50 ml warmes Wasser",
+   "30 g Erdnüsse (gehackt)",
+   "2 Stängel Frühlingszwiebeln"
+  ],
+  "instructions": [
+   "Mie-Nudeln nach Packungsanleitung kochen, abgießen.",
+   "Erdnussbutter, Sojasauce, Sesamöl, Ahornsirup, gepressten Knoblauch und Ingwer in einer Schüssel verrühren.",
+   "Mit etwas warmem Wasser zu einer sämigen, glatten Sauce verrühren.",
+   "Die warmen Nudeln direkt mit der Erdnusssauce vermengen.",
+   "Mit gehackten Erdnüssen und in Ringe geschnittenen Frühlingszwiebeln bestreuen."
+  ],
+  "cuisine": "Asiatisch Fusion",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "beef-rendang",
+  "number": 9,
+  "title": "Beef Rendang",
+  "servings": 4,
+  "ingredients": [
+   "1 kg Rindfleisch (Wade)",
+   "400 ml Kokosmilch",
+   "2 Stängel Zitronengras",
+   "4 Kaffirlimettenblätter",
+   "1 EL Tamarindenpaste",
+   "3 Schalotten",
+   "3 Knoblauchzehen",
+   "2 Chilischoten",
+   "1 Stück Ingwer",
+   "1 Stück Galgant",
+   "1 TL Kurkuma"
+  ],
+  "instructions": [
+   "Schalotten, Knoblauch, Chilis, Ingwer, Galgant und Kurkuma im Mixer zu einer feinen Paste verarbeiten.",
+   "Die Paste in einem großen Topf ohne zusätzliches Öl anrösten, bis sie duftet.",
+   "Das Rindfleisch in ca. 3 cm große Würfel schneiden und dazugeben, kurz mit anbraten.",
+   "Kokosmilch, flach geklopftes Zitronengras, Kaffirlimettenblätter und Tamarindenpaste hinzufügen.",
+   "Bei geringer Hitze im offenen Topf ca. 3 Stunden köcheln lassen, bis die Flüssigkeit komplett verdampft ist und das Fleisch im eigenen Öl brät."
+  ],
+  "cuisine": "Indonesisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "the-stew-a-la-alison-roman",
+  "number": 10,
+  "title": "The Stew a la Alison Roman",
+  "servings": 4,
+  "ingredients": [
+   "2 Dosen Kichererbsen",
+   "1 Zwiebel",
+   "4 Knoblauchzehen",
+   "1 Stück Ingwer",
+   "1 TL Kurkuma",
+   "1 TL Chiliflocken",
+   "2 Dosen Kokosmilch",
+   "500 ml Gemüsebrühe",
+   "1 Bund Mangold (oder Spinat)",
+   "1 Bund Minze",
+   "200 g griechischer Joghurt"
+  ],
+  "instructions": [
+   "Zwiebel, Knoblauch und Ingwer fein hacken und in reichlich Olivenöl andünsten.",
+   "Kurkuma und Chiliflocken unterrühren.",
+   "Abgetropfte Kichererbsen hinzufügen und mit einem Löffel leicht zerdrücken, bis sie knusprig braun werden; etwas Kichererbsen für die Deko entnehmen.",
+   "Mit Kokosmilch und Gemüsebrühe aufgießen, ca. 30 Minuten sämig einkochen lassen.",
+   "Mangold oder Spinat unterrühren, bis das Gemüse zusammenfällt.",
+   "In Schalen mit einem Klecks Joghurt, den knusprigen Kichererbsen und frischer Minze anrichten."
+  ],
+  "cuisine": "International",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "beef-wellington",
+  "number": 11,
+  "title": "Beef Wellington",
+  "servings": 4,
+  "ingredients": [
+   "800 g Rinderfilet (Mittelstück)",
+   "400 g Champignons",
+   "12 Scheiben Prosciutto",
+   "1 Packung Blätterteig",
+   "2 EL Senf (Englisch)",
+   "2 Eigelb",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "2 EL Olivenöl"
+  ],
+  "instructions": [
+   "Rinderfilet salzen, pfeffern, in einer Pfanne rundherum heiß anbraten und sofort dünn mit Senf bestreichen.",
+   "Champignons im Mixer extrem fein zerkleinern und in einer trockenen Pfanne rösten, bis alle Flüssigkeit vollständig verdampft ist (Duxelles).",
+   "Frischhaltefolie auslegen, Prosciutto-Scheiben leicht überlappend darauf anordnen.",
+   "Die Pilzmasse gleichmäßig auf dem Schinken verstreichen, das Filet mittig platzieren und stramm einrollen; 30 Minuten kühlen.",
+   "Blätterteig ausrollen, die Fleischrolle aus der Folie nehmen, fest im Teig einwickeln und Ränder versiegeln.",
+   "Mit Eigelb bestreichen und bei 200 °C ca. 30 Minuten backen, bis eine Kerntemperatur von 52 °C erreicht ist."
+  ],
+  "cuisine": "Englisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "risotto-alla-milanese",
+  "number": 12,
+  "title": "Risotto alla Milanese",
+  "servings": 4,
+  "ingredients": [
+   "300 g Carnaroli-Reis",
+   "1 Prise Safranfäden",
+   "1 Zwiebel",
+   "150 ml Weißwein",
+   "1.2 l Rinderbrühe",
+   "50 g Rindermark (oder Butter)",
+   "80 g Parmesan (gerieben)",
+   "50 g Butter (kalt)"
+  ],
+  "instructions": [
+   "Safranfäden in einer kleinen Schöpfkelle warmer Brühe auflösen und beiseitestellen.",
+   "Zwiebel fein würfeln, im Topf mit geschmolzenem Rindermark oder Butter glasig dünsten.",
+   "Reis hinzufügen und unter Rühren mitlaufen lassen, bis die Körner glasig sind.",
+   "Mit Weißwein ablöschen und vollständig verkochen lassen.",
+   "Kochende Brühe nach und nach dazugießen, immer erst nachgießen, wenn die Flüssigkeit aufgesaugt ist; dabei ständig rühren.",
+   "Nach halber Kochzeit die Safranflüssigkeit einrühren.",
+   "Nach ca. 18 Minuten den Topf vom Herd nehmen, kalte Butter und Parmesan kräftig unterrühren, bis das Risotto cremig-schlotzig bindet."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "tantanmen-ramen",
+  "number": 13,
+  "title": "Tantanmen Ramen",
+  "servings": 2,
+  "ingredients": [
+   "2 Portionen Ramen-Nudeln",
+   "200 g Schweinehackfleisch",
+   "2 EL Sojasauce",
+   "1 EL Shaoxing-Wein",
+   "1 TL Ingwer (gerieben)",
+   "2 EL Sesampaste (Zhi Ma Jiang)",
+   "2 EL Chiliöl (Rayu)",
+   "400 ml Sojamilch (ungesüßt)",
+   "400 ml Hühnerbrühe",
+   "1 Bund Pak Choi"
+  ],
+  "instructions": [
+   "Schweinehackfleisch mit Ingwer anbraten, mit 1 EL Sojasauce und Shaoxing-Wein ablöschen.",
+   "Für die Suppenbasis Sesampaste, die restliche Sojasauce und Chiliöl direkt gleichmäßig auf die zwei Servierschüsseln aufteilen.",
+   "Sojamilch und Hühnerbrühe zusammen in einem Topf erhitzen, aber nicht kochen lassen.",
+   "Pak Choi kurz blanchieren, Ramen-Nudeln separat kochen und abgießen.",
+   "Die heiße Brühenmischung in die Schüsseln zur Paste gießen und gut verrühren.",
+   "Nudeln hineingeben, das Hackfleisch und den Pak Choi dekorativ darauf anrichten."
+  ],
+  "cuisine": "Japanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "chili-con-carne-a-la-markus",
+  "number": 14,
+  "title": "Chili con Carne a la Markus",
+  "servings": 6,
+  "ingredients": [
+   "1 kg Rinderhackfleisch",
+   "2 Zwiebeln",
+   "3 Knoblauchzehen",
+   "2 Dosen Tomaten (gehackt)",
+   "2 Dosen Kidneybohnen",
+   "1 Dose Mais",
+   "2 EL Kakaopulver (ungesüßt)",
+   "1 TL Kreuzkümmel",
+   "1 TL Zimt",
+   "1 TL Chiliflocken",
+   "250 ml Rinderbrühe"
+  ],
+  "instructions": [
+   "Zwiebeln und Knoblauch fein würfeln und in einem großen Topf anbraten.",
+   "Rinderhackfleisch dazugeben und kräftig krümelig braun braten.",
+   "Kreuzkümmel, Zimt, Chiliflocken und Kakaopulver hinzufügen und kurz mitrösten.",
+   "Mit den gehackten Tomaten und der Rinderbrühe aufgießen.",
+   "Bei kleiner Hitze abgedeckt ca. 2 Stunden sanft köcheln lassen.",
+   "Etwa 30 Minuten vor Kochende die abgetropften Bohnen und den Mais unterrühren."
+  ],
+  "cuisine": "Mexikanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "ragu-alla-bolognese",
+  "number": 15,
+  "title": "Ragù alla Bolognese",
+  "servings": 6,
+  "ingredients": [
+   "500 g Rinderhackfleisch (grob)",
+   "250 g Schweinebauch (fein gehackt)",
+   "50 g Karotte",
+   "50 g Stangensellerie",
+   "50 g Zwiebel",
+   "200 g Passata",
+   "125 ml Weißwein",
+   "125 ml Vollmilch",
+   "200 ml Rinderbrühe",
+   "2 EL Olivenöl",
+   "1 Prise Salz",
+   "1 Prise Pfeffer"
+  ],
+  "instructions": [
+   "Fein gehackten Schweinebauch im Topf auslassen, Olivenöl hinzufügen.",
+   "Karotte, Sellerie und Zwiebel extrem fein würfeln, dazugeben und sanft weich dünsten (Soffritto).",
+   "Rinderhackfleisch zufügen und unter Rühren anbraten, bis es die Farbe verliert.",
+   "Mit Weißwein ablöschen und diesen vollständig einkochen lassen.",
+   "Passata einrühren, etwas Brühe angießen und das Ragù zugedeckt bei kleinster Hitze 3 Stunden köcheln lassen; bei Bedarf Brühe nachgießen.",
+   "Am Ende der Kochzeit die Vollmilch unterrühren, kurz miterhitzen und mit Salz und Pfeffer abschmecken."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "one-pan-creamy-parmesan-tuscan-chicken",
+  "number": 16,
+  "title": "One-Pan Creamy Parmesan Tuscan Chicken",
+  "servings": 4,
+  "ingredients": [
+   "4 Hühnerbrustfilets",
+   "2 Knoblauchzehen",
+   "100 g getrocknete Tomaten (in Öl)",
+   "200 ml Obers",
+   "100 ml Hühnerbrühe",
+   "50 g Parmesan (gerieben)",
+   "100 g Babyspinat",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "1 TL italienische Kräuter"
+  ],
+  "instructions": [
+   "Hühnerbrustfilets salzen, pfeffern und in einer Pfanne mit etwas Öl der getrockneten Tomaten beidseitig scharf anbraten, danach herausnehmen.",
+   "Gehackten Knoblauch und klein geschnittene getrocknete Tomaten im verbliebenen Fett anschwitzen.",
+   "Mit Hühnerbrühe und Obers aufgießen, italienische Kräuter hinzufügen und kurz aufkochen lassen.",
+   "Geriedenen Parmesan einrühren, bis die Sauce eindickt.",
+   "Babyspinat unterrühren, bis er zusammenfällt, das Fleisch zurück in die Pfanne geben und ca. 5 Minuten gar ziehen lassen."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "coq-au-vin-a-la-julia-child",
+  "number": 17,
+  "title": "Coq au Vin a la Julia Child",
+  "servings": 4,
+  "ingredients": [
+   "1 Packung Hühnerteile (Keulen, Brüste)",
+   "100 g Speck (gewürfelt)",
+   "20 Perlzwiebeln",
+   "250 g Champignons",
+   "2 Knoblauchzehen",
+   "500 ml Rotwein (Burgunder)",
+   "300 ml Geflügelfond",
+   "2 EL Cognac",
+   "1 Zweig Thymian",
+   "1 Stück Lorbeerblatt",
+   "20 g Butter",
+   "20 g Mehl"
+  ],
+  "instructions": [
+   "Speckwürfel in einem Bräter kross auslassen, herausnehmen.",
+   "Hühnerteile im verbliebenen Speckfett rundherum goldbraun anbraten.",
+   "Gehackten Knoblauch zufügen, mit Cognac beträufeln und vorsichtig flambieren.",
+   "Mit Rotwein und Geflügelfond aufgießen, Thymian und Lorbeerblatt hineingeben; abgedeckt ca. 40 Minuten schmoren.",
+   "Währenddessen Perlzwiebeln und geviertelte Champignons separat in einer Pfanne mit etwas Butter braun anbraten.",
+   "Huhn herausnehmen, die Sauce durch ein Sieb gießen, mit einer Mehlbutter (geknetete Butter und Mehl) sämig binden.",
+   "Fleisch, Speck, Zwiebeln und Pilze wieder in die Sauce geben und kurz erwärmen."
+  ],
+  "cuisine": "Französisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "khachapuri",
+  "number": 18,
+  "title": "Khachapuri",
+  "servings": 2,
+  "ingredients": [
+   "300 g Weizenmehl",
+   "1 TL Trockenhefe",
+   "1 TL Zucker",
+   "150 ml Wasser (lauwarm)",
+   "50 ml Milch",
+   "150 g Sulguni-Käse (oder Mozzarella)",
+   "150 g Feta-Käse",
+   "2 Eier",
+   "20 g Butter"
+  ],
+  "instructions": [
+   "Aus Mehl, Hefe, Zucker, Wasser, Milch und einer Prise Salz einen geschmeidigen Hefeteig kneten; 1 Stunde abgedeckt gehen lassen.",
+   "Sulguni und Feta grob reiben und miteinander vermischen.",
+   "Den Teig in zwei Hälften teilen und jeweils oval ausrollen.",
+   "Die Längsränder mit etwas Käsemischung belegen und nach innen einrollen, sodass eine Schiffchenform entsteht; Enden fest zwirbeln.",
+   "Die Mitte großzügig mit dem restlichen Käse füllen, bei 220 °C ca. 15 Minuten goldbraun backen.",
+   "Herausnehmen, eine Mulde in den heißen Käse drücken, je ein rohes Ei hineingleiten lassen, ein Stück Butter dazugeben und weitere 2 Minuten backen (das Eigelb muss flüssig bleiben)."
+  ],
+  "cuisine": "Georgisch",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "boeuf-bourguignon-a-la-julia-child",
+  "number": 19,
+  "title": "Boeuf Bourguignon a la Julia Child",
+  "servings": 6,
+  "ingredients": [
+   "1.5 kg Rindfleisch (Wade oder Schulter)",
+   "150 g Speck (gewürfelt)",
+   "1 Zwiebel",
+   "1 Karotte",
+   "2 EL Mehl",
+   "750 ml Rotwein (kräftig)",
+   "500 ml Rinderfond",
+   "1 EL Tomatenmark",
+   "2 Knoblauchzehen",
+   "1 Zweig Thymian",
+   "1 Stück Lorbeerblatt",
+   "20 Perlzwiebeln",
+   "250 g Champignons",
+   "30 g Butter"
+  ],
+  "instructions": [
+   "Speckwürfel auslassen, aus dem Bräter nehmen. Das Rindfleisch in großen Würfeln portionsweise im Fett scharf anbraten, herausnehmen.",
+   "Geschnittene Zwiebel und Karotte im verbliebenen Fett anrösten.",
+   "Fleisch zurückgeben, mit Mehl bestäuben und im Ofen bei 220 °C unbedeckt zweimal 4 Minuten anrösten, dazwischen wenden.",
+   "Mit Rotwein und Rinderfond auffüllen, bis das Fleisch bedeckt ist; Tomatenmark, Knoblauch und Kräuter dazugeben.",
+   "Abgedeckt bei 160 °C für ca. 3 Stunden im Ofen schmoren.",
+   "Perlzwiebeln und Pilze in einer separaten Pfanne mit Butter braun dünsten, in den letzten 30 Minuten zum Schmorfleisch hinzufügen."
+  ],
+  "cuisine": "Französisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "chicken-marbella",
+  "number": 20,
+  "title": "Chicken Marbella",
+  "servings": 4,
+  "ingredients": [
+   "1.5 kg Hühnerteile (mit Knochen)",
+   "4 Knoblauchzehen",
+   "2 EL Oregano (getrocknet)",
+   "60 ml Rotweinessig",
+   "60 ml Olivenöl",
+   "100 g Backpflaumen (entsteint)",
+   "50 g grüne Oliven (entsteint)",
+   "2 EL Kapern (mit Saft)",
+   "3 Stück Lorbeerblätter",
+   "50 g brauner Zucker",
+   "125 ml Weißwein",
+   "1 Bund Koriander (frisch)"
+  ],
+  "instructions": [
+   "Gepressten Knoblauch, Oregano, Essig, Olivenöl, Backpflaumen, Oliven, Kapern samt Saft und Lorbeerblätter verrühren.",
+   "Die Hühnerteile in dieser Marinade wenden und abgedeckt über Nacht im Kühlschrank ziehen lassen.",
+   "Hühnerteile mitsamt der kompletten Marinade in eine große Auflaufform schichten.",
+   "Das Fleisch gleichmäßig mit braunem Zucker bestreuen, den Weißwein vorsichtig außen herum angießen.",
+   "Bei 180 °C ca. 50 bis 60 Minuten backen, bis das Fleisch durchgebacken ist; dabei ab und zu mit dem Fond übergießen.",
+   "Vor dem Servieren mit frischem Koriander bestreuen."
+  ],
+  "cuisine": "International",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "chicken-coconut-milk-chickpeas",
+  "number": 21,
+  "title": "Chicken Coconut Milk & Chickpeas",
+  "servings": 4,
+  "ingredients": [
+   "600 g Hühneroberkeulen (ausgelöst)",
+   "1 Dose Kichererbsen",
+   "1 Dose Kokosmilch",
+   "1 Zwiebel",
+   "2 Knoblauchzehen",
+   "1 EL Currypulver",
+   "1 TL Kreuzkümmel",
+   "1 TL Ingwer (gerieben)",
+   "200 g Spinat (frisch)",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "2 EL Pflanzenöl"
+  ],
+  "instructions": [
+   "Hühnerfleisch in mundgerechte Stücke schneiden, salzen, pfeffern und in einer Pfanne rundherum anbraten, danach herausnehmen.",
+   "Gehackte Zwiebel, Knoblauch und Ingwer im verbliebenen Öl glasig dünsten.",
+   "Currypulver und Kreuzkümmel hinzufügen und kurz mitrösten, bis es duftet.",
+   "Mit Kokosmilch aufgießen, abgetropfte Kichererbsen und das Fleisch wieder dazugeben.",
+   "Bei mittlerer Hitze ca. 15 Minuten köcheln lassen, zum Schluss den Spinat unterrühren, bis er zusammenfällt."
+  ],
+  "cuisine": "Asiatisch Fusion",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "wraps",
+  "number": 22,
+  "title": "Wraps",
+  "servings": 4,
+  "ingredients": [
+   "4 Tortilla-Wraps (groß)",
+   "400 g Hühnerbruststreifen",
+   "1 Paprika",
+   "1 rote Zwiebel",
+   "1 Dose Mais",
+   "1 Avocado",
+   "150 g Sauerrahm",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "1 TL Paprikapulver"
+  ],
+  "instructions": [
+   "Hühnerbruststreifen mit Salz, Pfeffer und Paprikapulver würzen und in einer Pfanne scharf anbraten.",
+   "Paprika und rote Zwiebel in feine Streifen schneiden.",
+   "Avocado mit einer Gabel zerdrücken, mit Sauerrahm, Salz und Pfeffer zu einer glatten Creme rühren.",
+   "Tortilla-Wraps kurz in einer trockenen Pfanne oder der Mikrowelle erwärmen.",
+   "Mit der Avocadocreme bestreichen, Fleisch, Gemüse und Mais mittig darauf verteilen und fest aufrollen."
+  ],
+  "cuisine": "International",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "pasta-primavera",
+  "number": 23,
+  "title": "Pasta Primavera",
+  "servings": 4,
+  "ingredients": [
+   "400 g Penne",
+   "1 Zucchini",
+   "1 Paprika",
+   "200 g Spargel",
+   "150 g Erbsen",
+   "200 g Kirschtomaten",
+   "3 EL Olivenöl",
+   "2 Knoblauchzehen",
+   "1 Saft einer Zitrone",
+   "50 g Parmesan",
+   "1 Bund Baslikum (frisch)"
+  ],
+  "instructions": [
+   "Penne in reichlich Salzwasser al dente kochen.",
+   "Zucchini, Paprika und Spargel in mundgerechte Stücke schneiden.",
+   "Das Gemüse in einer großen Pfanne mit Olivenöl knackig anbraten.",
+   "Gehackten Knoblauch, Erbsen und halbierte Kirschtomaten für die letzten Minuten miterhitzen.",
+   "Die Pasta abgießen, direkt zum Gemüse in die Pfanne geben, mit Zitronensaft, Parmesan und frischem Basilikum vermengen."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "pasta-puttanesca",
+  "number": 24,
+  "title": "Pasta Puttanesca",
+  "servings": 2,
+  "ingredients": [
+   "250 g Spaghetti",
+   "4 EL Olivenöl",
+   "3 Knoblauchzehen",
+   "4 Sardellenfilets",
+   "1 Prise Chiliflocken",
+   "2 EL Kapern",
+   "100 g schwarze Oliven (entsteint)",
+   "1 Dose Tomaten (gehackt)",
+   "1 Prise Salz",
+   "1 Bund Petersilie"
+  ],
+  "instructions": [
+   "Spaghetti in kochendem Salzwasser al dente zubereiten.",
+   "Knoblauch fein hacken, Sardellenfilets zerkleinern und beides in einer Pfanne mit Olivenöl sanft erhitzen, bis die Sardellen komplett zerfallen.",
+   "Chiliflocken, Kapern und halbierte Oliven kurz mitbraten.",
+   "Gehackte Tomaten hinzufügen, die Sauce ca. 15 Minuten ohne Deckel einkochen lassen.",
+   "Nudeln abgießen, direkt in die Sauce geben, durchschwenken und mit gehackter Petersilie bestreuen."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "schweinsbraten-a-la-julia",
+  "number": 25,
+  "title": "Schweinsbraten a la Julia",
+  "servings": 4,
+  "ingredients": [
+   "1.5 kg Schweineschopf (mit Schwarte)",
+   "4 Knoblauchzehen",
+   "1 EL Kümmel (ganz)",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "2 Zwiebeln",
+   "250 ml Rinderbrühe",
+   "250 ml Bier (Märzen)"
+  ],
+  "instructions": [
+   "Die Schwarte des Schweineschopfs rautenförmig einschneiden, ohne das Fleisch zu verletzen.",
+   "Knoblauch pressen, mit Kümmel, Salz und Pfeffer vermischen und das Fleisch kräftig damit einreiben.",
+   "Zwiebeln vierteln, in einer Bratform verteilen, das Fleisch mit der Schwarte nach oben darauf platzieren.",
+   "Etwas Rinderbrühe angießen, im Ofen bei 160 °C für ca. 2.5 Stunden garen.",
+   "Währenddessen regelmäßig mit Bier und dem austretenden Bratensaft übergießen.",
+   "Für die letzten 15 Minuten die Temperatur auf 230 °C erhöhen, damit die Kruste aufpoppt."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "cobb-salad",
+  "number": 27,
+  "title": "Cobb Salad",
+  "servings": 2,
+  "ingredients": [
+   "1 Römersalat",
+   "200 g Hühnerbrustfilet",
+   "4 Scheiben Bacon",
+   "2 Eier",
+   "1 Avocado",
+   "100 g Kirschtomaten",
+   "50 g Roquefort-Käse",
+   "3 EL Olivenöl",
+   "1 EL Rotweinessig",
+   "1 TL Senf",
+   "1 Prise Salz",
+   "1 Prise Pfeffer"
+  ],
+  "instructions": [
+   "Hühnerbrust braten, würzen und in Streifen schneiden; Bacon in einer Pfanne knusprig auslassen.",
+   "Eier hart kochen, abschrecken und pellen.",
+   "Römersalat putzen, hacken und flach auf einer großen Servierplatte auslegen.",
+   "Hühnerfleisch, zerbröselten Bacon, gehackte Eier, gewürfelte Avocado, halbierte Kirschtomaten und zerbröselten Roquefort in sauberen, parallelen Streifen nebeneinander auf dem Salat anordnen.",
+   "Olivenöl, Rotweinessig, Senf, Salz und Pfeffer zu einem Dressing verrühren und separat dazu reichen."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "tom-kha-gai",
+  "number": 28,
+  "title": "Tom Kha Gai",
+  "servings": 2,
+  "ingredients": [
+   "400 ml Kokosmilch",
+   "250 ml Hühnerbrühe",
+   "300 g Hühnerbrustfilet",
+   "1 Stängel Zitronengras",
+   "3 Kaffirlimettenblätter",
+   "1 Stück Galgant",
+   "150 g Champignons",
+   "2 EL Fischsauce",
+   "1 EL Limettensaft",
+   "1 TL Palmzucker",
+   "1 Bund Koriander",
+   "1 Chilischote"
+  ],
+  "instructions": [
+   "Kokosmilch und Hühnerbrühe in einem Topf zum Kochen bringen.",
+   "Zitronengras flach klopfen, Galgant in Scheiben schneiden, zusammen mit den Kaffirlimettenblättern in die Brühe geben; 10 Minuten köcheln lassen.",
+   "Hühnerbrustfilet in feine Streifen, Champignons in Scheiben schneiden und in der Suppe ca. 5 bis 7 Minuten gar ziehen lassen.",
+   "Die Suppe mit Fischsauce, Limettensaft und Palmzucker harmonisch abschmecken.",
+   "Zitronengras und Galgantscheiben entfernen, mit Koriander und Chili garniert servieren."
+  ],
+  "cuisine": "Thailändisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "huehnersuppe-a-la-david",
+  "number": 29,
+  "title": "Hühnersuppe a la David",
+  "servings": 6,
+  "ingredients": [
+   "1 Suppenhuhn (ganz)",
+   "1 Bund Suppengrün",
+   "1 Zwiebel",
+   "2 Stück Lorbeerblätter",
+   "1 TL Pfefferkörner",
+   "1 Prise Salz",
+   "150 g Suppennudeln"
+  ],
+  "instructions": [
+   "Zwiebel ungeschält halbieren und die Schnittflächen im großen Topf ohne Fett dunkelbraun anrösten.",
+   "Das gewaschene Suppenhuhn, Lorbeerblätter, Pfefferkörner und Salz hinzufügen, komplett mit kaltem Wasser bedecken.",
+   "Aufkochen lassen und bei kleiner Hitze ca. 2 Stunden leicht simmern lassen; entstehenden Schaum regelmäßig abschöpfen.",
+   "Suppengrün putzen, klein schneiden und während der letzten Stunde der Kochzeit mitgaren.",
+   "Huhn herausnehmen, das Fleisch vom Knochen lösen und klein schneiden; die Suppe durch ein Sieb gießen.",
+   "Fleisch und Gemüse zurück in die Brühe geben, mit separat gekochten Suppennudeln servieren."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "vietnamese-summer-rolls",
+  "number": 30,
+  "title": "Vietnamese Summer Rolls",
+  "servings": 2,
+  "ingredients": [
+   "8 Blätter Reispapier",
+   "100 g Glasnudeln",
+   "150 g Garnelen (gegart)",
+   "1 Gurke",
+   "1 Karotte",
+   "1 Avocado",
+   "1 Bund Minze",
+   "1 Bund Koriander",
+   "100 ml Erdnusssauce"
+  ],
+  "instructions": [
+   "Glasnudeln nach Packungsbeilage zubereiten und abtropfen lassen.",
+   "Gurke und Karotte in feine Stifte (Julienne) hobeln, die Avocado in dünne Scheiben schneiden.",
+   "Ein Blatt Reispapier für wenige Sekunden in lauwarmes Wasser tauchen, flach auf ein feuchtes Arbeitstuch legen.",
+   "Mittig mit Kräutern, Nudeln, Gemüsestiften, Avocado und Garnelen belegen.",
+   "Die Seitenränder über die Füllung klappen und von unten nach oben stramm aufrollen; mit Erdnusssauce als Dip servieren."
+  ],
+  "cuisine": "Vietnamesisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "banana-pudding-a-la-magnolia-bakery",
+  "number": 31,
+  "title": "Banana Pudding a la Magnolia Bakery",
+  "servings": 8,
+  "ingredients": [
+   "1 Dose Milchmädchen (397 g)",
+   "350 ml Wasser (eiskalt)",
+   "1 Packung Vanille-Anrührpuddingpulver (Instant)",
+   "700 ml Obers",
+   "1 Packung Nilla Wafers (oder Vanillekekse)",
+   "4 reife Bananen"
+  ],
+  "instructions": [
+   "Gezuckerte Kondensmilch und eiskaltes Wasser in einer Schüssel gründlich verrühren.",
+   "Das Instant-Puddingpulver klumpenfrei unterrühren, die Mischung abdecken und für mindestens 4 Stunden kalt stellen.",
+   "Das Obers mit dem Handmixer steif schlagen.",
+   "Den fest gewordenen Pudding aus dem Kühlschrank holen und vorsichtig unter das geschlagene Obers heben.",
+   "In einer großen gläsernen Auflaufform abwechselnd Kekse, Bananenscheiben und Creme aufschichten, mit Creme abschließen.",
+   "Mindestens 4 Stunden kühl lagern, damit die Kekse die richtige, kuchenartige Konsistenz annehmen."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "tiramisu-a-la-hias",
+  "number": 32,
+  "title": "Tiramisu a la Hias",
+  "servings": 6,
+  "ingredients": [
+   "500 g Mascarpone",
+   "4 Eidotter",
+   "2 Eiweiß",
+   "100 g Zucker",
+   "300 ml Espresso (stark, abgekühlt)",
+   "4 EL Amaretto",
+   "250 g Biskotten",
+   "3 EL Kakaopulver"
+  ],
+  "instructions": [
+   "Eidotter mit dem Zucker cremig weiß aufschlagen, danach die Mascarpone löffelweise unterrühren.",
+   "Eiweiß in einer sauberen Schüssel steif schlagen und behutsam unter die Mascarponecreme heben.",
+   "Den kalten Espresso mit Amaretto in einer flachen Schale mischen.",
+   "Biskotten ganz kurz in den Kaffee tauchen und den Boden einer eckigen Form damit lückenlos auslegen.",
+   "Die Hälfte der Creme auf den Biskotten glatt verstreichen, eine weitere Schicht getauchte Biskotten darauflegen.",
+   "Mit der restlichen Creme abschließen, mindestens 5 Stunden kalt stellen und vor dem Servieren mit Kakaopulver bestreuen."
+  ],
+  "cuisine": "Italienisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "strawberry-cobbler",
+  "number": 33,
+  "title": "Strawberry Cobbler",
+  "servings": 4,
+  "ingredients": [
+   "600 g Erdbeeren (frisch)",
+   "100 g Zucker",
+   "1 EL Speisestärke",
+   "1 EL Zitronensaft",
+   "150 g Weizenmehl",
+   "1 TL Backpulver",
+   "1 Prise Salz",
+   "70 g Butter (kalt)",
+   "100 ml Milch"
+  ],
+  "instructions": [
+   "Erdbeeren putzen, halbieren, mit 50 g Zucker, Speisestärke und Zitronensaft vermengen und in eine Auflaufform füllen.",
+   "Für den Teig das Mehl mit den restlichen 50 g Zucker, Backpulver und Salz in einer Schüssel mischen.",
+   "Die kalte Butter in kleinen Stücken dazugeben und mit den Fingerspitzen rasch zu einer krümeligen Konsistenz reiben.",
+   "Die Milch hinzugeben und kurz zu einem zähen, klebrigen Teig verrühren.",
+   "Den Teig in Form von unregelmäßigen Kleksen auf den Erdbeeren verteilen.",
+   "Bei 190 °C ca. 35 Minuten backen, bis die Oberfläche goldbraun ist und die Fruchtmasse am Rand blubbert."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "cheese-cake-a-la-inko-nito",
+  "number": 34,
+  "title": "Cheese Cake a la Inko Nito",
+  "servings": 6,
+  "ingredients": [
+   "600 g Frischkäse (Doppelrahm)",
+   "150 g Zucker",
+   "3 Eier",
+   "200 g Sauerrahm",
+   "1 EL Speisestärke",
+   "1 TL Vanilleextrakt",
+   "1 Saft einer halben Zitrone"
+  ],
+  "instructions": [
+   "Sicherstellen, dass alle Zutaten Zimmertemperatur haben.",
+   "Frischkäse und Zucker mit dem Handmixer glattrühren, die Eier einzeln nacheinander unterrühren.",
+   "Sauerrahm, Speisestärke, Vanilleextrakt und Zitronensaft dazugeben und zügig zu einer homogenen Masse rühren.",
+   "Eine Springform (20 cm) komplett mit Backpapier auskleiden, die Masse hineingießen.",
+   "Bei 200 °C ca. 30 bis 35 Minuten backen, bis die Oberfläche kräftig dunkelbraun ist, der Kern aber noch sichtlich wackelt.",
+   "Den Kuchen komplett abkühlen lassen und vor dem Anschneiden im Kühlschrank vollständig durchkühlen lassen."
+  ],
+  "cuisine": "International",
+  "type": "Dessert"
+ },
+ {
+  "id": "buttermilch-nussbutter-kuchen",
+  "number": 35,
+  "title": "Buttermilch Nussbutter Kuchen",
+  "servings": 8,
+  "ingredients": [
+   "250 g Weizenmehl",
+   "200 g Zucker",
+   "1 Packung Backpulver",
+   "1 Prise Salz",
+   "250 ml Buttermilch",
+   "2 Eier",
+   "100 g Butter",
+   "100 g Mandeln (gehobelt)"
+  ],
+  "instructions": [
+   "Butter in einem kleinen Topf schmelzen und köcheln lassen, bis sich braune Pünktchen bilden und sie nussig duftet (Nussbutter); abkühlen lassen.",
+   "Weizenmehl, 150 g Zucker, Backpulver und eine Prise Salz in einer Rührschüssel trocken vermischen.",
+   "Buttermilch, Eier und die flüssige Nussbutter hinzugeben und rasch zu einem glatten Teig verrühren.",
+   "Den Teig auf ein kleines, mit Backpapier ausgelegtes Backblech streichen.",
+   "Gleichmäßig mit den gehobelten Mandeln und den restlichen 50 g Zucker bestreuen.",
+   "Im vorgeheizten Ofen bei 180 °C für ca. 25 bis 30 Minuten goldgelb backen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "cinnamon-rolls",
+  "number": 36,
+  "title": "Cinnamon Rolls",
+  "servings": 12,
+  "ingredients": [
+   "500 g Weizenmehl",
+   "1 Packung Trockenhefe",
+   "160 g Zucker",
+   "140 g Butter",
+   "250 ml Milch (lauwarm)",
+   "1 Ei",
+   "2 EL Zimt",
+   "100 g Frischkäse",
+   "80 g Staubzucker"
+  ],
+  "instructions": [
+   "Aus Mehl, Hefe, 60 g Zucker, 60 g geschmolzener Butter, Milch und Ei einen Hefeteig kneten; 1 Stunde warm gehen lassen.",
+   "Den Teig auf einer bemehlten Arbeitsfläche rechteckig ausrollen, mit 80 g weicher Butter flächig bestreichen.",
+   "Die verbliebenen 100 g braunen Zucker mit dem Zimt mischen, gleichmäßig auf die Butter streuen.",
+   "Den Teig von der langen Seite her stramm aufrollen und in ca. 3 bis 4 cm dicke Scheiben schneiden.",
+   "Die Schnecken in eine gefettete Auflaufform setzen und abgedeckt weitere 30 Minuten gehen lassen.",
+   "Bei 180 °C ca. 25 Minuten goldbraun backen. Aus Frischkäse, weicher Butter (50 g) und Staubzucker das Frosting rühren und warm bestreichen."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "shakshuka",
+  "number": 37,
+  "title": "Shakshuka",
+  "servings": 2,
+  "ingredients": [
+   "1 Zwiebel",
+   "1 Paprika (rot)",
+   "2 Knoblauchzehen",
+   "1 Dose Tomaten (gehackt)",
+   "1 TL Kreuzkümmel",
+   "1 TL Paprikapulver",
+   "1 Prise Chiliflocken",
+   "4 Eier",
+   "50 g Feta-Käse",
+   "1 Bund Koriander",
+   "2 EL Olivenöl"
+  ],
+  "instructions": [
+   "Zwiebel und Paprika in feine Würfel schneiden, Knoblauch hacken.",
+   "Das Gemüse in einer Pfanne mit Olivenöl bei mittlerer Hitze weich dünsten.",
+   "Kreuzkümmel, Paprikapulver und Chiliflocken unterrühren, kurz mitrösten.",
+   "Mit den gehackten Tomaten aufgießen, mit Salz und Pfeffer würzen und offen ca. 15 Minuten dicklich einkochen lassen.",
+   "Mit einem Löffel vier kleine Mulden in die Sauce drücken und jeweils ein Ei hineinschlagen.",
+   "Einen Deckel aufsetzen und bei geringer Hitze 6 bis 8 Minuten garen, bis das Eiweiß fest, das Eigelb aber noch flüssig ist; mit Feta und Koriander bestreuen."
+  ],
+  "cuisine": "Orientalisch",
+  "type": "Vorspeise"
+ },
+ {
+  "id": "kaiserschmarrn",
+  "number": 38,
+  "title": "Kaiserschmarrn",
+  "servings": 2,
+  "ingredients": [
+   "150 g Weizenmehl",
+   "250 ml Milch",
+   "4 Eier",
+   "30 g Kristallzucker",
+   "1 Prise Salz",
+   "50 g Butter",
+   "30 g Rosinen",
+   "2 EL Staubzucker"
+  ],
+  "instructions": [
+   "Weizenmehl, Milch, Eidotter und eine Prise Salz zu einem glatten, klumpenfreien Teig verrühren.",
+   "Das Eiweiß in einer separaten Schüssel mit dem Kristallzucker steif schlagen.",
+   "Den Eischnee vorsichtig unter den flüssigen Teig heben.",
+   "Butter in einer großen Pfanne aufschäumen lassen, den Teig eingießen, optional mit Rosinen bestreuen.",
+   "Bei mittlerer Hitze anbacken lassen, vierteln, wenden und auf der Rückseite fertigbacken.",
+   "Mit zwei Gabeln in mundgerechte Stücke zerreißen, mit etwas Zucker in der Pfanne kurz karamellisieren lassen; mit Staubzucker bestreuen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "club-sandwich",
+  "number": 39,
+  "title": "Club Sandwich",
+  "servings": 1,
+  "ingredients": [
+   "3 Scheiben Toastbrot",
+   "100 g Hühnerbrustfilet",
+   "3 Scheiben Bacon",
+   "1 Tomate",
+   "2 Blätter Salat",
+   "2 EL Mayonnaise",
+   "1 Prise Salz",
+   "1 Prise Pfeffer"
+  ],
+  "instructions": [
+   "Die drei Toastbrotscheiben im Toaster goldbraun rösten.",
+   "Hühnerbrustfilet und Bacon in einer Pfanne knusprig braten, das Fleisch salzen, pfeffern und in dünne Scheiben schneiden.",
+   "Die Tomate in dünne Scheiben schneiden, den Salat waschen.",
+   "Die erste Toastscheibe mit Mayonnaise bestreichen, mit Salat, Hühnerfleisch und Tomaten belegen.",
+   "Die zweite Toastscheibe darauflegen, erneut bestreichen, mit Bacon, Salat und Tomate belegen.",
+   "Mit der dritten Toastscheibe deckeln, das Sandwich diagonal durchschneiden und mit Holzspießen fixieren."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "smash-burger",
+  "number": 40,
+  "title": "Smash Burger",
+  "servings": 2,
+  "ingredients": [
+   "2 Burger Buns",
+   "300 g Rinderhackfleisch (frisch, hoher Fettanteil)",
+   "2 Scheiben Cheddar-Käse",
+   "1 Zwiebel",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "4 EL Burgersauce"
+  ],
+  "instructions": [
+   "Das Hackfleisch zügig zu zwei lockeren Kugeln à 150 g formen, dabei keineswegs kneten.",
+   "Eine gusseiserne Pfanne ohne Fett extrem stark erhitzen.",
+   "Die Fleischkugeln in die Pfanne setzen und sofort mit einem flachen Wender bombenfest auf den Pfannenboden pressen.",
+   "Die hauchdünnen Patties kräftig salzen, pfeffern und ca. 2 Minuten braten, bis sich eine dunkle Kruste gebildet hat.",
+   "Wenden, sofort mit je einer Scheibe Cheddar belegen und 1 weitere Minute braten, bis der Käse zerläuft.",
+   "Die aufgeschnittenen Buns anrösten, mit Sauce, feinen Zwiebelwürfeln und den Patties zusammensetzen."
+  ],
+  "cuisine": "Amerikanisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "pad-thai",
+  "number": 41,
+  "title": "Pad Thai",
+  "servings": 2,
+  "ingredients": [
+   "120 g Reisbandnudeln",
+   "150 g Garnelen (oder Tofu)",
+   "2 Knoblauchzehen",
+   "2 Eier",
+   "100 g Sojasprossen",
+   "3 EL Erdnüsse (geröstet, gehackt)",
+   "3 EL Tamarindenpaste",
+   "2 EL Fischsauce",
+   "2 EL Palmzucker",
+   "2 Stängel Frühlingszwiebeln"
+  ],
+  "instructions": [
+   "Reisbandnudeln in einer Schüssel mit warmem Wasser für ca. 30 Minuten einweichen.",
+   "Für die Sauce Tamarindenpaste, Fischsauce und Palmzucker in einem kleinen Topf leicht erwärmen, bis der Zucker geschmolzen ist.",
+   "Gehackten Knoblauch mit Garnelen oder Tofu im heißen Wok scharf anbraten, danach an den Rand schieben.",
+   "Die Eier in die freie Mitte des Woks schlagen und unter Rühren anstocken lassen.",
+   "Die abgetropften Nudeln und die Sauce hinzufügen, alles intensiv vermengen, bis die Nudeln die Flüssigkeit aufgesaugt haben.",
+   "Sojasprossen und in Stücke geschnittene Frühlingszwiebeln unterrühren, mit Erdnüssen bestreuen."
+  ],
+  "cuisine": "Thailändisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "asiatischer-schweinebraten",
+  "number": 42,
+  "title": "Asiatischer Schweinebraten",
+  "servings": 4,
+  "ingredients": [
+   "1.2 kg Schweineschopf",
+   "4 EL Sojasauce",
+   "2 EL Hoisin-Sauce",
+   "1 EL Honig",
+   "1 TL Fünf-Gewürze-Pulver",
+   "3 Knoblauchzehen",
+   "1 TL Ingwer (gerieben)",
+   "200 ml Geflügelbrühe"
+  ],
+  "instructions": [
+   "Knoblauch pressen, mit Sojasauce, Hoisin-Sauce, Honig, Fünf-Gewürze-Pulver und Ingwer zu einer Marinade anrühren.",
+   "Den Schweineschopf rundherum dick mit der Marinade einreiben und idealerweise mehrere Stunden abgedeckt ziehen lassen.",
+   "Das Fleisch in einen Bräter setzen, die Geflügelbrühe auf den Pfannenboden gießen.",
+   "Im Ofen bei 160 °C für ca. 2 Stunden garen.",
+   "Dabei das Fleisch in regelmäßigen Abständen mit der restlichen Marinade und dem Bratensaft bepinseln.",
+   "Vor dem Aufschneiden ca. 10 Minuten ruhen lassen."
+  ],
+  "cuisine": "Asiatisch Fusion",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "apfelstrudel",
+  "number": 43,
+  "title": "Apfelstrudel",
+  "servings": 4,
+  "ingredients": [
+   "250 g Weizenmehl (glatt)",
+   "1 Prise Salz",
+   "1 EL Pflanzenöl",
+   "125 ml Wasser (lauwarm)",
+   "1.2 kg Äpfel (säuerlich)",
+   "100 g Semmelbrösel",
+   "100 g Butter",
+   "80 g Kristallzucker",
+   "1 TL Zimt",
+   "50 g Rosinen",
+   "1 Saft einer halben Zitrone"
+  ],
+  "instructions": [
+   "Aus Weizenmehl, Salz, Pflanzenöl und lauwarmem Wasser einen geschmeidigen Strudelteig kneten; 30 bis 60 Minuten abgedeckt rasten lassen.",
+   "Semmelbrösel in einer Pfanne mit geschmolzener Butter goldbraun rösten.",
+   "Äpfel schälen, entkernen, blättrig schneiden und sofort mit Zitronensaft, Zimt, Kristallzucker und Rosinen mischen.",
+   "Den Strudelteig auf einem bemehlten Tuch hauchdünn ausziehen, bis er durchscheinend ist.",
+   "Teigfläche mit flüssiger Butter bestreichen, mit den gerösteten Bröseln bestreuen und die Apfelmischung darauf verteilen.",
+   "Den Strudel mithilfe des Tuchs vorsichtig einrollen, Enden verschließen und bei 190 °C ca. 40 Minuten goldbraun backen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Dessert"
+ },
+ {
+  "id": "coconut-banana-cream-pudding",
+  "number": 44,
+  "title": "Coconut Banana Cream Pudding",
+  "servings": 4,
+  "ingredients": [
+   "400 ml Kokosmilch (Vollfett)",
+   "250 ml Obers",
+   "100 g Zucker",
+   "3 Eigelb",
+   "30 g Maisstärke",
+   "1 TL Vanilleextrakt",
+   "1 Prise Salz",
+   "4 reife Bananen",
+   "30 g Kokosraspeln",
+   "1 Packung Butterkekse"
+  ],
+  "instructions": [
+   "Kokosmilch und Obers in einem Topf bei mittlerer Hitze erwärmen.",
+   "In einer Schüssel Eigelb, Zucker, Maisstärke und Salz gründlich verschlagen.",
+   "Eine Kelle der heißen Kokosmilch langsam unter die Eimasse rühren, um diese zu temperieren, danach alles zurück in den Topf gießen.",
+   "Unter ständigem Rühren auf dem Herd eindicken lassen, bis ein sämiger Pudding entsteht; vom Herd nehmen und Vanilleextrakt einrühren.",
+   "In Gläsern oder einer Form abwechselnd Butterkekse, Bananenscheiben und den abgekühlten Pudding aufschichten.",
+   "Mit in einer trockenen Pfanne gerösteten Kokosraspeln garnieren und mindestens 3 Stunden im Kühlschrank fest werden lassen."
+  ],
+  "cuisine": "International",
+  "type": "Dessert"
+ },
+ {
+  "id": "roasted-chickpea-joghurt-spread",
+  "number": 45,
+  "title": "Roasted Chickpea Joghurt Spread",
+  "servings": null,
+  "ingredients": [
+   "400 g griechischer Joghurt (vollfett)",
+   "1/2 Bund frischer Dill",
+   "1/2 Bund frische Minze",
+   "Saft einer 1/2 Zitrone",
+   "1 Dose Kichererbsen (ca. 240 g Abtropfgewicht)",
+   "2 EL Olivenöl",
+   "1 TL Paprikapulver (edelsüß)",
+   "300 g Faschiertes (gemischt, Rind oder Lamm nach Wahl; alternativ Hühner- oder Putenfaschiertes)",
+   "200 g Champignons",
+   "1 Prise Salz",
+   "1 Prise Pfeffer",
+   "100 g Hummus",
+   "50 g Feta-Käse",
+   "1 Gurke",
+   "2 EL Weißweinessig",
+   "1 EL Zucker",
+   "2 Pitabrote oder 200 g Fladenbrot"
+  ],
+  "instructions": [
+   "Die Kräuter (Dill und Minze) waschen, trocken schütteln und fein hacken. In einer Schüssel 400 g griechischen Joghurt mit dem Saft einer halben Zitrone, dem 1/2 Bund gehackten Dill und dem 1/2 Bund gehackten Minze verrühren. Mit 1 Prise Salz und 1 Prise Pfeffer abschmecken und beiseitestellen.",
+   "1 Dose Kichererbsen abgießen, gründlich abspülen und gut trocken tupfen. Die Kichererbsen auf einem Backblech verteilen, mit 1 EL Olivenöl und 1 TL Paprikapulver vermischen. Bei 200 °C Ober-/Unterhitze für ca. 20 Minuten im Ofen rösten, bis sie leicht knusprig sind. Optional für die letzten 5 Minuten die Grillfunktion aktivieren. Danach mit 1 Prise Salz und 1 Prise Pfeffer würzen.",
+   "Die 200 g Champignons putzen und in Scheiben oder Viertel schneiden. 1 EL Olivenöl in einer Pfanne erhitzen. Das 300 g Faschierte (oder deine Wahl) dazugeben und krümelig scharf anbraten. Anschließend die Champignons hinzufügen und mitbraten, bis sie gar sind. Das Faschierte mit 1 Prise Salz und 1 Prise Pfeffer würzen.",
+   "Für die marinierten Gurken: Die 1 Gurke waschen und in dünne Scheiben hobeln oder schneiden. In einer kleinen Schüssel die Gurkenscheiben mit 2 EL Weißweinessig, 1 EL Zucker und einer Prise Salz vermischen und kurz ziehen lassen.",
+   "Die 2 Pitabrote oder 200 g Fladenbrot nach Packungsanleitung toasten oder in einer Pfanne erwärmen.",
+   "Zum Anrichten den Kräuterjoghurt auf dem Boden zweier tiefer Teller oder Schüsseln verteilen. Darauf die gerösteten Kichererbsen und das Faschierte mit Champignons schichten.",
+   "Anschließend 100 g Hummus in Klecksen auf die Platte geben, den 50 g Feta-Käse darüber bröseln und die marinierten Gurkenscheiben dazu legen. Das Ganze mit dem Pitabrot servieren."
+  ],
+  "cuisine": "Israelisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "hollersaft",
+  "number": 46,
+  "title": "Hollersaft",
+  "servings": null,
+  "ingredients": [
+   "3 Liter Wasser",
+   "3 Kilo Zucker",
+   "100 Gramm Zitronensäure",
+   "45 Holunderblüten",
+   "3 Orangen (ungespritzt)",
+   "3 Zitronen (ungespritzt)"
+  ],
+  "instructions": [
+   "3 Liter Wasser zum Kochen bringen.",
+   "3 Kilo Zucker darin auflösen und 100 Gramm Zitronensäure ebenfalls einrühren und auflösen.",
+   "Den Sirup abkühlen lassen.",
+   "45 Holunderblüten (möglichst Insekten leicht abgeschüttelt) mit 3 Orangen (ungespritzt) und 3 Zitronen (ungespritzt) – jeweils in Scheiben geschnitten – in einen großen Topf geben.",
+   "Den abgekühlten Sirup darüber schütten und mit Tellern und z.B. Milchtüten beschweren. Darauf achten, dass alles vom Sirup bedeckt ist, um Schimmelbildung zu vermeiden.",
+   "In den kühlen Keller stellen und 3-4 Tage ziehen lassen.",
+   "Nach 3-4 Tagen durch ein Tuch absieben, den Sirup nochmal aufkochen und heiß in Flaschen füllen."
+  ],
+  "cuisine": "Österreichisch",
+  "type": "Getränk"
+ },
+ {
+  "id": "orzo-mit-garnelen",
+  "number": 47,
+  "title": "Orzo mit Garnelen",
+  "servings": null,
+  "ingredients": [
+   "170 g Orzo",
+   "200 g rohe geschälte Garnelen",
+   "1 Knoblauchzehe",
+   "100 g Feta",
+   "2 TL Fenchelsamen",
+   "Chiliflocken nach Belieben",
+   "Abrieb von 1 Bio-Orange",
+   "400 g stückige Tomaten (Dose)",
+   "ca. 200 ml Gemüsebrühe",
+   "1 Handvoll Basilikumblätter",
+   "ca. 6 EL Olivenöl",
+   "Salz",
+   "Pfeffer"
+  ],
+  "instructions": [
+   "Zuerst wird der 100 g Feta kurz mariniert. Dafür 2 TL Fenchelsamen in einer Pfanne ohne Fett leicht anrösten, anschließend im Mörser leicht zerstoßen. Den Feta in kleine Würfel schneiden und mit 2 EL Olivenöl, der Hälfte der Fenchelsamen (1 TL) und etwas Chiliflocken (je nach gewünschter Schärfe) in einer Schüssel vermischen und beiseite stellen.",
+   "Falls tiefgefrorene Garnelen verwendet werden: In ein Sieb geben, Wasser darüber laufen lassen und abtropfen lassen. Die 1 Knoblauchzehe schälen und ganz fein hacken, die 1 Handvoll Basilikumblätter waschen und ebenfalls hacken. Nun in einer Pfanne oder einem Topf mit Deckel 2 EL Olivenöl erhitzen und die 170 g Orzo-Nudeln mit etwas Salz und Pfeffer hinzugeben. Etwa vier Minuten lang anrösten, dann herausnehmen und beiseite stellen.",
+   "Im selben Topf oder derselben Pfanne etwas Olivenöl erhitzen. Etwas Chiliflocken (nach Belieben), die restlichen Fenchelsamen (1 TL), gehackten Knoblauch und den Abrieb von 1 Bio-Orange hineingeben und leicht andünsten. Die 400 g stückigen Tomaten und die circa 200 ml Gemüsebrühe angießen. Mit Salz und Pfeffer würzen und zum Kochen bringen. Dann kommen die Orzo dazu. Die Hitze reduzieren und etwa 15 Minuten köcheln lassen – eventuell noch Flüssigkeit dazugeben und zwischendurch mal umrühren.",
+   "Nach 15 Minuten den Deckel abnehmen. Die Konsistenz sollte an Risotto erinnern. Wenn es noch zu flüssig ist, einfach noch ein bisschen offen köcheln lassen. Die 200 g Garnelen dazugeben und etwa 3 Minuten garen. Dann kommen der gehackte Basilikum und der marinierte Feta dazu – umrühren, servieren, genießen!"
+  ],
+  "cuisine": "Italienisch",
+  "type": "Hauptspeise"
+ },
+ {
+  "id": "bananenbrot-a-la-maria-panzer",
+  "number": 48,
+  "title": "Bananenbrot a la Maria Panzer",
+  "servings": null,
+  "ingredients": [
+   "etwas Butter für die Form",
+   "3 reife Bananen",
+   "80 ml neutrales Öl",
+   "110 g brauner Zucker",
+   "2 Eier",
+   "200 g Weizenmehl Type 405",
+   "3 TL Backpulver",
+   "1 Prise Salz",
+   "1 Vanilleschote",
+   "1 Prise Zimt"
+  ],
+  "instructions": [
+   "Den Ofen auf 180 °C Ober-/Unterhitze (Umluft: 160 °C) vorheizen. Eine Kastenform (Innenmaße 23 x 10 cm) gut mit etwas Butter einfetten.",
+   "Die 3 reifen Bananen schälen und mit einer Gabel in einer Schüssel zerdrücken. Beiseitestellen.",
+   "Die 1 Vanilleschote der Länge nach einritzen und das Mark mit dem Messerrücken auskratzen.",
+   "In einer großen Schüssel 80 ml neutrales Öl, 110 g brauner Zucker und 2 Eier verquirlen.",
+   "In einer separaten Schüssel 200 g Weizenmehl, 3 TL Backpulver, 1 Prise Salz, 1 Prise Zimt und das ausgekratzte Vanillemark gut vermischen.",
+   "Die Mehlmischung zur Öl-Eiermasse geben und nur kurz verrühren, bis sich alles gerade so verbunden hat. Nicht überrühren!",
+   "Das Bananen-Püree zugeben und ebenfalls kurz unterrühren.",
+   "Den Teig in die vorbereitete Kastenform füllen und glattstreichen.",
+   "Im vorgeheizten Ofen etwa 55 Minuten backen. Mache eine Stäbchenprobe, um sicherzustellen, dass das Brot durchgebacken ist.",
+   "Das Bananenbrot nach dem Backen vollständig auskühlen lassen, bevor du es aus der Form nimmst."
+  ],
+  "cuisine": "International",
+  "type": "Dessert"
+ }
+];
+const PHOTOS = ["bacalhau", "blechhuhn", "burritobowl", "couscous", "dal", "eiernockerl", "erbsenpasta", "falafel", "fischstaebchen", "friedrice", "kaiserschmarrn", "koettbullar", "kokoscurry", "lachs", "laibchen", "macncheese", "orzo", "padthai", "pajeon", "palatschinken", "polenta", "quesadilla", "smorrebrod", "sommerrolle", "souvlaki", "teriyaki", "thai"];
+// Übersetzt die Rezepte aus dem Tramontana Master Chef (MASTERCHEF, beim Bauen eingefügt)
+// in das Format der App. Mengen werden auf 2 Große + 1 Kleines umgerechnet.
+(function () {
+  if (typeof MASTERCHEF === "undefined" || !Array.isArray(MASTERCHEF)) return;
+  const FAMILY = 2.5;
+  const PALETTES = [
+    ["#9C3527", "#EBE6DA", "#5E564B", "#D8D3C8"], ["#B0784F", "#F4F1EA", "#6F8F4E", "#D8C3A5"],
+    ["#7A4E33", "#EBE6DA", "#C69A6A", "#F4F1EA"], ["#C8743F", "#F4F1EA", "#8C5A3C", "#E2D3BC"],
+    ["#5E564B", "#D8D3C8", "#9C3527", "#F4F1EA"], ["#A39788", "#F4F1EA", "#B5482F", "#EBE6DA"]
+  ];
+  const UNITS = "kg|g|ml|l|EL|TL|Prisen?|Bund|Dosen?|Packung(?:en)?|Pck\\.?|Stk\\.?|Stück|Zehen?|Becher|Gläser|Glas|Scheiben?|Tassen?|Handvoll|Zweige?|Blätter|Blatt|Stangen?|Knollen?|Köpfe|Kopf|Würfel|Spritzer|Schuss|cm";
+  const RX = new RegExp("^\\s*(\\d+(?:[.,]\\d+)?(?:\\s*-\\s*\\d+)?|½|¼|¾|1/2|1/4)?\\s*(" + UNITS + ")?\\.?\\s+(.+)$", "i");
+  const FRAC = { "½": 0.5, "¼": 0.25, "¾": 0.75, "1/2": 0.5, "1/4": 0.25 };
+
+  function aisle(name, unit) {
+    const n = name.toLowerCase();
+    if (/hack|faschiert|fleisch|huhn|hühn|hähnchen|hendl|chicken|rind|schwein|kalb|lamm|speck|bacon|lachs|shrimp|garnele|fisch|wurst|würst|schinken|short rib|mark|ente|pute/.test(n)) return "meat";
+    if (/salz|pfeffer|öl\b|olivenöl|zucker|mehl|pulver|gewürz|essig|sirup|zimt|chili|sojasauce|soja|brühe|fond|vanille|backpulver|natron|honig|senf|lorbeer|muskat|kümmel|curry|safran|oregano|thymian getrocknet|paste|fischsauce|worcester|ketchup|mayonnaise|stärke|hefe/.test(n)) return "pantry";
+    if (/tiefkühl|\btk\b/.test(n)) return "frozen";
+    if (/milch|sahne|obers|käse|butter|joghurt|\beier?\b|sourcream|sauerrahm|rahm|mascarpone|parmesan|mozzarella|crème|creme|quark|topfen|ricotta|feta|halloumi|tofu/.test(n)) return "fresh";
+    if (/brot|semmel|tortilla|wrap|toast|brioche|bun|baguette|pita|blätterteig|teig/.test(n)) return "bread";
+    if (/^dosen?$/i.test(unit || "") || /nudel|pasta|spaghetti|tagliatelle|penne|rigatoni|linguine|orzo|reis|risotto|ramen|bohnen|linsen|kichererbsen|passiert|tomatenmark|kokosmilch|mais|chips|wein|datteln|nüsse|nuss|erdnuss|mandel|rosinen|kakao|schokolade|kekse|löffelbiskuit|haferflocken|grieß/.test(n)) return "dry";
+    return "veg";
+  }
+  function parseIng(s, factor) {
+    const m = String(s).match(RX);
+    if (!m || !m[1]) return [String(s).trim(), 0, "", aisle(String(s), "")];
+    let q = m[1].includes("-") ? parseFloat(m[1].split("-")[1].replace(",", ".")) : (FRAC[m[1]] ?? parseFloat(m[1].replace(",", ".")));
+    let unit = (m[2] || "Stk").replace(/\.$/, "");
+    const name = m[3].trim();
+    if (/^(prisen?|schuss|spritzer)$/i.test(unit)) return [name, 0, "", aisle(name, unit)];
+    q = q * factor;
+    q = /^(g|ml)$/i.test(unit) ? Math.max(10, Math.round(q / 10) * 10) : /^(kg|l)$/i.test(unit) ? Math.round(q * 10) / 10 : Math.max(0.5, Math.round(q * 2) / 2);
+    return [name, q, unit, aisle(name, unit)];
+  }
+  function icon(t) {
+    t = t.toLowerCase();
+    if (/servier|anricht|garnier|bestreu|verteil.*teller/.test(t)) return "serve";
+    if (/ofen|back|überback|grill/.test(t)) return "oven";
+    if (/reis/.test(t) && /koch|quell/.test(t)) return "rice";
+    if (/koch|köchel|sied|blanchier|aufgieß|aufkoch|schmor|simmer/.test(t)) return "boil";
+    if (/brat|röst|anschwitz|pfanne|dünst/.test(t)) return "pan";
+    if (/schneid|hack|würfel|reib|hobel|schäl|zerkleiner/.test(t)) return "chop";
+    return "mix";
+  }
+  function minutes(t) {
+    let m = 0;
+    const h = t.match(/(\d+(?:[.,]\d+)?)\s*(?:-\s*\d+\s*)?(stunden|std)/i); if (h) m += parseFloat(h[1].replace(",", ".")) * 60;
+    const mi = t.match(/(\d+)\s*(?:-\s*(\d+)\s*)?(minuten|min\b)/i); if (mi) m += parseInt(mi[2] || mi[1], 10);
+    return m;
+  }
+  const CUISINE_TAG = { "Italienisch": "mediterran", "Österreichisch": "österreichisch", "Orientalisch": "orientalisch", "Israelisch": "orientalisch",
+    "Georgisch": "orientalisch", "Mexikanisch": "lateinamerika", "Französisch": "französisch", "Englisch": "britisch", "Amerikanisch": "amerikanisch" };
+
+  MASTERCHEF.forEach((x, i) => {
+    if (!x || !x.title || !Array.isArray(x.instructions)) return;
+    const factor = FAMILY / (x.servings || 4);
+    const ingredients = (x.ingredients || []).map(s => parseIng(s, factor));
+    const steps = x.instructions.map(t => { const m = minutes(t); return { icon: icon(t), text: t, items: [], ...(m && m <= 240 ? { timer: m * 60 } : {}) }; });
+    const time = steps.reduce((s, st) => s + (st.timer || 0) / 60, 0);
+    const all = (x.title + " " + (x.ingredients || []).join(" ")).toLowerCase();
+    const tags = ["masterchef"];
+    const ct = CUISINE_TAG[x.cuisine] || (/asiat|thai|japan|vietnam|indones|korea|chines/i.test(x.cuisine || "") ? "asiatisch" : null);
+    if (ct) tags.push(ct);
+    if (/hack|faschiert/.test(all)) tags.push("faschiert");
+    if (/huhn|hühn|hähnchen|hendl|chicken/.test(all)) tags.push("huhn");
+    if (/lachs|fisch|garnele|shrimp/.test(all)) tags.push("fisch");
+    if (/nudel|pasta|spaghetti|tagliatelle|penne|orzo|ramen|rigatoni|linguine/.test(all)) tags.push("pasta");
+    if (/one.?pan|one.?pot/.test(all)) tags.push("onepot");
+    if (x.type === "Dessert") tags.push("süß");
+    if (!/fleisch|hack|huhn|hühn|hähnchen|chicken|rind|schwein|speck|bacon|lachs|shrimp|garnele|fisch|wurst|schinken|mark|beef|rib/.test(all)) tags.push("vegetarisch");
+    const soup = /suppe|tom kha|ramen/i.test(x.title);
+    const pepper = /paprika(?!pulver)/i.test((x.ingredients || []).join(" "));
+    RECIPES.push({
+      id: "mc-" + x.id, name: x.title, origin: x.cuisine || "Master Chef", time: time >= 20 ? Math.round(time) : null, mc: true,
+      course: x.type, colors: PALETTES[i % PALETTES.length], kid: "", ingredients, steps, tags,
+      // In den Wochenplan kommen nur Hauptspeisen bis etwa eine Stunde, ohne Suppe und ohne Paprika.
+      week: x.type === "Hauptspeise" && !soup && !pepper && (!time || time <= 60)
+    });
+  });
+})();
 
 </script>
 <script>
@@ -1076,7 +2604,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
   function newWeek() {
     // Herz-Gerichte und ähnliche Gerichte kommen öfter dran. Keine zwei Gerichte aus demselben Land am Stück.
     for (let t = 0; t < 80; t++) {
-      const pool = RECIPES.slice(), pick = [];
+      const pool = RECIPES.filter(r => r.week !== false), pick = [];
       while (pick.length < 7) {
         const total = pool.reduce((s, r) => s + weight(r), 0);
         let x = Math.random() * total, k = 0;
@@ -1085,7 +2613,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
       }
       if (pick.every((id, i) => i === 0 || byId[id].origin !== byId[pick[i - 1]].origin)) return pick;
     }
-    return shuffle(RECIPES.map(r => r.id)).slice(0, 7);
+    return shuffle(RECIPES.filter(r => r.week !== false).map(r => r.id)).slice(0, 7);
   }
   let plan = store.get("plan", null);
   if (!Array.isArray(plan) || plan.length !== 7 || !plan.every(id => byId[id])) plan = newWeek();
@@ -1093,7 +2621,14 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
   let pantryBuy = store.get("pantryBuy", {});
 
   // Teller-Illustration: weißer Teller mit Farbklecksen aus den Zutatenfarben des Gerichts
-  const photo = (r, eager) => `<img class="photo" src="img/${r.id}.jpg" alt="${esc(r.name)}" ${eager ? "" : 'loading="lazy"'} decoding="async" onerror="this.remove()">`;
+  const timeLabel = r => {
+    if (!r.time) return "Zeit siehe Rezept";
+    const t = r.time >= 90 ? `${Math.round(r.time / 30) / 2} Std.`.replace(".5 Std.", ",5 Std.") : `${r.time} Min.`;
+    return (r.mc ? "ca. " : "") + t + (r.wait ? ` + ${r.wait} Min. Ofen` : "");
+  };
+  const HAS_PHOTO = new Set(typeof PHOTOS !== "undefined" ? PHOTOS : []);
+  const mcTag = r => r.mc ? '<span class="mc-tag">Master Chef</span>' : "";
+  const photo = (r, eager) => !HAS_PHOTO.has(r.id) ? "" : `<img class="photo" src="img/${r.id}.jpg" alt="${esc(r.name)}" ${eager ? "" : 'loading="lazy"'} decoding="async" onerror="this.remove()">`;
   function plateSVG(r) {
     let seed = 0; for (const c of r.id) seed = (seed * 31 + c.charCodeAt(0)) >>> 0;
     const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -1146,7 +2681,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
         <div class="dname">${i === today ? "Heute" : dateOf(i)}<b>${DAYS[i].slice(0, 2)}</b></div>
         <div class="thumb" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</div>
         <div class="info"><h3>${esc(r.name)}</h3>
-          <div class="meta"><span>${esc(r.origin)}</span><span>${r.time} Min.</span><span>${r.steps.length} Schritte</span></div></div>
+          <div class="meta">${mcTag(r)}<span>${esc(r.origin)}</span><span>${timeLabel(r)}</span><span>${r.steps.length} Schritte</span></div></div>
         <div class="actions">
           <button class="icon-btn" data-info="${id}" aria-label="Zutaten und Mengen für ${esc(r.name)}" title="Zutaten & Mengen">${ICON.info}</button>
           <button class="icon-btn" data-swap="${i}" aria-label="Anderes Gericht für ${DAYS[i]}" title="Anderes Gericht">${ICON.swap}</button>
@@ -1154,7 +2689,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
         </div>
         <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}</div>
         <ol class="steps">${r.steps.map(st => `<li>${esc(st.text)}${st.timer ? ` <span class="tm">⏱ ${Math.round(st.timer / 60)} Min.</span>` : ""}</li>`).join("")}</ol>
-        <div class="kid">${esc(r.kid)}</div>
+        ${r.kid ? `<div class="kid">${esc(r.kid)}</div>` : ""}
       </article>`;
     }).join("");
     store.set("plan", plan);
@@ -1171,10 +2706,10 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
   $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs }); toast("Neue Woche ist geplant"); });
 
   function openSwap(dayIdx) {
-    const others = RECIPES.filter(r => !plan.includes(r.id));
+    const others = RECIPES.filter(r => r.week !== false && !plan.includes(r.id));
     $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet" role="dialog" aria-label="Gericht tauschen">
       <h2>${DAYS[dayIdx]}: lieber etwas anderes?</h2>
-      ${others.map(r => `<button class="pick" data-pick="${r.id}"><span class="thumb sm" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</span><span><b>${esc(r.name)}</b><br><small style="color:var(--muted)">${esc(r.origin)} · ${r.time} Min.</small></span></button>`).join("")}
+      ${others.map(r => `<button class="pick" data-pick="${r.id}"><span class="thumb sm" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</span><span><b>${esc(r.name)}</b><br><small style="color:var(--muted)">${esc(r.origin)} · ${timeLabel(r)}</small></span></button>`).join("")}
       <button class="ghost" id="sheet-close" style="margin-top:6px">Abbrechen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
       const pk = e.target.closest("[data-pick]");
@@ -1194,7 +2729,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
     return [...map.values()];
   }
   const gurkerl = name => "https://www.gurkerl.at/suche?q=" + encodeURIComponent(name.replace(/\s*\(.*?\)/g, ""));
-  const fmtQty = (q, u) => `${Math.round(q * 10) / 10} ${u}`.replace(".", ",");
+  const fmtQty = (q, u) => q ? `${Math.round(q * 10) / 10} ${u}`.replace(".", ",") : "";
 
   function renderShop() {
     const list = buildList();
@@ -1225,7 +2760,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
     let out = "Einkaufsliste Familientisch\n";
     order.forEach(a => {
       const items = list.filter(i => i.aisle === a);
-      if (items.length) out += `\n${AISLES[a].replace(" (hast du vermutlich)", "")}\n` + items.map(i => `☐ ${i.name} – ${fmtQty(i.qty, i.unit)}`).join("\n") + "\n";
+      if (items.length) out += `\n${AISLES[a].replace(" (hast du vermutlich)", "")}\n` + items.map(i => `☐ ${i.name}${i.qty ? " – " + fmtQty(i.qty, i.unit) : ""}`).join("\n") + "\n";
     });
     return out;
   }
@@ -1252,9 +2787,9 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
   function openPlayer(r) {
     P = { r, i: 0, playing: true, voice: store.get("voice", true), t0: 0, elapsed: 0, raf: 0, timer: null, timerLeft: 0, timerInt: 0, wake: null };
     try { navigator.wakeLock && navigator.wakeLock.request("screen").then(w => P && (P.wake = w)).catch(() => {}); } catch (e) {}
-    $("#player-root").innerHTML = `<div class="player" style="--pbg:color-mix(in srgb, ${r.colors[0]} 24%, #F4F2EE)" role="dialog" aria-label="Koch-Video ${esc(r.name)}">
+    $("#player-root").innerHTML = `<div class="player" style="--pbg:color-mix(in srgb, ${r.colors[0]} 24%, #F4F1EA)" role="dialog" aria-label="Koch-Video ${esc(r.name)}">
       <div class="bars">${r.steps.map(() => "<i><b></b></i>").join("")}</div>
-      <div class="p-top"><div class="t"><small>${esc(r.origin)} · ${r.time} Min.</small>${esc(r.name)}</div>
+      <div class="p-top"><div class="t"><small>${esc(r.origin)} · ${timeLabel(r)}</small>${esc(r.name)}</div>
         <div style="display:flex;gap:8px"><button class="p-btn" id="p-voice" aria-label="Sprachausgabe an oder aus"></button><button class="p-btn" id="p-close" aria-label="Schließen">${ICON.close}</button></div></div>
       <div class="stage" id="p-stage"></div>
       <div class="p-controls"><button class="p-btn" id="p-prev" aria-label="Schritt zurück">${ICON.prev}</button><button class="p-btn big" id="p-toggle" aria-label="Pause oder weiter"></button><button class="p-btn" id="p-next" aria-label="Nächster Schritt">${ICON.next}</button></div>
@@ -1287,7 +2822,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
       <div class="step-text text-in">${esc(s.text)}</div>
       <div class="chips">${(s.items || []).map(x => `<span>${esc(x)}</span>`).join("")}</div>
       ${s.timer ? `<button class="timer" id="p-timer">Kochwecker ${mmss(s.timer)}</button>` : ""}
-      ${last ? `<div class="step-no" style="opacity:.8">Fürs Kind: ${esc(P.r.kid)}</div>` : ""}`;
+      ${last && P.r.kid ? `<div class="step-no" style="opacity:.8">Fürs Kind: ${esc(P.r.kid)}</div>` : ""}`;
     if (s.timer) $("#p-timer").onclick = () => startTimer(s.timer);
     document.querySelectorAll(".bars i").forEach((b, k) => { b.className = k < P.i ? "past" : ""; b.firstChild.style.width = k < P.i ? "100%" : "0"; });
     drawToggle(); speak();
@@ -1416,16 +2951,16 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
 
   // ---------- Herz, Teilen, Rezept-Detail ----------
   const APP_URL = "https://teresa-tramontana.github.io/mealplan/";
-  const tint = r => `color-mix(in srgb, ${r.colors[0]} 26%, var(--surface))`;
+  const tint = r => `color-mix(in srgb, ${r.colors[0]} 14%, var(--sage-soft))`;
   function favBtn(id, cls) {
     const on = !!favs[id];
     return `<button class="${cls}${on ? " on" : ""}" type="button" data-fav="${id}" aria-pressed="${on}" aria-label="${on ? "Herz entfernen" : "Herz geben"}">${on ? ICON.heartFill : ICON.heart}${cls === "mini" ? (on ? "Lieblingsgericht" : "Merken") : ""}</button>`;
   }
   function shareText(r) {
-    return `🍽️ ${r.name}\n${r.origin} · ${r.time} Min. · für 2 Große + 1 Kleines\n\n🛒 Zutaten:\n` +
-      r.ingredients.map(([n, q, u]) => `• ${n} – ${fmtQty(q, u)}`).join("\n") +
+    return `🍽️ ${r.name}\n${r.origin} · ${timeLabel(r)} · für 2 Große + 1 Kleines\n\n🛒 Zutaten:\n` +
+      r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(q, u) : ""}`).join("\n") +
       `\n\n👩‍🍳 So geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
-      `\n\n👶 Fürs Kind: ${r.kid}\n\n${APP_URL}#${r.id}`;
+      (r.kid ? `\n\n👶 Fürs Kind: ${r.kid}` : "") + `\n\n${APP_URL}#${r.id}`;
   }
   const shareBtn = r => `<a class="mini wa" href="https://wa.me/?text=${encodeURIComponent(shareText(r))}" target="_blank" rel="noopener" aria-label="${esc(r.name)} per WhatsApp teilen">${ICON.share}Teilen</a>`;
 
@@ -1452,7 +2987,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
     $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet" role="dialog" aria-label="${esc(r.name)}">
       <div class="d-hero" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r, true)}</div>
       <h2>${esc(r.name)}</h2>
-      <div class="meta"><span>${esc(r.origin)}</span><span>${r.time} Min.</span><span>${r.steps.length} Schritte</span></div>
+      <div class="meta">${mcTag(r)}<span>${esc(r.origin)}</span><span>${timeLabel(r)}</span><span>${r.steps.length} Schritte</span>${r.course && r.course !== "Hauptspeise" ? `<span>${esc(r.course)}</span>` : ""}</div>
       <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button></div>
       <h4>Einplanen für</h4>
       <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>
@@ -1460,7 +2995,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(q, u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
       <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
-      <div class="kid"><b>Fürs Kind · </b>${esc(r.kid)}</div>
+      ${r.kid ? `<div class="kid"><b>Fürs Kind · </b>${esc(r.kid)}</div>` : ""}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
       const day = e.target.closest("[data-day]"), pl = e.target.closest("[data-detail-play]");
@@ -1484,9 +3019,9 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
   function cardHTML(r, cls) {
     return `<div class="card ${cls}" data-id="${r.id}" style="--tint:${tint(r)}">
       <div class="c-img">${plateSVG(r)}${photo(r, cls === "top")}<span class="stamp like">Mag ich</span><span class="stamp nope">Weiter</span>${fits(r) ? '<span class="badge">Passt zu euch</span>' : ""}</div>
-      <div class="c-body"><span class="eyebrow">${esc(r.origin)} · ${r.time} Min.</span><h2>${esc(r.name)}</h2>
+      <div class="c-body">${mcTag(r) ? `<div>${mcTag(r)}</div>` : ""}<span class="eyebrow">${esc(r.origin)} · ${timeLabel(r)}</span><h2>${esc(r.name)}</h2>
         <div class="tags">${r.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>
-        <p class="kidline">Fürs Kind: ${esc(r.kid)}</p></div></div>`;
+        ${r.kid ? `<p class="kidline">Fürs Kind: ${esc(r.kid)}</p>` : ""}</div></div>`;
   }
   function renderDeck() {
     const top = deck.slice(0, 3).map(id => byId[id]);
@@ -1537,7 +3072,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
   });
 
   // ---------- Entdecken: Pinnwand ----------
-  const FILTERS = [["alle", "Alle"], ["herz", "♥ Herzen"], ["passt", "Passt zu euch"], ["vegetarisch", "Vegetarisch"], ["fisch", "Fisch"], ["huhn", "Huhn"], ["fingerfood", "Fingerfood"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["nordisch", "Nordisch"], ["orientalisch", "Orientalisch"], ["österreichisch", "Österreich"], ["suppe", "Suppe"]];
+  const FILTERS = [["alle", "Alle"], ["herz", "♥ Herzen"], ["passt", "Passt zu euch"], ["masterchef", "Master Chef"], ["österreichisch", "Österreich"], ["faschiert", "Faschiertes"], ["onepot", "One-Pot"], ["auflauf", "Aufläufe"], ["rahm", "Mit Rahm"], ["fingerfood", "Fingerfood"], ["vegetarisch", "Vegetarisch"], ["huhn", "Hendl"], ["fisch", "Fisch"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["süß", "Süß"]];
   let filter = "alle";
   const RATIOS = ["1 / 1", "4 / 5", "4 / 3", "3 / 4", "1 / 1.2"];
   function renderBoard() {
@@ -1546,7 +3081,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
       .sort((a, b) => (favs[b.id] ? 1 : 0) - (favs[a.id] ? 1 : 0) || similarity(b) - similarity(a));
     $("#board").innerHTML = list.length ? list.map((r, i) => `<article class="pin" data-open="${r.id}">
         <div class="p-img" style="--tint:${tint(r)};aspect-ratio:${RATIOS[(r.id.length + i) % RATIOS.length]}">${plateSVG(r)}${photo(r)}${favBtn(r.id, "heart-btn")}${fits(r) ? '<span class="badge">Passt zu euch</span>' : ""}</div>
-        <div class="p-cap"><b>${esc(r.name)}</b><span>${esc(r.origin)} · ${r.time} Min.</span></div></article>`).join("")
+        <div class="p-cap">${mcTag(r) ? `<div>${mcTag(r)}</div>` : ""}<b>${esc(r.name)}</b><span>${esc(r.origin)} · ${timeLabel(r)}</span></div></article>`).join("")
       : `<p style="color:var(--muted)">${filter === "herz" ? "Noch keine Herzen. Tippe bei einem Gericht auf das Herz." : filter === "passt" ? "Gib erst ein paar Herzen, dann zeige ich hier passende Gerichte." : "Keine Gerichte in dieser Auswahl."}</p>`;
   }
   $("#filters").addEventListener("click", e => { const b = e.target.closest("[data-filter]"); if (b) { filter = b.dataset.filter; renderBoard(); } });
