@@ -84,6 +84,8 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 @media (max-width: 560px) {
   .day { grid-template-columns: 56px 1fr auto; gap: 10px 12px; }
   .day .plate { display: none; }
+  .actions { gap: 4px; }
+  .icon-btn { width: 36px; height: 36px; }
   .day .kid, .day .steps, .day .day-share { grid-column: 1 / -1; margin-top: 0; }
 }
 
@@ -185,6 +187,7 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 12px; font: inherit; font-size: 0.85rem; }
 
 /* Tauschen-Dialog */
+.sheet { position: relative; }
 .sheet-bg { position: fixed; inset: 0; background: rgba(20,22,21,0.45); z-index: 30; display: grid; place-items: end center; }
 .sheet { background: var(--bg); width: min(560px, 100%); max-height: 80%; overflow: auto; border-radius: 22px 22px 0 0; padding-inline: 20px; padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); }
 .sheet h2 { font-size: 1.3rem; margin-bottom: 12px; }
@@ -888,6 +891,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
         <div class="info"><h3>${esc(r.name)}</h3>
           <div class="meta"><span>${esc(r.origin)}</span><span>${r.time} Min.</span><span>${r.steps.length} Schritte</span></div></div>
         <div class="actions">
+          <button class="icon-btn" data-info="${id}" aria-label="Zutaten und Mengen für ${esc(r.name)}" title="Zutaten & Mengen">${ICON.info}</button>
           <button class="icon-btn" data-swap="${i}" aria-label="Anderes Gericht für ${DAYS[i]}" title="Anderes Gericht">${ICON.swap}</button>
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
@@ -904,6 +908,8 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
     const p = e.target.closest("[data-play]"), s = e.target.closest("[data-swap]");
     if (p) openPlayer(byId[p.dataset.play]);
     if (s) openSwap(+s.dataset.swap);
+    const inf = e.target.closest("[data-info]");
+    if (inf) openDetail(inf.dataset.info, "ing");
   });
   $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs }); toast("Neue Woche ist geplant"); });
 
@@ -1184,7 +1190,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
     if (toggleFav(b.dataset.fav)) toast("Herz gegeben – ähnliche Gerichte kommen öfter");
   }, true);
 
-  function openDetail(id) {
+  function openDetail(id, focus) {
     const r = byId[id]; if (!r) return;
     $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet" role="dialog" aria-label="${esc(r.name)}">
       <div class="d-hero" style="--tint:${tint(r)}">${plateSVG(r)}</div>
@@ -1193,7 +1199,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
       <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button></div>
       <h4>Einplanen für</h4>
       <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>
-      <h4>Zutaten</h4>
+      <h4 id="d-ing">Zutaten für 2 Große + 1 Kleines</h4>
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(q, u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
       <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
@@ -1205,6 +1211,7 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
       if (pl) { $("#sheet-root").innerHTML = ""; openPlayer(r); return; }
       if (e.target.id === "sheet-bg" || e.target.id === "sheet-close") $("#sheet-root").innerHTML = "";
     });
+    if (focus === "ing") { const h = $("#d-ing"), sh = h.closest(".sheet"); sh.scrollTop = h.offsetTop - 16; }
   }
   $("#days").addEventListener("click", e => { const h = e.target.closest("h3"); if (h) openDetail(plan[[...document.querySelectorAll(".day h3")].indexOf(h)]); });
 
