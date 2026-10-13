@@ -1,33 +1,33 @@
 <title>Familientisch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: ruhige Scandi-Spalte (Akzent Beige), Wochentage als Liste mit Teller-Illustrationen, Koch-Player als Vollbild-Story */
 :root {
   --bg: #F4F2EE;        /* Leinen */
-  --surface: #FBFAF8;   /* Birke */
+  --surface: #EFE8DE;   /* Beige (Karten) */
   --ink: #2E3230;       /* Schiefer */
   --muted: #7A7F7A;     /* Nebel */
   --line: #E2DFD8;
   --sage: #B39B7D;      /* Beige (Akzent) */
-  --sage-soft: #EFE8DE;
+  --sage-soft: #FBFAF8; /* Weiß (Fürs-Kind-Kästchen, Chips) */
   --clay: #C98D6B;      /* Ton */
   --plate: #FFFFFF;
   --heart: #C4564F;     /* Hagebutte */
   --wa: #2C9E5B;
-  --display: "Young Serif", Georgia, "Times New Roman", serif;
+  --display: "Albert Sans", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #1C1F1D; --surface: #242826; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
-    --sage: #CDB594; --sage-soft: #3A332B; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
+    --bg: #1C1F1D; --surface: #3A332B; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
+    --sage: #CDB594; --sage-soft: #242826; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #1C1F1D; --surface: #242826; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
-  --sage: #CDB594; --sage-soft: #3A332B; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
+  --bg: #1C1F1D; --surface: #3A332B; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
+  --sage: #CDB594; --sage-soft: #242826; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html, body { background: var(--bg); color: var(--ink); }
@@ -35,7 +35,7 @@ body { font-family: var(--body); font-size: 15px; line-height: 1.55; -webkit-fon
 .wrap { max-width: 760px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 80px; }
 button { font: inherit; color: inherit; cursor: pointer; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
-h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.015em; text-wrap: balance; margin: 0; }
 
 header.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
 .brand h1 { font-size: 2.1rem; letter-spacing: -0.01em; line-height: 1.1; }
@@ -54,7 +54,7 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .days { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
 .day { background: var(--surface); display: grid; grid-template-columns: 56px 72px 1fr auto; align-items: center; gap: 16px; padding: 14px 16px; }
 .day .dname { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.day .dname b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.4rem; letter-spacing: 0; text-transform: none; color: var(--ink); line-height: 1.1; }
+.day .dname b { display: block; font-family: var(--display); font-weight: 600; font-size: 1.4rem; letter-spacing: 0; text-transform: none; color: var(--ink); line-height: 1.1; }
 .day.today .dname b { color: var(--clay); }
 .plate { width: 72px; height: 72px; max-width: 100%; }
 .day .info { min-width: 0; }
@@ -253,6 +253,9 @@ footer.src a { color: var(--muted); }
 
 .mc-tag { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
 .day .steps .tm { font-size: 0.78rem; }
+.shop-head .seg { margin-left: auto; }
+.dayblock .dish { margin: 2px 0 4px; font-family: var(--display); font-weight: 600; font-size: 1rem; }
+.from-pantry { margin: 4px 0 0; font-size: 0.78rem; color: var(--muted); }
 /* Aktionen */
 .deal { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; margin: -2px 0 6px 28px; font-size: 0.78rem; color: var(--muted); }
 .deal a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sage); }
@@ -313,6 +316,10 @@ footer.src a { color: var(--muted); }
       <div class="shop-head">
         <button class="primary" id="copy-list">Liste kopieren</button>
         <button class="ghost" id="reset-list">Haken zurücksetzen</button>
+        <div class="seg" role="group" aria-label="Ansicht der Einkaufsliste">
+          <button id="shop-all" type="button" aria-pressed="true">Alles</button>
+          <button id="shop-days" type="button" aria-pressed="false">Nach Tagen</button>
+        </div>
       </div>
       <div id="deals-note"></div>
       <div class="shop-grid" id="shop-grid"></div>
@@ -531,6 +538,12 @@ footer.src a { color: var(--muted); }
   const euro = n => n.toFixed(2).replace(".", ",") + " €";
   const dealLine = d => `<div class="deal"><span class="mk">${esc(d.markt)}</span><a href="${esc(d.link)}" target="_blank" rel="noopener">${esc(d.name)}</a>${d.menge ? `<span>${esc(d.menge)}</span>` : ""}<span class="pr">${euro(d.preis)}</span>${d.statt && d.statt > d.preis ? `<s>${euro(d.statt)}</s>` : ""}${d.hinweis ? `<span>${esc(d.hinweis)}</span>` : ""}${d.bis ? `<span>bis ${new Date(d.bis).toLocaleDateString("de-AT", { day: "numeric", month: "numeric" })}</span>` : ""}</div>`;
 
+  let shopMode = store.get("shopMode", "all") === "days" ? "days" : "all";
+  // Eine Zeile der Einkaufsliste (gleicher Haken in beiden Ansichten, weil der Schlüssel Name|Einheit ist)
+  function itemRow(i, isP, idp) {
+    const on = isP ? !!pantryBuy[i.key] : !!checked[i.key];
+    return `<label class="item${!isP && on ? " done" : ""}"><input type="checkbox" id="chk-${idp}${esc(i.key)}" data-key="${esc(i.key)}" data-p="${isP ? 1 : 0}" ${on ? "checked" : ""}><span class="n">${esc(i.name)}</span><span class="q">${fmtQty(i.qty, i.unit)}</span>${isP ? "" : `<a class="buy" href="${gurkerl(i.name)}" target="_blank" rel="noopener" title="${esc(i.name)} bei Gurkerl suchen">Gurkerl</a>`}</label>${!isP && !on ? dealsFor(i.name).map(dealLine).join("") : ""}`;
+  }
   function renderShop() {
     const list = buildList();
     const withDeals = list.filter(i => i.aisle !== "pantry" && !checked[i.key] && dealsFor(i.name).length).length;
@@ -538,13 +551,23 @@ footer.src a { color: var(--muted); }
     const order = ["veg", "fresh", "meat", "frozen", "dry", "bread", "pantry"];
     const open = list.filter(i => i.aisle !== "pantry" && !checked[i.key]).length;
     $("#shop-count").textContent = open ? " " + open : "";
+    $("#shop-all").setAttribute("aria-pressed", shopMode === "all"); $("#shop-days").setAttribute("aria-pressed", shopMode === "days");
+    $("#shop-grid").classList.toggle("by-day", shopMode === "days");
+    if (shopMode === "days") {
+      $("#shop-grid").innerHTML = plan.map((id, d) => {
+        const r = byId[id];
+        const own = r.ingredients.filter(x => x[3] !== "pantry").map(([name, qty, unit, aisle]) => ({ key: name + "|" + unit, name, unit, aisle, qty }));
+        const pantry = r.ingredients.filter(x => x[3] === "pantry").map(x => x[0]);
+        return `<div class="aisle dayblock"><h3>${DAYS[d]}</h3><p class="dish">${esc(r.name)}</p>${own.map(i => itemRow(i, false, d + "-")).join("")}${pantry.length ? `<p class="from-pantry">Aus dem Vorrat: ${pantry.map(esc).join(", ")}</p>` : ""}</div>`;
+      }).join("");
+      return;
+    }
     $("#shop-grid").innerHTML = order.map(a => {
       const items = list.filter(i => i.aisle === a).sort((x, y) => x.name.localeCompare(y.name, "de"));
       if (!items.length) return "";
       const isP = a === "pantry";
       return `<div class="aisle${isP ? " pantry" : ""}"><h3>${AISLES[a]}</h3>${items.map(i => {
-        const on = isP ? !!pantryBuy[i.key] : !!checked[i.key];
-        return `<label class="item${!isP && on ? " done" : ""}"><input type="checkbox" id="chk-${esc(i.key)}" data-key="${esc(i.key)}" data-p="${isP ? 1 : 0}" ${on ? "checked" : ""}><span class="n">${esc(i.name)}</span><span class="q">${fmtQty(i.qty, i.unit)}</span>${isP ? "" : `<a class="buy" href="${gurkerl(i.name)}" target="_blank" rel="noopener" title="${esc(i.name)} bei Gurkerl suchen">Gurkerl</a>`}</label>${!isP && !on ? dealsFor(i.name).map(dealLine).join("") : ""}`;
+        return itemRow(i, isP, "");
       }).join("")}${isP ? `<p style="font-size:.78rem;color:var(--muted);margin:6px 0 0">Haken = muss doch gekauft werden</p>` : ""}</div>`;
     }).join("");
   }
@@ -554,6 +577,8 @@ footer.src a { color: var(--muted); }
     else { checked[k] = e.target.checked; store.set("checked", checked); Sync.put("checked/" + k, e.target.checked || null); }
     renderShop();
   });
+  $("#shop-all").addEventListener("click", () => { shopMode = "all"; store.set("shopMode", shopMode); renderShop(); });
+  $("#shop-days").addEventListener("click", () => { shopMode = "days"; store.set("shopMode", shopMode); renderShop(); });
   $("#reset-list").addEventListener("click", () => { checked = {}; store.set("checked", checked); renderShop(); Sync.put("checked", null); toast("Alle Haken entfernt"); });
 
   function listText() {
