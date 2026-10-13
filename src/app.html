@@ -1,7 +1,7 @@
 <title>Familientisch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
 /* Layout: ruhige Scandi-Spalte, Wochentage als Liste mit Teller-Illustrationen, Koch-Player als Vollbild-Story */
 :root {
@@ -326,6 +326,69 @@ footer.src { font-size: 0.82rem; max-width: 65ch; }
 .sheet ul.ing, .sheet ol.steps-d { font-size: 1rem !important; }
 .ghost, .icon-btn, .mini, .sync, .round, .seg, .filters button, .daypick button, .heart-btn, .tabs { border: 0; }
 .from-pantry a { color: var(--ink); text-decoration-color: var(--sage); text-underline-offset: 3px; }
+
+/* ---------- Cozy-Kitchen-Stil: Weiß, Pflaume, Rosé, Oliv; elegante Serif-Titel, schlichte Systemschrift ---------- */
+:root {
+  --bg: #FFFFFF; --surface: #FBF6F4; --ink: #4E4B4B; --muted: #6F6A69; --line: #EADBD5;
+  --sage: #64313E; --sage-soft: #F0DAD3; --clay: #834A58; --heart: #834A58; --olive: #B2AC88; --plate: #FFFFFF;
+  --display: "Noto Serif Display", Georgia, "Times New Roman", serif;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1F1A1B; --surface: #2A2324; --ink: #F2E9E6; --muted: #B8ABA8; --line: #3D3234;
+    --sage: #D9A5B2; --sage-soft: #3A2A2E; --clay: #D9A5B2; --heart: #D9A5B2; --olive: #A8A27E; --plate: #2E2627; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1F1A1B; --surface: #2A2324; --ink: #F2E9E6; --muted: #B8ABA8; --line: #3D3234;
+  --sage: #D9A5B2; --sage-soft: #3A2A2E; --clay: #D9A5B2; --heart: #D9A5B2; --olive: #A8A27E; --plate: #2E2627; color-scheme: dark;
+}
+body { font-family: var(--body); font-size: 17px; line-height: 1.6; }
+h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-body h2, .sheet h2 { font-family: var(--display); font-weight: 500; letter-spacing: -0.005em; }
+.brand h1 { font-size: clamp(2.4rem, 8vw, 3.2rem); color: var(--sage); line-height: 1.05; }
+.brand p { color: var(--muted); }
+/* Navigation wie ein Rezeptblog: kleine Großbuchstaben, gesperrt, Pflaume, aktiver Reiter unterstrichen */
+.tabs { background: none; border-radius: 0; padding: 0; gap: 22px; }
+.tabs button { background: none; border-radius: 0; padding: 8px 0; color: var(--sage); font-size: 0.82rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+.tabs button[aria-selected="true"] { background: none; color: var(--sage); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
+.tabs .count { color: var(--muted); }
+/* Eckige Formen, dunkle Knöpfe */
+.ghost, .primary, .mini, .seg, .seg button, .filters button, .sync, .item .buy, .daypick button, .pick, .day, .aisle, .note, .deals-note,
+.thumb, .p-img, .d-hero, .card, .c-img, .deck-done, .day .kid, .sheet .kid, .toast, .timer, .badge, .deal .mk { border-radius: 0; }
+.primary { background: #212121; color: #FFFFFF; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.82rem; padding: 12px 20px; }
+.ghost { background: var(--surface); color: var(--sage); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8rem; font-weight: 500; }
+.mini, .item .buy, .daypick button { background: var(--surface); color: var(--sage); }
+.seg button[aria-pressed="true"], .filters button[aria-pressed="true"] { background: var(--sage); color: #FFFFFF; }
+.filters button { background: var(--surface); color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.78rem; }
+.icon-btn { background: var(--surface); color: var(--sage); }
+.icon-btn.play { background: var(--sage); color: #FFFFFF; }
+/* Tage als ruhige Flächen, Rezeptname in Serif, Kind-Tipp in Rosé */
+.days { gap: 16px; }
+.day { background: var(--surface); padding: 22px 20px; }
+.day h3 { font-size: 1.35rem; line-height: 1.25; color: var(--ink); }
+.day .dname { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+.day .dname b { font-size: 1.6rem; color: var(--sage); text-transform: none; letter-spacing: 0; }
+.day.today .dname, .day.today .dname b { color: var(--clay); }
+.day .steps li::marker { color: var(--olive); font-weight: 600; }
+.day .kid, .sheet .kid { background: var(--sage-soft); color: var(--ink); }
+.day .kid::before { color: var(--sage); }
+.label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.78rem; font-weight: 500; color: var(--muted); }
+.mc-tag { color: var(--olive); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.74rem; }
+/* Pinnwand wie Rezeptkacheln: große Bilder, zentrierte Kategorie, Serif-Titel */
+.p-cap { text-align: center; padding-top: 10px; }
+.p-cap b { font-size: 1.12rem; line-height: 1.25; color: var(--ink); }
+.p-cap span { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.74rem; color: var(--muted); }
+.heart-btn { border-radius: 50%; color: var(--sage); }
+.heart-btn.on { color: var(--heart); }
+/* Einkaufsliste */
+.aisle { background: var(--surface); }
+.aisle h3 { font-family: var(--body); color: var(--sage); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; font-weight: 600; }
+.dayblock .dish { font-size: 1.15rem; }
+.item input { accent-color: var(--sage); }
+.deal .mk { background: var(--sage-soft); color: var(--sage); }
+.sync.on i { background: var(--olive); }
+.day .icon-btn:not(.play), .day .mini, .sheet .mini, .aisle .item .buy { background: var(--bg); }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
