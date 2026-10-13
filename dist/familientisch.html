@@ -14,18 +14,20 @@
   --sage-soft: #E3E9DF;
   --clay: #C98D6B;      /* Ton */
   --plate: #FFFFFF;
+  --heart: #C4564F;     /* Hagebutte */
+  --wa: #2C9E5B;
   --display: "Young Serif", Georgia, "Times New Roman", serif;
   --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #1C1F1D; --surface: #242826; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
-    --sage: #A5BBA1; --sage-soft: #2F3A30; --clay: #D9A283; --plate: #2E322F; color-scheme: dark;
+    --sage: #A5BBA1; --sage-soft: #2F3A30; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #1C1F1D; --surface: #242826; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
-  --sage: #A5BBA1; --sage-soft: #2F3A30; --clay: #D9A283; --plate: #2E322F; color-scheme: dark;
+  --sage: #A5BBA1; --sage-soft: #2F3A30; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html, body { background: var(--bg); color: var(--ink); }
@@ -56,7 +58,8 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .day.today .dname b { color: var(--clay); }
 .plate { width: 72px; height: 72px; max-width: 100%; }
 .day .info { min-width: 0; }
-.day h3 { font-size: 1.08rem; line-height: 1.3; }
+.day h3 { font-size: 1.08rem; line-height: 1.3; cursor: pointer; }
+.day h3:hover { text-decoration: underline; text-decoration-color: var(--sage); text-underline-offset: 3px; }
 .meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 4px; color: var(--muted); font-size: 0.8rem; }
 .meta span { display: inline-flex; align-items: center; gap: 4px; }
 .actions { display: flex; gap: 6px; }
@@ -64,6 +67,7 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .icon-btn:hover { border-color: var(--sage); }
 .icon-btn.play { background: var(--sage); border-color: var(--sage); color: #fff; }
 .icon-btn svg { width: 18px; height: 18px; }
+.day .day-share { grid-column: 3 / -1; margin-top: -8px; }
 .day .steps { grid-column: 3 / -1; margin: -4px 0 0; padding-left: 18px; font-size: 0.86rem; display: grid; gap: 3px; }
 .day .steps li::marker { color: var(--sage); }
 .day .steps .tm { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -72,7 +76,7 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 @media (max-width: 560px) {
   .day { grid-template-columns: 56px 1fr auto; gap: 10px 12px; }
   .day .plate { display: none; }
-  .day .kid, .day .steps { grid-column: 1 / -1; margin-top: 0; }
+  .day .kid, .day .steps, .day .day-share { grid-column: 1 / -1; margin-top: 0; }
 }
 
 .sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
@@ -84,6 +88,73 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .sheet code { font-size: 0.8rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 5px; word-break: break-all; }
 .sheet input[type="url"] { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.88rem; margin-bottom: 10px; }
 .row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Herz & Teilen */
+.mini-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.mini { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.76rem; font-weight: 700; text-decoration: none; }
+.mini svg { width: 14px; height: 14px; }
+.mini:hover { border-color: var(--sage); }
+.mini.on { color: var(--heart); border-color: var(--heart); }
+.mini.wa svg { color: var(--wa); }
+
+/* Entdecken */
+.seg { display: inline-flex; gap: 2px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px; }
+.seg button { border: 0; background: transparent; border-radius: 999px; padding: 6px 14px; font-size: 0.84rem; font-weight: 700; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--sage-soft); color: var(--ink); }
+.deck { position: relative; height: min(470px, 56vh); max-width: 380px; margin: 6px auto 0; }
+.card { position: absolute; inset: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; touch-action: pan-y; user-select: none; -webkit-user-select: none; transition: transform .25s ease; box-shadow: 0 10px 30px -18px rgba(30,34,32,.45); --like: 0; --nope: 0; }
+.card.top { cursor: grab; }
+.card.under { transform: scale(.95) translateY(14px); }
+.card.under2 { transform: scale(.9) translateY(28px); opacity: .7; }
+.c-img { position: relative; flex: 1; min-height: 0; display: grid; place-items: center; background: var(--tint); }
+.c-img .plate, .p-img .plate, .d-hero .plate { width: 64%; height: auto; max-height: 92%; }
+.c-body { padding: 16px 18px 18px; display: grid; gap: 6px; }
+.c-body h2 { font-size: 1.45rem; line-height: 1.2; }
+.c-body .kidline { margin: 0; font-size: 0.84rem; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font-size: 0.72rem; font-weight: 700; color: var(--muted); background: var(--bg); border-radius: 999px; padding: 2px 9px; }
+.stamp { position: absolute; top: 18px; font-family: var(--display); font-size: 1.5rem; padding: 4px 14px; border: 3px solid; border-radius: 10px; background: var(--surface); }
+.stamp.like { left: 16px; color: var(--heart); transform: rotate(-12deg); opacity: var(--like); }
+.stamp.nope { right: 16px; color: var(--muted); transform: rotate(12deg); opacity: var(--nope); }
+.badge { position: absolute; left: 14px; bottom: 14px; background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.74rem; font-weight: 700; }
+.badge::before { content: "✦ "; color: var(--clay); }
+.deck-btns { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 22px; }
+.round { border: 1px solid var(--line); background: var(--surface); border-radius: 50%; width: 60px; height: 60px; display: grid; place-items: center; box-shadow: 0 6px 18px -12px rgba(30,34,32,.5); }
+.round svg { width: 26px; height: 26px; }
+.round.info { width: 46px; height: 46px; }
+.round.info svg { width: 20px; height: 20px; }
+.round.yes { color: var(--heart); }
+.round.no { color: var(--muted); }
+.hint { text-align: center; color: var(--muted); font-size: 0.8rem; margin: 14px 0 0; }
+.deck-done { position: absolute; inset: 0; display: grid; place-content: center; gap: 12px; text-align: center; border: 1px dashed var(--line); border-radius: 24px; padding: 20px; }
+.deck-done h2 { font-size: 1.4rem; }
+.filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 12px; scrollbar-width: none; }
+.filters button { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.board { columns: 2; column-gap: 12px; }
+@media (min-width: 700px) { .board { columns: 3; column-gap: 16px; } }
+.pin { break-inside: avoid; margin-bottom: 14px; cursor: pointer; }
+.p-img { position: relative; border-radius: 18px; overflow: hidden; background: var(--tint); display: grid; place-items: center; max-width: 100%; }
+.pin:hover .p-img { outline: 2px solid var(--sage); outline-offset: 2px; }
+.p-cap { padding: 8px 4px 0; display: grid; gap: 1px; }
+.p-cap b { font-weight: 700; font-size: 0.9rem; line-height: 1.3; }
+.p-cap span { color: var(--muted); font-size: 0.76rem; }
+.heart-btn { position: absolute; top: 8px; right: 8px; width: 36px; height: 36px; border-radius: 50%; border: 0; background: var(--surface); color: var(--muted); display: grid; place-items: center; }
+.heart-btn svg { width: 18px; height: 18px; }
+.heart-btn.on { color: var(--heart); }
+.p-img .badge { left: 8px; bottom: 8px; font-size: 0.68rem; }
+
+/* Rezept-Detail */
+.d-hero { border-radius: 18px; background: var(--tint); display: grid; place-items: center; aspect-ratio: 16 / 9; max-width: 100%; margin-bottom: 14px; }
+.d-hero .plate { width: auto; height: 82%; }
+.sheet h4 { font-family: var(--body); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 16px 0 6px; }
+.sheet ul.ing { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: 0.88rem; }
+.sheet ul.ing li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+.sheet ul.ing span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.daypick { display: flex; gap: 6px; flex-wrap: wrap; }
+.daypick button { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; width: 42px; height: 36px; font-weight: 700; font-size: 0.8rem; }
+.daypick button:hover { border-color: var(--sage); }
+.sheet .kid { font-size: 0.84rem; background: var(--sage-soft); border-radius: 10px; padding: 8px 12px; margin-top: 14px; }
 
 /* Einkaufsliste */
 .shop-head { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -182,6 +253,7 @@ footer.src a { color: var(--muted); }
     </div>
     <nav class="tabs" role="tablist">
       <button id="tab-week" role="tab" aria-selected="true">Woche</button>
+      <button id="tab-discover" role="tab" aria-selected="false">Entdecken</button>
       <button id="tab-shop" role="tab" aria-selected="false">Einkauf<span class="count" id="shop-count"></span></button>
     </nav>
   </header>
@@ -193,6 +265,29 @@ footer.src a { color: var(--muted); }
         <button class="ghost" id="reshuffle">Neue Woche mischen</button>
       </div>
       <div class="days" id="days"></div>
+    </section>
+
+    <section id="view-discover" hidden>
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Ansicht">
+          <button id="mode-swipe" type="button" aria-pressed="true">Swipen</button>
+          <button id="mode-board" type="button" aria-pressed="false">Pinnwand</button>
+        </div>
+        <span class="eyebrow" id="fav-count"></span>
+      </div>
+      <div id="swipe-wrap">
+        <div class="deck" id="deck"></div>
+        <div class="deck-btns">
+          <button class="round no" id="sw-no" type="button" aria-label="Weiter, nicht merken"></button>
+          <button class="round info" id="sw-info" type="button" aria-label="Rezept ansehen"></button>
+          <button class="round yes" id="sw-yes" type="button" aria-label="Herz geben"></button>
+        </div>
+        <p class="hint">Nach rechts wischen gibt ein Herz. Nach links geht es weiter. Antippen zeigt das Rezept.</p>
+      </div>
+      <div id="board-wrap" hidden>
+        <div class="filters" id="filters"></div>
+        <div class="board" id="board"></div>
+      </div>
     </section>
 
     <section id="view-shop" hidden>
@@ -480,7 +575,212 @@ const RECIPES = [
       { icon: "serve", text: "Gurke und Tomaten als Salat. In Stücke schneiden.", items: ["Gurke", "Tomaten"] }
     ]
   }
+  ,{
+    id: "frittata", name: "Mini-Frittatas aus dem Muffinblech", origin: "England", flag: "GB", time: 25,
+    colors: ["#F0CF6B", "#8FB07E", "#D9533F", "#F6F1E4"],
+    kid: "Perfekt zum Selberhalten. Abkühlen lassen, innen wird es heiß.",
+    ingredients: [
+      ["Eier", 6, "Stk", "fresh"], ["Milch", 50, "ml", "fresh"], ["Rote Paprika", 1, "Stk", "veg"],
+      ["Babyspinat", 60, "g", "veg"], ["Geriebener Käse", 80, "g", "fresh"], ["Vollkorn-Roggenbrot", 1, "Pck", "bread"],
+      ["Gurke", 1, "Stk", "veg"], ["Olivenöl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 190 Grad. Paprika klein würfeln, Spinat hacken.", items: ["Paprika", "Spinat"] },
+      { icon: "mix", text: "Eier mit Milch und Käse verquirlen, Gemüse unterrühren.", items: ["Eier", "Milch", "Käse"] },
+      { icon: "oven", text: "Muffinblech einölen, Masse einfüllen. 18 Minuten backen.", timer: 1080, items: ["Olivenöl"] },
+      { icon: "serve", text: "Mit Brot und Gurkensticks servieren.", items: ["Brot", "Gurke"] }
+    ]
+  },
+  {
+    id: "fischstaebchen", name: "Selbstgemachte Fischstäbchen mit Erbsenpüree", origin: "England", flag: "GB", time: 30,
+    colors: ["#E2B566", "#9CC07F", "#F4F0E6", "#E8C9A0"],
+    kid: "Fisch vorher auf Gräten prüfen. Püree eignet sich super zum Löffeln.",
+    ingredients: [
+      ["Kabeljaufilet", 400, "g", "meat"], ["Panko-Brösel", 80, "g", "dry"], ["Eier", 1, "Stk", "fresh"],
+      ["Erbsen", 300, "g", "frozen"], ["Kartoffeln", 400, "g", "veg"], ["Zitrone", 1, "Stk", "veg"],
+      ["Mehl", 2, "EL", "pantry"], ["Olivenöl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Kartoffeln würfeln und 15 Minuten kochen.", timer: 900, items: ["Kartoffeln"] },
+      { icon: "chop", text: "Fisch in dicke Streifen schneiden.", items: ["Kabeljau"] },
+      { icon: "mix", text: "Streifen in Mehl, dann Ei, dann Panko wenden.", items: ["Mehl", "Ei", "Panko"] },
+      { icon: "pan", text: "In Öl je Seite 3 Minuten goldbraun braten.", timer: 360, items: ["Olivenöl"] },
+      { icon: "boil", text: "Erbsen die letzten 4 Minuten zu den Kartoffeln geben.", timer: 240, items: ["Erbsen"] },
+      { icon: "serve", text: "Kartoffeln und Erbsen zerstampfen. Mit Zitrone servieren.", items: ["Zitrone"] }
+    ]
+  },
+  {
+    id: "friedrice", name: "Bunter Hähnchen-Fried-Rice", origin: "China", flag: "CN", time: 20,
+    colors: ["#E8D9A8", "#E58B5A", "#86AC74", "#F5F0E4"],
+    kid: "Kinderportion vor der Sojasauce abnehmen.",
+    ingredients: [
+      ["Express-Reis (vorgegart)", 2, "Beutel", "dry"], ["Hähnchenbrust", 300, "g", "meat"], ["Eier", 2, "Stk", "fresh"],
+      ["Erbsen", 150, "g", "frozen"], ["Karotten", 2, "Stk", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"],
+      ["Sojasauce (salzreduziert)", 1, "EL", "pantry"], ["Sesamöl", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Hähnchen und Karotten klein würfeln, Lauchzwiebeln in Ringe.", items: ["Hähnchen", "Karotten", "Frühlingszwiebeln"] },
+      { icon: "pan", text: "Hähnchen 5 Minuten braten, Karotten und Erbsen dazu, 3 Minuten.", timer: 480, items: ["Erbsen"] },
+      { icon: "pan", text: "Alles zur Seite schieben, Eier in die Lücke und verrühren.", items: ["Eier"] },
+      { icon: "rice", text: "Reis dazu und 4 Minuten mitbraten.", timer: 240, items: ["Reis"] },
+      { icon: "serve", text: "Sesamöl, Lauchzwiebel und etwas Soja für die Großen.", items: ["Sesamöl", "Sojasauce"] }
+    ]
+  },
+  {
+    id: "kuerbissuppe", name: "Kürbis-Kokos-Suppe mit Linsen", origin: "Thailand", flag: "TH", time: 30,
+    colors: ["#E7934A", "#F3E9D2", "#8FAE84", "#EFC38A"],
+    kid: "Etwas abkühlen lassen. Brotstreifen zum Tunken dazu.",
+    ingredients: [
+      ["Hokkaido-Kürbis", 800, "g", "veg"], ["Kokosmilch", 400, "ml", "dry"], ["Rote Linsen", 100, "g", "dry"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Ingwer", 1, "Stk", "veg"], ["Fladenbrot", 1, "Stk", "bread"],
+      ["Gemüsebrühe (salzarm)", 600, "ml", "pantry"], ["Currypulver mild", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Kürbis mit Schale würfeln. Zwiebel und Ingwer hacken.", items: ["Kürbis", "Zwiebel", "Ingwer"] },
+      { icon: "pan", text: "Zwiebel, Ingwer und Curry 3 Minuten anschwitzen.", timer: 180, items: ["Curry"] },
+      { icon: "boil", text: "Kürbis, Linsen und Brühe dazu. 18 Minuten köcheln.", timer: 1080, items: ["Linsen", "Brühe"] },
+      { icon: "mix", text: "Kokosmilch dazu und alles fein pürieren.", items: ["Kokosmilch"] },
+      { icon: "serve", text: "Mit Brot servieren.", items: ["Brot"] }
+    ]
+  },
+  {
+    id: "falafel", name: "Ofen-Falafel mit Joghurt-Dip", origin: "Libanon", flag: "LB", time: 30,
+    colors: ["#B98A4E", "#7FA36E", "#F4EFE3", "#E9D7B0"],
+    kid: "Bällchen halbieren oder leicht zerdrücken.",
+    ingredients: [
+      ["Kichererbsen", 2, "Dose", "dry"], ["Haferflocken", 50, "g", "dry"], ["Petersilie", 1, "Bund", "veg"],
+      ["Knoblauch", 1, "Zehe", "veg"], ["Naturjoghurt", 200, "g", "fresh"], ["Gurke", 1, "Stk", "veg"],
+      ["Fladenbrot", 1, "Stk", "bread"], ["Kreuzkümmel", 1, "TL", "pantry"], ["Olivenöl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Ofen auf 200 Grad. Kichererbsen, Haferflocken, Petersilie, Knoblauch und Kreuzkümmel grob pürieren.", items: ["Kichererbsen", "Haferflocken", "Petersilie"] },
+      { icon: "mix", text: "Kleine Bällchen formen und mit Öl aufs Blech.", items: ["Olivenöl"] },
+      { icon: "oven", text: "20 Minuten backen, einmal wenden.", timer: 1200, items: [] },
+      { icon: "chop", text: "Gurke raspeln und mit Joghurt verrühren.", items: ["Gurke", "Joghurt"] },
+      { icon: "serve", text: "Mit Fladenbrot und Dip servieren.", items: ["Fladenbrot"] }
+    ]
+  },
+  {
+    id: "koettbullar", name: "Köttbullar mit Kartoffelpüree", origin: "Schweden", flag: "SE", time: 30,
+    colors: ["#9C6B4A", "#F1E6C8", "#C2414B", "#9DB59A"],
+    kid: "Bällchen halbieren. Preiselbeeren nur ein Klecks.",
+    ingredients: [
+      ["Rinderhack", 400, "g", "meat"], ["Eier", 1, "Stk", "fresh"], ["Kartoffeln", 700, "g", "veg"],
+      ["Milch", 150, "ml", "fresh"], ["Gurke", 1, "Stk", "veg"], ["Preiselbeeren", 1, "Glas", "dry"],
+      ["Semmelbrösel", 3, "EL", "pantry"], ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Kartoffeln würfeln und 15 Minuten kochen.", timer: 900, items: ["Kartoffeln"] },
+      { icon: "mix", text: "Hack, Ei und Brösel mischen. Kleine Bällchen formen.", items: ["Hack", "Ei", "Brösel"] },
+      { icon: "pan", text: "Bällchen 10 Minuten rundum braten.", timer: 600, items: [] },
+      { icon: "mix", text: "Kartoffeln mit Milch und Butter stampfen.", items: ["Milch", "Butter"] },
+      { icon: "serve", text: "Mit Gurkenscheiben und Preiselbeeren servieren.", items: ["Gurke", "Preiselbeeren"] }
+    ]
+  },
+  {
+    id: "sommerrolle", name: "Sommerrollen-Bowl mit Mango", origin: "Vietnam", flag: "VN", time: 20,
+    colors: ["#F2C14E", "#F5F1E8", "#7FAE7A", "#E58B6A"],
+    kid: "Nudeln kurz schneiden. Erdnuss-Dip nur, wenn keine Allergie bekannt ist.",
+    ingredients: [
+      ["Reisnudeln", 200, "g", "dry"], ["Hähnchenbrust", 300, "g", "meat"], ["Mango", 1, "Stk", "veg"],
+      ["Gurke", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"], ["Minze", 1, "Topf", "veg"],
+      ["Limette", 1, "Stk", "veg"], ["Erdnussmus", 2, "EL", "dry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Reisnudeln mit heißem Wasser übergießen. 5 Minuten ziehen lassen.", timer: 300, items: ["Reisnudeln"] },
+      { icon: "pan", text: "Hähnchen in Streifen schneiden und 7 Minuten braten.", timer: 420, items: ["Hähnchen"] },
+      { icon: "chop", text: "Mango, Gurke und Karotte in feine Streifen.", items: ["Mango", "Gurke", "Karotten"] },
+      { icon: "mix", text: "Erdnussmus mit Limette und etwas Wasser verrühren.", items: ["Erdnussmus", "Limette"] },
+      { icon: "serve", text: "Alles in Schalen, Minze drüber.", items: ["Minze"] }
+    ]
+  },
+  {
+    id: "gemuesepasta", name: "Pasta mit versteckter Gemüsesoße", origin: "Italien", flag: "IT", time: 25,
+    colors: ["#D9533F", "#E9C97A", "#8FAE7F", "#F6F0E4"],
+    kid: "Die Soße schmeckt nach Tomate. Das Gemüse sieht man nicht.",
+    ingredients: [
+      ["Vollkorn-Pasta", 300, "g", "dry"], ["Passierte Tomaten", 500, "g", "dry"], ["Rote Paprika", 1, "Stk", "veg"],
+      ["Karotten", 2, "Stk", "veg"], ["Zucchini", 1, "Stk", "veg"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Parmesan", 40, "g", "fresh"], ["Olivenöl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebel, Paprika, Karotten und Zucchini grob würfeln.", items: ["Zwiebel", "Paprika", "Karotten", "Zucchini"] },
+      { icon: "pan", text: "Gemüse 5 Minuten in Öl anbraten.", timer: 300, items: ["Olivenöl"] },
+      { icon: "boil", text: "Tomaten dazu, 12 Minuten köcheln. Parallel Pasta kochen.", timer: 720, items: ["Tomaten", "Pasta"] },
+      { icon: "mix", text: "Soße fein pürieren.", items: [] },
+      { icon: "serve", text: "Mit Pasta mischen, Parmesan drüber.", items: ["Parmesan"] }
+    ]
+  },
+  {
+    id: "souvlaki", name: "Hähnchen-Souvlaki mit Tzatziki", origin: "Griechenland", flag: "GR", time: 25,
+    colors: ["#D9A066", "#F4F1E8", "#86A97A", "#E35D4A"],
+    kid: "Fleisch in kleine Stücke, Knoblauch im Tzatziki sparsam.",
+    ingredients: [
+      ["Hähnchenbrust", 400, "g", "meat"], ["Griechischer Joghurt", 250, "g", "fresh"], ["Gurke", 1, "Stk", "veg"],
+      ["Cherrytomaten", 250, "g", "veg"], ["Fladenbrot", 1, "Stk", "bread"], ["Zitrone", 1, "Stk", "veg"],
+      ["Knoblauch", 1, "Zehe", "veg"], ["Oregano", 1, "TL", "pantry"], ["Olivenöl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Hähnchen würfeln, mit Öl, Zitrone und Oregano mischen.", items: ["Hähnchen", "Zitrone", "Oregano"] },
+      { icon: "pan", text: "8 Minuten rundum braten.", timer: 480, items: [] },
+      { icon: "mix", text: "Gurke raspeln, mit Joghurt und wenig Knoblauch verrühren.", items: ["Gurke", "Joghurt", "Knoblauch"] },
+      { icon: "oven", text: "Fladenbrot kurz im Ofen oder Toaster wärmen.", items: ["Fladenbrot"] },
+      { icon: "serve", text: "Mit Tomaten servieren. Tomaten fürs Kind vierteln.", items: ["Tomaten"] }
+    ]
+  },
+  {
+    id: "laibchen", name: "Gemüselaibchen mit Erdäpfel-Gurkensalat", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#C9A86A", "#8FB07E", "#F2EDE0", "#E7B07A"],
+    kid: "Laibchen sind ideales Fingerfood. Salat ohne Essig für die Kleinen.",
+    ingredients: [
+      ["Zucchini", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"], ["Haferflocken", 80, "g", "dry"],
+      ["Eier", 2, "Stk", "fresh"], ["Geriebener Käse", 60, "g", "fresh"], ["Kartoffeln", 500, "g", "veg"],
+      ["Gurke", 1, "Stk", "veg"], ["Sauerrahm", 100, "g", "fresh"], ["Olivenöl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Kartoffeln würfeln und 12 Minuten kochen.", timer: 720, items: ["Kartoffeln"] },
+      { icon: "chop", text: "Zucchini und Karotten raspeln, Zucchini gut ausdrücken.", items: ["Zucchini", "Karotten"] },
+      { icon: "mix", text: "Mit Haferflocken, Eiern und Käse mischen. Laibchen formen.", items: ["Haferflocken", "Eier", "Käse"] },
+      { icon: "pan", text: "Je Seite 4 Minuten goldbraun braten.", timer: 480, items: ["Olivenöl"] },
+      { icon: "serve", text: "Kartoffeln mit Gurke und Sauerrahm zu Salat mischen.", items: ["Gurke", "Sauerrahm"] }
+    ]
+  },
+  {
+    id: "kaiserschmarrn", name: "Vollkorn-Kaiserschmarrn mit Apfelmus", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#E6C27A", "#F4EEDC", "#D99A6C", "#B5C99A"],
+    kid: "Ohne Zuckerguss. Apfelmus macht ihn süß genug.",
+    ingredients: [
+      ["Eier", 4, "Stk", "fresh"], ["Milch", 300, "ml", "fresh"], ["Vollkornmehl", 200, "g", "dry"],
+      ["Apfelmus ungesüßt", 1, "Glas", "dry"], ["Äpfel", 2, "Stk", "veg"], ["Butter", 30, "g", "pantry"],
+      ["Rosinen", 30, "g", "dry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Eier, Milch und Mehl zu glattem Teig verrühren.", items: ["Eier", "Milch", "Mehl"] },
+      { icon: "pan", text: "Butter in die Pfanne, Teig hinein. 5 Minuten stocken lassen.", timer: 300, items: ["Butter"] },
+      { icon: "pan", text: "Wenden, mit zwei Gabeln zerreißen, Rosinen dazu. 4 Minuten braten.", timer: 240, items: ["Rosinen"] },
+      { icon: "chop", text: "Äpfel in Spalten schneiden.", items: ["Äpfel"] },
+      { icon: "serve", text: "Mit Apfelmus und Apfelspalten servieren.", items: ["Apfelmus"] }
+    ]
+  }
 ];
+
+// Merkmale für "Passt zu euch": je mehr Merkmale ein Gericht mit euren Herz-Gerichten teilt, desto öfter wird es vorgeschlagen.
+const TAGS = {
+  lachs: ["fisch", "ofen", "nordisch"], teriyaki: ["huhn", "reis", "asiatisch", "bowl"],
+  dal: ["vegetarisch", "topf", "indisch", "reis"], orzo: ["fleisch", "pfanne", "mediterran", "pasta"],
+  shakshuka: ["vegetarisch", "ei", "pfanne", "orientalisch"], quesadilla: ["vegetarisch", "fingerfood", "pfanne", "lateinamerika"],
+  gnocchi: ["vegetarisch", "ofen", "mediterran"], smorrebrod: ["fisch", "ei", "fingerfood", "nordisch", "kalt"],
+  thai: ["huhn", "reis", "asiatisch", "pfanne"], pajeon: ["vegetarisch", "pfanne", "asiatisch", "fingerfood"],
+  couscous: ["vegetarisch", "orientalisch", "pfanne"], lohikeitto: ["fisch", "suppe", "nordisch", "topf"],
+  erbsenpasta: ["vegetarisch", "pasta", "mediterran"], tortilla: ["vegetarisch", "ei", "pfanne", "mediterran"],
+  frittata: ["vegetarisch", "ei", "ofen", "fingerfood"], fischstaebchen: ["fisch", "pfanne", "fingerfood"],
+  friedrice: ["huhn", "reis", "asiatisch", "pfanne"], kuerbissuppe: ["vegetarisch", "suppe", "asiatisch", "topf"],
+  falafel: ["vegetarisch", "ofen", "orientalisch", "fingerfood"], koettbullar: ["fleisch", "pfanne", "nordisch"],
+  sommerrolle: ["huhn", "asiatisch", "bowl", "kalt"], gemuesepasta: ["vegetarisch", "pasta", "mediterran", "topf"],
+  souvlaki: ["huhn", "pfanne", "mediterran"], laibchen: ["vegetarisch", "pfanne", "fingerfood", "österreichisch"],
+  kaiserschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch", "ei"]
+};
+RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
 
 </script>
 <script>
@@ -495,14 +795,30 @@ const RECIPES = [
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  // Herz-Gerichte: Basis für neue Vorschläge
+  let favs = store.get("favs", {});
+  const favIds = () => Object.keys(favs).filter(id => favs[id] && byId[id]);
+  // Wie gut passt ein Gericht zu euren Herz-Gerichten? (geteilte Merkmale im Schnitt)
+  function similarity(r) {
+    const f = favIds().filter(id => id !== r.id);
+    if (!f.length) return 0;
+    return f.reduce((s, id) => s + byId[id].tags.filter(t => r.tags.includes(t)).length, 0) / f.length;
+  }
+  const fits = r => !favs[r.id] && similarity(r) >= 1.5;
+  function weight(r) { return (favs[r.id] ? 5 : 1) + similarity(r) * 1.5; }
   function newWeek() {
-    // Keine zwei Gerichte aus demselben Land am Stück, Fisch höchstens zweimal.
-    for (let t = 0; t < 50; t++) {
-      const pick = shuffle(RECIPES.map(r => r.id)).slice(0, 7);
-      const ok = pick.every((id, i) => i === 0 || byId[id].origin !== byId[pick[i - 1]].origin);
-      if (ok) return pick;
+    // Herz-Gerichte und ähnliche Gerichte kommen öfter dran. Keine zwei Gerichte aus demselben Land am Stück.
+    for (let t = 0; t < 80; t++) {
+      const pool = RECIPES.slice(), pick = [];
+      while (pick.length < 7) {
+        const total = pool.reduce((s, r) => s + weight(r), 0);
+        let x = Math.random() * total, k = 0;
+        while (k < pool.length - 1 && (x -= weight(pool[k])) > 0) k++;
+        pick.push(pool.splice(k, 1)[0].id);
+      }
+      if (pick.every((id, i) => i === 0 || byId[id].origin !== byId[pick[i - 1]].origin)) return pick;
     }
-    return RECIPES.slice(0, 7).map(r => r.id);
+    return shuffle(RECIPES.map(r => r.id)).slice(0, 7);
   }
   let plan = store.get("plan", null);
   if (!Array.isArray(plan) || plan.length !== 7 || !plan.every(id => byId[id])) plan = newWeek();
@@ -529,6 +845,11 @@ const RECIPES = [
     prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
     next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
     voiceOn: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h4l5 4V6L8 10z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>',
+    heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+    heartFill: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+    x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 11v6M12 7.5v.5"/></svg>',
+    share: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2A9.7 9.7 0 0 0 3.6 16.8L2.3 21.7l5-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.9 2c0 1.2.9 2.3 1 2.5.1.1 1.7 2.6 4.1 3.7 1.5.6 2.1.7 2.9.6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1 .1-1.2l-.4-.2z"/></svg>',
     voiceOff: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h4l5 4V6L8 10z"/><path d="M17 10l4 4M21 10l-4 4"/></svg>'
   };
 
@@ -562,6 +883,7 @@ const RECIPES = [
           <button class="icon-btn" data-swap="${i}" aria-label="Anderes Gericht für ${DAYS[i]}" title="Anderes Gericht">${ICON.swap}</button>
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
+        <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}</div>
         <ol class="steps">${r.steps.map(st => `<li>${esc(st.text)}${st.timer ? ` <span class="tm">⏱ ${Math.round(st.timer / 60)} Min.</span>` : ""}</li>`).join("")}</ol>
         <div class="kid">${esc(r.kid)}</div>
       </article>`;
@@ -575,7 +897,7 @@ const RECIPES = [
     if (p) openPlayer(byId[p.dataset.play]);
     if (s) openSwap(+s.dataset.swap);
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); renderWeek(); Sync.put("", { plan, checked, pantryBuy }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs }); toast("Neue Woche ist geplant"); });
 
   function openSwap(dayIdx) {
     const others = RECIPES.filter(r => !plan.includes(r.id));
@@ -643,13 +965,12 @@ const RECIPES = [
   });
 
   // ---------- Tabs ----------
+  const TABS = ["week", "discover", "shop"];
   function showTab(t) {
-    $("#view-week").hidden = t !== "week"; $("#view-shop").hidden = t !== "shop";
-    $("#tab-week").setAttribute("aria-selected", t === "week"); $("#tab-shop").setAttribute("aria-selected", t === "shop");
+    TABS.forEach(x => { $("#view-" + x).hidden = x !== t; $("#tab-" + x).setAttribute("aria-selected", x === t); });
     store.set("tab", t);
   }
-  $("#tab-week").addEventListener("click", () => showTab("week"));
-  $("#tab-shop").addEventListener("click", () => showTab("shop"));
+  TABS.forEach(x => $("#tab-" + x).addEventListener("click", () => showTab(x)));
 
   let toastT;
   function toast(msg) { clearTimeout(toastT); $("#toast-root").innerHTML = `<div class="toast" role="status">${esc(msg)}</div>`; toastT = setTimeout(() => $("#toast-root").innerHTML = "", 2200); }
@@ -757,11 +1078,11 @@ const RECIPES = [
         const r = await fetch(this.base() + ".json");
         if (!r.ok) throw new Error(r.status);
         const d = await r.json();
-        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy }); return; }
+        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs }); return; }
         if (d.plan.length === 7 && d.plan.every(id => byId[id])) plan = d.plan;
-        checked = d.checked || {}; pantryBuy = d.pantryBuy || {};
-        store.set("checked", checked); store.set("pantryBuy", pantryBuy);
-        renderWeek();
+        checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
+        store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
+        renderWeek(); renderBoard(); renderFavCount();
         this.status("on", "Mit der Familie verbunden");
       } catch (e) { this.status("err", "Verbindung klappt nicht"); }
     },
@@ -822,15 +1143,163 @@ const RECIPES = [
   }
   $("#sync-status").addEventListener("click", openSyncSheet);
 
+  // ---------- Herz, Teilen, Rezept-Detail ----------
+  const APP_URL = "https://teresa-tramontana.github.io/mealplan/";
+  const tint = r => `color-mix(in srgb, ${r.colors[0]} 26%, var(--surface))`;
+  function favBtn(id, cls) {
+    const on = !!favs[id];
+    return `<button class="${cls}${on ? " on" : ""}" type="button" data-fav="${id}" aria-pressed="${on}" aria-label="${on ? "Herz entfernen" : "Herz geben"}">${on ? ICON.heartFill : ICON.heart}${cls === "mini" ? (on ? "Lieblingsgericht" : "Merken") : ""}</button>`;
+  }
+  function shareText(r) {
+    return `🍽️ ${r.name}\n${r.origin} · ${r.time} Min. · für 2 Große + 1 Kleines\n\n🛒 Zutaten:\n` +
+      r.ingredients.map(([n, q, u]) => `• ${n} – ${fmtQty(q, u)}`).join("\n") +
+      `\n\n👩‍🍳 So geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
+      `\n\n👶 Fürs Kind: ${r.kid}\n\n${APP_URL}#${r.id}`;
+  }
+  const shareBtn = r => `<a class="mini wa" href="https://wa.me/?text=${encodeURIComponent(shareText(r))}" target="_blank" rel="noopener" aria-label="${esc(r.name)} per WhatsApp teilen">${ICON.share}Teilen</a>`;
+
+  function toggleFav(id, force) {
+    const on = force === undefined ? !favs[id] : force;
+    if (on) favs[id] = true; else delete favs[id];
+    store.set("favs", favs);
+    Sync.put("favs/" + id, on || null);
+    renderWeek(); renderBoard(); renderFavCount();
+    const d = document.querySelector("#sheet-root [data-fav]");
+    if (d) d.outerHTML = favBtn(id, "mini");
+    return on;
+  }
+  // Ein Klick-Handler für alle Herz-Knöpfe
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-fav]");
+    if (!b) return;
+    e.stopPropagation();
+    if (toggleFav(b.dataset.fav)) toast("Herz gegeben – ähnliche Gerichte kommen öfter");
+  }, true);
+
+  function openDetail(id) {
+    const r = byId[id]; if (!r) return;
+    $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet" role="dialog" aria-label="${esc(r.name)}">
+      <div class="d-hero" style="--tint:${tint(r)}">${plateSVG(r)}</div>
+      <h2>${esc(r.name)}</h2>
+      <div class="meta"><span>${esc(r.origin)}</span><span>${r.time} Min.</span><span>${r.steps.length} Schritte</span></div>
+      <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button></div>
+      <h4>Einplanen für</h4>
+      <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>
+      <h4>Zutaten</h4>
+      <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(q, u)}</span></li>`).join("")}</ul>
+      <h4>So geht's</h4>
+      <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
+      <div class="kid"><b>Fürs Kind · </b>${esc(r.kid)}</div>
+      <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
+    $("#sheet-bg").addEventListener("click", e => {
+      const day = e.target.closest("[data-day]"), pl = e.target.closest("[data-detail-play]");
+      if (day) { plan[+day.dataset.day] = id; renderWeek(); Sync.put("plan", plan); toast(`Für ${DAYS[+day.dataset.day]} eingeplant`); }
+      if (pl) { $("#sheet-root").innerHTML = ""; openPlayer(r); return; }
+      if (e.target.id === "sheet-bg" || e.target.id === "sheet-close") $("#sheet-root").innerHTML = "";
+    });
+  }
+  $("#days").addEventListener("click", e => { const h = e.target.closest("h3"); if (h) openDetail(plan[[...document.querySelectorAll(".day h3")].indexOf(h)]); });
+
+  // ---------- Entdecken: Swipen ----------
+  let deck = [];
+  function buildDeck() {
+    deck = shuffle(RECIPES.filter(r => !favs[r.id])).sort((a, b) => similarity(b) - similarity(a)).map(r => r.id);
+  }
+  function renderFavCount() {
+    const n = favIds().length;
+    $("#fav-count").textContent = n ? `${n} ${n === 1 ? "Herz" : "Herzen"}` : "Noch keine Herzen";
+  }
+  function cardHTML(r, cls) {
+    return `<div class="card ${cls}" data-id="${r.id}" style="--tint:${tint(r)}">
+      <div class="c-img">${plateSVG(r)}<span class="stamp like">Mag ich</span><span class="stamp nope">Weiter</span>${fits(r) ? '<span class="badge">Passt zu euch</span>' : ""}</div>
+      <div class="c-body"><span class="eyebrow">${esc(r.origin)} · ${r.time} Min.</span><h2>${esc(r.name)}</h2>
+        <div class="tags">${r.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>
+        <p class="kidline">Fürs Kind: ${esc(r.kid)}</p></div></div>`;
+  }
+  function renderDeck() {
+    const top = deck.slice(0, 3).map(id => byId[id]);
+    if (!top.length) {
+      $("#deck").innerHTML = `<div class="deck-done"><h2>Alle Gerichte gesehen</h2><p style="margin:0;color:var(--muted)">${favIds().length} Gerichte haben ein Herz. Mit „Neue Woche mischen“ kommen sie öfter dran.</p>
+        <div class="row" style="justify-content:center"><button class="primary" id="deck-again" type="button">Nochmal von vorn</button><button class="ghost" id="deck-board" type="button">Zur Pinnwand</button></div></div>`;
+      $("#deck-again").onclick = () => { deck = shuffle(RECIPES).map(r => r.id); renderDeck(); };
+      $("#deck-board").onclick = () => setMode("board");
+      return;
+    }
+    $("#deck").innerHTML = top.map((r, i) => cardHTML(r, ["top", "under", "under2"][i])).reverse().join("");
+    attachDrag($("#deck .card.top"));
+  }
+  function fling(dir) {
+    const el = $("#deck .card.top"); if (!el) return;
+    const id = el.dataset.id;
+    el.style.transition = "transform .35s ease, opacity .35s ease";
+    el.style.transform = `translate(${dir * (innerWidth + 200)}px, 40px) rotate(${dir * 28}deg)`;
+    el.style.opacity = "0";
+    if (dir > 0) { favs[id] = true; store.set("favs", favs); Sync.put("favs/" + id, true); renderWeek(); renderBoard(); renderFavCount(); }
+    setTimeout(() => { deck = deck.filter(x => x !== id); renderDeck(); }, 320);
+  }
+  function attachDrag(el) {
+    let sx = 0, sy = 0, dx = 0, drag = false, moved = false;
+    el.addEventListener("pointerdown", e => { sx = e.clientX; sy = e.clientY; dx = 0; drag = true; moved = false; el.style.transition = "none"; try { el.setPointerCapture(e.pointerId); } catch (_) {} });
+    el.addEventListener("pointermove", e => {
+      if (!drag) return;
+      dx = e.clientX - sx; const dy = e.clientY - sy;
+      if (Math.abs(dx) > 6 || Math.abs(dy) > 6) moved = true;
+      el.style.transform = `translate(${dx}px, ${dy * 0.25}px) rotate(${dx / 18}deg)`;
+      el.style.setProperty("--like", Math.max(0, Math.min(1, dx / 100)));
+      el.style.setProperty("--nope", Math.max(0, Math.min(1, -dx / 100)));
+    });
+    const end = () => {
+      if (!drag) return; drag = false; el.style.transition = "";
+      if (dx > 100) fling(1); else if (dx < -100) fling(-1);
+      else { el.style.transform = ""; el.style.setProperty("--like", 0); el.style.setProperty("--nope", 0); if (!moved) openDetail(el.dataset.id); }
+    };
+    el.addEventListener("pointerup", end); el.addEventListener("pointercancel", end);
+  }
+  $("#sw-yes").innerHTML = ICON.heartFill; $("#sw-no").innerHTML = ICON.x; $("#sw-info").innerHTML = ICON.info;
+  $("#sw-yes").onclick = () => fling(1);
+  $("#sw-no").onclick = () => fling(-1);
+  $("#sw-info").onclick = () => { const el = $("#deck .card.top"); if (el) openDetail(el.dataset.id); };
+  document.addEventListener("keydown", e => {
+    if ($("#view-discover").hidden || !$("#board-wrap").hidden || P || $("#sheet-root").innerHTML) return;
+    if (e.key === "ArrowRight") fling(1); if (e.key === "ArrowLeft") fling(-1);
+  });
+
+  // ---------- Entdecken: Pinnwand ----------
+  const FILTERS = [["alle", "Alle"], ["herz", "♥ Herzen"], ["passt", "Passt zu euch"], ["vegetarisch", "Vegetarisch"], ["fisch", "Fisch"], ["huhn", "Huhn"], ["fingerfood", "Fingerfood"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["nordisch", "Nordisch"], ["orientalisch", "Orientalisch"], ["österreichisch", "Österreich"], ["suppe", "Suppe"]];
+  let filter = "alle";
+  const RATIOS = ["1 / 1", "4 / 5", "4 / 3", "3 / 4", "1 / 1.2"];
+  function renderBoard() {
+    $("#filters").innerHTML = FILTERS.map(([k, l]) => `<button type="button" data-filter="${k}" aria-pressed="${k === filter}">${esc(l)}</button>`).join("");
+    const list = RECIPES.filter(r => filter === "alle" || (filter === "herz" ? favs[r.id] : filter === "passt" ? fits(r) : r.tags.includes(filter)))
+      .sort((a, b) => (favs[b.id] ? 1 : 0) - (favs[a.id] ? 1 : 0) || similarity(b) - similarity(a));
+    $("#board").innerHTML = list.length ? list.map((r, i) => `<article class="pin" data-open="${r.id}">
+        <div class="p-img" style="--tint:${tint(r)};aspect-ratio:${RATIOS[(r.id.length + i) % RATIOS.length]}">${plateSVG(r)}${favBtn(r.id, "heart-btn")}${fits(r) ? '<span class="badge">Passt zu euch</span>' : ""}</div>
+        <div class="p-cap"><b>${esc(r.name)}</b><span>${esc(r.origin)} · ${r.time} Min.</span></div></article>`).join("")
+      : `<p style="color:var(--muted)">${filter === "herz" ? "Noch keine Herzen. Tippe bei einem Gericht auf das Herz." : filter === "passt" ? "Gib erst ein paar Herzen, dann zeige ich hier passende Gerichte." : "Keine Gerichte in dieser Auswahl."}</p>`;
+  }
+  $("#filters").addEventListener("click", e => { const b = e.target.closest("[data-filter]"); if (b) { filter = b.dataset.filter; renderBoard(); } });
+  $("#board").addEventListener("click", e => { const p = e.target.closest("[data-open]"); if (p) openDetail(p.dataset.open); });
+  function setMode(m) {
+    $("#swipe-wrap").hidden = m !== "swipe"; $("#board-wrap").hidden = m !== "board";
+    $("#mode-swipe").setAttribute("aria-pressed", m === "swipe"); $("#mode-board").setAttribute("aria-pressed", m === "board");
+    store.set("mode", m);
+  }
+  $("#mode-swipe").onclick = () => setMode("swipe");
+  $("#mode-board").onclick = () => setMode("board");
+
   // Start
+  buildDeck(); renderDeck(); renderBoard(); renderFavCount();
+  setMode(store.get("mode", "swipe") === "board" ? "board" : "swipe");
   renderWeek();
-  showTab(store.get("tab", "week") === "shop" ? "shop" : "week");
+  showTab(TABS.includes(store.get("tab", "week")) ? store.get("tab", "week") : "week");
   const d = new Date(), mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
   const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
   const f = x => x.toLocaleDateString("de-DE", { day: "numeric", month: "short" });
   $("#week-label").textContent = `Woche ${f(mon)} – ${f(sun)}`;
   let linkDb = null;
   try { linkDb = new URLSearchParams(location.search).get("db"); } catch (e) {}
+  const shared = location.hash.slice(1);
+  if (byId[shared]) { openDetail(shared); try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {} }
   if (linkDb) {
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
     if (Sync.setUrl(linkDb)) toast("Mit der Familie verbunden");

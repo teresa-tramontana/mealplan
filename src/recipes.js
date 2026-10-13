@@ -251,4 +251,209 @@ const RECIPES = [
       { icon: "serve", text: "Gurke und Tomaten als Salat. In Stücke schneiden.", items: ["Gurke", "Tomaten"] }
     ]
   }
+  ,{
+    id: "frittata", name: "Mini-Frittatas aus dem Muffinblech", origin: "England", flag: "GB", time: 25,
+    colors: ["#F0CF6B", "#8FB07E", "#D9533F", "#F6F1E4"],
+    kid: "Perfekt zum Selberhalten. Abkühlen lassen, innen wird es heiß.",
+    ingredients: [
+      ["Eier", 6, "Stk", "fresh"], ["Milch", 50, "ml", "fresh"], ["Rote Paprika", 1, "Stk", "veg"],
+      ["Babyspinat", 60, "g", "veg"], ["Geriebener Käse", 80, "g", "fresh"], ["Vollkorn-Roggenbrot", 1, "Pck", "bread"],
+      ["Gurke", 1, "Stk", "veg"], ["Olivenöl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 190 Grad. Paprika klein würfeln, Spinat hacken.", items: ["Paprika", "Spinat"] },
+      { icon: "mix", text: "Eier mit Milch und Käse verquirlen, Gemüse unterrühren.", items: ["Eier", "Milch", "Käse"] },
+      { icon: "oven", text: "Muffinblech einölen, Masse einfüllen. 18 Minuten backen.", timer: 1080, items: ["Olivenöl"] },
+      { icon: "serve", text: "Mit Brot und Gurkensticks servieren.", items: ["Brot", "Gurke"] }
+    ]
+  },
+  {
+    id: "fischstaebchen", name: "Selbstgemachte Fischstäbchen mit Erbsenpüree", origin: "England", flag: "GB", time: 30,
+    colors: ["#E2B566", "#9CC07F", "#F4F0E6", "#E8C9A0"],
+    kid: "Fisch vorher auf Gräten prüfen. Püree eignet sich super zum Löffeln.",
+    ingredients: [
+      ["Kabeljaufilet", 400, "g", "meat"], ["Panko-Brösel", 80, "g", "dry"], ["Eier", 1, "Stk", "fresh"],
+      ["Erbsen", 300, "g", "frozen"], ["Kartoffeln", 400, "g", "veg"], ["Zitrone", 1, "Stk", "veg"],
+      ["Mehl", 2, "EL", "pantry"], ["Olivenöl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Kartoffeln würfeln und 15 Minuten kochen.", timer: 900, items: ["Kartoffeln"] },
+      { icon: "chop", text: "Fisch in dicke Streifen schneiden.", items: ["Kabeljau"] },
+      { icon: "mix", text: "Streifen in Mehl, dann Ei, dann Panko wenden.", items: ["Mehl", "Ei", "Panko"] },
+      { icon: "pan", text: "In Öl je Seite 3 Minuten goldbraun braten.", timer: 360, items: ["Olivenöl"] },
+      { icon: "boil", text: "Erbsen die letzten 4 Minuten zu den Kartoffeln geben.", timer: 240, items: ["Erbsen"] },
+      { icon: "serve", text: "Kartoffeln und Erbsen zerstampfen. Mit Zitrone servieren.", items: ["Zitrone"] }
+    ]
+  },
+  {
+    id: "friedrice", name: "Bunter Hähnchen-Fried-Rice", origin: "China", flag: "CN", time: 20,
+    colors: ["#E8D9A8", "#E58B5A", "#86AC74", "#F5F0E4"],
+    kid: "Kinderportion vor der Sojasauce abnehmen.",
+    ingredients: [
+      ["Express-Reis (vorgegart)", 2, "Beutel", "dry"], ["Hähnchenbrust", 300, "g", "meat"], ["Eier", 2, "Stk", "fresh"],
+      ["Erbsen", 150, "g", "frozen"], ["Karotten", 2, "Stk", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"],
+      ["Sojasauce (salzreduziert)", 1, "EL", "pantry"], ["Sesamöl", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Hähnchen und Karotten klein würfeln, Lauchzwiebeln in Ringe.", items: ["Hähnchen", "Karotten", "Frühlingszwiebeln"] },
+      { icon: "pan", text: "Hähnchen 5 Minuten braten, Karotten und Erbsen dazu, 3 Minuten.", timer: 480, items: ["Erbsen"] },
+      { icon: "pan", text: "Alles zur Seite schieben, Eier in die Lücke und verrühren.", items: ["Eier"] },
+      { icon: "rice", text: "Reis dazu und 4 Minuten mitbraten.", timer: 240, items: ["Reis"] },
+      { icon: "serve", text: "Sesamöl, Lauchzwiebel und etwas Soja für die Großen.", items: ["Sesamöl", "Sojasauce"] }
+    ]
+  },
+  {
+    id: "kuerbissuppe", name: "Kürbis-Kokos-Suppe mit Linsen", origin: "Thailand", flag: "TH", time: 30,
+    colors: ["#E7934A", "#F3E9D2", "#8FAE84", "#EFC38A"],
+    kid: "Etwas abkühlen lassen. Brotstreifen zum Tunken dazu.",
+    ingredients: [
+      ["Hokkaido-Kürbis", 800, "g", "veg"], ["Kokosmilch", 400, "ml", "dry"], ["Rote Linsen", 100, "g", "dry"],
+      ["Zwiebel", 1, "Stk", "veg"], ["Ingwer", 1, "Stk", "veg"], ["Fladenbrot", 1, "Stk", "bread"],
+      ["Gemüsebrühe (salzarm)", 600, "ml", "pantry"], ["Currypulver mild", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Kürbis mit Schale würfeln. Zwiebel und Ingwer hacken.", items: ["Kürbis", "Zwiebel", "Ingwer"] },
+      { icon: "pan", text: "Zwiebel, Ingwer und Curry 3 Minuten anschwitzen.", timer: 180, items: ["Curry"] },
+      { icon: "boil", text: "Kürbis, Linsen und Brühe dazu. 18 Minuten köcheln.", timer: 1080, items: ["Linsen", "Brühe"] },
+      { icon: "mix", text: "Kokosmilch dazu und alles fein pürieren.", items: ["Kokosmilch"] },
+      { icon: "serve", text: "Mit Brot servieren.", items: ["Brot"] }
+    ]
+  },
+  {
+    id: "falafel", name: "Ofen-Falafel mit Joghurt-Dip", origin: "Libanon", flag: "LB", time: 30,
+    colors: ["#B98A4E", "#7FA36E", "#F4EFE3", "#E9D7B0"],
+    kid: "Bällchen halbieren oder leicht zerdrücken.",
+    ingredients: [
+      ["Kichererbsen", 2, "Dose", "dry"], ["Haferflocken", 50, "g", "dry"], ["Petersilie", 1, "Bund", "veg"],
+      ["Knoblauch", 1, "Zehe", "veg"], ["Naturjoghurt", 200, "g", "fresh"], ["Gurke", 1, "Stk", "veg"],
+      ["Fladenbrot", 1, "Stk", "bread"], ["Kreuzkümmel", 1, "TL", "pantry"], ["Olivenöl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Ofen auf 200 Grad. Kichererbsen, Haferflocken, Petersilie, Knoblauch und Kreuzkümmel grob pürieren.", items: ["Kichererbsen", "Haferflocken", "Petersilie"] },
+      { icon: "mix", text: "Kleine Bällchen formen und mit Öl aufs Blech.", items: ["Olivenöl"] },
+      { icon: "oven", text: "20 Minuten backen, einmal wenden.", timer: 1200, items: [] },
+      { icon: "chop", text: "Gurke raspeln und mit Joghurt verrühren.", items: ["Gurke", "Joghurt"] },
+      { icon: "serve", text: "Mit Fladenbrot und Dip servieren.", items: ["Fladenbrot"] }
+    ]
+  },
+  {
+    id: "koettbullar", name: "Köttbullar mit Kartoffelpüree", origin: "Schweden", flag: "SE", time: 30,
+    colors: ["#9C6B4A", "#F1E6C8", "#C2414B", "#9DB59A"],
+    kid: "Bällchen halbieren. Preiselbeeren nur ein Klecks.",
+    ingredients: [
+      ["Rinderhack", 400, "g", "meat"], ["Eier", 1, "Stk", "fresh"], ["Kartoffeln", 700, "g", "veg"],
+      ["Milch", 150, "ml", "fresh"], ["Gurke", 1, "Stk", "veg"], ["Preiselbeeren", 1, "Glas", "dry"],
+      ["Semmelbrösel", 3, "EL", "pantry"], ["Butter", 20, "g", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Kartoffeln würfeln und 15 Minuten kochen.", timer: 900, items: ["Kartoffeln"] },
+      { icon: "mix", text: "Hack, Ei und Brösel mischen. Kleine Bällchen formen.", items: ["Hack", "Ei", "Brösel"] },
+      { icon: "pan", text: "Bällchen 10 Minuten rundum braten.", timer: 600, items: [] },
+      { icon: "mix", text: "Kartoffeln mit Milch und Butter stampfen.", items: ["Milch", "Butter"] },
+      { icon: "serve", text: "Mit Gurkenscheiben und Preiselbeeren servieren.", items: ["Gurke", "Preiselbeeren"] }
+    ]
+  },
+  {
+    id: "sommerrolle", name: "Sommerrollen-Bowl mit Mango", origin: "Vietnam", flag: "VN", time: 20,
+    colors: ["#F2C14E", "#F5F1E8", "#7FAE7A", "#E58B6A"],
+    kid: "Nudeln kurz schneiden. Erdnuss-Dip nur, wenn keine Allergie bekannt ist.",
+    ingredients: [
+      ["Reisnudeln", 200, "g", "dry"], ["Hähnchenbrust", 300, "g", "meat"], ["Mango", 1, "Stk", "veg"],
+      ["Gurke", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"], ["Minze", 1, "Topf", "veg"],
+      ["Limette", 1, "Stk", "veg"], ["Erdnussmus", 2, "EL", "dry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Reisnudeln mit heißem Wasser übergießen. 5 Minuten ziehen lassen.", timer: 300, items: ["Reisnudeln"] },
+      { icon: "pan", text: "Hähnchen in Streifen schneiden und 7 Minuten braten.", timer: 420, items: ["Hähnchen"] },
+      { icon: "chop", text: "Mango, Gurke und Karotte in feine Streifen.", items: ["Mango", "Gurke", "Karotten"] },
+      { icon: "mix", text: "Erdnussmus mit Limette und etwas Wasser verrühren.", items: ["Erdnussmus", "Limette"] },
+      { icon: "serve", text: "Alles in Schalen, Minze drüber.", items: ["Minze"] }
+    ]
+  },
+  {
+    id: "gemuesepasta", name: "Pasta mit versteckter Gemüsesoße", origin: "Italien", flag: "IT", time: 25,
+    colors: ["#D9533F", "#E9C97A", "#8FAE7F", "#F6F0E4"],
+    kid: "Die Soße schmeckt nach Tomate. Das Gemüse sieht man nicht.",
+    ingredients: [
+      ["Vollkorn-Pasta", 300, "g", "dry"], ["Passierte Tomaten", 500, "g", "dry"], ["Rote Paprika", 1, "Stk", "veg"],
+      ["Karotten", 2, "Stk", "veg"], ["Zucchini", 1, "Stk", "veg"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Parmesan", 40, "g", "fresh"], ["Olivenöl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebel, Paprika, Karotten und Zucchini grob würfeln.", items: ["Zwiebel", "Paprika", "Karotten", "Zucchini"] },
+      { icon: "pan", text: "Gemüse 5 Minuten in Öl anbraten.", timer: 300, items: ["Olivenöl"] },
+      { icon: "boil", text: "Tomaten dazu, 12 Minuten köcheln. Parallel Pasta kochen.", timer: 720, items: ["Tomaten", "Pasta"] },
+      { icon: "mix", text: "Soße fein pürieren.", items: [] },
+      { icon: "serve", text: "Mit Pasta mischen, Parmesan drüber.", items: ["Parmesan"] }
+    ]
+  },
+  {
+    id: "souvlaki", name: "Hähnchen-Souvlaki mit Tzatziki", origin: "Griechenland", flag: "GR", time: 25,
+    colors: ["#D9A066", "#F4F1E8", "#86A97A", "#E35D4A"],
+    kid: "Fleisch in kleine Stücke, Knoblauch im Tzatziki sparsam.",
+    ingredients: [
+      ["Hähnchenbrust", 400, "g", "meat"], ["Griechischer Joghurt", 250, "g", "fresh"], ["Gurke", 1, "Stk", "veg"],
+      ["Cherrytomaten", 250, "g", "veg"], ["Fladenbrot", 1, "Stk", "bread"], ["Zitrone", 1, "Stk", "veg"],
+      ["Knoblauch", 1, "Zehe", "veg"], ["Oregano", 1, "TL", "pantry"], ["Olivenöl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Hähnchen würfeln, mit Öl, Zitrone und Oregano mischen.", items: ["Hähnchen", "Zitrone", "Oregano"] },
+      { icon: "pan", text: "8 Minuten rundum braten.", timer: 480, items: [] },
+      { icon: "mix", text: "Gurke raspeln, mit Joghurt und wenig Knoblauch verrühren.", items: ["Gurke", "Joghurt", "Knoblauch"] },
+      { icon: "oven", text: "Fladenbrot kurz im Ofen oder Toaster wärmen.", items: ["Fladenbrot"] },
+      { icon: "serve", text: "Mit Tomaten servieren. Tomaten fürs Kind vierteln.", items: ["Tomaten"] }
+    ]
+  },
+  {
+    id: "laibchen", name: "Gemüselaibchen mit Erdäpfel-Gurkensalat", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#C9A86A", "#8FB07E", "#F2EDE0", "#E7B07A"],
+    kid: "Laibchen sind ideales Fingerfood. Salat ohne Essig für die Kleinen.",
+    ingredients: [
+      ["Zucchini", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"], ["Haferflocken", 80, "g", "dry"],
+      ["Eier", 2, "Stk", "fresh"], ["Geriebener Käse", 60, "g", "fresh"], ["Kartoffeln", 500, "g", "veg"],
+      ["Gurke", 1, "Stk", "veg"], ["Sauerrahm", 100, "g", "fresh"], ["Olivenöl", 3, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Kartoffeln würfeln und 12 Minuten kochen.", timer: 720, items: ["Kartoffeln"] },
+      { icon: "chop", text: "Zucchini und Karotten raspeln, Zucchini gut ausdrücken.", items: ["Zucchini", "Karotten"] },
+      { icon: "mix", text: "Mit Haferflocken, Eiern und Käse mischen. Laibchen formen.", items: ["Haferflocken", "Eier", "Käse"] },
+      { icon: "pan", text: "Je Seite 4 Minuten goldbraun braten.", timer: 480, items: ["Olivenöl"] },
+      { icon: "serve", text: "Kartoffeln mit Gurke und Sauerrahm zu Salat mischen.", items: ["Gurke", "Sauerrahm"] }
+    ]
+  },
+  {
+    id: "kaiserschmarrn", name: "Vollkorn-Kaiserschmarrn mit Apfelmus", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#E6C27A", "#F4EEDC", "#D99A6C", "#B5C99A"],
+    kid: "Ohne Zuckerguss. Apfelmus macht ihn süß genug.",
+    ingredients: [
+      ["Eier", 4, "Stk", "fresh"], ["Milch", 300, "ml", "fresh"], ["Vollkornmehl", 200, "g", "dry"],
+      ["Apfelmus ungesüßt", 1, "Glas", "dry"], ["Äpfel", 2, "Stk", "veg"], ["Butter", 30, "g", "pantry"],
+      ["Rosinen", 30, "g", "dry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Eier, Milch und Mehl zu glattem Teig verrühren.", items: ["Eier", "Milch", "Mehl"] },
+      { icon: "pan", text: "Butter in die Pfanne, Teig hinein. 5 Minuten stocken lassen.", timer: 300, items: ["Butter"] },
+      { icon: "pan", text: "Wenden, mit zwei Gabeln zerreißen, Rosinen dazu. 4 Minuten braten.", timer: 240, items: ["Rosinen"] },
+      { icon: "chop", text: "Äpfel in Spalten schneiden.", items: ["Äpfel"] },
+      { icon: "serve", text: "Mit Apfelmus und Apfelspalten servieren.", items: ["Apfelmus"] }
+    ]
+  }
 ];
+
+// Merkmale für "Passt zu euch": je mehr Merkmale ein Gericht mit euren Herz-Gerichten teilt, desto öfter wird es vorgeschlagen.
+const TAGS = {
+  lachs: ["fisch", "ofen", "nordisch"], teriyaki: ["huhn", "reis", "asiatisch", "bowl"],
+  dal: ["vegetarisch", "topf", "indisch", "reis"], orzo: ["fleisch", "pfanne", "mediterran", "pasta"],
+  shakshuka: ["vegetarisch", "ei", "pfanne", "orientalisch"], quesadilla: ["vegetarisch", "fingerfood", "pfanne", "lateinamerika"],
+  gnocchi: ["vegetarisch", "ofen", "mediterran"], smorrebrod: ["fisch", "ei", "fingerfood", "nordisch", "kalt"],
+  thai: ["huhn", "reis", "asiatisch", "pfanne"], pajeon: ["vegetarisch", "pfanne", "asiatisch", "fingerfood"],
+  couscous: ["vegetarisch", "orientalisch", "pfanne"], lohikeitto: ["fisch", "suppe", "nordisch", "topf"],
+  erbsenpasta: ["vegetarisch", "pasta", "mediterran"], tortilla: ["vegetarisch", "ei", "pfanne", "mediterran"],
+  frittata: ["vegetarisch", "ei", "ofen", "fingerfood"], fischstaebchen: ["fisch", "pfanne", "fingerfood"],
+  friedrice: ["huhn", "reis", "asiatisch", "pfanne"], kuerbissuppe: ["vegetarisch", "suppe", "asiatisch", "topf"],
+  falafel: ["vegetarisch", "ofen", "orientalisch", "fingerfood"], koettbullar: ["fleisch", "pfanne", "nordisch"],
+  sommerrolle: ["huhn", "asiatisch", "bowl", "kalt"], gemuesepasta: ["vegetarisch", "pasta", "mediterran", "topf"],
+  souvlaki: ["huhn", "pfanne", "mediterran"], laibchen: ["vegetarisch", "pfanne", "fingerfood", "österreichisch"],
+  kaiserschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch", "ei"]
+};
+RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
