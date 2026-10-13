@@ -5,14 +5,16 @@ set -e
 cd "$(dirname "$0")"
 mkdir -p dist
 python3 tools/fetch_masterchef.py || true
+python3 tools/scout_deals.py || true
 python3 - <<'PY'
 import json, os
 app = open("src/app.html", encoding="utf-8").read()
 rec = open("src/recipes.js", encoding="utf-8").read()
 mc = open("src/masterchef.json", encoding="utf-8").read()
 conv = open("src/masterchef.js", encoding="utf-8").read()
+deals = open("src/angebote.json", encoding="utf-8").read() if os.path.exists("src/angebote.json") else "{}"
 photos = sorted(f[:-4] for f in os.listdir("img") if f.endswith(".jpg"))
-js = rec + "\nconst MASTERCHEF = " + mc + ";\nconst PHOTOS = " + json.dumps(photos) + ";\n" + conv
+js = rec + "\nconst MASTERCHEF = " + mc + ";\nconst PHOTOS = " + json.dumps(photos) + ";\nconst ANGEBOTE = " + deals + ";\n" + conv
 frag = app.replace("/*RECIPES*/", js)
 open("dist/familientisch.html", "w", encoding="utf-8").write(frag)
 page = ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'

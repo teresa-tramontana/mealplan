@@ -9,41 +9,37 @@
 <title>Familientisch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: ruhige Rezeptarchiv-Spalte im Stil von Tramontana Master Chef – Creme, Weiß, Tinte, Rostbraun */
+/* Layout: ruhige Scandi-Spalte (Akzent Beige), Wochentage als Liste mit Teller-Illustrationen, Koch-Player als Vollbild-Story */
 :root {
-  --bg: #F4F1EA;        /* Creme */
-  --surface: #FFFFFF;   /* Weiß */
-  --ink: #1A1816;       /* Tinte */
-  --muted: #5E564B;     /* Walnuss */
-  --faint: #A39788;     /* Sand */
-  --line: #D8D3C8;
-  --sage: #9C3527;      /* Akzent: Rostbraun (Name aus der ersten Version beibehalten) */
-  --sage-soft: #EBE6DA; /* Creme dunkel */
-  --clay: #9C3527;
+  --bg: #F4F2EE;        /* Leinen */
+  --surface: #FBFAF8;   /* Birke */
+  --ink: #2E3230;       /* Schiefer */
+  --muted: #7A7F7A;     /* Nebel */
+  --line: #E2DFD8;
+  --sage: #B39B7D;      /* Beige (Akzent) */
+  --sage-soft: #EFE8DE;
+  --clay: #C98D6B;      /* Ton */
   --plate: #FFFFFF;
-  --heart: #9C3527;
+  --heart: #C4564F;     /* Hagebutte */
   --wa: #2C9E5B;
-  --r: 3px;
-  --display: "Fraunces", Georgia, "Times New Roman", serif;
-  --body: "EB Garamond", Garamond, "Times New Roman", serif;
-  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --display: "Young Serif", Georgia, "Times New Roman", serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #1A1816; --surface: #23201D; --ink: #F4F1EA; --muted: #BFB4A6; --faint: #8A7F72; --line: #3A352F;
-    --sage: #D0705F; --sage-soft: #2E2924; --clay: #D0705F; --plate: #2B2723; --heart: #D0705F; --wa: #4CC27E; color-scheme: dark;
+    --bg: #1C1F1D; --surface: #242826; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
+    --sage: #CDB594; --sage-soft: #3A332B; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #1A1816; --surface: #23201D; --ink: #F4F1EA; --muted: #BFB4A6; --faint: #8A7F72; --line: #3A352F;
-  --sage: #D0705F; --sage-soft: #2E2924; --clay: #D0705F; --plate: #2B2723; --heart: #D0705F; --wa: #4CC27E; color-scheme: dark;
+  --bg: #1C1F1D; --surface: #242826; --ink: #ECEAE4; --muted: #9EA39D; --line: #353A37;
+  --sage: #CDB594; --sage-soft: #3A332B; --clay: #D9A283; --plate: #2E322F; --heart: #E07B72; --wa: #4CC27E; color-scheme: dark;
 }
-::selection { background: color-mix(in srgb, var(--sage) 25%, transparent); }
 * { box-sizing: border-box; }
 html, body { background: var(--bg); color: var(--ink); }
-body { font-family: var(--body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--body); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
 .wrap { max-width: 760px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 80px; }
 button { font: inherit; color: inherit; cursor: pointer; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
@@ -52,18 +48,18 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; 
 header.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
 .brand h1 { font-size: 2.1rem; letter-spacing: -0.01em; line-height: 1.1; }
 .brand p { margin: 4px 0 0; color: var(--muted); font-size: 0.9rem; }
-.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 4px; }
-.tabs button { border: 0; background: transparent; padding: 8px 16px; border-radius: var(--r); font-weight: 600; font-size: 0.88rem; color: var(--muted); }
+.tabs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+.tabs button { border: 0; background: transparent; padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; color: var(--muted); }
 .tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
 .tabs .count { font-variant-numeric: tabular-nums; opacity: 0.7; margin-left: 4px; }
 
-.eyebrow { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.66rem; font-weight: 500; color: var(--muted); }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 700; color: var(--muted); }
 .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-.ghost { border: 1px solid var(--line); background: var(--surface); padding: 8px 14px; border-radius: var(--r); font-size: 0.85rem; font-weight: 600; }
+.ghost { border: 1px solid var(--line); background: var(--surface); padding: 8px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
 .ghost:hover { border-color: var(--sage); }
-.primary { border: 0; background: var(--ink); color: var(--bg); padding: 11px 18px; border-radius: var(--r); font-weight: 700; font-size: 0.9rem; }
+.primary { border: 0; background: var(--ink); color: var(--bg); padding: 11px 18px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; }
 
-.days { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.days { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
 .day { background: var(--surface); display: grid; grid-template-columns: 56px 72px 1fr auto; align-items: center; gap: 16px; padding: 14px 16px; }
 .day .dname { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .day .dname b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.4rem; letter-spacing: 0; text-transform: none; color: var(--ink); line-height: 1.1; }
@@ -83,7 +79,7 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .day .steps { grid-column: 3 / -1; margin: -4px 0 0; padding-left: 18px; font-size: 0.86rem; display: grid; gap: 3px; }
 .day .steps li::marker { color: var(--sage); }
 .day .steps .tm { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.day .kid { grid-column: 3 / -1; margin-top: -6px; font-size: 0.82rem; color: var(--ink); background: var(--sage-soft); border-radius: var(--r); padding: 8px 12px; }
+.day .kid { grid-column: 3 / -1; margin-top: -6px; font-size: 0.82rem; color: var(--ink); background: var(--sage-soft); border-radius: 10px; padding: 8px 12px; }
 .day .kid::before { content: "Fürs Kind · "; font-weight: 700; }
 @media (max-width: 560px) {
   .day { grid-template-columns: 56px 1fr auto; gap: 10px 12px; }
@@ -93,49 +89,49 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
   .day .kid, .day .steps, .day .day-share { grid-column: 1 / -1; margin-top: 0; }
 }
 
-.sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+.sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
 .sync i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
 .sync.on i { background: var(--sage); box-shadow: 0 0 0 3px var(--sage-soft); }
 .sync.err i { background: var(--clay); }
 .sheet p, .sheet ol { font-size: 0.88rem; margin: 0 0 10px; }
 .sheet ol { padding-left: 20px; display: grid; gap: 6px; }
 .sheet code { font-size: 0.8rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 5px; word-break: break-all; }
-.sheet input[type="url"] { width: 100%; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.88rem; margin-bottom: 10px; }
+.sheet input[type="url"] { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.88rem; margin-bottom: 10px; }
 .row { display: flex; gap: 8px; flex-wrap: wrap; }
 
 /* Herz & Teilen */
 .mini-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-.mini { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: var(--r); padding: 4px 10px; font-size: 0.76rem; font-weight: 700; text-decoration: none; }
+.mini { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.76rem; font-weight: 700; text-decoration: none; }
 .mini svg { width: 14px; height: 14px; }
 .mini:hover { border-color: var(--sage); }
 .mini.on { color: var(--heart); border-color: var(--heart); }
 .mini.wa svg { color: var(--wa); }
 
 /* Entdecken */
-.seg { display: inline-flex; gap: 2px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); padding: 3px; }
-.seg button { border: 0; background: transparent; border-radius: var(--r); padding: 6px 14px; font-size: 0.84rem; font-weight: 700; color: var(--muted); }
+.seg { display: inline-flex; gap: 2px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px; }
+.seg button { border: 0; background: transparent; border-radius: 999px; padding: 6px 14px; font-size: 0.84rem; font-weight: 700; color: var(--muted); }
 .seg button[aria-pressed="true"] { background: var(--sage-soft); color: var(--ink); }
 .deck { position: relative; height: min(470px, 56vh); max-width: 380px; margin: 6px auto 0; }
-.card { position: absolute; inset: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; touch-action: pan-y; user-select: none; -webkit-user-select: none; transition: transform .25s ease; box-shadow: 0 10px 30px -18px rgba(30,34,32,.45); --like: 0; --nope: 0; }
+.card { position: absolute; inset: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; touch-action: pan-y; user-select: none; -webkit-user-select: none; transition: transform .25s ease; box-shadow: 0 10px 30px -18px rgba(30,34,32,.45); --like: 0; --nope: 0; }
 .card.top { cursor: grab; }
 .card.under { transform: scale(.95) translateY(14px); }
 .card.under2 { transform: scale(.9) translateY(28px); opacity: .7; }
 .c-img { position: relative; flex: 1; min-height: 0; display: grid; place-items: center; background: var(--tint); }
 .c-img .plate, .p-img .plate, .d-hero .plate { width: 64%; height: auto; max-height: 92%; }
 .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; user-select: none; pointer-events: none; }
-.thumb { position: relative; width: 72px; height: 72px; border-radius: var(--r); overflow: hidden; background: var(--tint); display: grid; place-items: center; flex: none; }
+.thumb { position: relative; width: 72px; height: 72px; border-radius: 16px; overflow: hidden; background: var(--tint); display: grid; place-items: center; flex: none; }
 .thumb .plate { width: 80%; height: auto; }
-.thumb.sm { width: 52px; height: 52px; border-radius: var(--r); }
+.thumb.sm { width: 52px; height: 52px; border-radius: 12px; }
 .c-body { padding: 16px 18px 18px; display: grid; gap: 6px; }
 .c-body h2 { font-size: 1.45rem; line-height: 1.2; }
 .c-body .kidline { margin: 0; font-size: 0.84rem; color: var(--muted); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tags span { font-size: 0.72rem; font-weight: 700; color: var(--muted); background: var(--bg); border-radius: var(--r); padding: 2px 9px; }
-.stamp { position: absolute; top: 18px; font-family: var(--display); font-size: 1.5rem; padding: 4px 14px; border: 3px solid; border-radius: var(--r); background: var(--surface); }
+.tags span { font-size: 0.72rem; font-weight: 700; color: var(--muted); background: var(--bg); border-radius: 999px; padding: 2px 9px; }
+.stamp { position: absolute; top: 18px; font-family: var(--display); font-size: 1.5rem; padding: 4px 14px; border: 3px solid; border-radius: 10px; background: var(--surface); }
 .stamp.like { left: 16px; color: var(--heart); transform: rotate(-12deg); opacity: var(--like); }
 .stamp.nope { right: 16px; color: var(--muted); transform: rotate(12deg); opacity: var(--nope); }
 .stamp, .badge, .heart-btn { z-index: 1; }
-.badge { position: absolute; left: 14px; bottom: 14px; background: var(--surface); color: var(--ink); border-radius: var(--r); padding: 4px 10px; font-size: 0.74rem; font-weight: 700; }
+.badge { position: absolute; left: 14px; bottom: 14px; background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.74rem; font-weight: 700; }
 .badge::before { content: "✦ "; color: var(--clay); }
 .deck-btns { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 22px; }
 .round { border: 1px solid var(--line); background: var(--surface); border-radius: 50%; width: 60px; height: 60px; display: grid; place-items: center; box-shadow: 0 6px 18px -12px rgba(30,34,32,.5); }
@@ -145,15 +141,15 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .round.yes { color: var(--heart); }
 .round.no { color: var(--muted); }
 .hint { text-align: center; color: var(--muted); font-size: 0.8rem; margin: 14px 0 0; }
-.deck-done { position: absolute; inset: 0; display: grid; place-content: center; gap: 12px; text-align: center; border: 1px dashed var(--line); border-radius: var(--r); padding: 20px; }
+.deck-done { position: absolute; inset: 0; display: grid; place-content: center; gap: 12px; text-align: center; border: 1px dashed var(--line); border-radius: 24px; padding: 20px; }
 .deck-done h2 { font-size: 1.4rem; }
 .filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 12px; scrollbar-width: none; }
-.filters button { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); padding: 6px 12px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+.filters button { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
 .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .board { columns: 2; column-gap: 12px; }
 @media (min-width: 700px) { .board { columns: 3; column-gap: 16px; } }
 .pin { break-inside: avoid; margin-bottom: 14px; cursor: pointer; }
-.p-img { position: relative; border-radius: var(--r); overflow: hidden; background: var(--tint); display: grid; place-items: center; max-width: 100%; }
+.p-img { position: relative; border-radius: 18px; overflow: hidden; background: var(--tint); display: grid; place-items: center; max-width: 100%; }
 .pin:hover .p-img { outline: 2px solid var(--sage); outline-offset: 2px; }
 .p-cap { padding: 8px 4px 0; display: grid; gap: 1px; }
 .p-cap b { font-weight: 700; font-size: 0.9rem; line-height: 1.3; }
@@ -164,16 +160,16 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .p-img .badge { left: 8px; bottom: 8px; font-size: 0.68rem; }
 
 /* Rezept-Detail */
-.d-hero { position: relative; overflow: hidden; border-radius: var(--r); background: var(--tint); display: grid; place-items: center; aspect-ratio: 4 / 3; max-width: 100%; margin-bottom: 14px; }
+.d-hero { position: relative; overflow: hidden; border-radius: 18px; background: var(--tint); display: grid; place-items: center; aspect-ratio: 4 / 3; max-width: 100%; margin-bottom: 14px; }
 .d-hero .plate { width: auto; height: 82%; }
 .sheet h4 { font-family: var(--body); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 16px 0 6px; }
 .sheet ul.ing { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; font-size: 0.88rem; }
 .sheet ul.ing li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
 .sheet ul.ing span { color: var(--muted); font-variant-numeric: tabular-nums; }
 .daypick { display: flex; gap: 6px; flex-wrap: wrap; }
-.daypick button { border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); width: 42px; height: 36px; font-weight: 700; font-size: 0.8rem; }
+.daypick button { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; width: 42px; height: 36px; font-weight: 700; font-size: 0.8rem; }
 .daypick button:hover { border-color: var(--sage); }
-.sheet .kid { font-size: 0.84rem; background: var(--sage-soft); border-radius: var(--r); padding: 8px 12px; margin-top: 14px; }
+.sheet .kid { font-size: 0.84rem; background: var(--sage-soft); border-radius: 10px; padding: 8px 12px; margin-top: 14px; }
 
 /* Einkaufsliste */
 .shop-head { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
@@ -183,24 +179,24 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .item input { width: 18px; height: 18px; accent-color: var(--sage); flex: none; }
 .item .n { flex: 1; min-width: 0; }
 .item .q { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.85rem; white-space: nowrap; }
-.item .buy { flex: none; font-size: 0.74rem; font-weight: 700; color: var(--sage); text-decoration: none; border: 1px solid var(--line); border-radius: var(--r); padding: 3px 9px; }
+.item .buy { flex: none; font-size: 0.74rem; font-weight: 700; color: var(--sage); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; }
 .item .buy:hover { border-color: var(--sage); }
 .item.done .buy { visibility: hidden; }
 .item.done .n { text-decoration: line-through; color: var(--muted); }
 .aisle.pantry .item .n::after { content: ""; }
-.note { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; font-size: 0.86rem; color: var(--muted); margin-top: 22px; }
+.note { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 0.86rem; color: var(--muted); margin-top: 22px; }
 .note b { color: var(--ink); }
 .shops { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .shops a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sage); font-weight: 600; }
-.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: var(--r); font-weight: 600; font-size: 0.88rem; z-index: 50; }
-textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 12px; font: inherit; font-size: 0.85rem; }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; z-index: 50; }
+textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 12px; font: inherit; font-size: 0.85rem; }
 
 /* Tauschen-Dialog */
 .sheet { position: relative; }
 .sheet-bg { position: fixed; inset: 0; background: rgba(20,22,21,0.45); z-index: 30; display: grid; place-items: end center; }
-.sheet { background: var(--bg); width: min(560px, 100%); max-height: 80%; overflow: auto; border-radius: var(--r) var(--r) 0 0; padding-inline: 20px; padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); }
+.sheet { background: var(--bg); width: min(560px, 100%); max-height: 80%; overflow: auto; border-radius: 22px 22px 0 0; padding-inline: 20px; padding-block: 20px calc(20px + env(safe-area-inset-bottom, 0px)); }
 .sheet h2 { font-size: 1.3rem; margin-bottom: 12px; }
-.pick { display: flex; gap: 12px; align-items: center; width: 100%; text-align: left; border: 0; background: var(--surface); border-radius: var(--r); padding: 10px; margin-bottom: 8px; }
+.pick { display: flex; gap: 12px; align-items: center; width: 100%; text-align: left; border: 0; background: var(--surface); border-radius: 14px; padding: 10px; margin-bottom: 8px; }
 .pick:hover { outline: 1px solid var(--sage); }
 .pick .plate { width: 48px; height: 48px; flex: none; }
 
@@ -221,10 +217,10 @@ textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius:
 .step-no { font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.74rem; opacity: 0.6; }
 .step-text { font-family: var(--display); font-size: clamp(1.45rem, 4.6vw, 2.2rem); line-height: 1.25; text-wrap: balance; }
 .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; min-height: 30px; }
-.chips span { background: rgba(255,255,255,0.7); padding: 5px 12px; border-radius: var(--r); font-size: 0.85rem; font-weight: 600; animation: pop .5s both; }
+.chips span { background: rgba(255,255,255,0.7); padding: 5px 12px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; animation: pop .5s both; }
 .chips span:nth-child(2) { animation-delay: .12s } .chips span:nth-child(3) { animation-delay: .24s } .chips span:nth-child(4) { animation-delay: .36s }
 @keyframes pop { from { opacity: 0; transform: translateY(10px) scale(.9) } to { opacity: 1; transform: none } }
-.timer { display: inline-flex; align-items: center; gap: 10px; border: 0; background: #2E3230; color: #F4F2EE; border-radius: var(--r); padding: 10px 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.timer { display: inline-flex; align-items: center; gap: 10px; border: 0; background: #2E3230; color: #F4F2EE; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .timer.running { background: #C98D6B; }
 .p-controls { display: flex; justify-content: center; align-items: center; gap: 14px; }
 .p-controls .big { width: 60px; height: 60px; background: #2E3230; color: #F4F2EE; }
@@ -263,23 +259,16 @@ textarea.copy { width: 100%; min-height: 160px; margin-top: 12px; border-radius:
 footer.src { margin-top: 36px; font-size: 0.78rem; color: var(--muted); }
 footer.src a { color: var(--muted); }
 
-/* Master-Chef-Typografie: Labels, Knöpfe und Zahlen in Mono, Titel in Fraunces */
-.tabs button, .ghost, .primary, .mini, .seg button, .filters button, .meta, .tags span, .badge, .chips span, .timer,
-.day .dname, .step-no, .p-top .t small, .item .q, .item .buy, .aisle h3, .sheet h4, .daypick button, .sync, .hint, .p-cap span, .day .steps .tm {
-  font-family: var(--mono); letter-spacing: 0.02em;
-}
-.tabs button, .ghost, .primary, .seg button, .filters button { font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
-.mini, .sync, .badge { font-size: 0.66rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
-.meta, .p-cap span, .tags span, .item .q, .item .buy, .daypick button { font-size: 0.68rem; }
-.brand h1 { font-family: var(--display); font-weight: 500; font-size: 2.6rem; letter-spacing: -0.02em; font-variation-settings: "opsz" 144; }
-.brand p { font-style: italic; font-size: 1.02rem; }
-h1, h2, h3 { font-weight: 500; font-variation-settings: "opsz" 72; letter-spacing: -0.01em; }
-.day h3 { font-size: 1.18rem; }
-.day .steps { font-size: 0.98rem; }
-.day .steps .tm { font-size: 0.66rem; }
-.day .kid, .sheet .kid { font-size: 0.95rem; }
-.primary, .tabs button[aria-selected="true"], .filters button[aria-pressed="true"] { background: var(--sage); border-color: var(--sage); color: #FFFFFF; }
-.mc-tag { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage); border: 1px solid currentColor; border-radius: var(--r); padding: 1px 6px; }
+.mc-tag { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
+.day .steps .tm { font-size: 0.78rem; }
+/* Aktionen */
+.deal { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; margin: -2px 0 6px 28px; font-size: 0.78rem; color: var(--muted); }
+.deal a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sage); }
+.deal .pr { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.deal s { opacity: .7; }
+.deal .mk { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--sage-soft); color: var(--ink); border-radius: 999px; padding: 1px 7px; }
+.deals-note { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; font-size: 0.86rem; color: var(--muted); margin-bottom: 18px; }
+.deals-note b { color: var(--ink); }
 </style>
 
 <div class="wrap">
@@ -333,6 +322,7 @@ h1, h2, h3 { font-weight: 500; font-variation-settings: "opsz" 72; letter-spacin
         <button class="primary" id="copy-list">Liste kopieren</button>
         <button class="ghost" id="reset-list">Haken zurücksetzen</button>
       </div>
+      <div id="deals-note"></div>
       <div class="shop-grid" id="shop-grid"></div>
       <div class="note">
         <b>So bestellst du bei Gurkerl:</b> Tippe neben jeder Zutat auf „Gurkerl“. Die passende Suche öffnet sich, du legst das Produkt in den Warenkorb und hakst es hier ab. Zum Schluss bei Gurkerl auf Bestellen.
@@ -2503,6 +2493,2171 @@ const MASTERCHEF = [
  }
 ];
 const PHOTOS = ["bacalhau", "blechhuhn", "burritobowl", "couscous", "dal", "eiernockerl", "erbsenpasta", "falafel", "fischstaebchen", "friedrice", "kaiserschmarrn", "koettbullar", "kokoscurry", "lachs", "laibchen", "macncheese", "orzo", "padthai", "pajeon", "palatschinken", "polenta", "quesadilla", "smorrebrod", "sommerrolle", "souvlaki", "teriyaki", "thai"];
+const ANGEBOTE = {
+"stand": "2026-10-13",
+"angebote": [
+{
+"markt": "BILLA",
+"name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-abby-kekse-mit-vanille-und-hafer-00734561"
+},
+{
+"markt": "BILLA",
+"name": "Sesamstrasse Krümelmonster Kekse mit Schokostückchen",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-kruemelmonster-kekse-mit-schokostueckchen-00734562"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel-Birne-Kirsche",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
+},
+{
+"markt": "BILLA",
+"name": "Fruchtbar Bio Herznudeln",
+"menge": "300 g",
+"preis": 1.19,
+"statt": 2.37,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel mit Banane & Dinkel",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Polar-Dorsch natur",
+"menge": "400 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Blattspinat Minis",
+"menge": "400 g",
+"preis": 2.85,
+"statt": 3.48,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-blattspinat-minis-00428898"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Wellenpommes",
+"menge": "750 g",
+"preis": 2.29,
+"statt": 3.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-wellenpommes-00714610"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Backrohr Pommes",
+"menge": "750 g",
+"preis": 2.29,
+"statt": 3.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-backrohr-pommes-00779261"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Semmelknödel",
+"menge": "400 g",
+"preis": 2.99,
+"statt": 3.49,
+"hinweis": "ab 2 Kartons",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-semmelknoedel-00730157"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Rahmfisolen",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-rahmfisolen-0082931"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Lasagne al Forno",
+"menge": "350 g",
+"preis": 3.49,
+"statt": 4.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-lasagne-al-forno-00400465"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Pazifischer Polar-Dorsch paniert",
+"menge": "400 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-pazifischer-polardorsch-paniert-0010042"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Kroketten",
+"menge": "750 g",
+"preis": 2.29,
+"statt": 3.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-kroketten-00779215"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Kochsalat mit Erbsen",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-kochsalat-mit-erbsen-0010907"
+},
+{
+"markt": "BILLA",
+"name": "iglo Atlantik Lachs",
+"menge": "250 g",
+"preis": 10.99,
+"statt": 16.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-atlantik-lachs-00750147"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Selchfleischknödel",
+"menge": "400 g",
+"preis": 2.99,
+"statt": 3.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-selchfleischknoedel-00705364"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Röstgemüse 4 Jahreszeiten",
+"menge": "400 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-roestgemuese-4-jahreszeiten-00420797"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Mohnnudeln",
+"menge": "500 g",
+"preis": 3.52,
+"statt": 5.29,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-mohnnudeln-003046"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Letscho",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-letscho-0082529"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Polar-Dorsch Müllerin",
+"menge": "300 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-polardorsch-muellerin-00416106"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Erdäpfeltascherl",
+"menge": "600 g",
+"preis": 2.29,
+"statt": 3.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-erdaepfeltascherl-00737917"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Polar-Dorsch natur",
+"menge": "400 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
+},
+{
+"markt": "BILLA",
+"name": "Dr. Oetker Suprema Salame Romano",
+"menge": "487 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/dr-oetker-suprema-salame-romano-00755486"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Grammelknödel",
+"menge": "400 g",
+"preis": 2.99,
+"statt": 3.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-grammelknoedel-00705376"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Hühner Nuggets in Backteig",
+"menge": "220 g",
+"preis": 3.92,
+"statt": 5.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-huehner-nuggets-in-backteig-00789342"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Bio Edamame",
+"menge": "250 g",
+"preis": 1.99,
+"statt": 2.71,
+"hinweis": "ab 2 Schachteln",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-bio-edamame-00759523"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Wurstknödel",
+"menge": "400 g",
+"preis": 2.99,
+"statt": 3.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-wurstknoedel-00705370"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Riesen-Germknödel",
+"menge": "500 g",
+"preis": 3.52,
+"statt": 5.29,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-riesengermknoedel-00349612"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Röstgemüse Mediterran",
+"menge": "400 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-roestgemuese-mediterran-00503671"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Kohlgemüse",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-kohlgemuese-007215"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Cremegemüse Rahm-Farmers",
+"menge": "300 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-cremegemuese-rahmfarmers-00407139"
+},
+{
+"markt": "BILLA",
+"name": "Dr. Oetker Suprema Margherita",
+"menge": "475 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/dr-oetker-suprema-margherita-00755485"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Röstgemüse Steak Mix",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-roestgemuese-steak-mix-00680559"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Hühner Nuggets",
+"menge": "250 g",
+"preis": 3.92,
+"statt": 5.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-huehner-nuggets-00616589"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Scholle paniert",
+"menge": "250 g",
+"preis": 6.99,
+"statt": 10.49,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-scholle-paniert-00306542"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Zwiebel gelb",
+"menge": "750 g",
+"preis": 1.29,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-zwiebel-gelb-00410615"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Medjoul Datteln",
+"menge": "200 g",
+"preis": 3.79,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-medjoul-datteln-0089501"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Cranberries",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 3.59,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-cranberries-00940498"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Kokos Chips Geröstet",
+"menge": "100 g",
+"preis": 1.49,
+"statt": 1.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-kokos-chips-geroestet-00774966"
+},
+{
+"markt": "BILLA",
+"name": "Pesendorfer Saurer Apfel",
+"menge": "200 g",
+"preis": 2.99,
+"statt": 5.09,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/pesendorfer-saurer-apfel-00502027"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Bio Gojibeeren",
+"menge": "100 g",
+"preis": 2.69,
+"statt": 3.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Wiesen Hendl",
+"menge": "1 kg",
+"preis": 9.49,
+"statt": 9.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-wiesen-hendl-00420728"
+},
+{
+"markt": "BILLA",
+"name": "Berger Backofenschinken",
+"menge": "1000 g",
+"preis": 24.5,
+"statt": 26.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/berger-backofenschinken-00440171"
+},
+{
+"markt": "BILLA",
+"name": "Berger Traditionsbeinschinken",
+"menge": "1000 g",
+"preis": 24.5,
+"statt": 26.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Wiener Heurigen Aufschnitt",
+"menge": "180 g",
+"preis": 4.49,
+"statt": 4.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
+},
+{
+"markt": "BILLA",
+"name": "Stastnik Farmer Putenbrust",
+"menge": "1000 g",
+"preis": 20.9,
+"statt": 22.5,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
+},
+{
+"markt": "BILLA",
+"name": "Moser Schwarze Pute",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 29.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/moser-schwarze-pute-00440000"
+},
+{
+"markt": "BILLA",
+"name": "Reiter Schwarzwälder Geschnitten",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/reiter-schwarzwaelder-geschnitten-00432536"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Käsewurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 22.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-kaesewurst-00654575"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Saunaschinken",
+"menge": "1000 g",
+"preis": 16.9,
+"statt": 21.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00860044"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Kaminwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Fair zum Tier Schweinsminutensteak vom Karree",
+"menge": "250 g",
+"preis": 2.99,
+"statt": 3.25,
+"hinweis": "ab 2 Tassen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-schweinsminutensteak-vom-karree-00700538"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Putenkäsewurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 25.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-putenkaesewurst-00888552"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Gipfel Stangerl",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Chiliwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Milde Tyrolini 4x40g",
+"menge": "160 g",
+"preis": 3.99,
+"statt": 4.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter AMA Bauernschinken",
+"menge": "1000 g",
+"preis": 16.9,
+"statt": 21.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-ama-bauernschinken-00728969"
+},
+{
+"markt": "BILLA",
+"name": "Gebratene Käsewurst",
+"menge": "80 g",
+"preis": 2.99,
+"statt": 3.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Frühstücksaufschnitt",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 3.69,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-fruehstuecksaufschnitt-00282870"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Landrauchschinken",
+"menge": "1000 g",
+"preis": 16.9,
+"statt": 24.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-landrauchschinken-00700865"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Bachsaibling",
+"menge": "1000 g",
+"preis": 39.9,
+"statt": 48.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-bachsaibling-00718667"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Mageres Faschiertes gemischt Fair zum Tier",
+"menge": "350 g",
+"preis": 4.99,
+"statt": 5.68,
+"hinweis": "ab 2 Tassen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-mageres-faschiertes-gemischt-fair-zum-tier-00756256"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Jausenspeck",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 27.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-jausenspeck-00774958"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Salami Snack Box",
+"menge": "80 g",
+"preis": 2.99,
+"statt": 3.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-salami-snack-box-00897953"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Buttertoast",
+"menge": "500 g",
+"preis": 3.59,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-buttertoast-0021399"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Dinkelvollkornweckerl",
+"menge": "100 g",
+"preis": 1.03,
+"statt": 1.28,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-dinkelvollkornweckerl-00846484"
+},
+{
+"markt": "BILLA",
+"name": "Maxi Nuss Schnecke",
+"menge": "1 stk",
+"preis": 1.19,
+"statt": 1.59,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maxi-nuss-schnecke-00370336"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross Vollkorn Knusperbrot",
+"menge": "125 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-vollkorn-knusperbrot-00679137"
+},
+{
+"markt": "BILLA",
+"name": "Milka Choco Brownie",
+"menge": "150 g",
+"preis": 2.99,
+"statt": 3.55,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-choco-brownie-00405070"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross Weizen Knusperbrot",
+"menge": "125 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-weizen-knusperbrot-00426548"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross Vital Knusperbrot",
+"menge": "125 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-vital-knusperbrot-00426547"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Milch Brötle mit Schokolade",
+"menge": "240 g",
+"preis": 2.79,
+"statt": 3.59,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-milch-broetle-mit-schokolade-00518589"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross Roggen Knusperbrot",
+"menge": "125 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-roggen-knusperbrot-00612335"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Mohnstollen",
+"menge": "700 g",
+"preis": 4.99,
+"statt": 5.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-mohnstollen-0021112"
+},
+{
+"markt": "BILLA",
+"name": "Nougattasche",
+"menge": "1 stk",
+"preis": 1.29,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/nougattasche-00440231"
+},
+{
+"markt": "BILLA",
+"name": "Milka Cake & Choc",
+"menge": "175 g",
+"preis": 2.99,
+"statt": 3.55,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-cake-und-choc-00728445"
+},
+{
+"markt": "BILLA",
+"name": "Milka Choc&Choc",
+"menge": "175 g",
+"preis": 2.99,
+"statt": 3.55,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-chocundchoc-00342389"
+},
+{
+"markt": "BILLA",
+"name": "Dinkel-Marille Krapfen",
+"menge": "90 g",
+"preis": 1.2,
+"statt": 1.35,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/dinkelmarille-krapfen-00720240"
+},
+{
+"markt": "BILLA",
+"name": "Milka Soft Moo",
+"menge": "140 g",
+"preis": 2.99,
+"statt": 3.55,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-soft-moo-00292485"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Nuss-Stollen",
+"menge": "700 g",
+"preis": 4.99,
+"statt": 5.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-nussstollen-00167239"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Nuss-Stollen gerollt",
+"menge": "700 g",
+"preis": 4.99,
+"statt": 5.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-nussstollen-gerollt-003445"
+},
+{
+"markt": "BILLA",
+"name": "Schwarzwälderkirschtorte",
+"menge": "1 stk",
+"preis": 18.99,
+"statt": 19.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/schwarzwaelderkirschtorte-00257403"
+},
+{
+"markt": "BILLA",
+"name": "Krapfen Erdbeer",
+"menge": "90 g",
+"preis": 1.0,
+"statt": 1.19,
+"hinweis": "ab 4 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/krapfen-erdbeer-00703852"
+},
+{
+"markt": "BILLA",
+"name": "Butter Laugencroissant",
+"menge": "1 stk",
+"preis": 0.89,
+"statt": 1.09,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/butter-laugencroissant-00734000"
+},
+{
+"markt": "BILLA",
+"name": "Die Grillerei Kräuterbaguette",
+"menge": "175 g",
+"preis": 0.99,
+"statt": 1.19,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/die-grillerei-kraeuterbaguette-00774665"
+},
+{
+"markt": "BILLA",
+"name": "Bananenschnitte",
+"menge": "500 g",
+"preis": 8.99,
+"statt": 9.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bananenschnitte-00782542"
+},
+{
+"markt": "BILLA",
+"name": "Tiramisuschnitte",
+"menge": "1 stk",
+"preis": 8.99,
+"statt": 9.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/tiramisuschnitte-00807488"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Protein Soft Sandwich",
+"menge": "400 g",
+"preis": 3.39,
+"statt": 3.89,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-protein-soft-sandwich-00873223"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross High Protein",
+"menge": "115 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-high-protein-00878348"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Topfenschnecke",
+"menge": "160 g",
+"preis": 2.19,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-topfenschnecke-00900331"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Protein Waffeln",
+"menge": "130 g",
+"preis": 2.49,
+"statt": 2.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-protein-waffeln-00904319"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Polar-Dorsch natur",
+"menge": "400 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
+},
+{
+"markt": "BILLA",
+"name": "Milka Alpenmilch",
+"menge": "90 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 6 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Skyr",
+"menge": "400 g",
+"preis": 1.49,
+"statt": 1.69,
+"hinweis": "ab 2 Becher",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-skyr-00443586"
+},
+{
+"markt": "BILLA",
+"name": "Salakis Schafkäse Light",
+"menge": "180 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/salakis-schafkaese-light-00437248"
+},
+{
+"markt": "BILLA",
+"name": "Salakis Schafkäse Natur",
+"menge": "180 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/salakis-schafkaese-natur-00427838"
+},
+{
+"markt": "BILLA",
+"name": "Peppersweet mit Frischkäse - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/peppersweet-mit-frischkaese-die-kaesemacher-00439664"
+},
+{
+"markt": "BILLA",
+"name": "Schärdinger Österkron",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 3.19,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/schaerdinger-oesterkron-00936709"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Mango",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-mango-0017803"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Maracuja",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-maracuja-0017804"
+},
+{
+"markt": "BILLA",
+"name": "Bonbel Cremig-Würzig",
+"menge": "170 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bonbel-cremigwuerzig-00888573"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Erdbeer",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-erdbeer-00407678"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Kokos-Ananas",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-kokosananas-00797611"
+},
+{
+"markt": "BILLA",
+"name": "Peppersweet Pikant mit Frischkäse - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/peppersweet-pikant-mit-frischkaese-die-kaesemacher-00885548"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Bergkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-bergkaese-00320584"
+},
+{
+"markt": "BILLA",
+"name": "Salakis Bio Schafkäse",
+"menge": "150 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/salakis-bio-schafkaese-00729442"
+},
+{
+"markt": "BILLA",
+"name": "Peppersweet Kräuter der Provence - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/peppersweet-kraeuter-der-provence-die-kaesemacher-00295782"
+},
+{
+"markt": "BILLA",
+"name": "Sunnypepp mit Frischkäse - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sunnypepp-mit-frischkaese-die-kaesemacher-00899608"
+},
+{
+"markt": "BILLA",
+"name": "Yellobell mit Frischkäse",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/yellobell-mit-frischkaese-00439742"
+},
+{
+"markt": "BILLA",
+"name": "Lattella Mango Pfirsich Zero",
+"menge": "500 ml",
+"preis": 0.92,
+"statt": 1.39,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lattella-mango-pfirsich-zero-00718644"
+},
+{
+"markt": "BILLA",
+"name": "Käse-Gemüse-Tricolore - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kaesegemuesetricolore-die-kaesemacher-00725379"
+},
+{
+"markt": "BILLA",
+"name": "Alma Dorfkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-dorfkaese-00598393"
+},
+{
+"markt": "BILLA",
+"name": "Salakis Feta fassgereift",
+"menge": "150 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/salakis-feta-fassgereift-00388582"
+},
+{
+"markt": "BILLA",
+"name": "Obersteirische Molkerei Weinkäse",
+"menge": "250 g",
+"preis": 2.99,
+"statt": 3.89,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/obersteirische-molkerei-weinkaese-00769818"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Ringelblumenkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-ringelblumenkaese-00360203"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Sennkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-sennkaese-00957417"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Brennnesselkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-brennnesselkaese-00360196"
+},
+{
+"markt": "BILLA",
+"name": "MAGGI Magic Asia Noodle Cup Chicken Taste",
+"menge": "63 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maggi-magic-asia-noodle-cup-chicken-taste-00303260"
+},
+{
+"markt": "BILLA",
+"name": "MAGGI Magic Asia Saucy Noodls Teriyaki Cup",
+"menge": "75 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodls-teriyaki-cup-00381674"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Die Schnelle Feine Tomatencremesuppe",
+"menge": "1",
+"preis": 1.12,
+"statt": 1.69,
+"hinweis": "Bei 3 Beutel je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-die-schnelle-feine-tomatencremesuppe-00412232"
+},
+{
+"markt": "BILLA",
+"name": "MAGGI Magic Asia Saucy Noodles Sweet Chili Cup",
+"menge": "75 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodles-sweet-chili-cup-00381679"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Kaiserteller Minestrone",
+"menge": "1",
+"preis": 1.12,
+"statt": 1.69,
+"hinweis": "Bei 3 Beutel je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-kaiserteller-minestrone-00963120"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Classic Gesalzen",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
+},
+{
+"markt": "BILLA",
+"name": "Rapso Reines Rapsöl",
+"menge": "0.75 liter",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Flaschen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/rapso-reines-rapsoel-00403812"
+},
+{
+"markt": "BILLA",
+"name": "Lindt Lindor Kugeln Milch",
+"menge": "500 g",
+"preis": 9.99,
+"statt": 29.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lindt-lindor-kugeln-milch-00346882"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Erdnuss Snips",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
+"menge": "370 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
+},
+{
+"markt": "BILLA",
+"name": "Felix Ketchup ohne Zuckerzusatz",
+"menge": "960 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Marillen Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Goldaugen Rindfleischsuppe",
+"menge": "132 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-goldaugen-rindfleischsuppe-0056234"
+},
+{
+"markt": "BILLA",
+"name": "Storck Toffifee",
+"menge": "125 g",
+"preis": 1.79,
+"statt": 1.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/storck-toffifee-0065417"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Sour Cream",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
+},
+{
+"markt": "BILLA",
+"name": "Iliada Kalamata Olivenöl Kaltgepresst",
+"menge": "0.5 liter",
+"preis": 7.99,
+"statt": 9.99,
+"hinweis": "ab 2 Flaschen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iliada-kalamata-olivenoel-kaltgepresst-00857895"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Ketchup",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
+},
+{
+"markt": "BILLA",
+"name": "Kinder Riegel",
+"menge": "378 g",
+"preis": 4.89,
+"statt": 5.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kinder-riegel-00708861"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Gemüsesuppe Würfel",
+"menge": "126 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Sauerkraut",
+"menge": "500 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sauerkraut-00403098"
+},
+{
+"markt": "BILLA",
+"name": "Ferrero Duplo",
+"menge": "327 g",
+"preis": 4.89,
+"statt": 5.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ferrero-duplo-00708862"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Jumpys Paprika",
+"menge": "75 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
+},
+{
+"markt": "BILLA",
+"name": "Il Conte di Roma Kapern",
+"menge": "65 g",
+"preis": 1.49,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/il-conte-di-roma-kapern-00569006"
+},
+{
+"markt": "BILLA",
+"name": "Casali Rum Kokos",
+"menge": "175 g",
+"preis": 3.49,
+"statt": 3.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/casali-rum-kokos-0065437"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Gartenerdbeeren Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Salz",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Paprika",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
+},
+{
+"markt": "BILLA",
+"name": "Auer Tortenecken Haselnuss 3er",
+"menge": "300 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/auer-tortenecken-haselnuss-3er-00513596"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo mit Basilikum",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Rosmarin",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
+},
+{
+"markt": "BILLA",
+"name": "Lorenz Nic Nac's Partypack",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
+},
+{
+"markt": "BILLA",
+"name": "Felix Tomatenketchup Mild",
+"menge": "1000 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo Bolognese",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.79,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-bolognese-0019892"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Preiselbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
+},
+{
+"markt": "BILLA",
+"name": "Storck Knoppers NussRiegel 3er",
+"menge": "120 g",
+"preis": 1.59,
+"statt": 1.67,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/storck-knoppers-nussriegel-3er-00663690"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Classic Gesalzen",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Dinkelvollkornweckerl",
+"menge": "100 g",
+"preis": 1.03,
+"statt": 1.28,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-dinkelvollkornweckerl-00846484"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Erdnuss Snips",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
+"menge": "370 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
+},
+{
+"markt": "BILLA",
+"name": "Felix Ketchup ohne Zuckerzusatz",
+"menge": "960 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Marillen Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Sour Cream",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Ketchup",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Gemüsesuppe Würfel",
+"menge": "126 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Jumpys Paprika",
+"menge": "75 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Gartenerdbeeren Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Salz",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Paprika",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo mit Basilikum",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Rosmarin",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
+},
+{
+"markt": "BILLA",
+"name": "Lorenz Nic Nac's Partypack",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Tofu Natur",
+"menge": "250 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-tofu-natur-00345125"
+},
+{
+"markt": "BILLA",
+"name": "Felix Tomatenketchup Mild",
+"menge": "1000 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Preiselbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Popcornchips Salz",
+"menge": "140 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
+},
+{
+"markt": "BILLA",
+"name": "Bona Öl",
+"menge": "0.75 liter",
+"preis": 2.32,
+"statt": 3.49,
+"hinweis": "Bei 3 Flaschen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bona-oel-00408228"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Himbeer Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo Arrabbiata",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Ofen Chips Paprika",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Erdbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-erdbeer-konfituere-00540"
+},
+{
+"markt": "BILLA",
+"name": "efko Apfelmus Pur",
+"menge": "350 g",
+"preis": 1.79,
+"statt": 2.39,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/efko-apfelmus-pur-00811412"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Ofen Chips Sour Cream",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-ofen-chips-sour-cream-00574901"
+},
+{
+"markt": "Gurkerl",
+"name": "BIO Pimientos de Padron, scharf",
+"menge": "200 g",
+"preis": 3.59,
+"statt": 4.79,
+"hinweis": "-25 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/44321-bio-pimientos-de-padron-scharf"
+},
+{
+"markt": "Gurkerl",
+"name": "BIO Hokkaido Kürbis",
+"menge": "ca. 1,2 kg",
+"preis": 2.47,
+"statt": 2.75,
+"hinweis": "-10 % für dich",
+"bis": null,
+"link": "https://www.gurkerl.at/26472-bio-hokkaido-kuerbis"
+},
+{
+"markt": "Gurkerl",
+"name": "Michi Bauers Schwarzkohl - Palmkohl",
+"menge": "300 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "-20 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/20760-michi-bauers-schwarzkohl-palmkohl"
+},
+{
+"markt": "Gurkerl",
+"name": "BIO Champignon creme",
+"menge": "200 g",
+"preis": 2.6,
+"statt": 2.89,
+"hinweis": "-10 % für dich",
+"bis": null,
+"link": "https://www.gurkerl.at/30320-bio-champignon-creme"
+},
+{
+"markt": "Gurkerl",
+"name": "BIO Knoblauch",
+"menge": "ca. 50 g",
+"preis": 0.83,
+"statt": 0.93,
+"hinweis": "-10 % für dich",
+"bis": null,
+"link": "https://www.gurkerl.at/19008-bio-knoblauch"
+},
+{
+"markt": "Gurkerl",
+"name": "BIO Apfel Gala, lose",
+"menge": "ca. 140 g",
+"preis": 0.45,
+"statt": 0.5,
+"hinweis": "-10 % für dich",
+"bis": null,
+"link": "https://www.gurkerl.at/19924-bio-apfel-gala-lose"
+},
+{
+"markt": "Gurkerl",
+"name": "Stabinger Ricottatorte",
+"menge": "0,9 kg",
+"preis": 15.99,
+"statt": 19.99,
+"hinweis": "-20 %",
+"bis": "2026-10-18",
+"link": "https://www.gurkerl.at/47369-stabinger-ricottatorte"
+},
+{
+"markt": "Gurkerl",
+"name": "Atelier Délices Mini Vanille Krapfen",
+"menge": "210 g",
+"preis": 5.27,
+"statt": 6.59,
+"hinweis": "-20 %",
+"bis": "2026-10-17",
+"link": "https://www.gurkerl.at/48934-atelier-delices-mini-vanille-krapfen"
+},
+{
+"markt": "Gurkerl",
+"name": "Stabinger Schokoladentorte \"Sacher\"",
+"menge": "0,8 kg",
+"preis": 15.99,
+"statt": 19.99,
+"hinweis": "-20 %",
+"bis": "2026-10-18",
+"link": "https://www.gurkerl.at/47368-stabinger-schokoladentorte-sacher"
+},
+{
+"markt": "Gurkerl",
+"name": "BE-SANE Karotten Mandel Muffin Getreidefrei",
+"menge": "75 g",
+"preis": 3.19,
+"statt": 3.99,
+"hinweis": "-20 %",
+"bis": "2026-10-24",
+"link": "https://www.gurkerl.at/44793-be-sane-karotten-mandel-muffin-getreidefrei"
+},
+{
+"markt": "Gurkerl",
+"name": "Stabinger Tiramisu Schnitte",
+"menge": "100 g",
+"preis": 2.39,
+"statt": 2.99,
+"hinweis": "-20 %",
+"bis": "2026-10-16",
+"link": "https://www.gurkerl.at/47367-stabinger-tiramisu-schnitte"
+},
+{
+"markt": "Gurkerl",
+"name": "Volante Torta Caprese Schokomandeltorte glutenfrei",
+"menge": "85 g",
+"preis": 5.19,
+"statt": 6.49,
+"hinweis": "-20 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/47860-volante-torta-caprese-schokomandeltorte-glutenfrei"
+},
+{
+"markt": "Gurkerl",
+"name": "Landtmann's Original Guglhupf glutenfrei",
+"menge": "0,75 kg",
+"preis": 16.23,
+"statt": 20.29,
+"hinweis": "-20 %",
+"bis": "2026-10-18",
+"link": "https://www.gurkerl.at/45676-landtmann-s-original-guglhupf-glutenfrei"
+},
+{
+"markt": "Gurkerl",
+"name": "Ölz Marmor Muffin",
+"menge": "150 g",
+"preis": 2.87,
+"statt": 3.59,
+"hinweis": "-20 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/18172-oelz-marmor-muffin"
+},
+{
+"markt": "Gurkerl",
+"name": "BE-SANE Haselnuss Muffin Getreidefrei",
+"menge": "75 g",
+"preis": 3.19,
+"statt": 3.99,
+"hinweis": "-20 %",
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/44792-be-sane-haselnuss-muffin-getreidefrei"
+},
+{
+"markt": "Gurkerl",
+"name": "Ölz Topfen Golatschen",
+"menge": "200 g",
+"preis": 3.03,
+"statt": 3.79,
+"hinweis": "-20 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/4507-oelz-topfen-golatschen"
+},
+{
+"markt": "Gurkerl",
+"name": "Atelier Délices Mini Eclair",
+"menge": "140 g",
+"preis": 4.39,
+"statt": 5.49,
+"hinweis": "-20 %",
+"bis": "2026-10-17",
+"link": "https://www.gurkerl.at/48933-atelier-delices-mini-eclair"
+},
+{
+"markt": "Gurkerl",
+"name": "Ölz Landbrot Dinkel geschnitten",
+"menge": "450 g",
+"preis": 3.11,
+"statt": 3.89,
+"hinweis": "-20 %",
+"bis": "2026-10-17",
+"link": "https://www.gurkerl.at/23776-oelz-landbrot-dinkel-geschnitten"
+},
+{
+"markt": "Gurkerl",
+"name": "Konditorei Zauner Englischer Teekuchen",
+"menge": "500 g",
+"preis": 23.99,
+"statt": 29.99,
+"hinweis": "-20 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/45023-konditorei-zauner-englischer-teekuchen"
+},
+{
+"markt": "Gurkerl",
+"name": "Gimar Lachs Tatar",
+"menge": "100 g",
+"preis": 7.62,
+"statt": 9.19,
+"hinweis": "-17 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/26679-gimar-lachs-tatar"
+},
+{
+"markt": "Gurkerl",
+"name": "Stiegl BIO Hausbier Gipfelstürmer",
+"menge": "0,75 l",
+"preis": 3.99,
+"statt": 5.19,
+"hinweis": "-23 %",
+"bis": "2026-11-05",
+"link": "https://www.gurkerl.at/34930-stiegl-bio-hausbier-gipfelstuermer"
+},
+{
+"markt": "Gurkerl",
+"name": "Oceans Tintenfisch-Carpaccio mit Balsamico-Essig",
+"menge": "ca. 190 g",
+"preis": 10.88,
+"statt": 17.33,
+"hinweis": "-37 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/47926-oceans-tintenfisch-carpaccio-mit-balsamico-essig"
+},
+{
+"markt": "Gurkerl",
+"name": "Zeronimo Leonis Blend 2022 alkoholfrei 375ml",
+"menge": "375 ml",
+"preis": 12.76,
+"statt": 16.49,
+"hinweis": "-22 %",
+"bis": "2026-11-11",
+"link": "https://www.gurkerl.at/42095-zeronimo-leonis-blend-2022-alkoholfrei-375ml"
+},
+{
+"markt": "Gurkerl",
+"name": "Schweine Schnitzelfleisch aus der Schale am Stück",
+"menge": "ca. 1,04 kg",
+"preis": 7.09,
+"statt": 8.34,
+"hinweis": "-14 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/42165-schweine-schnitzelfleisch-aus-der-schale-am-stueck"
+},
+{
+"markt": "Gurkerl",
+"name": "Schweine Faschiertes mit Zusatzstoffen",
+"menge": "500 g",
+"preis": 2.19,
+"statt": 3.99,
+"hinweis": "-45 %",
+"bis": "2026-10-14",
+"link": "https://www.gurkerl.at/42178-schweine-faschiertes-mit-zusatzstoffen"
+},
+{
+"markt": "Gurkerl",
+"name": "Wanderhuhn EiHero Eier aus mobiler Freilandhaltung M-L 6 Stück",
+"menge": "6 Stk",
+"preis": 3.2,
+"statt": 3.89,
+"hinweis": "-17 %",
+"bis": "2026-10-18",
+"link": "https://www.gurkerl.at/47313-wanderhuhn-eihero-eier-aus-mobiler-freilandhaltung-m-l-6-stueck"
+},
+{
+"markt": "Gurkerl",
+"name": "Steirerhuhn BIO bratfertig",
+"menge": "ca. 1,57 kg",
+"preis": 12.24,
+"statt": 19.62,
+"hinweis": "-37 %",
+"bis": "2026-10-14",
+"link": "https://www.gurkerl.at/7199-steirerhuhn-bio-bratfertig"
+},
+{
+"markt": "Gurkerl",
+"name": "Pappudia Gnocchi mit Huhn und getrockenten Tomaten Cremesauce",
+"menge": "460 g",
+"preis": 1.65,
+"statt": 3.59,
+"hinweis": "-54 %",
+"bis": "2026-10-16",
+"link": "https://www.gurkerl.at/44205-pappudia-gnocchi-mit-huhn-und-getrockenten-tomaten-cremesauce"
+},
+{
+"markt": "Gurkerl",
+"name": "Garofalo Girasoli Ai Funghi Porcini",
+"menge": "250 g",
+"preis": 3.01,
+"statt": 3.99,
+"hinweis": "-24 %",
+"bis": "2026-10-16",
+"link": "https://www.gurkerl.at/47991-garofalo-girasoli-ai-funghi-porcini"
+},
+{
+"markt": "Gurkerl",
+"name": "Garofalo Girasoli Mascarpone Al Limone",
+"menge": "250 g",
+"preis": 2.86,
+"statt": 3.79,
+"hinweis": "-24 %",
+"bis": "2026-10-16",
+"link": "https://www.gurkerl.at/47992-garofalo-girasoli-mascarpone-al-limone"
+},
+{
+"markt": "Gurkerl",
+"name": "Huhn im Ganzen, grillfertig",
+"menge": "ca. 1,3 kg",
+"preis": 4.84,
+"statt": 7.11,
+"hinweis": "-31 %",
+"bis": "2026-10-14",
+"link": "https://www.gurkerl.at/36442-huhn-im-ganzen-grillfertig"
+},
+{
+"markt": "Gurkerl",
+"name": "Schweine Minutensteaks geschnitten",
+"menge": "400 g",
+"preis": 3.06,
+"statt": 3.99,
+"hinweis": "-23 %",
+"bis": "2026-10-14",
+"link": "https://www.gurkerl.at/42170-schweine-minutensteaks-geschnitten"
+}
+]
+};
 // Übersetzt die Rezepte aus dem Tramontana Master Chef (MASTERCHEF, beim Bauen eingefügt)
 // in das Format der App. Mengen werden auf 2 Große + 1 Kleines umgerechnet.
 (function () {
@@ -2739,8 +4894,44 @@ const PHOTOS = ["bacalhau", "blechhuhn", "burritobowl", "couscous", "dal", "eier
   const gurkerl = name => "https://www.gurkerl.at/suche?q=" + encodeURIComponent(name.replace(/\s*\(.*?\)/g, ""));
   const fmtQty = (q, u) => q ? `${Math.round(q * 10) / 10} ${u}`.replace(".", ",") : "";
 
+  // ---------- Aktionen (BILLA & Gurkerl, beim Bauen von tools/scout_deals.py geholt) ----------
+  const DEALS = (typeof ANGEBOTE !== "undefined" && Array.isArray(ANGEBOTE.angebote)) ? ANGEBOTE.angebote : [];
+  const STOP = new Set("oder mit ohne frische frisch rote rotes gelbe grüne grüner geriebener gerieben vorgegart salzarm salzreduziert natur ganz klein kleine große mehlig speckig festkochend ungesalzen ungesüßt express vom vortag gemischt pur".split(" "));
+  const SYN = { "erdäpfel": ["kartoffel", "erdäpfel"], "kartoffeln": ["kartoffel", "erdäpfel"], "faschiertes": ["faschiert"], "hendl": ["hendl", "huhn", "hühner", "hähnchen"],
+    "hendlbrust": ["hendl", "huhn", "hühner", "hähnchen"], "hendlkeulen": ["hendl", "huhn", "hühner"], "hähnchenbrust": ["hendl", "huhn", "hühner", "hähnchen"], "hähnchen": ["hendl", "huhn", "hühner", "hähnchen"],
+    "schlagobers": ["obers", "schlagobers"], "sahne": ["obers", "sahne"], "würstel": ["würstel", "frankfurter"], "beinschinken": ["schinken", "beinschinken"],
+    "kochschinken": ["schinken"], "sauerrahm": ["sauerrahm"], "naturjoghurt": ["joghurt"], "lachsfilet": ["lachs"], "kabeljaufilet": ["kabeljau"], "rinderhack": ["faschiert", "rinderhack"] };
+  const NOT_RAW = /suppe|soup|cup a|croissant|schnecke|golatsche|knödel|muffin|radler|seife|kochsalat|gnocchi mit|chips|riegel|keks|kuchen|snack|drink|schnitte|strudel|pizza|burger|nuggets|aufstrich|baguette|sticks|bällchen|fertig|instant|würzmischung|fix für|creme|konfitüre|marmelade|brötle|tatar|peppersweet|dressing|pesto rosso|kugeln|schoko|aufschnitt|praline|eis\b|lattella|nektar|saft\b|smoothie/i;
+  const words = t => t.toLowerCase().split(/[^a-zäöüß]+/).filter(w => w.length >= 4 && !STOP.has(w));
+  const stem = w => w.length > 5 ? w.replace(/(en|n|e|s)$/, "") : w;
+  function dealsFor(name) {
+    if (!DEALS.length) return [];
+    const keys = new Set();
+    // Hauptwort der Zutat = letztes Wort ("Passierte Tomaten" -> Tomaten), Zusätze wie "ohne Haut" weg
+    const ws = words(name.replace(/\(.*?\)/g, "").replace(/\s(oder|ohne|mit|für)\s.*$/i, ""));
+    let main = ws.pop();
+    if (/^(käse|fleisch|filet|filets|sauce|mischung)$/.test(main || "") && ws.length) main = ws.pop();   // "Feta-Käse" -> Feta
+    if (/hack|faschiert/i.test(name)) main = "faschiertes";
+    if (main) (SYN[main] || [main]).forEach(x => keys.add(stem(x)));
+    if (!keys.size) return [];
+    // Treffer nur, wenn das Wort fast gleich ist (kein "Zwiebelsuppe" für "Zwiebel") und kein Fertigprodukt
+    const hits = DEALS.filter(d => {
+      if (NOT_RAW.test(d.name)) return false;
+      const head = d.name.toLowerCase().split(/\s(mit|und|&)\s/)[0];   // "Brötle mit Schokolade" zählt nicht als Schokolade
+      const dealWords = head.split(/\s+/).map(w => w.replace(/^[^a-zäöüß]+|[^a-zäöüß]+$/g, ""));   // "Käse-Gemüse-Tricolore" bleibt ein Wort
+      return dealWords.some(t => [...keys].some(k => t.startsWith(k) && t.length <= k.length + 3));
+    });
+    const best = {};
+    hits.forEach(d => { if (!best[d.markt] || d.preis < best[d.markt].preis) best[d.markt] = d; });
+    return Object.values(best).sort((a, b) => a.preis - b.preis);
+  }
+  const euro = n => n.toFixed(2).replace(".", ",") + " €";
+  const dealLine = d => `<div class="deal"><span class="mk">${esc(d.markt)}</span><a href="${esc(d.link)}" target="_blank" rel="noopener">${esc(d.name)}</a>${d.menge ? `<span>${esc(d.menge)}</span>` : ""}<span class="pr">${euro(d.preis)}</span>${d.statt && d.statt > d.preis ? `<s>${euro(d.statt)}</s>` : ""}${d.hinweis ? `<span>${esc(d.hinweis)}</span>` : ""}${d.bis ? `<span>bis ${new Date(d.bis).toLocaleDateString("de-AT", { day: "numeric", month: "numeric" })}</span>` : ""}</div>`;
+
   function renderShop() {
     const list = buildList();
+    const withDeals = list.filter(i => i.aisle !== "pantry" && !checked[i.key] && dealsFor(i.name).length).length;
+    $("#deals-note").innerHTML = DEALS.length ? `<div class="deals-note"><b>${withDeals} ${withDeals === 1 ? "Zutat ist" : "Zutaten sind"} gerade in Aktion</b> bei BILLA oder Gurkerl. Stand ${new Date(ANGEBOTE.stand).toLocaleDateString("de-AT")}, wird jeden Sonntag neu geholt. Preise ohne Gewähr, bitte im Shop prüfen.</div>` : "";
     const order = ["veg", "fresh", "meat", "frozen", "dry", "bread", "pantry"];
     const open = list.filter(i => i.aisle !== "pantry" && !checked[i.key]).length;
     $("#shop-count").textContent = open ? " " + open : "";
@@ -2750,7 +4941,7 @@ const PHOTOS = ["bacalhau", "blechhuhn", "burritobowl", "couscous", "dal", "eier
       const isP = a === "pantry";
       return `<div class="aisle${isP ? " pantry" : ""}"><h3>${AISLES[a]}</h3>${items.map(i => {
         const on = isP ? !!pantryBuy[i.key] : !!checked[i.key];
-        return `<label class="item${!isP && on ? " done" : ""}"><input type="checkbox" id="chk-${esc(i.key)}" data-key="${esc(i.key)}" data-p="${isP ? 1 : 0}" ${on ? "checked" : ""}><span class="n">${esc(i.name)}</span><span class="q">${fmtQty(i.qty, i.unit)}</span>${isP ? "" : `<a class="buy" href="${gurkerl(i.name)}" target="_blank" rel="noopener" title="${esc(i.name)} bei Gurkerl suchen">Gurkerl</a>`}</label>`;
+        return `<label class="item${!isP && on ? " done" : ""}"><input type="checkbox" id="chk-${esc(i.key)}" data-key="${esc(i.key)}" data-p="${isP ? 1 : 0}" ${on ? "checked" : ""}><span class="n">${esc(i.name)}</span><span class="q">${fmtQty(i.qty, i.unit)}</span>${isP ? "" : `<a class="buy" href="${gurkerl(i.name)}" target="_blank" rel="noopener" title="${esc(i.name)} bei Gurkerl suchen">Gurkerl</a>`}</label>${!isP && !on ? dealsFor(i.name).map(dealLine).join("") : ""}`;
       }).join("")}${isP ? `<p style="font-size:.78rem;color:var(--muted);margin:6px 0 0">Haken = muss doch gekauft werden</p>` : ""}</div>`;
     }).join("");
   }
@@ -2768,7 +4959,7 @@ const PHOTOS = ["bacalhau", "blechhuhn", "burritobowl", "couscous", "dal", "eier
     let out = "Einkaufsliste Familientisch\n";
     order.forEach(a => {
       const items = list.filter(i => i.aisle === a);
-      if (items.length) out += `\n${AISLES[a].replace(" (hast du vermutlich)", "")}\n` + items.map(i => `☐ ${i.name}${i.qty ? " – " + fmtQty(i.qty, i.unit) : ""}`).join("\n") + "\n";
+      if (items.length) out += `\n${AISLES[a].replace(" (hast du vermutlich)", "")}\n` + items.map(i => { const d = dealsFor(i.name)[0]; return `☐ ${i.name}${i.qty ? " – " + fmtQty(i.qty, i.unit) : ""}${d ? ` (Aktion ${d.markt}: ${euro(d.preis)})` : ""}`; }).join("\n") + "\n";
     });
     return out;
   }
@@ -2795,7 +4986,7 @@ const PHOTOS = ["bacalhau", "blechhuhn", "burritobowl", "couscous", "dal", "eier
   function openPlayer(r) {
     P = { r, i: 0, playing: true, voice: store.get("voice", true), t0: 0, elapsed: 0, raf: 0, timer: null, timerLeft: 0, timerInt: 0, wake: null };
     try { navigator.wakeLock && navigator.wakeLock.request("screen").then(w => P && (P.wake = w)).catch(() => {}); } catch (e) {}
-    $("#player-root").innerHTML = `<div class="player" style="--pbg:color-mix(in srgb, ${r.colors[0]} 24%, #F4F1EA)" role="dialog" aria-label="Koch-Video ${esc(r.name)}">
+    $("#player-root").innerHTML = `<div class="player" style="--pbg:color-mix(in srgb, ${r.colors[0]} 24%, #F4F2EE)" role="dialog" aria-label="Koch-Video ${esc(r.name)}">
       <div class="bars">${r.steps.map(() => "<i><b></b></i>").join("")}</div>
       <div class="p-top"><div class="t"><small>${esc(r.origin)} · ${timeLabel(r)}</small>${esc(r.name)}</div>
         <div style="display:flex;gap:8px"><button class="p-btn" id="p-voice" aria-label="Sprachausgabe an oder aus"></button><button class="p-btn" id="p-close" aria-label="Schließen">${ICON.close}</button></div></div>
@@ -2959,7 +5150,7 @@ const PHOTOS = ["bacalhau", "blechhuhn", "burritobowl", "couscous", "dal", "eier
 
   // ---------- Herz, Teilen, Rezept-Detail ----------
   const APP_URL = "https://teresa-tramontana.github.io/mealplan/";
-  const tint = r => `color-mix(in srgb, ${r.colors[0]} 14%, var(--sage-soft))`;
+  const tint = r => `color-mix(in srgb, ${r.colors[0]} 22%, var(--surface))`;
   function favBtn(id, cls) {
     const on = !!favs[id];
     return `<button class="${cls}${on ? " on" : ""}" type="button" data-fav="${id}" aria-pressed="${on}" aria-label="${on ? "Herz entfernen" : "Herz geben"}">${on ? ICON.heartFill : ICON.heart}${cls === "mini" ? (on ? "Lieblingsgericht" : "Merken") : ""}</button>`;
