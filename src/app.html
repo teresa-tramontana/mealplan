@@ -325,6 +325,7 @@ footer.src { font-size: 0.82rem; max-width: 65ch; }
 .day .kid, .sheet .kid { font-size: 0.95rem; }
 .sheet ul.ing, .sheet ol.steps-d { font-size: 1rem !important; }
 .ghost, .icon-btn, .mini, .sync, .round, .seg, .filters button, .daypick button, .heart-btn, .tabs { border: 0; }
+.from-pantry a { color: var(--ink); text-decoration-color: var(--sage); text-underline-offset: 3px; }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -462,7 +463,7 @@ footer.src { font-size: 0.82rem; max-width: 65ch; }
     return (r.mc ? "ca. " : "") + t + (r.wait ? ` + ${r.wait} Min. Ofen` : "");
   };
   const HAS_PHOTO = new Set(typeof PHOTOS !== "undefined" ? PHOTOS : []);
-  const mcTag = r => r.mc ? '<span class="mc-tag">Master Chef</span>' : "";
+  const mcTag = r => r.mc ? '<span class="mc-tag">Master Chef</span>' : r.source ? `<span class="mc-tag">nach ${esc(r.source.name)}</span>` : "";
   const photo = (r, eager) => !HAS_PHOTO.has(r.id) ? "" : `<img class="photo" src="img/${r.id}.jpg" alt="${esc(r.name)}" ${eager ? "" : 'loading="lazy"'} decoding="async" onerror="this.remove()">`;
   function plateSVG(r) {
     let seed = 0; for (const c of r.id) seed = (seed * 31 + c.charCodeAt(0)) >>> 0;
@@ -849,7 +850,7 @@ footer.src { font-size: 0.82rem; max-width: 65ch; }
     return `${r.name}\n${r.origin} · ${timeLabel(r)} · für 2 Große + 1 Kleines\n\nZutaten:\n` +
       r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(q, u) : ""}`).join("\n") +
       `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
-      (r.kid ? `\n\nFürs Kind: ${r.kid}` : "") + `\n\n${APP_URL}#${r.id}`;
+      (r.kid ? `\n\nFürs Kind: ${r.kid}` : "") + (r.source ? `\n\nNach ${r.source.name}: ${r.source.url}` : "") + `\n\n${APP_URL}#${r.id}`;
   }
   const shareBtn = r => `<a class="mini wa" href="https://wa.me/?text=${encodeURIComponent(shareText(r))}" target="_blank" rel="noopener" aria-label="${esc(r.name)} per WhatsApp teilen">${ICON.share}Teilen</a>`;
 
@@ -885,6 +886,7 @@ footer.src { font-size: 0.82rem; max-width: 65ch; }
       <h4>So geht's</h4>
       <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
       ${r.kid ? `<div class="kid"><b>Fürs Kind · </b>${esc(r.kid)}</div>` : ""}
+      ${r.source ? `<p class="from-pantry">Rezept frei übersetzt und angepasst nach <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name)}</a>.</p>` : ""}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
       const day = e.target.closest("[data-day]"), pl = e.target.closest("[data-detail-play]");
@@ -961,7 +963,7 @@ footer.src { font-size: 0.82rem; max-width: 65ch; }
   });
 
   // ---------- Entdecken: Pinnwand ----------
-  const FILTERS = [["alle", "Alle"], ["herz", "Herzen"], ["passt", "Passt zu euch"], ["masterchef", "Master Chef"], ["österreichisch", "Österreich"], ["faschiert", "Faschiertes"], ["onepot", "One-Pot"], ["auflauf", "Aufläufe"], ["rahm", "Mit Rahm"], ["fingerfood", "Fingerfood"], ["vegetarisch", "Vegetarisch"], ["huhn", "Hendl"], ["fisch", "Fisch"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["süß", "Süß"]];
+  const FILTERS = [["alle", "Alle"], ["herz", "Herzen"], ["passt", "Passt zu euch"], ["masterchef", "Master Chef"], ["simplehomeedit", "Simple Home Edit"], ["österreichisch", "Österreich"], ["faschiert", "Faschiertes"], ["onepot", "One-Pot"], ["auflauf", "Aufläufe"], ["rahm", "Mit Rahm"], ["fingerfood", "Fingerfood"], ["vegetarisch", "Vegetarisch"], ["huhn", "Hendl"], ["fisch", "Fisch"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["süß", "Süß"]];
   let filter = "alle";
   const RATIOS = ["1 / 1", "4 / 5", "4 / 3", "3 / 4", "1 / 1.2"];
   function renderBoard() {

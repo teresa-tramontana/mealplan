@@ -9,7 +9,7 @@ Wochenplan fürs Abendessen: 2 Erwachsene + 1 Kleinkind (2 Jahre). Schnelle Fami
 - **Aktionen:** Beim Bauen holt `tools/scout_deals.py` die aktuellen Aktionen von BILLA und Gurkerl; die Einkaufsliste zeigt passende Angebote.
 - **Einkauf:** Zutaten der Woche automatisch zusammengezählt, nach Supermarkt-Abteilung sortiert.
 
-Rezepte ändern: `src/recipes.js`. Master-Chef-Rezepte kommen beim Bauen automatisch von tramontana.cc (`tools/fetch_masterchef.py`, Umrechnung in `src/masterchef.js`). Aussehen: `src/app.html`. Danach `./build.sh` ausführen.
+Rezepte ändern: `src/recipes.js`; 20 Rezepte nach Simple Home Edit (übersetzt, mit Quellenlink) in `src/simplehomeedit.js`. Master-Chef-Rezepte kommen beim Bauen automatisch von tramontana.cc (`tools/fetch_masterchef.py`, Umrechnung in `src/masterchef.js`). Aussehen: `src/app.html`. Danach `./build.sh` ausführen.
 
 ## Mit der Familie teilen
 

@@ -325,6 +325,7 @@ footer.src { font-size: 0.82rem; max-width: 65ch; }
 .day .kid, .sheet .kid { font-size: 0.95rem; }
 .sheet ul.ing, .sheet ol.steps-d { font-size: 1rem !important; }
 .ghost, .icon-btn, .mini, .sync, .round, .seg, .filters button, .daypick button, .heart-btn, .tabs { border: 0; }
+.from-pantry a { color: var(--ink); text-decoration-color: var(--sage); text-underline-offset: 3px; }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -1252,6 +1253,273 @@ const TAGS = {
   griessschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch"], spinatknoedel: ["vegetarisch", "topf", "österreichisch"]
 };
 RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
+
+// 20 Rezepte nach Simple Home Edit (https://simplehomeedit.com/recipes/), ins Deutsche übertragen,
+// gekürzt und auf 2 Große + 1 Kleines angepasst. Jedes Rezept verlinkt auf das Original.
+(function () {
+  const SRC = slug => ({ name: "Simple Home Edit", url: "https://simplehomeedit.com/recipe/" + slug + "/" });
+  const C = [["#D9A066", "#F3E6D3", "#8FAE7F", "#E8D2B0"], ["#B5482F", "#F3E6D3", "#7F9E5E", "#E3C9A5"], ["#E9C98E", "#F4ECDF", "#7F9E5E", "#D99C8A"], ["#8C5A3C", "#F3E9D8", "#9FB07E", "#D9BC94"]];
+  const add = (r, i) => RECIPES.push(Object.assign({ flag: "", colors: C[i % C.length], source: SRC(r.slug) }, r, { id: "she" + r.slug.replace(/[^a-z]/g, ""), tags: r.tags.concat("simplehomeedit") }));
+  [
+    {
+      slug: "baked-chicken-rissoles", name: "Knusprige Hendl-Laibchen aus dem Ofen", origin: "Australien", time: 15, wait: 20,
+      kid: "Laibchen klein formen, sie sind weich und gut zum Selberhalten.", tags: ["huhn", "faschiert", "ofen", "fingerfood"],
+      ingredients: [["Hendl- oder Putenfaschiertes", 500, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"], ["Petersilie", 1, "Bund", "veg"],
+        ["Panko-Brösel", 60, "g", "dry"], ["Eier", 1, "Stk", "fresh"], ["Parmesan", 35, "g", "fresh"], ["Erdäpfel mehlig", 700, "g", "veg"], ["Gurke", 1, "Stk", "veg"],
+        ["Sauerrahm", 100, "g", "fresh"], ["Paprikapulver edelsüß", 1, "TL", "pantry"], ["Olivenöl", 2, "EL", "pantry"]],
+      steps: [
+        { icon: "chop", text: "Ofen auf 220 Grad. Panko mit Parmesan und Paprikapulver in einem Teller mischen.", items: ["Panko", "Parmesan"] },
+        { icon: "mix", text: "Faschiertes mit geriebener Zwiebel, Knoblauch, Petersilie, Ei und einer Handvoll Panko verkneten.", items: ["Faschiertes", "Ei", "Zwiebel"] },
+        { icon: "mix", text: "Mit nassen Händen Laibchen formen, in der Bröselmischung wälzen, aufs geölte Blech legen.", items: ["Olivenöl"] },
+        { icon: "oven", text: "20 Minuten backen, nach der Hälfte wenden. Parallel Erdäpfel kochen und stampfen.", timer: 1200, items: ["Erdäpfel"] },
+        { icon: "serve", text: "Mit Püree und Gurken-Sauerrahm-Salat servieren.", items: ["Gurke", "Sauerrahm"] }]
+    },
+    {
+      slug: "beef-rissoles", name: "Saftige Rindslaibchen mit Bratensaft", origin: "Australien", time: 25,
+      kid: "Gut durchbraten. Laibchen in Stücke schneiden.", tags: ["faschiert", "pfanne", "fingerfood"],
+      ingredients: [["Rinderfaschiertes", 500, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"], ["Eier", 1, "Stk", "fresh"],
+        ["Panko-Brösel", 60, "g", "dry"], ["Erdäpfel mehlig", 700, "g", "veg"], ["Brokkoli", 1, "Stk", "veg"], ["Ketchup", 1, "EL", "pantry"], ["Worcestersauce", 1, "EL", "pantry"], ["Olivenöl", 3, "EL", "pantry"]],
+      steps: [
+        { icon: "boil", text: "Erdäpfel würfeln und 15 Minuten kochen.", timer: 900, items: ["Erdäpfel"] },
+        { icon: "mix", text: "Faschiertes mit geriebener Zwiebel, Knoblauch, Ei, Bröseln, Ketchup und Worcestersauce verkneten. Golfballgroße Laibchen formen.", items: ["Faschiertes", "Ei", "Ketchup"] },
+        { icon: "pan", text: "Bei mittlerer Hitze 8 bis 10 Minuten braten, einmal wenden.", timer: 600, items: ["Olivenöl"] },
+        { icon: "pan", text: "Fett abgießen, 3 EL Wasser in die heiße Pfanne, Bratrückstände lösen. Brokkoli dämpfen.", items: ["Brokkoli"] },
+        { icon: "serve", text: "Laibchen mit Bratensaft, Püree und Brokkoli servieren.", items: [] }]
+    },
+    {
+      slug: "cheeseburger-pasta", name: "One-Pot-Cheeseburger-Nudeln", origin: "USA", time: 30,
+      kid: "Mild und käsig, ein sicherer Kinderliebling.", tags: ["faschiert", "onepot", "pasta"],
+      ingredients: [["Rinderfaschiertes", 400, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"], ["Stangensellerie", 1, "Stk", "veg"],
+        ["Hörnchennudeln", 300, "g", "dry"], ["Gehackte Tomaten", 1, "Dose", "dry"], ["Tomatenmark", 2, "EL", "dry"], ["Milch", 100, "ml", "fresh"],
+        ["Geriebener Käse", 200, "g", "fresh"], ["Rindsuppe (salzarm)", 800, "ml", "pantry"], ["Oregano", 1, "TL", "pantry"], ["Olivenöl", 2, "EL", "pantry"]],
+      steps: [
+        { icon: "chop", text: "Zwiebel, Karotten und Sellerie fein würfeln.", items: ["Zwiebel", "Karotten", "Sellerie"] },
+        { icon: "pan", text: "Gemüse in Öl 3 Minuten weich dünsten, Faschiertes dazu und krümelig braten.", timer: 360, items: ["Faschiertes"] },
+        { icon: "pan", text: "Oregano und Tomatenmark 1 Minute mitrösten.", items: ["Tomatenmark", "Oregano"] },
+        { icon: "boil", text: "Suppe, Tomaten und Nudeln dazu. Zugedeckt 15 Minuten köcheln, ab und zu rühren.", timer: 900, items: ["Nudeln", "Tomaten", "Suppe"] },
+        { icon: "serve", text: "Milch und Käse einrühren, bis alles cremig ist.", items: ["Milch", "Käse"] }]
+    },
+    {
+      slug: "creamy-garlic-chicken", name: "Hendl in Knoblauch-Rahmsauce", origin: "Australien", time: 20,
+      kid: "Hendl klein schneiden, Sauce über Reis oder Püree.", tags: ["huhn", "pfanne", "rahm"],
+      ingredients: [["Hendlbrust", 500, "g", "meat"], ["Knoblauch", 3, "Zehe", "veg"], ["Schlagobers", 250, "ml", "fresh"], ["Parmesan", 40, "g", "fresh"],
+        ["Reis", 250, "g", "dry"], ["Fisolen", 300, "g", "veg"], ["Hühnersuppe (salzarm)", 125, "ml", "pantry"], ["Mehl", 3, "EL", "pantry"],
+        ["Dijonsenf", 1, "TL", "pantry"], ["Thymian getrocknet", 1, "TL", "pantry"], ["Butter", 20, "g", "pantry"]],
+      steps: [
+        { icon: "rice", text: "Reis aufsetzen, 15 Minuten.", timer: 900, items: ["Reis"] },
+        { icon: "chop", text: "Hendlbrust waagrecht halbieren, mit Thymian würzen und in Mehl wenden.", items: ["Hendl", "Mehl", "Thymian"] },
+        { icon: "pan", text: "In Butter und Öl 5 bis 6 Minuten braten, herausnehmen.", timer: 360, items: ["Butter"] },
+        { icon: "boil", text: "Knoblauch kurz anschwitzen, Suppe dazu und um die Hälfte einkochen. Obers und Senf einrühren, 2 Minuten köcheln.", timer: 120, items: ["Knoblauch", "Obers", "Senf"] },
+        { icon: "serve", text: "Parmesan einrühren, Hendl zurück in die Sauce. Mit Reis und gedämpften Fisolen servieren.", items: ["Parmesan", "Fisolen"] }]
+    },
+    {
+      slug: "creamy-lemon-chicken-pasta", name: "Zitronen-Rahm-Pasta mit Hendl", origin: "Australien", time: 20,
+      kid: "Hendl in Streifen schneiden. Zitrone für die Kleinen sparsam.", tags: ["huhn", "pasta", "rahm"],
+      ingredients: [["Spaghetti", 300, "g", "dry"], ["Hendlbrust", 400, "g", "meat"], ["Knoblauch", 2, "Zehe", "veg"], ["Schlagobers", 300, "ml", "fresh"],
+        ["Zitrone", 1, "Stk", "veg"], ["Parmesan", 60, "g", "fresh"], ["Petersilie", 1, "Bund", "veg"], ["Hühnersuppe (salzarm)", 200, "ml", "pantry"],
+        ["Mehl", 1, "EL", "pantry"], ["Butter", 30, "g", "pantry"], ["Italienische Kräuter", 1, "TL", "pantry"]],
+      steps: [
+        { icon: "boil", text: "Nudeln 1 bis 2 Minuten kürzer kochen als angegeben.", timer: 540, items: ["Spaghetti"] },
+        { icon: "pan", text: "Hendl mit Kräutern würzen und zugedeckt je Seite 2 bis 3 Minuten braten. Herausnehmen.", timer: 300, items: ["Hendl"] },
+        { icon: "pan", text: "Butter und Knoblauch in die Pfanne, Mehl einrühren, mit Suppe und Obers aufgießen. 3 Minuten köcheln.", timer: 180, items: ["Butter", "Obers"] },
+        { icon: "mix", text: "Herd aus. Zitronensaft und Parmesan einrühren, Nudeln untermischen.", items: ["Zitrone", "Parmesan"] },
+        { icon: "serve", text: "Hendl in Streifen schneiden und mit Petersilie drauf servieren.", items: ["Petersilie"] }]
+    },
+    {
+      slug: "creamy-mustard-chicken", name: "Senf-Rahm-Hendl mit Erdäpfelpüree", origin: "Australien", time: 30,
+      kid: "Dijonsenf ist mild, aber fürs Kind lieber weniger körnigen Senf.", tags: ["huhn", "pfanne", "rahm"],
+      ingredients: [["Hendlbrust", 500, "g", "meat"], ["Knoblauch", 2, "Zehe", "veg"], ["Schlagobers", 250, "ml", "fresh"], ["Parmesan", 40, "g", "fresh"],
+        ["Erdäpfel mehlig", 700, "g", "veg"], ["Milch", 150, "ml", "fresh"], ["Fisolen", 300, "g", "veg"], ["Dijonsenf", 1, "EL", "pantry"],
+        ["Körniger Senf", 1, "TL", "pantry"], ["Honig", 1, "TL", "pantry"], ["Hühnersuppe (salzarm)", 125, "ml", "pantry"], ["Mehl", 3, "EL", "pantry"], ["Butter", 40, "g", "pantry"]],
+      steps: [
+        { icon: "boil", text: "Erdäpfel würfeln und 15 Minuten kochen, mit Milch und Butter stampfen.", timer: 900, items: ["Erdäpfel", "Milch"] },
+        { icon: "pan", text: "Hendl flach klopfen, mit Mehl bestäuben und je Seite 3 bis 4 Minuten goldbraun braten. Warm stellen.", timer: 420, items: ["Hendl", "Mehl"] },
+        { icon: "boil", text: "Suppe in die Pfanne, Bratrückstände lösen, um die Hälfte einkochen. Butter und Knoblauch dazu.", items: ["Suppe", "Knoblauch"] },
+        { icon: "mix", text: "Obers, beide Senfsorten und Honig einrühren, 3 Minuten sanft köcheln. Parmesan einrühren.", timer: 180, items: ["Obers", "Senf", "Parmesan"] },
+        { icon: "serve", text: "Hendl in der Sauce 2 Minuten erwärmen. Mit Püree und Fisolen servieren.", items: ["Fisolen"] }]
+    },
+    {
+      slug: "crispy-chicken-schnitzel-alfredo", name: "Hendlschnitzel auf Alfredo-Bandnudeln", origin: "Australien", time: 25,
+      kid: "Schnitzel in schmale Streifen schneiden.", tags: ["huhn", "pasta", "rahm", "österreichisch"],
+      ingredients: [["Bandnudeln", 350, "g", "dry"], ["Hendlbrust", 400, "g", "meat"], ["Eier", 1, "Stk", "fresh"], ["Semmelbrösel", 80, "g", "pantry"],
+        ["Schlagobers", 300, "ml", "fresh"], ["Parmesan", 80, "g", "fresh"], ["Knoblauch", 1, "Zehe", "veg"], ["Mehl", 3, "EL", "pantry"],
+        ["Butter", 30, "g", "pantry"], ["Öl", 5, "EL", "pantry"]],
+      steps: [
+        { icon: "chop", text: "Hendl dünn klopfen, in Mehl, Ei und Bröseln wenden.", items: ["Hendl", "Eier", "Brösel"] },
+        { icon: "pan", text: "In Öl je Seite 3 Minuten goldbraun backen.", timer: 360, items: ["Öl"] },
+        { icon: "boil", text: "Parallel Bandnudeln kochen, eine Tasse Nudelwasser aufheben.", timer: 540, items: ["Bandnudeln"] },
+        { icon: "pan", text: "Butter und Knoblauch erhitzen, Obers dazu, Parmesan einrühren und 2 bis 3 Minuten köcheln.", timer: 180, items: ["Obers", "Parmesan"] },
+        { icon: "serve", text: "Nudeln in der Sauce schwenken, Schnitzelstreifen drauf.", items: [] }]
+    },
+    {
+      slug: "marry-me-chicken-risoni-orzo", name: "One-Pot-Rahm-Orzo mit Hendl und Spinat", origin: "Italien", time: 30,
+      kid: "Getrocknete Tomaten klein hacken. Hendl in kleinen Stücken.", tags: ["huhn", "onepot", "pasta", "rahm", "mediterran"],
+      ingredients: [["Hendlkeulen ohne Knochen", 500, "g", "meat"], ["Orzo (Kritharaki)", 200, "g", "dry"], ["Getrocknete Tomaten in Öl", 60, "g", "dry"],
+        ["Knoblauch", 2, "Zehe", "veg"], ["Schlagobers", 200, "ml", "fresh"], ["Babyspinat", 80, "g", "veg"], ["Parmesan", 50, "g", "fresh"],
+        ["Hühnersuppe (salzarm)", 500, "ml", "pantry"], ["Dijonsenf", 1, "TL", "pantry"], ["Oregano", 1, "TL", "pantry"], ["Olivenöl", 2, "EL", "pantry"]],
+      steps: [
+        { icon: "chop", text: "Hendl in mundgerechte Stücke, getrocknete Tomaten hacken.", items: ["Hendl", "Tomaten"] },
+        { icon: "pan", text: "Hendl in Öl 3 bis 4 Minuten anbraten. Knoblauch, Tomaten und Oregano kurz mitrösten.", timer: 240, items: ["Knoblauch", "Oregano"] },
+        { icon: "boil", text: "Orzo, Suppe, Senf und Obers dazu. Zugedeckt 12 bis 15 Minuten köcheln, oft umrühren.", timer: 840, items: ["Orzo", "Suppe", "Obers"] },
+        { icon: "serve", text: "Vom Herd nehmen, Spinat und Parmesan einrühren.", items: ["Spinat", "Parmesan"] }]
+    },
+    {
+      slug: "minced-ground-beef-stroganoff", name: "Faschiertes-Stroganoff mit Nudeln", origin: "Russland", time: 30,
+      kid: "Champignons klein schneiden. Sauerrahm macht es mild.", tags: ["faschiert", "pfanne", "pasta", "rahm"],
+      ingredients: [["Orecchiette oder kurze Nudeln", 350, "g", "dry"], ["Rinderfaschiertes", 450, "g", "meat"], ["Champignons", 200, "g", "veg"],
+        ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 2, "Zehe", "veg"], ["Sauerrahm", 100, "g", "fresh"], ["Gurke", 1, "Stk", "veg"], ["Dill", 1, "Bund", "veg"],
+        ["Tomatenmark", 2, "EL", "dry"], ["Rindsuppe (salzarm)", 500, "ml", "pantry"], ["Paprikapulver edelsüß", 1, "EL", "pantry"], ["Mehl", 2, "EL", "pantry"]],
+      steps: [
+        { icon: "boil", text: "Nudeln nach Packung kochen.", timer: 600, items: ["Nudeln"] },
+        { icon: "pan", text: "Zwiebel 3 Minuten anschwitzen, Knoblauch und Faschiertes dazu, krümelig braten.", timer: 360, items: ["Zwiebel", "Faschiertes"] },
+        { icon: "pan", text: "Champignons 4 Minuten mitbraten. Mehl, Tomatenmark und Paprikapulver einrühren.", timer: 240, items: ["Champignons", "Tomatenmark"] },
+        { icon: "boil", text: "Mit Suppe aufgießen und 5 bis 7 Minuten sämig köcheln. Herd aus, Sauerrahm einrühren.", timer: 360, items: ["Suppe", "Sauerrahm"] },
+        { icon: "serve", text: "Über die Nudeln geben. Gurken-Dill-Salat dazu.", items: ["Gurke", "Dill"] }]
+    },
+    {
+      slug: "one-pot-creamy-bolognese", name: "Cremige One-Pot-Bolognese", origin: "Italien", time: 15, wait: 25,
+      kid: "Ein Topf, weiche Rigatoni, wenig Parmesan fürs Kind.", tags: ["faschiert", "onepot", "pasta", "mediterran"],
+      ingredients: [["Rinderfaschiertes", 450, "g", "meat"], ["Rigatoni", 350, "g", "dry"], ["Passierte Tomaten", 700, "g", "dry"], ["Zwiebel", 1, "Stk", "veg"],
+        ["Karotten", 2, "Stk", "veg"], ["Stangensellerie", 1, "Stk", "veg"], ["Knoblauch", 2, "Zehe", "veg"], ["Schlagobers", 80, "ml", "fresh"],
+        ["Parmesan", 40, "g", "fresh"], ["Basilikum", 1, "Topf", "veg"], ["Tomatenmark", 2, "EL", "dry"], ["Rindsuppe (salzarm)", 500, "ml", "pantry"], ["Lorbeerblätter", 2, "Stk", "pantry"]],
+      steps: [
+        { icon: "chop", text: "Zwiebel, Karotten und Sellerie fein hacken, in Öl 5 Minuten weich dünsten.", timer: 300, items: ["Zwiebel", "Karotten", "Sellerie"] },
+        { icon: "pan", text: "Knoblauch und Faschiertes dazu, 5 Minuten braten. Tomatenmark 1 Minute mitrösten.", timer: 360, items: ["Faschiertes", "Tomatenmark"] },
+        { icon: "boil", text: "Passata, Suppe, 250 ml Wasser und Lorbeer dazu, aufkochen. Rigatoni einrühren.", items: ["Passata", "Suppe", "Rigatoni"] },
+        { icon: "boil", text: "Offen 18 bis 20 Minuten köcheln, regelmäßig umrühren.", timer: 1200, items: [] },
+        { icon: "serve", text: "Lorbeer raus, Obers und Parmesan einrühren. Mit Basilikum servieren.", items: ["Obers", "Parmesan", "Basilikum"] }]
+    },
+    {
+      slug: "hidden-veggie-bolognese", name: "Bolognese mit verstecktem Gemüse", origin: "Italien", time: 15, wait: 25,
+      kid: "Das Gemüse ist fein gerieben und fällt nicht auf.", tags: ["faschiert", "topf", "pasta", "mediterran"],
+      ingredients: [["Rinderfaschiertes", 450, "g", "meat"], ["Bandnudeln", 350, "g", "dry"], ["Passierte Tomaten", 700, "g", "dry"], ["Zwiebel", 1, "Stk", "veg"],
+        ["Karotten", 2, "Stk", "veg"], ["Zucchini", 1, "Stk", "veg"], ["Champignons", 200, "g", "veg"], ["Stangensellerie", 1, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"],
+        ["Parmesan", 40, "g", "fresh"], ["Tomatenmark", 2, "EL", "dry"], ["Rindsuppe (salzarm)", 500, "ml", "pantry"], ["Lorbeerblätter", 2, "Stk", "pantry"]],
+      steps: [
+        { icon: "chop", text: "Zwiebel und Sellerie fein würfeln, Karotten und Zucchini reiben, Champignons fein hacken.", items: ["Karotten", "Zucchini", "Champignons"] },
+        { icon: "pan", text: "Gemüse in Öl 6 bis 8 Minuten weich dünsten.", timer: 420, items: [] },
+        { icon: "pan", text: "Knoblauch und Faschiertes dazu, 3 Minuten braten. Tomatenmark einrühren.", timer: 180, items: ["Faschiertes", "Tomatenmark"] },
+        { icon: "boil", text: "Passata, Suppe und Lorbeer dazu. Halb zugedeckt 25 Minuten köcheln. Parallel Nudeln kochen.", timer: 1500, items: ["Passata", "Bandnudeln"] },
+        { icon: "serve", text: "Lorbeer raus, Nudeln untermischen, Parmesan drüber.", items: ["Parmesan"] }]
+    },
+    {
+      slug: "quick-coconut-chicken-curry", name: "Schnelles Kokos-Hendl-Curry", origin: "Indien", time: 30,
+      kid: "Mildes Currypulver verwenden. Joghurt macht es noch milder.", tags: ["huhn", "pfanne", "reis", "indisch"],
+      ingredients: [["Hendlkeulen ohne Knochen", 500, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 2, "Zehe", "veg"], ["Ingwer", 1, "Stk", "veg"],
+        ["Kokosmilch", 400, "ml", "dry"], ["Tomatenmark", 2, "EL", "dry"], ["Basmatireis", 250, "g", "dry"], ["Naturjoghurt", 150, "g", "fresh"],
+        ["Currypulver mild", 2, "EL", "pantry"], ["Kurkuma", 1, "TL", "pantry"], ["Hühnersuppe (salzarm)", 250, "ml", "pantry"]],
+      steps: [
+        { icon: "rice", text: "Reis aufsetzen, 15 Minuten.", timer: 900, items: ["Reis"] },
+        { icon: "pan", text: "Zwiebel, Knoblauch und Ingwer 2 bis 3 Minuten anschwitzen. Hendlstücke 4 Minuten anbraten.", timer: 240, items: ["Zwiebel", "Ingwer", "Hendl"] },
+        { icon: "pan", text: "Curry und Kurkuma 30 Sekunden mitrösten, Tomatenmark einrühren.", items: ["Curry", "Tomatenmark"] },
+        { icon: "boil", text: "Suppe und Kokosmilch dazu. Offen 10 bis 12 Minuten köcheln.", timer: 660, items: ["Kokosmilch", "Suppe"] },
+        { icon: "serve", text: "Mit Reis und einem Klecks Joghurt servieren.", items: ["Joghurt"] }]
+    },
+    {
+      slug: "speedy-satay-chicken", name: "Blitz-Satay-Hendl mit Reis", origin: "Indonesien", time: 15,
+      kid: "Enthält Erdnüsse: nur ohne Allergie. Gehackte Erdnüsse fürs Kind weglassen.", tags: ["huhn", "faschiert", "pfanne", "reis", "asiatisch"],
+      ingredients: [["Hendlfaschiertes", 500, "g", "meat"], ["Kokosmilch", 400, "ml", "dry"], ["Erdnussmus", 90, "g", "dry"], ["Zwiebel", 1, "Stk", "veg"],
+        ["Knoblauch", 2, "Zehe", "veg"], ["Jasminreis", 250, "g", "dry"], ["Gurke", 1, "Stk", "veg"], ["Limette", 1, "Stk", "veg"],
+        ["Sojasauce (salzreduziert)", 1, "EL", "pantry"], ["Currypulver mild", 1, "EL", "pantry"], ["Hühnersuppe (salzarm)", 125, "ml", "pantry"]],
+      steps: [
+        { icon: "rice", text: "Reis aufsetzen, 15 Minuten.", timer: 900, items: ["Reis"] },
+        { icon: "mix", text: "Kokosmilch, Suppe, Erdnussmus und Soja zu einer glatten Sauce verrühren.", items: ["Kokosmilch", "Erdnussmus", "Sojasauce"] },
+        { icon: "pan", text: "Zwiebel und Knoblauch kurz anbraten, Faschiertes dazu und krümelig braten. Curry einrühren.", timer: 360, items: ["Faschiertes", "Curry"] },
+        { icon: "boil", text: "Sauce dazu und 3 bis 4 Minuten cremig köcheln.", timer: 240, items: [] },
+        { icon: "serve", text: "Über Reis geben, mit Gurke und Limette servieren.", items: ["Gurke", "Limette"] }]
+    },
+    {
+      slug: "sticky-hoisin-beef", name: "Klebriges Hoisin-Faschiertes mit Reisnudeln", origin: "China", time: 20,
+      kid: "Nudeln kurz schneiden, Erdnüsse fürs Kind weglassen.", tags: ["faschiert", "pfanne", "asiatisch"],
+      ingredients: [["Rinderfaschiertes", 450, "g", "meat"], ["Breite Reisnudeln", 200, "g", "dry"], ["Chinakohl", 0.5, "Stk", "veg"], ["Karotten", 1, "Stk", "veg"],
+        ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Knoblauch", 2, "Zehe", "veg"], ["Hoisinsauce", 60, "ml", "dry"], ["Limette", 1, "Stk", "veg"],
+        ["Sojasauce (salzreduziert)", 1, "EL", "pantry"], ["Reisessig", 1, "EL", "pantry"], ["Sesamöl", 2, "TL", "pantry"]],
+      steps: [
+        { icon: "boil", text: "Reisnudeln nach Packung garen, abspülen und mit etwas Sesamöl mischen.", items: ["Reisnudeln", "Sesamöl"] },
+        { icon: "pan", text: "Knoblauch und das Weiße der Frühlingszwiebel 30 Sekunden anbraten, Faschiertes dazu und braun braten.", timer: 300, items: ["Faschiertes", "Knoblauch"] },
+        { icon: "pan", text: "Karottenstifte und fein geschnittenen Chinakohl 2 bis 3 Minuten mitbraten.", timer: 180, items: ["Karotten", "Chinakohl"] },
+        { icon: "mix", text: "Hoisin, Soja und Reisessig dazu, 2 bis 3 Minuten klebrig einkochen.", timer: 180, items: ["Hoisinsauce", "Sojasauce"] },
+        { icon: "serve", text: "Auf den Nudeln anrichten, Frühlingszwiebel und Limette dazu.", items: ["Limette"] }]
+    },
+    {
+      slug: "korean-beef-rice-bowls", name: "Koreanische Faschiertes-Reisbowl", origin: "Korea", time: 20,
+      kid: "Gochujang ist scharf: Kinderportion vorher abnehmen und nur mit Soja würzen. Kimchi nur für die Großen.", tags: ["faschiert", "reis", "asiatisch", "bowl"],
+      ingredients: [["Rinderfaschiertes", 450, "g", "meat"], ["Jasminreis", 250, "g", "dry"], ["Karotten", 1, "Stk", "veg"], ["Gurke", 1, "Stk", "veg"],
+        ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"], ["Ingwer", 1, "Stk", "veg"], ["Kimchi (nur Erwachsene)", 1, "Glas", "fresh"],
+        ["Mayonnaise", 3, "EL", "pantry"], ["Gochujang", 1, "EL", "pantry"], ["Sojasauce (salzreduziert)", 3, "EL", "pantry"], ["Sesam", 1, "EL", "pantry"]],
+      steps: [
+        { icon: "rice", text: "Reis aufsetzen, 15 Minuten.", timer: 900, items: ["Reis"] },
+        { icon: "mix", text: "Knoblauch, Ingwer, Soja, etwas Zucker und Sesam verrühren.", items: ["Sojasauce", "Ingwer", "Sesam"] },
+        { icon: "pan", text: "Faschiertes krümelig braun braten, Sauce dazu und 2 bis 3 Minuten einkochen. Kinderportion abnehmen.", timer: 180, items: ["Faschiertes"] },
+        { icon: "mix", text: "Für die Großen etwas Gochujang einrühren und Mayo mit Gochujang verrühren.", items: ["Gochujang", "Mayonnaise"] },
+        { icon: "serve", text: "Reis in Schalen, Faschiertes, Karotten- und Gurkenstreifen drauf.", items: ["Karotten", "Gurke"] }]
+    },
+    {
+      slug: "homemade-beef-burger", name: "Hausgemachte Burger", origin: "USA", time: 25,
+      kid: "Kinderburger klein formen und durchbraten. Zum Selberbauen.", tags: ["faschiert", "pfanne", "fingerfood"],
+      ingredients: [["Rinderfaschiertes", 500, "g", "meat"], ["Panko-Brösel", 30, "g", "dry"], ["Eier", 1, "Stk", "fresh"], ["Burger-Brioche-Weckerl", 4, "Stk", "bread"],
+        ["Gouda in Scheiben", 4, "Stk", "fresh"], ["Paradeiser", 2, "Stk", "veg"], ["Kopfsalat", 1, "Stk", "veg"], ["Essiggurkerl", 1, "Glas", "dry"],
+        ["Ketchup", 2, "EL", "pantry"], ["Worcestersauce", 1, "EL", "pantry"], ["Mayonnaise", 2, "EL", "pantry"]],
+      steps: [
+        { icon: "mix", text: "Faschiertes mit Bröseln, Ei, Worcestersauce und 1 EL Ketchup verkneten. 4 Laibchen und ein kleines Kinder-Laibchen formen, jeweils mit einer Mulde in der Mitte.", items: ["Faschiertes", "Ei"] },
+        { icon: "pan", text: "In Öl 10 bis 12 Minuten braten, einmal wenden. Am Ende Käse drauflegen und mit Deckel schmelzen.", timer: 660, items: ["Gouda"] },
+        { icon: "chop", text: "Paradeiser, Salat und Gurkerl schneiden, Weckerl toasten.", items: ["Paradeiser", "Salat", "Weckerl"] },
+        { icon: "serve", text: "Alles auf den Tisch, jeder baut seinen Burger.", items: ["Ketchup", "Mayonnaise"] }]
+    },
+    {
+      slug: "one-pan-korean-style-beef-noodles", name: "One-Pan-Kokos-Nudeln mit Faschiertem", origin: "Korea", time: 25,
+      kid: "Gochujang weglassen oder Kinderportion vorher abnehmen. Nudeln kurz schneiden.", tags: ["faschiert", "onepot", "pasta", "asiatisch"],
+      ingredients: [["Rinderfaschiertes", 450, "g", "meat"], ["Ramen-Nudeln", 3, "Pck", "dry"], ["Kokosmilch", 250, "ml", "dry"], ["Knoblauch", 1, "Zehe", "veg"],
+        ["Ingwer", 1, "Stk", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Gurke", 1, "Stk", "veg"], ["Tomatenmark", 1, "EL", "dry"],
+        ["Sojasauce (salzreduziert)", 3, "EL", "pantry"], ["Honig", 2, "EL", "pantry"], ["Reisessig", 2, "EL", "pantry"], ["Gochujang (nur Erwachsene)", 1, "EL", "pantry"]],
+      steps: [
+        { icon: "mix", text: "Soja, Honig, Reisessig und etwas Sesamöl verrühren.", items: ["Sojasauce", "Honig"] },
+        { icon: "pan", text: "Faschiertes 4 bis 5 Minuten anbraten, bis es knusprig wird. Knoblauch und Ingwer 1 Minute mitrösten.", timer: 360, items: ["Faschiertes", "Knoblauch", "Ingwer"] },
+        { icon: "pan", text: "Tomatenmark und Sauce einrühren, 1 Minute köcheln.", items: ["Tomatenmark"] },
+        { icon: "boil", text: "Kokosmilch, Nudeln und 375 ml Wasser dazu. Zugedeckt 2 Minuten, Nudeln wenden, noch 1 Minute.", timer: 180, items: ["Kokosmilch", "Ramen-Nudeln"] },
+        { icon: "serve", text: "Durchmischen, mit Frühlingszwiebel und Gurke servieren.", items: ["Gurke"] }]
+    },
+    {
+      slug: "street-style-soy-noodles", name: "Soja-Eiernudeln mit Hendl wie vom Straßenstand", origin: "China", time: 15,
+      kid: "Mild und salzig: fürs Kind mit etwas Wasser verdünnen. Nudeln kurz schneiden.", tags: ["huhn", "pfanne", "pasta", "asiatisch"],
+      ingredients: [["Hendlbrust", 500, "g", "meat"], ["Frische Eiernudeln", 400, "g", "fresh"], ["Chinakohl", 0.5, "Stk", "veg"], ["Karotten", 1, "Stk", "veg"],
+        ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Knoblauch", 2, "Zehe", "veg"], ["Austernsauce", 2, "EL", "dry"], ["Sojasauce (salzreduziert)", 2, "EL", "pantry"],
+        ["Sesamöl", 1, "EL", "pantry"], ["Sesam", 1, "EL", "pantry"]],
+      steps: [
+        { icon: "mix", text: "Austernsauce, Soja, Sesamöl und etwas Zucker verrühren. Hendl in dünne Streifen schneiden, mit 1 EL Sauce mischen.", items: ["Hendl", "Austernsauce", "Sojasauce"] },
+        { icon: "pan", text: "Hendl bei großer Hitze 1 bis 2 Minuten braten. Knoblauch und Frühlingszwiebel 30 Sekunden mitbraten.", timer: 120, items: ["Knoblauch"] },
+        { icon: "pan", text: "Chinakohl und Karottenstifte 2 bis 3 Minuten mitbraten.", timer: 180, items: ["Chinakohl", "Karotten"] },
+        { icon: "pan", text: "Nudeln und restliche Sauce dazu, 1 bis 2 Minuten durchschwenken.", timer: 120, items: ["Eiernudeln"] },
+        { icon: "serve", text: "Mit Sesam bestreut servieren.", items: ["Sesam"] }]
+    },
+    {
+      slug: "italian-style-meatballs", name: "Italienische Fleischbällchen mit Mozzarella-Kern", origin: "Italien", time: 20, wait: 25,
+      kid: "Bällchen halbieren, innen ist geschmolzener Käse heiß.", tags: ["faschiert", "topf", "mediterran"],
+      ingredients: [["Faschiertes gemischt", 500, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 2, "Zehe", "veg"], ["Panko-Brösel", 60, "g", "dry"],
+        ["Eier", 1, "Stk", "fresh"], ["Milch", 2, "EL", "fresh"], ["Parmesan", 50, "g", "fresh"], ["Geriebener Mozzarella", 75, "g", "fresh"],
+        ["Ganze Tomaten", 2, "Dose", "dry"], ["Basilikum", 1, "Topf", "veg"], ["Baguette", 1, "Stk", "bread"], ["Petersilie", 1, "Bund", "veg"], ["Butter", 20, "g", "pantry"]],
+      steps: [
+        { icon: "pan", text: "Zwiebel 4 bis 5 Minuten weich dünsten, Knoblauch kurz mitrösten, in eine Schüssel geben.", timer: 300, items: ["Zwiebel", "Knoblauch"] },
+        { icon: "boil", text: "In derselben Pfanne Butter und Knoblauch, dann Tomaten und 125 ml Wasser. Leise köcheln lassen.", items: ["Tomaten", "Butter"] },
+        { icon: "mix", text: "Faschiertes mit Zwiebel, Bröseln, Milch, Ei, Petersilie, Parmesan und Mozzarella mischen. 16 Bällchen formen.", items: ["Faschiertes", "Mozzarella", "Parmesan"] },
+        { icon: "boil", text: "Bällchen in die Sauce legen, 12 bis 15 Minuten garen, wenden, noch 8 bis 10 Minuten.", timer: 1380, items: [] },
+        { icon: "serve", text: "Mit Parmesan und Basilikum, Baguette dazu.", items: ["Basilikum", "Baguette"] }]
+    },
+    {
+      slug: "one-pan-chicken-and-broccoli-lasagne", name: "One-Pan-Hendl-Brokkoli-Lasagne", origin: "Italien", time: 25, wait: 15,
+      kid: "5 Minuten rasten lassen, innen sehr heiß. In kleine Stücke schneiden.", tags: ["huhn", "onepot", "pasta", "rahm", "auflauf"],
+      ingredients: [["Hendlbrust", 300, "g", "meat"], ["Frische Lasagneblätter", 250, "g", "fresh"], ["Brokkoli", 1, "Stk", "veg"], ["Lauch", 1, "Stk", "veg"],
+        ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 2, "Zehe", "veg"], ["Schlagobers", 375, "ml", "fresh"], ["Parmesan", 50, "g", "fresh"],
+        ["Geriebener Mozzarella", 150, "g", "fresh"], ["Hühnersuppe (salzarm)", 600, "ml", "pantry"], ["Mehl", 30, "g", "pantry"], ["Butter", 30, "g", "pantry"], ["Italienische Kräuter", 1, "EL", "pantry"]],
+      steps: [
+        { icon: "pan", text: "Ofengrill vorheizen. Hendl je Seite 3 Minuten braten, herausnehmen und klein schneiden.", timer: 360, items: ["Hendl"] },
+        { icon: "pan", text: "Butter, Zwiebel, Knoblauch und Lauch 4 Minuten dünsten. Mehl einrühren.", timer: 240, items: ["Lauch", "Zwiebel", "Mehl"] },
+        { icon: "boil", text: "Suppe, Obers, Kräuter und klein geschnittenen Brokkoli dazu, aufkochen.", items: ["Suppe", "Obers", "Brokkoli"] },
+        { icon: "boil", text: "Lasagneblätter in Quadraten untertauchen. Zugedeckt 6 Minuten, offen 5 Minuten köcheln, oft umrühren.", timer: 660, items: ["Lasagneblätter"] },
+        { icon: "oven", text: "Hendl und Parmesan unterheben, Mozzarella drüber, 3 bis 5 Minuten unter dem Grill goldbraun.", timer: 300, items: ["Mozzarella", "Parmesan"] }]
+    }
+  ].forEach(add);
+})();
 
 const MASTERCHEF = [
  {
@@ -2559,16 +2827,6 @@ const ANGEBOTE = {
 "angebote": [
 {
 "markt": "BILLA",
-"name": "Iglo Polar-Dorsch natur",
-"menge": "400 g",
-"preis": 6.99,
-"statt": 8.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
-},
-{
-"markt": "BILLA",
 "name": "Ja! Natürlich Zwiebel gelb",
 "menge": "750 g",
 "preis": 1.29,
@@ -2646,6 +2904,16 @@ const ANGEBOTE = {
 "hinweis": "",
 "bis": null,
 "link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Polar-Dorsch natur",
+"menge": "400 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
 },
 {
 "markt": "BILLA",
@@ -2926,6 +3194,306 @@ const ANGEBOTE = {
 "hinweis": "",
 "bis": null,
 "link": "https://shop.billa.at/produkte/billa-salami-snack-box-00897953"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Blattspinat Minis",
+"menge": "400 g",
+"preis": 2.85,
+"statt": 3.48,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-blattspinat-minis-00428898"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Wellenpommes",
+"menge": "750 g",
+"preis": 2.29,
+"statt": 3.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-wellenpommes-00714610"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Backrohr Pommes",
+"menge": "750 g",
+"preis": 2.29,
+"statt": 3.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-backrohr-pommes-00779261"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Semmelknödel",
+"menge": "400 g",
+"preis": 2.99,
+"statt": 3.49,
+"hinweis": "ab 2 Kartons",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-semmelknoedel-00730157"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Rahmfisolen",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-rahmfisolen-0082931"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Lasagne al Forno",
+"menge": "350 g",
+"preis": 3.49,
+"statt": 4.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-lasagne-al-forno-00400465"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Pazifischer Polar-Dorsch paniert",
+"menge": "400 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-pazifischer-polardorsch-paniert-0010042"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Kroketten",
+"menge": "750 g",
+"preis": 2.29,
+"statt": 3.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-kroketten-00779215"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Kochsalat mit Erbsen",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-kochsalat-mit-erbsen-0010907"
+},
+{
+"markt": "BILLA",
+"name": "iglo Atlantik Lachs",
+"menge": "250 g",
+"preis": 10.99,
+"statt": 16.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-atlantik-lachs-00750147"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Selchfleischknödel",
+"menge": "400 g",
+"preis": 2.99,
+"statt": 3.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-selchfleischknoedel-00705364"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Röstgemüse 4 Jahreszeiten",
+"menge": "400 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-roestgemuese-4-jahreszeiten-00420797"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Mohnnudeln",
+"menge": "500 g",
+"preis": 3.52,
+"statt": 5.29,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-mohnnudeln-003046"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Letscho",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-letscho-0082529"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Polar-Dorsch Müllerin",
+"menge": "300 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-polardorsch-muellerin-00416106"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Erdäpfeltascherl",
+"menge": "600 g",
+"preis": 2.29,
+"statt": 3.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-erdaepfeltascherl-00737917"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Polar-Dorsch natur",
+"menge": "400 g",
+"preis": 6.99,
+"statt": 8.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
+},
+{
+"markt": "BILLA",
+"name": "Dr. Oetker Suprema Salame Romano",
+"menge": "487 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/dr-oetker-suprema-salame-romano-00755486"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Grammelknödel",
+"menge": "400 g",
+"preis": 2.99,
+"statt": 3.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-grammelknoedel-00705376"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Hühner Nuggets in Backteig",
+"menge": "220 g",
+"preis": 3.92,
+"statt": 5.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-huehner-nuggets-in-backteig-00789342"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Bio Edamame",
+"menge": "250 g",
+"preis": 1.99,
+"statt": 2.71,
+"hinweis": "ab 2 Schachteln",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-bio-edamame-00759523"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Wurstknödel",
+"menge": "400 g",
+"preis": 2.99,
+"statt": 3.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-wurstknoedel-00705370"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Riesen-Germknödel",
+"menge": "500 g",
+"preis": 3.52,
+"statt": 5.29,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-riesengermknoedel-00349612"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Röstgemüse Mediterran",
+"menge": "400 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-roestgemuese-mediterran-00503671"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Kohlgemüse",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-kohlgemuese-007215"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Cremegemüse Rahm-Farmers",
+"menge": "300 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-cremegemuese-rahmfarmers-00407139"
+},
+{
+"markt": "BILLA",
+"name": "Dr. Oetker Suprema Margherita",
+"menge": "475 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/dr-oetker-suprema-margherita-00755485"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Röstgemüse Steak Mix",
+"menge": "450 g",
+"preis": 2.66,
+"statt": 3.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-roestgemuese-steak-mix-00680559"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Hühner Nuggets",
+"menge": "250 g",
+"preis": 3.92,
+"statt": 5.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-huehner-nuggets-00616589"
+},
+{
+"markt": "BILLA",
+"name": "Iglo Scholle paniert",
+"menge": "250 g",
+"preis": 6.99,
+"statt": 10.49,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iglo-scholle-paniert-00306542"
 },
 {
 "markt": "BILLA",
@@ -3439,296 +4007,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Kelly's Chips Classic Gesalzen",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Dinkelvollkornweckerl",
-"menge": "100 g",
-"preis": 1.03,
-"statt": 1.28,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-dinkelvollkornweckerl-00846484"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Erdnuss Snips",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
-"menge": "370 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
-},
-{
-"markt": "BILLA",
-"name": "Felix Ketchup ohne Zuckerzusatz",
-"menge": "960 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Marillen Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Sour Cream",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Ketchup",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Gemüsesuppe Würfel",
-"menge": "126 g",
-"preis": 1.26,
-"statt": 1.89,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Jumpys Paprika",
-"menge": "75 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Gartenerdbeeren Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Salz",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Paprika",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo mit Basilikum",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Rosmarin",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
-},
-{
-"markt": "BILLA",
-"name": "Lorenz Nic Nac's Partypack",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 5.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Tofu Natur",
-"menge": "250 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-tofu-natur-00345125"
-},
-{
-"markt": "BILLA",
-"name": "Felix Tomatenketchup Mild",
-"menge": "1000 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Preiselbeer Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Popcornchips Salz",
-"menge": "140 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
-},
-{
-"markt": "BILLA",
-"name": "Bona Öl",
-"menge": "0.75 liter",
-"preis": 2.32,
-"statt": 3.49,
-"hinweis": "Bei 3 Flaschen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/bona-oel-00408228"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Feigen",
-"menge": "250 g",
-"preis": 2.49,
-"statt": 5.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Himbeer Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel Chips",
-"menge": "70 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo Arrabbiata",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Ofen Chips Paprika",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Erdbeer Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-erdbeer-konfituere-00540"
-},
-{
-"markt": "BILLA",
-"name": "efko Apfelmus Pur",
-"menge": "350 g",
-"preis": 1.79,
-"statt": 2.39,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/efko-apfelmus-pur-00811412"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Ofen Chips Sour Cream",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-ofen-chips-sour-cream-00574901"
-},
-{
-"markt": "BILLA",
 "name": "Iglo Polar-Dorsch natur",
 "menge": "400 g",
 "preis": 6.99,
@@ -3746,356 +4024,6 @@ const ANGEBOTE = {
 "hinweis": "Bei 6 Stk je",
 "bis": null,
 "link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Blattspinat Minis",
-"menge": "400 g",
-"preis": 2.85,
-"statt": 3.48,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-blattspinat-minis-00428898"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Wellenpommes",
-"menge": "750 g",
-"preis": 2.29,
-"statt": 3.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-wellenpommes-00714610"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Backrohr Pommes",
-"menge": "750 g",
-"preis": 2.29,
-"statt": 3.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-backrohr-pommes-00779261"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Semmelknödel",
-"menge": "400 g",
-"preis": 2.99,
-"statt": 3.49,
-"hinweis": "ab 2 Kartons",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-semmelknoedel-00730157"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Rahmfisolen",
-"menge": "450 g",
-"preis": 2.66,
-"statt": 3.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-rahmfisolen-0082931"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Lasagne al Forno",
-"menge": "350 g",
-"preis": 3.49,
-"statt": 4.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-lasagne-al-forno-00400465"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Pazifischer Polar-Dorsch paniert",
-"menge": "400 g",
-"preis": 6.99,
-"statt": 8.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-pazifischer-polardorsch-paniert-0010042"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Kroketten",
-"menge": "750 g",
-"preis": 2.29,
-"statt": 3.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-kroketten-00779215"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Kochsalat mit Erbsen",
-"menge": "450 g",
-"preis": 2.66,
-"statt": 3.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-kochsalat-mit-erbsen-0010907"
-},
-{
-"markt": "BILLA",
-"name": "iglo Atlantik Lachs",
-"menge": "250 g",
-"preis": 10.99,
-"statt": 16.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-atlantik-lachs-00750147"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Selchfleischknödel",
-"menge": "400 g",
-"preis": 2.99,
-"statt": 3.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-selchfleischknoedel-00705364"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Röstgemüse 4 Jahreszeiten",
-"menge": "400 g",
-"preis": 2.66,
-"statt": 3.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-roestgemuese-4-jahreszeiten-00420797"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Mohnnudeln",
-"menge": "500 g",
-"preis": 3.52,
-"statt": 5.29,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-mohnnudeln-003046"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Letscho",
-"menge": "450 g",
-"preis": 2.66,
-"statt": 3.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-letscho-0082529"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Polar-Dorsch Müllerin",
-"menge": "300 g",
-"preis": 6.99,
-"statt": 8.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-polardorsch-muellerin-00416106"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Erdäpfeltascherl",
-"menge": "600 g",
-"preis": 2.29,
-"statt": 3.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-erdaepfeltascherl-00737917"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Polar-Dorsch natur",
-"menge": "400 g",
-"preis": 6.99,
-"statt": 8.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-polardorsch-natur-003298"
-},
-{
-"markt": "BILLA",
-"name": "Dr. Oetker Suprema Salame Romano",
-"menge": "487 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/dr-oetker-suprema-salame-romano-00755486"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Grammelknödel",
-"menge": "400 g",
-"preis": 2.99,
-"statt": 3.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-grammelknoedel-00705376"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Hühner Nuggets in Backteig",
-"menge": "220 g",
-"preis": 3.92,
-"statt": 5.89,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-huehner-nuggets-in-backteig-00789342"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Bio Edamame",
-"menge": "250 g",
-"preis": 1.99,
-"statt": 2.71,
-"hinweis": "ab 2 Schachteln",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-bio-edamame-00759523"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Wurstknödel",
-"menge": "400 g",
-"preis": 2.99,
-"statt": 3.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-wurstknoedel-00705370"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Riesen-Germknödel",
-"menge": "500 g",
-"preis": 3.52,
-"statt": 5.29,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-riesengermknoedel-00349612"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Röstgemüse Mediterran",
-"menge": "400 g",
-"preis": 2.66,
-"statt": 3.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-roestgemuese-mediterran-00503671"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Kohlgemüse",
-"menge": "450 g",
-"preis": 2.66,
-"statt": 3.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-kohlgemuese-007215"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Cremegemüse Rahm-Farmers",
-"menge": "300 g",
-"preis": 2.66,
-"statt": 3.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-cremegemuese-rahmfarmers-00407139"
-},
-{
-"markt": "BILLA",
-"name": "Dr. Oetker Suprema Margherita",
-"menge": "475 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/dr-oetker-suprema-margherita-00755485"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Röstgemüse Steak Mix",
-"menge": "450 g",
-"preis": 2.66,
-"statt": 3.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-roestgemuese-steak-mix-00680559"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Hühner Nuggets",
-"menge": "250 g",
-"preis": 3.92,
-"statt": 5.89,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-huehner-nuggets-00616589"
-},
-{
-"markt": "BILLA",
-"name": "Iglo Scholle paniert",
-"menge": "250 g",
-"preis": 6.99,
-"statt": 10.49,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iglo-scholle-paniert-00306542"
-},
-{
-"markt": "BILLA",
-"name": "MAGGI Magic Asia Noodle Cup Chicken Taste",
-"menge": "63 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 3 Becher je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/maggi-magic-asia-noodle-cup-chicken-taste-00303260"
-},
-{
-"markt": "BILLA",
-"name": "MAGGI Magic Asia Saucy Noodls Teriyaki Cup",
-"menge": "75 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 3 Becher je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodls-teriyaki-cup-00381674"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Die Schnelle Feine Tomatencremesuppe",
-"menge": "1",
-"preis": 1.12,
-"statt": 1.69,
-"hinweis": "Bei 3 Beutel je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-die-schnelle-feine-tomatencremesuppe-00412232"
-},
-{
-"markt": "BILLA",
-"name": "MAGGI Magic Asia Saucy Noodles Sweet Chili Cup",
-"menge": "75 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 3 Becher je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodles-sweet-chili-cup-00381679"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Kaiserteller Minestrone",
-"menge": "1",
-"preis": 1.12,
-"statt": 1.69,
-"hinweis": "Bei 3 Beutel je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-kaiserteller-minestrone-00963120"
 },
 {
 "markt": "BILLA",
@@ -4398,6 +4326,346 @@ const ANGEBOTE = {
 "link": "https://shop.billa.at/produkte/storck-knoppers-nussriegel-3er-00663690"
 },
 {
+"markt": "BILLA",
+"name": "Kelly's Chips Classic Gesalzen",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Dinkelvollkornweckerl",
+"menge": "100 g",
+"preis": 1.03,
+"statt": 1.28,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-dinkelvollkornweckerl-00846484"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Erdnuss Snips",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
+"menge": "370 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
+},
+{
+"markt": "BILLA",
+"name": "Felix Ketchup ohne Zuckerzusatz",
+"menge": "960 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Marillen Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Sour Cream",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Ketchup",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Gemüsesuppe Würfel",
+"menge": "126 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Jumpys Paprika",
+"menge": "75 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Gartenerdbeeren Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Salz",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Paprika",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo mit Basilikum",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Rosmarin",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
+},
+{
+"markt": "BILLA",
+"name": "Lorenz Nic Nac's Partypack",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Tofu Natur",
+"menge": "250 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-tofu-natur-00345125"
+},
+{
+"markt": "BILLA",
+"name": "Felix Tomatenketchup Mild",
+"menge": "1000 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Preiselbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Popcornchips Salz",
+"menge": "140 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
+},
+{
+"markt": "BILLA",
+"name": "Bona Öl",
+"menge": "0.75 liter",
+"preis": 2.32,
+"statt": 3.49,
+"hinweis": "Bei 3 Flaschen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bona-oel-00408228"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Himbeer Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo Arrabbiata",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Ofen Chips Paprika",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Erdbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-erdbeer-konfituere-00540"
+},
+{
+"markt": "BILLA",
+"name": "efko Apfelmus Pur",
+"menge": "350 g",
+"preis": 1.79,
+"statt": 2.39,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/efko-apfelmus-pur-00811412"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Ofen Chips Sour Cream",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-ofen-chips-sour-cream-00574901"
+},
+{
+"markt": "BILLA",
+"name": "MAGGI Magic Asia Noodle Cup Chicken Taste",
+"menge": "63 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maggi-magic-asia-noodle-cup-chicken-taste-00303260"
+},
+{
+"markt": "BILLA",
+"name": "MAGGI Magic Asia Saucy Noodls Teriyaki Cup",
+"menge": "75 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodls-teriyaki-cup-00381674"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Die Schnelle Feine Tomatencremesuppe",
+"menge": "1",
+"preis": 1.12,
+"statt": 1.69,
+"hinweis": "Bei 3 Beutel je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-die-schnelle-feine-tomatencremesuppe-00412232"
+},
+{
+"markt": "BILLA",
+"name": "MAGGI Magic Asia Saucy Noodles Sweet Chili Cup",
+"menge": "75 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maggi-magic-asia-saucy-noodles-sweet-chili-cup-00381679"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Kaiserteller Minestrone",
+"menge": "1",
+"preis": 1.12,
+"statt": 1.69,
+"hinweis": "Bei 3 Beutel je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-kaiserteller-minestrone-00963120"
+},
+{
 "markt": "Gurkerl",
 "name": "BIO Champignon creme",
 "menge": "200 g",
@@ -4409,16 +4677,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "BIO Pimientos de Padron, scharf",
-"menge": "200 g",
-"preis": 3.59,
-"statt": 4.79,
-"hinweis": "-25 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/44321-bio-pimientos-de-padron-scharf"
-},
-{
-"markt": "Gurkerl",
 "name": "BIO Hokkaido Kürbis",
 "menge": "ca. 1,2 kg",
 "preis": 2.47,
@@ -4426,6 +4684,16 @@ const ANGEBOTE = {
 "hinweis": "-10 % für dich",
 "bis": null,
 "link": "https://www.gurkerl.at/26472-bio-hokkaido-kuerbis"
+},
+{
+"markt": "Gurkerl",
+"name": "BIO Pimientos de Padron, scharf",
+"menge": "200 g",
+"preis": 3.59,
+"statt": 4.79,
+"hinweis": "-25 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/44321-bio-pimientos-de-padron-scharf"
 },
 {
 "markt": "Gurkerl",
@@ -4469,16 +4737,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Stabinger Ricottatorte",
-"menge": "0,9 kg",
-"preis": 15.99,
-"statt": 19.99,
-"hinweis": "-20 %",
-"bis": "2026-10-18",
-"link": "https://www.gurkerl.at/47369-stabinger-ricottatorte"
-},
-{
-"markt": "Gurkerl",
 "name": "Stabinger Schokoladentorte \"Sacher\"",
 "menge": "0,8 kg",
 "preis": 15.99,
@@ -4486,6 +4744,16 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-18",
 "link": "https://www.gurkerl.at/47368-stabinger-schokoladentorte-sacher"
+},
+{
+"markt": "Gurkerl",
+"name": "Stabinger Ricottatorte",
+"menge": "0,9 kg",
+"preis": 15.99,
+"statt": 19.99,
+"hinweis": "-20 %",
+"bis": "2026-10-18",
+"link": "https://www.gurkerl.at/47369-stabinger-ricottatorte"
 },
 {
 "markt": "Gurkerl",
@@ -4549,16 +4817,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Atelier Délices Mini Eclair",
-"menge": "140 g",
-"preis": 4.39,
-"statt": 5.49,
-"hinweis": "-20 %",
-"bis": "2026-10-17",
-"link": "https://www.gurkerl.at/48933-atelier-delices-mini-eclair"
-},
-{
-"markt": "Gurkerl",
 "name": "Ölz Topfen Golatschen",
 "menge": "200 g",
 "preis": 3.03,
@@ -4579,6 +4837,16 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
+"name": "Atelier Délices Mini Eclair",
+"menge": "140 g",
+"preis": 4.39,
+"statt": 5.49,
+"hinweis": "-20 %",
+"bis": "2026-10-17",
+"link": "https://www.gurkerl.at/48933-atelier-delices-mini-eclair"
+},
+{
+"markt": "Gurkerl",
 "name": "Konditorei Zauner Englischer Teekuchen",
 "menge": "500 g",
 "preis": 23.99,
@@ -4589,43 +4857,33 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Oceans Tintenfisch-Carpaccio mit Balsamico-Essig",
-"menge": "ca. 190 g",
-"preis": 10.88,
-"statt": 17.33,
-"hinweis": "-37 %",
-"bis": "2026-10-15",
-"link": "https://www.gurkerl.at/47926-oceans-tintenfisch-carpaccio-mit-balsamico-essig"
-},
-{
-"markt": "Gurkerl",
-"name": "Danke Bauer Kärntner Reindling",
-"menge": "0,8 kg",
-"preis": 13.93,
-"statt": 19.99,
-"hinweis": "-30 %",
+"name": "Vi. Power Melonen-Mix",
+"menge": "500 g",
+"preis": 4.39,
+"statt": 7.99,
+"hinweis": "-45 %",
 "bis": "2026-10-14",
-"link": "https://www.gurkerl.at/14111-danke-bauer-kaerntner-reindling"
+"link": "https://www.gurkerl.at/18815-vi-power-melonen-mix"
 },
 {
 "markt": "Gurkerl",
-"name": "Gimar Lachs Tatar",
-"menge": "100 g",
-"preis": 7.62,
-"statt": 9.19,
-"hinweis": "-17 %",
+"name": "Schweine Schopf Steaks",
+"menge": "ca. 490 g",
+"preis": 3.19,
+"statt": 4.91,
+"hinweis": "-35 %",
 "bis": "2026-10-15",
-"link": "https://www.gurkerl.at/26679-gimar-lachs-tatar"
+"link": "https://www.gurkerl.at/42174-schweine-schopf-steaks"
 },
 {
 "markt": "Gurkerl",
-"name": "Stiegl BIO Hausbier Gipfelstürmer",
-"menge": "0,75 l",
-"preis": 3.99,
-"statt": 5.19,
-"hinweis": "-23 %",
-"bis": "2026-11-05",
-"link": "https://www.gurkerl.at/34930-stiegl-bio-hausbier-gipfelstuermer"
+"name": "FJORU ASC Dorade Filet mit Haut",
+"menge": "ca. 190 g",
+"preis": 6.41,
+"statt": 8.55,
+"hinweis": "-25 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/19076-fjoru-asc-dorade-filet-mit-haut"
 },
 {
 "markt": "Gurkerl",
@@ -4639,13 +4897,13 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Schweine Schnitzelfleisch aus der Schale am Stück",
-"menge": "ca. 1,04 kg",
-"preis": 7.09,
-"statt": 8.34,
-"hinweis": "-14 %",
-"bis": "2026-10-15",
-"link": "https://www.gurkerl.at/42165-schweine-schnitzelfleisch-aus-der-schale-am-stueck"
+"name": "Steirerhuhn BIO bratfertig",
+"menge": "ca. 1,57 kg",
+"preis": 12.24,
+"statt": 19.62,
+"hinweis": "-37 %",
+"bis": "2026-10-14",
+"link": "https://www.gurkerl.at/7199-steirerhuhn-bio-bratfertig"
 },
 {
 "markt": "Gurkerl",
@@ -4669,23 +4927,23 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Steirerhuhn BIO bratfertig",
-"menge": "ca. 1,57 kg",
-"preis": 12.24,
-"statt": 19.62,
-"hinweis": "-37 %",
-"bis": "2026-10-14",
-"link": "https://www.gurkerl.at/7199-steirerhuhn-bio-bratfertig"
+"name": "Oceans Lachs Sashimi geschnitten",
+"menge": "ca. 160 g",
+"preis": 8.17,
+"statt": 10.74,
+"hinweis": "-23 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/40831-oceans-lachs-sashimi-geschnitten"
 },
 {
 "markt": "Gurkerl",
-"name": "Huhn im Ganzen, grillfertig",
-"menge": "ca. 1,3 kg",
-"preis": 4.84,
-"statt": 7.11,
-"hinweis": "-31 %",
-"bis": "2026-10-14",
-"link": "https://www.gurkerl.at/36442-huhn-im-ganzen-grillfertig"
+"name": "Freshery Tikka Masala Bowl mit Hühnerfleisch",
+"menge": "190 g",
+"preis": 4.49,
+"statt": 5.99,
+"hinweis": "-25 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/48168-freshery-tikka-masala-bowl-mit-huehnerfleisch"
 },
 {
 "markt": "Gurkerl",
@@ -4699,23 +4957,43 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Pappudia Gnocchi mit Huhn und getrockenten Tomaten Cremesauce",
-"menge": "460 g",
-"preis": 1.65,
+"name": "Kugler Bayerischer Krautsalat",
+"menge": "400 g",
+"preis": 2.69,
 "statt": 3.59,
-"hinweis": "-54 %",
-"bis": "2026-10-16",
-"link": "https://www.gurkerl.at/44205-pappudia-gnocchi-mit-huhn-und-getrockenten-tomaten-cremesauce"
+"hinweis": "-25 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/30848-kugler-bayerischer-krautsalat"
 },
 {
 "markt": "Gurkerl",
-"name": "Garofalo Girasoli Ai Funghi Porcini",
-"menge": "250 g",
-"preis": 3.01,
-"statt": 3.99,
+"name": "Freshery Kokossuppe mit Hühnerfleisch",
+"menge": "210 g",
+"preis": 4.54,
+"statt": 5.99,
 "hinweis": "-24 %",
-"bis": "2026-10-16",
-"link": "https://www.gurkerl.at/47991-garofalo-girasoli-ai-funghi-porcini"
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/48163-freshery-kokossuppe-mit-huehnerfleisch"
+},
+{
+"markt": "Gurkerl",
+"name": "Freshery Pho mit Hühnerfleisch",
+"menge": "150 g",
+"preis": 4.54,
+"statt": 5.99,
+"hinweis": "-24 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/48162-freshery-pho-mit-huehnerfleisch"
+},
+{
+"markt": "Gurkerl",
+"name": "Freshery Koreanische Bowl mit Schweinefleisch",
+"menge": "230 g",
+"preis": 4.54,
+"statt": 5.99,
+"hinweis": "-24 %",
+"bis": "2026-10-15",
+"link": "https://www.gurkerl.at/48167-freshery-koreanische-bowl-mit-schweinefleisch"
 }
 ]
 };
@@ -4851,7 +5129,7 @@ const ANGEBOTE = {
     return (r.mc ? "ca. " : "") + t + (r.wait ? ` + ${r.wait} Min. Ofen` : "");
   };
   const HAS_PHOTO = new Set(typeof PHOTOS !== "undefined" ? PHOTOS : []);
-  const mcTag = r => r.mc ? '<span class="mc-tag">Master Chef</span>' : "";
+  const mcTag = r => r.mc ? '<span class="mc-tag">Master Chef</span>' : r.source ? `<span class="mc-tag">nach ${esc(r.source.name)}</span>` : "";
   const photo = (r, eager) => !HAS_PHOTO.has(r.id) ? "" : `<img class="photo" src="img/${r.id}.jpg" alt="${esc(r.name)}" ${eager ? "" : 'loading="lazy"'} decoding="async" onerror="this.remove()">`;
   function plateSVG(r) {
     let seed = 0; for (const c of r.id) seed = (seed * 31 + c.charCodeAt(0)) >>> 0;
@@ -5238,7 +5516,7 @@ const ANGEBOTE = {
     return `${r.name}\n${r.origin} · ${timeLabel(r)} · für 2 Große + 1 Kleines\n\nZutaten:\n` +
       r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(q, u) : ""}`).join("\n") +
       `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
-      (r.kid ? `\n\nFürs Kind: ${r.kid}` : "") + `\n\n${APP_URL}#${r.id}`;
+      (r.kid ? `\n\nFürs Kind: ${r.kid}` : "") + (r.source ? `\n\nNach ${r.source.name}: ${r.source.url}` : "") + `\n\n${APP_URL}#${r.id}`;
   }
   const shareBtn = r => `<a class="mini wa" href="https://wa.me/?text=${encodeURIComponent(shareText(r))}" target="_blank" rel="noopener" aria-label="${esc(r.name)} per WhatsApp teilen">${ICON.share}Teilen</a>`;
 
@@ -5274,6 +5552,7 @@ const ANGEBOTE = {
       <h4>So geht's</h4>
       <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
       ${r.kid ? `<div class="kid"><b>Fürs Kind · </b>${esc(r.kid)}</div>` : ""}
+      ${r.source ? `<p class="from-pantry">Rezept frei übersetzt und angepasst nach <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name)}</a>.</p>` : ""}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
       const day = e.target.closest("[data-day]"), pl = e.target.closest("[data-detail-play]");
@@ -5350,7 +5629,7 @@ const ANGEBOTE = {
   });
 
   // ---------- Entdecken: Pinnwand ----------
-  const FILTERS = [["alle", "Alle"], ["herz", "Herzen"], ["passt", "Passt zu euch"], ["masterchef", "Master Chef"], ["österreichisch", "Österreich"], ["faschiert", "Faschiertes"], ["onepot", "One-Pot"], ["auflauf", "Aufläufe"], ["rahm", "Mit Rahm"], ["fingerfood", "Fingerfood"], ["vegetarisch", "Vegetarisch"], ["huhn", "Hendl"], ["fisch", "Fisch"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["süß", "Süß"]];
+  const FILTERS = [["alle", "Alle"], ["herz", "Herzen"], ["passt", "Passt zu euch"], ["masterchef", "Master Chef"], ["simplehomeedit", "Simple Home Edit"], ["österreichisch", "Österreich"], ["faschiert", "Faschiertes"], ["onepot", "One-Pot"], ["auflauf", "Aufläufe"], ["rahm", "Mit Rahm"], ["fingerfood", "Fingerfood"], ["vegetarisch", "Vegetarisch"], ["huhn", "Hendl"], ["fisch", "Fisch"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["süß", "Süß"]];
   let filter = "alle";
   const RATIOS = ["1 / 1", "4 / 5", "4 / 3", "3 / 4", "1 / 1.2"];
   function renderBoard() {

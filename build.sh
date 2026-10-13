@@ -9,7 +9,7 @@ python3 tools/scout_deals.py || true
 python3 - <<'PY'
 import json, os
 app = open("src/app.html", encoding="utf-8").read()
-rec = open("src/recipes.js", encoding="utf-8").read()
+rec = open("src/recipes.js", encoding="utf-8").read() + "\n" + open("src/simplehomeedit.js", encoding="utf-8").read()
 mc = open("src/masterchef.json", encoding="utf-8").read()
 conv = open("src/masterchef.js", encoding="utf-8").read()
 deals = open("src/angebote.json", encoding="utf-8").read() if os.path.exists("src/angebote.json") else "{}"
