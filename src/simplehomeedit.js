@@ -1,7 +1,7 @@
 // 20 Rezepte nach Simple Home Edit (https://simplehomeedit.com/recipes/), ins Deutsche übertragen,
 // gekürzt und auf 2 Große + 1 Kleines angepasst. Jedes Rezept verlinkt auf das Original.
 (function () {
-  const SRC = slug => ({ name: "Simple Home Edit", url: "https://simplehomeedit.com/recipe/" + slug + "/" });
+  const SRC = slug => ({ name: "Simple Home Edit", url: "https://simplehomeedit.com/recipe/" + slug + "/", instagram: "https://www.instagram.com/simple.home.edit/", handle: "@simple.home.edit" });
   const C = [["#D9A066", "#F3E6D3", "#8FAE7F", "#E8D2B0"], ["#B5482F", "#F3E6D3", "#7F9E5E", "#E3C9A5"], ["#E9C98E", "#F4ECDF", "#7F9E5E", "#D99C8A"], ["#8C5A3C", "#F3E9D8", "#9FB07E", "#D9BC94"]];
   const add = (r, i) => RECIPES.push(Object.assign({ flag: "", colors: C[i % C.length], source: SRC(r.slug) }, r, { id: "she" + r.slug.replace(/[^a-z]/g, ""), tags: r.tags.concat("simplehomeedit") }));
   [

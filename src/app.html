@@ -392,6 +392,10 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
 .brand h1 { font-weight: 600; letter-spacing: -0.02em; }
 .day h3 { font-size: 1.25rem; }
 .p-cap b { font-size: 1.05rem; }
+.mini.src { color: var(--sage); }
+.mini.src svg { color: var(--olive); }
+.sheet .mini { background: var(--surface); }
+.mini.src svg { width: 14px; height: 14px; }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -589,7 +593,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
           <button class="icon-btn" data-swap="${i}" aria-label="Anderes Gericht für ${DAYS[i]}" title="Anderes Gericht">${ICON.swap}</button>
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
-        <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}</div>
+        <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}${sourceBtns(r, false)}</div>
         <ol class="steps">${r.steps.map(st => `<li>${esc(st.text)}${st.timer ? ` <span class="tm">· ${Math.round(st.timer / 60)} Min.</span>` : ""}</li>`).join("")}</ol>
         ${r.kid ? `<div class="kid">${esc(r.kid)}</div>` : ""}
       </article>`;
@@ -916,8 +920,13 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     return `${r.name}\n${r.origin} · ${timeLabel(r)} · für 2 Große + 1 Kleines\n\nZutaten:\n` +
       r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(q, u) : ""}`).join("\n") +
       `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
-      (r.kid ? `\n\nFürs Kind: ${r.kid}` : "") + (r.source ? `\n\nNach ${r.source.name}: ${r.source.url}` : "") + `\n\n${APP_URL}#${r.id}`;
+      (r.kid ? `\n\nFürs Kind: ${r.kid}` : "") + (r.source ? `\n\nOriginal-Rezept von ${r.source.name}: ${r.source.url}` + (r.source.instagram ? `\nInstagram: ${r.source.instagram}` : "") : "") + `\n\n${APP_URL}#${r.id}`;
   }
+  const LINK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg>';
+  const IG_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="0.6" fill="currentColor"/></svg>';
+  const sourceBtns = (r, withIg) => !r.source ? "" :
+    `<a class="mini src" href="${esc(r.source.url)}" target="_blank" rel="noopener" aria-label="Original-Rezept von ${esc(r.source.name)} öffnen">${LINK_ICON}Original-Rezept</a>` +
+    (withIg && r.source.instagram ? `<a class="mini src" href="${esc(r.source.instagram)}" target="_blank" rel="noopener" aria-label="${esc(r.source.name)} auf Instagram öffnen">${IG_ICON}${esc(r.source.handle || "Instagram")}</a>` : "");
   const shareBtn = r => `<a class="mini wa" href="https://wa.me/?text=${encodeURIComponent(shareText(r))}" target="_blank" rel="noopener" aria-label="${esc(r.name)} per WhatsApp teilen">${ICON.share}Teilen</a>`;
 
   function toggleFav(id, force) {
@@ -944,7 +953,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       <div class="d-hero" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r, true)}</div>
       <h2>${esc(r.name)}</h2>
       <div class="meta">${mcTag(r)}<span>${esc(r.origin)}</span><span>${timeLabel(r)}</span><span>${r.steps.length} Schritte</span>${r.course && r.course !== "Hauptspeise" ? `<span>${esc(r.course)}</span>` : ""}</div>
-      <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button></div>
+      <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button>${sourceBtns(r, true)}</div>
       <h4>Einplanen für</h4>
       <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>
       <h4 id="d-ing">Zutaten für 2 Große + 1 Kleines</h4>
@@ -952,7 +961,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       <h4>So geht's</h4>
       <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
       ${r.kid ? `<div class="kid"><b>Fürs Kind · </b>${esc(r.kid)}</div>` : ""}
-      ${r.source ? `<p class="from-pantry">Rezept frei übersetzt und angepasst nach <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name)}</a>.</p>` : ""}
+      ${r.source ? `<p class="from-pantry">Rezept frei übersetzt und angepasst nach <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name)}</a>${r.source.instagram ? ` · auf Instagram: <a href="${esc(r.source.instagram)}" target="_blank" rel="noopener">${esc(r.source.handle || "Instagram")}</a>` : ""}.</p>` : ""}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
       const day = e.target.closest("[data-day]"), pl = e.target.closest("[data-detail-play]");
