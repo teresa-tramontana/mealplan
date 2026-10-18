@@ -1068,7 +1068,10 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     url: "", es: null, poll: 0, pullT: 0,
     base() { return this.url ? this.url + "/familientisch" : ""; },
     setUrl(u) {
-      u = (u || "").trim().replace(/\/+$/, "");
+      u = (u || "").trim();
+      // Auch den ganzen Familien-Link annehmen und die Speicher-Adresse daraus holen
+      const m = u.match(/[?&]db=([^&#]+)/); if (m) { try { u = decodeURIComponent(m[1]); } catch (e) {} }
+      u = u.replace(/\/+$/, "");
       if (u && !/^https:\/\/[a-z0-9-]+(\.[a-z0-9-]+)*\.(firebaseio\.com|firebasedatabase\.app)$/i.test(u)) return false;
       this.url = u; store.set("syncUrl", u); this.start(); return true;
     },
@@ -1127,7 +1130,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
         <p><b>Weiteres Handy verbinden:</b> Schick diesen Link an dich oder deine Familie und öffne ihn dort einmal.</p>
         <div class="row" style="margin-bottom:14px"><button class="primary" id="sync-copy" type="button">Familien-Link kopieren</button><button class="ghost" id="sync-off" type="button">Trennen</button></div>
         <input type="url" id="sync-link" readonly value="${esc(Sync.familyLink())}" aria-label="Familien-Link">`
-      : `<p>Damit alle Handys dieselbe Liste sehen, braucht die App einen kleinen kostenlosen Speicher bei Google. Einmalig etwa 5 Minuten:</p>
+      : `<p><b>Du hast schon einen Familien-Link?</b> Dann füge ihn ganz unten ins Feld ein und tippe auf „Verbinden“.</p>
+        <p>Damit alle Handys dieselbe Liste sehen, braucht die App einen kleinen kostenlosen Speicher bei Google. Einmalig etwa 5 Minuten:</p>
         <ol>
           <li>Öffne <a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a> und melde dich mit Google an.</li>
           <li>„Projekt erstellen“, Name z. B. <code>familientisch</code>. Google Analytics kannst du ausschalten.</li>
@@ -1135,7 +1139,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
           <li>Oben auf „Regeln“ klicken, alles ersetzen durch<br><code>{"rules":{"familientisch":{".read":true,".write":true}}}</code><br>und „Veröffentlichen“.</li>
           <li>Oben steht die Adresse, sie endet auf <code>firebasedatabase.app</code>. Kopieren und hier einfügen:</li>
         </ol>
-        <input type="url" id="sync-url" placeholder="https://familientisch-…firebasedatabase.app" autocomplete="off">
+        <input type="url" id="sync-url" placeholder="Familien-Link oder Firebase-Adresse" autocomplete="off">
         <div class="row"><button class="primary" id="sync-save" type="button">Verbinden</button></div>`}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:12px">Schließen</button></div></div>`;
     const bg = $("#sheet-bg");
