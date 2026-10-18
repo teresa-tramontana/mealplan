@@ -396,6 +396,12 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
 .mini.src svg { color: var(--olive); }
 .sheet .mini { background: var(--surface); }
 .mini.src svg { width: 14px; height: 14px; }
+/* Personen-Regler */
+.people { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 10px; }
+.pp { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); padding: 4px 6px 4px 12px; }
+.pp-l { font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.pp button { width: 30px; height: 30px; border: 0; background: var(--bg); color: var(--sage); font-size: 1.1rem; line-height: 1; display: grid; place-items: center; }
+.pp b { min-width: 1.2em; text-align: center; font-variant-numeric: tabular-nums; color: var(--ink); }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -403,8 +409,9 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   <header class="top">
     <div class="brand">
       <h1>Familientisch</h1>
-      <p>Abendessen für zwei Große und ein Kleines · schnelle Familienküche und euer Master-Chef-Archiv</p>
+      <p>Abendessen für eure Familie · schnelle Familienküche und euer Master-Chef-Archiv</p>
       <button class="sync" id="sync-status" type="button"><i></i><span>Nur auf diesem Handy</span></button>
+      <div class="people" id="people" role="group" aria-label="Für wie viele Personen kochen"></div>
     </div>
     <nav class="tabs" role="tablist">
       <button id="tab-week" role="tab" aria-selected="true">Woche</button>
@@ -609,7 +616,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     const inf = e.target.closest("[data-info]");
     if (inf) openDetail(inf.dataset.info, "ing");
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Neue Woche ist geplant"); });
 
   function openSwap(dayIdx) {
     const others = RECIPES.filter(r => r.week !== false && !plan.includes(r.id));
@@ -625,6 +632,39 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   }
 
   // ---------- Einkaufsliste ----------
+  // ---------- Personen: alle Rezepte sind für 2 Große + 1 Kleines (= 2,5 Portionen) geschrieben ----------
+  let people = (() => { const p = store.get("people", null); return p && p.adults >= 0 && p.kids >= 0 ? p : { adults: 2, kids: 1 }; })();
+  const portions = () => Math.max(0.5, people.adults + people.kids * 0.5);
+  const factor = () => portions() / 2.5;
+  function sc(q, u) {
+    if (!q) return 0;
+    const v = q * factor();
+    if (/^(g|ml)$/i.test(u)) return Math.max(10, Math.round(v / 10) * 10);
+    if (/^(kg|l)$/i.test(u)) return Math.round(v * 10) / 10;
+    return Math.max(0.5, Math.round(v * 2) / 2);
+  }
+  const peopleLabel = () => {
+    const a = people.adults, k = people.kids;
+    return [a ? `${a} ${a === 1 ? "Große" : "Große"}` : "", k ? `${k} ${k === 1 ? "Kleines" : "Kleine"}` : ""].filter(Boolean).join(" + ") || "1 Person";
+  };
+  function renderPeople() {
+    $("#people").innerHTML = [["adults", "Große"], ["kids", "Kinder"]].map(([k, l]) =>
+      `<span class="pp"><span class="pp-l">${l}</span><button type="button" data-pp="${k}" data-d="-1" aria-label="${l} weniger">−</button><b aria-live="polite">${people[k]}</b><button type="button" data-pp="${k}" data-d="1" aria-label="${l} mehr">+</button></span>`).join("");
+  }
+  function setPeople(p, fromSync) {
+    people = p; store.set("people", people); renderPeople();
+    if (!fromSync) Sync.put("people", people);
+    renderWeek();
+  }
+  $("#people").addEventListener("click", e => {
+    const b = e.target.closest("[data-pp]"); if (!b) return;
+    const k = b.dataset.pp, v = Math.min(12, Math.max(k === "adults" ? 0 : 0, people[k] + +b.dataset.d));
+    if (k === "adults" && v + people.kids === 0) return;
+    if (k === "kids" && people.adults + v === 0) return;
+    setPeople(Object.assign({}, people, { [k]: v }));
+    toast(`Mengen für ${peopleLabel()}`);
+  });
+
   function buildList() {
     const map = new Map();
     plan.forEach(id => byId[id].ingredients.forEach(([name, qty, unit, aisle]) => {
@@ -632,7 +672,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       const cur = map.get(key) || { key, name, unit, aisle, qty: 0 };
       cur.qty += qty; map.set(key, cur);
     }));
-    return [...map.values()];
+    return [...map.values()].map(i => Object.assign(i, { qty: sc(i.qty, i.unit) }));
   }
   const gurkerl = name => "https://www.gurkerl.at/suche?q=" + encodeURIComponent(name.replace(/\s*\(.*?\)/g, ""));
   const fmtQty = (q, u) => q ? `${Math.round(q * 10) / 10} ${u}`.replace(".", ",") : "";
@@ -689,7 +729,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     if (shopMode === "days") {
       $("#shop-grid").innerHTML = plan.map((id, d) => {
         const r = byId[id];
-        const own = r.ingredients.filter(x => x[3] !== "pantry").map(([name, qty, unit, aisle]) => ({ key: name + "|" + unit, name, unit, aisle, qty }));
+        const own = r.ingredients.filter(x => x[3] !== "pantry").map(([name, qty, unit, aisle]) => ({ key: name + "|" + unit, name, unit, aisle, qty: sc(qty, unit) }));
         const pantry = r.ingredients.filter(x => x[3] === "pantry").map(x => x[0]);
         return `<div class="aisle dayblock"><h3>${DAYS[d]}</h3><p class="dish">${esc(r.name)}</p>${own.map(i => itemRow(i, false, d + "-")).join("")}${pantry.length ? `<p class="from-pantry">Aus dem Vorrat: ${pantry.map(esc).join(", ")}</p>` : ""}</div>`;
       }).join("");
@@ -844,9 +884,10 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
         const r = await fetch(this.base() + ".json");
         if (!r.ok) throw new Error(r.status);
         const d = await r.json();
-        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs }); return; }
+        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people }); return; }
         if (d.plan.length === 7 && d.plan.every(id => byId[id])) plan = d.plan;
         checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
+        if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
         store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
         renderWeek(); renderBoard(); renderFavCount();
         this.status("on", "Mit der Familie verbunden");
@@ -917,8 +958,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     return `<button class="${cls}${on ? " on" : ""}" type="button" data-fav="${id}" aria-pressed="${on}" aria-label="${on ? "Herz entfernen" : "Herz geben"}">${on ? ICON.heartFill : ICON.heart}${cls === "mini" ? (on ? "Lieblingsgericht" : "Merken") : ""}</button>`;
   }
   function shareText(r) {
-    return `${r.name}\n${r.origin} · ${timeLabel(r)} · für 2 Große + 1 Kleines\n\nZutaten:\n` +
-      r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(q, u) : ""}`).join("\n") +
+    return `${r.name}\n${r.origin} · ${timeLabel(r)} · für ${peopleLabel()}\n\nZutaten:\n` +
+      r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(sc(q, u), u) : ""}`).join("\n") +
       `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
       (r.kid ? `\n\nFürs Kind: ${r.kid}` : "") + (r.source ? `\n\nOriginal-Rezept von ${r.source.name}: ${r.source.url}` + (r.source.instagram ? `\nInstagram: ${r.source.instagram}` : "") : "") + `\n\n${APP_URL}#${r.id}`;
   }
@@ -956,8 +997,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button>${sourceBtns(r, true)}</div>
       <h4>Einplanen für</h4>
       <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>
-      <h4 id="d-ing">Zutaten für 2 Große + 1 Kleines</h4>
-      <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(q, u)}</span></li>`).join("")}</ul>
+      <h4 id="d-ing">Zutaten für ${esc(peopleLabel())}</h4>
+      <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(sc(q, u), u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
       <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
       ${r.kid ? `<div class="kid"><b>Fürs Kind · </b>${esc(r.kid)}</div>` : ""}
@@ -1061,6 +1102,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   $("#mode-board").onclick = () => setMode("board");
 
   // Start
+  renderPeople();
   buildDeck(); renderDeck(); renderBoard(); renderFavCount();
   setMode(store.get("mode", "swipe") === "board" ? "board" : "swipe");
   renderWeek();
