@@ -180,6 +180,9 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .cart-bar { position: sticky; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: center; margin-top: 18px; z-index: 5; pointer-events: none; }
 .cart-bar button { pointer-events: auto; box-shadow: 0 6px 20px rgba(40,20,25,0.18); } /* taste-skill-ignore: schwebende Leiste */
 .cart-day-sel { margin-left: 6px; }
+.range-note { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; background: var(--sage-soft); padding: 12px 16px; font-size: 0.9rem; }
+.range-note b { flex-basis: 100%; font-family: var(--display); font-size: 1.05rem; }
+.range-note i { font-style: normal; font-weight: 700; color: var(--sage); margin-right: 4px; }
 .item .incart { flex: none; font-size: 0.72rem; color: var(--olive); white-space: nowrap; }
 .gk-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; padding: 10px 12px; background: var(--surface); margin-bottom: 6px; }
 .gk-row .gk-need { font-weight: 700; font-size: 0.92rem; }
@@ -438,6 +441,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   body { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
   .toast { bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
   .cart-bar { bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+  .shop-head .seg { margin-left: 0; width: 100%; }
+  .shop-head .seg button { flex: 1; padding-inline: 6px; }
 }
 </style>
 
@@ -496,6 +501,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
         <button class="ghost" id="copy-list">Liste kopieren</button>
         <div class="seg" role="group" aria-label="Ansicht der Einkaufsliste">
           <button id="shop-all" type="button" aria-pressed="true">Alles</button>
+          <button id="shop-mo-mi" type="button" aria-pressed="false" aria-label="Einkauf für Montag bis Mittwoch">Mo–Mi</button>
+          <button id="shop-do-so" type="button" aria-pressed="false" aria-label="Einkauf für Donnerstag bis Sonntag">Do–So</button>
           <button id="shop-days" type="button" aria-pressed="false">Nach Tagen</button>
         </div>
       </div>
@@ -725,9 +732,9 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     toast(`Mengen für ${peopleLabel()}`);
   });
 
-  function buildList() {
+  function buildList(days) {
     const map = new Map();
-    plan.forEach(id => byId[id].ingredients.forEach(([name, qty, unit, aisle]) => {
+    plan.filter((id, d) => !days || days.includes(d)).forEach(id => byId[id].ingredients.forEach(([name, qty, unit, aisle]) => {
       const key = name + "|" + unit;
       const cur = map.get(key) || { key, name, unit, aisle, qty: 0 };
       cur.qty += qty; map.set(key, cur);
@@ -771,14 +778,19 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   const euro = n => n.toFixed(2).replace(".", ",") + " €";
   const dealLine = d => `<div class="deal"><span class="mk">${esc(d.markt)}</span><a href="${esc(d.link)}" target="_blank" rel="noopener">${esc(d.name)}</a>${d.menge ? `<span>${esc(d.menge)}</span>` : ""}<span class="pr">${euro(d.preis)}</span>${d.statt && d.statt > d.preis ? `<s>${euro(d.statt)}</s>` : ""}${d.hinweis ? `<span>${esc(d.hinweis)}</span>` : ""}${d.bis ? `<span>bis ${new Date(d.bis).toLocaleDateString("de-AT", { day: "numeric", month: "numeric" })}</span>` : ""}</div>`;
 
-  let shopMode = store.get("shopMode", "all") === "days" ? "days" : "all";
+  // Einkaufs-Ansichten: alles, nur Montag bis Mittwoch, nur Donnerstag bis Sonntag, oder nach Tagen
+  const SHOP_RANGES = { "mo-mi": [0, 1, 2], "do-so": [3, 4, 5, 6] };
+  const SHOP_MODES = ["all", "mo-mi", "do-so", "days"];
+  let shopMode = SHOP_MODES.includes(store.get("shopMode", "all")) ? store.get("shopMode", "all") : "all";
+  const shopList = () => buildList(SHOP_RANGES[shopMode]);
+  const rangeLabel = () => ({ "mo-mi": "Einkauf für Montag bis Mittwoch", "do-so": "Einkauf für Donnerstag bis Sonntag" })[shopMode] || "";
   // Eine Zeile der Einkaufsliste (gleicher Haken in beiden Ansichten, weil der Schlüssel Name|Einheit ist)
   function itemRow(i, isP, idp) {
     const on = isP ? !!pantryBuy[i.key] : !!checked[i.key];
     return `<label class="item${on ? " sel" : ""}"><input type="checkbox" id="chk-${idp}${esc(i.key)}" data-key="${esc(i.key)}" data-p="${isP ? 1 : 0}" ${on ? "checked" : ""}><span class="n">${esc(i.name)}</span><span class="q">${fmtQty(i.qty, i.unit)}</span>${isP ? "" : inCart[i.key] ? `<span class="incart">im Korb</span>` : `<a class="buy" href="${gurkerl(i.name)}" target="_blank" rel="noopener" data-buy="${esc(i.key)}" data-qty="${i.qty}" title="${esc(i.name)} in den Gurkerl-Warenkorb legen" aria-label="${esc(i.name)} in den Gurkerl-Warenkorb">+ Gurkerl</a>`}</label>${!isP ? dealsFor(i.name).map(dealLine).join("") : ""}`;
   }
   function renderShop() {
-    const list = buildList();
+    const list = shopList();
     const withDeals = list.filter(i => i.aisle !== "pantry" && dealsFor(i.name).length).length;
     $("#deals-note").innerHTML = DEALS.length ? `<div class="deals-note"><b>${withDeals} ${withDeals === 1 ? "Zutat ist" : "Zutaten sind"} gerade in Aktion</b> bei BILLA oder Gurkerl. Stand ${new Date(ANGEBOTE.stand).toLocaleDateString("de-AT")}, wird jeden Sonntag neu geholt. Preise ohne Gewähr, bitte im Shop prüfen.</div>` : "";
     const order = ["veg", "fresh", "meat", "frozen", "dry", "bread", "pantry"];
@@ -788,7 +800,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     $("#cart-week").textContent = nSel ? `${nSel} in den Gurkerl-Warenkorb` : "Auswahl in den Gurkerl-Warenkorb";
     $("#cart-bar").hidden = !nSel;
     $("#cart-sel").innerHTML = `${CART_ICON} Nur ${nSel === 1 ? "die 1 Zutat" : `die ${nSel} Zutaten`} mit Hakerl in den Gurkerl-Warenkorb`;
-    $("#shop-all").setAttribute("aria-pressed", shopMode === "all"); $("#shop-days").setAttribute("aria-pressed", shopMode === "days");
+    SHOP_MODES.forEach(m => $("#shop-" + m).setAttribute("aria-pressed", shopMode === m));
     $("#shop-grid").classList.toggle("by-day", shopMode === "days");
     if (shopMode === "days") {
       $("#shop-grid").innerHTML = plan.map((id, d) => {
@@ -799,7 +811,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       }).join("");
       return;
     }
-    $("#shop-grid").innerHTML = order.map(a => {
+    const days = SHOP_RANGES[shopMode];
+    $("#shop-grid").innerHTML = (days ? `<div class="range-note"><b>${rangeLabel()}</b>${days.map(d => `<span><i>${DAYS[d].slice(0, 2)}</i> ${esc(byId[plan[d]].name)}</span>`).join("")}</div>` : "") + order.map(a => {
       const items = list.filter(i => i.aisle === a).sort((x, y) => x.name.localeCompare(y.name, "de"));
       if (!items.length) return "";
       const isP = a === "pantry";
@@ -814,10 +827,9 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     else { checked[k] = e.target.checked; store.set("checked", checked); Sync.put("checked/" + k, e.target.checked || null); }
     renderShop();
   });
-  $("#shop-all").addEventListener("click", () => { shopMode = "all"; store.set("shopMode", shopMode); renderShop(); });
-  $("#shop-days").addEventListener("click", () => { shopMode = "days"; store.set("shopMode", shopMode); renderShop(); });
+  SHOP_MODES.forEach(m => $("#shop-" + m).addEventListener("click", () => { shopMode = m; store.set("shopMode", shopMode); renderShop(); }));
   $("#select-all").addEventListener("click", () => {
-    const list = buildList().filter(i => i.aisle !== "pantry"), all = list.every(i => checked[i.key]);
+    const list = shopList().filter(i => i.aisle !== "pantry"), all = list.every(i => checked[i.key]);
     checked = {}; if (!all) list.forEach(i => { checked[i.key] = true; });
     store.set("checked", checked); Sync.put("checked", all ? null : checked); renderShop();
     toast(all ? "Auswahl aufgehoben" : `${list.length} Zutaten ausgewählt`);
@@ -940,13 +952,13 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     if (gkMcp) cartDirect(items, label); else cartViaClaude(items, label);
   }
   const selItems = list => list.filter(i => i.aisle === "pantry" ? pantryBuy[i.key] : checked[i.key]);
-  $("#cart-week").addEventListener("click", () => sendToCart(selItems(buildList()), "Deine Auswahl"));
-  $("#cart-sel").addEventListener("click", () => sendToCart(selItems(buildList()), "Zutaten mit Hakerl"));
+  $("#cart-week").addEventListener("click", () => sendToCart(selItems(shopList()), rangeLabel() || "Deine Auswahl"));
+  $("#cart-sel").addEventListener("click", () => sendToCart(selItems(shopList()), (rangeLabel() ? rangeLabel() + ", " : "") + "Zutaten mit Hakerl"));
   $("#shop-grid").addEventListener("click", e => {
     const one = e.target.closest("[data-buy]");
     if (one && gkMcp) {
       e.preventDefault();
-      const it = buildList().find(i => i.key === one.dataset.buy) || (() => { const [name, unit] = one.dataset.buy.split("|"); return { key: one.dataset.buy, name, unit, qty: +one.dataset.qty }; })();
+      const it = shopList().find(i => i.key === one.dataset.buy) || (() => { const [name, unit] = one.dataset.buy.split("|"); return { key: one.dataset.buy, name, unit, qty: +one.dataset.qty }; })();
       sendToCart([it], it.name);
       return;
     }
@@ -958,10 +970,10 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   });
 
   function listText() {
-    const all = buildList(), picked = selItems(all);
+    const all = shopList(), picked = selItems(all);
     const list = picked.some(i => i.aisle !== "pantry") ? picked : all.filter(i => i.aisle !== "pantry" || pantryBuy[i.key]);
     const order = ["veg", "fresh", "meat", "frozen", "dry", "bread", "pantry"];
-    let out = "Einkaufsliste Familientisch\n";
+    let out = "Einkaufsliste Familientisch" + (rangeLabel() ? " – " + rangeLabel() : "") + "\n";
     order.forEach(a => {
       const items = list.filter(i => i.aisle === a);
       if (items.length) out += `\n${AISLES[a].replace(" (hast du vermutlich)", "")}\n` + items.map(i => { const d = dealsFor(i.name)[0]; return `- ${i.name}${i.qty ? " – " + fmtQty(i.qty, i.unit) : ""}${d ? ` (Aktion ${d.markt}: ${euro(d.preis)})` : ""}`; }).join("\n") + "\n";
