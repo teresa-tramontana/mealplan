@@ -3,6 +3,96 @@
 "angebote": [
 {
 "markt": "BILLA",
+"name": "Milka Alpenmilch",
+"menge": "90 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 6 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Maroni gegart",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 1.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
+},
+{
+"markt": "BILLA",
+"name": "SanLucar Mandarinen gelegt",
+"menge": "1 kg",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sanlucar-mandarinen-gelegt-0089073"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Cranberries",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 3.59,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-cranberries-00940498"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Kokos Chips Geröstet",
+"menge": "100 g",
+"preis": 1.49,
+"statt": 1.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-kokos-chips-geroestet-00774966"
+},
+{
+"markt": "BILLA",
+"name": "Pesendorfer Saurer Apfel",
+"menge": "200 g",
+"preis": 2.99,
+"statt": 5.09,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/pesendorfer-saurer-apfel-00502027"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Bio Gojibeeren",
+"menge": "100 g",
+"preis": 2.69,
+"statt": 3.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
+},
+{
+"markt": "BILLA",
 "name": "Laugenfussball",
 "menge": "90 g",
 "preis": 0.46,
@@ -250,736 +340,6 @@
 "hinweis": "ab 2 Stk",
 "bis": null,
 "link": "https://shop.billa.at/produkte/tag-und-nachtschnitte-00920526"
-},
-{
-"markt": "BILLA",
-"name": "Milka Alpenmilch",
-"menge": "90 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 6 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Maroni gegart",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 1.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
-},
-{
-"markt": "BILLA",
-"name": "SanLucar Mandarinen gelegt",
-"menge": "1 kg",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sanlucar-mandarinen-gelegt-0089073"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Feigen",
-"menge": "250 g",
-"preis": 2.49,
-"statt": 5.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel Chips",
-"menge": "70 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Cranberries",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 3.59,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-cranberries-00940498"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Kokos Chips Geröstet",
-"menge": "100 g",
-"preis": 1.49,
-"statt": 1.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-kokos-chips-geroestet-00774966"
-},
-{
-"markt": "BILLA",
-"name": "Pesendorfer Saurer Apfel",
-"menge": "200 g",
-"preis": 2.99,
-"statt": 5.09,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/pesendorfer-saurer-apfel-00502027"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Bio Gojibeeren",
-"menge": "100 g",
-"preis": 2.69,
-"statt": 3.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
-},
-{
-"markt": "BILLA",
-"name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
-"menge": "7",
-"preis": 1.4,
-"statt": 2.79,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sesamstrasse-abby-kekse-mit-vanille-und-hafer-00734561"
-},
-{
-"markt": "BILLA",
-"name": "Sesamstrasse Krümelmonster Kekse mit Schokostückchen",
-"menge": "7",
-"preis": 1.4,
-"statt": 2.79,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sesamstrasse-kruemelmonster-kekse-mit-schokostueckchen-00734562"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel-Birne-Kirsche",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
-},
-{
-"markt": "BILLA",
-"name": "Fruchtbar Bio Herznudeln",
-"menge": "300 g",
-"preis": 1.19,
-"statt": 2.37,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel mit Banane & Dinkel",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Maroni gegart",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 1.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Classic Gesalzen",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
-},
-{
-"markt": "BILLA",
-"name": "Rapso Reines Rapsöl",
-"menge": "0.75 liter",
-"preis": 3.99,
-"statt": 5.99,
-"hinweis": "ab 2 Flaschen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/rapso-reines-rapsoel-00403812"
-},
-{
-"markt": "BILLA",
-"name": "Lindt Lindor Kugeln Milch",
-"menge": "500 g",
-"preis": 9.99,
-"statt": 29.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lindt-lindor-kugeln-milch-00346882"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Erdnuss Snips",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
-"menge": "370 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
-},
-{
-"markt": "BILLA",
-"name": "Felix Ketchup ohne Zuckerzusatz",
-"menge": "960 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Marillen Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Goldaugen Rindfleischsuppe",
-"menge": "132 g",
-"preis": 1.26,
-"statt": 1.89,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-goldaugen-rindfleischsuppe-0056234"
-},
-{
-"markt": "BILLA",
-"name": "Storck Toffifee",
-"menge": "125 g",
-"preis": 1.79,
-"statt": 1.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/storck-toffifee-0065417"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Sour Cream",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
-},
-{
-"markt": "BILLA",
-"name": "Iliada Kalamata Olivenöl Kaltgepresst",
-"menge": "0.5 liter",
-"preis": 7.99,
-"statt": 9.99,
-"hinweis": "ab 2 Flaschen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/iliada-kalamata-olivenoel-kaltgepresst-00857895"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Ketchup",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
-},
-{
-"markt": "BILLA",
-"name": "Kinder Riegel",
-"menge": "378 g",
-"preis": 4.89,
-"statt": 5.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kinder-riegel-00708861"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Gemüsesuppe Würfel",
-"menge": "126 g",
-"preis": 1.26,
-"statt": 1.89,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Sauerkraut",
-"menge": "500 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-sauerkraut-00403098"
-},
-{
-"markt": "BILLA",
-"name": "Ferrero Duplo",
-"menge": "327 g",
-"preis": 4.89,
-"statt": 5.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ferrero-duplo-00708862"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Jumpys Paprika",
-"menge": "75 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
-},
-{
-"markt": "BILLA",
-"name": "Il Conte di Roma Kapern",
-"menge": "65 g",
-"preis": 1.49,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/il-conte-di-roma-kapern-00569006"
-},
-{
-"markt": "BILLA",
-"name": "Casali Rum Kokos",
-"menge": "175 g",
-"preis": 3.49,
-"statt": 3.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/casali-rum-kokos-0065437"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Gartenerdbeeren Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Salz",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Paprika",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
-},
-{
-"markt": "BILLA",
-"name": "Auer Tortenecken Haselnuss 3er",
-"menge": "300 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/auer-tortenecken-haselnuss-3er-00513596"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo mit Basilikum",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Rosmarin",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
-},
-{
-"markt": "BILLA",
-"name": "Lorenz Nic Nac's Partypack",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 5.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
-},
-{
-"markt": "BILLA",
-"name": "Felix Tomatenketchup Mild",
-"menge": "1000 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo Bolognese",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.79,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-bolognese-0019892"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Preiselbeer Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Maroni gegart",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 1.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Classic Gesalzen",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
-},
-{
-"markt": "BILLA",
-"name": "Laugenfussball",
-"menge": "90 g",
-"preis": 0.46,
-"statt": 0.94,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/laugenfussball-00532716"
-},
-{
-"markt": "BILLA",
-"name": "Aborigines Weckerl - Mehl aus Österreich",
-"menge": "100 g",
-"preis": 1.39,
-"statt": 1.49,
-"hinweis": "ab 3 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/aborigines-weckerl-mehl-aus-oesterreich-00440879"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Erdnuss Snips",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
-"menge": "370 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
-},
-{
-"markt": "BILLA",
-"name": "Felix Ketchup ohne Zuckerzusatz",
-"menge": "960 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Marillen Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Sonnenblumenmuschel",
-"menge": "71 g",
-"preis": 0.99,
-"statt": 1.19,
-"hinweis": "ab 3 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenblumenmuschel-00201203"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Sour Cream",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
-},
-{
-"markt": "BILLA",
-"name": "Ja Natürlich Sonnen-Ura",
-"menge": "700 g",
-"preis": 3.8,
-"statt": 4.18,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenura-00295263"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Ketchup",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Gemüsesuppe Würfel",
-"menge": "126 g",
-"preis": 1.26,
-"statt": 1.89,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Jumpys Paprika",
-"menge": "75 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Gartenerdbeeren Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Salz",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Paprika",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo mit Basilikum",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Rosmarin",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
-},
-{
-"markt": "BILLA",
-"name": "Lorenz Nic Nac's Partypack",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 5.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
-},
-{
-"markt": "BILLA",
-"name": "Felix Tomatenketchup Mild",
-"menge": "1000 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Preiselbeer Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Popcornchips Salz",
-"menge": "140 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
-},
-{
-"markt": "BILLA",
-"name": "Bona Öl",
-"menge": "0.75 liter",
-"preis": 2.32,
-"statt": 3.49,
-"hinweis": "Bei 3 Flaschen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/bona-oel-00408228"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Feigen",
-"menge": "250 g",
-"preis": 2.49,
-"statt": 5.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Himbeer Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel Chips",
-"menge": "70 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo Arrabbiata",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Ofen Chips Paprika",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
 },
 {
 "markt": "BILLA",
@@ -1813,6 +1173,646 @@
 },
 {
 "markt": "BILLA",
+"name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-abby-kekse-mit-vanille-und-hafer-00734561"
+},
+{
+"markt": "BILLA",
+"name": "Sesamstrasse Krümelmonster Kekse mit Schokostückchen",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-kruemelmonster-kekse-mit-schokostueckchen-00734562"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel-Birne-Kirsche",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
+},
+{
+"markt": "BILLA",
+"name": "Fruchtbar Bio Herznudeln",
+"menge": "300 g",
+"preis": 1.19,
+"statt": 2.37,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel mit Banane & Dinkel",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Maroni gegart",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 1.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Classic Gesalzen",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
+},
+{
+"markt": "BILLA",
+"name": "Laugenfussball",
+"menge": "90 g",
+"preis": 0.46,
+"statt": 0.94,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/laugenfussball-00532716"
+},
+{
+"markt": "BILLA",
+"name": "Aborigines Weckerl - Mehl aus Österreich",
+"menge": "100 g",
+"preis": 1.39,
+"statt": 1.49,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/aborigines-weckerl-mehl-aus-oesterreich-00440879"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Erdnuss Snips",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
+"menge": "370 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
+},
+{
+"markt": "BILLA",
+"name": "Felix Ketchup ohne Zuckerzusatz",
+"menge": "960 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Marillen Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Sonnenblumenmuschel",
+"menge": "71 g",
+"preis": 0.99,
+"statt": 1.19,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenblumenmuschel-00201203"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Sour Cream",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
+},
+{
+"markt": "BILLA",
+"name": "Ja Natürlich Sonnen-Ura",
+"menge": "700 g",
+"preis": 3.8,
+"statt": 4.18,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenura-00295263"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Ketchup",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Gemüsesuppe Würfel",
+"menge": "126 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Jumpys Paprika",
+"menge": "75 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Gartenerdbeeren Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Salz",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Paprika",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo mit Basilikum",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Rosmarin",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
+},
+{
+"markt": "BILLA",
+"name": "Lorenz Nic Nac's Partypack",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
+},
+{
+"markt": "BILLA",
+"name": "Felix Tomatenketchup Mild",
+"menge": "1000 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Preiselbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Popcornchips Salz",
+"menge": "140 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
+},
+{
+"markt": "BILLA",
+"name": "Bona Öl",
+"menge": "0.75 liter",
+"preis": 2.32,
+"statt": 3.49,
+"hinweis": "Bei 3 Flaschen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bona-oel-00408228"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Himbeer Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo Arrabbiata",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Ofen Chips Paprika",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Maroni gegart",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 1.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Classic Gesalzen",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
+},
+{
+"markt": "BILLA",
+"name": "Rapso Reines Rapsöl",
+"menge": "0.75 liter",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Flaschen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/rapso-reines-rapsoel-00403812"
+},
+{
+"markt": "BILLA",
+"name": "Lindt Lindor Kugeln Milch",
+"menge": "500 g",
+"preis": 9.99,
+"statt": 29.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lindt-lindor-kugeln-milch-00346882"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Erdnuss Snips",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
+"menge": "370 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
+},
+{
+"markt": "BILLA",
+"name": "Felix Ketchup ohne Zuckerzusatz",
+"menge": "960 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Marillen Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Goldaugen Rindfleischsuppe",
+"menge": "132 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-goldaugen-rindfleischsuppe-0056234"
+},
+{
+"markt": "BILLA",
+"name": "Storck Toffifee",
+"menge": "125 g",
+"preis": 1.79,
+"statt": 1.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/storck-toffifee-0065417"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Sour Cream",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
+},
+{
+"markt": "BILLA",
+"name": "Iliada Kalamata Olivenöl Kaltgepresst",
+"menge": "0.5 liter",
+"preis": 7.99,
+"statt": 9.99,
+"hinweis": "ab 2 Flaschen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/iliada-kalamata-olivenoel-kaltgepresst-00857895"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Ketchup",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
+},
+{
+"markt": "BILLA",
+"name": "Kinder Riegel",
+"menge": "378 g",
+"preis": 4.89,
+"statt": 5.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kinder-riegel-00708861"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Gemüsesuppe Würfel",
+"menge": "126 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Sauerkraut",
+"menge": "500 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sauerkraut-00403098"
+},
+{
+"markt": "BILLA",
+"name": "Ferrero Duplo",
+"menge": "327 g",
+"preis": 4.89,
+"statt": 5.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ferrero-duplo-00708862"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Jumpys Paprika",
+"menge": "75 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
+},
+{
+"markt": "BILLA",
+"name": "Il Conte di Roma Kapern",
+"menge": "65 g",
+"preis": 1.49,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/il-conte-di-roma-kapern-00569006"
+},
+{
+"markt": "BILLA",
+"name": "Casali Rum Kokos",
+"menge": "175 g",
+"preis": 3.49,
+"statt": 3.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/casali-rum-kokos-0065437"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Gartenerdbeeren Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Salz",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Paprika",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
+},
+{
+"markt": "BILLA",
+"name": "Auer Tortenecken Haselnuss 3er",
+"menge": "300 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/auer-tortenecken-haselnuss-3er-00513596"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo mit Basilikum",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Rosmarin",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
+},
+{
+"markt": "BILLA",
+"name": "Lorenz Nic Nac's Partypack",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
+},
+{
+"markt": "BILLA",
+"name": "Felix Tomatenketchup Mild",
+"menge": "1000 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo Bolognese",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.79,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-bolognese-0019892"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Preiselbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
+},
+{
+"markt": "BILLA",
 "name": "MAGGI Magic Asia Noodle Cup Chicken Taste",
 "menge": "63 g",
 "preis": 1.32,
@@ -1863,6 +1863,16 @@
 },
 {
 "markt": "Gurkerl",
+"name": "Michi Bauers Schwarzkohl - Palmkohl",
+"menge": "300 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "-20 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/20760-michi-bauers-schwarzkohl-palmkohl"
+},
+{
+"markt": "Gurkerl",
 "name": "BIO Pimientos de Padron, scharf",
 "menge": "200 g",
 "preis": 3.59,
@@ -1880,16 +1890,6 @@
 "hinweis": "-34 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/26233-bio-trauben-weiss-kernlos"
-},
-{
-"markt": "Gurkerl",
-"name": "Michi Bauers Schwarzkohl - Palmkohl",
-"menge": "300 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "-20 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/20760-michi-bauers-schwarzkohl-palmkohl"
 },
 {
 "markt": "Gurkerl",
@@ -1943,16 +1943,6 @@
 },
 {
 "markt": "Gurkerl",
-"name": "Pasta Box Pasta Rigatoni Bolognesse",
-"menge": "305 g",
-"preis": 3.01,
-"statt": 5.29,
-"hinweis": "-43 %",
-"bis": "2026-10-21",
-"link": "https://www.gurkerl.at/38208-pasta-box-pasta-rigatoni-bolognesse"
-},
-{
-"markt": "Gurkerl",
 "name": "Stabinger Ricottaschnitte",
 "menge": "100 g",
 "preis": 2.16,
@@ -1963,43 +1953,23 @@
 },
 {
 "markt": "Gurkerl",
+"name": "Pasta Box Pasta Rigatoni Bolognesse",
+"menge": "305 g",
+"preis": 2.76,
+"statt": 5.29,
+"hinweis": "-47 %",
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/38208-pasta-box-pasta-rigatoni-bolognesse"
+},
+{
+"markt": "Gurkerl",
 "name": "Ölz Landbrot Weizenmisch geschnitten",
 "menge": "500 g",
-"preis": 2.29,
+"preis": 1.97,
 "statt": 4.29,
-"hinweis": "-46 %",
+"hinweis": "-54 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/41418-oelz-landbrot-weizenmisch-geschnitten"
-},
-{
-"markt": "Gurkerl",
-"name": "Schärdinger Mozzarella 45% Mini",
-"menge": "125 g",
-"preis": 1.22,
-"statt": 1.99,
-"hinweis": "-38 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/3845-schaerdinger-mozzarella-45-mini"
-},
-{
-"markt": "Gurkerl",
-"name": "Pappudia Reispfanne mit Huhn \"Mexican Style\"",
-"menge": "330 g",
-"preis": 2.11,
-"statt": 2.99,
-"hinweis": "-29 %",
-"bis": "2026-10-23",
-"link": "https://www.gurkerl.at/43463-pappudia-reispfanne-mit-huhn-mexican-style"
-},
-{
-"markt": "Gurkerl",
-"name": "Schweine Karree Steaks",
-"menge": "ca. 470 g",
-"preis": 3.12,
-"statt": 4.16,
-"hinweis": "-25 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/42175-schweine-karree-steaks"
 },
 {
 "markt": "Gurkerl",
@@ -2013,13 +1983,13 @@
 },
 {
 "markt": "Gurkerl",
-"name": "Ölz Landbrot Dinkel geschnitten",
-"menge": "450 g",
-"preis": 2.7,
-"statt": 3.89,
-"hinweis": "-30 %",
+"name": "Schweine Karree Steaks",
+"menge": "ca. 470 g",
+"preis": 3.12,
+"statt": 4.16,
+"hinweis": "-25 %",
 "bis": "2026-10-19",
-"link": "https://www.gurkerl.at/23776-oelz-landbrot-dinkel-geschnitten"
+"link": "https://www.gurkerl.at/42175-schweine-karree-steaks"
 },
 {
 "markt": "Gurkerl",
@@ -2033,43 +2003,43 @@
 },
 {
 "markt": "Gurkerl",
+"name": "Ölz Landbrot Dinkel geschnitten",
+"menge": "450 g",
+"preis": 2.7,
+"statt": 3.89,
+"hinweis": "-30 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/23776-oelz-landbrot-dinkel-geschnitten"
+},
+{
+"markt": "Gurkerl",
+"name": "Schärdinger Mozzarella 45% Mini",
+"menge": "125 g",
+"preis": 1.14,
+"statt": 1.99,
+"hinweis": "-42 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/3845-schaerdinger-mozzarella-45-mini"
+},
+{
+"markt": "Gurkerl",
+"name": "Pappudia Reispfanne mit Huhn \"Mexican Style\"",
+"menge": "330 g",
+"preis": 1.98,
+"statt": 2.99,
+"hinweis": "-33 %",
+"bis": "2026-10-23",
+"link": "https://www.gurkerl.at/43463-pappudia-reispfanne-mit-huhn-mexican-style"
+},
+{
+"markt": "Gurkerl",
 "name": "Pappudia Penne Bolognese",
 "menge": "330 g",
-"preis": 2.21,
+"preis": 2.14,
 "statt": 2.99,
-"hinweis": "-26 %",
+"hinweis": "-28 %",
 "bis": "2026-10-23",
 "link": "https://www.gurkerl.at/43466-pappudia-penne-bolognese"
-},
-{
-"markt": "Gurkerl",
-"name": "Landmetzgerei Klobeck Münchner Weißwurst Großpackung",
-"menge": "ca. 0,9 kg",
-"preis": 5.17,
-"statt": 15.58,
-"hinweis": "-66 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/30813-landmetzgerei-klobeck-muenchner-weisswurst-grosspackung"
-},
-{
-"markt": "Gurkerl",
-"name": "Freshery Pho mit Hühnerfleisch",
-"menge": "150 g",
-"preis": 3.99,
-"statt": 5.99,
-"hinweis": "-33 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/48162-freshery-pho-mit-huehnerfleisch"
-},
-{
-"markt": "Gurkerl",
-"name": "Freshery Tom Yum mit Shiitake-Pilzen und Gyoza mit Garnelen",
-"menge": "220 g",
-"preis": 3.7,
-"statt": 5.99,
-"hinweis": "-38 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/48164-freshery-tom-yum-mit-shiitake-pilzen-und-gyoza-mit-garnelen"
 },
 {
 "markt": "Gurkerl",
@@ -2080,6 +2050,36 @@
 "hinweis": "-40 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/42173-schweine-schnitzel-aus-der-schale"
+},
+{
+"markt": "Gurkerl",
+"name": "Landmetzgerei Klobeck Münchner Weißwurst Großpackung",
+"menge": "ca. 0,9 kg",
+"preis": 4.67,
+"statt": 15.58,
+"hinweis": "-70 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/30813-landmetzgerei-klobeck-muenchner-weisswurst-grosspackung"
+},
+{
+"markt": "Gurkerl",
+"name": "Freshery Pho mit Hühnerfleisch",
+"menge": "150 g",
+"preis": 3.58,
+"statt": 5.99,
+"hinweis": "-40 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/48162-freshery-pho-mit-huehnerfleisch"
+},
+{
+"markt": "Gurkerl",
+"name": "Pasta Box Pasta Penne mit Sonnengetrocknetem Tomaten Pesto",
+"menge": "215 g",
+"preis": 3.55,
+"statt": 5.89,
+"hinweis": "-39 %",
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/38209-pasta-box-pasta-penne-mit-sonnengetrocknetem-tomaten-pesto"
 }
 ]
 }

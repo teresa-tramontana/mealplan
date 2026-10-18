@@ -420,6 +420,25 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
 .cart-day { margin: 2px 0 6px; }
 .cart-day svg, .primary svg { width: 15px; height: 15px; }
 .item .buy { white-space: nowrap; }
+
+/* Reiter: gut sichtbar. Am Handy als feste Leiste unten, am Computer als große Knöpfe. */
+.tabs { display: flex; gap: 8px; background: var(--surface); padding: 6px; border-radius: 0; margin-top: 18px; }
+.tabs button { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; background: none; color: var(--ink); padding: 12px 18px; font-family: var(--body); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; border-radius: 0; cursor: pointer; }
+.tabs button:hover { background: var(--sage-soft); }
+.tabs button[aria-selected="true"] { background: var(--sage); color: #FFFFFF; text-decoration: none; }
+.tabs .ti { width: 22px; height: 22px; flex: none; }
+.tabs .count { min-width: 22px; height: 22px; padding: 0 6px; display: inline-grid; place-items: center; background: var(--clay); color: #FFFFFF; opacity: 1; font-size: 0.75rem; font-weight: 700; letter-spacing: 0; border-radius: 999px; }
+.tabs .count:empty { display: none; }
+.tabs button[aria-selected="true"] .count { background: #FFFFFF; color: var(--sage); }
+@media (max-width: 760px) {
+  .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; margin: 0; gap: 4px; padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)); background: var(--bg); box-shadow: 0 -4px 18px rgba(40,20,25,0.10); } /* taste-skill-ignore: feste Leiste */
+  .tabs button { position: relative; flex-direction: column; gap: 3px; padding: 8px 4px 7px; font-size: 0.72rem; letter-spacing: 0.05em; }
+  .tabs .ti { width: 26px; height: 26px; }
+  .tabs .count { position: absolute; top: 3px; left: calc(50% + 8px); }
+  body { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+  .toast { bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .cart-bar { bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+}
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -432,9 +451,9 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       <div class="people" id="people" role="group" aria-label="Für wie viele Personen kochen"></div>
     </div>
     <nav class="tabs" role="tablist">
-      <button id="tab-week" role="tab" aria-selected="true">Woche</button>
-      <button id="tab-discover" role="tab" aria-selected="false">Entdecken</button>
-      <button id="tab-shop" role="tab" aria-selected="false">Einkauf<span class="count" id="shop-count"></span></button>
+      <button id="tab-week" role="tab" aria-selected="true"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="tl">Woche</span></button>
+      <button id="tab-discover" role="tab" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span class="tl">Entdecken</span></button>
+      <button id="tab-shop" role="tab" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="9.5" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg><span class="tl">Einkauf</span><span class="count" id="shop-count"></span></button>
     </nav>
   </header>
 
