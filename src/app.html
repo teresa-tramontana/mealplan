@@ -88,6 +88,10 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .sheet p, .sheet ol { font-size: 0.88rem; margin: 0 0 10px; }
 .sheet ol { padding-left: 20px; display: grid; gap: 6px; }
 .sheet code { font-size: 0.8rem; background: var(--surface); border-radius: 6px; padding: 1px 5px; word-break: break-all; }
+.swap-days { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+.swap-days .mini { text-align: left; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.swap-days .mini b { margin-right: 4px; }
+.sheet input.swap-q { width: 100%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 1rem; margin-bottom: 10px; } /* taste-skill-ignore: Formularfeld */
 .sheet input[type="url"] { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 11px 12px; font: inherit; font-size: 0.88rem; margin-bottom: 10px; } /* taste-skill-ignore: Formularfeld */
 .row { display: flex; gap: 8px; flex-wrap: wrap; }
 
@@ -601,7 +605,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
           <div class="meta">${mcTag(r)}<span>${esc(r.origin)}</span><span>${timeLabel(r)}</span><span>${r.steps.length} Schritte</span></div></div>
         <div class="actions">
           <button class="icon-btn" data-info="${id}" aria-label="Zutaten und Mengen für ${esc(r.name)}" title="Zutaten & Mengen">${ICON.info}</button>
-          <button class="icon-btn" data-swap="${i}" aria-label="Anderes Gericht für ${DAYS[i]}" title="Anderes Gericht">${ICON.swap}</button>
+          <button class="icon-btn" data-swap="${i}" aria-label="Gericht für ${DAYS[i]} tauschen" title="Tauschen oder suchen">${ICON.swap}</button>
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
         <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}${sourceBtns(r, false)}</div>
@@ -622,16 +626,35 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   });
   $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Neue Woche ist geplant"); });
 
+  // Wörter, die beim Suchen dasselbe meinen
+  const SEARCH_SYN = [["huhn", "hendl", "hahnchen", "huhner", "chicken", "pute"], ["nudel", "pasta", "spaghetti", "penne", "fusilli", "tagliatelle", "orzo", "fleckerl", "nockerl"],
+    ["faschiert", "hack"], ["erdapfel", "kartoffel"], ["topfen", "quark"], ["obers", "sahne", "rahm"], ["fisch", "lachs", "forelle", "kabeljau"], ["vegetarisch", "veggie"], ["reis", "risotto"]];
   function openSwap(dayIdx) {
-    const others = RECIPES.filter(r => r.week !== false && !plan.includes(r.id));
+    const norm = t => String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const hay = r => norm([r.name, r.origin, (r.tags || []).join(" "), r.ingredients.map(x => x[0]).join(" ")].join(" "));
+    const pickBtn = r => `<button class="pick" data-pick="${r.id}"><span class="thumb sm" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</span><span><b>${esc(r.name)}</b><br><small style="color:var(--muted)">${esc(r.origin)} · ${timeLabel(r)}</small></span></button>`;
     $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet" role="dialog" aria-label="Gericht tauschen">
       <h2>${DAYS[dayIdx]}: lieber etwas anderes?</h2>
-      ${others.map(r => `<button class="pick" data-pick="${r.id}"><span class="thumb sm" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</span><span><b>${esc(r.name)}</b><br><small style="color:var(--muted)">${esc(r.origin)} · ${timeLabel(r)}</small></span></button>`).join("")}
+      <h4>Mit einem anderen Tag tauschen</h4>
+      <div class="swap-days">${plan.map((id, j) => j === dayIdx ? "" : `<button class="mini" data-trade="${j}"><b>${DAYS[j].slice(0, 2)}</b> ${esc(byId[id].name)}</button>`).join("")}</div>
+      <h4>Oder ein neues Gericht</h4>
+      <input type="search" id="swap-q" class="swap-q" placeholder="Suchen: z. B. Nudeln, Huhn, Zucchini, asiatisch …" aria-label="Gericht suchen" autocomplete="off">
+      <div id="swap-list"></div>
       <button class="ghost" id="sheet-close" style="margin-top:6px">Abbrechen</button></div></div>`;
+    const list = () => {
+      const words = norm($("#swap-q").value).split(/\s+/).filter(Boolean);
+      const pool = RECIPES.filter(r => !plan.includes(r.id) && (words.length ? r.course !== "Dessert" : r.week !== false));
+      const hits = words.length ? pool.filter(r => { const h = hay(r); return words.every(w => (SEARCH_SYN.find(g => g.some(x => x.startsWith(w) || w.startsWith(x))) || [w]).some(x => h.includes(x))); }) : pool;
+      $("#swap-list").innerHTML = hits.length ? hits.map(pickBtn).join("") : `<p style="color:var(--muted)">Nichts gefunden. Versuch ein anderes Wort.</p>`;
+    };
+    list();
+    $("#swap-q").addEventListener("input", list);
     $("#sheet-bg").addEventListener("click", e => {
-      const pk = e.target.closest("[data-pick]");
-      if (pk) { plan[dayIdx] = pk.dataset.pick; renderWeek(); Sync.put("plan", plan); }
-      if (pk || e.target.id === "sheet-bg" || e.target.id === "sheet-close") $("#sheet-root").innerHTML = "";
+      const pk = e.target.closest("[data-pick]"), tr = e.target.closest("[data-trade]");
+      if (pk) plan[dayIdx] = pk.dataset.pick;
+      if (tr) { const j = +tr.dataset.trade; [plan[dayIdx], plan[j]] = [plan[j], plan[dayIdx]]; toast(`${DAYS[dayIdx]} und ${DAYS[j]} getauscht`); }
+      if (pk || tr) { renderWeek(); Sync.put("plan", plan); }
+      if (pk || tr || e.target.id === "sheet-bg" || e.target.id === "sheet-close") $("#sheet-root").innerHTML = "";
     });
   }
 
