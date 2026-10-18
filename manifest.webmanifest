@@ -2,6 +2,8 @@
   "name": "Familientisch",
   "short_name": "Familientisch",
   "description": "Wochenplan, Koch-Anleitungen und Einkaufsliste für die Familie.",
+  "id": "./",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#FFFFFF",
