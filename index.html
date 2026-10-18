@@ -1296,6 +1296,174 @@ const RECIPES = [
       { icon: "boil", text: "In leicht wallendem Wasser 12 Minuten ziehen lassen.", timer: 720, items: [] },
       { icon: "serve", text: "Butter bräunen, drüber, Parmesan drauf. Salat dazu.", items: ["Butter", "Salat"] }
     ]
+  },
+  {
+    id: "erdaepfelpuffer", name: "Erdäpfelpuffer mit Schnittlauch-Topfendip", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D9B77A", "#F3EAD6", "#9DB07F", "#B98B5A"],
+    kid: "Puffer klein schneiden und abkühlen lassen. Dip ohne Salz anrühren, nur wenig Zitrone.",
+    ingredients: [
+      ["Erdäpfel (mehligkochend)", 700, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Eier", 2, "Stk", "fresh"],
+      ["Topfen", 250, "g", "fresh"], ["Schnittlauch", 1, "Bund", "veg"], ["Gurke", 1, "Stk", "veg"],
+      ["Mehl", 3, "EL", "pantry"], ["Öl", 4, "EL", "pantry"], ["Salz", 1, "Prise", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Erdäpfel schälen und fein reiben. Zwiebel reiben. Gut ausdrücken.", items: ["Erdäpfel", "Zwiebel"] },
+      { icon: "mix", text: "Mit Eiern, Mehl und einer Prise Salz zu einem Teig rühren.", items: ["Eier", "Mehl", "Salz"] },
+      { icon: "mix", text: "Topfen mit gehacktem Schnittlauch verrühren. Gurke in Stifte schneiden.", items: ["Topfen", "Schnittlauch", "Gurke"] },
+      { icon: "pan", text: "Öl erhitzen, kleine Puffer formen und je 4 Minuten pro Seite goldbraun braten.", timer: 480, items: ["Öl"] },
+      { icon: "serve", text: "Mit Dip und Gurkenstiften servieren.", items: [] }
+    ]
+  },
+  {
+    id: "hendlrahm", name: "Hendl-Rahmgeschnetzeltes mit Butternudeln", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#E8CFA0", "#F6EEDC", "#C9A374", "#A9C08F"],
+    kid: "Hendl in kleine Stücke schneiden. Nudeln ohne Salzwasser-Überschuss kochen, Champignons klein hacken.",
+    ingredients: [
+      ["Hendlbrust", 400, "g", "meat"], ["Champignons", 200, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Schlagobers", 200, "ml", "fresh"], ["Bandnudeln", 250, "g", "dry"], ["Petersilie", 1, "Bund", "veg"],
+      ["Butter", 1, "EL", "pantry"], ["Mehl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Nudeln in Wasser kochen, wie auf der Packung steht.", timer: 600, items: ["Nudeln"] },
+      { icon: "chop", text: "Hendl in dünne Streifen, Champignons in Scheiben, Zwiebel fein schneiden.", items: ["Hendlbrust", "Champignons", "Zwiebel"] },
+      { icon: "pan", text: "Hendl in Butter 5 Minuten anbraten, mehlieren. Zwiebel und Pilze dazu, 4 Minuten braten.", timer: 540, items: ["Butter", "Mehl"] },
+      { icon: "mix", text: "Schlagobers eingießen und 5 Minuten sanft köcheln lassen.", timer: 300, items: ["Schlagobers"] },
+      { icon: "serve", text: "Nudeln abgießen, mit Petersilie über das Geschnetzelte geben.", items: ["Petersilie"] }
+    ]
+  },
+  {
+    id: "krautfleckerl", name: "Krautfleckerl mit Würfelspeck", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D8C48A", "#EFE6CF", "#A58A5C", "#B5C28E"],
+    kid: "Speck nur wenig verwenden (viel Salz) und sehr klein schneiden. Kraut weich dünsten.",
+    ingredients: [
+      ["Fleckerl (Nudeln)", 250, "g", "dry"], ["Weißkraut", 400, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Speckwürfel", 60, "g", "meat"], ["Zucker", 1, "TL", "pantry"], ["Kümmel", 1, "Prise", "pantry"],
+      ["Öl", 2, "EL", "pantry"], ["Schnittlauch", 1, "Bund", "veg"]
+    ],
+    steps: [
+      { icon: "boil", text: "Fleckerl in Wasser kochen und abgießen.", timer: 540, items: ["Fleckerl"] },
+      { icon: "chop", text: "Kraut in dünne Streifen schneiden, Zwiebel fein hacken.", items: ["Weißkraut", "Zwiebel"] },
+      { icon: "pan", text: "Zucker in Öl hellbraun rösten, Speck und Zwiebel dazu, dann das Kraut mit Kümmel 12 Minuten weich dünsten.", timer: 720, items: ["Zucker", "Speck", "Kümmel", "Öl"] },
+      { icon: "mix", text: "Fleckerl untermischen und kurz durchrösten.", items: [] },
+      { icon: "serve", text: "Mit Schnittlauch bestreut servieren.", items: ["Schnittlauch"] }
+    ]
+  },
+  {
+    id: "reisfleisch", name: "Faschiertes Reisfleisch", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D98F5E", "#F2E2BF", "#B0653F", "#A8B87F"],
+    kid: "Paprikapulver mild (edelsüß) und sparsam, keine Schärfe. Erbsen leicht zerdrücken (Verschluckgefahr).",
+    ingredients: [
+      ["Faschiertes (gemischt)", 400, "g", "meat"], ["Langkornreis", 200, "g", "dry"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Karotten", 2, "Stk", "veg"], ["Erbsen", 150, "g", "frozen"], ["Tomatenmark", 2, "EL", "pantry"],
+      ["Paprikapulver edelsüß", 2, "TL", "pantry"], ["Gemüsebrühe (salzarm)", 500, "ml", "pantry"], ["Öl", 2, "EL", "pantry"], ["Parmesan", 30, "g", "fresh"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebel hacken, Karotten fein würfeln.", items: ["Zwiebel", "Karotten"] },
+      { icon: "pan", text: "Faschiertes in Öl krümelig anbraten, Zwiebel und Karotten 4 Minuten mitbraten.", timer: 480, items: ["Faschiertes", "Öl"] },
+      { icon: "mix", text: "Tomatenmark und Paprikapulver unterrühren, Reis dazugeben.", items: ["Tomatenmark", "Paprikapulver", "Reis"] },
+      { icon: "boil", text: "Brühe angießen, zugedeckt 15 Minuten bei kleiner Hitze garen. Erbsen die letzten 3 Minuten dazu.", timer: 900, items: ["Brühe", "Erbsen"] },
+      { icon: "serve", text: "Mit Parmesan bestreut servieren.", items: ["Parmesan"] }
+    ]
+  },
+  {
+    id: "putenschnitzel", name: "Ofen-Putenschnitzel mit Petersil-Erdäpfeln", origin: "Österreich", flag: "AT", time: 30, wait: 15,
+    colors: ["#E2B66B", "#F5ECD5", "#B07F45", "#9DB279"],
+    kid: "Schnitzel in schmale Streifen schneiden. Zitrone nur zum Beträufeln für die Großen.",
+    ingredients: [
+      ["Putenschnitzel", 400, "g", "meat"], ["Semmelbrösel", 80, "g", "pantry"], ["Eier", 1, "Stk", "fresh"],
+      ["Mehl", 3, "EL", "pantry"], ["Erdäpfel (festkochend)", 600, "g", "veg"], ["Petersilie", 1, "Bund", "veg"],
+      ["Butter", 30, "g", "pantry"], ["Karotten", 2, "Stk", "veg"], ["Zitrone", 1, "Stk", "veg"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 220 Grad. Erdäpfel schälen, vierteln und in Wasser kochen.", timer: 900, items: ["Erdäpfel"] },
+      { icon: "mix", text: "Schnitzel in Mehl, verquirltem Ei und Bröseln wenden.", items: ["Putenschnitzel", "Mehl", "Eier", "Semmelbrösel"] },
+      { icon: "oven", text: "Auf ein Blech mit Butterflöckchen legen, 15 Minuten backen, einmal wenden.", timer: 900, items: ["Butter"] },
+      { icon: "boil", text: "Karotten in Stifte schneiden und 8 Minuten mit den Erdäpfeln mitkochen.", timer: 480, items: ["Karotten"] },
+      { icon: "serve", text: "Erdäpfel mit Butter und Petersilie schwenken, mit Zitrone servieren.", items: ["Petersilie", "Zitrone"] }
+    ]
+  },
+  {
+    id: "zucchinipesto", name: "Pasta mit Zucchini-Basilikum-Pesto", origin: "Italien", flag: "IT", time: 20,
+    colors: ["#B4C48B", "#EFE6CB", "#8FA66B", "#D8B98A"],
+    kid: "Pesto mit Sonnenblumenkernen fein püriert, keine ganzen Nüsse oder Kerne (Verschluckgefahr). Wenig Salz.",
+    ingredients: [
+      ["Fusilli", 250, "g", "dry"], ["Zucchini", 2, "Stk", "veg"], ["Basilikum", 1, "Bund", "veg"],
+      ["Sonnenblumenkerne", 40, "g", "pantry"], ["Parmesan", 50, "g", "fresh"], ["Frischkäse", 100, "g", "fresh"],
+      ["Olivenöl", 3, "EL", "pantry"], ["Knoblauch", 1, "Zehe", "veg"]
+    ],
+    steps: [
+      { icon: "boil", text: "Fusilli in Wasser kochen, etwas Kochwasser aufheben.", timer: 600, items: ["Fusilli"] },
+      { icon: "chop", text: "Zucchini grob raspeln, Basilikum zupfen.", items: ["Zucchini", "Basilikum"] },
+      { icon: "mix", text: "Zucchini, Basilikum, Kerne, Parmesan, Knoblauch, Öl und Frischkäse fein pürieren.", items: ["Sonnenblumenkerne", "Parmesan", "Knoblauch", "Olivenöl", "Frischkäse"] },
+      { icon: "serve", text: "Nudeln mit Pesto und einem Schuss Kochwasser vermengen.", items: [] }
+    ]
+  },
+  {
+    id: "bulgogi", name: "Bulgogi-Bällchen mit Reis und Gurke", origin: "Korea", flag: "KR", time: 25,
+    colors: ["#B9764A", "#F3EBDD", "#8E9E6E", "#D9A877"],
+    kid: "Kein Chili, Sojasauce nur wenig. Sesam mitbraten und Bällchen halbieren.",
+    ingredients: [
+      ["Rindfaschiertes", 400, "g", "meat"], ["Jasminreis", 250, "g", "dry"], ["Gurke", 1, "Stk", "veg"],
+      ["Karotten", 2, "Stk", "veg"], ["Frühlingszwiebel", 2, "Stk", "veg"], ["Sojasauce (salzreduziert)", 2, "EL", "pantry"],
+      ["Honig", 1, "EL", "pantry"], ["Sesamöl", 1, "TL", "pantry"], ["Sesam", 1, "EL", "pantry"], ["Knoblauch", 1, "Zehe", "veg"]
+    ],
+    steps: [
+      { icon: "rice", text: "Reis nach Packung kochen.", timer: 720, items: ["Reis"] },
+      { icon: "mix", text: "Faschiertes mit Sojasauce, Honig, Knoblauch, Sesamöl und gehackter Frühlingszwiebel verkneten. Kleine Bällchen formen.", items: ["Faschiertes", "Sojasauce", "Honig", "Knoblauch", "Sesamöl", "Frühlingszwiebel"] },
+      { icon: "pan", text: "Bällchen in einer Pfanne 10 Minuten rundum braten.", timer: 600, items: [] },
+      { icon: "chop", text: "Gurke und Karotten in dünne Stifte schneiden.", items: ["Gurke", "Karotten"] },
+      { icon: "serve", text: "Auf Reis anrichten, mit Sesam bestreuen.", items: ["Sesam"] }
+    ]
+  },
+  {
+    id: "gnocchipfanne", name: "Gnocchi-Pfanne mit Zucchini und Mozzarella", origin: "Italien", flag: "IT", time: 20,
+    colors: ["#E4C98F", "#F6EEDA", "#A9BC83", "#CF8E66"],
+    kid: "Gnocchi und Cherrytomaten halbieren oder vierteln (Verschluckgefahr bei ganzen Tomaten).",
+    ingredients: [
+      ["Gnocchi", 500, "g", "fresh"], ["Zucchini", 2, "Stk", "veg"], ["Cherrytomaten", 250, "g", "veg"],
+      ["Mozzarella", 125, "g", "fresh"], ["Basilikum", 1, "Topf", "veg"], ["Olivenöl", 2, "EL", "pantry"], ["Knoblauch", 1, "Zehe", "veg"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zucchini in Scheiben, Tomaten halbieren, Mozzarella zupfen.", items: ["Zucchini", "Cherrytomaten", "Mozzarella"] },
+      { icon: "pan", text: "Gnocchi in Öl 6 Minuten goldbraun braten.", timer: 360, items: ["Gnocchi", "Olivenöl"] },
+      { icon: "pan", text: "Zucchini und Knoblauch dazu, 5 Minuten braten. Tomaten 2 Minuten mitgaren.", timer: 420, items: ["Zucchini", "Knoblauch", "Cherrytomaten"] },
+      { icon: "oven", text: "Mozzarella drauf, Deckel auflegen und 2 Minuten schmelzen lassen.", timer: 120, items: [] },
+      { icon: "serve", text: "Mit Basilikum servieren.", items: ["Basilikum"] }
+    ]
+  },
+  {
+    id: "minitacos", name: "Mini-Tacos mit Hendl und Avocado", origin: "Mexiko", flag: "MX", time: 25,
+    colors: ["#D8A869", "#F3E8CC", "#8FA86B", "#C0724A"],
+    kid: "Ohne Chili füllen, Mais abseihen und leicht zerdrücken. Taco als Fingerfood in Streifen schneiden.",
+    ingredients: [
+      ["Hendlbrust", 400, "g", "meat"], ["Weizentortillas (klein)", 8, "Stk", "bread"], ["Avocado", 2, "Stk", "veg"],
+      ["Mais (Dose)", 150, "g", "dry"], ["Tomaten", 2, "Stk", "veg"], ["Naturjoghurt", 100, "g", "fresh"],
+      ["Paprikapulver edelsüß", 1, "TL", "pantry"], ["Kreuzkümmel", 1, "TL", "pantry"], ["Limette", 1, "Stk", "veg"], ["Öl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Hendl in schmale Streifen schneiden, mit Paprikapulver und Kreuzkümmel mischen.", items: ["Hendlbrust", "Paprikapulver", "Kreuzkümmel"] },
+      { icon: "pan", text: "In Öl 8 Minuten durchbraten, Mais die letzten 2 Minuten dazu.", timer: 480, items: ["Öl", "Mais"] },
+      { icon: "mix", text: "Avocado mit Limettensaft zerdrücken, Tomaten würfeln.", items: ["Avocado", "Limette", "Tomaten"] },
+      { icon: "pan", text: "Tortillas kurz in der trockenen Pfanne erwärmen.", items: ["Tortillas"] },
+      { icon: "serve", text: "Füllung, Avocado und Joghurt auf den Tortillas verteilen.", items: ["Joghurt"] }
+    ]
+  },
+  {
+    id: "butterchicken", name: "Mildes Butter-Chicken mit Basmatireis", origin: "Indien", flag: "IN", time: 30,
+    colors: ["#D98E5A", "#F4E4C4", "#B8663E", "#A9BA86"],
+    kid: "Ohne Chili kochen, nur mild würzen. Hendlstücke klein schneiden, Reis leicht anfeuchten.",
+    ingredients: [
+      ["Hendlbrust", 450, "g", "meat"], ["Basmatireis", 250, "g", "dry"], ["Passierte Tomaten", 400, "g", "dry"],
+      ["Schlagobers", 150, "ml", "fresh"], ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"],
+      ["Garam Masala", 2, "TL", "pantry"], ["Butter", 1, "EL", "pantry"], ["Naturjoghurt", 100, "g", "fresh"], ["Koriander", 1, "Bund", "veg"]
+    ],
+    steps: [
+      { icon: "rice", text: "Reis nach Packung kochen.", timer: 780, items: ["Basmatireis"] },
+      { icon: "chop", text: "Hendl würfeln und mit Joghurt und 1 TL Garam Masala mischen. Zwiebel und Knoblauch hacken.", items: ["Hendlbrust", "Joghurt", "Garam Masala", "Zwiebel", "Knoblauch"] },
+      { icon: "pan", text: "Zwiebel in Butter 4 Minuten anschwitzen, Hendl 6 Minuten mitbraten.", timer: 600, items: ["Butter"] },
+      { icon: "boil", text: "Tomaten und restliches Garam Masala dazu, 10 Minuten köcheln. Schlagobers einrühren.", timer: 600, items: ["Passierte Tomaten", "Schlagobers"] },
+      { icon: "serve", text: "Mit Reis und Koriander servieren.", items: ["Koriander"] }
+    ]
   }
 ];
 
@@ -1331,7 +1499,12 @@ const TAGS = {
   kartoffelgulasch: ["fleisch", "topf", "österreichisch"], tantanmen: ["faschiert", "asiatisch", "pasta"],
   kasnocken: ["vegetarisch", "pfanne", "österreichisch"], grenadiermarsch: ["fleisch", "pfanne", "österreichisch", "ei"],
   schinkenfleckerl: ["fleisch", "ofen", "auflauf", "österreichisch", "pasta"], hendlstreifen: ["huhn", "pfanne", "österreichisch", "fingerfood"],
-  griessschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch"], spinatknoedel: ["vegetarisch", "topf", "österreichisch"]
+  griessschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch"], spinatknoedel: ["vegetarisch", "topf", "österreichisch"],
+  erdaepfelpuffer: ["vegetarisch", "pfanne", "österreichisch", "fingerfood"], hendlrahm: ["huhn", "pfanne", "österreichisch", "rahm", "pasta"],
+  krautfleckerl: ["fleisch", "pfanne", "österreichisch", "pasta"], reisfleisch: ["faschiert", "topf", "onepot", "österreichisch"],
+  putenschnitzel: ["fleisch", "ofen", "österreichisch", "fingerfood"], zucchinipesto: ["vegetarisch", "pasta", "mediterran"],
+  bulgogi: ["faschiert", "pfanne", "asiatisch"], gnocchipfanne: ["vegetarisch", "pfanne", "mediterran"],
+  minitacos: ["huhn", "pfanne", "fingerfood"], butterchicken: ["huhn", "topf", "orientalisch", "rahm"]
 };
 RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
 
@@ -2904,8 +3077,18 @@ const MASTERCHEF = [
 ];
 const PHOTOS = ["bacalhau", "blechhuhn", "burritobowl", "couscous", "dal", "eiernockerl", "erbsenpasta", "falafel", "fischstaebchen", "friedrice", "kaiserschmarrn", "koettbullar", "kokoscurry", "lachs", "laibchen", "macncheese", "orzo", "padthai", "pajeon", "palatschinken", "polenta", "quesadilla", "smorrebrod", "sommerrolle", "souvlaki", "teriyaki", "thai"];
 const ANGEBOTE = {
-"stand": "2026-10-17",
+"stand": "2026-10-18",
 "angebote": [
+{
+"markt": "BILLA",
+"name": "Milka Alpenmilch",
+"menge": "90 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 6 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
+},
 {
 "markt": "BILLA",
 "name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
@@ -2958,6 +3141,256 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
+"name": "Laugenfussball",
+"menge": "90 g",
+"preis": 0.46,
+"statt": 0.94,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/laugenfussball-00532716"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Buttertoast",
+"menge": "500 g",
+"preis": 3.59,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-buttertoast-0021399"
+},
+{
+"markt": "BILLA",
+"name": "Aborigines Weckerl - Mehl aus Österreich",
+"menge": "100 g",
+"preis": 1.39,
+"statt": 1.49,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/aborigines-weckerl-mehl-aus-oesterreich-00440879"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Sonnenblumenmuschel",
+"menge": "71 g",
+"preis": 0.99,
+"statt": 1.19,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenblumenmuschel-00201203"
+},
+{
+"markt": "BILLA",
+"name": "Maxi Nuss Schnecke",
+"menge": "1 stk",
+"preis": 1.19,
+"statt": 1.59,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/maxi-nuss-schnecke-00370336"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross Vollkorn Knusperbrot",
+"menge": "125 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-vollkorn-knusperbrot-00679137"
+},
+{
+"markt": "BILLA",
+"name": "Milka Choco Brownie",
+"menge": "150 g",
+"preis": 2.99,
+"statt": 3.55,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-choco-brownie-00405070"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross Weizen Knusperbrot",
+"menge": "125 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-weizen-knusperbrot-00426548"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross Vital Knusperbrot",
+"menge": "125 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-vital-knusperbrot-00426547"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Milch Brötle mit Schokolade",
+"menge": "240 g",
+"preis": 2.79,
+"statt": 3.59,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-milch-broetle-mit-schokolade-00518589"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross Roggen Knusperbrot",
+"menge": "125 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-roggen-knusperbrot-00612335"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Mohnstollen",
+"menge": "700 g",
+"preis": 4.99,
+"statt": 5.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-mohnstollen-0021112"
+},
+{
+"markt": "BILLA",
+"name": "Milka Cake & Choc",
+"menge": "175 g",
+"preis": 2.99,
+"statt": 3.55,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-cake-und-choc-00728445"
+},
+{
+"markt": "BILLA",
+"name": "Milka Choc&Choc",
+"menge": "175 g",
+"preis": 2.99,
+"statt": 3.55,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-chocundchoc-00342389"
+},
+{
+"markt": "BILLA",
+"name": "Milka Soft Moo",
+"menge": "140 g",
+"preis": 2.99,
+"statt": 3.55,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-soft-moo-00292485"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Nuss-Stollen",
+"menge": "700 g",
+"preis": 4.99,
+"statt": 5.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-nussstollen-00167239"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Nuss-Stollen gerollt",
+"menge": "700 g",
+"preis": 4.99,
+"statt": 5.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-nussstollen-gerollt-003445"
+},
+{
+"markt": "BILLA",
+"name": "Stephansdom Brot",
+"menge": "500 g",
+"preis": 3.04,
+"statt": 3.23,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/stephansdom-brot-00266524"
+},
+{
+"markt": "BILLA",
+"name": "Butter Laugencroissant",
+"menge": "1 stk",
+"preis": 0.89,
+"statt": 1.09,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/butter-laugencroissant-00734000"
+},
+{
+"markt": "BILLA",
+"name": "Schwarzwälderkirschtorte",
+"menge": "1 stk",
+"preis": 8.99,
+"statt": 9.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/schwarzwaelderkirschtorte-00748922"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Protein Soft Sandwich",
+"menge": "400 g",
+"preis": 3.39,
+"statt": 3.89,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-protein-soft-sandwich-00873223"
+},
+{
+"markt": "BILLA",
+"name": "Griesson Leicht & Cross High Protein",
+"menge": "115 g",
+"preis": 1.33,
+"statt": 1.99,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-high-protein-00878348"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Topfenschnecke",
+"menge": "160 g",
+"preis": 2.19,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-topfenschnecke-00900331"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Protein Waffeln",
+"menge": "130 g",
+"preis": 2.49,
+"statt": 2.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-protein-waffeln-00904319"
+},
+{
+"markt": "BILLA",
+"name": "Tag & Nachtschnitte",
+"menge": "1 stk",
+"preis": 3.19,
+"statt": 3.69,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/tag-und-nachtschnitte-00920526"
+},
+{
+"markt": "BILLA",
 "name": "Ja! Natürlich Maroni gegart",
 "menge": "100 g",
 "preis": 1.79,
@@ -2965,16 +3398,6 @@ const ANGEBOTE = {
 "hinweis": "ab 2 Packungen",
 "bis": null,
 "link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Zucchini",
-"menge": "1 stk",
-"preis": 0.79,
-"statt": 0.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-zucchini-00402495"
 },
 {
 "markt": "BILLA",
@@ -3045,6 +3468,306 @@ const ANGEBOTE = {
 "hinweis": "",
 "bis": null,
 "link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
+},
+{
+"markt": "BILLA",
+"name": "Berger Traditionsbeinschinken",
+"menge": "1000 g",
+"preis": 24.5,
+"statt": 26.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Saunaschinken",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Wiener Heurigen Aufschnitt",
+"menge": "180 g",
+"preis": 4.49,
+"statt": 4.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
+},
+{
+"markt": "BILLA",
+"name": "Neuburger",
+"menge": "1000 g",
+"preis": 18.9,
+"statt": 22.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/neuburger-00441152"
+},
+{
+"markt": "BILLA",
+"name": "Stastnik Farmer Putenbrust",
+"menge": "1000 g",
+"preis": 20.9,
+"statt": 22.5,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis mild",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Schweinschnitzel geschnitten",
+"menge": "400 g",
+"preis": 3.99,
+"statt": 5.2,
+"hinweis": "ab 2 Tassen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Bauernblutwurst",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Prater Stelze geschnitten",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.59,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter AMA Suppenmix Rind",
+"menge": "1 kg",
+"preis": 14.99,
+"statt": 15.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Pusztawürstel",
+"menge": "250 g",
+"preis": 4.29,
+"statt": 5.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Leberpastete  Cranberry",
+"menge": "125 g",
+"preis": 1.49,
+"statt": 1.66,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Kaminwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis scharf",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Gipfel Stangerl",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Chiliwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Wienerwurst",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 26.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Toscano",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Milde Tyrolini 4x40g",
+"menge": "160 g",
+"preis": 3.99,
+"statt": 4.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Cremona",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Antipasto Misto",
+"menge": "150 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
+},
+{
+"markt": "BILLA",
+"name": "Krainer",
+"menge": "300 g",
+"preis": 4.49,
+"statt": 5.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/krainer-00435839"
+},
+{
+"markt": "BILLA",
+"name": "Gebratene Käsewurst",
+"menge": "80 g",
+"preis": 2.99,
+"statt": 3.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
+},
+{
+"markt": "BILLA",
+"name": "Hühner Käsekrainer",
+"menge": "250 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Fair zum Tier Polnische Spezial",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 25.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
+},
+{
+"markt": "BILLA",
+"name": "Greisinger Münchner Weisswurst mit Senf",
+"menge": "351 g",
+"preis": 3.49,
+"statt": 4.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/greisinger-muenchner-weisswurst-mit-senf-00340361"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst geschnitten",
+"menge": "100 g",
+"preis": 1.49,
+"statt": 1.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-geschnitten-00761647"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Rauchschinken",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-rauchschinken-00767527"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Knusperbraten",
+"menge": "100 g",
+"preis": 2.49,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-knusperbraten-00767632"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Heurigenschinken",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-heurigenschinken-00773495"
 },
 {
 "markt": "BILLA",
@@ -3275,296 +3998,6 @@ const ANGEBOTE = {
 "hinweis": "Bei 3 Becher je",
 "bis": null,
 "link": "https://shop.billa.at/produkte/emmi-matcha-latte-00887446"
-},
-{
-"markt": "BILLA",
-"name": "Milka Alpenmilch",
-"menge": "90 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 6 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
-},
-{
-"markt": "BILLA",
-"name": "Laugenfussball",
-"menge": "90 g",
-"preis": 0.46,
-"statt": 0.94,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/laugenfussball-00532716"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Buttertoast",
-"menge": "500 g",
-"preis": 3.59,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-buttertoast-0021399"
-},
-{
-"markt": "BILLA",
-"name": "Aborigines Weckerl - Mehl aus Österreich",
-"menge": "100 g",
-"preis": 1.39,
-"statt": 1.49,
-"hinweis": "ab 3 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/aborigines-weckerl-mehl-aus-oesterreich-00440879"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Sonnenblumenmuschel",
-"menge": "71 g",
-"preis": 0.99,
-"statt": 1.19,
-"hinweis": "ab 3 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenblumenmuschel-00201203"
-},
-{
-"markt": "BILLA",
-"name": "Maxi Nuss Schnecke",
-"menge": "1 stk",
-"preis": 1.19,
-"statt": 1.59,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/maxi-nuss-schnecke-00370336"
-},
-{
-"markt": "BILLA",
-"name": "Griesson Leicht & Cross Vollkorn Knusperbrot",
-"menge": "125 g",
-"preis": 1.33,
-"statt": 1.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-vollkorn-knusperbrot-00679137"
-},
-{
-"markt": "BILLA",
-"name": "Milka Choco Brownie",
-"menge": "150 g",
-"preis": 2.99,
-"statt": 3.55,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/milka-choco-brownie-00405070"
-},
-{
-"markt": "BILLA",
-"name": "Griesson Leicht & Cross Weizen Knusperbrot",
-"menge": "125 g",
-"preis": 1.33,
-"statt": 1.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-weizen-knusperbrot-00426548"
-},
-{
-"markt": "BILLA",
-"name": "Griesson Leicht & Cross Vital Knusperbrot",
-"menge": "125 g",
-"preis": 1.33,
-"statt": 1.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-vital-knusperbrot-00426547"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Milch Brötle mit Schokolade",
-"menge": "240 g",
-"preis": 2.79,
-"statt": 3.59,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-milch-broetle-mit-schokolade-00518589"
-},
-{
-"markt": "BILLA",
-"name": "Griesson Leicht & Cross Roggen Knusperbrot",
-"menge": "125 g",
-"preis": 1.33,
-"statt": 1.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-roggen-knusperbrot-00612335"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Mohnstollen",
-"menge": "700 g",
-"preis": 4.99,
-"statt": 5.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-mohnstollen-0021112"
-},
-{
-"markt": "BILLA",
-"name": "Milka Cake & Choc",
-"menge": "175 g",
-"preis": 2.99,
-"statt": 3.55,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/milka-cake-und-choc-00728445"
-},
-{
-"markt": "BILLA",
-"name": "Milka Choc&Choc",
-"menge": "175 g",
-"preis": 2.99,
-"statt": 3.55,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/milka-chocundchoc-00342389"
-},
-{
-"markt": "BILLA",
-"name": "Milka Soft Moo",
-"menge": "140 g",
-"preis": 2.99,
-"statt": 3.55,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/milka-soft-moo-00292485"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Nuss-Stollen",
-"menge": "700 g",
-"preis": 4.99,
-"statt": 5.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-nussstollen-00167239"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Nuss-Stollen gerollt",
-"menge": "700 g",
-"preis": 4.99,
-"statt": 5.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-nussstollen-gerollt-003445"
-},
-{
-"markt": "BILLA",
-"name": "Schwarzwälderkirschtorte",
-"menge": "1 stk",
-"preis": 18.99,
-"statt": 19.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/schwarzwaelderkirschtorte-00257403"
-},
-{
-"markt": "BILLA",
-"name": "Stephansdom Brot",
-"menge": "500 g",
-"preis": 3.04,
-"statt": 3.23,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/stephansdom-brot-00266524"
-},
-{
-"markt": "BILLA",
-"name": "Butter Laugencroissant",
-"menge": "1 stk",
-"preis": 0.89,
-"statt": 1.09,
-"hinweis": "ab 3 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/butter-laugencroissant-00734000"
-},
-{
-"markt": "BILLA",
-"name": "Schwarzwälderkirschtorte",
-"menge": "1 stk",
-"preis": 8.99,
-"statt": 9.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/schwarzwaelderkirschtorte-00748922"
-},
-{
-"markt": "BILLA",
-"name": "Bananenschnitte",
-"menge": "500 g",
-"preis": 8.99,
-"statt": 9.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/bananenschnitte-00782542"
-},
-{
-"markt": "BILLA",
-"name": "Tiramisuschnitte",
-"menge": "1 stk",
-"preis": 8.99,
-"statt": 9.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/tiramisuschnitte-00807488"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Protein Soft Sandwich",
-"menge": "400 g",
-"preis": 3.39,
-"statt": 3.89,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-protein-soft-sandwich-00873223"
-},
-{
-"markt": "BILLA",
-"name": "Griesson Leicht & Cross High Protein",
-"menge": "115 g",
-"preis": 1.33,
-"statt": 1.99,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/griesson-leicht-und-cross-high-protein-00878348"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Topfenschnecke",
-"menge": "160 g",
-"preis": 2.19,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-topfenschnecke-00900331"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Protein Waffeln",
-"menge": "130 g",
-"preis": 2.49,
-"statt": 2.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-protein-waffeln-00904319"
-},
-{
-"markt": "BILLA",
-"name": "Tag & Nachtschnitte",
-"menge": "1 stk",
-"preis": 3.19,
-"statt": 3.69,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/tag-und-nachtschnitte-00920526"
 },
 {
 "markt": "BILLA",
@@ -3865,306 +4298,6 @@ const ANGEBOTE = {
 "hinweis": "Bei 3 Packungen je",
 "bis": null,
 "link": "https://shop.billa.at/produkte/iglo-cremegemuese-rahmbroccoli-0030388"
-},
-{
-"markt": "BILLA",
-"name": "Berger Traditionsbeinschinken",
-"menge": "1000 g",
-"preis": 24.5,
-"statt": 26.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Saunaschinken",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Wiener Heurigen Aufschnitt",
-"menge": "180 g",
-"preis": 4.49,
-"statt": 4.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
-},
-{
-"markt": "BILLA",
-"name": "Neuburger",
-"menge": "1000 g",
-"preis": 18.9,
-"statt": 22.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/neuburger-00441152"
-},
-{
-"markt": "BILLA",
-"name": "Stastnik Farmer Putenbrust",
-"menge": "1000 g",
-"preis": 20.9,
-"statt": 22.5,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
-},
-{
-"markt": "BILLA",
-"name": "Sorger Salanettis mild",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Schweinschnitzel geschnitten",
-"menge": "400 g",
-"preis": 3.99,
-"statt": 5.2,
-"hinweis": "ab 2 Tassen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Bauernblutwurst",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Prater Stelze geschnitten",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.59,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter AMA Suppenmix Rind",
-"menge": "1 kg",
-"preis": 14.99,
-"statt": 15.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Pusztawürstel",
-"menge": "250 g",
-"preis": 4.29,
-"statt": 5.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Leberpastete  Cranberry",
-"menge": "125 g",
-"preis": 1.49,
-"statt": 1.66,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Kaminwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
-},
-{
-"markt": "BILLA",
-"name": "Sorger Salanettis scharf",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Gipfel Stangerl",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Chiliwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Wienerwurst",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 26.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Toscano",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Milde Tyrolini 4x40g",
-"menge": "160 g",
-"preis": 3.99,
-"statt": 4.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Cremona",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Antipasto Misto",
-"menge": "150 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
-},
-{
-"markt": "BILLA",
-"name": "Krainer",
-"menge": "300 g",
-"preis": 4.49,
-"statt": 5.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/krainer-00435839"
-},
-{
-"markt": "BILLA",
-"name": "Gebratene Käsewurst",
-"menge": "80 g",
-"preis": 2.99,
-"statt": 3.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
-},
-{
-"markt": "BILLA",
-"name": "Hühner Käsekrainer",
-"menge": "250 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Fair zum Tier Polnische Spezial",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 25.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
-},
-{
-"markt": "BILLA",
-"name": "Greisinger Münchner Weisswurst mit Senf",
-"menge": "351 g",
-"preis": 3.49,
-"statt": 4.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/greisinger-muenchner-weisswurst-mit-senf-00340361"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Bachsaibling",
-"menge": "1000 g",
-"preis": 39.9,
-"statt": 48.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-bachsaibling-00718667"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst geschnitten",
-"menge": "100 g",
-"preis": 1.49,
-"statt": 1.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-geschnitten-00761647"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Rauchschinken",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-rauchschinken-00767527"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Knusperbraten",
-"menge": "100 g",
-"preis": 2.49,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-knusperbraten-00767632"
 },
 {
 "markt": "BILLA",
@@ -4808,16 +4941,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "BIO Pimientos de Padron, scharf",
-"menge": "200 g",
-"preis": 3.59,
-"statt": 3.99,
-"hinweis": "-10 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/44321-bio-pimientos-de-padron-scharf"
-},
-{
-"markt": "Gurkerl",
 "name": "Michi Bauers Schwarzkohl - Palmkohl",
 "menge": "300 g",
 "preis": 1.99,
@@ -4825,6 +4948,16 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/20760-michi-bauers-schwarzkohl-palmkohl"
+},
+{
+"markt": "Gurkerl",
+"name": "BIO Pimientos de Padron, scharf",
+"menge": "200 g",
+"preis": 3.59,
+"statt": 3.99,
+"hinweis": "-10 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/44321-bio-pimientos-de-padron-scharf"
 },
 {
 "markt": "Gurkerl",
@@ -4888,113 +5021,103 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Ölz Dinkel-Vollkornbrot geschnitten",
-"menge": "400 g",
-"preis": 1.37,
-"statt": 4.59,
-"hinweis": "-70 %",
-"bis": "2026-10-18",
-"link": "https://www.gurkerl.at/4473-oelz-dinkel-vollkornbrot-geschnitten"
-},
-{
-"markt": "Gurkerl",
-"name": "Ölz Super Soft Sandwich geschnitten",
-"menge": "0,75 kg",
-"preis": 2.58,
-"statt": 3.69,
-"hinweis": "-30 %",
+"name": "Atelier Délices Apfelstreuselkuchen",
+"menge": "410 g",
+"preis": 6.14,
+"statt": 8.19,
+"hinweis": "-25 %",
 "bis": "2026-10-19",
-"link": "https://www.gurkerl.at/4506-oelz-super-soft-sandwich-geschnitten"
+"link": "https://www.gurkerl.at/37605-atelier-delices-apfelstreuselkuchen"
 },
 {
 "markt": "Gurkerl",
-"name": "Magnum Multipack 4 x White Chocolate & Strawberry (tiefgekühlt)",
-"menge": "440 ml",
-"preis": 6.22,
-"statt": 8.29,
+"name": "Pasta Box Pasta Rigatoni Bolognesse",
+"menge": "305 g",
+"preis": 4.01,
+"statt": 5.29,
 "hinweis": "-24 %",
-"bis": "2028-08-31",
-"link": "https://www.gurkerl.at/7686-magnum-multipack-4-x-white-chocolate-strawberry-tiefgekuehlt"
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/38208-pasta-box-pasta-rigatoni-bolognesse"
 },
 {
 "markt": "Gurkerl",
-"name": "Alnatura BIO Black Tiger Garnelen (tiefgekühlt)",
-"menge": "180 g",
-"preis": 7.42,
-"statt": 9.89,
-"hinweis": "-24 %",
-"bis": "2027-10-22",
-"link": "https://www.gurkerl.at/11012-alnatura-bio-black-tiger-garnelen-tiefgekuehlt"
-},
-{
-"markt": "Gurkerl",
-"name": "Juffinger BIO Extrawurst geschnitten",
-"menge": "80 g",
-"preis": 1.76,
-"statt": 2.19,
-"hinweis": "-19 %",
+"name": "Marks & Spencer Hand Cooked Lightly Salted Crisps",
+"menge": "150 g",
+"preis": 2.46,
+"statt": 4.49,
+"hinweis": "-45 %",
 "bis": "2026-10-20",
-"link": "https://www.gurkerl.at/35312-juffinger-bio-extrawurst-geschnitten"
+"link": "https://www.gurkerl.at/7090-marks-spencer-hand-cooked-lightly-salted-crisps"
 },
 {
 "markt": "Gurkerl",
-"name": "Ölz Vollkorn Soft Sandwich geschnitten",
-"menge": "375 g",
-"preis": 2.36,
-"statt": 3.39,
-"hinweis": "-30 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/4509-oelz-vollkorn-soft-sandwich-geschnitten"
+"name": "Schweine Schopf am Stück",
+"menge": "ca. 1,17 kg",
+"preis": 8.72,
+"statt": 10.26,
+"hinweis": "-15 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/42166-schweine-schopf-am-stueck"
+},
+{
+"markt": "Gurkerl",
+"name": "Pappudia Reispfanne mit Huhn \"Mexican Style\"",
+"menge": "330 g",
+"preis": 2.54,
+"statt": 2.99,
+"hinweis": "-15 %",
+"bis": "2026-10-23",
+"link": "https://www.gurkerl.at/43463-pappudia-reispfanne-mit-huhn-mexican-style"
 },
 {
 "markt": "Gurkerl",
 "name": "Schärdinger Mozzarella 45% Mini",
 "menge": "125 g",
-"preis": 1.3,
+"preis": 1.26,
 "statt": 1.99,
-"hinweis": "-34 %",
+"hinweis": "-36 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/3845-schaerdinger-mozzarella-45-mini"
 },
 {
 "markt": "Gurkerl",
-"name": "Der Mann Wiener Striezel mit Rosinen",
-"menge": "400 g",
-"preis": 1.4,
-"statt": 4.29,
-"hinweis": "-67 %",
-"bis": "2026-10-18",
-"link": "https://www.gurkerl.at/26474-der-mann-wiener-striezel-mit-rosinen"
-},
-{
-"markt": "Gurkerl",
-"name": "Ölz Dinkel Zopf",
-"menge": "500 g",
-"preis": 3.33,
-"statt": 4.29,
-"hinweis": "-22 %",
-"bis": "2026-10-20",
-"link": "https://www.gurkerl.at/4472-oelz-dinkel-zopf"
-},
-{
-"markt": "Gurkerl",
-"name": "Volante PIZZZA per casa Base glutenfrei",
-"menge": "280 g",
-"preis": 5.27,
-"statt": 9.99,
-"hinweis": "-47 %",
+"name": "Schweine Karree Steaks",
+"menge": "ca. 470 g",
+"preis": 3.12,
+"statt": 4.16,
+"hinweis": "-25 %",
 "bis": "2026-10-19",
-"link": "https://www.gurkerl.at/47859-volante-pizzza-per-casa-base-glutenfrei"
+"link": "https://www.gurkerl.at/42175-schweine-karree-steaks"
 },
 {
 "markt": "Gurkerl",
-"name": "Arla Skyr Natur Extra Cremig",
-"menge": "400 g",
-"preis": 1.61,
-"statt": 1.99,
-"hinweis": "-19 %",
+"name": "Landmetzgerei Klobeck Münchner Weißwurst Großpackung",
+"menge": "ca. 0,9 kg",
+"preis": 7.52,
+"statt": 15.58,
+"hinweis": "-51 %",
 "bis": "2026-10-19",
-"link": "https://www.gurkerl.at/45386-arla-skyr-natur-extra-cremig"
+"link": "https://www.gurkerl.at/30813-landmetzgerei-klobeck-muenchner-weisswurst-grosspackung"
+},
+{
+"markt": "Gurkerl",
+"name": "Pasta Box Pasta Penne mit Sonnengetrocknetem Tomaten Pesto",
+"menge": "215 g",
+"preis": 4.46,
+"statt": 5.89,
+"hinweis": "-24 %",
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/38209-pasta-box-pasta-penne-mit-sonnengetrocknetem-tomaten-pesto"
+},
+{
+"markt": "Gurkerl",
+"name": "Französisches Label Rouge Les Landes Maispoularden Filet",
+"menge": "ca. 280 g",
+"preis": 5.32,
+"statt": 9.69,
+"hinweis": "-45 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/39337-franzoesisches-label-rouge-les-landes-maispoularden-filet"
 },
 {
 "markt": "Gurkerl",
@@ -5008,13 +5131,33 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Landmetzgerei Klobeck Münchner Weißwurst Großpackung",
-"menge": "ca. 0,9 kg",
-"preis": 7.52,
-"statt": 15.58,
-"hinweis": "-51 %",
+"name": "Schweine Schnitzel aus der Schale",
+"menge": "ca. 0,55 kg",
+"preis": 4.14,
+"statt": 5.53,
+"hinweis": "-25 %",
 "bis": "2026-10-19",
-"link": "https://www.gurkerl.at/30813-landmetzgerei-klobeck-muenchner-weisswurst-grosspackung"
+"link": "https://www.gurkerl.at/42173-schweine-schnitzel-aus-der-schale"
+},
+{
+"markt": "Gurkerl",
+"name": "Pappudia Penne Bolognese",
+"menge": "330 g",
+"preis": 2.54,
+"statt": 2.99,
+"hinweis": "-15 %",
+"bis": "2026-10-23",
+"link": "https://www.gurkerl.at/43466-pappudia-penne-bolognese"
+},
+{
+"markt": "Gurkerl",
+"name": "Bürger Gnocchi mit Rote Beete",
+"menge": "500 g",
+"preis": 2.46,
+"statt": 2.89,
+"hinweis": "-14 %",
+"bis": "2026-10-22",
+"link": "https://www.gurkerl.at/46958-buerger-gnocchi-mit-rote-beete"
 }
 ]
 };

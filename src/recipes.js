@@ -801,6 +801,174 @@ const RECIPES = [
       { icon: "boil", text: "In leicht wallendem Wasser 12 Minuten ziehen lassen.", timer: 720, items: [] },
       { icon: "serve", text: "Butter bräunen, drüber, Parmesan drauf. Salat dazu.", items: ["Butter", "Salat"] }
     ]
+  },
+  {
+    id: "erdaepfelpuffer", name: "Erdäpfelpuffer mit Schnittlauch-Topfendip", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D9B77A", "#F3EAD6", "#9DB07F", "#B98B5A"],
+    kid: "Puffer klein schneiden und abkühlen lassen. Dip ohne Salz anrühren, nur wenig Zitrone.",
+    ingredients: [
+      ["Erdäpfel (mehligkochend)", 700, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Eier", 2, "Stk", "fresh"],
+      ["Topfen", 250, "g", "fresh"], ["Schnittlauch", 1, "Bund", "veg"], ["Gurke", 1, "Stk", "veg"],
+      ["Mehl", 3, "EL", "pantry"], ["Öl", 4, "EL", "pantry"], ["Salz", 1, "Prise", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Erdäpfel schälen und fein reiben. Zwiebel reiben. Gut ausdrücken.", items: ["Erdäpfel", "Zwiebel"] },
+      { icon: "mix", text: "Mit Eiern, Mehl und einer Prise Salz zu einem Teig rühren.", items: ["Eier", "Mehl", "Salz"] },
+      { icon: "mix", text: "Topfen mit gehacktem Schnittlauch verrühren. Gurke in Stifte schneiden.", items: ["Topfen", "Schnittlauch", "Gurke"] },
+      { icon: "pan", text: "Öl erhitzen, kleine Puffer formen und je 4 Minuten pro Seite goldbraun braten.", timer: 480, items: ["Öl"] },
+      { icon: "serve", text: "Mit Dip und Gurkenstiften servieren.", items: [] }
+    ]
+  },
+  {
+    id: "hendlrahm", name: "Hendl-Rahmgeschnetzeltes mit Butternudeln", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#E8CFA0", "#F6EEDC", "#C9A374", "#A9C08F"],
+    kid: "Hendl in kleine Stücke schneiden. Nudeln ohne Salzwasser-Überschuss kochen, Champignons klein hacken.",
+    ingredients: [
+      ["Hendlbrust", 400, "g", "meat"], ["Champignons", 200, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Schlagobers", 200, "ml", "fresh"], ["Bandnudeln", 250, "g", "dry"], ["Petersilie", 1, "Bund", "veg"],
+      ["Butter", 1, "EL", "pantry"], ["Mehl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Nudeln in Wasser kochen, wie auf der Packung steht.", timer: 600, items: ["Nudeln"] },
+      { icon: "chop", text: "Hendl in dünne Streifen, Champignons in Scheiben, Zwiebel fein schneiden.", items: ["Hendlbrust", "Champignons", "Zwiebel"] },
+      { icon: "pan", text: "Hendl in Butter 5 Minuten anbraten, mehlieren. Zwiebel und Pilze dazu, 4 Minuten braten.", timer: 540, items: ["Butter", "Mehl"] },
+      { icon: "mix", text: "Schlagobers eingießen und 5 Minuten sanft köcheln lassen.", timer: 300, items: ["Schlagobers"] },
+      { icon: "serve", text: "Nudeln abgießen, mit Petersilie über das Geschnetzelte geben.", items: ["Petersilie"] }
+    ]
+  },
+  {
+    id: "krautfleckerl", name: "Krautfleckerl mit Würfelspeck", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D8C48A", "#EFE6CF", "#A58A5C", "#B5C28E"],
+    kid: "Speck nur wenig verwenden (viel Salz) und sehr klein schneiden. Kraut weich dünsten.",
+    ingredients: [
+      ["Fleckerl (Nudeln)", 250, "g", "dry"], ["Weißkraut", 400, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Speckwürfel", 60, "g", "meat"], ["Zucker", 1, "TL", "pantry"], ["Kümmel", 1, "Prise", "pantry"],
+      ["Öl", 2, "EL", "pantry"], ["Schnittlauch", 1, "Bund", "veg"]
+    ],
+    steps: [
+      { icon: "boil", text: "Fleckerl in Wasser kochen und abgießen.", timer: 540, items: ["Fleckerl"] },
+      { icon: "chop", text: "Kraut in dünne Streifen schneiden, Zwiebel fein hacken.", items: ["Weißkraut", "Zwiebel"] },
+      { icon: "pan", text: "Zucker in Öl hellbraun rösten, Speck und Zwiebel dazu, dann das Kraut mit Kümmel 12 Minuten weich dünsten.", timer: 720, items: ["Zucker", "Speck", "Kümmel", "Öl"] },
+      { icon: "mix", text: "Fleckerl untermischen und kurz durchrösten.", items: [] },
+      { icon: "serve", text: "Mit Schnittlauch bestreut servieren.", items: ["Schnittlauch"] }
+    ]
+  },
+  {
+    id: "reisfleisch", name: "Faschiertes Reisfleisch", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D98F5E", "#F2E2BF", "#B0653F", "#A8B87F"],
+    kid: "Paprikapulver mild (edelsüß) und sparsam, keine Schärfe. Erbsen leicht zerdrücken (Verschluckgefahr).",
+    ingredients: [
+      ["Faschiertes (gemischt)", 400, "g", "meat"], ["Langkornreis", 200, "g", "dry"], ["Zwiebel", 1, "Stk", "veg"],
+      ["Karotten", 2, "Stk", "veg"], ["Erbsen", 150, "g", "frozen"], ["Tomatenmark", 2, "EL", "pantry"],
+      ["Paprikapulver edelsüß", 2, "TL", "pantry"], ["Gemüsebrühe (salzarm)", 500, "ml", "pantry"], ["Öl", 2, "EL", "pantry"], ["Parmesan", 30, "g", "fresh"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zwiebel hacken, Karotten fein würfeln.", items: ["Zwiebel", "Karotten"] },
+      { icon: "pan", text: "Faschiertes in Öl krümelig anbraten, Zwiebel und Karotten 4 Minuten mitbraten.", timer: 480, items: ["Faschiertes", "Öl"] },
+      { icon: "mix", text: "Tomatenmark und Paprikapulver unterrühren, Reis dazugeben.", items: ["Tomatenmark", "Paprikapulver", "Reis"] },
+      { icon: "boil", text: "Brühe angießen, zugedeckt 15 Minuten bei kleiner Hitze garen. Erbsen die letzten 3 Minuten dazu.", timer: 900, items: ["Brühe", "Erbsen"] },
+      { icon: "serve", text: "Mit Parmesan bestreut servieren.", items: ["Parmesan"] }
+    ]
+  },
+  {
+    id: "putenschnitzel", name: "Ofen-Putenschnitzel mit Petersil-Erdäpfeln", origin: "Österreich", flag: "AT", time: 30, wait: 15,
+    colors: ["#E2B66B", "#F5ECD5", "#B07F45", "#9DB279"],
+    kid: "Schnitzel in schmale Streifen schneiden. Zitrone nur zum Beträufeln für die Großen.",
+    ingredients: [
+      ["Putenschnitzel", 400, "g", "meat"], ["Semmelbrösel", 80, "g", "pantry"], ["Eier", 1, "Stk", "fresh"],
+      ["Mehl", 3, "EL", "pantry"], ["Erdäpfel (festkochend)", 600, "g", "veg"], ["Petersilie", 1, "Bund", "veg"],
+      ["Butter", 30, "g", "pantry"], ["Karotten", 2, "Stk", "veg"], ["Zitrone", 1, "Stk", "veg"]
+    ],
+    steps: [
+      { icon: "chop", text: "Ofen auf 220 Grad. Erdäpfel schälen, vierteln und in Wasser kochen.", timer: 900, items: ["Erdäpfel"] },
+      { icon: "mix", text: "Schnitzel in Mehl, verquirltem Ei und Bröseln wenden.", items: ["Putenschnitzel", "Mehl", "Eier", "Semmelbrösel"] },
+      { icon: "oven", text: "Auf ein Blech mit Butterflöckchen legen, 15 Minuten backen, einmal wenden.", timer: 900, items: ["Butter"] },
+      { icon: "boil", text: "Karotten in Stifte schneiden und 8 Minuten mit den Erdäpfeln mitkochen.", timer: 480, items: ["Karotten"] },
+      { icon: "serve", text: "Erdäpfel mit Butter und Petersilie schwenken, mit Zitrone servieren.", items: ["Petersilie", "Zitrone"] }
+    ]
+  },
+  {
+    id: "zucchinipesto", name: "Pasta mit Zucchini-Basilikum-Pesto", origin: "Italien", flag: "IT", time: 20,
+    colors: ["#B4C48B", "#EFE6CB", "#8FA66B", "#D8B98A"],
+    kid: "Pesto mit Sonnenblumenkernen fein püriert, keine ganzen Nüsse oder Kerne (Verschluckgefahr). Wenig Salz.",
+    ingredients: [
+      ["Fusilli", 250, "g", "dry"], ["Zucchini", 2, "Stk", "veg"], ["Basilikum", 1, "Bund", "veg"],
+      ["Sonnenblumenkerne", 40, "g", "pantry"], ["Parmesan", 50, "g", "fresh"], ["Frischkäse", 100, "g", "fresh"],
+      ["Olivenöl", 3, "EL", "pantry"], ["Knoblauch", 1, "Zehe", "veg"]
+    ],
+    steps: [
+      { icon: "boil", text: "Fusilli in Wasser kochen, etwas Kochwasser aufheben.", timer: 600, items: ["Fusilli"] },
+      { icon: "chop", text: "Zucchini grob raspeln, Basilikum zupfen.", items: ["Zucchini", "Basilikum"] },
+      { icon: "mix", text: "Zucchini, Basilikum, Kerne, Parmesan, Knoblauch, Öl und Frischkäse fein pürieren.", items: ["Sonnenblumenkerne", "Parmesan", "Knoblauch", "Olivenöl", "Frischkäse"] },
+      { icon: "serve", text: "Nudeln mit Pesto und einem Schuss Kochwasser vermengen.", items: [] }
+    ]
+  },
+  {
+    id: "bulgogi", name: "Bulgogi-Bällchen mit Reis und Gurke", origin: "Korea", flag: "KR", time: 25,
+    colors: ["#B9764A", "#F3EBDD", "#8E9E6E", "#D9A877"],
+    kid: "Kein Chili, Sojasauce nur wenig. Sesam mitbraten und Bällchen halbieren.",
+    ingredients: [
+      ["Rindfaschiertes", 400, "g", "meat"], ["Jasminreis", 250, "g", "dry"], ["Gurke", 1, "Stk", "veg"],
+      ["Karotten", 2, "Stk", "veg"], ["Frühlingszwiebel", 2, "Stk", "veg"], ["Sojasauce (salzreduziert)", 2, "EL", "pantry"],
+      ["Honig", 1, "EL", "pantry"], ["Sesamöl", 1, "TL", "pantry"], ["Sesam", 1, "EL", "pantry"], ["Knoblauch", 1, "Zehe", "veg"]
+    ],
+    steps: [
+      { icon: "rice", text: "Reis nach Packung kochen.", timer: 720, items: ["Reis"] },
+      { icon: "mix", text: "Faschiertes mit Sojasauce, Honig, Knoblauch, Sesamöl und gehackter Frühlingszwiebel verkneten. Kleine Bällchen formen.", items: ["Faschiertes", "Sojasauce", "Honig", "Knoblauch", "Sesamöl", "Frühlingszwiebel"] },
+      { icon: "pan", text: "Bällchen in einer Pfanne 10 Minuten rundum braten.", timer: 600, items: [] },
+      { icon: "chop", text: "Gurke und Karotten in dünne Stifte schneiden.", items: ["Gurke", "Karotten"] },
+      { icon: "serve", text: "Auf Reis anrichten, mit Sesam bestreuen.", items: ["Sesam"] }
+    ]
+  },
+  {
+    id: "gnocchipfanne", name: "Gnocchi-Pfanne mit Zucchini und Mozzarella", origin: "Italien", flag: "IT", time: 20,
+    colors: ["#E4C98F", "#F6EEDA", "#A9BC83", "#CF8E66"],
+    kid: "Gnocchi und Cherrytomaten halbieren oder vierteln (Verschluckgefahr bei ganzen Tomaten).",
+    ingredients: [
+      ["Gnocchi", 500, "g", "fresh"], ["Zucchini", 2, "Stk", "veg"], ["Cherrytomaten", 250, "g", "veg"],
+      ["Mozzarella", 125, "g", "fresh"], ["Basilikum", 1, "Topf", "veg"], ["Olivenöl", 2, "EL", "pantry"], ["Knoblauch", 1, "Zehe", "veg"]
+    ],
+    steps: [
+      { icon: "chop", text: "Zucchini in Scheiben, Tomaten halbieren, Mozzarella zupfen.", items: ["Zucchini", "Cherrytomaten", "Mozzarella"] },
+      { icon: "pan", text: "Gnocchi in Öl 6 Minuten goldbraun braten.", timer: 360, items: ["Gnocchi", "Olivenöl"] },
+      { icon: "pan", text: "Zucchini und Knoblauch dazu, 5 Minuten braten. Tomaten 2 Minuten mitgaren.", timer: 420, items: ["Zucchini", "Knoblauch", "Cherrytomaten"] },
+      { icon: "oven", text: "Mozzarella drauf, Deckel auflegen und 2 Minuten schmelzen lassen.", timer: 120, items: [] },
+      { icon: "serve", text: "Mit Basilikum servieren.", items: ["Basilikum"] }
+    ]
+  },
+  {
+    id: "minitacos", name: "Mini-Tacos mit Hendl und Avocado", origin: "Mexiko", flag: "MX", time: 25,
+    colors: ["#D8A869", "#F3E8CC", "#8FA86B", "#C0724A"],
+    kid: "Ohne Chili füllen, Mais abseihen und leicht zerdrücken. Taco als Fingerfood in Streifen schneiden.",
+    ingredients: [
+      ["Hendlbrust", 400, "g", "meat"], ["Weizentortillas (klein)", 8, "Stk", "bread"], ["Avocado", 2, "Stk", "veg"],
+      ["Mais (Dose)", 150, "g", "dry"], ["Tomaten", 2, "Stk", "veg"], ["Naturjoghurt", 100, "g", "fresh"],
+      ["Paprikapulver edelsüß", 1, "TL", "pantry"], ["Kreuzkümmel", 1, "TL", "pantry"], ["Limette", 1, "Stk", "veg"], ["Öl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Hendl in schmale Streifen schneiden, mit Paprikapulver und Kreuzkümmel mischen.", items: ["Hendlbrust", "Paprikapulver", "Kreuzkümmel"] },
+      { icon: "pan", text: "In Öl 8 Minuten durchbraten, Mais die letzten 2 Minuten dazu.", timer: 480, items: ["Öl", "Mais"] },
+      { icon: "mix", text: "Avocado mit Limettensaft zerdrücken, Tomaten würfeln.", items: ["Avocado", "Limette", "Tomaten"] },
+      { icon: "pan", text: "Tortillas kurz in der trockenen Pfanne erwärmen.", items: ["Tortillas"] },
+      { icon: "serve", text: "Füllung, Avocado und Joghurt auf den Tortillas verteilen.", items: ["Joghurt"] }
+    ]
+  },
+  {
+    id: "butterchicken", name: "Mildes Butter-Chicken mit Basmatireis", origin: "Indien", flag: "IN", time: 30,
+    colors: ["#D98E5A", "#F4E4C4", "#B8663E", "#A9BA86"],
+    kid: "Ohne Chili kochen, nur mild würzen. Hendlstücke klein schneiden, Reis leicht anfeuchten.",
+    ingredients: [
+      ["Hendlbrust", 450, "g", "meat"], ["Basmatireis", 250, "g", "dry"], ["Passierte Tomaten", 400, "g", "dry"],
+      ["Schlagobers", 150, "ml", "fresh"], ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"],
+      ["Garam Masala", 2, "TL", "pantry"], ["Butter", 1, "EL", "pantry"], ["Naturjoghurt", 100, "g", "fresh"], ["Koriander", 1, "Bund", "veg"]
+    ],
+    steps: [
+      { icon: "rice", text: "Reis nach Packung kochen.", timer: 780, items: ["Basmatireis"] },
+      { icon: "chop", text: "Hendl würfeln und mit Joghurt und 1 TL Garam Masala mischen. Zwiebel und Knoblauch hacken.", items: ["Hendlbrust", "Joghurt", "Garam Masala", "Zwiebel", "Knoblauch"] },
+      { icon: "pan", text: "Zwiebel in Butter 4 Minuten anschwitzen, Hendl 6 Minuten mitbraten.", timer: 600, items: ["Butter"] },
+      { icon: "boil", text: "Tomaten und restliches Garam Masala dazu, 10 Minuten köcheln. Schlagobers einrühren.", timer: 600, items: ["Passierte Tomaten", "Schlagobers"] },
+      { icon: "serve", text: "Mit Reis und Koriander servieren.", items: ["Koriander"] }
+    ]
   }
 ];
 
@@ -836,6 +1004,11 @@ const TAGS = {
   kartoffelgulasch: ["fleisch", "topf", "österreichisch"], tantanmen: ["faschiert", "asiatisch", "pasta"],
   kasnocken: ["vegetarisch", "pfanne", "österreichisch"], grenadiermarsch: ["fleisch", "pfanne", "österreichisch", "ei"],
   schinkenfleckerl: ["fleisch", "ofen", "auflauf", "österreichisch", "pasta"], hendlstreifen: ["huhn", "pfanne", "österreichisch", "fingerfood"],
-  griessschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch"], spinatknoedel: ["vegetarisch", "topf", "österreichisch"]
+  griessschmarrn: ["vegetarisch", "süß", "pfanne", "österreichisch"], spinatknoedel: ["vegetarisch", "topf", "österreichisch"],
+  erdaepfelpuffer: ["vegetarisch", "pfanne", "österreichisch", "fingerfood"], hendlrahm: ["huhn", "pfanne", "österreichisch", "rahm", "pasta"],
+  krautfleckerl: ["fleisch", "pfanne", "österreichisch", "pasta"], reisfleisch: ["faschiert", "topf", "onepot", "österreichisch"],
+  putenschnitzel: ["fleisch", "ofen", "österreichisch", "fingerfood"], zucchinipesto: ["vegetarisch", "pasta", "mediterran"],
+  bulgogi: ["faschiert", "pfanne", "asiatisch"], gnocchipfanne: ["vegetarisch", "pfanne", "mediterran"],
+  minitacos: ["huhn", "pfanne", "fingerfood"], butterchicken: ["huhn", "topf", "orientalisch", "rahm"]
 };
 RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
