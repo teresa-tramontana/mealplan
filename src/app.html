@@ -402,6 +402,9 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
 .pp-l { font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
 .pp button { width: 30px; height: 30px; border: 0; background: var(--bg); color: var(--sage); font-size: 1.1rem; line-height: 1; display: grid; place-items: center; }
 .pp b { min-width: 1.2em; text-align: center; font-variant-numeric: tabular-nums; color: var(--ink); }
+.cart-day { margin: 2px 0 6px; }
+.cart-day svg, .primary svg { width: 15px; height: 15px; }
+.item .buy { white-space: nowrap; }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -454,7 +457,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
 
     <section id="view-shop" hidden>
       <div class="shop-head">
-        <button class="primary" id="copy-list">Liste kopieren</button>
+        <button class="primary" id="cart-week" type="button">Woche in den Gurkerl-Warenkorb</button>
+        <button class="ghost" id="copy-list">Liste kopieren</button>
         <button class="ghost" id="reset-list">Haken zurücksetzen</button>
         <div class="seg" role="group" aria-label="Ansicht der Einkaufsliste">
           <button id="shop-all" type="button" aria-pressed="true">Alles</button>
@@ -464,7 +468,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       <div id="deals-note"></div>
       <div class="shop-grid" id="shop-grid"></div>
       <div class="note">
-        <b>So bestellst du bei Gurkerl:</b> Tippe neben jeder Zutat auf „Gurkerl“. Die passende Suche öffnet sich, du legst das Produkt in den Warenkorb und hakst es hier ab. Zum Schluss bei Gurkerl auf Bestellen.
+        <b>So kommt alles in den Gurkerl-Warenkorb:</b> „Woche in den Gurkerl-Warenkorb“ (oder in der Ansicht „Nach Tagen“ der Knopf beim Tag) öffnet Claude mit einem fertigen Auftrag. Du schickst ihn nur ab, Claude legt alles über deine Gurkerl-Verbindung in den Warenkorb. Einzelne Zutaten: „+ Gurkerl“ öffnet das Produkt bei Gurkerl. Bestellen machst immer du selbst.
         <div class="shops">
           <a href="https://www.gurkerl.at" target="_blank" rel="noopener">Gurkerl öffnen</a>
           <a href="https://keep.google.com" target="_blank" rel="noopener">Google Notizen</a>
@@ -715,7 +719,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   // Eine Zeile der Einkaufsliste (gleicher Haken in beiden Ansichten, weil der Schlüssel Name|Einheit ist)
   function itemRow(i, isP, idp) {
     const on = isP ? !!pantryBuy[i.key] : !!checked[i.key];
-    return `<label class="item${!isP && on ? " done" : ""}"><input type="checkbox" id="chk-${idp}${esc(i.key)}" data-key="${esc(i.key)}" data-p="${isP ? 1 : 0}" ${on ? "checked" : ""}><span class="n">${esc(i.name)}</span><span class="q">${fmtQty(i.qty, i.unit)}</span>${isP ? "" : `<a class="buy" href="${gurkerl(i.name)}" target="_blank" rel="noopener" title="${esc(i.name)} bei Gurkerl suchen">Gurkerl</a>`}</label>${!isP && !on ? dealsFor(i.name).map(dealLine).join("") : ""}`;
+    return `<label class="item${!isP && on ? " done" : ""}"><input type="checkbox" id="chk-${idp}${esc(i.key)}" data-key="${esc(i.key)}" data-p="${isP ? 1 : 0}" ${on ? "checked" : ""}><span class="n">${esc(i.name)}</span><span class="q">${fmtQty(i.qty, i.unit)}</span>${isP ? "" : `<a class="buy" href="${gurkerl(i.name)}" target="_blank" rel="noopener" title="${esc(i.name)} bei Gurkerl öffnen und in den Warenkorb legen" aria-label="${esc(i.name)} bei Gurkerl in den Warenkorb">+ Gurkerl</a>`}</label>${!isP && !on ? dealsFor(i.name).map(dealLine).join("") : ""}`;
   }
   function renderShop() {
     const list = buildList();
@@ -731,7 +735,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
         const r = byId[id];
         const own = r.ingredients.filter(x => x[3] !== "pantry").map(([name, qty, unit, aisle]) => ({ key: name + "|" + unit, name, unit, aisle, qty: sc(qty, unit) }));
         const pantry = r.ingredients.filter(x => x[3] === "pantry").map(x => x[0]);
-        return `<div class="aisle dayblock"><h3>${DAYS[d]}</h3><p class="dish">${esc(r.name)}</p>${own.map(i => itemRow(i, false, d + "-")).join("")}${pantry.length ? `<p class="from-pantry">Aus dem Vorrat: ${pantry.map(esc).join(", ")}</p>` : ""}</div>`;
+        return `<div class="aisle dayblock"><h3>${DAYS[d]}</h3><p class="dish">${esc(r.name)}</p><button class="mini cart-day" type="button" data-cart-day="${d}">${CART_ICON}${DAYS[d]} in den Gurkerl-Warenkorb</button>${own.map(i => itemRow(i, false, d + "-")).join("")}${pantry.length ? `<p class="from-pantry">Aus dem Vorrat: ${pantry.map(esc).join(", ")}</p>` : ""}</div>`;
       }).join("");
       return;
     }
@@ -753,6 +757,33 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   $("#shop-all").addEventListener("click", () => { shopMode = "all"; store.set("shopMode", shopMode); renderShop(); });
   $("#shop-days").addEventListener("click", () => { shopMode = "days"; store.set("shopMode", shopMode); renderShop(); });
   $("#reset-list").addEventListener("click", () => { checked = {}; store.set("checked", checked); renderShop(); Sync.put("checked", null); toast("Alle Haken entfernt"); });
+
+  // ---------- Gurkerl-Warenkorb über Claude (mit Gurkerl-Connector) ----------
+  const CART_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="9.5" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg>';
+  function cartPrompt(items, label) {
+    const lines = items.map(i => `- ${i.name}${i.qty ? " – " + fmtQty(i.qty, i.unit) : ""}`).join("\n");
+    return `Bitte lege mit meinem Gurkerl-Connector diese Zutaten in meinen Gurkerl-Warenkorb (${label}, Mengen für ${peopleLabel()}). ` +
+      `Wähle jeweils ein passendes Produkt in sinnvoller Packungsgröße, bevorzuge Aktionen und günstige Eigenmarken. ` +
+      `Bitte NICHT bestellen, nur in den Warenkorb legen, und mir danach kurz sagen, was du gewählt hast und was es nicht gab.\n\n${lines}`;
+  }
+  async function sendToCart(items, label) {
+    if (!items.length) { toast("Alles schon abgehakt"); return; }
+    const text = cartPrompt(items, label);
+    let copied = false;
+    try { await navigator.clipboard.writeText(text); copied = true; } catch (e) {}
+    const url = "https://claude.ai/new?q=" + encodeURIComponent(text);
+    const w = window.open(url, "_blank", "noopener");
+    toast(w ? "Claude öffnet sich – nur noch abschicken" : copied ? "Auftrag kopiert – in Claude einfügen" : "Bitte Claude öffnen");
+    if (!w) { const ta = $("#copy-fallback"); ta.hidden = false; ta.value = text; }
+  }
+  const openItems = list => list.filter(i => i.aisle === "pantry" ? pantryBuy[i.key] : !checked[i.key]);
+  $("#cart-week").addEventListener("click", () => sendToCart(openItems(buildList()), "Wocheneinkauf"));
+  $("#shop-grid").addEventListener("click", e => {
+    const b = e.target.closest("[data-cart-day]"); if (!b) return;
+    const d = +b.dataset.cartDay, r = byId[plan[d]];
+    const items = r.ingredients.filter(x => x[3] !== "pantry").map(([name, qty, unit, aisle]) => ({ key: name + "|" + unit, name, unit, aisle, qty: sc(qty, unit) }));
+    sendToCart(items.filter(i => !checked[i.key]), `${DAYS[d]}: ${r.name}`);
+  });
 
   function listText() {
     const list = buildList().filter(i => i.aisle === "pantry" ? pantryBuy[i.key] : !checked[i.key]);
