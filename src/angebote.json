@@ -1883,16 +1883,6 @@
 },
 {
 "markt": "Gurkerl",
-"name": "BIO Trauben weiß, kernlos",
-"menge": "500 g",
-"preis": 2.99,
-"statt": 4.59,
-"hinweis": "-34 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/26233-bio-trauben-weiss-kernlos"
-},
-{
-"markt": "Gurkerl",
 "name": "Karfiol",
 "menge": "1 Stk",
 "preis": 1.89,
@@ -1993,16 +1983,6 @@
 },
 {
 "markt": "Gurkerl",
-"name": "Landliebe Fruchtjoghurt Heidelbeere im Mehrwegglas",
-"menge": "500 g",
-"preis": 1.94,
-"statt": 2.39,
-"hinweis": "-18 %",
-"bis": "2026-10-21",
-"link": "https://www.gurkerl.at/19258-landliebe-fruchtjoghurt-heidelbeere-im-mehrwegglas"
-},
-{
-"markt": "Gurkerl",
 "name": "Ölz Landbrot Dinkel geschnitten",
 "menge": "450 g",
 "preis": 2.7,
@@ -2030,6 +2010,16 @@
 "hinweis": "-33 %",
 "bis": "2026-10-23",
 "link": "https://www.gurkerl.at/43463-pappudia-reispfanne-mit-huhn-mexican-style"
+},
+{
+"markt": "Gurkerl",
+"name": "Freshery Tom Yum mit Shiitake-Pilzen und Gyoza mit Garnelen",
+"menge": "220 g",
+"preis": 3.7,
+"statt": 5.99,
+"hinweis": "-38 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/48164-freshery-tom-yum-mit-shiitake-pilzen-und-gyoza-mit-garnelen"
 },
 {
 "markt": "Gurkerl",

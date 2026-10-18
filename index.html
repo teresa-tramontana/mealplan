@@ -5013,16 +5013,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "BIO Trauben weiß, kernlos",
-"menge": "500 g",
-"preis": 2.99,
-"statt": 4.59,
-"hinweis": "-34 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/26233-bio-trauben-weiss-kernlos"
-},
-{
-"markt": "Gurkerl",
 "name": "Karfiol",
 "menge": "1 Stk",
 "preis": 1.89,
@@ -5123,16 +5113,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Landliebe Fruchtjoghurt Heidelbeere im Mehrwegglas",
-"menge": "500 g",
-"preis": 1.94,
-"statt": 2.39,
-"hinweis": "-18 %",
-"bis": "2026-10-21",
-"link": "https://www.gurkerl.at/19258-landliebe-fruchtjoghurt-heidelbeere-im-mehrwegglas"
-},
-{
-"markt": "Gurkerl",
 "name": "Ölz Landbrot Dinkel geschnitten",
 "menge": "450 g",
 "preis": 2.7,
@@ -5160,6 +5140,16 @@ const ANGEBOTE = {
 "hinweis": "-33 %",
 "bis": "2026-10-23",
 "link": "https://www.gurkerl.at/43463-pappudia-reispfanne-mit-huhn-mexican-style"
+},
+{
+"markt": "Gurkerl",
+"name": "Freshery Tom Yum mit Shiitake-Pilzen und Gyoza mit Garnelen",
+"menge": "220 g",
+"preis": 3.7,
+"statt": 5.99,
+"hinweis": "-38 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/48164-freshery-tom-yum-mit-shiitake-pilzen-und-gyoza-mit-garnelen"
 },
 {
 "markt": "Gurkerl",
@@ -5410,7 +5400,6 @@ const ANGEBOTE = {
         </div>
         <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}${sourceBtns(r, false)}</div>
         <ol class="steps">${r.steps.map(st => `<li>${esc(st.text)}${st.timer ? ` <span class="tm">· ${Math.round(st.timer / 60)} Min.</span>` : ""}</li>`).join("")}</ol>
-        ${r.kid ? `<div class="kid">${esc(r.kid)}</div>` : ""}
       </article>`;
     }).join("");
     store.set("plan", plan);
@@ -5793,7 +5782,7 @@ const ANGEBOTE = {
       <div class="step-text text-in">${esc(s.text)}</div>
       <div class="chips">${(s.items || []).map(x => `<span>${esc(x)}</span>`).join("")}</div>
       ${s.timer ? `<button class="timer" id="p-timer">Kochwecker ${mmss(s.timer)}</button>` : ""}
-      ${last && P.r.kid ? `<div class="step-no" style="opacity:.8">Fürs Kind: ${esc(P.r.kid)}</div>` : ""}`;
+      `;
     if (s.timer) $("#p-timer").onclick = () => startTimer(s.timer);
     document.querySelectorAll(".bars i").forEach((b, k) => { b.className = k < P.i ? "past" : ""; b.firstChild.style.width = k < P.i ? "100%" : "0"; });
     drawToggle(); speak();
@@ -5932,7 +5921,7 @@ const ANGEBOTE = {
     return `${r.name}\n${r.origin} · ${timeLabel(r)} · für ${peopleLabel()}\n\nZutaten:\n` +
       r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(sc(q, u), u) : ""}`).join("\n") +
       `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
-      (r.kid ? `\n\nFürs Kind: ${r.kid}` : "") + (r.source ? `\n\nOriginal-Rezept von ${r.source.name}: ${r.source.url}` + (r.source.instagram ? `\nInstagram: ${r.source.instagram}` : "") : "") + `\n\n${APP_URL}#${r.id}`;
+      (r.source ? `\n\nOriginal-Rezept von ${r.source.name}: ${r.source.url}` + (r.source.instagram ? `\nInstagram: ${r.source.instagram}` : "") : "") + `\n\n${APP_URL}#${r.id}`;
   }
   const LINK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg>';
   const IG_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17" cy="7" r="0.6" fill="currentColor"/></svg>';
@@ -5972,7 +5961,6 @@ const ANGEBOTE = {
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(sc(q, u), u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
       <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
-      ${r.kid ? `<div class="kid"><b>Fürs Kind · </b>${esc(r.kid)}</div>` : ""}
       ${r.source ? `<p class="from-pantry">Rezept frei übersetzt und angepasst nach <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name)}</a>${r.source.instagram ? ` · auf Instagram: <a href="${esc(r.source.instagram)}" target="_blank" rel="noopener">${esc(r.source.handle || "Instagram")}</a>` : ""}.</p>` : ""}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
@@ -5999,7 +5987,7 @@ const ANGEBOTE = {
       <div class="c-img">${plateSVG(r)}${photo(r, cls === "top")}<span class="stamp like">Mag ich</span><span class="stamp nope">Weiter</span>${fits(r) ? '<span class="badge">Passt zu euch</span>' : ""}</div>
       <div class="c-body">${mcTag(r) ? `<div>${mcTag(r)}</div>` : ""}<span class="label">${esc(r.origin)} · ${timeLabel(r)}</span><h2>${esc(r.name)}</h2>
         <div class="tags">${r.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>
-        ${r.kid ? `<p class="kidline">Fürs Kind: ${esc(r.kid)}</p>` : ""}</div></div>`;
+        </div></div>`;
   }
   function renderDeck() {
     const top = deck.slice(0, 3).map(id => byId[id]);
