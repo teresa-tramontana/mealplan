@@ -177,6 +177,9 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .item .buy { flex: none; font-size: 0.74rem; font-weight: 700; color: var(--sage); text-decoration: none; border-radius: 999px; padding: 3px 9px; }
 .item .buy:hover { border-color: var(--sage); }
 .item.sel .n { font-weight: 700; }
+.cart-bar { position: sticky; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: center; margin-top: 18px; z-index: 5; pointer-events: none; }
+.cart-bar button { pointer-events: auto; box-shadow: 0 6px 20px rgba(40,20,25,0.18); } /* taste-skill-ignore: schwebende Leiste */
+.cart-day-sel { margin-left: 6px; }
 .item .incart { flex: none; font-size: 0.72rem; color: var(--olive); white-space: nowrap; }
 .gk-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; padding: 10px 12px; background: var(--surface); margin-bottom: 6px; }
 .gk-row .gk-need { font-weight: 700; font-size: 0.92rem; }
@@ -479,6 +482,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       </div>
       <div id="deals-note"></div>
       <div class="shop-grid" id="shop-grid"></div>
+      <div class="cart-bar" id="cart-bar" hidden><button class="primary" id="cart-sel" type="button"></button></div>
       <div class="note">
         <b>So kommt alles in den Gurkerl-Warenkorb:</b> Hake an, was du brauchst, oder tippe „Alle auswählen“. Dann „Auswahl in den Gurkerl-Warenkorb“. In der Ansicht „Nach Tagen“ geht das auch für einen ganzen Tag, und „+ Gurkerl“ legt eine einzelne Zutat dazu. In der Claude-Version der App suchst du die Produkte direkt aus und sie landen sofort in deinem Warenkorb. Auf der normalen Webseite öffnet sich stattdessen Claude mit einem fertigen Auftrag. Bestellen machst immer du selbst.
         <div class="shops">
@@ -764,6 +768,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     $("#shop-count").textContent = nSel ? " " + nSel : "";
     $("#select-all").textContent = all ? "Auswahl aufheben" : "Alle auswählen";
     $("#cart-week").textContent = nSel ? `${nSel} in den Gurkerl-Warenkorb` : "Auswahl in den Gurkerl-Warenkorb";
+    $("#cart-bar").hidden = !nSel;
+    $("#cart-sel").innerHTML = `${CART_ICON} Nur ${nSel === 1 ? "die 1 Zutat" : `die ${nSel} Zutaten`} mit Hakerl in den Gurkerl-Warenkorb`;
     $("#shop-all").setAttribute("aria-pressed", shopMode === "all"); $("#shop-days").setAttribute("aria-pressed", shopMode === "days");
     $("#shop-grid").classList.toggle("by-day", shopMode === "days");
     if (shopMode === "days") {
@@ -771,7 +777,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
         const r = byId[id];
         const own = r.ingredients.filter(x => x[3] !== "pantry").map(([name, qty, unit, aisle]) => ({ key: name + "|" + unit, name, unit, aisle, qty: sc(qty, unit) }));
         const pantry = r.ingredients.filter(x => x[3] === "pantry").map(x => x[0]);
-        return `<div class="aisle dayblock"><h3>${DAYS[d]}</h3><p class="dish">${esc(r.name)}</p><button class="mini cart-day" type="button" data-cart-day="${d}">${CART_ICON}${DAYS[d]} komplett in den Gurkerl-Warenkorb</button>${own.map(i => itemRow(i, false, d + "-")).join("")}${pantry.length ? `<p class="from-pantry">Aus dem Vorrat: ${pantry.map(esc).join(", ")}</p>` : ""}</div>`;
+        return `<div class="aisle dayblock"><h3>${DAYS[d]}</h3><p class="dish">${esc(r.name)}</p><button class="mini cart-day" type="button" data-cart-day="${d}">${CART_ICON}${DAYS[d]} komplett in den Gurkerl-Warenkorb</button>${(n => n ? `<button class="mini cart-day cart-day-sel" type="button" data-cart-day="${d}" data-only-sel="1">${CART_ICON}Nur ${n} mit Hakerl</button>` : "")(own.filter(i => checked[i.key]).length)}${own.map(i => itemRow(i, false, d + "-")).join("")}${pantry.length ? `<p class="from-pantry">Aus dem Vorrat: ${pantry.map(esc).join(", ")}</p>` : ""}</div>`;
       }).join("");
       return;
     }
@@ -917,6 +923,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   }
   const selItems = list => list.filter(i => i.aisle === "pantry" ? pantryBuy[i.key] : checked[i.key]);
   $("#cart-week").addEventListener("click", () => sendToCart(selItems(buildList()), "Deine Auswahl"));
+  $("#cart-sel").addEventListener("click", () => sendToCart(selItems(buildList()), "Zutaten mit Hakerl"));
   $("#shop-grid").addEventListener("click", e => {
     const one = e.target.closest("[data-buy]");
     if (one && gkMcp) {
@@ -928,7 +935,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     const b = e.target.closest("[data-cart-day]"); if (!b) return;
     const d = +b.dataset.cartDay, r = byId[plan[d]];
     const items = r.ingredients.filter(x => x[3] !== "pantry").map(([name, qty, unit, aisle]) => ({ key: name + "|" + unit, name, unit, aisle, qty: sc(qty, unit) }));
-    sendToCart(items, `${DAYS[d]}: ${r.name}`);
+    const only = b.dataset.onlySel === "1";
+    sendToCart(only ? items.filter(i => checked[i.key]) : items, `${DAYS[d]}: ${r.name}${only ? " (mit Hakerl)" : ""}`);
   });
 
   function listText() {
