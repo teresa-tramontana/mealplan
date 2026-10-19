@@ -13,6 +13,136 @@
 },
 {
 "markt": "BILLA",
+"name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-abby-kekse-mit-vanille-und-hafer-00734561"
+},
+{
+"markt": "BILLA",
+"name": "Sesamstrasse Krümelmonster Kekse mit Schokostückchen",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-kruemelmonster-kekse-mit-schokostueckchen-00734562"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel-Birne-Kirsche",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
+},
+{
+"markt": "BILLA",
+"name": "Fruchtbar Bio Herznudeln",
+"menge": "300 g",
+"preis": 1.19,
+"statt": 2.37,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel mit Banane & Dinkel",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Maroni gegart",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 1.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
+},
+{
+"markt": "BILLA",
+"name": "SanLucar Mandarinen gelegt",
+"menge": "1 kg",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sanlucar-mandarinen-gelegt-0089073"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Cranberries",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 3.59,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-cranberries-00940498"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Kokos Chips Geröstet",
+"menge": "100 g",
+"preis": 1.49,
+"statt": 1.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-kokos-chips-geroestet-00774966"
+},
+{
+"markt": "BILLA",
+"name": "Pesendorfer Saurer Apfel",
+"menge": "200 g",
+"preis": 2.99,
+"statt": 5.09,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/pesendorfer-saurer-apfel-00502027"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Bio Gojibeeren",
+"menge": "100 g",
+"preis": 2.69,
+"statt": 3.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
+},
+{
+"markt": "BILLA",
 "name": "Laugenfussball",
 "menge": "90 g",
 "preis": 0.46,
@@ -263,133 +393,303 @@
 },
 {
 "markt": "BILLA",
-"name": "Ja! Natürlich Maroni gegart",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 1.99,
-"hinweis": "ab 2 Packungen",
+"name": "Berger Traditionsbeinschinken",
+"menge": "1000 g",
+"preis": 24.5,
+"statt": 26.9,
+"hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
+"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
 },
 {
 "markt": "BILLA",
-"name": "SanLucar Mandarinen gelegt",
-"menge": "1 kg",
-"preis": 3.99,
+"name": "Hofstädter Saunaschinken",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Wiener Heurigen Aufschnitt",
+"menge": "180 g",
+"preis": 4.49,
 "statt": 4.99,
 "hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/sanlucar-mandarinen-gelegt-0089073"
+"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
 },
 {
 "markt": "BILLA",
-"name": "Alnatura Feigen",
-"menge": "250 g",
-"preis": 2.49,
-"statt": 5.49,
+"name": "Neuburger",
+"menge": "1000 g",
+"preis": 18.9,
+"statt": 22.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/neuburger-00441152"
+},
+{
+"markt": "BILLA",
+"name": "Puten Extrawurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
 "hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
 },
 {
 "markt": "BILLA",
-"name": "Alnatura Apfel Chips",
-"menge": "70 g",
+"name": "Stastnik Farmer Putenbrust",
+"menge": "1000 g",
+"preis": 20.9,
+"statt": 22.5,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis mild",
+"menge": "80 g",
 "preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Cranberries",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 3.59,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-cranberries-00940498"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Kokos Chips Geröstet",
-"menge": "100 g",
-"preis": 1.49,
-"statt": 1.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-kokos-chips-geroestet-00774966"
-},
-{
-"markt": "BILLA",
-"name": "Pesendorfer Saurer Apfel",
-"menge": "200 g",
-"preis": 2.99,
-"statt": 5.09,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/pesendorfer-saurer-apfel-00502027"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Bio Gojibeeren",
-"menge": "100 g",
-"preis": 2.69,
-"statt": 3.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
-},
-{
-"markt": "BILLA",
-"name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
-"menge": "7",
-"preis": 1.4,
 "statt": 2.79,
-"hinweis": "",
+"hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/sesamstrasse-abby-kekse-mit-vanille-und-hafer-00734561"
+"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
 },
 {
 "markt": "BILLA",
-"name": "Sesamstrasse Krümelmonster Kekse mit Schokostückchen",
-"menge": "7",
-"preis": 1.4,
-"statt": 2.79,
-"hinweis": "",
+"name": "Hofstädter Schweinschnitzel geschnitten",
+"menge": "400 g",
+"preis": 3.99,
+"statt": 5.2,
+"hinweis": "ab 2 Tassen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/sesamstrasse-kruemelmonster-kekse-mit-schokostueckchen-00734562"
+"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
 },
 {
 "markt": "BILLA",
-"name": "Alnatura Apfel-Birne-Kirsche",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
-},
-{
-"markt": "BILLA",
-"name": "Fruchtbar Bio Herznudeln",
+"name": "Radatz Bauernblutwurst",
 "menge": "300 g",
-"preis": 1.19,
-"statt": 2.37,
-"hinweis": "",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
 "bis": null,
-"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
+"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
 },
 {
 "markt": "BILLA",
-"name": "Alnatura Apfel mit Banane & Dinkel",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
+"name": "Puten Pikantwurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
 "hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
+"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Pariserkranzl",
+"menge": "250 g",
+"preis": 3.19,
+"statt": 3.79,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Prater Stelze geschnitten",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.59,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter AMA Suppenmix Rind",
+"menge": "1 kg",
+"preis": 14.99,
+"statt": 15.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Pusztawürstel",
+"menge": "250 g",
+"preis": 4.29,
+"statt": 5.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Leberpastete  Cranberry",
+"menge": "125 g",
+"preis": 1.49,
+"statt": 1.66,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Kaminwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis scharf",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Gipfel Stangerl",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Chiliwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Wienerwurst",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 26.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst Pikant",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Toscano",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Milde Tyrolini 4x40g",
+"menge": "160 g",
+"preis": 3.99,
+"statt": 4.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Cremona",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Antipasto Misto",
+"menge": "150 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
+},
+{
+"markt": "BILLA",
+"name": "Krainer",
+"menge": "300 g",
+"preis": 4.49,
+"statt": 5.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/krainer-00435839"
+},
+{
+"markt": "BILLA",
+"name": "Gebratene Käsewurst",
+"menge": "80 g",
+"preis": 2.99,
+"statt": 3.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
+},
+{
+"markt": "BILLA",
+"name": "Hühner Käsekrainer",
+"menge": "250 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Fair zum Tier Polnische Spezial",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 25.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
 },
 {
 "markt": "BILLA",
@@ -1513,306 +1813,6 @@
 },
 {
 "markt": "BILLA",
-"name": "Berger Traditionsbeinschinken",
-"menge": "1000 g",
-"preis": 24.5,
-"statt": 26.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Saunaschinken",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Wiener Heurigen Aufschnitt",
-"menge": "180 g",
-"preis": 4.49,
-"statt": 4.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
-},
-{
-"markt": "BILLA",
-"name": "Neuburger",
-"menge": "1000 g",
-"preis": 18.9,
-"statt": 22.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/neuburger-00441152"
-},
-{
-"markt": "BILLA",
-"name": "Puten Extrawurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
-},
-{
-"markt": "BILLA",
-"name": "Stastnik Farmer Putenbrust",
-"menge": "1000 g",
-"preis": 20.9,
-"statt": 22.5,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
-},
-{
-"markt": "BILLA",
-"name": "Sorger Salanettis mild",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Schweinschnitzel geschnitten",
-"menge": "400 g",
-"preis": 3.99,
-"statt": 5.2,
-"hinweis": "ab 2 Tassen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Bauernblutwurst",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
-},
-{
-"markt": "BILLA",
-"name": "Puten Pikantwurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Pariserkranzl",
-"menge": "250 g",
-"preis": 3.19,
-"statt": 3.79,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Prater Stelze geschnitten",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.59,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter AMA Suppenmix Rind",
-"menge": "1 kg",
-"preis": 14.99,
-"statt": 15.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Pusztawürstel",
-"menge": "250 g",
-"preis": 4.29,
-"statt": 5.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Leberpastete  Cranberry",
-"menge": "125 g",
-"preis": 1.49,
-"statt": 1.66,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Kaminwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
-},
-{
-"markt": "BILLA",
-"name": "Sorger Salanettis scharf",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Gipfel Stangerl",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Chiliwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Wienerwurst",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 26.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst Pikant",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Toscano",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Milde Tyrolini 4x40g",
-"menge": "160 g",
-"preis": 3.99,
-"statt": 4.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Cremona",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Antipasto Misto",
-"menge": "150 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
-},
-{
-"markt": "BILLA",
-"name": "Krainer",
-"menge": "300 g",
-"preis": 4.49,
-"statt": 5.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/krainer-00435839"
-},
-{
-"markt": "BILLA",
-"name": "Gebratene Käsewurst",
-"menge": "80 g",
-"preis": 2.99,
-"statt": 3.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
-},
-{
-"markt": "BILLA",
-"name": "Hühner Käsekrainer",
-"menge": "250 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Fair zum Tier Polnische Spezial",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 25.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
-},
-{
-"markt": "BILLA",
 "name": "MAGGI Magic Asia Noodle Cup Chicken Taste",
 "menge": "63 g",
 "preis": 1.32,
@@ -1913,16 +1913,6 @@
 },
 {
 "markt": "Gurkerl",
-"name": "Anker Weißbrot geschnitten",
-"menge": "500 g",
-"preis": 2.31,
-"statt": 2.89,
-"hinweis": "-20 %",
-"bis": "2026-10-20",
-"link": "https://www.gurkerl.at/24263-anker-weissbrot-geschnitten"
-},
-{
-"markt": "Gurkerl",
 "name": "Süßes von Ulreich Marillenkuchen vegan",
 "menge": "200 g",
 "preis": 4.79,
@@ -1930,6 +1920,16 @@
 "hinweis": "-20 %",
 "bis": "2026-10-22",
 "link": "https://www.gurkerl.at/21035-suesses-von-ulreich-marillenkuchen-vegan"
+},
+{
+"markt": "Gurkerl",
+"name": "Anker Weißbrot geschnitten",
+"menge": "500 g",
+"preis": 2.31,
+"statt": 2.89,
+"hinweis": "-20 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/24263-anker-weissbrot-geschnitten"
 },
 {
 "markt": "Gurkerl",
@@ -1963,16 +1963,6 @@
 },
 {
 "markt": "Gurkerl",
-"name": "Süßes von Ulreich Sacherschnitte",
-"menge": "240 g",
-"preis": 5.59,
-"statt": 6.99,
-"hinweis": "-20 %",
-"bis": "2026-10-22",
-"link": "https://www.gurkerl.at/21038-suesses-von-ulreich-sacherschnitte"
-},
-{
-"markt": "Gurkerl",
 "name": "Süßes von Ulreich Mini-Mini Schaumrollen",
 "menge": "330 g",
 "preis": 19.99,
@@ -1980,6 +1970,16 @@
 "hinweis": "-20 %",
 "bis": "2026-10-27",
 "link": "https://www.gurkerl.at/21018-suesses-von-ulreich-mini-mini-schaumrollen"
+},
+{
+"markt": "Gurkerl",
+"name": "Süßes von Ulreich Sacherschnitte",
+"menge": "240 g",
+"preis": 5.59,
+"statt": 6.99,
+"hinweis": "-20 %",
+"bis": "2026-10-22",
+"link": "https://www.gurkerl.at/21038-suesses-von-ulreich-sacherschnitte"
 },
 {
 "markt": "Gurkerl",
@@ -2003,26 +2003,6 @@
 },
 {
 "markt": "Gurkerl",
-"name": "Miil Mozzarella laktosefrei",
-"menge": "120 g",
-"preis": 1.54,
-"statt": 1.89,
-"hinweis": "-18 %",
-"bis": "2026-10-21",
-"link": "https://www.gurkerl.at/43256-miil-mozzarella-laktosefrei"
-},
-{
-"markt": "Gurkerl",
-"name": "Graf Backofen Leberkäse 2 Scheiben",
-"menge": "ca. 450 g",
-"preis": 4.11,
-"statt": 5.56,
-"hinweis": "-26 %",
-"bis": "2026-10-22",
-"link": "https://www.gurkerl.at/33749-graf-backofen-leberkaese-2-scheiben"
-},
-{
-"markt": "Gurkerl",
 "name": "FJORU BIO Dorade im Ganzen",
 "menge": "ca. 360 g",
 "preis": 6.41,
@@ -2030,16 +2010,6 @@
 "hinweis": "-31 %",
 "bis": "2026-10-20",
 "link": "https://www.gurkerl.at/19049-fjoru-bio-dorade-im-ganzen"
-},
-{
-"markt": "Gurkerl",
-"name": "Fish? Fresh! Schottisches Label Rouge Lachs Filet mit Haut",
-"menge": "200 g",
-"preis": 11.59,
-"statt": 13.99,
-"hinweis": "-17 %",
-"bis": "2026-10-20",
-"link": "https://www.gurkerl.at/16637-fish-fresh-schottisches-label-rouge-lachs-filet-mit-haut"
 },
 {
 "markt": "Gurkerl",
@@ -2053,13 +2023,33 @@
 },
 {
 "markt": "Gurkerl",
-"name": "Casa di Pietro Burratina",
-"menge": "100 g",
-"preis": 2.02,
-"statt": 2.49,
+"name": "Miil Mozzarella laktosefrei",
+"menge": "120 g",
+"preis": 1.54,
+"statt": 1.89,
 "hinweis": "-18 %",
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/43256-miil-mozzarella-laktosefrei"
+},
+{
+"markt": "Gurkerl",
+"name": "Fish? Fresh! Schottisches Label Rouge Lachs Filet mit Haut",
+"menge": "200 g",
+"preis": 11.59,
+"statt": 13.99,
+"hinweis": "-17 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/16637-fish-fresh-schottisches-label-rouge-lachs-filet-mit-haut"
+},
+{
+"markt": "Gurkerl",
+"name": "Graf Backofen Leberkäse 2 Scheiben",
+"menge": "ca. 450 g",
+"preis": 4.11,
+"statt": 5.56,
+"hinweis": "-26 %",
 "bis": "2026-10-22",
-"link": "https://www.gurkerl.at/43457-casa-di-pietro-burratina"
+"link": "https://www.gurkerl.at/33749-graf-backofen-leberkaese-2-scheiben"
 },
 {
 "markt": "Gurkerl",
@@ -2083,6 +2073,16 @@
 },
 {
 "markt": "Gurkerl",
+"name": "Casa di Pietro Burratina",
+"menge": "100 g",
+"preis": 2.02,
+"statt": 2.49,
+"hinweis": "-18 %",
+"bis": "2026-10-22",
+"link": "https://www.gurkerl.at/43457-casa-di-pietro-burratina"
+},
+{
+"markt": "Gurkerl",
 "name": "Berger AMA Suppentasse Rindfleisch/Knochen/Suppengrün",
 "menge": "ca. 0,97 kg",
 "preis": 16.72,
@@ -2090,16 +2090,6 @@
 "hinweis": "-21 %",
 "bis": "2026-10-20",
 "link": "https://www.gurkerl.at/9419-berger-ama-suppentasse-rindfleisch-knochen-suppengruen"
-},
-{
-"markt": "Gurkerl",
-"name": "Pappudia Penne Bolognese",
-"menge": "330 g",
-"preis": 1.75,
-"statt": 2.99,
-"hinweis": "-41 %",
-"bis": "2026-10-23",
-"link": "https://www.gurkerl.at/43466-pappudia-penne-bolognese"
 },
 {
 "markt": "Gurkerl",
@@ -2120,6 +2110,16 @@
 "hinweis": "-14 %",
 "bis": "2026-10-21",
 "link": "https://www.gurkerl.at/21906-wech-huehnerbrust-gegrillt-und-geschnitten"
+},
+{
+"markt": "Gurkerl",
+"name": "Pappudia Penne Bolognese",
+"menge": "330 g",
+"preis": 1.75,
+"statt": 2.99,
+"hinweis": "-41 %",
+"bis": "2026-10-23",
+"link": "https://www.gurkerl.at/43466-pappudia-penne-bolognese"
 }
 ]
 }
