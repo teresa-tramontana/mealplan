@@ -473,6 +473,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
 .rate-at, .rate-hint { margin: 0; font-size: 0.8rem; color: var(--muted); }
 .rate-btn svg { width: 14px; height: 14px; fill: currentColor; }
 .rate-btn.on { color: var(--sage); }
+.shop-head button:disabled { opacity: 0.45; cursor: default; }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -527,6 +528,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     <section id="view-shop" hidden>
       <div class="shop-head">
         <button class="ghost" id="select-all" type="button">Alle auswählen</button>
+        <button class="ghost" id="select-none" type="button">Auswahl aufheben</button>
         <button class="primary" id="cart-week" type="button">Auswahl in den Gurkerl-Warenkorb</button>
         <button class="ghost" id="copy-list">Liste kopieren</button>
         <div class="seg" role="group" aria-label="Ansicht der Einkaufsliste">
@@ -895,7 +897,8 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     const order = ["veg", "fresh", "meat", "frozen", "dry", "bread", "pantry"];
     const nSel = selItems(list).length, all = list.filter(i => i.aisle !== "pantry").every(i => checked[i.key]);
     $("#shop-count").textContent = nSel ? " " + nSel : "";
-    $("#select-all").textContent = all ? "Auswahl aufheben" : "Alle auswählen";
+    $("#select-all").disabled = all;
+    $("#select-none").disabled = !nSel;
     $("#cart-week").textContent = nSel ? `${nSel} in den Gurkerl-Warenkorb` : "Auswahl in den Gurkerl-Warenkorb";
     $("#cart-bar").hidden = !nSel;
     $("#cart-sel").innerHTML = `${CART_ICON} Nur ${nSel === 1 ? "die 1 Zutat" : `die ${nSel} Zutaten`} mit Hakerl in den Gurkerl-Warenkorb`;
@@ -927,11 +930,19 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     renderShop();
   });
   SHOP_MODES.forEach(m => $("#shop-" + m).addEventListener("click", () => { shopMode = m; store.set("shopMode", shopMode); renderShop(); }));
+  // Alle Zutaten der aktuellen Ansicht anhaken bzw. alle Hakerl entfernen
   $("#select-all").addEventListener("click", () => {
-    const list = shopList().filter(i => i.aisle !== "pantry"), all = list.every(i => checked[i.key]);
-    checked = {}; if (!all) list.forEach(i => { checked[i.key] = true; });
-    store.set("checked", checked); Sync.put("checked", all ? null : checked); renderShop();
-    toast(all ? "Auswahl aufgehoben" : `${list.length} Zutaten ausgewählt`);
+    const list = shopList().filter(i => i.aisle !== "pantry");
+    list.forEach(i => { checked[i.key] = true; });
+    store.set("checked", checked); Sync.put("checked", checked); renderShop();
+    toast(`${list.length} Zutaten ausgewählt`);
+  });
+  $("#select-none").addEventListener("click", () => {
+    const list = shopList();
+    list.forEach(i => { delete checked[i.key]; delete pantryBuy[i.key]; });
+    store.set("checked", checked); store.set("pantryBuy", pantryBuy);
+    Sync.put("checked", Object.keys(checked).length ? checked : null); Sync.put("pantryBuy", Object.keys(pantryBuy).length ? pantryBuy : null);
+    renderShop(); toast("Alle Hakerl entfernt");
   });
 
   // ---------- Gurkerl-Warenkorb über Claude (mit Gurkerl-Connector) ----------
