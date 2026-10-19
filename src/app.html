@@ -678,7 +678,9 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   function stepAmount(q, u) {
     if (!q) return "";
     const v = sc(q, u);
-    return /^(stk|stück)$/i.test(u) ? half(v) : /^(zehe|zehen|bund|dose|dosen|packung|packungen|el|tl|scheiben?|becher|glas)$/i.test(u) ? half(v) + " " + u : fmtQty(v, u);
+    const pl = { Zehe: "Zehen", Dose: "Dosen", Packung: "Packungen", Scheibe: "Scheiben", Becher: "Becher", Glas: "Gläser" };
+    const unit = v > 1 && pl[u] ? pl[u] : u;
+    return /^(stk|stück)$/i.test(u) ? half(v) : /^(zehe|zehen|bund|dose|dosen|packung|packungen|el|tl|scheiben?|becher|glas)$/i.test(u) ? half(v) + " " + unit : fmtQty(v, u);
   }
   // Für Rezepte ohne {Zutat} (z. B. Master Chef): Zutaten finden, die im Schritt vorkommen
   const ingWord = n => (n.toLowerCase().replace(/\(.*?\)/g, "").split(/[\s,-]+/).filter(w => w.length > 3 && !STOP.has(w)).pop() || n.toLowerCase());

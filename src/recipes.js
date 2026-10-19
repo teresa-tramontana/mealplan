@@ -969,6 +969,26 @@ const RECIPES = [
       { icon: "boil", text: "Tomaten und restliches Garam Masala dazu, 10 Minuten köcheln. Schlagobers einrühren.", timer: 600, items: ["Passierte Tomaten", "Schlagobers"] },
       { icon: "serve", text: "Mit Reis und Koriander servieren.", items: ["Koriander"] }
     ]
+  },
+  {
+    id: "misoahornhendl", name: "Miso-Ahorn-Hendl vom Blech mit Erdäpfeln", origin: "USA", flag: "US", time: 15, wait: 40,
+    colors: ["#C8743F", "#F4ECDF", "#E9C98E", "#8FAE7F"], kid: "",
+    source: { name: "Carolina Gelen", url: "https://www.instagram.com/carolinagelen/", instagram: "https://www.instagram.com/carolinagelen/", handle: "@carolinagelen" },
+    ingredients: [
+      ["Hendl-Oberkeulen ohne Knochen", 600, "g", "meat"], ["Erdäpfel festkochend", 700, "g", "veg"], ["Zwiebeln", 2, "Stk", "veg"],
+      ["Knoblauch", 2, "Zehe", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Helle Misopaste", 2, "EL", "fresh"],
+      ["Ahornsirup", 3, "EL", "pantry"], ["Sojasauce (salzreduziert)", 1, "EL", "pantry"], ["Olivenöl", 3, "EL", "pantry"], ["Sesam", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "oven", text: "Heize den Ofen auf 220 Grad Ober-/Unterhitze vor. Lege ein großes Backblech mit Backpapier aus." },
+      { icon: "mix", text: "Rühre in einer großen Schüssel {Helle Misopaste}, {Ahornsirup}, {Sojasauce (salzreduziert)} und {Olivenöl} glatt. Presse {Knoblauch} mit der Knoblauchpresse dazu und rühre um. Das ist die Miso-Ahorn-Sauce." },
+      { icon: "chop", text: "Wasche {Erdäpfel festkochend} gründlich, schälen musst du sie nicht. Schneide sie in etwa 2 cm große Stücke. Schäle {Zwiebeln} und schneide sie in dicke Spalten (jede Zwiebel in 8 Teile)." },
+      { icon: "mix", text: "Gib Erdäpfel und Zwiebeln in die Schüssel und mische sie mit gut zwei Dritteln der Sauce, bis alles glänzt. Verteile sie in einer Lage auf dem Blech." },
+      { icon: "mix", text: "Tupfe {Hendl-Oberkeulen ohne Knochen} mit Küchenpapier trocken. Wende sie in der restlichen Sauce in der Schüssel und lege sie flach auf die Erdäpfel." },
+      { icon: "oven", text: "Schiebe das Blech auf die mittlere Schiene und backe alles 35 bis 40 Minuten, bis die Erdäpfel weich und an den Rändern dunkelbraun und klebrig sind und das Hendl innen nicht mehr rosa ist.", timer: 2400 },
+      { icon: "chop", text: "Schneide in der Zwischenzeit {Frühlingszwiebeln} in feine Ringe." },
+      { icon: "serve", text: "Verteile Hendl und Erdäpfel auf Teller oder Schüsseln. Streue die Frühlingszwiebeln und {Sesam} darüber." }
+    ]
   }
 ];
 
@@ -1009,6 +1029,7 @@ const TAGS = {
   krautfleckerl: ["fleisch", "pfanne", "österreichisch", "pasta"], reisfleisch: ["faschiert", "topf", "onepot", "österreichisch"],
   putenschnitzel: ["fleisch", "ofen", "österreichisch", "fingerfood"], zucchinipesto: ["vegetarisch", "pasta", "mediterran"],
   bulgogi: ["faschiert", "pfanne", "asiatisch"], gnocchipfanne: ["vegetarisch", "pfanne", "mediterran"],
-  minitacos: ["huhn", "pfanne", "fingerfood"], butterchicken: ["huhn", "topf", "orientalisch", "rahm"]
+  minitacos: ["huhn", "pfanne", "fingerfood"], butterchicken: ["huhn", "topf", "orientalisch", "rahm"],
+  misoahornhendl: ["huhn", "ofen", "asiatisch", "onepot"]
 };
 RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
