@@ -1833,6 +1833,2400 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
   ].forEach(add);
 })();
 
+const DETAIL_STEPS = {
+ "lachs": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor. Lege ein Backblech mit Backpapier aus."
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Kleine Kartoffeln (Drillinge)} gründlich. Du musst sie nicht schälen. Schneide jede Kartoffel der Länge nach in zwei Hälften."
+  },
+  {
+   "icon": "oven",
+   "text": "Lege die Kartoffeln mit der Schnittfläche nach unten auf das Blech. Träufle {Olivenöl} darüber und streue 1 Prise Salz darauf. Schiebe das Blech auf die mittlere Schiene und backe die Kartoffeln 10 Minuten.",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Zitrone} heiß ab und schneide sie in dünne Scheiben. Spüle {Lachsfilet} kurz kalt ab und tupfe es mit Küchenpapier trocken."
+  },
+  {
+   "icon": "oven",
+   "text": "Hol das Blech heraus und schiebe die Kartoffeln etwas zur Seite. Lege den Lachs mit der Hautseite nach unten in die Mitte und lege die Zitronenscheiben darauf. Backe alles noch 12 Minuten, bis der Lachs innen hellrosa ist und sich leicht mit der Gabel zerteilen lässt.",
+   "timer": 720
+  },
+  {
+   "icon": "boil",
+   "text": "Bring in einem kleinen Topf 500 ml Wasser zum Kochen. Gib {Erbsen} hinein und koche sie bei mittlerer Hitze 3 Minuten, bis sie weich und leuchtend grün sind. Gieße sie in einem Sieb ab.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Wasche {Dill}, schüttle ihn trocken und hacke ihn fein. Verrühre ihn in einer kleinen Schüssel mit {Naturjoghurt}."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile Kartoffeln, Lachs und Erbsen auf die Teller. Gib den Dill-Joghurt daneben."
+  }
+ ],
+ "teriyaki": [
+  {
+   "icon": "rice",
+   "text": "Spüle {Sushi- oder Jasminreis} in einem Sieb mit kaltem Wasser ab, bis das Wasser klar ist. Gib ihn mit der doppelten Menge Wasser (etwa 500 ml) in einen mittleren Topf und bring alles zum Kochen. Stell auf kleine Flamme, leg den Deckel auf und lass den Reis 15 Minuten leise köcheln, bis das Wasser aufgesogen ist.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Tupfe {Hähnchenbrust} trocken und schneide sie in etwa 2 cm große Würfel."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne bei mittlerer bis starker Hitze. Brate die Hähnchenwürfel darin 8 Minuten rundum an, bis sie goldbraun sind und innen kein rosa mehr zu sehen ist.",
+   "timer": 480
+  },
+  {
+   "icon": "boil",
+   "text": "Bring in einem kleinen Topf 500 ml Wasser zum Kochen. Gib {Edamame} hinein und koche sie 4 Minuten. Gieße sie in einem Sieb ab.",
+   "timer": 240
+  },
+  {
+   "icon": "mix",
+   "text": "Verrühre in einer Tasse {Sojasauce (salzreduziert)}, {Honig} und 3 EL Wasser. Gieße die Mischung zum Hähnchen in die Pfanne und rühre 1 bis 2 Minuten weiter, bis die Sauce leicht eindickt und das Fleisch glänzt."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Karotten} und schneide sie in dünne Stifte. Wasche {Gurke} und schneide sie ebenfalls in dünne Stifte."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile den Reis auf Schalen. Lege Hähnchen, Edamame, Karotten und Gurke darauf und streue {Sesam} darüber."
+  }
+ ],
+ "dal": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und schneide sie in feine Würfel. Schäle {Knoblauch} und presse ihn mit der Knoblauchpresse. Schäle {Ingwer} mit einem Löffel und reibe ihn fein."
+  },
+  {
+   "icon": "rice",
+   "text": "Spüle {Basmatireis} in einem Sieb ab. Gib ihn mit 400 ml Wasser und 1 Prise Salz in einen kleinen Topf und bring ihn zum Kochen. Stell auf kleine Flamme, leg den Deckel auf und lass ihn 12 Minuten quellen.",
+   "timer": 720
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einem großen Topf bei mittlerer Hitze. Gib Zwiebel, Knoblauch, Ingwer und {Currypulver mild} hinein und dünste alles unter Rühren 3 Minuten an, bis die Zwiebel glasig ist.",
+   "timer": 180
+  },
+  {
+   "icon": "boil",
+   "text": "Spüle {Rote Linsen} in einem Sieb ab. Gib sie mit {Gehackte Tomaten}, {Kokosmilch} und 300 ml Wasser in den Topf. Bring alles zum Kochen und lass es dann bei kleiner Flamme 15 Minuten köcheln, bis die Linsen weich und zerfallen sind. Rühre ab und zu um, damit nichts anbrennt.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Wasche {Babyspinat} und rühre ihn unter das Dal. Rühre 1 Minute weiter, bis der Spinat zusammenfällt."
+  },
+  {
+   "icon": "serve",
+   "text": "Lockere den Reis mit einer Gabel auf. Verteile ihn auf Teller und gib das Dal daneben."
+  }
+ ],
+ "orzo": [
+  {
+   "icon": "mix",
+   "text": "Gib {Rinderhack}, {Eier} und {Oregano} in eine Schüssel und knete alles mit den Händen gut durch. Forme mit nassen Händen kleine Bällchen, etwa so groß wie eine Walnuss."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne bei mittlerer bis starker Hitze. Brate die Bällchen 6 Minuten rundum an, bis sie braun sind. Nimm sie heraus und stell sie auf einem Teller beiseite.",
+   "timer": 360
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Zucchini}, schneide die Enden ab und schneide sie in 1 cm große Würfel."
+  },
+  {
+   "icon": "pan",
+   "text": "Gib {Orzo (Kritharaki)}, die Zucchini und {Gemüsebrühe (salzarm)} in dieselbe Pfanne. Bring alles zum Kochen und lass es bei mittlerer Hitze 10 Minuten köcheln. Rühre oft um, bis die Orzo weich sind und die Brühe fast aufgesogen ist.",
+   "timer": 600
+  },
+  {
+   "icon": "pan",
+   "text": "Lege die Bällchen zurück in die Pfanne und lass sie 2 Minuten mitwärmen, bis sie innen durch sind und kein rosa mehr zu sehen ist.",
+   "timer": 120
+  },
+  {
+   "icon": "serve",
+   "text": "Presse {Zitrone} aus und träufle den Saft über die Orzo. Zerbrösle {Feta} mit den Fingern darüber und serviere alles direkt aus der Pfanne."
+  }
+ ],
+ "quesadilla": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Süßkartoffel} und schneide sie in sehr kleine Würfel, etwa 1 cm groß."
+  },
+  {
+   "icon": "pan",
+   "text": "Gib die Würfel mit 100 ml Wasser in eine große Pfanne. Leg einen Deckel auf und dünste sie bei mittlerer Hitze 8 Minuten, bis sie ganz weich sind.",
+   "timer": 480
+  },
+  {
+   "icon": "mix",
+   "text": "Gieße {Kidneybohnen} und {Mais} in einem Sieb ab und spüle sie kurz mit Wasser. Gib sie mit {Kreuzkümmel} zur Süßkartoffel. Zerdrücke alles mit einer Gabel grob und füll die Masse in eine Schüssel. Wisch die Pfanne mit Küchenpapier aus."
+  },
+  {
+   "icon": "pan",
+   "text": "Streiche die Masse auf eine Hälfte von {Weizentortillas}. Streue {Geriebener Käse} darüber und klappe die Tortillas zu. Brate sie in der trockenen Pfanne bei mittlerer Hitze je Seite 3 Minuten, bis sie goldbraun sind und der Käse geschmolzen ist. Brate sie nacheinander.",
+   "timer": 360
+  },
+  {
+   "icon": "mix",
+   "text": "Halbiere {Avocado}, entferne den Kern und löffle das Fruchtfleisch in eine Schüssel. Presse {Limette} aus, gib den Saft dazu und zerdrücke alles mit einer Gabel zu einem Dip."
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide die Quesadillas mit einem großen Messer in Dreiecke und serviere sie mit dem Avocado-Dip."
+  }
+ ],
+ "smorrebrod": [
+  {
+   "icon": "boil",
+   "text": "Bring in einem kleinen Topf so viel Wasser zum Kochen, dass {Eier} bedeckt sind. Lege die Eier mit einem Löffel vorsichtig hinein und koche sie 9 Minuten hart.",
+   "timer": 540
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Gurke} und {Radieschen}. Schneide beides in dünne Scheiben."
+  },
+  {
+   "icon": "chop",
+   "text": "Halbiere {Avocado}, entferne den Kern, löffle das Fruchtfleisch heraus und schneide es in dünne Scheiben."
+  },
+  {
+   "icon": "boil",
+   "text": "Gieße das heiße Wasser ab und schrecke die Eier mit kaltem Wasser ab. Schäle sie und schneide sie in Scheiben."
+  },
+  {
+   "icon": "mix",
+   "text": "Bestreiche {Vollkorn-Roggenbrot} mit {Frischkäse}."
+  },
+  {
+   "icon": "serve",
+   "text": "Lege Brot, Eier, Gurke, Radieschen, Avocado und {Räucherlachs} auf eine große Platte. Schneide {Kresse} ab und stell sie dazu. Jeder belegt sein Brot selbst."
+  }
+ ],
+ "thai": [
+  {
+   "icon": "rice",
+   "text": "Spüle {Jasminreis} in einem Sieb ab. Gib ihn mit 500 ml Wasser in einen mittleren Topf und bring ihn zum Kochen. Stell auf kleine Flamme, leg den Deckel auf und lass ihn 15 Minuten quellen.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Zucchini} und reibe sie grob. Drücke sie in einem sauberen Küchentuch kräftig aus. Schneide {Frühlingszwiebeln} in feine Ringe. Schäle {Ingwer} mit einem Löffel und reibe ihn fein."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib {Hähnchen- oder Putenhack}, Zucchini, Frühlingszwiebeln und Ingwer in eine Schüssel und knete alles gut durch. Forme mit nassen Händen kleine Bällchen, etwa so groß wie eine Walnuss."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne bei mittlerer Hitze. Brate die Bällchen 10 Minuten rundum, bis sie goldbraun sind und innen kein rosa mehr zu sehen ist.",
+   "timer": 600
+  },
+  {
+   "icon": "boil",
+   "text": "Teile {Brokkoli} in kleine Röschen. Bring in einem Topf 2 cm hoch Wasser zum Kochen, gib die Röschen in einen Dämpfeinsatz darüber und dämpfe sie mit Deckel 5 Minuten, bis sie weich, aber noch grün sind.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Presse {Limette} aus. Gieße {Kokosmilch} und den Limettensaft zu den Bällchen in die Pfanne und lass alles 2 Minuten leise köcheln.",
+   "timer": 120
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile Reis, Brokkoli und Bällchen auf Teller und gieße die Kokossauce darüber."
+  }
+ ],
+ "pajeon": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Karotten} und schneide sie in feine Streifen. Wasche {Zucchini} und schneide sie ebenfalls in feine Streifen. Schneide {Frühlingszwiebeln} in 4 cm lange Stücke und diese in feine Streifen."
+  },
+  {
+   "icon": "mix",
+   "text": "Verrühre {Mehl}, {Eier} und 200 ml Wasser in einer Schüssel mit dem Schneebesen zu einem glatten Teig. Hebe das Gemüse unter."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne bei mittlerer Hitze. Gib die Hälfte vom Teig hinein und streiche ihn flach. Brate den Pfannkuchen je Seite 4 Minuten goldbraun. Mach mit dem restlichen Teig einen zweiten Pfannkuchen.",
+   "timer": 480
+  },
+  {
+   "icon": "chop",
+   "text": "Tupfe {Tofu natur} mit Küchenpapier trocken und schneide ihn in 1 cm große Würfel."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in der Pfanne bei mittlerer bis starker Hitze. Brate die Tofuwürfel 6 Minuten, wende sie oft, bis sie rundum knusprig und goldbraun sind.",
+   "timer": 360
+  },
+  {
+   "icon": "mix",
+   "text": "Verrühre {Sojasauce (salzreduziert)}, {Sesamöl} und 1 EL Wasser in einer kleinen Schale als Dip."
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide die Pfannkuchen in Stücke. Serviere sie mit dem Tofu und dem Dip."
+  }
+ ],
+ "couscous": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Karotten} und schneide sie in 1 cm große Würfel. Wasche {Zucchini} und schneide sie ebenfalls in 1 cm große Würfel. Schneide {Getrocknete Aprikosen} in kleine Stücke."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne bei mittlerer Hitze. Gib Karotten, Zucchini und {Zimt} hinein und brate alles 6 Minuten unter Rühren, bis das Gemüse weich wird.",
+   "timer": 360
+  },
+  {
+   "icon": "pan",
+   "text": "Gieße {Kichererbsen} in einem Sieb ab und spüle sie kurz. Gib sie mit den Aprikosen in die Pfanne und brate alles weitere 4 Minuten.",
+   "timer": 240
+  },
+  {
+   "icon": "rice",
+   "text": "Erhitze {Gemüsebrühe (salzarm)} im Wasserkocher oder in einem kleinen Topf, bis sie kocht. Gib {Couscous} in eine Schüssel, gieße die heiße Brühe darüber und decke die Schüssel mit einem Teller ab. Lass den Couscous 5 Minuten quellen.",
+   "timer": 300
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Petersilie}, schüttle sie trocken und hacke sie fein."
+  },
+  {
+   "icon": "serve",
+   "text": "Lockere den Couscous mit einer Gabel auf und mische das Gemüse unter. Verteile alles auf Teller, gib {Naturjoghurt} darauf und streue die Petersilie darüber."
+  }
+ ],
+ "erbsenpasta": [
+  {
+   "icon": "boil",
+   "text": "Bring in einem großen Topf 3 Liter Wasser mit 1 TL Salz zum Kochen. Gib {Vollkorn-Pasta} hinein und koche sie bei mittlerer Hitze etwa 10 Minuten, bis sie al dente ist.",
+   "timer": 600
+  },
+  {
+   "icon": "mix",
+   "text": "Wasche {Zitrone} heiß ab und reibe die gelbe Schale fein ab. Reibe {Parmesan} fein. Verrühre in einer großen Schüssel {Ricotta}, die Zitronenschale und den Parmesan."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib 3 Minuten vor Ende der Kochzeit {Erbsen} zu der Pasta in den Topf und koche sie mit.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Schöpfe mit einer Tasse etwa 100 ml Nudelwasser ab. Rühre so viel davon in die Ricotta-Mischung, bis eine cremige Sauce entsteht. Gieße die Pasta mit den Erbsen dann in einem Sieb ab."
+  },
+  {
+   "icon": "serve",
+   "text": "Gib Pasta und Erbsen zur Sauce und mische alles gut. Hebe {Babyspinat} unter, bis er leicht zusammenfällt. Sofort servieren."
+  }
+ ],
+ "fischstaebchen": [
+  {
+   "icon": "boil",
+   "text": "Schäle {Kartoffeln} und schneide sie in 2 cm große Würfel. Gib sie in einen mittleren Topf, bedecke sie mit Wasser und gib 1 Prise Salz dazu. Bring alles zum Kochen und koche die Kartoffeln bei mittlerer Hitze 15 Minuten, bis sie weich sind.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Tupfe {Kabeljaufilet} mit Küchenpapier trocken und schneide es in etwa 2 cm dicke Streifen."
+  },
+  {
+   "icon": "mix",
+   "text": "Stell drei tiefe Teller bereit. Gib {Mehl} in den ersten. Verquirle {Eier} im zweiten mit einer Gabel. Gib {Panko-Brösel} in den dritten. Wende jeden Fischstreifen erst im Mehl, dann im Ei und zuletzt in den Bröseln. Drück die Brösel leicht an."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib 4 Minuten vor Ende der Kochzeit {Erbsen} zu den Kartoffeln in den Topf und koche sie mit.",
+   "timer": 240
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Olivenöl} in einer großen Pfanne bei mittlerer Hitze. Brate die Fischstäbchen je Seite 3 Minuten, bis sie goldbraun sind und der Fisch innen weiß ist. Leg sie auf Küchenpapier.",
+   "timer": 360
+  },
+  {
+   "icon": "mix",
+   "text": "Gieße Kartoffeln und Erbsen in einem Sieb ab und gib sie zurück in den Topf. Zerstampfe alles mit dem Kartoffelstampfer zu einem groben Püree."
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide {Zitrone} in Spalten. Verteile Püree und Fischstäbchen auf Teller und lege die Zitronenspalten dazu."
+  }
+ ],
+ "friedrice": [
+  {
+   "icon": "chop",
+   "text": "Schneide {Hähnchenbrust} in 1 cm große Würfel. Schäle {Karotten} und schneide sie in kleine Würfel. Schneide {Frühlingszwiebeln} in feine Ringe."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne oder einem Wok bei starker Hitze. Brate das Hähnchen 5 Minuten, bis kein rosa mehr zu sehen ist. Gib Karotten und {Erbsen} dazu und brate alles weitere 3 Minuten.",
+   "timer": 480
+  },
+  {
+   "icon": "pan",
+   "text": "Schiebe alles an den Rand der Pfanne. Schlage {Eier} in die freie Mitte und verrühre sie mit dem Pfannenwender, bis sie gestockt sind. Mische sie dann unter das Gemüse."
+  },
+  {
+   "icon": "rice",
+   "text": "Gib {Express-Reis (vorgegart)} in die Pfanne, zerdrücke Klumpen mit dem Pfannenwender und brate alles 4 Minuten unter Rühren, bis der Reis heiß ist.",
+   "timer": 240
+  },
+  {
+   "icon": "serve",
+   "text": "Träufle {Sesamöl} darüber und streue die Frühlingszwiebeln darauf. Stell {Sojasauce (salzreduziert)} dazu, damit jeder selbst nachwürzen kann."
+  }
+ ],
+ "falafel": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor. Lege ein Backblech mit Backpapier aus."
+  },
+  {
+   "icon": "mix",
+   "text": "Gieße {Kichererbsen} in einem Sieb ab und lass sie gut abtropfen. Wasche {Petersilie} und zupfe die Blätter ab. Schäle {Knoblauch}. Gib alles mit {Haferflocken}, {Kreuzkümmel} und 1 Prise Salz in einen Mixer und püriere es grob. Die Masse soll noch etwas Struktur haben."
+  },
+  {
+   "icon": "mix",
+   "text": "Forme mit nassen Händen kleine Bällchen, etwa so groß wie eine Walnuss, und drück sie leicht flach. Lege sie auf das Blech und bestreiche sie mit {Olivenöl}."
+  },
+  {
+   "icon": "oven",
+   "text": "Backe die Falafel auf der mittleren Schiene 20 Minuten. Wende sie nach 10 Minuten einmal. Sie sind fertig, wenn sie rundum goldbraun und außen fest sind.",
+   "timer": 1200
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Gurke} und reibe sie grob. Drücke sie mit den Händen etwas aus und verrühre sie in einer Schüssel mit {Naturjoghurt}."
+  },
+  {
+   "icon": "oven",
+   "text": "Lege {Fladenbrot} die letzten 3 Minuten mit in den Ofen, damit es warm wird."
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide das Fladenbrot in Stücke und serviere es mit den Falafel und dem Gurken-Dip."
+  }
+ ],
+ "koettbullar": [
+  {
+   "icon": "boil",
+   "text": "Schäle {Kartoffeln} und schneide sie in 2 cm große Würfel. Gib sie in einen mittleren Topf, bedecke sie mit Wasser und gib 1 Prise Salz dazu. Bring alles zum Kochen und koche die Kartoffeln bei mittlerer Hitze 15 Minuten, bis sie weich sind.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Gib {Rinderhack}, {Eier} und {Semmelbrösel} in eine Schüssel und knete alles gut durch. Forme mit nassen Händen kleine Bällchen, etwa 3 cm groß."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne bei mittlerer Hitze. Brate die Bällchen 10 Minuten rundum, bis sie braun sind und innen kein rosa mehr zu sehen ist. Schüttle die Pfanne dabei immer wieder.",
+   "timer": 600
+  },
+  {
+   "icon": "mix",
+   "text": "Erwärme {Milch} kurz in einem kleinen Topf. Gieße die Kartoffeln ab und gib sie zurück in den Topf. Gib die warme Milch und {Butter} dazu und stampfe alles mit dem Kartoffelstampfer zu einem cremigen Püree."
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Gurke} und schneide sie in dünne Scheiben."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile Püree und Köttbullar auf Teller. Lege die Gurkenscheiben dazu und gib {Preiselbeeren} daneben."
+  }
+ ],
+ "sommerrolle": [
+  {
+   "icon": "boil",
+   "text": "Bring im Wasserkocher 1 Liter Wasser zum Kochen. Gib {Reisnudeln} in eine Schüssel, gieße das heiße Wasser darüber und lass sie 5 Minuten ziehen. Gieße sie dann in einem Sieb ab und spüle sie kalt ab.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Schneide {Hähnchenbrust} in dünne Streifen. Erhitze 1 EL Öl in einer großen Pfanne bei mittlerer bis starker Hitze. Brate die Streifen 7 Minuten, bis sie goldbraun sind und kein rosa mehr zu sehen ist.",
+   "timer": 420
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Mango}, schneide das Fruchtfleisch vom Kern und dann in feine Streifen. Wasche {Gurke} und schneide sie in feine Streifen. Schäle {Karotten} und schneide sie in feine Streifen."
+  },
+  {
+   "icon": "mix",
+   "text": "Presse {Limette} aus. Verrühre {Erdnussmus} mit dem Limettensaft und 3 EL warmem Wasser zu einer glatten Sauce."
+  },
+  {
+   "icon": "chop",
+   "text": "Zupfe die Blätter von {Minze} ab und hacke sie grob."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile die Nudeln auf Schalen. Lege Hähnchen, Mango, Gurke und Karotten darauf. Gieße die Erdnusssauce darüber und streue die Minze darauf."
+  }
+ ],
+ "souvlaki": [
+  {
+   "icon": "chop",
+   "text": "Schneide {Hähnchenbrust} in 2 cm große Würfel. Presse {Zitrone} aus. Mische das Fleisch in einer Schüssel mit {Olivenöl}, der Hälfte vom Zitronensaft und {Oregano}."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze eine große Pfanne bei mittlerer bis starker Hitze. Brate die Hähnchenwürfel ohne zusätzliches Öl 8 Minuten rundum, bis sie goldbraun sind und innen kein rosa mehr zu sehen ist.",
+   "timer": 480
+  },
+  {
+   "icon": "mix",
+   "text": "Wasche {Gurke} und reibe sie grob. Drücke sie mit den Händen gut aus. Schäle {Knoblauch} und presse ihn mit der Knoblauchpresse. Verrühre Gurke und Knoblauch mit {Griechischer Joghurt} und dem restlichen Zitronensaft."
+  },
+  {
+   "icon": "oven",
+   "text": "Wärme {Fladenbrot} 3 bis 4 Minuten im Ofen bei 180 Grad Umluft oder kurz im Toaster.",
+   "timer": 180
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Cherrytomaten} und schneide sie in Hälften."
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide das Fladenbrot in Stücke. Serviere es mit dem Hähnchen, dem Tzatziki und den Tomaten."
+  }
+ ],
+ "laibchen": [
+  {
+   "icon": "boil",
+   "text": "Schäle {Kartoffeln} und schneide sie in 2 cm große Würfel. Gib sie in einen mittleren Topf, bedecke sie mit Wasser und gib 1 Prise Salz dazu. Koche sie bei mittlerer Hitze 12 Minuten, bis sie weich sind. Gieße sie ab und lass sie etwas abkühlen.",
+   "timer": 720
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Zucchini} und reibe sie grob. Drücke sie in einem sauberen Küchentuch kräftig aus. Schäle {Karotten} und reibe sie ebenfalls grob."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib Zucchini und Karotten mit {Haferflocken}, {Eier} und {Geriebener Käse} in eine Schüssel und mische alles gut. Lass die Masse 5 Minuten ruhen. Forme dann mit nassen Händen flache Laibchen, etwa so groß wie deine Handfläche.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Olivenöl} in einer großen Pfanne bei mittlerer Hitze. Brate die Laibchen je Seite 4 Minuten, bis sie goldbraun und fest sind.",
+   "timer": 480
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Gurke} und schneide sie in dünne Scheiben."
+  },
+  {
+   "icon": "mix",
+   "text": "Mische die Kartoffeln in einer Schüssel mit der Gurke und {Sauerrahm}. Würze mit 1 Prise Salz."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile die Laibchen und den Erdäpfel-Gurkensalat auf Teller."
+  }
+ ],
+ "kaiserschmarrn": [
+  {
+   "icon": "mix",
+   "text": "Verrühre {Eier}, {Milch} und {Vollkornmehl} in einer Schüssel mit dem Schneebesen zu einem glatten Teig ohne Klümpchen."
+  },
+  {
+   "icon": "pan",
+   "text": "Lass die Hälfte von {Butter} in einer großen Pfanne bei mittlerer Hitze schmelzen. Gieße den Teig hinein und lass ihn 5 Minuten stocken, bis die Unterseite goldbraun ist.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Teile den Teig mit dem Pfannenwender in Viertel und wende jedes Stück. Gib den Rest der Butter dazu. Zerreiße den Teig mit zwei Gabeln in kleine Stücke und streue {Rosinen} darüber. Brate alles 4 Minuten unter Wenden, bis alle Stücke goldbraun und durch sind.",
+   "timer": 240
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Äpfel}, viertle sie, schneide das Kerngehäuse heraus und schneide sie in dünne Spalten."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile den Kaiserschmarrn auf Teller. Gib {Apfelmus ungesüßt} und die Apfelspalten dazu."
+  }
+ ],
+ "blechhuhn": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 220 Grad Ober-/Unterhitze vor. Lege ein Backblech mit Backpapier aus."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Kartoffeln} und {Karotten}. Schneide beides in 1,5 cm große Würfel."
+  },
+  {
+   "icon": "oven",
+   "text": "Verteile Kartoffeln und Karotten auf dem Blech und mische sie mit der Hälfte von {Olivenöl}. Backe sie auf der mittleren Schiene 10 Minuten vor.",
+   "timer": 600
+  },
+  {
+   "icon": "mix",
+   "text": "Schneide {Hähnchenbrust} in 2 cm große Würfel. Mische sie in einer Schüssel mit {Paprikapulver edelsüß} und dem Rest vom Öl. Teile {Brokkoli} in kleine Röschen. Schäle {Rote Zwiebel} und schneide sie in Spalten."
+  },
+  {
+   "icon": "oven",
+   "text": "Hol das Blech heraus, gib Hähnchen, Brokkoli und Zwiebel dazu und mische alles kurz. Backe alles noch 15 Minuten, bis die Kartoffeln goldbraun sind und beim Hähnchen kein rosa mehr zu sehen ist.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Wasche {Schnittlauch} und schneide ihn in feine Röllchen. Verrühre ihn mit {Naturjoghurt}."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile Hähnchen und Ofengemüse auf Teller und gib den Kräuterjoghurt dazu."
+  }
+ ],
+ "eiernockerl": [
+  {
+   "icon": "boil",
+   "text": "Bring in einem großen Topf 3 Liter Wasser mit 1 TL Salz zum Kochen."
+  },
+  {
+   "icon": "mix",
+   "text": "Verrühre {Mehl}, die Hälfte von {Eier} und {Milch} in einer Schüssel mit einem Kochlöffel zu einem zähen, glatten Teig. Er soll schwer vom Löffel fallen."
+  },
+  {
+   "icon": "boil",
+   "text": "Stell auf mittlere Hitze, damit das Wasser nur leicht kocht. Streiche mit einem Teelöffel kleine Nockerl vom Teig ins Wasser. Tauche den Löffel dazwischen immer wieder ins Wasser. Koche die Nockerl 3 Minuten, bis sie oben schwimmen. Gieße sie in einem Sieb ab.",
+   "timer": 180
+  },
+  {
+   "icon": "pan",
+   "text": "Lass {Butter} in einer großen Pfanne bei mittlerer Hitze schmelzen. Schwenke die Nockerl darin. Verquirle den Rest der Eier, gieße sie darüber und rühre 4 Minuten, bis die Eier gestockt sind.",
+   "timer": 240
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Kopfsalat}, zupfe die Blätter in mundgerechte Stücke und schleudere sie trocken. Verrühre {Apfelessig} mit 2 EL Öl und 1 Prise Salz und mische den Salat damit."
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide {Schnittlauch} in feine Röllchen und streue ihn über die Eiernockerl. Serviere sie mit dem Salat."
+  }
+ ],
+ "macncheese": [
+  {
+   "icon": "boil",
+   "text": "Bring in einem großen Topf etwa 3 Liter Wasser mit 1 TL Salz zum Kochen. Teile inzwischen {Brokkoli} in kleine Röschen. Schäl den Strunk und schneide ihn in dünne Scheiben."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib {Hörnchennudeln} ins kochende Wasser und koche sie bei mittlerer Hitze 10 Minuten. Gib in den letzten 4 Minuten die Brokkoli-Röschen und die Strunkscheiben dazu.",
+   "timer": 600
+  },
+  {
+   "icon": "pan",
+   "text": "Schmelze in der Zwischenzeit {Butter} in einem mittleren Topf bei mittlerer Hitze. Rühre {Mehl} mit dem Schneebesen ein und lass es 1 Minute anschwitzen. Es soll hell bleiben und nicht braun werden.",
+   "timer": 60
+  },
+  {
+   "icon": "mix",
+   "text": "Gieß {Milch} nach und nach dazu und rühre dabei ständig mit dem Schneebesen, damit keine Klümpchen entstehen. Lass die Sauce bei kleiner Flamme 3 Minuten leise köcheln, bis sie leicht dick ist.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Nimm den Topf vom Herd. Rühre {Geriebener Bergkäse} ein, bis der Käse ganz geschmolzen und die Sauce glatt ist."
+  },
+  {
+   "icon": "boil",
+   "text": "Probier eine Nudel: Sie soll weich sein, aber noch leichten Biss haben (al dente). Gieß Nudeln und Brokkoli in ein Sieb und lass sie gut abtropfen."
+  },
+  {
+   "icon": "serve",
+   "text": "Gib Nudeln und Brokkoli in die Käsesauce und misch alles gut durch. Verteil alles sofort auf Teller und serviere es warm."
+  }
+ ],
+ "kokoscurry": [
+  {
+   "icon": "rice",
+   "text": "Spül {Basmatireis} in einem Sieb mit kaltem Wasser ab, bis das Wasser klar bleibt. Gib ihn mit der doppelten Menge Wasser und 1 Prise Salz in einen mittleren Topf. Bring alles zum Kochen und lass den Reis zugedeckt bei kleiner Flamme 15 Minuten garen, bis das Wasser aufgesogen ist.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Schäl {Zwiebel} und schneide sie in feine Würfel. Schäl {Ingwer} mit einem Teelöffel ab und hacke ihn sehr fein."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäl {Süßkartoffel} und schneide sie in 1 cm große Würfel. Schneide {Hähnchenbrust} in 2 cm große Würfel. Wasch danach Brett, Messer und Hände gut."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne bei mittlerer Hitze. Brate Zwiebel, Ingwer und Hähnchen mit {Currypulver mild} 5 Minuten an, bis rundum kein Rosa mehr zu sehen ist. Rühre dabei öfter um.",
+   "timer": 300
+  },
+  {
+   "icon": "boil",
+   "text": "Gib die Süßkartoffel-Würfel und {Kokosmilch} dazu und rühre gut um. Lass alles bei kleiner Flamme 15 Minuten leise köcheln, bis die Süßkartoffel weich ist. Prüf das mit einer Gabel.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre {Babyspinat} unter und lass ihn 1 Minute zusammenfallen. Schmeck das Curry mit 1 Prise Salz ab."
+  },
+  {
+   "icon": "serve",
+   "text": "Lockere den Reis mit einer Gabel auf. Verteil den Reis auf Teller und gib das Curry daneben."
+  }
+ ],
+ "burritobowl": [
+  {
+   "icon": "rice",
+   "text": "Spül {Reis} in einem Sieb mit kaltem Wasser ab. Gib ihn mit der doppelten Menge Wasser und 1 Prise Salz in einen mittleren Topf. Bring alles zum Kochen und lass den Reis zugedeckt bei kleiner Flamme 15 Minuten garen, bis das Wasser aufgesogen ist.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Gieß {Schwarze Bohnen} in ein Sieb, spül sie mit kaltem Wasser ab und lass sie abtropfen. Gieß auch {Mais} ab und lass ihn abtropfen."
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Bohnen und Mais mit {Kreuzkümmel} und 2 EL Wasser in eine mittlere Pfanne. Erwärm alles bei mittlerer Hitze 5 Minuten und rühre ab und zu um, bis alles heiß ist.",
+   "timer": 300
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Cherrytomaten} in Viertel. Halbiere {Avocado}, nimm den Kern heraus, löse das Fruchtfleisch mit einem Löffel aus der Schale und schneide es in 1 cm große Würfel."
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Limette} in Spalten."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteil den Reis in Schalen. Gib die Bohnen-Mais-Mischung, Tomaten und Avocado daneben. Streu {Geriebener Käse} darüber, setz {Sauerrahm} in Klecksen obendrauf und leg die Limettenspalten zum Beträufeln dazu."
+  }
+ ],
+ "polenta": [
+  {
+   "icon": "chop",
+   "text": "Schäl {Zwiebel} und schneide sie in feine Würfel. Schäl {Karotten} und schneide sie in kleine Würfel von etwa 0,5 cm."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Olivenöl} in einem mittleren Topf bei mittlerer Hitze. Schwitze Zwiebel und Karotten darin 4 Minuten an, bis die Zwiebel glasig ist.",
+   "timer": 240
+  },
+  {
+   "icon": "boil",
+   "text": "Spül {Rote Linsen} in einem Sieb kurz ab. Gib sie mit {Passierte Tomaten} und 200 ml Wasser in den Topf. Lass alles einmal aufkochen und dann bei kleiner Flamme 15 Minuten köcheln, bis die Linsen weich sind. Rühre öfter um, damit nichts anbrennt.",
+   "timer": 900
+  },
+  {
+   "icon": "boil",
+   "text": "Bring nach etwa 8 Minuten {Gemüsebrühe (salzarm)} in einem zweiten mittleren Topf zum Kochen."
+  },
+  {
+   "icon": "boil",
+   "text": "Dreh die Hitze auf kleine Flamme. Streu {Instant-Polenta} langsam ein und rühre dabei ständig mit dem Schneebesen. Nimm den Topf vom Herd und lass die Polenta zugedeckt 5 Minuten quellen.",
+   "timer": 300
+  },
+  {
+   "icon": "mix",
+   "text": "Reib {Parmesan} fein und rühre ihn unter die Polenta, bis sie schön cremig ist."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteil die Polenta auf tiefe Teller und gib das Linsen-Tomaten-Ragout darüber."
+  }
+ ],
+ "bacalhau": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 210 Grad Ober-/Unterhitze vor."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäl {Kartoffeln} und schneide sie in dünne Scheiben von etwa 3 mm. Schäl {Rote Zwiebel} und schneide sie in dünne Ringe."
+  },
+  {
+   "icon": "oven",
+   "text": "Gib Kartoffeln und Zwiebel in eine große Auflaufform. Gieß {Olivenöl} darüber, gib 1 Prise Salz dazu und misch alles gut durch. Verteil alles flach und back es 12 Minuten auf der mittleren Schiene.",
+   "timer": 720
+  },
+  {
+   "icon": "chop",
+   "text": "Halbiere in der Zwischenzeit {Cherrytomaten}. Tupf {Kabeljaufilet} mit Küchenpapier trocken und schneide es in 4 Stücke. Halbiere {Zitrone}."
+  },
+  {
+   "icon": "mix",
+   "text": "Nimm die Form aus dem Ofen. Leg Fisch und Tomaten auf die Kartoffeln und press den Saft der Zitrone darüber."
+  },
+  {
+   "icon": "oven",
+   "text": "Back alles noch 14 Minuten, bis der Fisch innen weiß ist und sich mit einer Gabel leicht zerteilen lässt.",
+   "timer": 840
+  },
+  {
+   "icon": "chop",
+   "text": "Wasch {Petersilie}, schüttel sie trocken und hacke die Blätter fein."
+  },
+  {
+   "icon": "serve",
+   "text": "Streu die Petersilie über Fisch und Kartoffeln und serviere alles direkt aus der Form."
+  }
+ ],
+ "padthai": [
+  {
+   "icon": "boil",
+   "text": "Bring im Wasserkocher etwa 1,5 Liter Wasser zum Kochen. Leg {Reisbandnudeln} in eine große Schüssel, gieß das heiße Wasser darüber und lass sie 8 Minuten ziehen, bis sie weich sind. Gieß sie danach in ein Sieb ab und spül sie kurz kalt ab.",
+   "timer": 480
+  },
+  {
+   "icon": "chop",
+   "text": "Tupf {Tofu natur} mit Küchenpapier trocken und schneide ihn in 1 cm große Würfel. Schäl {Karotten} und schneide sie in dünne Streifen."
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Frühlingszwiebeln} in feine Ringe. Hacke {Erdnüsse ungesalzen} grob. Halbiere {Limette}."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 2 EL Öl in einer großen Pfanne bei mittlerer bis starker Hitze. Brate den Tofu 6 Minuten, bis er rundum goldbraun und knusprig ist. Wende ihn ab und zu.",
+   "timer": 360
+  },
+  {
+   "icon": "pan",
+   "text": "Gib die Karotten dazu und brate sie 2 Minuten mit. Schieb alles an den Rand. Schlag {Eier} in die freie Stelle und verrühr sie, bis sie gestockt sind.",
+   "timer": 120
+  },
+  {
+   "icon": "mix",
+   "text": "Gib die Nudeln, {Sojasprossen} und {Sojasauce (salzreduziert)} in die Pfanne. Press den Saft der Limette darüber und misch alles 2 Minuten gut durch, bis es heiß ist."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteil das Pad Thai auf Teller und streu die Erdnüsse und Frühlingszwiebeln darüber."
+  }
+ ],
+ "palatschinken": [
+  {
+   "icon": "mix",
+   "text": "Gib {Mehl} in eine Schüssel. Gieß {Milch} nach und nach dazu und rühre mit dem Schneebesen glatt. Schlag {Eier} dazu, gib 1 Prise Salz dazu und rühre alles zu einem dünnen, glatten Teig. Lass ihn 5 Minuten rasten."
+  },
+  {
+   "icon": "pan",
+   "text": "Leg {Butter} bereit. Erhitze eine beschichtete Pfanne bei mittlerer Hitze und gib ein kleines Stück Butter hinein. Gieß eine kleine Schöpfkelle Teig hinein und schwenk die Pfanne, damit der Teig dünn verläuft. Back jede Palatschinke etwa 1 Minute pro Seite, bis sie goldbraun ist. Mach so weiter, bis der Teig aufgebraucht ist, insgesamt etwa 10 Minuten.",
+   "timer": 600
+  },
+  {
+   "icon": "mix",
+   "text": "Schäl {Banane} und zerdrück sie mit einer Gabel zu Mus. Rühre sie mit {Topfen (Quark)} glatt."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib {Beeren (TK)} in einen kleinen Topf und erwärm sie bei kleiner Flamme 3 Minuten, bis sie aufgetaut und warm sind. Rühre ab und zu um.",
+   "timer": 180
+  },
+  {
+   "icon": "serve",
+   "text": "Streich auf jede Palatschinke etwas Topfencreme, roll sie ein und leg sie auf einen Teller. Gib die warmen Beeren darüber."
+  }
+ ],
+ "paprikahendl": [
+  {
+   "icon": "chop",
+   "text": "Schäl {Zwiebel} und hacke sie fein. Schneide {Hendlbrust oder Hendlkeulen ohne Knochen} in etwa 3 cm große Stücke."
+  },
+  {
+   "icon": "pan",
+   "text": "Leg {Butter} bereit. Schmelze die Hälfte davon in einem breiten Topf bei mittlerer Hitze. Röste die Zwiebeln darin 5 Minuten, bis sie goldgelb sind. Rühre öfter um.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Gib das Hendl dazu und brate es 2 Minuten rundum an. Nimm den Topf kurz vom Herd, streu {Paprikapulver edelsüß} darüber, rühre einmal um und gieß sofort 300 ml Wasser dazu. So wird der Paprika nicht bitter."
+  },
+  {
+   "icon": "boil",
+   "text": "Stell den Topf zurück auf den Herd, leg den Deckel drauf und lass alles bei kleiner Flamme 15 Minuten leise köcheln, bis im Fleisch kein Rosa mehr zu sehen ist.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre in einer Schüssel {Sauerrahm}, {Mehl} und {Schlagobers} mit dem Schneebesen ohne Klümpchen glatt."
+  },
+  {
+   "icon": "boil",
+   "text": "Rühre die Rahmmischung in die Sauce und lass sie unter Rühren 1 Minute aufkochen, bis sie leicht dick ist. Schmeck mit 1 Prise Salz ab.",
+   "timer": 60
+  },
+  {
+   "icon": "pan",
+   "text": "Schmelze den Rest der Butter in einer großen Pfanne bei mittlerer Hitze. Schwenk {Frische Nockerl oder Spätzle} darin 4 Minuten, bis sie heiß sind.",
+   "timer": 240
+  },
+  {
+   "icon": "serve",
+   "text": "Verteil die Nockerl auf Teller und gib das Paprikahendl mit viel Sauce daneben."
+  }
+ ],
+ "faschiertelaibchen": [
+  {
+   "icon": "boil",
+   "text": "Schäl {Erdäpfel mehlig} und schneide sie in 3 cm große Würfel. Gib sie in einen großen Topf, bedeck sie mit Wasser, gib 1 TL Salz dazu und koch sie bei mittlerer Hitze 15 Minuten, bis sie weich sind.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Weich {Semmel vom Vortag} in einer Schüssel mit kaltem Wasser 5 Minuten ein. Schäl {Zwiebel} und hacke sie sehr fein. Wasch {Petersilie} und hacke sie fein."
+  },
+  {
+   "icon": "mix",
+   "text": "Drück die Semmel gut aus und zupf sie klein. Gib sie mit {Faschiertes gemischt}, {Eier}, Zwiebel, Petersilie, {Senf} und 1 Prise Salz in eine Schüssel. Verknete alles mit den Händen gut."
+  },
+  {
+   "icon": "pan",
+   "text": "Form mit nassen Händen 8 flache Laibchen. Erhitze {Öl} in einer großen Pfanne bei mittlerer Hitze. Brate die Laibchen je Seite 5 Minuten, bis sie goldbraun sind und innen kein Rosa mehr zu sehen ist.",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Wasch {Gurke} und hobel sie in dünne Scheiben. Misch sie mit {Sauerrahm} und 1 Prise Salz."
+  },
+  {
+   "icon": "mix",
+   "text": "Erwärm {Milch} in einem kleinen Topf. Gieß die Erdäpfel ab und gib sie zurück in den Topf. Gib die warme Milch und {Butter} dazu und stampf alles mit dem Kartoffelstampfer zu einem glatten Püree."
+  },
+  {
+   "icon": "serve",
+   "text": "Richte die Laibchen mit Erdäpfelpüree und Gurkensalat auf Tellern an."
+  }
+ ],
+ "faschiertebaellchen": [
+  {
+   "icon": "boil",
+   "text": "Setz in einem großen Topf etwa 3 Liter Wasser mit 1 TL Salz für die Nudeln auf."
+  },
+  {
+   "icon": "mix",
+   "text": "Misch {Faschiertes gemischt} mit {Eier}, {Semmelbrösel} und 1 Prise Salz in einer Schüssel. Form mit nassen Händen kleine Bällchen, etwa so groß wie eine Walnuss."
+  },
+  {
+   "icon": "pan",
+   "text": "Schäl {Zwiebel} und hacke sie fein. Erhitze 1 EL Öl in einem breiten Topf bei mittlerer Hitze und schwitze die Zwiebel 3 Minuten an, bis sie glasig ist.",
+   "timer": 180
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Passierte Tomaten} dazu und lass sie einmal aufkochen. Leg die Bällchen vorsichtig nebeneinander in die Sauce. Leg den Deckel drauf und lass alles bei kleiner Flamme 15 Minuten ziehen, bis die Bällchen innen nicht mehr rosa sind.",
+   "timer": 900
+  },
+  {
+   "icon": "boil",
+   "text": "Koch in der Zwischenzeit {Spiralnudeln} im kochenden Wasser etwa 10 Minuten, bis sie al dente sind. Gieß sie dann in ein Sieb ab.",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Zupf die Blätter von {Basilikum} ab und schneide sie in feine Streifen. Reib {Parmesan} fein."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteil die Nudeln auf Teller, gib Bällchen und Sauce darüber und streu Basilikum und Parmesan drauf."
+  }
+ ],
+ "faschierterbraten": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 180 Grad Ober-/Unterhitze vor. Weich {Semmel vom Vortag} in einer Schüssel mit kaltem Wasser 5 Minuten ein."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäl {Zwiebel} und {Karotten} und reib beides fein."
+  },
+  {
+   "icon": "mix",
+   "text": "Drück die Semmeln gut aus und zupf sie klein. Gib sie mit Zwiebel, Karotten, {Faschiertes gemischt}, {Eier}, {Senf}, {Majoran} und 1 Prise Salz in eine große Schüssel. Verknete alles mit den Händen gut und form daraus einen länglichen Laib."
+  },
+  {
+   "icon": "oven",
+   "text": "Leg den Laib in eine Auflaufform und gieß 100 ml Wasser in die Form. Back ihn 40 Minuten auf der mittleren Schiene. Begieß ihn etwa alle 10 Minuten mit etwas Saft aus der Form. Er ist fertig, wenn er außen braun ist und innen kein Rosa mehr zu sehen ist.",
+   "timer": 2400
+  },
+  {
+   "icon": "boil",
+   "text": "Schäl nach etwa 20 Minuten {Erdäpfel mehlig} und schneide sie in 3 cm große Würfel. Koch sie in einem großen Topf mit Wasser und 1 TL Salz 15 Minuten, bis sie weich sind.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Erwärm {Milch} in einem kleinen Topf. Gieß die Erdäpfel ab, gib die warme Milch und {Butter} dazu und stampf alles mit dem Kartoffelstampfer zu einem glatten Püree."
+  },
+  {
+   "icon": "serve",
+   "text": "Lass den Braten 5 Minuten rasten und schneide ihn dann in 1,5 cm dicke Scheiben. Serviere ihn mit Püree und dem Bratensaft aus der Form."
+  }
+ ],
+ "onepotbolo": [
+  {
+   "icon": "chop",
+   "text": "Schäl {Zwiebel} und {Karotten} und reib beides fein."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Olivenöl} in einem großen Topf bei starker Hitze. Brate {Faschiertes Rind} 5 Minuten und zerdrück es dabei mit dem Kochlöffel, bis es krümelig ist und kein Rosa mehr zu sehen ist.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Gib das geriebene Gemüse dazu und brate es 2 Minuten bei mittlerer Hitze mit.",
+   "timer": 120
+  },
+  {
+   "icon": "boil",
+   "text": "Gib {Passierte Tomaten}, {Penne}, 700 ml Wasser und 1 Prise Salz dazu. Lass alles aufkochen und dann bei mittlerer Hitze ohne Deckel 12 Minuten köcheln. Rühre alle 1 bis 2 Minuten um, damit nichts am Boden anlegt.",
+   "timer": 720
+  },
+  {
+   "icon": "mix",
+   "text": "Probier eine Nudel: Sie soll weich sein und noch leichten Biss haben. Wenn nötig, koch sie mit einem Schuss Wasser noch 1 bis 2 Minuten weiter."
+  },
+  {
+   "icon": "serve",
+   "text": "Reib {Parmesan} fein. Verteil die Pasta auf Teller und streu den Parmesan darüber."
+  }
+ ],
+ "onepotpesto": [
+  {
+   "icon": "boil",
+   "text": "Bring in einem großen Topf etwa 3 Liter Wasser mit 1 TL Salz zum Kochen. Teil inzwischen {Brokkoli} in kleine Röschen."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib {Spaghetti oder Trofie} ins kochende Wasser und koch sie bei mittlerer Hitze 10 Minuten, bis sie al dente sind. Gib in den letzten 4 Minuten die Brokkoli-Röschen dazu.",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide in der Zwischenzeit {Cherrytomaten} und {Mini-Mozzarella} in Viertel. Reib {Parmesan} fein."
+  },
+  {
+   "icon": "mix",
+   "text": "Schöpf 1 Tasse Nudelwasser ab und stell sie zur Seite. Gieß Nudeln und Brokkoli in ein Sieb ab."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib alles zurück in den Topf. Rühre {Basilikum-Pesto} und 3 bis 4 EL Nudelwasser unter, bis die Nudeln schön glänzen."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteil die Pasta auf Teller. Gib Tomaten und Mozzarella darüber und streu den Parmesan drauf."
+  }
+ ],
+ "onepotrahm": [
+  {
+   "icon": "chop",
+   "text": "Schneide {Beinschinken} in kleine Würfel von etwa 1 cm."
+  },
+  {
+   "icon": "boil",
+   "text": "Bring {Gemüsebrühe (salzarm)} in einem großen Topf zum Kochen. Gib {Hörnchen oder Farfalle} dazu und koch sie bei mittlerer Hitze ohne Deckel 8 Minuten. Rühre oft um, damit nichts anlegt.",
+   "timer": 480
+  },
+  {
+   "icon": "boil",
+   "text": "Gib {Erbsen}, den Schinken und {Schlagobers} dazu. Lass alles noch 3 Minuten köcheln, bis die Nudeln al dente sind und die Sauce cremig ist.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Reib {Parmesan} fein. Nimm den Topf vom Herd und rühre den Parmesan unter."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteil die Rahmnudeln sofort auf Teller und serviere sie heiß."
+  }
+ ],
+ "onepotlachs": [
+  {
+   "icon": "boil",
+   "text": "Gib {Bandnudeln}, {Gemüsebrühe (salzarm)} und {Blattspinat (TK)} in einen großen Topf. Bring alles zum Kochen und lass es bei mittlerer Hitze ohne Deckel 8 Minuten köcheln. Rühre oft um, damit die Nudeln nicht zusammenkleben.",
+   "timer": 480
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide in der Zwischenzeit {Lachsfilet ohne Haut} in 2 cm große Würfel."
+  },
+  {
+   "icon": "chop",
+   "text": "Wasch {Zitrone} heiß ab, reib die Schale fein ab und press den Saft aus."
+  },
+  {
+   "icon": "boil",
+   "text": "Rühre {Frischkäse} unter. Leg die Lachswürfel obenauf, leg den Deckel drauf und lass alles bei kleiner Flamme 4 Minuten ziehen, bis der Lachs innen hellrosa und nicht mehr glasig ist.",
+   "timer": 240
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre vorsichtig um. Gib die Zitronenschale und 1 bis 2 EL Zitronensaft dazu und schmeck ab."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteil die Lachs-Spinat-Pasta auf Teller und serviere sie sofort."
+  }
+ ],
+ "kartoffelauflauf": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor. Fette eine große Auflaufform mit etwas Butter oder Öl ein."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäl {Erdäpfel festkochend} und hobel sie hauchdünn. Teil {Brokkoli} in kleine Röschen. Schneide {Beinschinken} in kleine Würfel."
+  },
+  {
+   "icon": "mix",
+   "text": "Verquirl {Schlagobers}, {Milch}, {Eier}, {Muskatnuss} und 1 Prise Salz in einer Schüssel."
+  },
+  {
+   "icon": "mix",
+   "text": "Schichte Erdäpfel, Brokkoli und Schinken abwechselnd in die Form. Gieß den Guss gleichmäßig darüber und streu {Geriebener Bergkäse} drauf."
+  },
+  {
+   "icon": "oven",
+   "text": "Back den Auflauf 35 Minuten auf der mittleren Schiene, bis er goldbraun ist und die Erdäpfel weich sind. Stich mit einem Messer hinein, um das zu prüfen.",
+   "timer": 2100
+  },
+  {
+   "icon": "serve",
+   "text": "Lass den Auflauf 5 Minuten rasten. Schneide ihn dann in Stücke und serviere ihn.",
+   "timer": 300
+  }
+ ],
+ "zucchiniquiche": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 190 Grad Ober-/Unterhitze vor. Nimm {Mürbteig oder Blätterteig (Kühlregal)} aus dem Kühlschrank."
+  },
+  {
+   "icon": "chop",
+   "text": "Reib {Zucchini} grob. Gib sie in ein sauberes Küchentuch und drück das Wasser kräftig aus. Schäl {Zwiebel} und hacke sie fein."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne bei mittlerer bis starker Hitze. Brate {Faschiertes Rind} mit der Zwiebel 6 Minuten krümelig, bis kein Rosa mehr zu sehen ist. Lass es kurz abkühlen.",
+   "timer": 360
+  },
+  {
+   "icon": "mix",
+   "text": "Leg den Teig mit dem Backpapier in eine Quiche- oder Tarteform (etwa 26 cm) und drück den Rand hoch. Stich den Boden mit einer Gabel mehrmals ein."
+  },
+  {
+   "icon": "mix",
+   "text": "Verrühr {Eier}, {Sauerrahm}, {Geriebener Käse} und 1 Prise Salz in einer Schüssel. Misch Zucchini und Faschiertes unter."
+  },
+  {
+   "icon": "oven",
+   "text": "Füll die Masse in die Form und streich sie glatt. Back die Quiche 30 Minuten auf der unteren Schiene, bis sie goldbraun und in der Mitte fest ist.",
+   "timer": 1800
+  },
+  {
+   "icon": "chop",
+   "text": "Wasch in der Zwischenzeit {Grüner Salat}, schleuder ihn trocken und zupf ihn klein. Mach ihn mit etwas Öl, Essig und 1 Prise Salz an."
+  },
+  {
+   "icon": "serve",
+   "text": "Lass die Quiche 5 Minuten rasten, schneide sie in Stücke und serviere sie mit dem Salat."
+  }
+ ],
+ "pikantepalatschinken": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor. Gib {Blattspinat (TK)} in einen kleinen Topf und lass ihn bei kleiner Flamme etwa 5 Minuten auftauen."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib {Mehl} in eine Schüssel, gieß {Milch} nach und nach dazu und rühre mit dem Schneebesen glatt. Schlag {Eier} dazu, gib 1 Prise Salz dazu und verrühr alles zu einem dünnen Teig."
+  },
+  {
+   "icon": "pan",
+   "text": "Leg {Butter} bereit. Erhitze eine beschichtete Pfanne bei mittlerer Hitze, gib ein kleines Stück Butter hinein und gieß eine kleine Schöpfkelle Teig hinein. Schwenk die Pfanne, damit der Teig dünn verläuft. Back jede Palatschinke etwa 1 Minute pro Seite, bis sie goldbraun ist, insgesamt etwa 10 Minuten.",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Drück den Spinat mit den Händen gut aus. Schneide {Beinschinken} in Streifen."
+  },
+  {
+   "icon": "mix",
+   "text": "Leg {Geriebener Käse} bereit und heb etwa ein Drittel davon für oben auf. Beleg jede Palatschinke mit Schinken, Spinat und etwas Käse und roll sie fest ein."
+  },
+  {
+   "icon": "mix",
+   "text": "Leg die Rollen nebeneinander in eine Auflaufform. Verrühr {Sauerrahm} mit {Schlagobers} und 1 Prise Salz und gieß es darüber. Streu den Rest vom Käse drauf."
+  },
+  {
+   "icon": "oven",
+   "text": "Überback alles 15 Minuten auf der mittleren Schiene, bis der Käse goldbraun ist.",
+   "timer": 900
+  },
+  {
+   "icon": "serve",
+   "text": "Nimm die Form aus dem Ofen, lass sie kurz abkühlen und verteil die Palatschinken mit der Sauce auf Teller."
+  }
+ ],
+ "wuerstel": [
+  {
+   "icon": "boil",
+   "text": "Schäl {Erdäpfel festkochend} und schneide sie in 3 cm große Würfel. Koch sie in einem mittleren Topf mit Wasser und 1 TL Salz 15 Minuten, bis sie weich sind.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Wasch {Dill}, schüttel ihn trocken und hacke ihn fein."
+  },
+  {
+   "icon": "pan",
+   "text": "Schmelze {Butter} in einem zweiten mittleren Topf bei mittlerer Hitze. Rühre {Mehl} ein und lass es 1 Minute hell anschwitzen.",
+   "timer": 60
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Gemüsebrühe (salzarm)} und {Schlagobers} nach und nach dazu und rühre dabei mit dem Schneebesen. Lass die Sauce bei kleiner Flamme 3 Minuten köcheln, bis sie leicht dick ist.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre {Sauerrahm} und den gehackten Dill ein."
+  },
+  {
+   "icon": "boil",
+   "text": "Leg {Frankfurter oder Wiener Würstel} in die Sauce und lass sie bei kleinster Flamme 5 Minuten heiß werden. Die Sauce soll nicht mehr kochen, sonst platzen die Würstel.",
+   "timer": 300
+  },
+  {
+   "icon": "serve",
+   "text": "Gieß die Erdäpfel ab und verteil sie mit den Würsteln und der Dillrahmsauce auf Teller."
+  }
+ ],
+ "kartoffelgulasch": [
+  {
+   "icon": "chop",
+   "text": "Schäl {Zwiebel} und hacke sie fein. Schäl {Erdäpfel speckig} und schneide sie in 2 cm große Würfel."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Öl} in einem großen Topf bei mittlerer Hitze. Röste die Zwiebeln darin 6 Minuten goldbraun und rühre dabei öfter um.",
+   "timer": 360
+  },
+  {
+   "icon": "pan",
+   "text": "Rühre {Tomatenmark} und {Paprikapulver edelsüß} ein und rühre nur kurz, etwa 20 Sekunden, mit. Gieß sofort 700 ml Wasser dazu, damit der Paprika nicht bitter wird."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib die Erdäpfel, {Majoran}, {Kümmel gemahlen} und 1 TL Salz dazu. Lass alles aufkochen und dann bei kleiner Flamme 18 Minuten köcheln, bis die Erdäpfel weich sind und die Sauce sämig ist. Rühre ab und zu um.",
+   "timer": 1080
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide in der Zwischenzeit {Frankfurter Würstel} in 1 cm dicke Scheiben."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib die Würstelscheiben ins Gulasch und lass sie 3 Minuten mitziehen, bis sie heiß sind.",
+   "timer": 180
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide {Schwarzbrot} in Scheiben. Verteil das Gulasch auf tiefe Teller und serviere das Brot dazu."
+  }
+ ],
+ "tantanmen": [
+  {
+   "icon": "boil",
+   "text": "Setze in einem großen Topf etwa 2 Liter Wasser auf und bring es zum Kochen."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Knoblauch} und {Ingwer} und hacke beides sehr fein. Halbiere {Pak Choi} der Länge nach und wasche ihn gut. Schneide {Frühlingszwiebeln} in feine Ringe."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze eine große Pfanne bei mittlerer bis starker Hitze. Gib {Faschiertes Schwein oder Rind} hinein und zerdrück es mit dem Kochlöffel in kleine Krümel. Gib Knoblauch und Ingwer dazu und brate alles 6 Minuten, bis das Fleisch knusprig braun ist und kein Rosa mehr zu sehen ist.",
+   "timer": 360
+  },
+  {
+   "icon": "pan",
+   "text": "Gieß die Hälfte von {Sojasauce (salzreduziert)} über das Fleisch, rühre um und stell die Pfanne zur Seite."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib {Ramen-Nudeln} und den Pak Choi ins kochende Wasser und koche alles 3 Minuten, bis die Nudeln weich sind. Schöpfe vor dem Abgießen 200 ml Kochwasser mit einer Tasse ab und heb es auf. Gieß dann alles in ein Sieb ab.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Verrühre in einer großen Schüssel {Tahin (Sesampaste)} mit der restlichen Sojasauce. Gieß das Kochwasser nach und nach dazu und rühre mit dem Schneebesen, bis eine glatte, cremige Sauce entsteht."
+  },
+  {
+   "icon": "serve",
+   "text": "Gib die Nudeln in die Sauce und misch sie gut durch. Verteile Nudeln und Pak Choi auf Schüsseln, gib das Faschierte darauf und streue die Frühlingszwiebeln darüber. Träufle {Chiliöl (nur Erwachsene)} nur über die Portionen der Erwachsenen."
+  }
+ ],
+ "kasnocken": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und schneide sie in feine, dünne Ringe. Schneide {Schnittlauch} in feine Röllchen."
+  },
+  {
+   "icon": "pan",
+   "text": "Lass die Hälfte von {Butter} in einer großen Pfanne bei mittlerer Hitze schmelzen. Röste die Zwiebelringe darin 10 Minuten langsam und rühre oft um, bis sie goldbraun und weich sind. Nimm sie heraus und stell sie auf einem Teller zur Seite.",
+   "timer": 600
+  },
+  {
+   "icon": "pan",
+   "text": "Gib den Rest der Butter in dieselbe Pfanne. Gib {Frische Spätzle oder Nockerl} dazu und erhitze sie bei mittlerer Hitze 4 Minuten. Wende sie ab und zu, bis sie heiß und leicht angebräunt sind.",
+   "timer": 240
+  },
+  {
+   "icon": "pan",
+   "text": "Streue {Geriebener Bergkäse} darüber, dreh auf kleine Flamme und leg einen Deckel auf. Warte etwa 2 Minuten, bis der Käse ganz geschmolzen ist.",
+   "timer": 120
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Grüner Salat}, zupfe die Blätter klein und schleudere sie trocken. Mach den Salat mit etwas Essig, Öl und 1 Prise Salz an."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile die Kasnocken auf Teller, gib die Röstzwiebeln darauf und streue den Schnittlauch darüber. Serviere den Salat dazu."
+  }
+ ],
+ "grenadiermarsch": [
+  {
+   "icon": "boil",
+   "text": "Setze zwei Töpfe mit Wasser auf: einen mittleren für die Erdäpfel und einen großen für die Nudeln. Gib in jeden Topf 1 TL Salz."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Erdäpfel festkochend} und schneide sie in 1 cm große Würfel. Schäle {Zwiebel} und schneide sie in feine Würfel. Schneide {Beinschinken} in kleine Streifen."
+  },
+  {
+   "icon": "boil",
+   "text": "Koche die Erdäpfelwürfel 12 Minuten, bis sie weich, aber noch fest sind. Koche gleichzeitig {Fleckerl oder kurze Nudeln} im großen Topf, bis sie al dente sind (Zeit laut Packung). Gieß beides in ein Sieb ab.",
+   "timer": 720
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Öl} in einer großen Pfanne bei mittlerer Hitze. Röste Zwiebel und Schinken darin 4 Minuten, bis die Zwiebel glasig ist.",
+   "timer": 240
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Erdäpfel und Nudeln dazu und brate alles bei mittlerer bis starker Hitze 5 Minuten. Wende nur ab und zu, damit es knusprig wird. Streue {Majoran} darüber.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Verquirle {Eier} in einer Tasse mit 1 Prise Salz und Pfeffer. Gieß sie über die Pfanne und rühre vorsichtig um, bis das Ei nach etwa 2 Minuten gestockt ist und nichts Flüssiges mehr zu sehen ist.",
+   "timer": 120
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide {Gurke} in dünne Scheiben und mach sie mit etwas Essig, 1 Prise Salz und Pfeffer an. Serviere den Gurkensalat zum Grenadiermarsch."
+  }
+ ],
+ "schinkenfleckerl": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor. Setze einen großen Topf mit reichlich Wasser und 1 TL Salz auf."
+  },
+  {
+   "icon": "boil",
+   "text": "Koche {Fleckerl} im sprudelnden Wasser etwa 10 Minuten, bis sie al dente sind. Gieß sie in ein Sieb ab und lass sie abtropfen.",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Beinschinken} in kleine Würfel, etwa 1 cm groß. Fette eine Auflaufform mit {Butter} gut ein."
+  },
+  {
+   "icon": "mix",
+   "text": "Verrühre in einer großen Schüssel {Sauerrahm} mit {Eier}, bis alles glatt ist. Gib Fleckerl und Schinken dazu und misch alles gut durch."
+  },
+  {
+   "icon": "oven",
+   "text": "Füll die Masse in die Form und streue {Geriebener Käse} darüber. Back alles auf mittlerer Schiene 20 Minuten, bis der Käse goldbraun ist.",
+   "timer": 1200
+  },
+  {
+   "icon": "serve",
+   "text": "Wasche {Grüner Salat}, zupfe ihn klein und mach ihn mit Essig, Öl und 1 Prise Salz an. Serviere ihn zu den Fleckerln."
+  }
+ ],
+ "hendlstreifen": [
+  {
+   "icon": "boil",
+   "text": "Wasche {Erdäpfel speckig} und gib sie mit Schale in einen mittleren Topf. Bedecke sie mit Wasser, gib 1 TL Salz dazu und koche sie mit Deckel 18 Minuten, bis eine Gabel leicht hineingleitet.",
+   "timer": 1080
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Hendlbrust} in etwa 2 cm breite Streifen. Schäle {Rote Zwiebel} und hacke sie sehr fein."
+  },
+  {
+   "icon": "mix",
+   "text": "Stell drei tiefe Teller bereit: in den ersten {Mehl}, in den zweiten {Eier} mit 1 Prise Salz verquirlt, in den dritten {Semmelbrösel}. Wende jeden Streifen erst in Mehl, dann in Ei, dann in Bröseln und drück die Panade leicht an."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Öl} in einer großen Pfanne bei mittlerer Hitze. Brate die Streifen darin je Seite 3 Minuten, bis sie goldbraun sind und innen kein Rosa mehr zu sehen ist. Leg sie danach auf Küchenpapier.",
+   "timer": 360
+  },
+  {
+   "icon": "mix",
+   "text": "Gieß die Erdäpfel ab, schäle sie noch warm und schneide sie in dünne Scheiben. Erwärme {Gemüsebrühe (salzarm)} kurz in einem kleinen Topf und gieß sie mit der Zwiebel über die Erdäpfel. Misch vorsichtig und lass alles 5 Minuten ziehen.",
+   "timer": 300
+  },
+  {
+   "icon": "serve",
+   "text": "Wasche {Vogerlsalat}, lass ihn gut abtropfen und heb ihn unter den Erdäpfelsalat. Schneide {Zitrone} in Spalten und serviere sie mit den Hendlstreifen."
+  }
+ ],
+ "griessschmarrn": [
+  {
+   "icon": "boil",
+   "text": "Bring {Milch} in einem mittleren Topf bei mittlerer Hitze zum Kochen. Rühre {Weizengrieß} mit dem Schneebesen ein und lass ihn bei kleiner Flamme 3 Minuten unter Rühren dick werden. Nimm den Topf vom Herd und lass den Brei etwas abkühlen.",
+   "timer": 180
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Äpfel}, schneide das Kerngehäuse heraus und schneide sie in 1 cm große Würfel."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib die Apfelwürfel mit 3 EL Wasser und {Zimt} in einen kleinen Topf. Dünste sie mit Deckel bei kleiner Flamme 8 Minuten, bis sie weich sind.",
+   "timer": 480
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre {Eier} und {Rosinen} kräftig unter den abgekühlten Grieß, bis alles gut verbunden ist."
+  },
+  {
+   "icon": "pan",
+   "text": "Lass {Butter} in einer großen Pfanne bei mittlerer Hitze schmelzen. Gib die Grießmasse hinein und brate sie 10 Minuten. Reiß sie dabei mit zwei Gabeln in kleine Stücke und wende sie immer wieder, bis sie rundum goldbraun ist.",
+   "timer": 600
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile den Grießschmarrn auf Teller und serviere das warme Apfelkompott dazu."
+  }
+ ],
+ "spinatknoedel": [
+  {
+   "icon": "mix",
+   "text": "Gib {Knödelbrot} in eine große Schüssel. Erwärme {Milch} in einem kleinen Topf, bis sie warm, aber nicht heiß ist. Gieß sie über das Brot und lass es 10 Minuten ziehen.",
+   "timer": 600
+  },
+  {
+   "icon": "boil",
+   "text": "Setze einen großen Topf mit reichlich Wasser und 1 TL Salz auf und bring es zum Kochen."
+  },
+  {
+   "icon": "pan",
+   "text": "Schäle {Zwiebel} und hacke sie fein. Lass ein Viertel von {Butter} in einer mittleren Pfanne bei mittlerer Hitze schmelzen und schwitze die Zwiebel 3 Minuten an, bis sie glasig ist. Gib {Blattspinat (TK)} dazu und erwärme ihn, bis er ganz aufgetaut ist.",
+   "timer": 180
+  },
+  {
+   "icon": "chop",
+   "text": "Lass den Spinat kurz abkühlen. Drück ihn mit den Händen kräftig aus und hacke ihn grob. Reibe {Parmesan} fein."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib Spinat, {Eier}, {Mehl} und die Hälfte vom Parmesan zum Brot. Verknete alles mit den Händen gut. Forme mit nassen Händen 8 gleich große Knödel."
+  },
+  {
+   "icon": "boil",
+   "text": "Dreh die Hitze herunter, sodass das Wasser nur leicht wallt. Leg die Knödel hinein und lass sie 12 Minuten ziehen, bis sie oben schwimmen und fest sind.",
+   "timer": 720
+  },
+  {
+   "icon": "pan",
+   "text": "Lass die restliche Butter in einem kleinen Topf bei mittlerer Hitze schmelzen und warte etwa 3 Minuten, bis sie hellbraun ist und nussig riecht.",
+   "timer": 180
+  },
+  {
+   "icon": "serve",
+   "text": "Hol die Knödel mit einem Schaumlöffel heraus, gieß die braune Butter darüber und streue den restlichen Parmesan darauf. Wasche {Grüner Salat}, zupfe ihn klein, mach ihn mit Essig, Öl und 1 Prise Salz an und serviere ihn dazu."
+  }
+ ],
+ "erdaepfelpuffer": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Erdäpfel (mehligkochend)} und reibe sie fein. Schäle {Zwiebel} und reibe sie ebenfalls fein. Gib alles in ein sauberes Küchentuch und drück die Flüssigkeit kräftig aus."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib die Masse in eine Schüssel und verrühre sie mit {Eier}, {Mehl} und {Salz} zu einem Teig."
+  },
+  {
+   "icon": "mix",
+   "text": "Schneide {Schnittlauch} in feine Röllchen und verrühre ihn in einer kleinen Schüssel mit {Topfen}. Ist der Dip zu fest, rühre 2 EL Wasser ein."
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Gurke} und schneide sie in etwa fingerlange Stifte."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Öl} in einer großen Pfanne bei mittlerer Hitze. Gib je 1 EL Teig hinein und drück ihn flach. Brate die Puffer pro Seite 4 Minuten, bis sie goldbraun und knusprig sind. Brate in mehreren Runden.",
+   "timer": 480
+  },
+  {
+   "icon": "serve",
+   "text": "Leg die Puffer kurz auf Küchenpapier und serviere sie mit dem Schnittlauch-Dip und den Gurkenstiften."
+  }
+ ],
+ "hendlrahm": [
+  {
+   "icon": "boil",
+   "text": "Setze einen großen Topf mit reichlich Wasser und 1 TL Salz auf. Koche {Bandnudeln} darin, bis sie al dente sind (Zeit laut Packung, etwa 10 Minuten).",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Hendlbrust} in dünne Streifen. Putze {Champignons} mit Küchenpapier und schneide sie in dünne Scheiben. Schäle {Zwiebel} und schneide sie in feine Würfel. Hacke {Petersilie} fein."
+  },
+  {
+   "icon": "pan",
+   "text": "Lass {Butter} in einer großen Pfanne bei mittlerer bis starker Hitze schmelzen. Brate das Hendl darin 5 Minuten an, bis kein Rosa mehr zu sehen ist. Streue {Mehl} darüber und rühre um.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Zwiebel und Champignons dazu und brate alles weitere 4 Minuten, bis die Zwiebel glasig und die Pilze weich sind.",
+   "timer": 240
+  },
+  {
+   "icon": "mix",
+   "text": "Gieß {Schlagobers} dazu und rühre gut um. Lass alles bei kleiner Flamme 5 Minuten sanft köcheln, bis die Sauce leicht dick wird.",
+   "timer": 300
+  },
+  {
+   "icon": "serve",
+   "text": "Gieß die Nudeln ab und verteile sie auf Teller. Gib das Geschnetzelte darüber und streue die Petersilie darauf."
+  }
+ ],
+ "krautfleckerl": [
+  {
+   "icon": "boil",
+   "text": "Setze einen großen Topf mit Wasser und 1 TL Salz auf. Koche {Fleckerl (Nudeln)} darin etwa 9 Minuten, bis sie al dente sind. Gieß sie ab und lass sie abtropfen.",
+   "timer": 540
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Weißkraut} ohne den harten Strunk in dünne Streifen, etwa 1 cm breit. Schäle {Zwiebel} und hacke sie fein."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Öl} in einer großen Pfanne bei mittlerer Hitze. Streue {Zucker} hinein und lass ihn unter Rühren hellbraun werden. Gib sofort {Speckwürfel} und die Zwiebel dazu und brate 2 Minuten, bis die Zwiebel glasig ist."
+  },
+  {
+   "icon": "pan",
+   "text": "Gib das Kraut und {Kümmel} dazu und rühre gut um. Dünste alles mit Deckel bei kleiner bis mittlerer Hitze 12 Minuten, bis das Kraut weich ist. Rühre ab und zu um und gib bei Bedarf 2 bis 3 EL Wasser dazu.",
+   "timer": 720
+  },
+  {
+   "icon": "mix",
+   "text": "Misch die Fleckerl unter das Kraut und röste alles 2 Minuten bei mittlerer Hitze durch.",
+   "timer": 120
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide {Schnittlauch} in feine Röllchen. Verteile die Krautfleckerl auf Teller und streue den Schnittlauch darüber."
+  }
+ ],
+ "reisfleisch": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und hacke sie fein. Schäle {Karotten} und schneide sie in kleine Würfel, etwa 0,5 cm groß."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Öl} in einem großen Topf mit Deckel bei mittlerer bis starker Hitze. Brate {Faschiertes (gemischt)} darin 4 Minuten krümelig an, bis kein Rosa mehr zu sehen ist.",
+   "timer": 240
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Zwiebel und Karotten dazu und brate alles weitere 4 Minuten, bis die Zwiebel glasig ist.",
+   "timer": 240
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre {Tomatenmark} und {Paprikapulver edelsüß} unter und röste alles nur 30 Sekunden, damit der Paprika nicht bitter wird. Gib {Langkornreis} dazu und rühre gut um."
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Gemüsebrühe (salzarm)} dazu und bring alles kurz zum Kochen. Dreh auf kleine Flamme, leg den Deckel auf und lass alles 12 Minuten garen.",
+   "timer": 720
+  },
+  {
+   "icon": "boil",
+   "text": "Rühre {Erbsen} unter, leg den Deckel wieder auf und gare alles noch 3 Minuten, bis der Reis weich ist und die Flüssigkeit aufgesogen hat.",
+   "timer": 180
+  },
+  {
+   "icon": "serve",
+   "text": "Reibe {Parmesan} fein. Verteile das Reisfleisch auf Teller und streue den Parmesan darüber."
+  }
+ ],
+ "putenschnitzel": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 220 Grad Ober-/Unterhitze vor. Leg ein Backblech mit Backpapier aus."
+  },
+  {
+   "icon": "boil",
+   "text": "Schäle {Erdäpfel (festkochend)} und schneide sie in Viertel. Gib sie in einen mittleren Topf, bedecke sie mit Wasser und gib 1 TL Salz dazu. Koche sie mit Deckel 15 Minuten, bis sie weich sind.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Stell drei tiefe Teller bereit: in den ersten {Mehl}, in den zweiten {Eier} mit 1 Prise Salz verquirlt, in den dritten {Semmelbrösel}. Wende {Putenschnitzel} nacheinander in Mehl, Ei und Bröseln und drück die Panade leicht an."
+  },
+  {
+   "icon": "oven",
+   "text": "Leg die Schnitzel auf das Blech und verteile die Hälfte von {Butter} in kleinen Flöckchen darauf. Back sie auf mittlerer Schiene 15 Minuten und wende sie nach etwa 8 Minuten, bis sie goldbraun sind.",
+   "timer": 900
+  },
+  {
+   "icon": "boil",
+   "text": "Schäle {Karotten} und schneide sie in Stifte. Gib sie für die letzten 8 Minuten zu den Erdäpfeln in den Topf.",
+   "timer": 480
+  },
+  {
+   "icon": "chop",
+   "text": "Hacke {Petersilie} fein. Schneide {Zitrone} in Spalten."
+  },
+  {
+   "icon": "serve",
+   "text": "Gieß Erdäpfel und Karotten ab. Schwenke sie im warmen Topf mit der restlichen Butter und der Petersilie. Serviere sie mit den Schnitzeln und den Zitronenspalten."
+  }
+ ],
+ "zucchinipesto": [
+  {
+   "icon": "boil",
+   "text": "Setze einen großen Topf mit reichlich Wasser und 1 TL Salz auf. Koche {Fusilli} darin etwa 10 Minuten, bis sie al dente sind.",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Wasche {Zucchini}, schneide die Enden ab und reibe sie grob. Zupfe die Blätter von {Basilikum} ab. Schäle {Knoblauch}. Reibe {Parmesan} fein."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib Zucchini, Basilikum, Knoblauch, Parmesan, {Sonnenblumenkerne}, {Olivenöl} und {Frischkäse} in einen hohen Becher. Püriere alles mit dem Stabmixer fein und cremig."
+  },
+  {
+   "icon": "boil",
+   "text": "Schöpfe vor dem Abgießen eine Tasse Kochwasser ab. Gieß die Nudeln dann in ein Sieb ab."
+  },
+  {
+   "icon": "serve",
+   "text": "Gib die Nudeln zurück in den Topf. Rühre das Pesto und 3 bis 4 EL Kochwasser unter, bis alles cremig ist, und serviere sofort."
+  }
+ ],
+ "bulgogi": [
+  {
+   "icon": "rice",
+   "text": "Wasche {Jasminreis} in einem Sieb, bis das Wasser klar ist. Koche ihn in einem mittleren Topf mit Deckel nach Packungsanleitung, etwa 12 Minuten bei kleiner Flamme.",
+   "timer": 720
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Frühlingszwiebel} in feine Ringe. Schäle {Knoblauch} und press ihn mit der Knoblauchpresse."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib {Rindfaschiertes}, {Sojasauce (salzreduziert)}, {Honig}, {Sesamöl}, Knoblauch und Frühlingszwiebel in eine Schüssel und verknete alles gut mit den Händen. Forme mit nassen Händen walnussgroße Bällchen."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze eine große beschichtete Pfanne bei mittlerer Hitze. Brate die Bällchen darin 10 Minuten und wende sie immer wieder, bis sie rundum braun sind und innen kein Rosa mehr zu sehen ist.",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Karotten} und schneide sie in dünne Stifte. Wasche {Gurke} und schneide sie ebenfalls in dünne Stifte."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile den Reis in Schüsseln. Leg Bällchen, Gurken- und Karottenstifte darauf und streue {Sesam} darüber."
+  }
+ ],
+ "gnocchipfanne": [
+  {
+   "icon": "chop",
+   "text": "Wasche {Zucchini} und schneide sie in 0,5 cm dicke Scheiben. Halbiere {Cherrytomaten}. Zupfe {Mozzarella} in kleine Stücke. Schäle {Knoblauch} und hacke ihn fein."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Olivenöl} in einer großen Pfanne bei mittlerer bis starker Hitze. Brate {Gnocchi} darin 6 Minuten und wende sie öfter, bis sie rundum goldbraun sind.",
+   "timer": 360
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Zucchini und Knoblauch dazu und brate alles 5 Minuten, bis die Zucchini weich ist.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Gib die Tomaten dazu und brate sie 2 Minuten mit, bis sie leicht weich werden.",
+   "timer": 120
+  },
+  {
+   "icon": "pan",
+   "text": "Verteile den Mozzarella darauf, dreh auf kleine Flamme und leg einen Deckel auf. Lass den Käse 2 Minuten schmelzen.",
+   "timer": 120
+  },
+  {
+   "icon": "serve",
+   "text": "Zupfe die Blätter von {Basilikum} ab, streue sie darüber und serviere direkt aus der Pfanne."
+  }
+ ],
+ "minitacos": [
+  {
+   "icon": "chop",
+   "text": "Schneide {Hendlbrust} in schmale Streifen, etwa 1 cm breit. Misch sie in einer Schüssel mit {Paprikapulver edelsüß} und {Kreuzkümmel}."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Öl} in einer großen Pfanne bei mittlerer bis starker Hitze. Brate die Streifen darin 6 Minuten, bis kein Rosa mehr zu sehen ist.",
+   "timer": 360
+  },
+  {
+   "icon": "pan",
+   "text": "Lass {Mais (Dose)} in einem Sieb abtropfen, gib ihn in die Pfanne und brate ihn 2 Minuten mit. Füll alles in eine Schüssel.",
+   "timer": 120
+  },
+  {
+   "icon": "mix",
+   "text": "Halbiere {Avocado}, nimm den Kern heraus und löffle das Fruchtfleisch in eine Schüssel. Press {Limette} aus, gib den Saft dazu und zerdrück alles mit einer Gabel. Schneide {Tomaten} in kleine Würfel."
+  },
+  {
+   "icon": "pan",
+   "text": "Wisch die Pfanne mit Küchenpapier aus. Erwärme {Weizentortillas (klein)} darin ohne Fett bei mittlerer Hitze je Seite etwa 20 Sekunden, bis sie warm und weich sind."
+  },
+  {
+   "icon": "serve",
+   "text": "Bestreich die Tortillas mit Avocado. Gib Hendl, Mais und Tomaten darauf und setz je einen Klecks von {Naturjoghurt} dazu."
+  }
+ ],
+ "butterchicken": [
+  {
+   "icon": "rice",
+   "text": "Wasche {Basmatireis} in einem Sieb, bis das Wasser klar ist. Koche ihn in einem mittleren Topf mit Deckel nach Packungsanleitung, etwa 13 Minuten bei kleiner Flamme.",
+   "timer": 780
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Hendlbrust} in 2 cm große Würfel. Misch sie in einer Schüssel mit {Naturjoghurt} und der Hälfte von {Garam Masala}. Schäle {Zwiebel} und {Knoblauch} und hacke beides fein."
+  },
+  {
+   "icon": "pan",
+   "text": "Lass {Butter} in einer großen Pfanne bei mittlerer Hitze schmelzen. Schwitze Zwiebel und Knoblauch darin 4 Minuten an, bis die Zwiebel glasig ist.",
+   "timer": 240
+  },
+  {
+   "icon": "pan",
+   "text": "Gib das Hendl mit der Marinade dazu und brate es 6 Minuten. Wende es öfter, bis es rundum hell ist.",
+   "timer": 360
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Passierte Tomaten} dazu und rühre den Rest vom Garam Masala ein. Lass alles bei kleiner Flamme 10 Minuten köcheln, bis das Hendl innen kein Rosa mehr hat.",
+   "timer": 600
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre {Schlagobers} ein und lass die Sauce noch 1 Minute heiß werden, aber nicht mehr stark kochen."
+  },
+  {
+   "icon": "serve",
+   "text": "Hacke {Koriander} grob. Verteile Reis und Butter-Chicken auf Teller und streue den Koriander darüber."
+  }
+ ],
+ "shebakedchickenrissoles": [
+  {
+   "icon": "oven",
+   "text": "Heize den Ofen auf 220 Grad Ober-/Unterhitze vor. Bestreiche ein Backblech mit {Olivenöl}."
+  },
+  {
+   "icon": "boil",
+   "text": "Schäle {Erdäpfel mehlig} und schneide sie in 3 cm große Stücke. Koche sie in einem mittleren Topf mit Wasser und 1 TL Salz etwa 15 Minuten, bis sie weich sind.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Reibe {Parmesan} fein und misch ihn auf einem flachen Teller mit {Panko-Brösel} und {Paprikapulver edelsüß}."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und reibe sie fein. Schäle {Knoblauch} und press ihn mit der Knoblauchpresse. Hacke {Petersilie} fein."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib {Hendl- oder Putenfaschiertes} in eine Schüssel. Gib Zwiebel, Knoblauch, Petersilie, {Eier} und eine Handvoll von der Bröselmischung dazu und verknete alles gut mit den Händen."
+  },
+  {
+   "icon": "mix",
+   "text": "Forme mit nassen Händen etwa 10 flache Laibchen. Wälze sie rundum in der restlichen Bröselmischung und leg sie auf das geölte Blech."
+  },
+  {
+   "icon": "oven",
+   "text": "Back die Laibchen auf mittlerer Schiene 20 Minuten und wende sie nach 10 Minuten, bis sie goldbraun sind und innen kein Rosa mehr zu sehen ist.",
+   "timer": 1200
+  },
+  {
+   "icon": "mix",
+   "text": "Gieß die Erdäpfel ab und stampf sie mit dem Kartoffelstampfer zu Püree. Schneide {Gurke} in dünne Scheiben und misch sie mit {Sauerrahm} und 1 Prise Salz."
+  },
+  {
+   "icon": "serve",
+   "text": "Serviere die Laibchen mit dem Püree und dem Gurken-Sauerrahm-Salat."
+  }
+ ],
+ "shebeefrissoles": [
+  {
+   "icon": "boil",
+   "text": "Schäle {Erdäpfel mehlig} und schneide sie in 2 cm große Würfel. Koche sie in einem mittleren Topf mit Wasser und 1 TL Salz 15 Minuten, bis sie weich sind.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und reibe sie fein. Schäle {Knoblauch} und press ihn mit der Knoblauchpresse. Teile {Brokkoli} in kleine Röschen."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib {Rinderfaschiertes} in eine Schüssel. Gib Zwiebel, Knoblauch, {Eier}, {Panko-Brösel}, {Ketchup} und {Worcestersauce} dazu und verknete alles gut. Forme golfballgroße Laibchen und drück sie leicht flach."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Olivenöl} in einer großen Pfanne bei mittlerer Hitze. Brate die Laibchen 8 bis 10 Minuten und wende sie einmal, bis sie braun sind und innen kein Rosa mehr zu sehen ist.",
+   "timer": 600
+  },
+  {
+   "icon": "boil",
+   "text": "Dämpfe gleichzeitig den Brokkoli in einem Siebeinsatz über wenig kochendem Wasser mit Deckel 5 Minuten, bis er weich ist.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Nimm die Laibchen heraus und gieß das Fett ab. Gib 3 EL Wasser in die heiße Pfanne und kratz die Bratrückstände mit dem Kochlöffel los. So entsteht der Bratensaft."
+  },
+  {
+   "icon": "mix",
+   "text": "Gieß die Erdäpfel ab und stampf sie mit dem Kartoffelstampfer zu Püree."
+  },
+  {
+   "icon": "serve",
+   "text": "Serviere die Laibchen mit dem Bratensaft, dem Püree und dem Brokkoli."
+  }
+ ],
+ "shecheeseburgerpasta": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und {Karotten}. Schneide beides und {Stangensellerie} in kleine Würfel, etwa 0,5 cm groß."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Olivenöl} in einem großen Topf bei mittlerer Hitze. Dünste das Gemüse darin 3 Minuten, bis es etwas weich ist.",
+   "timer": 180
+  },
+  {
+   "icon": "pan",
+   "text": "Gib {Rinderfaschiertes} dazu und brate es 3 Minuten. Zerdrück es dabei mit dem Kochlöffel, bis es krümelig ist und kein Rosa mehr zu sehen ist.",
+   "timer": 180
+  },
+  {
+   "icon": "pan",
+   "text": "Rühre {Oregano} und {Tomatenmark} ein und röste alles 1 Minute mit.",
+   "timer": 60
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Rindsuppe (salzarm)} und {Gehackte Tomaten} dazu und rühre {Hörnchennudeln} ein. Bring alles zum Kochen, leg den Deckel auf und lass es bei kleiner Flamme 15 Minuten köcheln. Rühre alle 3 Minuten um, damit nichts anbrennt.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Prüf, ob die Nudeln al dente sind. Nimm den Topf vom Herd, gieß {Milch} dazu und rühre {Geriebener Käse} ein, bis alles cremig ist."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile die Cheeseburger-Nudeln auf tiefe Teller und serviere sie gleich heiß."
+  }
+ ],
+ "shecreamygarlicchicken": [
+  {
+   "icon": "rice",
+   "text": "Spüle {Reis} in einem Sieb kurz mit kaltem Wasser ab. Gib ihn mit 500 ml Wasser und 1 Prise Salz in einen mittleren Topf, koche ihn auf und lass ihn zugedeckt auf kleiner Flamme 15 Minuten garen, bis das Wasser aufgesogen ist.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Hendlbrust} waagrecht in zwei dünne Hälften. Würze sie mit {Thymian getrocknet} und etwas Salz. Gib {Mehl} auf einen flachen Teller und wende das Fleisch darin, klopfe überschüssiges Mehl ab."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Knoblauch} und presse ihn mit der Knoblauchpresse. Wasche {Fisolen} und schneide die Enden ab."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Butter} mit 1 EL Öl in einer großen Pfanne auf mittlerer Hitze. Brate das Hendl 5 bis 6 Minuten, wende es einmal, bis es goldbraun ist und innen kein rosa mehr zu sehen ist. Nimm es heraus und stelle es auf einen Teller.",
+   "timer": 360
+  },
+  {
+   "icon": "boil",
+   "text": "Gib die Fisolen in einen kleinen Topf mit 2 cm Wasser und 1 Prise Salz. Dämpfe sie zugedeckt bei mittlerer Hitze 6 bis 7 Minuten, bis sie weich, aber noch knackig sind.",
+   "timer": 420
+  },
+  {
+   "icon": "pan",
+   "text": "Gib den Knoblauch in dieselbe Pfanne und rühre ihn 30 Sekunden, bis er duftet. Gieß {Hühnersuppe (salzarm)} dazu, löse den Bratensatz mit dem Kochlöffel und lass es bei mittlerer Hitze etwa 2 Minuten auf die Hälfte einkochen.",
+   "timer": 120
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre {Schlagobers} und {Dijonsenf} ein und lass die Sauce 2 Minuten sanft köcheln, bis sie leicht dicklich ist. Rühre {Parmesan} ein, bis er geschmolzen ist.",
+   "timer": 120
+  },
+  {
+   "icon": "serve",
+   "text": "Leg das Hendl zurück in die Sauce und erwärme es 1 Minute. Richte es mit dem Reis und den Fisolen auf Tellern an."
+  }
+ ],
+ "shecreamylemonchickenpasta": [
+  {
+   "icon": "boil",
+   "text": "Bring in einem großen Topf 3 Liter Wasser mit 1 TL Salz zum Kochen. Koche {Spaghetti} 1 bis 2 Minuten kürzer als auf der Packung angegeben, meist etwa 9 Minuten. Gieß sie ab.",
+   "timer": 540
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Knoblauch} und presse ihn mit der Knoblauchpresse. Presse den Saft von {Zitrone} aus. Hacke {Petersilie} fein."
+  },
+  {
+   "icon": "pan",
+   "text": "Würze {Hendlbrust} rundum mit {Italienische Kräuter}. Erhitze 1 EL Öl in einer großen Pfanne auf mittlerer Hitze und brate das Hendl zugedeckt je Seite 2 bis 3 Minuten, bis es goldbraun ist und innen kein rosa mehr zu sehen ist. Nimm es heraus.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Lass {Butter} in derselben Pfanne auf mittlerer Hitze schmelzen und rühre den Knoblauch 30 Sekunden darin. Streue {Mehl} darüber und rühre 30 Sekunden weiter."
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß nach und nach {Hühnersuppe (salzarm)} und {Schlagobers} dazu und rühre dabei, damit keine Klümpchen entstehen. Lass die Sauce 3 Minuten sanft köcheln, bis sie leicht dicklich ist.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Schalte den Herd aus. Rühre den Zitronensaft und {Parmesan} ein. Gib die Spaghetti dazu und mische alles gut durch."
+  },
+  {
+   "icon": "serve",
+   "text": "Schneide das Hendl in 1 cm breite Streifen. Verteile die Nudeln auf Teller, leg das Hendl darauf und streue die Petersilie darüber."
+  }
+ ],
+ "shecreamymustardchicken": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Erdäpfel mehlig} und schneide sie in 3 cm große Würfel. Wasche {Fisolen} und schneide die Enden ab. Schäle {Knoblauch} und presse ihn mit der Knoblauchpresse."
+  },
+  {
+   "icon": "boil",
+   "text": "Gib die Erdäpfel in einen mittleren Topf, bedecke sie mit kaltem Wasser und gib 1 TL Salz dazu. Koche sie 15 Minuten, bis sie ganz weich sind. Leg in den letzten 6 Minuten die Fisolen in einem Dämpfeinsatz darüber oder koche sie in einem kleinen Topf mit.",
+   "timer": 900
+  },
+  {
+   "icon": "pan",
+   "text": "Leg {Hendlbrust} zwischen Frischhaltefolie und klopf sie mit einer Pfanne gleichmäßig flach. Bestäube sie mit {Mehl}. Erhitze 1 EL Öl in einer großen Pfanne auf mittlerer Hitze und brate das Hendl je Seite 3 bis 4 Minuten, bis es goldbraun ist und innen kein rosa mehr zu sehen ist. Nimm es heraus und stelle es warm.",
+   "timer": 420
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Hühnersuppe (salzarm)} in die Pfanne und löse den Bratensatz mit dem Kochlöffel. Lass es etwa 2 Minuten auf die Hälfte einkochen. Gib die Hälfte von {Butter} und den Knoblauch dazu und rühre 30 Sekunden.",
+   "timer": 120
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre {Schlagobers}, {Dijonsenf}, {Körniger Senf} und {Honig} ein. Lass die Sauce auf kleiner Flamme 3 Minuten sanft köcheln. Rühre dann {Parmesan} ein, bis er geschmolzen ist.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Gieß die Erdäpfel ab. Erwärme {Milch} kurz und gib sie mit der restlichen Butter zu den Erdäpfeln. Stampfe alles mit dem Kartoffelstampfer zu einem glatten Püree."
+  },
+  {
+   "icon": "serve",
+   "text": "Leg das Hendl zurück in die Sauce und erwärme es 2 Minuten. Richte es mit dem Püree und den Fisolen an.",
+   "timer": 120
+  }
+ ],
+ "shecrispychickenschnitzelalfredo": [
+  {
+   "icon": "boil",
+   "text": "Bring in einem großen Topf 3 Liter Wasser mit 1 TL Salz zum Kochen. Schäle inzwischen {Knoblauch} und presse ihn mit der Knoblauchpresse."
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Hendlbrust} waagrecht halb durch, leg das Fleisch zwischen Frischhaltefolie und klopf es etwa 1 cm dünn. Salze es leicht."
+  },
+  {
+   "icon": "mix",
+   "text": "Stell drei tiefe Teller bereit: einen mit {Mehl}, einen mit {Eier}, mit der Gabel verquirlt, und einen mit {Semmelbrösel}. Wende das Fleisch nacheinander in Mehl, Ei und Bröseln."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Öl} in einer großen Pfanne auf mittlerer bis starker Hitze. Back die Schnitzel je Seite 3 Minuten, bis sie goldbraun und durch sind. Lass sie auf Küchenpapier abtropfen.",
+   "timer": 360
+  },
+  {
+   "icon": "boil",
+   "text": "Koche parallel {Bandnudeln} nach Packungsangabe, meist etwa 9 Minuten, bis sie al dente sind. Schöpfe vor dem Abgießen 1 Tasse Nudelwasser ab.",
+   "timer": 540
+  },
+  {
+   "icon": "pan",
+   "text": "Lass {Butter} in einer zweiten Pfanne auf mittlerer Hitze schmelzen und rühre den Knoblauch 30 Sekunden darin. Gieß {Schlagobers} dazu, rühre {Parmesan} ein und lass es 2 bis 3 Minuten köcheln, bis die Sauce cremig ist.",
+   "timer": 180
+  },
+  {
+   "icon": "serve",
+   "text": "Schwenke die Nudeln in der Sauce, ist sie zu dick, gib etwas Nudelwasser dazu. Schneide die Schnitzel in Streifen und leg sie auf die Nudeln."
+  }
+ ],
+ "shemarrymechickenrisoniorzo": [
+  {
+   "icon": "chop",
+   "text": "Schneide {Hendlkeulen ohne Knochen} in 2 bis 3 cm große Stücke. Hacke {Getrocknete Tomaten in Öl} grob. Schäle {Knoblauch} und presse ihn mit der Knoblauchpresse."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze {Olivenöl} in einer großen, tiefen Pfanne mit Deckel auf mittlerer bis starker Hitze. Brate das Hendl 3 bis 4 Minuten, bis es rundum gebräunt ist.",
+   "timer": 240
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Knoblauch, Tomaten und {Oregano} dazu und rühre 1 Minute, bis es duftet.",
+   "timer": 60
+  },
+  {
+   "icon": "boil",
+   "text": "Rühre {Orzo (Kritharaki)}, {Hühnersuppe (salzarm)}, {Dijonsenf} und {Schlagobers} ein und bring alles zum Kochen. Leg den Deckel auf und lass es auf kleiner Flamme 12 bis 15 Minuten köcheln. Rühre oft um, damit nichts anbrennt, bis der Orzo weich ist.",
+   "timer": 840
+  },
+  {
+   "icon": "mix",
+   "text": "Nimm die Pfanne vom Herd. Rühre {Babyspinat} ein, bis er zusammenfällt, dann {Parmesan}."
+  },
+  {
+   "icon": "serve",
+   "text": "Schmecke mit wenig Pfeffer ab und verteile den Orzo auf tiefe Teller."
+  }
+ ],
+ "shemincedgroundbeefstroganoff": [
+  {
+   "icon": "boil",
+   "text": "Bring in einem großen Topf 3 Liter Wasser mit 1 TL Salz zum Kochen. Koche {Orecchiette oder kurze Nudeln} nach Packungsangabe, meist etwa 10 Minuten, bis sie al dente sind, und gieß sie ab.",
+   "timer": 600
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und schneide sie in feine Würfel. Schäle {Knoblauch} und presse ihn mit der Knoblauchpresse. Putze {Champignons} und schneide sie in dünne Scheiben."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne auf mittlerer Hitze. Dünste die Zwiebel 3 Minuten, bis sie glasig ist. Gib Knoblauch und {Rinderfaschiertes} dazu und brate es krümelig, bis kein rosa mehr zu sehen ist.",
+   "timer": 360
+  },
+  {
+   "icon": "pan",
+   "text": "Gib die Champignons dazu und brate sie 4 Minuten mit. Streue {Mehl} darüber und rühre {Tomatenmark} und {Paprikapulver edelsüß} ein, 1 Minute mitrösten.",
+   "timer": 240
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Rindsuppe (salzarm)} dazu und rühre gut um. Lass es 5 bis 7 Minuten köcheln, bis die Sauce sämig ist. Schalte den Herd aus und rühre {Sauerrahm} ein.",
+   "timer": 360
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Gurke} in dünne Scheiben. Hacke {Dill} fein und mische ihn mit der Gurke und 1 Prise Salz in einer Schüssel."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile die Nudeln auf Teller, gib das Stroganoff darüber und stelle den Gurken-Dill-Salat dazu."
+  }
+ ],
+ "sheonepotcreamybolognese": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel}, {Karotten} und {Knoblauch}. Hacke Zwiebel, Karotten und {Stangensellerie} fein. Presse den Knoblauch mit der Knoblauchpresse."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 2 EL Öl in einem großen Topf auf mittlerer Hitze. Dünste Zwiebel, Karotten und Sellerie 5 Minuten, bis sie weich sind.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Knoblauch und {Rinderfaschiertes} dazu und brate es 5 Minuten krümelig, bis kein rosa mehr zu sehen ist. Rühre {Tomatenmark} ein und röste es 1 Minute mit.",
+   "timer": 360
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Passierte Tomaten}, {Rindsuppe (salzarm)} und 250 ml Wasser dazu, gib {Lorbeerblätter} hinein und bring alles zum Kochen. Rühre {Rigatoni} ein."
+  },
+  {
+   "icon": "boil",
+   "text": "Lass es offen auf mittlerer Hitze 18 bis 20 Minuten köcheln, bis die Nudeln al dente sind. Rühre regelmäßig um, damit nichts am Boden ansetzt.",
+   "timer": 1200
+  },
+  {
+   "icon": "mix",
+   "text": "Nimm die Lorbeerblätter heraus. Rühre {Schlagobers} und {Parmesan} ein."
+  },
+  {
+   "icon": "serve",
+   "text": "Zupfe die Blätter von {Basilikum}, verteile die Nudeln auf Teller und streue das Basilikum darüber."
+  }
+ ],
+ "shehiddenveggiebolognese": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und schneide sie mit {Stangensellerie} in feine Würfel. Schäle {Karotten} und reibe sie mit {Zucchini} fein. Hacke {Champignons} fein. Schäle {Knoblauch} und presse ihn."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 2 EL Öl in einem großen Topf auf mittlerer Hitze. Dünste das ganze Gemüse 6 bis 8 Minuten, bis es weich ist und die Flüssigkeit fast verdampft ist.",
+   "timer": 420
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Knoblauch und {Rinderfaschiertes} dazu und brate es 3 Minuten krümelig, bis kein rosa mehr zu sehen ist. Rühre {Tomatenmark} ein.",
+   "timer": 180
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Passierte Tomaten} und {Rindsuppe (salzarm)} dazu und gib {Lorbeerblätter} hinein. Lass es halb zugedeckt auf kleiner Flamme 25 Minuten köcheln, rühre ab und zu um.",
+   "timer": 1500
+  },
+  {
+   "icon": "boil",
+   "text": "Bring in der Zwischenzeit in einem großen Topf 3 Liter Wasser mit 1 TL Salz zum Kochen. Koche {Bandnudeln} nach Packungsangabe, bis sie al dente sind, und gieß sie ab.",
+   "timer": 540
+  },
+  {
+   "icon": "serve",
+   "text": "Nimm die Lorbeerblätter heraus. Mische die Nudeln unter die Sauce, verteile sie auf Teller und reibe {Parmesan} darüber."
+  }
+ ],
+ "shequickcoconutchickencurry": [
+  {
+   "icon": "rice",
+   "text": "Spüle {Basmatireis} in einem Sieb ab. Gib ihn mit 500 ml Wasser und 1 Prise Salz in einen mittleren Topf, koche ihn auf und lass ihn zugedeckt auf kleiner Flamme 15 Minuten garen.",
+   "timer": 900
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und schneide sie in feine Würfel. Schäle {Knoblauch} und presse ihn. Schäle {Ingwer} und reibe ihn fein. Schneide {Hendlkeulen ohne Knochen} in 2 bis 3 cm große Stücke."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne auf mittlerer Hitze. Dünste Zwiebel, Knoblauch und Ingwer 2 bis 3 Minuten, bis die Zwiebel glasig ist.",
+   "timer": 180
+  },
+  {
+   "icon": "pan",
+   "text": "Gib das Hendl dazu und brate es 4 Minuten, bis es rundum hell ist.",
+   "timer": 240
+  },
+  {
+   "icon": "pan",
+   "text": "Streue {Currypulver mild} und {Kurkuma} darüber und röste sie 30 Sekunden unter Rühren mit. Rühre {Tomatenmark} ein.",
+   "timer": 30
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Hühnersuppe (salzarm)} und {Kokosmilch} dazu. Lass es offen 10 bis 12 Minuten köcheln, bis die Sauce etwas eindickt und im Hendl kein rosa mehr zu sehen ist.",
+   "timer": 660
+  },
+  {
+   "icon": "serve",
+   "text": "Lockere den Reis mit einer Gabel auf und verteile ihn mit dem Curry auf Teller. Gib je einen Klecks {Naturjoghurt} darauf."
+  }
+ ],
+ "shespeedysataychicken": [
+  {
+   "icon": "rice",
+   "text": "Spüle {Jasminreis} in einem Sieb ab. Gib ihn mit 400 ml Wasser in einen mittleren Topf, koche ihn auf und lass ihn zugedeckt auf kleiner Flamme 15 Minuten garen.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Verrühre {Kokosmilch}, {Hühnersuppe (salzarm)}, {Erdnussmus} und {Sojasauce (salzreduziert)} in einer Schüssel mit dem Schneebesen zu einer glatten Sauce."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und schneide sie in feine Würfel. Schäle {Knoblauch} und presse ihn. Schneide {Gurke} in dünne Scheiben und {Limette} in Spalten."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne auf mittlerer bis starker Hitze. Brate Zwiebel und Knoblauch 1 Minute. Gib {Hendlfaschiertes} dazu und brate es krümelig, bis kein rosa mehr zu sehen ist. Rühre {Currypulver mild} ein.",
+   "timer": 360
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß die Sauce dazu und lass sie 3 bis 4 Minuten köcheln, bis sie cremig ist.",
+   "timer": 240
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile den Reis in Schalen, gib das Satay darüber und leg Gurke und Limettenspalten dazu."
+  }
+ ],
+ "shestickyhoisinbeef": [
+  {
+   "icon": "boil",
+   "text": "Gare {Breite Reisnudeln} nach Packungsangabe in heißem Wasser. Gieß sie ab, spüle sie kalt ab und mische sie mit der Hälfte von {Sesamöl}, damit sie nicht kleben."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Karotten} und schneide sie in dünne Stifte. Schneide {Chinakohl} in feine Streifen. Schneide {Frühlingszwiebeln} in dünne Ringe und trenne das Weiße vom Grünen. Schäle {Knoblauch} und presse ihn. Schneide {Limette} in Spalten."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze das restliche Sesamöl in einer großen Pfanne auf starker Hitze. Brate Knoblauch und das Weiße der Frühlingszwiebeln 30 Sekunden. Gib {Rinderfaschiertes} dazu und brate es krümelig braun, bis kein rosa mehr zu sehen ist.",
+   "timer": 300
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Karotten und Chinakohl dazu und brate sie 2 bis 3 Minuten mit, bis sie zusammenfallen.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Rühre {Hoisinsauce}, {Sojasauce (salzreduziert)} und {Reisessig} ein. Lass es 2 bis 3 Minuten einkochen, bis die Sauce klebrig glänzt.",
+   "timer": 180
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile die Nudeln auf Teller, gib das Faschierte darauf und streue das Grüne der Frühlingszwiebeln darüber. Leg die Limettenspalten dazu."
+  }
+ ],
+ "shekoreanbeefricebowls": [
+  {
+   "icon": "rice",
+   "text": "Spüle {Jasminreis} in einem Sieb ab. Gib ihn mit 400 ml Wasser in einen mittleren Topf, koche ihn auf und lass ihn zugedeckt auf kleiner Flamme 15 Minuten garen.",
+   "timer": 900
+  },
+  {
+   "icon": "mix",
+   "text": "Schäle {Knoblauch} und presse ihn. Schäle {Ingwer} und reibe ihn fein. Verrühre beides mit {Sojasauce (salzreduziert)}, 1 TL Zucker und {Sesam} in einer kleinen Schüssel."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Karotten} und schneide sie in feine Stifte. Schneide {Gurke} in feine Stifte und {Frühlingszwiebeln} in dünne Ringe."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne auf starker Hitze. Brate {Rinderfaschiertes} krümelig braun, bis kein rosa mehr zu sehen ist. Gieß die Sauce dazu und lass sie 2 bis 3 Minuten einkochen.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Verrühre {Mayonnaise} mit der Hälfte von {Gochujang}. Nimm für die Erwachsenen einen Teil des Faschierten ab und rühre dort den Rest Gochujang ein."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile den Reis in Schalen und leg Faschiertes, Karotten und Gurke darauf. Streue die Frühlingszwiebeln darüber und gib die Mayo dazu. Stell {Kimchi (nur Erwachsene)} für die Großen dazu."
+  }
+ ],
+ "shehomemadebeefburger": [
+  {
+   "icon": "mix",
+   "text": "Gib {Rinderfaschiertes}, {Panko-Brösel}, {Eier}, {Worcestersauce} und die Hälfte von {Ketchup} in eine Schüssel. Knete alles mit den Händen gut durch."
+  },
+  {
+   "icon": "mix",
+   "text": "Forme mit nassen Händen 4 große und ein kleines Laibchen, etwa 1,5 cm dick. Drücke in die Mitte jedes Laibchens mit dem Daumen eine kleine Mulde, so bleiben sie beim Braten flach."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen Pfanne auf mittlerer Hitze. Brate die Laibchen 10 bis 12 Minuten, wende sie einmal, bis sie innen nicht mehr rosa sind.",
+   "timer": 660
+  },
+  {
+   "icon": "pan",
+   "text": "Leg in der letzten Minute je eine Scheibe von {Gouda in Scheiben} auf die Laibchen, gib den Deckel drauf und lass den Käse schmelzen.",
+   "timer": 60
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Paradeiser} in dünne Scheiben. Wasche {Kopfsalat} und zupf die Blätter ab. Schneide {Essiggurkerl} in dünne Scheiben."
+  },
+  {
+   "icon": "oven",
+   "text": "Schneide {Burger-Brioche-Weckerl} auf und röste sie mit der Schnittfläche nach unten in einer trockenen Pfanne oder im Toaster 1 bis 2 Minuten goldbraun."
+  },
+  {
+   "icon": "serve",
+   "text": "Stell alles auf den Tisch, dazu {Mayonnaise} und den restlichen Ketchup. Jeder baut sich seinen Burger selbst."
+  }
+ ],
+ "sheonepankoreanstylebeefnoodles": [
+  {
+   "icon": "mix",
+   "text": "Verrühre {Sojasauce (salzreduziert)}, {Honig}, {Reisessig} und 1 TL Sesamöl in einer kleinen Schüssel zu einer Sauce."
+  },
+  {
+   "icon": "chop",
+   "text": "Schäle {Knoblauch} und presse ihn. Schäle {Ingwer} und reibe ihn fein. Schneide {Frühlingszwiebeln} in dünne Ringe und {Gurke} in feine Stifte."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen, tiefen Pfanne auf starker Hitze. Brate {Rinderfaschiertes} 4 bis 5 Minuten, bis es braun und knusprig ist. Gib Knoblauch und Ingwer dazu und röste sie 1 Minute mit.",
+   "timer": 360
+  },
+  {
+   "icon": "pan",
+   "text": "Rühre {Tomatenmark} und die Sauce ein und lass es 1 Minute köcheln.",
+   "timer": 60
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß {Kokosmilch} und 375 ml Wasser dazu und leg {Ramen-Nudeln} hinein. Gare sie zugedeckt 2 Minuten, wende die Nudeln dann und gare sie noch 1 Minute, bis sie weich sind.",
+   "timer": 180
+  },
+  {
+   "icon": "mix",
+   "text": "Mische alles gut durch, bis die Nudeln mit Sauce überzogen sind. Nimm für die Erwachsenen einen Teil ab und rühre dort {Gochujang (nur Erwachsene)} ein."
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile die Nudeln auf Schalen und streue Frühlingszwiebeln und Gurke darüber."
+  }
+ ],
+ "shestreetstylesoynoodles": [
+  {
+   "icon": "mix",
+   "text": "Verrühre {Austernsauce}, {Sojasauce (salzreduziert)}, die Hälfte von {Sesamöl} und 1 TL Zucker in einer kleinen Schüssel."
+  },
+  {
+   "icon": "chop",
+   "text": "Schneide {Hendlbrust} in dünne Streifen und mische sie mit 1 EL von der Sauce. Schäle {Karotten} und schneide sie in dünne Stifte. Schneide {Chinakohl} in feine Streifen und {Frühlingszwiebeln} in Ringe. Schäle {Knoblauch} und presse ihn."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze das restliche Sesamöl mit 1 EL Öl in einer großen Pfanne oder einem Wok auf starker Hitze. Brate das Hendl 1 bis 2 Minuten, bis kein rosa mehr zu sehen ist. Gib Knoblauch und Frühlingszwiebeln dazu und brate sie 30 Sekunden mit.",
+   "timer": 120
+  },
+  {
+   "icon": "pan",
+   "text": "Gib Chinakohl und Karotten dazu und brate sie 2 bis 3 Minuten unter Rühren mit, bis sie weich, aber noch knackig sind.",
+   "timer": 180
+  },
+  {
+   "icon": "pan",
+   "text": "Lockere {Frische Eiernudeln} mit den Händen auf und gib sie mit der restlichen Sauce in die Pfanne. Schwenke alles 1 bis 2 Minuten durch, bis die Nudeln heiß sind.",
+   "timer": 120
+  },
+  {
+   "icon": "serve",
+   "text": "Verteile die Nudeln auf Teller und streue {Sesam} darüber."
+  }
+ ],
+ "sheitalianstylemeatballs": [
+  {
+   "icon": "chop",
+   "text": "Schäle {Zwiebel} und schneide sie in feine Würfel. Schäle {Knoblauch} und presse ihn mit der Knoblauchpresse. Hacke {Petersilie} fein."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen, tiefen Pfanne auf mittlerer Hitze. Dünste die Zwiebel 4 bis 5 Minuten, bis sie weich und glasig ist. Gib die Hälfte vom Knoblauch dazu und röste ihn 30 Sekunden mit. Gib alles in eine Schüssel.",
+   "timer": 300
+  },
+  {
+   "icon": "boil",
+   "text": "Lass {Butter} in derselben Pfanne schmelzen und rühre den restlichen Knoblauch 30 Sekunden darin. Gib {Ganze Tomaten} und 125 ml Wasser dazu und zerdrücke die Tomaten mit dem Kochlöffel. Lass die Sauce auf kleiner Flamme leise köcheln."
+  },
+  {
+   "icon": "mix",
+   "text": "Gib {Faschiertes gemischt}, {Panko-Brösel}, {Milch}, {Eier}, die Petersilie, die Hälfte von {Parmesan} und {Geriebener Mozzarella} zur Zwiebel in die Schüssel. Knete alles gut durch und forme mit nassen Händen 16 gleich große Bällchen."
+  },
+  {
+   "icon": "boil",
+   "text": "Leg die Bällchen in die Sauce. Gare sie zugedeckt 12 bis 15 Minuten, wende sie dann vorsichtig und gare sie noch 8 bis 10 Minuten, bis sie innen durch sind.",
+   "timer": 1380
+  },
+  {
+   "icon": "serve",
+   "text": "Streue den restlichen Parmesan und die Blätter von {Basilikum} darüber. Schneide {Baguette} in Scheiben und stell es dazu."
+  }
+ ],
+ "sheonepanchickenandbroccolilasagne": [
+  {
+   "icon": "oven",
+   "text": "Heiz den Ofengrill auf höchster Stufe vor. Schäle {Zwiebel} und schneide sie in feine Würfel. Schäle {Knoblauch} und presse ihn. Schneide {Lauch} in dünne Ringe und wasche ihn gut. Schneide {Brokkoli} in kleine Röschen."
+  },
+  {
+   "icon": "pan",
+   "text": "Erhitze 1 EL Öl in einer großen, ofenfesten Pfanne auf mittlerer Hitze. Brate {Hendlbrust} je Seite 3 Minuten, bis innen kein rosa mehr zu sehen ist. Nimm sie heraus und schneide sie in kleine Stücke.",
+   "timer": 360
+  },
+  {
+   "icon": "pan",
+   "text": "Lass {Butter} in derselben Pfanne schmelzen. Dünste Zwiebel, Knoblauch und Lauch 4 Minuten, bis sie weich sind. Streue {Mehl} darüber und rühre 1 Minute.",
+   "timer": 240
+  },
+  {
+   "icon": "boil",
+   "text": "Gieß unter Rühren {Hühnersuppe (salzarm)} und {Schlagobers} dazu, damit keine Klümpchen entstehen. Gib {Italienische Kräuter} und den Brokkoli dazu und bring alles zum Kochen."
+  },
+  {
+   "icon": "boil",
+   "text": "Brich {Frische Lasagneblätter} in etwa 5 cm große Quadrate und drück sie in die Sauce, bis sie bedeckt sind. Lass es zugedeckt 6 Minuten und dann offen 5 Minuten köcheln. Rühre oft um, bis die Blätter weich sind.",
+   "timer": 660
+  },
+  {
+   "icon": "oven",
+   "text": "Heb das Hendl und {Parmesan} unter. Streue {Geriebener Mozzarella} darüber und stell die Pfanne 3 bis 5 Minuten unter den Grill, bis der Käse goldbraun ist.",
+   "timer": 300
+  },
+  {
+   "icon": "serve",
+   "text": "Nimm die Pfanne mit Topflappen heraus, der Griff ist heiß. Lass die Lasagne 2 Minuten ruhen und verteile sie dann auf Teller."
+  }
+ ]
+};
+RECIPES.forEach(r => { const d = DETAIL_STEPS[r.id]; if (d) r.steps = d; });
+
 const MASTERCHEF = [
  {
   "id": "suesskartoffel-sourcream-ahornsirup",
@@ -3139,6 +5533,16 @@ const ANGEBOTE = {
 "angebote": [
 {
 "markt": "BILLA",
+"name": "Milka Alpenmilch",
+"menge": "90 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 6 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
+},
+{
+"markt": "BILLA",
 "name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
 "menge": "7",
 "preis": 1.4,
@@ -3516,6 +5920,306 @@ const ANGEBOTE = {
 "hinweis": "ab 2 Stk",
 "bis": null,
 "link": "https://shop.billa.at/produkte/tag-und-nachtschnitte-00920526"
+},
+{
+"markt": "BILLA",
+"name": "Berger Traditionsbeinschinken",
+"menge": "1000 g",
+"preis": 24.5,
+"statt": 26.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Saunaschinken",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Wiener Heurigen Aufschnitt",
+"menge": "180 g",
+"preis": 4.49,
+"statt": 4.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
+},
+{
+"markt": "BILLA",
+"name": "Neuburger",
+"menge": "1000 g",
+"preis": 18.9,
+"statt": 22.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/neuburger-00441152"
+},
+{
+"markt": "BILLA",
+"name": "Puten Extrawurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
+},
+{
+"markt": "BILLA",
+"name": "Stastnik Farmer Putenbrust",
+"menge": "1000 g",
+"preis": 20.9,
+"statt": 22.5,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis mild",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Schweinschnitzel geschnitten",
+"menge": "400 g",
+"preis": 3.99,
+"statt": 5.2,
+"hinweis": "ab 2 Tassen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Bauernblutwurst",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
+},
+{
+"markt": "BILLA",
+"name": "Puten Pikantwurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Pariserkranzl",
+"menge": "250 g",
+"preis": 3.19,
+"statt": 3.79,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Prater Stelze geschnitten",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.59,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter AMA Suppenmix Rind",
+"menge": "1 kg",
+"preis": 14.99,
+"statt": 15.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Pusztawürstel",
+"menge": "250 g",
+"preis": 4.29,
+"statt": 5.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Leberpastete  Cranberry",
+"menge": "125 g",
+"preis": 1.49,
+"statt": 1.66,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Kaminwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis scharf",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Gipfel Stangerl",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Chiliwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Wienerwurst",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 26.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst Pikant",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Toscano",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Milde Tyrolini 4x40g",
+"menge": "160 g",
+"preis": 3.99,
+"statt": 4.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Cremona",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Antipasto Misto",
+"menge": "150 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
+},
+{
+"markt": "BILLA",
+"name": "Krainer",
+"menge": "300 g",
+"preis": 4.49,
+"statt": 5.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/krainer-00435839"
+},
+{
+"markt": "BILLA",
+"name": "Gebratene Käsewurst",
+"menge": "80 g",
+"preis": 2.99,
+"statt": 3.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
+},
+{
+"markt": "BILLA",
+"name": "Hühner Käsekrainer",
+"menge": "250 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Fair zum Tier Polnische Spezial",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 25.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
 },
 {
 "markt": "BILLA",
@@ -4049,313 +6753,293 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Milka Alpenmilch",
-"menge": "90 g",
-"preis": 1.32,
+"name": "Ja! Natürlich Maroni gegart",
+"menge": "100 g",
+"preis": 1.79,
 "statt": 1.99,
-"hinweis": "Bei 6 Stk je",
+"hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
+"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
 },
 {
 "markt": "BILLA",
-"name": "Berger Traditionsbeinschinken",
-"menge": "1000 g",
-"preis": 24.5,
-"statt": 26.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Saunaschinken",
+"name": "Kelly's Chips Classic Gesalzen",
 "menge": "150 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Wiener Heurigen Aufschnitt",
-"menge": "180 g",
-"preis": 4.49,
-"statt": 4.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
-},
-{
-"markt": "BILLA",
-"name": "Neuburger",
-"menge": "1000 g",
-"preis": 18.9,
-"statt": 22.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/neuburger-00441152"
-},
-{
-"markt": "BILLA",
-"name": "Puten Extrawurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
-},
-{
-"markt": "BILLA",
-"name": "Stastnik Farmer Putenbrust",
-"menge": "1000 g",
-"preis": 20.9,
-"statt": 22.5,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
-},
-{
-"markt": "BILLA",
-"name": "Sorger Salanettis mild",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Schweinschnitzel geschnitten",
-"menge": "400 g",
-"preis": 3.99,
-"statt": 5.2,
-"hinweis": "ab 2 Tassen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Bauernblutwurst",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
-},
-{
-"markt": "BILLA",
-"name": "Puten Pikantwurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Pariserkranzl",
-"menge": "250 g",
-"preis": 3.19,
-"statt": 3.79,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Prater Stelze geschnitten",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.59,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter AMA Suppenmix Rind",
-"menge": "1 kg",
-"preis": 14.99,
-"statt": 15.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Pusztawürstel",
-"menge": "250 g",
-"preis": 4.29,
-"statt": 5.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Leberpastete  Cranberry",
-"menge": "125 g",
-"preis": 1.49,
-"statt": 1.66,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Kaminwurzerl",
-"menge": "100 g",
-"preis": 2.29,
+"preis": 2.19,
 "statt": 2.99,
 "hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
+"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
 },
 {
 "markt": "BILLA",
-"name": "Sorger Salanettis scharf",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
+"name": "Laugenfussball",
+"menge": "90 g",
+"preis": 0.46,
+"statt": 0.94,
 "hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
+"link": "https://shop.billa.at/produkte/laugenfussball-00532716"
 },
 {
 "markt": "BILLA",
-"name": "Wiesbauer Gipfel Stangerl",
+"name": "Aborigines Weckerl - Mehl aus Österreich",
+"menge": "100 g",
+"preis": 1.39,
+"statt": 1.49,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/aborigines-weckerl-mehl-aus-oesterreich-00440879"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Erdnuss Snips",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
+"menge": "370 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
+},
+{
+"markt": "BILLA",
+"name": "Felix Ketchup ohne Zuckerzusatz",
+"menge": "960 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Marillen Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Sonnenblumenmuschel",
+"menge": "71 g",
+"preis": 0.99,
+"statt": 1.19,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenblumenmuschel-00201203"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Sour Cream",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
+},
+{
+"markt": "BILLA",
+"name": "Ja Natürlich Sonnen-Ura",
+"menge": "700 g",
+"preis": 3.8,
+"statt": 4.18,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenura-00295263"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Ketchup",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Gemüsesuppe Würfel",
+"menge": "126 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Jumpys Paprika",
+"menge": "75 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Gartenerdbeeren Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Salz",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Paprika",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo mit Basilikum",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Rosmarin",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
+},
+{
+"markt": "BILLA",
+"name": "Lorenz Nic Nac's Partypack",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
+},
+{
+"markt": "BILLA",
+"name": "Felix Tomatenketchup Mild",
+"menge": "1000 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Preiselbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Popcornchips Salz",
+"menge": "140 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
+},
+{
+"markt": "BILLA",
+"name": "Bona Öl",
+"menge": "0.75 liter",
+"preis": 2.32,
+"statt": 3.49,
+"hinweis": "Bei 3 Flaschen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bona-oel-00408228"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Himbeer Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo Arrabbiata",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Ofen Chips Paprika",
 "menge": "125 g",
 "preis": 2.19,
 "statt": 2.99,
 "hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Chiliwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Wienerwurst",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 26.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst Pikant",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Toscano",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Milde Tyrolini 4x40g",
-"menge": "160 g",
-"preis": 3.99,
-"statt": 4.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Cremona",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Antipasto Misto",
-"menge": "150 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
-},
-{
-"markt": "BILLA",
-"name": "Krainer",
-"menge": "300 g",
-"preis": 4.49,
-"statt": 5.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/krainer-00435839"
-},
-{
-"markt": "BILLA",
-"name": "Gebratene Käsewurst",
-"menge": "80 g",
-"preis": 2.99,
-"statt": 3.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
-},
-{
-"markt": "BILLA",
-"name": "Hühner Käsekrainer",
-"menge": "250 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Fair zum Tier Polnische Spezial",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 25.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
+"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
 },
 {
 "markt": "BILLA",
@@ -4659,296 +7343,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Ja! Natürlich Maroni gegart",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 1.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Classic Gesalzen",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
-},
-{
-"markt": "BILLA",
-"name": "Laugenfussball",
-"menge": "90 g",
-"preis": 0.46,
-"statt": 0.94,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/laugenfussball-00532716"
-},
-{
-"markt": "BILLA",
-"name": "Aborigines Weckerl - Mehl aus Österreich",
-"menge": "100 g",
-"preis": 1.39,
-"statt": 1.49,
-"hinweis": "ab 3 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/aborigines-weckerl-mehl-aus-oesterreich-00440879"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Erdnuss Snips",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
-"menge": "370 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
-},
-{
-"markt": "BILLA",
-"name": "Felix Ketchup ohne Zuckerzusatz",
-"menge": "960 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Marillen Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Sonnenblumenmuschel",
-"menge": "71 g",
-"preis": 0.99,
-"statt": 1.19,
-"hinweis": "ab 3 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenblumenmuschel-00201203"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Sour Cream",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
-},
-{
-"markt": "BILLA",
-"name": "Ja Natürlich Sonnen-Ura",
-"menge": "700 g",
-"preis": 3.8,
-"statt": 4.18,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenura-00295263"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Ketchup",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Gemüsesuppe Würfel",
-"menge": "126 g",
-"preis": 1.26,
-"statt": 1.89,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Jumpys Paprika",
-"menge": "75 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Gartenerdbeeren Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Salz",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Paprika",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo mit Basilikum",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Rosmarin",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
-},
-{
-"markt": "BILLA",
-"name": "Lorenz Nic Nac's Partypack",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 5.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
-},
-{
-"markt": "BILLA",
-"name": "Felix Tomatenketchup Mild",
-"menge": "1000 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Preiselbeer Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Popcornchips Salz",
-"menge": "140 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
-},
-{
-"markt": "BILLA",
-"name": "Bona Öl",
-"menge": "0.75 liter",
-"preis": 2.32,
-"statt": 3.49,
-"hinweis": "Bei 3 Flaschen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/bona-oel-00408228"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Feigen",
-"menge": "250 g",
-"preis": 2.49,
-"statt": 5.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Himbeer Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel Chips",
-"menge": "70 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo Arrabbiata",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Ofen Chips Paprika",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
-},
-{
-"markt": "BILLA",
 "name": "MAGGI Magic Asia Noodle Cup Chicken Taste",
 "menge": "63 g",
 "preis": 1.32,
@@ -4999,26 +7393,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Passionsfrucht",
-"menge": "ca. 60 g",
-"preis": 0.78,
-"statt": 1.21,
-"hinweis": "-35 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/7812-passionsfrucht"
-},
-{
-"markt": "Gurkerl",
-"name": "Michi Bauers Brokkoli",
-"menge": "ca. 0,65 kg",
-"preis": 2.63,
-"statt": 3.1,
-"hinweis": "-15 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/18831-michi-bauers-brokkoli"
-},
-{
-"markt": "Gurkerl",
 "name": "Michi Bauers Schwarzkohl - Palmkohl",
 "menge": "300 g",
 "preis": 1.99,
@@ -5026,6 +7400,16 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/20760-michi-bauers-schwarzkohl-palmkohl"
+},
+{
+"markt": "Gurkerl",
+"name": "Passionsfrucht",
+"menge": "ca. 60 g",
+"preis": 0.78,
+"statt": 1.21,
+"hinweis": "-35 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/7812-passionsfrucht"
 },
 {
 "markt": "Gurkerl",
@@ -5039,13 +7423,13 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Karfiol",
-"menge": "1 Stk",
-"preis": 1.89,
-"statt": 2.69,
-"hinweis": "-29 %",
+"name": "Michi Bauers Brokkoli",
+"menge": "ca. 0,65 kg",
+"preis": 2.63,
+"statt": 3.1,
+"hinweis": "-15 %",
 "bis": "2026-10-19",
-"link": "https://www.gurkerl.at/7908-karfiol"
+"link": "https://www.gurkerl.at/18831-michi-bauers-brokkoli"
 },
 {
 "markt": "Gurkerl",
@@ -5066,6 +7450,16 @@ const ANGEBOTE = {
 "hinweis": "-35 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/8878-sonnenobst-habeler-birne-alexander"
+},
+{
+"markt": "Gurkerl",
+"name": "Karfiol",
+"menge": "1 Stk",
+"preis": 1.89,
+"statt": 2.69,
+"hinweis": "-29 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/7908-karfiol"
 },
 {
 "markt": "Gurkerl",
@@ -5189,16 +7583,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Miil Mozzarella laktosefrei",
-"menge": "120 g",
-"preis": 1.54,
-"statt": 1.89,
-"hinweis": "-18 %",
-"bis": "2026-10-21",
-"link": "https://www.gurkerl.at/43256-miil-mozzarella-laktosefrei"
-},
-{
-"markt": "Gurkerl",
 "name": "BIO Faschiertes gemischt",
 "menge": "330 g",
 "preis": 5.62,
@@ -5209,13 +7593,23 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Wech AMA Maishendl Filet",
-"menge": "ca. 1,1 kg",
-"preis": 14.62,
-"statt": 18.17,
-"hinweis": "-19 %",
+"name": "Miil Mozzarella laktosefrei",
+"menge": "120 g",
+"preis": 1.54,
+"statt": 1.89,
+"hinweis": "-18 %",
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/43256-miil-mozzarella-laktosefrei"
+},
+{
+"markt": "Gurkerl",
+"name": "Nov'East Panierte Tintenfischringe",
+"menge": "200 g",
+"preis": 3.76,
+"statt": 5.99,
+"hinweis": "-37 %",
 "bis": "2026-10-20",
-"link": "https://www.gurkerl.at/21881-wech-ama-maishendl-filet"
+"link": "https://www.gurkerl.at/48432-nov-east-panierte-tintenfischringe"
 },
 {
 "markt": "Gurkerl",
@@ -5229,16 +7623,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Arla Skyr Natur Extra Cremig",
-"menge": "400 g",
-"preis": 0.94,
-"statt": 1.99,
-"hinweis": "-52 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/45386-arla-skyr-natur-extra-cremig"
-},
-{
-"markt": "Gurkerl",
 "name": "Pappudia Reispfanne mit Huhn \"Mexican Style\"",
 "menge": "330 g",
 "preis": 1.78,
@@ -5246,6 +7630,16 @@ const ANGEBOTE = {
 "hinweis": "-40 %",
 "bis": "2026-10-23",
 "link": "https://www.gurkerl.at/43463-pappudia-reispfanne-mit-huhn-mexican-style"
+},
+{
+"markt": "Gurkerl",
+"name": "Arla Skyr Natur Extra Cremig",
+"menge": "400 g",
+"preis": 0.94,
+"statt": 1.99,
+"hinweis": "-52 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/45386-arla-skyr-natur-extra-cremig"
 },
 {
 "markt": "Gurkerl",
@@ -5259,13 +7653,13 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Wech Hühnerbrust gegrillt und geschnitten",
-"menge": "100 g",
-"preis": 2.8,
-"statt": 3.29,
-"hinweis": "-14 %",
-"bis": "2026-10-21",
-"link": "https://www.gurkerl.at/21906-wech-huehnerbrust-gegrillt-und-geschnitten"
+"name": "Berger AMA Suppentasse Rindfleisch/Knochen/Suppengrün",
+"menge": "ca. 0,97 kg",
+"preis": 16.72,
+"statt": 21.28,
+"hinweis": "-21 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/9419-berger-ama-suppentasse-rindfleisch-knochen-suppengruen"
 },
 {
 "markt": "Gurkerl",
@@ -5279,13 +7673,13 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Berger AMA Suppentasse Rindfleisch/Knochen/Suppengrün",
-"menge": "ca. 0,97 kg",
-"preis": 16.72,
-"statt": 21.28,
-"hinweis": "-21 %",
-"bis": "2026-10-20",
-"link": "https://www.gurkerl.at/9419-berger-ama-suppentasse-rindfleisch-knochen-suppengruen"
+"name": "Wech Hühnerbrust gegrillt und geschnitten",
+"menge": "100 g",
+"preis": 2.8,
+"statt": 3.29,
+"hinweis": "-14 %",
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/21906-wech-huehnerbrust-gegrillt-und-geschnitten"
 }
 ]
 };
