@@ -467,6 +467,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       <div class="toolbar">
         <span class="label" id="week-label">Diese Woche</span>
         <button class="ghost" id="reshuffle">Neue Woche mischen</button>
+        <button class="ghost" id="send-week" type="button">Woche aufs andere Gerät</button>
       </div>
       <div class="days" id="days"></div>
     </section>
@@ -1330,6 +1331,20 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
   const f = x => x.toLocaleDateString("de-DE", { day: "numeric", month: "short" });
   $("#week-label").textContent = `Woche ${f(mon)} – ${f(sun)}`;
+  // Woche per Link auf ein anderes Gerät bringen (ohne Familien-Verbindung)
+  $("#send-week").addEventListener("click", async () => {
+    const url = APP_URL + "?woche=" + plan.join(",");
+    const text = "Unser Wochenplan: " + plan.map((id, d) => DAYS[d].slice(0, 2) + " " + byId[id].name).join(", ");
+    if (navigator.share) { try { await navigator.share({ title: "Familientisch – Woche", text, url }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
+    if (!(await copyText(url, "Link kopiert – auf dem anderen Gerät öffnen"))) { const ta = $("#copy-fallback"); ta.hidden = false; ta.value = url; $("#tab-shop").click(); toast("Link unten in der Einkaufsliste markieren und kopieren"); }
+  });
+  let linkWeek = null;
+  try { linkWeek = (new URLSearchParams(location.search).get("woche") || "").split(",").filter(Boolean); } catch (e) {}
+  if (linkWeek && linkWeek.length === 7 && linkWeek.every(id => byId[id])) {
+    try { history.replaceState(null, "", location.pathname); } catch (e) {}
+    plan = linkWeek; checked = {}; inCart = {}; store.set("plan", plan); store.set("checked", checked); store.set("inCart", inCart);
+    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Woche übernommen"); }, 1500);
+  }
   let linkDb = null;
   try { linkDb = new URLSearchParams(location.search).get("db"); } catch (e) {}
   const shared = location.hash.slice(1);
