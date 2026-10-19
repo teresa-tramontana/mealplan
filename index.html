@@ -461,6 +461,21 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   .shop-head .seg { margin-left: 0; width: 100%; }
   .shop-head .seg button { flex: 1; padding-inline: 6px; }
 }
+
+/* Kochschritte zum Abhaken */
+ol.steps-check { list-style: none; padding-left: 0 !important; display: grid; gap: 4px; }
+ol.steps-check li { padding: 0; }
+ol.steps-check label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; padding: 4px 0; }
+ol.steps-check input { width: 20px; height: 20px; margin-top: 3px; flex: none; accent-color: var(--sage); }
+ol.steps-check .no { color: var(--olive); font-weight: 700; }
+ol.steps-check .amt { font-weight: 700; color: var(--sage); }
+ol.steps-check .need { display: block; font-size: 0.85em; color: var(--sage); font-weight: 600; margin-top: 2px; }
+ol.steps-check li.done .st { color: var(--muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--muted) 60%, transparent); }
+ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted); }
+.steps-reset { margin-top: 6px; }
+.day .steps-reset { grid-column: 3 / -1; justify-self: start; }
+@media (max-width: 760px) { .day .steps-reset { grid-column: 1 / -1; } }
+.player .step-text .amt { font-weight: 800; }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -3141,306 +3156,6 @@ const ANGEBOTE = {
 "angebote": [
 {
 "markt": "BILLA",
-"name": "Berger Traditionsbeinschinken",
-"menge": "1000 g",
-"preis": 24.5,
-"statt": 26.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Saunaschinken",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Wiener Heurigen Aufschnitt",
-"menge": "180 g",
-"preis": 4.49,
-"statt": 4.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
-},
-{
-"markt": "BILLA",
-"name": "Neuburger",
-"menge": "1000 g",
-"preis": 18.9,
-"statt": 22.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/neuburger-00441152"
-},
-{
-"markt": "BILLA",
-"name": "Puten Extrawurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
-},
-{
-"markt": "BILLA",
-"name": "Stastnik Farmer Putenbrust",
-"menge": "1000 g",
-"preis": 20.9,
-"statt": 22.5,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
-},
-{
-"markt": "BILLA",
-"name": "Sorger Salanettis mild",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Schweinschnitzel geschnitten",
-"menge": "400 g",
-"preis": 3.99,
-"statt": 5.2,
-"hinweis": "ab 2 Tassen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Bauernblutwurst",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
-},
-{
-"markt": "BILLA",
-"name": "Puten Pikantwurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Pariserkranzl",
-"menge": "250 g",
-"preis": 3.19,
-"statt": 3.79,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Prater Stelze geschnitten",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.59,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter AMA Suppenmix Rind",
-"menge": "1 kg",
-"preis": 14.99,
-"statt": 15.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Pusztawürstel",
-"menge": "250 g",
-"preis": 4.29,
-"statt": 5.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Leberpastete  Cranberry",
-"menge": "125 g",
-"preis": 1.49,
-"statt": 1.66,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Kaminwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
-},
-{
-"markt": "BILLA",
-"name": "Sorger Salanettis scharf",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Gipfel Stangerl",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Chiliwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Wienerwurst",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 26.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst Pikant",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Toscano",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Milde Tyrolini 4x40g",
-"menge": "160 g",
-"preis": 3.99,
-"statt": 4.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Cremona",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Antipasto Misto",
-"menge": "150 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
-},
-{
-"markt": "BILLA",
-"name": "Krainer",
-"menge": "300 g",
-"preis": 4.49,
-"statt": 5.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/krainer-00435839"
-},
-{
-"markt": "BILLA",
-"name": "Gebratene Käsewurst",
-"menge": "80 g",
-"preis": 2.99,
-"statt": 3.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
-},
-{
-"markt": "BILLA",
-"name": "Hühner Käsekrainer",
-"menge": "250 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Fair zum Tier Polnische Spezial",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 25.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
-},
-{
-"markt": "BILLA",
 "name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
 "menge": "7",
 "preis": 1.4,
@@ -3568,16 +3283,6 @@ const ANGEBOTE = {
 "hinweis": "",
 "bis": null,
 "link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
-},
-{
-"markt": "BILLA",
-"name": "Milka Alpenmilch",
-"menge": "90 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 6 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
 },
 {
 "markt": "BILLA",
@@ -4361,6 +4066,316 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
+"name": "Milka Alpenmilch",
+"menge": "90 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 6 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-alpenmilch-00772792"
+},
+{
+"markt": "BILLA",
+"name": "Berger Traditionsbeinschinken",
+"menge": "1000 g",
+"preis": 24.5,
+"statt": 26.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Saunaschinken",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Wiener Heurigen Aufschnitt",
+"menge": "180 g",
+"preis": 4.49,
+"statt": 4.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
+},
+{
+"markt": "BILLA",
+"name": "Neuburger",
+"menge": "1000 g",
+"preis": 18.9,
+"statt": 22.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/neuburger-00441152"
+},
+{
+"markt": "BILLA",
+"name": "Puten Extrawurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
+},
+{
+"markt": "BILLA",
+"name": "Stastnik Farmer Putenbrust",
+"menge": "1000 g",
+"preis": 20.9,
+"statt": 22.5,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis mild",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Schweinschnitzel geschnitten",
+"menge": "400 g",
+"preis": 3.99,
+"statt": 5.2,
+"hinweis": "ab 2 Tassen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Bauernblutwurst",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
+},
+{
+"markt": "BILLA",
+"name": "Puten Pikantwurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Pariserkranzl",
+"menge": "250 g",
+"preis": 3.19,
+"statt": 3.79,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Prater Stelze geschnitten",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.59,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter AMA Suppenmix Rind",
+"menge": "1 kg",
+"preis": 14.99,
+"statt": 15.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Pusztawürstel",
+"menge": "250 g",
+"preis": 4.29,
+"statt": 5.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Leberpastete  Cranberry",
+"menge": "125 g",
+"preis": 1.49,
+"statt": 1.66,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Kaminwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis scharf",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Gipfel Stangerl",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Chiliwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Wienerwurst",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 26.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst Pikant",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Toscano",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Milde Tyrolini 4x40g",
+"menge": "160 g",
+"preis": 3.99,
+"statt": 4.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Cremona",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Antipasto Misto",
+"menge": "150 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
+},
+{
+"markt": "BILLA",
+"name": "Krainer",
+"menge": "300 g",
+"preis": 4.49,
+"statt": 5.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/krainer-00435839"
+},
+{
+"markt": "BILLA",
+"name": "Gebratene Käsewurst",
+"menge": "80 g",
+"preis": 2.99,
+"statt": 3.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
+},
+{
+"markt": "BILLA",
+"name": "Hühner Käsekrainer",
+"menge": "250 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Fair zum Tier Polnische Spezial",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 25.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
+},
+{
+"markt": "BILLA",
 "name": "Ja! Natürlich Maroni gegart",
 "menge": "100 g",
 "preis": 1.79,
@@ -5001,13 +5016,23 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "BIO Pimientos de Padron, scharf",
-"menge": "200 g",
-"preis": 3.59,
-"statt": 3.99,
-"hinweis": "-10 %",
+"name": "Passionsfrucht",
+"menge": "ca. 60 g",
+"preis": 0.78,
+"statt": 1.21,
+"hinweis": "-35 %",
 "bis": "2026-10-19",
-"link": "https://www.gurkerl.at/44321-bio-pimientos-de-padron-scharf"
+"link": "https://www.gurkerl.at/7812-passionsfrucht"
+},
+{
+"markt": "Gurkerl",
+"name": "Michi Bauers Brokkoli",
+"menge": "ca. 0,65 kg",
+"preis": 2.63,
+"statt": 3.1,
+"hinweis": "-15 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/18831-michi-bauers-brokkoli"
 },
 {
 "markt": "Gurkerl",
@@ -5021,33 +5046,13 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Michi Bauers Brokkoli",
-"menge": "ca. 0,72 kg",
-"preis": 2.9,
-"statt": 3.43,
-"hinweis": "-15 %",
+"name": "BIO Trauben weiß, kernlos",
+"menge": "500 g",
+"preis": 2.99,
+"statt": 4.59,
+"hinweis": "-34 %",
 "bis": "2026-10-19",
-"link": "https://www.gurkerl.at/18831-michi-bauers-brokkoli"
-},
-{
-"markt": "Gurkerl",
-"name": "Passionsfrucht",
-"menge": "ca. 60 g",
-"preis": 0.73,
-"statt": 1.13,
-"hinweis": "-35 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/7812-passionsfrucht"
-},
-{
-"markt": "Gurkerl",
-"name": "Blün Coeur de Boeuf - Ochsenherzparadeiser",
-"menge": "ca. 500 g",
-"preis": 2.62,
-"statt": 3.09,
-"hinweis": "-15 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/7750-bluen-coeur-de-boeuf-ochsenherzparadeiser"
+"link": "https://www.gurkerl.at/26233-bio-trauben-weiss-kernlos"
 },
 {
 "markt": "Gurkerl",
@@ -5063,8 +5068,8 @@ const ANGEBOTE = {
 "markt": "Gurkerl",
 "name": "BIO Knoblauch",
 "menge": "ca. 40 g",
-"preis": 0.47,
-"statt": 0.68,
+"preis": 0.43,
+"statt": 0.62,
 "hinweis": "-30 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/19008-bio-knoblauch"
@@ -5072,22 +5077,12 @@ const ANGEBOTE = {
 {
 "markt": "Gurkerl",
 "name": "Sonnenobst Habeler Birne Alexander",
-"menge": "ca. 170 g",
-"preis": 0.46,
-"statt": 0.72,
-"hinweis": "-36 %",
+"menge": "ca. 190 g",
+"preis": 0.51,
+"statt": 0.79,
+"hinweis": "-35 %",
 "bis": "2026-10-19",
 "link": "https://www.gurkerl.at/8878-sonnenobst-habeler-birne-alexander"
-},
-{
-"markt": "Gurkerl",
-"name": "Süßes von Ulreich Marillenkuchen vegan",
-"menge": "200 g",
-"preis": 4.79,
-"statt": 5.99,
-"hinweis": "-20 %",
-"bis": "2026-10-22",
-"link": "https://www.gurkerl.at/21035-suesses-von-ulreich-marillenkuchen-vegan"
 },
 {
 "markt": "Gurkerl",
@@ -5101,6 +5096,26 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
+"name": "Süßes von Ulreich Marillenkuchen vegan",
+"menge": "200 g",
+"preis": 4.79,
+"statt": 5.99,
+"hinweis": "-20 %",
+"bis": "2026-10-22",
+"link": "https://www.gurkerl.at/21035-suesses-von-ulreich-marillenkuchen-vegan"
+},
+{
+"markt": "Gurkerl",
+"name": "Anker Weißbrot geschnitten",
+"menge": "500 g",
+"preis": 2.31,
+"statt": 2.89,
+"hinweis": "-20 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/24263-anker-weissbrot-geschnitten"
+},
+{
+"markt": "Gurkerl",
 "name": "BE-SANE Kakao Kuchen Getreidefrei",
 "menge": "180 g",
 "preis": 6.39,
@@ -5108,6 +5123,16 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-31",
 "link": "https://www.gurkerl.at/44791-be-sane-kakao-kuchen-getreidefrei"
+},
+{
+"markt": "Gurkerl",
+"name": "BE-SANE Haselnuss Kuchen Getreidefrei",
+"menge": "180 g",
+"preis": 5.59,
+"statt": 6.99,
+"hinweis": "-20 %",
+"bis": "2026-10-24",
+"link": "https://www.gurkerl.at/44789-be-sane-haselnuss-kuchen-getreidefrei"
 },
 {
 "markt": "Gurkerl",
@@ -5141,33 +5166,43 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "BIO Faschiertes gemischt",
-"menge": "330 g",
-"preis": 5.62,
-"statt": 7.29,
-"hinweis": "-22 %",
-"bis": "2026-10-20",
-"link": "https://www.gurkerl.at/17561-bio-faschiertes-gemischt"
-},
-{
-"markt": "Gurkerl",
-"name": "Ölz Landbrot Weizenmisch geschnitten",
-"menge": "500 g",
-"preis": 1.28,
-"statt": 4.29,
-"hinweis": "-70 %",
+"name": "Der Mann Dinkel Walnussbrot",
+"menge": "400 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "-20 %",
 "bis": "2026-10-19",
-"link": "https://www.gurkerl.at/41418-oelz-landbrot-weizenmisch-geschnitten"
+"link": "https://www.gurkerl.at/14421-der-mann-dinkel-walnussbrot"
 },
 {
 "markt": "Gurkerl",
-"name": "Wech AMA Maishendl Filet",
-"menge": "ca. 1,14 kg",
-"preis": 15.1,
-"statt": 18.76,
-"hinweis": "-19 %",
+"name": "Graf Backofen Leberkäse 2 Scheiben",
+"menge": "ca. 450 g",
+"preis": 4.11,
+"statt": 5.56,
+"hinweis": "-26 %",
+"bis": "2026-10-22",
+"link": "https://www.gurkerl.at/33749-graf-backofen-leberkaese-2-scheiben"
+},
+{
+"markt": "Gurkerl",
+"name": "Fish? Fresh! Schottisches Label Rouge Lachs Filet mit Haut",
+"menge": "200 g",
+"preis": 11.89,
+"statt": 13.99,
+"hinweis": "-15 %",
 "bis": "2026-10-20",
-"link": "https://www.gurkerl.at/21881-wech-ama-maishendl-filet"
+"link": "https://www.gurkerl.at/16637-fish-fresh-schottisches-label-rouge-lachs-filet-mit-haut"
+},
+{
+"markt": "Gurkerl",
+"name": "FJORU BIO Dorade im Ganzen",
+"menge": "ca. 360 g",
+"preis": 6.41,
+"statt": 9.29,
+"hinweis": "-31 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/19049-fjoru-bio-dorade-im-ganzen"
 },
 {
 "markt": "Gurkerl",
@@ -5181,33 +5216,23 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "FJORU BIO Dorade im Ganzen",
-"menge": "ca. 380 g",
-"preis": 6.98,
-"statt": 9.8,
-"hinweis": "-28 %",
-"bis": "2026-10-20",
-"link": "https://www.gurkerl.at/19049-fjoru-bio-dorade-im-ganzen"
-},
-{
-"markt": "Gurkerl",
-"name": "Schärdinger Mozzarella 45% Mini",
-"menge": "125 g",
-"preis": 0.91,
-"statt": 1.99,
-"hinweis": "-54 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/3845-schaerdinger-mozzarella-45-mini"
-},
-{
-"markt": "Gurkerl",
-"name": "Pappudia Reispfanne mit Huhn \"Mexican Style\"",
+"name": "BIO Faschiertes gemischt",
 "menge": "330 g",
-"preis": 1.78,
-"statt": 2.99,
-"hinweis": "-40 %",
-"bis": "2026-10-23",
-"link": "https://www.gurkerl.at/43463-pappudia-reispfanne-mit-huhn-mexican-style"
+"preis": 5.62,
+"statt": 7.29,
+"hinweis": "-22 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/17561-bio-faschiertes-gemischt"
+},
+{
+"markt": "Gurkerl",
+"name": "Wech AMA Maishendl Filet",
+"menge": "ca. 1,1 kg",
+"preis": 14.62,
+"statt": 18.17,
+"hinweis": "-19 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/21881-wech-ama-maishendl-filet"
 },
 {
 "markt": "Gurkerl",
@@ -5221,33 +5246,23 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Wiener frisch aufgeschnitten",
-"menge": "100 g",
-"preis": 1.64,
+"name": "Arla Skyr Natur Extra Cremig",
+"menge": "400 g",
+"preis": 0.94,
+"statt": 1.99,
+"hinweis": "-52 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/45386-arla-skyr-natur-extra-cremig"
+},
+{
+"markt": "Gurkerl",
+"name": "Pappudia Reispfanne mit Huhn \"Mexican Style\"",
+"menge": "330 g",
+"preis": 1.78,
 "statt": 2.99,
-"hinweis": "-45 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/48275-wiener-frisch-aufgeschnitten"
-},
-{
-"markt": "Gurkerl",
-"name": "Gissinger Bauernschinken geschnitten",
-"menge": "ca. 160 g",
-"preis": 4.46,
-"statt": 8.12,
-"hinweis": "-45 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/22632-gissinger-bauernschinken-geschnitten"
-},
-{
-"markt": "Gurkerl",
-"name": "Landmetzgerei Klobeck Münchner Weißwurst Großpackung",
-"menge": "ca. 0,9 kg",
-"preis": 4.67,
-"statt": 15.58,
-"hinweis": "-70 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/30813-landmetzgerei-klobeck-muenchner-weisswurst-grosspackung"
+"hinweis": "-40 %",
+"bis": "2026-10-23",
+"link": "https://www.gurkerl.at/43463-pappudia-reispfanne-mit-huhn-mexican-style"
 },
 {
 "markt": "Gurkerl",
@@ -5261,10 +5276,30 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
+"name": "Wech Hühnerbrust gegrillt und geschnitten",
+"menge": "100 g",
+"preis": 2.8,
+"statt": 3.29,
+"hinweis": "-14 %",
+"bis": "2026-10-21",
+"link": "https://www.gurkerl.at/21906-wech-huehnerbrust-gegrillt-und-geschnitten"
+},
+{
+"markt": "Gurkerl",
+"name": "Gissinger Bauernschinken geschnitten",
+"menge": "ca. 170 g",
+"preis": 2.56,
+"statt": 8.55,
+"hinweis": "-70 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/22632-gissinger-bauernschinken-geschnitten"
+},
+{
+"markt": "Gurkerl",
 "name": "Berger AMA Suppentasse Rindfleisch/Knochen/Suppengrün",
-"menge": "ca. 0,98 kg",
-"preis": 16.85,
-"statt": 21.44,
+"menge": "ca. 0,97 kg",
+"preis": 16.72,
+"statt": 21.28,
 "hinweis": "-21 %",
 "bis": "2026-10-20",
 "link": "https://www.gurkerl.at/9419-berger-ama-suppentasse-rindfleisch-knochen-suppengruen"
@@ -5451,6 +5486,69 @@ const ANGEBOTE = {
   }
 
   // ---------- Woche ----------
+  // ---------- Kochschritte: Mengen direkt im Text und Hakerl zum Abhaken ----------
+  // In den Schritten steht {Zutat}; daraus wird die Menge für eure Personenanzahl, z. B. „400 g Lachsfilet“.
+  const half = q => { const w = Math.floor(q), f = Math.round((q - w) * 4) / 4; const fr = { 0.25: "¼", 0.5: "½", 0.75: "¾" }[f]; return fr ? (w ? w + fr : fr) : String(Math.round(q * 10) / 10).replace(".", ","); };
+  function stepAmount(q, u) {
+    if (!q) return "";
+    const v = sc(q, u);
+    return /^(stk|stück)$/i.test(u) ? half(v) : /^(zehe|zehen|bund|dose|dosen|packung|packungen|el|tl|scheiben?|becher|glas)$/i.test(u) ? half(v) + " " + u : fmtQty(v, u);
+  }
+  // Für Rezepte ohne {Zutat} (z. B. Master Chef): Zutaten finden, die im Schritt vorkommen
+  const ingWord = n => (n.toLowerCase().replace(/\(.*?\)/g, "").split(/[\s,-]+/).filter(w => w.length > 3 && !STOP.has(w)).pop() || n.toLowerCase());
+  function stepIngredients(r) {
+    if (r._stepIngs) return r._stepIngs;
+    const seen = new Set();
+    r._stepIngs = r.steps.map(st => {
+      if (/\{[^}]+\}/.test(st.text)) return [];
+      const t = st.text.toLowerCase();
+      return r.ingredients.filter((ing, k) => { const w = ingWord(ing[0]).slice(0, 6); if (seen.has(k) || !t.includes(w)) return false; seen.add(k); return true; });
+    });
+    return r._stepIngs;
+  }
+  function stepText(r, st, html) {
+    return st.text.split(/(\{[^}]+\})/).map(part => {
+      const m = part.match(/^\{([^}]+)\}$/), ing = m && r.ingredients.find(x => x[0] === m[1]);
+      if (!m) return html ? esc(part) : part;
+      if (!ing) return html ? esc(m[1]) : m[1];
+      const amt = stepAmount(ing[1], ing[2]), label = (amt ? amt + " " : "") + ing[0];
+      return html ? `<b class="amt">${esc(label)}</b>` : label;
+    }).join("");
+  }
+  function stepExtra(r, k, html) {
+    const list = stepIngredients(r)[k] || [];
+    if (!list.length) return "";
+    const txt = list.map(ing => { const a = stepAmount(ing[1], ing[2]); return (a ? a + " " : "") + ing[0]; }).join(" · ");
+    return html ? `<span class="need">Dafür: ${esc(txt)}</span>` : ` (Dafür: ${txt})`;
+  }
+  const stepPlain = (r, st, k) => stepText(r, st, false) + stepExtra(r, k, false);
+  let stepsDone = store.get("stepsDone", {});
+  function stepList(r, cls) {
+    const done = stepsDone[r.id] || {};
+    return `<ol class="${cls} steps-check" data-rid="${esc(r.id)}">${r.steps.map((st, k) => `<li class="${done[k] ? "done" : ""}"><label><input type="checkbox" data-step="${esc(r.id)}" data-k="${k}"${done[k] ? " checked" : ""} aria-label="Schritt ${k + 1} erledigt"><span class="st"><span class="no">${k + 1}.</span> ${stepText(r, st, true)}${st.timer ? ` <span class="tm">· ${Math.round(st.timer / 60)} Min.</span>` : ""}${stepExtra(r, k, true)}</span></label></li>`).join("")}</ol>` +
+      (Object.values(done).some(Boolean) ? `<button class="mini steps-reset" type="button" data-steps-reset="${esc(r.id)}">Hakerl bei den Schritten entfernen</button>` : "");
+  }
+  document.addEventListener("change", e => {
+    const c = e.target.closest("[data-step]"); if (!c) return;
+    const id = c.dataset.step, k = c.dataset.k;
+    stepsDone[id] = Object.assign({}, stepsDone[id], { [k]: c.checked });
+    store.set("stepsDone", stepsDone);
+    c.closest("li").classList.toggle("done", c.checked);
+    document.querySelectorAll(`[data-step="${CSS.escape(id)}"][data-k="${k}"]`).forEach(x => { x.checked = c.checked; x.closest("li").classList.toggle("done", c.checked); });
+    const any = Object.values(stepsDone[id]).some(Boolean);
+    document.querySelectorAll(`ol[data-rid="${CSS.escape(id)}"]`).forEach(ol => {
+      const nx = ol.nextElementSibling, has = nx && nx.matches("[data-steps-reset]");
+      if (any && !has) ol.insertAdjacentHTML("afterend", `<button class="mini steps-reset" type="button" data-steps-reset="${esc(id)}">Hakerl bei den Schritten entfernen</button>`);
+      if (!any && has) nx.remove();
+    });
+  });
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-steps-reset]"); if (!b) return;
+    const id = b.dataset.stepsReset; delete stepsDone[id]; store.set("stepsDone", stepsDone);
+    document.querySelectorAll(`[data-step="${CSS.escape(id)}"]`).forEach(x => { x.checked = false; x.closest("li").classList.remove("done"); });
+    document.querySelectorAll(`[data-steps-reset="${CSS.escape(id)}"]`).forEach(x => x.remove());
+  });
+
   function renderWeek() {
     const now = new Date(), today = (now.getDay() + 6) % 7;
     const dateOf = i => { const x = new Date(now); x.setDate(now.getDate() - today + i); return x.toLocaleDateString("de-DE", { day: "numeric", month: "numeric" }); };
@@ -5467,7 +5565,7 @@ const ANGEBOTE = {
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
         <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}${sourceBtns(r, false)}</div>
-        <ol class="steps">${r.steps.map(st => `<li>${esc(st.text)}${st.timer ? ` <span class="tm">· ${Math.round(st.timer / 60)} Min.</span>` : ""}</li>`).join("")}</ol>
+        ${stepList(r, "steps")}
       </article>`;
     }).join("");
     store.set("plan", plan);
@@ -5481,7 +5579,7 @@ const ANGEBOTE = {
     const inf = e.target.closest("[data-info]");
     if (inf) openDetail(inf.dataset.info, "ing");
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Neue Woche ist geplant"); });
 
   // Wörter, die beim Suchen dasselbe meinen
   const SEARCH_SYN = [["huhn", "hendl", "hahnchen", "huhner", "chicken", "pute"], ["nudel", "pasta", "spaghetti", "penne", "fusilli", "tagliatelle", "orzo", "fleckerl", "nockerl"],
@@ -5852,8 +5950,8 @@ const ANGEBOTE = {
     const s = P.r.steps[P.i], last = P.i === P.r.steps.length - 1;
     $("#p-stage").innerHTML = `<div class="scene">${scene(s.icon, P.r.colors)}</div>
       <div class="step-no">Schritt ${P.i + 1} von ${P.r.steps.length}</div>
-      <div class="step-text text-in">${esc(s.text)}</div>
-      <div class="chips">${(s.items || []).map(x => `<span>${esc(x)}</span>`).join("")}</div>
+      <div class="step-text text-in">${stepText(P.r, s, true)}</div>
+      <div class="chips">${(/\{[^}]+\}/.test(s.text) ? [] : stepIngredients(P.r)[P.i] || []).map(ing => `<span>${esc(((stepAmount(ing[1], ing[2]) ? stepAmount(ing[1], ing[2]) + " " : "") + ing[0]))}</span>`).join("")}</div>
       ${s.timer ? `<button class="timer" id="p-timer">Kochwecker ${mmss(s.timer)}</button>` : ""}
       `;
     if (s.timer) $("#p-timer").onclick = () => startTimer(s.timer);
@@ -5887,7 +5985,7 @@ const ANGEBOTE = {
   function sayRaw(t) {
     try { const u = new SpeechSynthesisUtterance(t); u.lang = "de-DE"; u.rate = 0.95; const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith("de")); if (v) u.voice = v; speechSynthesis.speak(u); } catch (e) {}
   }
-  function speak() { if (!P || !P.voice || !P.playing) return; stopSpeak(); sayRaw(P.r.steps[P.i].text); }
+  function speak() { if (!P || !P.voice || !P.playing) return; stopSpeak(); sayRaw(stepPlain(P.r, P.r.steps[P.i], P.i)); }
   function stopSpeak() { try { speechSynthesis.cancel(); } catch (e) {} }
 
   // ---------- Gemeinsam speichern (Google Firebase Realtime Database) ----------
@@ -5997,7 +6095,7 @@ const ANGEBOTE = {
   function shareText(r) {
     return `${r.name}\n${r.origin} · ${timeLabel(r)} · für ${peopleLabel()}\n\nZutaten:\n` +
       r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(sc(q, u), u) : ""}`).join("\n") +
-      `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
+      `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${stepPlain(r, st, i)}`).join("\n") +
       (r.source ? `\n\nOriginal-Rezept von ${r.source.name}: ${r.source.url}` + (r.source.instagram ? `\nInstagram: ${r.source.instagram}` : "") : "") + `\n\n${APP_URL}#${r.id}`;
   }
   const LINK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg>';
@@ -6037,7 +6135,7 @@ const ANGEBOTE = {
       <h4 id="d-ing">Zutaten für ${esc(peopleLabel())}</h4>
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(sc(q, u), u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
-      <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
+      ${stepList(r, "steps-d")}
       ${r.source ? `<p class="from-pantry">Rezept frei übersetzt und angepasst nach <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name)}</a>${r.source.instagram ? ` · auf Instagram: <a href="${esc(r.source.instagram)}" target="_blank" rel="noopener">${esc(r.source.handle || "Instagram")}</a>` : ""}.</p>` : ""}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {

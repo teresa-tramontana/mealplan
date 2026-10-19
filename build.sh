@@ -10,6 +10,9 @@ python3 - <<'PY'
 import json, os
 app = open("src/app.html", encoding="utf-8").read()
 rec = open("src/recipes.js", encoding="utf-8").read() + "\n" + open("src/simplehomeedit.js", encoding="utf-8").read()
+# Ausführliche Kochschritte mit {Zutat}-Platzhaltern (ersetzen die kurzen Schritte)
+if os.path.exists("src/steps_detail.json"):
+    rec += "\nconst DETAIL_STEPS = " + open("src/steps_detail.json", encoding="utf-8").read() + ";\nRECIPES.forEach(r => { const d = DETAIL_STEPS[r.id]; if (d) r.steps = d; });\n"
 mc = open("src/masterchef.json", encoding="utf-8").read()
 conv = open("src/masterchef.js", encoding="utf-8").read()
 deals = open("src/angebote.json", encoding="utf-8").read() if os.path.exists("src/angebote.json") else "{}"

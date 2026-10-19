@@ -444,6 +444,21 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   .shop-head .seg { margin-left: 0; width: 100%; }
   .shop-head .seg button { flex: 1; padding-inline: 6px; }
 }
+
+/* Kochschritte zum Abhaken */
+ol.steps-check { list-style: none; padding-left: 0 !important; display: grid; gap: 4px; }
+ol.steps-check li { padding: 0; }
+ol.steps-check label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; padding: 4px 0; }
+ol.steps-check input { width: 20px; height: 20px; margin-top: 3px; flex: none; accent-color: var(--sage); }
+ol.steps-check .no { color: var(--olive); font-weight: 700; }
+ol.steps-check .amt { font-weight: 700; color: var(--sage); }
+ol.steps-check .need { display: block; font-size: 0.85em; color: var(--sage); font-weight: 600; margin-top: 2px; }
+ol.steps-check li.done .st { color: var(--muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--muted) 60%, transparent); }
+ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted); }
+.steps-reset { margin-top: 6px; }
+.day .steps-reset { grid-column: 3 / -1; justify-self: start; }
+@media (max-width: 760px) { .day .steps-reset { grid-column: 1 / -1; } }
+.player .step-text .amt { font-weight: 800; }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -635,6 +650,69 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   }
 
   // ---------- Woche ----------
+  // ---------- Kochschritte: Mengen direkt im Text und Hakerl zum Abhaken ----------
+  // In den Schritten steht {Zutat}; daraus wird die Menge für eure Personenanzahl, z. B. „400 g Lachsfilet“.
+  const half = q => { const w = Math.floor(q), f = Math.round((q - w) * 4) / 4; const fr = { 0.25: "¼", 0.5: "½", 0.75: "¾" }[f]; return fr ? (w ? w + fr : fr) : String(Math.round(q * 10) / 10).replace(".", ","); };
+  function stepAmount(q, u) {
+    if (!q) return "";
+    const v = sc(q, u);
+    return /^(stk|stück)$/i.test(u) ? half(v) : /^(zehe|zehen|bund|dose|dosen|packung|packungen|el|tl|scheiben?|becher|glas)$/i.test(u) ? half(v) + " " + u : fmtQty(v, u);
+  }
+  // Für Rezepte ohne {Zutat} (z. B. Master Chef): Zutaten finden, die im Schritt vorkommen
+  const ingWord = n => (n.toLowerCase().replace(/\(.*?\)/g, "").split(/[\s,-]+/).filter(w => w.length > 3 && !STOP.has(w)).pop() || n.toLowerCase());
+  function stepIngredients(r) {
+    if (r._stepIngs) return r._stepIngs;
+    const seen = new Set();
+    r._stepIngs = r.steps.map(st => {
+      if (/\{[^}]+\}/.test(st.text)) return [];
+      const t = st.text.toLowerCase();
+      return r.ingredients.filter((ing, k) => { const w = ingWord(ing[0]).slice(0, 6); if (seen.has(k) || !t.includes(w)) return false; seen.add(k); return true; });
+    });
+    return r._stepIngs;
+  }
+  function stepText(r, st, html) {
+    return st.text.split(/(\{[^}]+\})/).map(part => {
+      const m = part.match(/^\{([^}]+)\}$/), ing = m && r.ingredients.find(x => x[0] === m[1]);
+      if (!m) return html ? esc(part) : part;
+      if (!ing) return html ? esc(m[1]) : m[1];
+      const amt = stepAmount(ing[1], ing[2]), label = (amt ? amt + " " : "") + ing[0];
+      return html ? `<b class="amt">${esc(label)}</b>` : label;
+    }).join("");
+  }
+  function stepExtra(r, k, html) {
+    const list = stepIngredients(r)[k] || [];
+    if (!list.length) return "";
+    const txt = list.map(ing => { const a = stepAmount(ing[1], ing[2]); return (a ? a + " " : "") + ing[0]; }).join(" · ");
+    return html ? `<span class="need">Dafür: ${esc(txt)}</span>` : ` (Dafür: ${txt})`;
+  }
+  const stepPlain = (r, st, k) => stepText(r, st, false) + stepExtra(r, k, false);
+  let stepsDone = store.get("stepsDone", {});
+  function stepList(r, cls) {
+    const done = stepsDone[r.id] || {};
+    return `<ol class="${cls} steps-check" data-rid="${esc(r.id)}">${r.steps.map((st, k) => `<li class="${done[k] ? "done" : ""}"><label><input type="checkbox" data-step="${esc(r.id)}" data-k="${k}"${done[k] ? " checked" : ""} aria-label="Schritt ${k + 1} erledigt"><span class="st"><span class="no">${k + 1}.</span> ${stepText(r, st, true)}${st.timer ? ` <span class="tm">· ${Math.round(st.timer / 60)} Min.</span>` : ""}${stepExtra(r, k, true)}</span></label></li>`).join("")}</ol>` +
+      (Object.values(done).some(Boolean) ? `<button class="mini steps-reset" type="button" data-steps-reset="${esc(r.id)}">Hakerl bei den Schritten entfernen</button>` : "");
+  }
+  document.addEventListener("change", e => {
+    const c = e.target.closest("[data-step]"); if (!c) return;
+    const id = c.dataset.step, k = c.dataset.k;
+    stepsDone[id] = Object.assign({}, stepsDone[id], { [k]: c.checked });
+    store.set("stepsDone", stepsDone);
+    c.closest("li").classList.toggle("done", c.checked);
+    document.querySelectorAll(`[data-step="${CSS.escape(id)}"][data-k="${k}"]`).forEach(x => { x.checked = c.checked; x.closest("li").classList.toggle("done", c.checked); });
+    const any = Object.values(stepsDone[id]).some(Boolean);
+    document.querySelectorAll(`ol[data-rid="${CSS.escape(id)}"]`).forEach(ol => {
+      const nx = ol.nextElementSibling, has = nx && nx.matches("[data-steps-reset]");
+      if (any && !has) ol.insertAdjacentHTML("afterend", `<button class="mini steps-reset" type="button" data-steps-reset="${esc(id)}">Hakerl bei den Schritten entfernen</button>`);
+      if (!any && has) nx.remove();
+    });
+  });
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-steps-reset]"); if (!b) return;
+    const id = b.dataset.stepsReset; delete stepsDone[id]; store.set("stepsDone", stepsDone);
+    document.querySelectorAll(`[data-step="${CSS.escape(id)}"]`).forEach(x => { x.checked = false; x.closest("li").classList.remove("done"); });
+    document.querySelectorAll(`[data-steps-reset="${CSS.escape(id)}"]`).forEach(x => x.remove());
+  });
+
   function renderWeek() {
     const now = new Date(), today = (now.getDay() + 6) % 7;
     const dateOf = i => { const x = new Date(now); x.setDate(now.getDate() - today + i); return x.toLocaleDateString("de-DE", { day: "numeric", month: "numeric" }); };
@@ -651,7 +729,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
         <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}${sourceBtns(r, false)}</div>
-        <ol class="steps">${r.steps.map(st => `<li>${esc(st.text)}${st.timer ? ` <span class="tm">· ${Math.round(st.timer / 60)} Min.</span>` : ""}</li>`).join("")}</ol>
+        ${stepList(r, "steps")}
       </article>`;
     }).join("");
     store.set("plan", plan);
@@ -665,7 +743,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     const inf = e.target.closest("[data-info]");
     if (inf) openDetail(inf.dataset.info, "ing");
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Neue Woche ist geplant"); });
 
   // Wörter, die beim Suchen dasselbe meinen
   const SEARCH_SYN = [["huhn", "hendl", "hahnchen", "huhner", "chicken", "pute"], ["nudel", "pasta", "spaghetti", "penne", "fusilli", "tagliatelle", "orzo", "fleckerl", "nockerl"],
@@ -1036,8 +1114,8 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
     const s = P.r.steps[P.i], last = P.i === P.r.steps.length - 1;
     $("#p-stage").innerHTML = `<div class="scene">${scene(s.icon, P.r.colors)}</div>
       <div class="step-no">Schritt ${P.i + 1} von ${P.r.steps.length}</div>
-      <div class="step-text text-in">${esc(s.text)}</div>
-      <div class="chips">${(s.items || []).map(x => `<span>${esc(x)}</span>`).join("")}</div>
+      <div class="step-text text-in">${stepText(P.r, s, true)}</div>
+      <div class="chips">${(/\{[^}]+\}/.test(s.text) ? [] : stepIngredients(P.r)[P.i] || []).map(ing => `<span>${esc(((stepAmount(ing[1], ing[2]) ? stepAmount(ing[1], ing[2]) + " " : "") + ing[0]))}</span>`).join("")}</div>
       ${s.timer ? `<button class="timer" id="p-timer">Kochwecker ${mmss(s.timer)}</button>` : ""}
       `;
     if (s.timer) $("#p-timer").onclick = () => startTimer(s.timer);
@@ -1071,7 +1149,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   function sayRaw(t) {
     try { const u = new SpeechSynthesisUtterance(t); u.lang = "de-DE"; u.rate = 0.95; const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith("de")); if (v) u.voice = v; speechSynthesis.speak(u); } catch (e) {}
   }
-  function speak() { if (!P || !P.voice || !P.playing) return; stopSpeak(); sayRaw(P.r.steps[P.i].text); }
+  function speak() { if (!P || !P.voice || !P.playing) return; stopSpeak(); sayRaw(stepPlain(P.r, P.r.steps[P.i], P.i)); }
   function stopSpeak() { try { speechSynthesis.cancel(); } catch (e) {} }
 
   // ---------- Gemeinsam speichern (Google Firebase Realtime Database) ----------
@@ -1181,7 +1259,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
   function shareText(r) {
     return `${r.name}\n${r.origin} · ${timeLabel(r)} · für ${peopleLabel()}\n\nZutaten:\n` +
       r.ingredients.map(([n, q, u]) => `• ${n}${q ? " – " + fmtQty(sc(q, u), u) : ""}`).join("\n") +
-      `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${st.text}`).join("\n") +
+      `\n\nSo geht's:\n` + r.steps.map((st, i) => `${i + 1}. ${stepPlain(r, st, i)}`).join("\n") +
       (r.source ? `\n\nOriginal-Rezept von ${r.source.name}: ${r.source.url}` + (r.source.instagram ? `\nInstagram: ${r.source.instagram}` : "") : "") + `\n\n${APP_URL}#${r.id}`;
   }
   const LINK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg>';
@@ -1221,7 +1299,7 @@ h1, h2, h3, .brand h1, .day h3, .day .dname b, .dayblock .dish, .p-cap b, .c-bod
       <h4 id="d-ing">Zutaten für ${esc(peopleLabel())}</h4>
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(sc(q, u), u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
-      <ol class="steps-d" style="padding-left:20px;margin:0;display:grid;gap:4px;font-size:.88rem">${r.steps.map(st => `<li>${esc(st.text)}</li>`).join("")}</ol>
+      ${stepList(r, "steps-d")}
       ${r.source ? `<p class="from-pantry">Rezept frei übersetzt und angepasst nach <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name)}</a>${r.source.instagram ? ` · auf Instagram: <a href="${esc(r.source.instagram)}" target="_blank" rel="noopener">${esc(r.source.handle || "Instagram")}</a>` : ""}.</p>` : ""}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
