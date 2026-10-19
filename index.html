@@ -476,6 +476,20 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
 .day .steps-reset { grid-column: 3 / -1; justify-self: start; }
 @media (max-width: 760px) { .day .steps-reset { grid-column: 1 / -1; } }
 .player .step-text .amt { font-weight: 800; }
+
+/* Bewertungen */
+.rating { display: grid; gap: 8px; }
+.rate-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.rate-l { min-width: 130px; font-weight: 700; font-size: 0.92rem; }
+.stars { display: inline-flex; gap: 2px; }
+.star { border: 0; background: none; padding: 4px; cursor: pointer; color: var(--sage-soft); line-height: 0; }
+.star svg { width: 28px; height: 28px; fill: currentColor; }
+.star.on { color: var(--sage); }
+.rate-w { font-size: 0.85rem; color: var(--muted); }
+.rate-note { width: 100%; font: inherit; font-size: 0.92rem; padding: 10px 12px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); resize: vertical; } /* taste-skill-ignore: Formularfeld */
+.rate-at, .rate-hint { margin: 0; font-size: 0.8rem; color: var(--muted); }
+.rate-btn svg { width: 14px; height: 14px; fill: currentColor; }
+.rate-btn.on { color: var(--sage); }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -5560,136 +5574,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
-"menge": "7",
-"preis": 1.4,
-"statt": 2.79,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sesamstrasse-abby-kekse-mit-vanille-und-hafer-00734561"
-},
-{
-"markt": "BILLA",
-"name": "Sesamstrasse Krümelmonster Kekse mit Schokostückchen",
-"menge": "7",
-"preis": 1.4,
-"statt": 2.79,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sesamstrasse-kruemelmonster-kekse-mit-schokostueckchen-00734562"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel-Birne-Kirsche",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
-},
-{
-"markt": "BILLA",
-"name": "Fruchtbar Bio Herznudeln",
-"menge": "300 g",
-"preis": 1.19,
-"statt": 2.37,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel mit Banane & Dinkel",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Maroni gegart",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 1.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
-},
-{
-"markt": "BILLA",
-"name": "SanLucar Mandarinen gelegt",
-"menge": "1 kg",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sanlucar-mandarinen-gelegt-0089073"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Feigen",
-"menge": "250 g",
-"preis": 2.49,
-"statt": 5.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel Chips",
-"menge": "70 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Cranberries",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 3.59,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-cranberries-00940498"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Kokos Chips Geröstet",
-"menge": "100 g",
-"preis": 1.49,
-"statt": 1.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-kokos-chips-geroestet-00774966"
-},
-{
-"markt": "BILLA",
-"name": "Pesendorfer Saurer Apfel",
-"menge": "200 g",
-"preis": 2.99,
-"statt": 5.09,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/pesendorfer-saurer-apfel-00502027"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Bio Gojibeeren",
-"menge": "100 g",
-"preis": 2.69,
-"statt": 3.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
-},
-{
-"markt": "BILLA",
 "name": "Laugenfussball",
 "menge": "90 g",
 "preis": 0.46,
@@ -5940,533 +5824,133 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Berger Traditionsbeinschinken",
-"menge": "1000 g",
-"preis": 24.5,
-"statt": 26.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Saunaschinken",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Wiener Heurigen Aufschnitt",
-"menge": "180 g",
-"preis": 4.49,
-"statt": 4.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
-},
-{
-"markt": "BILLA",
-"name": "Neuburger",
-"menge": "1000 g",
-"preis": 18.9,
-"statt": 22.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/neuburger-00441152"
-},
-{
-"markt": "BILLA",
-"name": "Puten Extrawurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
-},
-{
-"markt": "BILLA",
-"name": "Stastnik Farmer Putenbrust",
-"menge": "1000 g",
-"preis": 20.9,
-"statt": 22.5,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
-},
-{
-"markt": "BILLA",
-"name": "Sorger Salanettis mild",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Schweinschnitzel geschnitten",
-"menge": "400 g",
-"preis": 3.99,
-"statt": 5.2,
-"hinweis": "ab 2 Tassen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Bauernblutwurst",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
-},
-{
-"markt": "BILLA",
-"name": "Puten Pikantwurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Pariserkranzl",
-"menge": "250 g",
-"preis": 3.19,
-"statt": 3.79,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Prater Stelze geschnitten",
+"name": "Ja! Natürlich Maroni gegart",
 "menge": "100 g",
-"preis": 2.29,
-"statt": 2.59,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter AMA Suppenmix Rind",
-"menge": "1 kg",
-"preis": 14.99,
-"statt": 15.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Pusztawürstel",
-"menge": "250 g",
-"preis": 4.29,
-"statt": 5.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Leberpastete  Cranberry",
-"menge": "125 g",
-"preis": 1.49,
-"statt": 1.66,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Kaminwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
-},
-{
-"markt": "BILLA",
-"name": "Sorger Salanettis scharf",
-"menge": "80 g",
-"preis": 1.99,
-"statt": 2.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Gipfel Stangerl",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Chiliwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Wienerwurst",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 26.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst Pikant",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Toscano",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Milde Tyrolini 4x40g",
-"menge": "160 g",
-"preis": 3.99,
-"statt": 4.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Salame Cremona",
-"menge": "130 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Genusswelt Antipasto Misto",
-"menge": "150 g",
-"preis": 4.99,
-"statt": 6.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
-},
-{
-"markt": "BILLA",
-"name": "Krainer",
-"menge": "300 g",
-"preis": 4.49,
-"statt": 5.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/krainer-00435839"
-},
-{
-"markt": "BILLA",
-"name": "Gebratene Käsewurst",
-"menge": "80 g",
-"preis": 2.99,
-"statt": 3.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
-},
-{
-"markt": "BILLA",
-"name": "Hühner Käsekrainer",
-"menge": "250 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Fair zum Tier Polnische Spezial",
-"menge": "1000 g",
-"preis": 19.9,
-"statt": 25.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Butter",
-"menge": "250 g",
-"preis": 1.99,
-"statt": 2.85,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-butter-00827690"
-},
-{
-"markt": "BILLA",
-"name": "Salakis Schafkäse Light",
-"menge": "180 g",
-"preis": 2.52,
-"statt": 3.79,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/salakis-schafkaese-light-00437248"
-},
-{
-"markt": "BILLA",
-"name": "Salakis Schafkäse Natur",
-"menge": "180 g",
-"preis": 2.52,
-"statt": 3.79,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/salakis-schafkaese-natur-00427838"
-},
-{
-"markt": "BILLA",
-"name": "Peppersweet mit Frischkäse - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/peppersweet-mit-frischkaese-die-kaesemacher-00439664"
-},
-{
-"markt": "BILLA",
-"name": "Schärdinger Österkron",
-"menge": "150 g",
-"preis": 1.99,
-"statt": 3.19,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/schaerdinger-oesterkron-00936709"
-},
-{
-"markt": "BILLA",
-"name": "Bonbel Cremig-Würzig",
-"menge": "170 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/bonbel-cremigwuerzig-00888573"
-},
-{
-"markt": "BILLA",
-"name": "Peppersweet Pikant mit Frischkäse - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/peppersweet-pikant-mit-frischkaese-die-kaesemacher-00885548"
-},
-{
-"markt": "BILLA",
-"name": "Alma Vorarlberger Bergkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-vorarlberger-bergkaese-00320584"
-},
-{
-"markt": "BILLA",
-"name": "Salakis Bio Schafkäse",
-"menge": "150 g",
-"preis": 2.52,
-"statt": 3.79,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/salakis-bio-schafkaese-00729442"
-},
-{
-"markt": "BILLA",
-"name": "Peppersweet Kräuter der Provence - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/peppersweet-kraeuter-der-provence-die-kaesemacher-00295782"
-},
-{
-"markt": "BILLA",
-"name": "Sunnypepp mit Frischkäse - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/sunnypepp-mit-frischkaese-die-kaesemacher-00899608"
-},
-{
-"markt": "BILLA",
-"name": "Yellobell mit Frischkäse",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/yellobell-mit-frischkaese-00439742"
-},
-{
-"markt": "BILLA",
-"name": "Käse-Gemüse-Tricolore - Die Käsemacher",
-"menge": "140 g",
-"preis": 2.79,
-"statt": 4.19,
-"hinweis": "Bei 3 Stk je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kaesegemuesetricolore-die-kaesemacher-00725379"
-},
-{
-"markt": "BILLA",
-"name": "Alma Dorfkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-dorfkaese-00598393"
-},
-{
-"markt": "BILLA",
-"name": "Salakis Feta fassgereift",
-"menge": "150 g",
-"preis": 2.52,
-"statt": 3.79,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/salakis-feta-fassgereift-00388582"
-},
-{
-"markt": "BILLA",
-"name": "Obersteirische Molkerei Weinkäse",
-"menge": "250 g",
-"preis": 2.99,
-"statt": 3.89,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/obersteirische-molkerei-weinkaese-00769818"
-},
-{
-"markt": "BILLA",
-"name": "Alma Vorarlberger Ringelblumenkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-vorarlberger-ringelblumenkaese-00360203"
-},
-{
-"markt": "BILLA",
-"name": "Alma Vorarlberger Sennkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-vorarlberger-sennkaese-00957417"
-},
-{
-"markt": "BILLA",
-"name": "Alma Vorarlberger Brennnesselkäse",
-"menge": "180 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alma-vorarlberger-brennnesselkaese-00360196"
-},
-{
-"markt": "BILLA",
-"name": "Galbani Parmigiano Reggiano DOP",
-"menge": "150 g",
-"preis": 4.99,
-"statt": 6.19,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/galbani-parmigiano-reggiano-dop-00492993"
-},
-{
-"markt": "BILLA",
-"name": "Die Grillerei Brat- und Grilltaler Tomate Basilikum",
-"menge": "280 g",
 "preis": 1.79,
-"statt": 2.79,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/die-grillerei-brat-und-grilltaler-tomate-basilikum-00883477"
-},
-{
-"markt": "BILLA",
-"name": "Die Grillerei Brat- und Grilltaler Paprika Chili",
-"menge": "280 g",
-"preis": 1.79,
-"statt": 2.79,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/die-grillerei-brat-und-grilltaler-paprika-chili-00883592"
-},
-{
-"markt": "BILLA",
-"name": "Emmi Matcha Latte",
-"menge": "230 ml",
-"preis": 1.32,
 "statt": 1.99,
-"hinweis": "Bei 3 Becher je",
+"hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/emmi-matcha-latte-00887446"
+"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
+},
+{
+"markt": "BILLA",
+"name": "SanLucar Mandarinen gelegt",
+"menge": "1 kg",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sanlucar-mandarinen-gelegt-0089073"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Cranberries",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 3.59,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-cranberries-00940498"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Kokos Chips Geröstet",
+"menge": "100 g",
+"preis": 1.49,
+"statt": 1.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-kokos-chips-geroestet-00774966"
+},
+{
+"markt": "BILLA",
+"name": "Pesendorfer Saurer Apfel",
+"menge": "200 g",
+"preis": 2.99,
+"statt": 5.09,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/pesendorfer-saurer-apfel-00502027"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Bio Gojibeeren",
+"menge": "100 g",
+"preis": 2.69,
+"statt": 3.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
+},
+{
+"markt": "BILLA",
+"name": "Sesamstrasse Abby Kekse mit Vanille & Hafer",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-abby-kekse-mit-vanille-und-hafer-00734561"
+},
+{
+"markt": "BILLA",
+"name": "Sesamstrasse Krümelmonster Kekse mit Schokostückchen",
+"menge": "7",
+"preis": 1.4,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sesamstrasse-kruemelmonster-kekse-mit-schokostueckchen-00734562"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel-Birne-Kirsche",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
+},
+{
+"markt": "BILLA",
+"name": "Fruchtbar Bio Herznudeln",
+"menge": "300 g",
+"preis": 1.19,
+"statt": 2.37,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel mit Banane & Dinkel",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
 },
 {
 "markt": "BILLA",
@@ -6770,293 +6254,233 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Ja! Natürlich Maroni gegart",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 1.99,
+"name": "Ja! Natürlich Butter",
+"menge": "250 g",
+"preis": 1.99,
+"statt": 2.85,
 "hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
+"link": "https://shop.billa.at/produkte/ja-natuerlich-butter-00827690"
 },
 {
 "markt": "BILLA",
-"name": "Kelly's Chips Classic Gesalzen",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
-},
-{
-"markt": "BILLA",
-"name": "Laugenfussball",
-"menge": "90 g",
-"preis": 0.46,
-"statt": 0.94,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/laugenfussball-00532716"
-},
-{
-"markt": "BILLA",
-"name": "Aborigines Weckerl - Mehl aus Österreich",
-"menge": "100 g",
-"preis": 1.39,
-"statt": 1.49,
-"hinweis": "ab 3 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/aborigines-weckerl-mehl-aus-oesterreich-00440879"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Erdnuss Snips",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
-"menge": "370 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
-},
-{
-"markt": "BILLA",
-"name": "Felix Ketchup ohne Zuckerzusatz",
-"menge": "960 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Marillen Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.19,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Sonnenblumenmuschel",
-"menge": "71 g",
-"preis": 0.99,
-"statt": 1.19,
-"hinweis": "ab 3 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenblumenmuschel-00201203"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Sour Cream",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
-},
-{
-"markt": "BILLA",
-"name": "Ja Natürlich Sonnen-Ura",
-"menge": "700 g",
-"preis": 3.8,
-"statt": 4.18,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenura-00295263"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Ketchup",
-"menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
-},
-{
-"markt": "BILLA",
-"name": "Knorr Gemüsesuppe Würfel",
-"menge": "126 g",
-"preis": 1.26,
-"statt": 1.89,
+"name": "Salakis Schafkäse Light",
+"menge": "180 g",
+"preis": 2.52,
+"statt": 3.79,
 "hinweis": "Bei 3 Packungen je",
 "bis": null,
-"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
+"link": "https://shop.billa.at/produkte/salakis-schafkaese-light-00437248"
 },
 {
 "markt": "BILLA",
-"name": "Kelly's Jumpys Paprika",
-"menge": "75 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "ab 2 Packungen",
+"name": "Salakis Schafkäse Natur",
+"menge": "180 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
 "bis": null,
-"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
+"link": "https://shop.billa.at/produkte/salakis-schafkaese-natur-00427838"
 },
 {
 "markt": "BILLA",
-"name": "Darbo Gartenerdbeeren Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
+"name": "Peppersweet mit Frischkäse - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
 "statt": 4.19,
-"hinweis": "ab 2 Gläser",
+"hinweis": "Bei 3 Stk je",
 "bis": null,
-"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
+"link": "https://shop.billa.at/produkte/peppersweet-mit-frischkaese-die-kaesemacher-00439664"
 },
 {
 "markt": "BILLA",
-"name": "BILLA Linsenchips Salz",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Chips Paprika",
+"name": "Schärdinger Österkron",
 "menge": "150 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
+"preis": 1.99,
+"statt": 3.19,
+"hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
+"link": "https://shop.billa.at/produkte/schaerdinger-oesterkron-00936709"
 },
 {
 "markt": "BILLA",
-"name": "Barilla Sugo mit Basilikum",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
-},
-{
-"markt": "BILLA",
-"name": "BILLA Linsenchips Rosmarin",
-"menge": "100 g",
-"preis": 1.79,
-"statt": 2.19,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
-},
-{
-"markt": "BILLA",
-"name": "Lorenz Nic Nac's Partypack",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 5.99,
-"hinweis": "ab 2 Beutel",
-"bis": null,
-"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
-},
-{
-"markt": "BILLA",
-"name": "Felix Tomatenketchup Mild",
-"menge": "1000 g",
+"name": "Bonbel Cremig-Würzig",
+"menge": "170 g",
 "preis": 2.99,
 "statt": 3.99,
-"hinweis": "",
+"hinweis": "ab 2 Stk",
 "bis": null,
-"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
+"link": "https://shop.billa.at/produkte/bonbel-cremigwuerzig-00888573"
 },
 {
 "markt": "BILLA",
-"name": "Darbo Preiselbeer Konfitüre",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Popcornchips Salz",
+"name": "Peppersweet Pikant mit Frischkäse - Die Käsemacher",
 "menge": "140 g",
-"preis": 2.19,
-"statt": 2.99,
-"hinweis": "ab 2 Beutel",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
 "bis": null,
-"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
+"link": "https://shop.billa.at/produkte/peppersweet-pikant-mit-frischkaese-die-kaesemacher-00885548"
 },
 {
 "markt": "BILLA",
-"name": "Bona Öl",
-"menge": "0.75 liter",
-"preis": 2.32,
-"statt": 3.49,
-"hinweis": "Bei 3 Flaschen je",
+"name": "Alma Vorarlberger Bergkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
 "bis": null,
-"link": "https://shop.billa.at/produkte/bona-oel-00408228"
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-bergkaese-00320584"
 },
 {
 "markt": "BILLA",
-"name": "Alnatura Feigen",
+"name": "Salakis Bio Schafkäse",
+"menge": "150 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/salakis-bio-schafkaese-00729442"
+},
+{
+"markt": "BILLA",
+"name": "Peppersweet Kräuter der Provence - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/peppersweet-kraeuter-der-provence-die-kaesemacher-00295782"
+},
+{
+"markt": "BILLA",
+"name": "Sunnypepp mit Frischkäse - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sunnypepp-mit-frischkaese-die-kaesemacher-00899608"
+},
+{
+"markt": "BILLA",
+"name": "Yellobell mit Frischkäse",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/yellobell-mit-frischkaese-00439742"
+},
+{
+"markt": "BILLA",
+"name": "Käse-Gemüse-Tricolore - Die Käsemacher",
+"menge": "140 g",
+"preis": 2.79,
+"statt": 4.19,
+"hinweis": "Bei 3 Stk je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kaesegemuesetricolore-die-kaesemacher-00725379"
+},
+{
+"markt": "BILLA",
+"name": "Alma Dorfkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-dorfkaese-00598393"
+},
+{
+"markt": "BILLA",
+"name": "Salakis Feta fassgereift",
+"menge": "150 g",
+"preis": 2.52,
+"statt": 3.79,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/salakis-feta-fassgereift-00388582"
+},
+{
+"markt": "BILLA",
+"name": "Obersteirische Molkerei Weinkäse",
 "menge": "250 g",
-"preis": 2.49,
-"statt": 5.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
-},
-{
-"markt": "BILLA",
-"name": "Darbo Himbeer Konfitüre passiert",
-"menge": "450 g",
-"preis": 3.79,
-"statt": 4.49,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel Chips",
-"menge": "70 g",
-"preis": 1.99,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Sugo Arrabbiata",
-"menge": "400 g",
-"preis": 2.49,
-"statt": 3.29,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
-},
-{
-"markt": "BILLA",
-"name": "Kelly's Ofen Chips Paprika",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.99,
+"preis": 2.99,
+"statt": 3.89,
 "hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
+"link": "https://shop.billa.at/produkte/obersteirische-molkerei-weinkaese-00769818"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Ringelblumenkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-ringelblumenkaese-00360203"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Sennkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-sennkaese-00957417"
+},
+{
+"markt": "BILLA",
+"name": "Alma Vorarlberger Brennnesselkäse",
+"menge": "180 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alma-vorarlberger-brennnesselkaese-00360196"
+},
+{
+"markt": "BILLA",
+"name": "Galbani Parmigiano Reggiano DOP",
+"menge": "150 g",
+"preis": 4.99,
+"statt": 6.19,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/galbani-parmigiano-reggiano-dop-00492993"
+},
+{
+"markt": "BILLA",
+"name": "Die Grillerei Brat- und Grilltaler Tomate Basilikum",
+"menge": "280 g",
+"preis": 1.79,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/die-grillerei-brat-und-grilltaler-tomate-basilikum-00883477"
+},
+{
+"markt": "BILLA",
+"name": "Die Grillerei Brat- und Grilltaler Paprika Chili",
+"menge": "280 g",
+"preis": 1.79,
+"statt": 2.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/die-grillerei-brat-und-grilltaler-paprika-chili-00883592"
+},
+{
+"markt": "BILLA",
+"name": "Emmi Matcha Latte",
+"menge": "230 ml",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Becher je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/emmi-matcha-latte-00887446"
 },
 {
 "markt": "BILLA",
@@ -7360,6 +6784,596 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
+"name": "Ja! Natürlich Maroni gegart",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 1.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-maroni-gegart-0089479"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Classic Gesalzen",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-classic-gesalzen-00288648"
+},
+{
+"markt": "BILLA",
+"name": "Laugenfussball",
+"menge": "90 g",
+"preis": 0.46,
+"statt": 0.94,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/laugenfussball-00532716"
+},
+{
+"markt": "BILLA",
+"name": "Aborigines Weckerl - Mehl aus Österreich",
+"menge": "100 g",
+"preis": 1.39,
+"statt": 1.49,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/aborigines-weckerl-mehl-aus-oesterreich-00440879"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Erdnuss Snips",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-erdnuss-snips-0023212"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Kalamata Oliven ohne Kern",
+"menge": "370 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-kalamata-oliven-ohne-kern-00292825"
+},
+{
+"markt": "BILLA",
+"name": "Felix Ketchup ohne Zuckerzusatz",
+"menge": "960 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-ketchup-ohne-zuckerzusatz-00666656"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Marillen Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-marillen-konfituere-passiert-00409005"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Sonnenblumenmuschel",
+"menge": "71 g",
+"preis": 0.99,
+"statt": 1.19,
+"hinweis": "ab 3 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenblumenmuschel-00201203"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Sour Cream",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-sour-cream-00288669"
+},
+{
+"markt": "BILLA",
+"name": "Ja Natürlich Sonnen-Ura",
+"menge": "700 g",
+"preis": 3.8,
+"statt": 4.18,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sonnenura-00295263"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Ketchup",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-ketchup-00288661"
+},
+{
+"markt": "BILLA",
+"name": "Knorr Gemüsesuppe Würfel",
+"menge": "126 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/knorr-gemuesesuppe-wuerfel-00414401"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Jumpys Paprika",
+"menge": "75 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-jumpys-paprika-00574871"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Gartenerdbeeren Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.19,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-gartenerdbeeren-konfituere-00904442"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Salz",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-salz-00716271"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Chips Paprika",
+"menge": "150 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-chips-paprika-00288652"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo mit Basilikum",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-mit-basilikum-0019891"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Linsenchips Rosmarin",
+"menge": "100 g",
+"preis": 1.79,
+"statt": 2.19,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-linsenchips-rosmarin-00716273"
+},
+{
+"markt": "BILLA",
+"name": "Lorenz Nic Nac's Partypack",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 5.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/lorenz-nic-nacs-partypack-00347669"
+},
+{
+"markt": "BILLA",
+"name": "Felix Tomatenketchup Mild",
+"menge": "1000 g",
+"preis": 2.99,
+"statt": 3.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/felix-tomatenketchup-mild-008159"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Preiselbeer Konfitüre",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-preiselbeer-konfituere-00401134"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Popcornchips Salz",
+"menge": "140 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Beutel",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-popcornchips-salz-00388924"
+},
+{
+"markt": "BILLA",
+"name": "Bona Öl",
+"menge": "0.75 liter",
+"preis": 2.32,
+"statt": 3.49,
+"hinweis": "Bei 3 Flaschen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bona-oel-00408228"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Feigen",
+"menge": "250 g",
+"preis": 2.49,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-feigen-00317495"
+},
+{
+"markt": "BILLA",
+"name": "Darbo Himbeer Konfitüre passiert",
+"menge": "450 g",
+"preis": 3.79,
+"statt": 4.49,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/darbo-himbeer-konfituere-passiert-00614034"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel Chips",
+"menge": "70 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-chips-00317489"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Sugo Arrabbiata",
+"menge": "400 g",
+"preis": 2.49,
+"statt": 3.29,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-sugo-arrabbiata-00414055"
+},
+{
+"markt": "BILLA",
+"name": "Kelly's Ofen Chips Paprika",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
+},
+{
+"markt": "BILLA",
+"name": "Berger Traditionsbeinschinken",
+"menge": "1000 g",
+"preis": 24.5,
+"statt": 26.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/berger-traditionsbeinschinken-00439997"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Saunaschinken",
+"menge": "150 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-saunaschinken-00474030"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Wiener Heurigen Aufschnitt",
+"menge": "180 g",
+"preis": 4.49,
+"statt": 4.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-wiener-heurigen-aufschnitt-00779944"
+},
+{
+"markt": "BILLA",
+"name": "Neuburger",
+"menge": "1000 g",
+"preis": 18.9,
+"statt": 22.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/neuburger-00441152"
+},
+{
+"markt": "BILLA",
+"name": "Puten Extrawurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
+},
+{
+"markt": "BILLA",
+"name": "Stastnik Farmer Putenbrust",
+"menge": "1000 g",
+"preis": 20.9,
+"statt": 22.5,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/stastnik-farmer-putenbrust-00439983"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis mild",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sorger-salanettis-mild-00917061"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Schweinschnitzel geschnitten",
+"menge": "400 g",
+"preis": 3.99,
+"statt": 5.2,
+"hinweis": "ab 2 Tassen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-schweinschnitzel-geschnitten-00723117"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Bauernblutwurst",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
+},
+{
+"markt": "BILLA",
+"name": "Puten Pikantwurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Pariserkranzl",
+"menge": "250 g",
+"preis": 3.19,
+"statt": 3.79,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Prater Stelze geschnitten",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.59,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter AMA Suppenmix Rind",
+"menge": "1 kg",
+"preis": 14.99,
+"statt": 15.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-ama-suppenmix-rind-00939333"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Pusztawürstel",
+"menge": "250 g",
+"preis": 4.29,
+"statt": 5.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Leberpastete  Cranberry",
+"menge": "125 g",
+"preis": 1.49,
+"statt": 1.66,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-leberpastete-cranberry-00346158"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Kaminwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
+},
+{
+"markt": "BILLA",
+"name": "Sorger Salanettis scharf",
+"menge": "80 g",
+"preis": 1.99,
+"statt": 2.79,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/sorger-salanettis-scharf-00917060"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Gipfel Stangerl",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Chiliwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Wienerwurst",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 26.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-wienerwurst-00707332"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst Pikant",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Toscano",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-toscano-00446495"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Milde Tyrolini 4x40g",
+"menge": "160 g",
+"preis": 3.99,
+"statt": 4.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Salame Cremona",
+"menge": "130 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-salame-cremona-00446487"
+},
+{
+"markt": "BILLA",
+"name": "BILLA Genusswelt Antipasto Misto",
+"menge": "150 g",
+"preis": 4.99,
+"statt": 6.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/billa-genusswelt-antipasto-misto-00507335"
+},
+{
+"markt": "BILLA",
+"name": "Krainer",
+"menge": "300 g",
+"preis": 4.49,
+"statt": 5.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/krainer-00435839"
+},
+{
+"markt": "BILLA",
+"name": "Gebratene Käsewurst",
+"menge": "80 g",
+"preis": 2.99,
+"statt": 3.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
+},
+{
+"markt": "BILLA",
+"name": "Hühner Käsekrainer",
+"menge": "250 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
+},
+{
+"markt": "BILLA",
+"name": "Hofstädter Fair zum Tier Polnische Spezial",
+"menge": "1000 g",
+"preis": 19.9,
+"statt": 25.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-polnische-spezial-00735985"
+},
+{
+"markt": "BILLA",
 "name": "MAGGI Magic Asia Noodle Cup Chicken Taste",
 "menge": "63 g",
 "preis": 1.32,
@@ -7420,16 +7434,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Passionsfrucht",
-"menge": "ca. 60 g",
-"preis": 0.78,
-"statt": 1.21,
-"hinweis": "-35 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/7812-passionsfrucht"
-},
-{
-"markt": "Gurkerl",
 "name": "BIO Trauben weiß, kernlos",
 "menge": "500 g",
 "preis": 2.99,
@@ -7440,33 +7444,13 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Michi Bauers Brokkoli",
-"menge": "ca. 0,65 kg",
-"preis": 2.63,
-"statt": 3.1,
-"hinweis": "-15 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/18831-michi-bauers-brokkoli"
-},
-{
-"markt": "Gurkerl",
 "name": "BIO Knoblauch",
 "menge": "ca. 40 g",
-"preis": 0.43,
+"preis": 0.56,
 "statt": 0.62,
-"hinweis": "-30 %",
-"bis": "2026-10-19",
+"hinweis": "-10 % für dich",
+"bis": null,
 "link": "https://www.gurkerl.at/19008-bio-knoblauch"
-},
-{
-"markt": "Gurkerl",
-"name": "Sonnenobst Habeler Birne Alexander",
-"menge": "ca. 190 g",
-"preis": 0.51,
-"statt": 0.79,
-"hinweis": "-35 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/8878-sonnenobst-habeler-birne-alexander"
 },
 {
 "markt": "Gurkerl",
@@ -7490,16 +7474,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Süßes von Ulreich Marillenkuchen vegan",
-"menge": "200 g",
-"preis": 4.79,
-"statt": 5.99,
-"hinweis": "-20 %",
-"bis": "2026-10-22",
-"link": "https://www.gurkerl.at/21035-suesses-von-ulreich-marillenkuchen-vegan"
-},
-{
-"markt": "Gurkerl",
 "name": "Anker Weißbrot geschnitten",
 "menge": "500 g",
 "preis": 2.31,
@@ -7507,6 +7481,16 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-20",
 "link": "https://www.gurkerl.at/24263-anker-weissbrot-geschnitten"
+},
+{
+"markt": "Gurkerl",
+"name": "Süßes von Ulreich Marillenkuchen vegan",
+"menge": "200 g",
+"preis": 4.79,
+"statt": 5.99,
+"hinweis": "-20 %",
+"bis": "2026-10-22",
+"link": "https://www.gurkerl.at/21035-suesses-von-ulreich-marillenkuchen-vegan"
 },
 {
 "markt": "Gurkerl",
@@ -7540,16 +7524,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Süßes von Ulreich Mini-Mini Schaumrollen",
-"menge": "330 g",
-"preis": 19.99,
-"statt": 24.99,
-"hinweis": "-20 %",
-"bis": "2026-10-27",
-"link": "https://www.gurkerl.at/21018-suesses-von-ulreich-mini-mini-schaumrollen"
-},
-{
-"markt": "Gurkerl",
 "name": "Süßes von Ulreich Sacherschnitte",
 "menge": "240 g",
 "preis": 5.59,
@@ -7557,6 +7531,16 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-22",
 "link": "https://www.gurkerl.at/21038-suesses-von-ulreich-sacherschnitte"
+},
+{
+"markt": "Gurkerl",
+"name": "Süßes von Ulreich Mini-Mini Schaumrollen",
+"menge": "330 g",
+"preis": 19.99,
+"statt": 24.99,
+"hinweis": "-20 %",
+"bis": "2026-10-27",
+"link": "https://www.gurkerl.at/21018-suesses-von-ulreich-mini-mini-schaumrollen"
 },
 {
 "markt": "Gurkerl",
@@ -7570,43 +7554,13 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Graf Backofen Leberkäse 2 Scheiben",
-"menge": "ca. 450 g",
-"preis": 4.11,
-"statt": 5.56,
-"hinweis": "-26 %",
-"bis": "2026-10-22",
-"link": "https://www.gurkerl.at/33749-graf-backofen-leberkaese-2-scheiben"
-},
-{
-"markt": "Gurkerl",
-"name": "Fish? Fresh! Schottisches Label Rouge Lachs Filet mit Haut",
+"name": "Nov'East Panierte Tintenfischringe",
 "menge": "200 g",
-"preis": 11.89,
-"statt": 13.99,
-"hinweis": "-15 %",
+"preis": 3.76,
+"statt": 5.99,
+"hinweis": "-37 %",
 "bis": "2026-10-20",
-"link": "https://www.gurkerl.at/16637-fish-fresh-schottisches-label-rouge-lachs-filet-mit-haut"
-},
-{
-"markt": "Gurkerl",
-"name": "FJORU BIO Dorade im Ganzen",
-"menge": "ca. 360 g",
-"preis": 6.41,
-"statt": 9.29,
-"hinweis": "-31 %",
-"bis": "2026-10-20",
-"link": "https://www.gurkerl.at/19049-fjoru-bio-dorade-im-ganzen"
-},
-{
-"markt": "Gurkerl",
-"name": "BIO Faschiertes gemischt",
-"menge": "330 g",
-"preis": 5.62,
-"statt": 7.29,
-"hinweis": "-22 %",
-"bis": "2026-10-20",
-"link": "https://www.gurkerl.at/17561-bio-faschiertes-gemischt"
+"link": "https://www.gurkerl.at/48432-nov-east-panierte-tintenfischringe"
 },
 {
 "markt": "Gurkerl",
@@ -7620,13 +7574,43 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Nov'East Panierte Tintenfischringe",
-"menge": "200 g",
-"preis": 3.76,
-"statt": 5.99,
-"hinweis": "-37 %",
+"name": "Graf Backofen Leberkäse 2 Scheiben",
+"menge": "ca. 450 g",
+"preis": 4.11,
+"statt": 5.56,
+"hinweis": "-26 %",
+"bis": "2026-10-22",
+"link": "https://www.gurkerl.at/33749-graf-backofen-leberkaese-2-scheiben"
+},
+{
+"markt": "Gurkerl",
+"name": "FJORU BIO Dorade im Ganzen",
+"menge": "ca. 360 g",
+"preis": 6.41,
+"statt": 9.29,
+"hinweis": "-31 %",
 "bis": "2026-10-20",
-"link": "https://www.gurkerl.at/48432-nov-east-panierte-tintenfischringe"
+"link": "https://www.gurkerl.at/19049-fjoru-bio-dorade-im-ganzen"
+},
+{
+"markt": "Gurkerl",
+"name": "Fish? Fresh! Schottisches Label Rouge Lachs Filet mit Haut",
+"menge": "200 g",
+"preis": 11.59,
+"statt": 13.99,
+"hinweis": "-17 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/16637-fish-fresh-schottisches-label-rouge-lachs-filet-mit-haut"
+},
+{
+"markt": "Gurkerl",
+"name": "BIO Faschiertes gemischt",
+"menge": "330 g",
+"preis": 5.62,
+"statt": 7.29,
+"hinweis": "-22 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/17561-bio-faschiertes-gemischt"
 },
 {
 "markt": "Gurkerl",
@@ -7640,6 +7624,16 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
+"name": "Arla Skyr Natur Extra Cremig",
+"menge": "400 g",
+"preis": 0.85,
+"statt": 1.99,
+"hinweis": "-57 %",
+"bis": "2026-10-19",
+"link": "https://www.gurkerl.at/45386-arla-skyr-natur-extra-cremig"
+},
+{
+"markt": "Gurkerl",
 "name": "Pappudia Reispfanne mit Huhn \"Mexican Style\"",
 "menge": "330 g",
 "preis": 1.78,
@@ -7650,13 +7644,13 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Arla Skyr Natur Extra Cremig",
-"menge": "400 g",
-"preis": 0.94,
-"statt": 1.99,
-"hinweis": "-52 %",
-"bis": "2026-10-19",
-"link": "https://www.gurkerl.at/45386-arla-skyr-natur-extra-cremig"
+"name": "Berger AMA Suppentasse Rindfleisch/Knochen/Suppengrün",
+"menge": "ca. 0,97 kg",
+"preis": 16.72,
+"statt": 21.28,
+"hinweis": "-21 %",
+"bis": "2026-10-20",
+"link": "https://www.gurkerl.at/9419-berger-ama-suppentasse-rindfleisch-knochen-suppengruen"
 },
 {
 "markt": "Gurkerl",
@@ -7667,16 +7661,6 @@ const ANGEBOTE = {
 "hinweis": "-41 %",
 "bis": "2026-10-23",
 "link": "https://www.gurkerl.at/43466-pappudia-penne-bolognese"
-},
-{
-"markt": "Gurkerl",
-"name": "Berger AMA Suppentasse Rindfleisch/Knochen/Suppengrün",
-"menge": "ca. 0,97 kg",
-"preis": 16.72,
-"statt": 21.28,
-"hinweis": "-21 %",
-"bis": "2026-10-20",
-"link": "https://www.gurkerl.at/9419-berger-ama-suppentasse-rindfleisch-knochen-suppengruen"
 },
 {
 "markt": "Gurkerl",
@@ -7797,6 +7781,8 @@ const ANGEBOTE = {
   function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
   // Herz-Gerichte: Basis für neue Vorschläge
   let favs = store.get("favs", {});
+  // Bewertungen: Geschmack und Einfachheit, je 1 bis 5 Sterne, plus Notiz
+  let ratings = store.get("ratings", {});
   const favIds = () => Object.keys(favs).filter(id => favs[id] && byId[id]);
   // Wie gut passt ein Gericht zu euren Herz-Gerichten? (geteilte Merkmale im Schnitt)
   function similarity(r) {
@@ -7805,7 +7791,13 @@ const ANGEBOTE = {
     return f.reduce((s, id) => s + byId[id].tags.filter(t => r.tags.includes(t)).length, 0) / f.length;
   }
   const fits = r => !favs[r.id] && similarity(r) >= 1.5;
-  function weight(r) { return (favs[r.id] ? 5 : 1) + similarity(r) * 1.5; }
+  function weight(r) {
+    let w = (favs[r.id] ? 5 : 1) + similarity(r) * 1.5;
+    const rt = ratings[r.id];
+    if (rt && rt.taste) w *= rt.taste >= 5 ? 3 : rt.taste === 4 ? 2 : rt.taste === 3 ? 1 : rt.taste === 2 ? 0.3 : 0.05;
+    if (rt && rt.easy) w *= rt.easy >= 4 ? 1.3 : rt.easy <= 2 ? 0.6 : 1;
+    return w;
+  }
   function newWeek() {
     // Herz-Gerichte und ähnliche Gerichte kommen öfter dran. Keine zwei Gerichte aus demselben Land am Stück.
     for (let t = 0; t < 80; t++) {
@@ -7958,7 +7950,7 @@ const ANGEBOTE = {
           <button class="icon-btn" data-swap="${i}" aria-label="Gericht für ${DAYS[i]} tauschen" title="Tauschen oder suchen">${ICON.swap}</button>
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
-        <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}${sourceBtns(r, false)}</div>
+        <div class="mini-row day-share">${favBtn(id, "mini")}${rateBtn(id)}${shareBtn(r)}${sourceBtns(r, false)}</div>
         ${stepList(r, "steps")}
       </article>`;
     }).join("");
@@ -7973,7 +7965,7 @@ const ANGEBOTE = {
     const inf = e.target.closest("[data-info]");
     if (inf) openDetail(inf.dataset.info, "ing");
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings }); toast("Neue Woche ist geplant"); });
 
   // Wörter, die beim Suchen dasselbe meinen
   const SEARCH_SYN = [["huhn", "hendl", "hahnchen", "huhner", "chicken", "pute"], ["nudel", "pasta", "spaghetti", "penne", "fusilli", "tagliatelle", "orzo", "fleckerl", "nockerl"],
@@ -8347,6 +8339,7 @@ const ANGEBOTE = {
       <div class="step-text text-in">${stepText(P.r, s, true)}</div>
       <div class="chips">${(/\{[^}]+\}/.test(s.text) ? [] : stepIngredients(P.r)[P.i] || []).map(ing => `<span>${esc(((stepAmount(ing[1], ing[2]) ? stepAmount(ing[1], ing[2]) + " " : "") + ing[0]))}</span>`).join("")}</div>
       ${s.timer ? `<button class="timer" id="p-timer">Kochwecker ${mmss(s.timer)}</button>` : ""}
+      ${last ? `<button class="timer" type="button" data-rate-open="${esc(P.r.id)}">Fertig gekocht? Jetzt bewerten</button>` : ""}
       `;
     if (s.timer) $("#p-timer").onclick = () => startTimer(s.timer);
     document.querySelectorAll(".bars i").forEach((b, k) => { b.className = k < P.i ? "past" : ""; b.firstChild.style.width = k < P.i ? "100%" : "0"; });
@@ -8412,9 +8405,10 @@ const ANGEBOTE = {
         const r = await fetch(this.base() + ".json");
         if (!r.ok) throw new Error(r.status);
         const d = await r.json();
-        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people }); return; }
+        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people, ratings }); return; }
         if (d.plan.length === 7 && d.plan.every(id => byId[id])) plan = d.plan;
         checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
+        if (d.ratings) { ratings = d.ratings; store.set("ratings", ratings); }
         if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
         store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
         renderWeek(); renderBoard(); renderFavCount();
@@ -8482,6 +8476,44 @@ const ANGEBOTE = {
   // ---------- Herz, Teilen, Rezept-Detail ----------
   const APP_URL = "https://teresa-tramontana.github.io/mealplan/";
   const tint = r => `color-mix(in srgb, ${r.colors[0]} 26%, var(--surface))`;
+  // ---------- Bewerten ----------
+  const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.7 5.5 6 .9-4.35 4.25 1 6L12 17l-5.35 2.85 1-6L3.3 9.6l6-.9z"/></svg>';
+  const RATE_KINDS = [["taste", "Geschmack", ["", "gar nicht unseres", "naja", "okay", "lecker", "super lecker"]],
+    ["easy", "Einfach zu kochen", ["", "sehr aufwendig", "eher mühsam", "geht so", "einfach", "ganz einfach"]]];
+  function rateBlock(id) {
+    const rt = ratings[id] || {};
+    return `<div class="rating" data-rating="${esc(id)}">${RATE_KINDS.map(([k, label, words]) => `<div class="rate-row"><span class="rate-l">${label}</span><span class="stars" role="group" aria-label="${label}">${[1, 2, 3, 4, 5].map(v => `<button type="button" class="star${(rt[k] || 0) >= v ? " on" : ""}" data-rate="${esc(id)}" data-k="${k}" data-v="${v}" aria-label="${label}: ${v} von 5" aria-pressed="${rt[k] === v}">${STAR}</button>`).join("")}</span><span class="rate-w">${rt[k] ? words[rt[k]] : ""}</span></div>`).join("")}
+      <textarea class="rate-note" data-rate-note="${esc(id)}" rows="2" placeholder="Notiz, z. B. „weniger Salz“ oder „Kind hat alles gegessen“" aria-label="Notiz zum Gericht">${esc(rt.note || "")}</textarea>
+      ${rt.at ? `<p class="rate-at">Bewertet am ${new Date(rt.at).toLocaleDateString("de-AT")}</p>` : ""}</div>`;
+  }
+  function rateLabel(id) {
+    const rt = ratings[id];
+    if (!rt || !(rt.taste || rt.easy)) return "Bewerten";
+    return [rt.taste ? `Geschmack ${rt.taste}/5` : "", rt.easy ? `Einfach ${rt.easy}/5` : ""].filter(Boolean).join(" · ");
+  }
+  const rateBtn = id => `<button class="mini rate-btn${ratings[id] && (ratings[id].taste || ratings[id].easy) ? " on" : ""}" type="button" data-rate-open="${esc(id)}">${STAR}<span data-rate-label="${esc(id)}">${rateLabel(id)}</span></button>`;
+  function saveRating(id, patch) {
+    ratings[id] = Object.assign({}, ratings[id], patch, { at: Date.now() });
+    store.set("ratings", ratings); Sync.put("ratings/" + id, ratings[id]);
+    document.querySelectorAll(`[data-rating="${CSS.escape(id)}"]`).forEach(el => { const note = el.querySelector("textarea"); if (!(note && document.activeElement === note)) el.outerHTML = rateBlock(id); });
+    document.querySelectorAll(`[data-rate-label="${CSS.escape(id)}"]`).forEach(el => { el.textContent = rateLabel(id); el.parentElement.classList.toggle("on", !!(ratings[id].taste || ratings[id].easy)); });
+  }
+  function openRate(id) {
+    const r = byId[id]; if (!r) return;
+    $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet" role="dialog" aria-label="Gericht bewerten">
+      <h2>Wie war's?</h2><p style="margin:0 0 12px;color:var(--muted)">${esc(r.name)}</p>${rateBlock(id)}
+      <p class="rate-hint">Gut bewertete Gerichte kommen beim Mischen öfter dran, schlecht bewertete fast nie.</p>
+      <button class="primary" id="sheet-close" type="button" style="margin-top:12px">Fertig</button></div></div>`;
+    $("#sheet-bg").addEventListener("click", e => { if (e.target.id === "sheet-bg" || e.target.id === "sheet-close") { $("#sheet-root").innerHTML = ""; if (e.target.id === "sheet-close" && ratings[id]) toast("Danke, Bewertung gespeichert"); } });
+  }
+  document.addEventListener("click", e => {
+    const st = e.target.closest("[data-rate]");
+    if (st) { const id = st.dataset.rate, k = st.dataset.k, v = +st.dataset.v; saveRating(id, { [k]: (ratings[id] || {})[k] === v ? 0 : v }); return; }
+    const op = e.target.closest("[data-rate-open]");
+    if (op) { if (P) closePlayer(); openRate(op.dataset.rateOpen); }
+  });
+  document.addEventListener("change", e => { const n = e.target.closest("[data-rate-note]"); if (n) saveRating(n.dataset.rateNote, { note: n.value.trim().slice(0, 500) }); });
+
   function favBtn(id, cls) {
     const on = !!favs[id];
     return `<button class="${cls}${on ? " on" : ""}" type="button" data-fav="${id}" aria-pressed="${on}" aria-label="${on ? "Herz entfernen" : "Herz geben"}">${on ? ICON.heartFill : ICON.heart}${cls === "mini" ? (on ? "Lieblingsgericht" : "Merken") : ""}</button>`;
@@ -8530,6 +8562,8 @@ const ANGEBOTE = {
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(sc(q, u), u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
       ${stepList(r, "steps-d")}
+      <h4>Eure Bewertung</h4>
+      ${rateBlock(id)}
       ${r.source ? `<p class="from-pantry">Rezept frei übersetzt und angepasst nach <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name)}</a>${r.source.instagram ? ` · auf Instagram: <a href="${esc(r.source.instagram)}" target="_blank" rel="noopener">${esc(r.source.handle || "Instagram")}</a>` : ""}.</p>` : ""}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
@@ -8651,7 +8685,7 @@ const ANGEBOTE = {
   if (linkWeek && linkWeek.length === 7 && linkWeek.every(id => byId[id])) {
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
     plan = linkWeek; checked = {}; inCart = {}; store.set("plan", plan); store.set("checked", checked); store.set("inCart", inCart);
-    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Woche übernommen"); }, 1500);
+    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people, ratings }); toast("Woche übernommen"); }, 1500);
   }
   let linkDb = null;
   try { linkDb = new URLSearchParams(location.search).get("db"); } catch (e) {}

@@ -459,6 +459,20 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
 .day .steps-reset { grid-column: 3 / -1; justify-self: start; }
 @media (max-width: 760px) { .day .steps-reset { grid-column: 1 / -1; } }
 .player .step-text .amt { font-weight: 800; }
+
+/* Bewertungen */
+.rating { display: grid; gap: 8px; }
+.rate-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.rate-l { min-width: 130px; font-weight: 700; font-size: 0.92rem; }
+.stars { display: inline-flex; gap: 2px; }
+.star { border: 0; background: none; padding: 4px; cursor: pointer; color: var(--sage-soft); line-height: 0; }
+.star svg { width: 28px; height: 28px; fill: currentColor; }
+.star.on { color: var(--sage); }
+.rate-w { font-size: 0.85rem; color: var(--muted); }
+.rate-note { width: 100%; font: inherit; font-size: 0.92rem; padding: 10px 12px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); resize: vertical; } /* taste-skill-ignore: Formularfeld */
+.rate-at, .rate-hint { margin: 0; font-size: 0.8rem; color: var(--muted); }
+.rate-btn svg { width: 14px; height: 14px; fill: currentColor; }
+.rate-btn.on { color: var(--sage); }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -567,6 +581,8 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
   // Herz-Gerichte: Basis für neue Vorschläge
   let favs = store.get("favs", {});
+  // Bewertungen: Geschmack und Einfachheit, je 1 bis 5 Sterne, plus Notiz
+  let ratings = store.get("ratings", {});
   const favIds = () => Object.keys(favs).filter(id => favs[id] && byId[id]);
   // Wie gut passt ein Gericht zu euren Herz-Gerichten? (geteilte Merkmale im Schnitt)
   function similarity(r) {
@@ -575,7 +591,13 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     return f.reduce((s, id) => s + byId[id].tags.filter(t => r.tags.includes(t)).length, 0) / f.length;
   }
   const fits = r => !favs[r.id] && similarity(r) >= 1.5;
-  function weight(r) { return (favs[r.id] ? 5 : 1) + similarity(r) * 1.5; }
+  function weight(r) {
+    let w = (favs[r.id] ? 5 : 1) + similarity(r) * 1.5;
+    const rt = ratings[r.id];
+    if (rt && rt.taste) w *= rt.taste >= 5 ? 3 : rt.taste === 4 ? 2 : rt.taste === 3 ? 1 : rt.taste === 2 ? 0.3 : 0.05;
+    if (rt && rt.easy) w *= rt.easy >= 4 ? 1.3 : rt.easy <= 2 ? 0.6 : 1;
+    return w;
+  }
   function newWeek() {
     // Herz-Gerichte und ähnliche Gerichte kommen öfter dran. Keine zwei Gerichte aus demselben Land am Stück.
     for (let t = 0; t < 80; t++) {
@@ -728,7 +750,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
           <button class="icon-btn" data-swap="${i}" aria-label="Gericht für ${DAYS[i]} tauschen" title="Tauschen oder suchen">${ICON.swap}</button>
           <button class="icon-btn play" data-play="${id}" aria-label="Koch-Video für ${esc(r.name)} starten" title="Koch-Video starten">${ICON.play}</button>
         </div>
-        <div class="mini-row day-share">${favBtn(id, "mini")}${shareBtn(r)}${sourceBtns(r, false)}</div>
+        <div class="mini-row day-share">${favBtn(id, "mini")}${rateBtn(id)}${shareBtn(r)}${sourceBtns(r, false)}</div>
         ${stepList(r, "steps")}
       </article>`;
     }).join("");
@@ -743,7 +765,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     const inf = e.target.closest("[data-info]");
     if (inf) openDetail(inf.dataset.info, "ing");
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings }); toast("Neue Woche ist geplant"); });
 
   // Wörter, die beim Suchen dasselbe meinen
   const SEARCH_SYN = [["huhn", "hendl", "hahnchen", "huhner", "chicken", "pute"], ["nudel", "pasta", "spaghetti", "penne", "fusilli", "tagliatelle", "orzo", "fleckerl", "nockerl"],
@@ -1117,6 +1139,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
       <div class="step-text text-in">${stepText(P.r, s, true)}</div>
       <div class="chips">${(/\{[^}]+\}/.test(s.text) ? [] : stepIngredients(P.r)[P.i] || []).map(ing => `<span>${esc(((stepAmount(ing[1], ing[2]) ? stepAmount(ing[1], ing[2]) + " " : "") + ing[0]))}</span>`).join("")}</div>
       ${s.timer ? `<button class="timer" id="p-timer">Kochwecker ${mmss(s.timer)}</button>` : ""}
+      ${last ? `<button class="timer" type="button" data-rate-open="${esc(P.r.id)}">Fertig gekocht? Jetzt bewerten</button>` : ""}
       `;
     if (s.timer) $("#p-timer").onclick = () => startTimer(s.timer);
     document.querySelectorAll(".bars i").forEach((b, k) => { b.className = k < P.i ? "past" : ""; b.firstChild.style.width = k < P.i ? "100%" : "0"; });
@@ -1182,9 +1205,10 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
         const r = await fetch(this.base() + ".json");
         if (!r.ok) throw new Error(r.status);
         const d = await r.json();
-        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people }); return; }
+        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people, ratings }); return; }
         if (d.plan.length === 7 && d.plan.every(id => byId[id])) plan = d.plan;
         checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
+        if (d.ratings) { ratings = d.ratings; store.set("ratings", ratings); }
         if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
         store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
         renderWeek(); renderBoard(); renderFavCount();
@@ -1252,6 +1276,44 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   // ---------- Herz, Teilen, Rezept-Detail ----------
   const APP_URL = "https://teresa-tramontana.github.io/mealplan/";
   const tint = r => `color-mix(in srgb, ${r.colors[0]} 26%, var(--surface))`;
+  // ---------- Bewerten ----------
+  const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.7 5.5 6 .9-4.35 4.25 1 6L12 17l-5.35 2.85 1-6L3.3 9.6l6-.9z"/></svg>';
+  const RATE_KINDS = [["taste", "Geschmack", ["", "gar nicht unseres", "naja", "okay", "lecker", "super lecker"]],
+    ["easy", "Einfach zu kochen", ["", "sehr aufwendig", "eher mühsam", "geht so", "einfach", "ganz einfach"]]];
+  function rateBlock(id) {
+    const rt = ratings[id] || {};
+    return `<div class="rating" data-rating="${esc(id)}">${RATE_KINDS.map(([k, label, words]) => `<div class="rate-row"><span class="rate-l">${label}</span><span class="stars" role="group" aria-label="${label}">${[1, 2, 3, 4, 5].map(v => `<button type="button" class="star${(rt[k] || 0) >= v ? " on" : ""}" data-rate="${esc(id)}" data-k="${k}" data-v="${v}" aria-label="${label}: ${v} von 5" aria-pressed="${rt[k] === v}">${STAR}</button>`).join("")}</span><span class="rate-w">${rt[k] ? words[rt[k]] : ""}</span></div>`).join("")}
+      <textarea class="rate-note" data-rate-note="${esc(id)}" rows="2" placeholder="Notiz, z. B. „weniger Salz“ oder „Kind hat alles gegessen“" aria-label="Notiz zum Gericht">${esc(rt.note || "")}</textarea>
+      ${rt.at ? `<p class="rate-at">Bewertet am ${new Date(rt.at).toLocaleDateString("de-AT")}</p>` : ""}</div>`;
+  }
+  function rateLabel(id) {
+    const rt = ratings[id];
+    if (!rt || !(rt.taste || rt.easy)) return "Bewerten";
+    return [rt.taste ? `Geschmack ${rt.taste}/5` : "", rt.easy ? `Einfach ${rt.easy}/5` : ""].filter(Boolean).join(" · ");
+  }
+  const rateBtn = id => `<button class="mini rate-btn${ratings[id] && (ratings[id].taste || ratings[id].easy) ? " on" : ""}" type="button" data-rate-open="${esc(id)}">${STAR}<span data-rate-label="${esc(id)}">${rateLabel(id)}</span></button>`;
+  function saveRating(id, patch) {
+    ratings[id] = Object.assign({}, ratings[id], patch, { at: Date.now() });
+    store.set("ratings", ratings); Sync.put("ratings/" + id, ratings[id]);
+    document.querySelectorAll(`[data-rating="${CSS.escape(id)}"]`).forEach(el => { const note = el.querySelector("textarea"); if (!(note && document.activeElement === note)) el.outerHTML = rateBlock(id); });
+    document.querySelectorAll(`[data-rate-label="${CSS.escape(id)}"]`).forEach(el => { el.textContent = rateLabel(id); el.parentElement.classList.toggle("on", !!(ratings[id].taste || ratings[id].easy)); });
+  }
+  function openRate(id) {
+    const r = byId[id]; if (!r) return;
+    $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet" role="dialog" aria-label="Gericht bewerten">
+      <h2>Wie war's?</h2><p style="margin:0 0 12px;color:var(--muted)">${esc(r.name)}</p>${rateBlock(id)}
+      <p class="rate-hint">Gut bewertete Gerichte kommen beim Mischen öfter dran, schlecht bewertete fast nie.</p>
+      <button class="primary" id="sheet-close" type="button" style="margin-top:12px">Fertig</button></div></div>`;
+    $("#sheet-bg").addEventListener("click", e => { if (e.target.id === "sheet-bg" || e.target.id === "sheet-close") { $("#sheet-root").innerHTML = ""; if (e.target.id === "sheet-close" && ratings[id]) toast("Danke, Bewertung gespeichert"); } });
+  }
+  document.addEventListener("click", e => {
+    const st = e.target.closest("[data-rate]");
+    if (st) { const id = st.dataset.rate, k = st.dataset.k, v = +st.dataset.v; saveRating(id, { [k]: (ratings[id] || {})[k] === v ? 0 : v }); return; }
+    const op = e.target.closest("[data-rate-open]");
+    if (op) { if (P) closePlayer(); openRate(op.dataset.rateOpen); }
+  });
+  document.addEventListener("change", e => { const n = e.target.closest("[data-rate-note]"); if (n) saveRating(n.dataset.rateNote, { note: n.value.trim().slice(0, 500) }); });
+
   function favBtn(id, cls) {
     const on = !!favs[id];
     return `<button class="${cls}${on ? " on" : ""}" type="button" data-fav="${id}" aria-pressed="${on}" aria-label="${on ? "Herz entfernen" : "Herz geben"}">${on ? ICON.heartFill : ICON.heart}${cls === "mini" ? (on ? "Lieblingsgericht" : "Merken") : ""}</button>`;
@@ -1300,6 +1362,8 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(sc(q, u), u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
       ${stepList(r, "steps-d")}
+      <h4>Eure Bewertung</h4>
+      ${rateBlock(id)}
       ${r.source ? `<p class="from-pantry">Rezept frei übersetzt und angepasst nach <a href="${esc(r.source.url)}" target="_blank" rel="noopener">${esc(r.source.name)}</a>${r.source.instagram ? ` · auf Instagram: <a href="${esc(r.source.instagram)}" target="_blank" rel="noopener">${esc(r.source.handle || "Instagram")}</a>` : ""}.</p>` : ""}
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
@@ -1421,7 +1485,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   if (linkWeek && linkWeek.length === 7 && linkWeek.every(id => byId[id])) {
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
     plan = linkWeek; checked = {}; inCart = {}; store.set("plan", plan); store.set("checked", checked); store.set("inCart", inCart);
-    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people }); toast("Woche übernommen"); }, 1500);
+    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people, ratings }); toast("Woche übernommen"); }, 1500);
   }
   let linkDb = null;
   try { linkDb = new URLSearchParams(location.search).get("db"); } catch (e) {}
