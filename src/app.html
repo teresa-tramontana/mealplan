@@ -581,6 +581,17 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
 <script>
 (function () {
   const DAYS = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+  // Überall „Huhn“ statt „Hendl“ (Hendlbrust → Hühnerbrust, Zitronenhendl → Zitronenhuhn)
+  const huhn = t => typeof t !== "string" ? t : t
+    .replace(/Hendls\b/g, "Huhns")
+    .replace(/Hendl(?=-)|Hendl(?=[a-zäöüß])/g, "Hühner")
+    .replace(/([a-zäöüß])hendl\b/g, "$1huhn")
+    .replace(/\bHendl\b/g, "Huhn");
+  RECIPES.forEach(r => {
+    r.name = huhn(r.name); r.kid = huhn(r.kid);
+    r.ingredients.forEach(i => { i[0] = huhn(i[0]); });
+    r.steps.forEach(st => { st.text = huhn(st.text); if (st.items) st.items = st.items.map(huhn); });
+  });
   const byId = Object.fromEntries(RECIPES.map(r => [r.id, r]));
   const $ = s => document.querySelector(s);
   const store = {
@@ -1484,7 +1495,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   });
 
   // ---------- Entdecken: Pinnwand ----------
-  const FILTERS = [["alle", "Alle"], ["herz", "Herzen"], ["passt", "Passt zu euch"], ["masterchef", "Master Chef"], ["simplehomeedit", "Simple Home Edit"], ["carolinagelen", "Carolina Gelen"], ["österreichisch", "Österreich"], ["faschiert", "Faschiertes"], ["onepot", "One-Pot"], ["auflauf", "Aufläufe"], ["rahm", "Mit Rahm"], ["fingerfood", "Fingerfood"], ["vegetarisch", "Vegetarisch"], ["huhn", "Hendl"], ["fisch", "Fisch"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["süß", "Süß"]];
+  const FILTERS = [["alle", "Alle"], ["herz", "Herzen"], ["passt", "Passt zu euch"], ["masterchef", "Master Chef"], ["simplehomeedit", "Simple Home Edit"], ["carolinagelen", "Carolina Gelen"], ["österreichisch", "Österreich"], ["faschiert", "Faschiertes"], ["onepot", "One-Pot"], ["auflauf", "Aufläufe"], ["rahm", "Mit Rahm"], ["fingerfood", "Fingerfood"], ["vegetarisch", "Vegetarisch"], ["huhn", "Huhn"], ["fisch", "Fisch"], ["asiatisch", "Asiatisch"], ["mediterran", "Mediterran"], ["süß", "Süß"]];
   let filter = "alle";
   const RATIOS = ["1 / 1", "4 / 5", "4 / 3", "3 / 4", "1 / 1.2"];
   function renderBoard() {
