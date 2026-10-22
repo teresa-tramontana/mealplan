@@ -1104,7 +1104,13 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     TABS.forEach(x => { $("#view-" + x).hidden = x !== t; $("#tab-" + x).setAttribute("aria-selected", x === t); });
     store.set("tab", t);
   }
-  TABS.forEach(x => $("#tab-" + x).addEventListener("click", () => showTab(x)));
+  TABS.forEach(x => $("#tab-" + x).addEventListener("click", () => { showTab(x); if (x === "week") scrollToToday(true); }));
+  // In der Woche gleich zum heutigen Tag springen, damit man nicht runterscrollen muss
+  function scrollToToday(smooth) {
+    const d = document.querySelector("#days .day.today");
+    if (!d || $("#view-week").hidden || !d.previousElementSibling) return;
+    window.scrollTo({ top: d.getBoundingClientRect().top + window.scrollY - 12, behavior: smooth ? "smooth" : "auto" });
+  }
 
   let toastT;
   function toast(msg) { clearTimeout(toastT); $("#toast-root").innerHTML = `<div class="toast" role="status">${esc(msg)}</div>`; toastT = setTimeout(() => $("#toast-root").innerHTML = "", 2200); }
@@ -1480,6 +1486,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   setMode(store.get("mode", "swipe") === "board" ? "board" : "swipe");
   renderWeek();
   showTab(TABS.includes(store.get("tab", "week")) ? store.get("tab", "week") : "week");
+  requestAnimationFrame(() => setTimeout(() => scrollToToday(false), 50));
   const d = new Date(), mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
   const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
   const f = x => x.toLocaleDateString("de-DE", { day: "numeric", month: "short" });
