@@ -81,6 +81,9 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
   .day .kid, .day .steps, .day .day-share { grid-column: 1 / -1; margin-top: 0; }
 }
 
+.move { margin: 12px 0 0; padding: 14px 16px; border-radius: 16px; background: var(--sage-soft); color: var(--ink); }
+.move p { margin: 0 0 10px; font-size: .92rem; }
+.move button { font: inherit; font-weight: 700; border: 0; border-radius: 12px; padding: 11px 16px; background: var(--sage); color: #fff; cursor: pointer; }
 .sync { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border-radius: 999px; padding: 5px 12px 5px 10px; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
 .sync i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
 .sync.on i { background: var(--sage); }
@@ -505,6 +508,10 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
 <div class="wrap">
+  <div class="move" id="move" hidden>
+    <p><b>Die App ist umgezogen.</b> Tippe hier, dann kommen deine Herzen, Bewertungen und eigenen Rezepte von diesem Handy in die neue App.</p>
+    <button type="button" id="move-go">Änderungen mitnehmen</button>
+  </div>
   <header class="top">
     <div class="brand">
       <h1>Familientisch</h1>
@@ -1354,7 +1361,10 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   // ---------- Gemeinsam speichern (Cloudflare) ----------
   // Alle Handys lesen und schreiben denselben Stand bei Cloudflare (worker.js). Die App läuft
   // auch unter anderen Adressen (z. B. als Artifact), deshalb steht hier die volle Adresse.
-  const API = (/\.workers\.dev$/.test(location.hostname) ? location.origin : "https://familientisch.tramo.workers.dev") + "/api/state";
+  const NEW_APP = "https://familientisch.tramo.workers.dev/";
+  // Alte Adresse (GitHub Pages, Artifact): kein gemeinsamer Speicher, nur der Knopf zum Mitnehmen
+  const OLD_HOST = !/\.workers\.dev$/.test(location.hostname) && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  const API = (OLD_HOST ? NEW_APP.slice(0, -1) : location.origin) + "/api/state";
   const Sync = {
     url: API, poll: 0, edits: 0, q: Promise.resolve(),
     status(kind, text) { const b = $("#sync-status"); b.className = "sync" + (kind ? " " + kind : ""); b.querySelector("span").textContent = text; },
@@ -1398,6 +1408,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     },
     start() {
       clearInterval(this.poll);
+      if (OLD_HOST) { this.status("err", "Alte Adresse – bitte umziehen"); return; }
       this.status("", "Verbinde …");
       this.pull();
       // Alle 15 Sekunden nachsehen, ob jemand anderes etwas geändert hat
@@ -1427,7 +1438,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   $("#sync-status").addEventListener("click", openSyncSheet);
 
   // ---------- Herz, Teilen, Rezept-Detail ----------
-  const APP_URL = "https://familientisch.tramo.workers.dev/";
+  const APP_URL = NEW_APP;
   const tint = r => `color-mix(in srgb, ${r.colors[0]} 26%, var(--surface))`;
   // ---------- Bewerten ----------
   const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.7 5.5 6 .9-4.35 4.25 1 6L12 17l-5.35 2.85 1-6L3.3 9.6l6-.9z"/></svg>';
@@ -1632,7 +1643,8 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   renderWeek();
   renderBreakfast();
   showTab(TABS.includes(store.get("tab", "week")) ? store.get("tab", "week") : "week");
-  requestAnimationFrame(() => setTimeout(() => scrollToToday(false), 50));
+  // Auf der alten Adresse oben bleiben, damit man den Umzugs-Knopf sieht
+  if (!OLD_HOST) requestAnimationFrame(() => setTimeout(() => scrollToToday(false), 50));
   const d = new Date(), mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
   const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
   const f = x => x.toLocaleDateString("de-DE", { day: "numeric", month: "short" });
@@ -1657,5 +1669,34 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   // Alte Familien-Links (?db=...) von früher: werden nicht mehr gebraucht
   if (/[?&]db=/.test(location.search)) { try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {} }
   Sync.start();
+
+  // ---------- Umzug von der alten Adresse ----------
+  // Alte App: alle Daten dieses Handys in den Link packen (hinter #, geht nicht über das Internet an einen Server)
+  if (OLD_HOST) {
+    $("#move").hidden = false;
+    $("#move-go").addEventListener("click", () => {
+      const data = { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop };
+      location.href = NEW_APP + "#import=" + encodeURIComponent(JSON.stringify(data));
+    });
+  }
+  // Neue App: mitgebrachte Daten zu den gemeinsamen dazulegen (nichts geht verloren)
+  let imported = null;
+  if (location.hash.startsWith("#import=")) {
+    try { imported = JSON.parse(decodeURIComponent(location.hash.slice(8))); } catch (e) {}
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+  if (imported && !OLD_HOST) Sync.queue(() => {}).then(() => {
+    const d = imported, n = { favs: 0, ratings: 0, bf: 0 };
+    Object.keys(d.favs || {}).forEach(id => { if (d.favs[id] && !favs[id]) { favs[id] = true; n.favs++; } });
+    Object.entries(d.ratings || {}).forEach(([id, rt]) => { if (rt && (!ratings[id] || (rt.at || 0) > (ratings[id].at || 0))) { ratings[id] = rt; n.ratings++; } });
+    (Array.isArray(d.myBreakfast) ? d.myBreakfast : []).forEach(r => { if (r && r.id && !myBreakfast.some(m => m.id === r.id)) { myBreakfast.push(r); byId[r.id] = r; n.bf++; } });
+    Object.assign(checked, d.checked || {}); Object.assign(pantryBuy, d.pantryBuy || {});
+    (Array.isArray(d.bfShop) ? d.bfShop : []).forEach(id => { if (!bfShop.includes(id)) bfShop.push(id); });
+    const wk = Array.isArray(d.plan) && d.plan.length === 7 && d.plan.every(id => byId[id]) && d.plan.join() !== plan.join();
+    if (wk && confirm("Die Woche von diesem Handy übernehmen?\n\nOK = ja, diese Woche für alle\nAbbrechen = die gemeinsame Woche behalten")) plan = d.plan;
+    Object.entries({ plan, checked, pantryBuy, favs, ratings, myBreakfast, bfShop }).forEach(([k, v]) => { store.set(k, v); Sync.put(k, v); });
+    renderWeek(); renderBoard(); renderFavCount(); renderBreakfast();
+    toast(`Übernommen: ${n.favs} Herzen, ${n.ratings} Bewertungen, ${n.bf} eigene Rezepte`);
+  });
 })();
 </script>
