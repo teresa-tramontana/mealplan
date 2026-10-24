@@ -1,0 +1,13 @@
+# Diese Dateien gehören nicht auf die Webseite
+.git
+.claude
+.gitignore
+.nojekyll
+.assetsignore
+wrangler.jsonc
+README.md
+build.sh
+src
+tools
+dist
+node_modules

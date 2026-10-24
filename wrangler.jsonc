@@ -1,0 +1,9 @@
+// Cloudflare Worker: liefert die fertige App (index.html, Bilder, Icons) aus.
+// Kein eigener Code nötig, Cloudflare zeigt einfach die Dateien an.
+{
+  "name": "familientisch",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "."
+  }
+}
