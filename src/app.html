@@ -498,6 +498,9 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
 .bf-checks { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
 .bf-checks label { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; margin: 0; }
 @media (max-width: 760px) { .tabs button { font-size: 0.66rem; letter-spacing: 0.03em; } }
+.bf-card .on-list { color: var(--sage); font-weight: 700; }
+.linkish { border: 0; background: none; padding: 0; font: inherit; font-size: 0.85em; color: var(--sage); text-decoration: underline; cursor: pointer; }
+.dayblock [data-bf-unshop] { margin: 2px 0 6px; }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -641,6 +644,9 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   let favs = store.get("favs", {});
   myBreakfast = (() => { const m = store.get("myBreakfast", []); return Array.isArray(m) ? m : []; })();
   myBreakfast.forEach(r => { byId[r.id] = r; });
+  // Frühstücksrezepte, deren Zutaten auf der Einkaufsliste stehen
+  let bfShop = (() => { const m = store.get("bfShop", []); return Array.isArray(m) ? m : []; })();
+  const bfShopList = () => bfShop.filter(id => byId[id]);
   // Bewertungen: Geschmack und Einfachheit, je 1 bis 5 Sterne, plus Notiz
   let ratings = store.get("ratings", {});
   const favIds = () => Object.keys(favs).filter(id => favs[id] && byId[id]);
@@ -839,7 +845,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     const inf = e.target.closest("[data-info]");
     if (inf) openDetail(inf.dataset.info, "ing");
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); bfShop = []; store.set("bfShop", bfShop); renderBreakfast(); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop }); toast("Neue Woche ist geplant"); });
 
   // Wörter, die beim Suchen dasselbe meinen
   const SEARCH_SYN = [["huhn", "hendl", "hahnchen", "huhner", "chicken", "pute"], ["nudel", "pasta", "spaghetti", "penne", "fusilli", "tagliatelle", "orzo", "fleckerl", "nockerl"],
@@ -914,6 +920,11 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
       const cur = map.get(key) || { key, name, unit, aisle, qty: 0 };
       cur.qty += qty; map.set(key, cur);
     }));
+    if (!days) bfShopList().forEach(id => byId[id].ingredients.forEach(([name, qty, unit, aisle]) => {
+      const key = name + "|" + unit;
+      const cur = map.get(key) || { key, name, unit, aisle, qty: 0 };
+      cur.qty += qty; map.set(key, cur);
+    }));
     return [...map.values()].map(i => Object.assign(i, { qty: sc(i.qty, i.unit) }));
   }
   const gurkerl = name => "https://www.gurkerl.at/suche?q=" + encodeURIComponent(name.replace(/\s*\(.*?\)/g, ""));
@@ -984,11 +995,18 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
         const own = r.ingredients.filter(x => x[3] !== "pantry").map(([name, qty, unit, aisle]) => ({ key: name + "|" + unit, name, unit, aisle, qty: sc(qty, unit) }));
         const pantry = r.ingredients.filter(x => x[3] === "pantry").map(x => x[0]);
         return `<div class="aisle dayblock"><h3>${DAYS[d]}</h3><p class="dish">${esc(r.name)}</p><button class="mini cart-day" type="button" data-cart-day="${d}">${CART_ICON}${DAYS[d]} komplett in den Gurkerl-Warenkorb</button>${(n => n ? `<button class="mini cart-day cart-day-sel" type="button" data-cart-day="${d}" data-only-sel="1">${CART_ICON}Nur ${n} mit Hakerl</button>` : "")(own.filter(i => checked[i.key]).length)}${own.map(i => itemRow(i, false, d + "-")).join("")}${pantry.length ? `<p class="from-pantry">Aus dem Vorrat: ${pantry.map(esc).join(", ")}</p>` : ""}</div>`;
+      }).join("") + bfShopList().map(id => {
+        const r = byId[id];
+        const own = r.ingredients.filter(x => x[3] !== "pantry").map(([name, qty, unit, aisle]) => ({ key: name + "|" + unit, name, unit, aisle, qty: sc(qty, unit) }));
+        const pantry = r.ingredients.filter(x => x[3] === "pantry").map(x => x[0]);
+        return `<div class="aisle dayblock"><h3>Frühstück</h3><p class="dish">${esc(r.name)}</p><button class="mini" type="button" data-bf-unshop="${esc(id)}">Von der Liste nehmen</button>${own.map(i => itemRow(i, false, "bf-" + id + "-")).join("")}${pantry.length ? `<p class="from-pantry">Aus dem Vorrat: ${pantry.map(esc).join(", ")}</p>` : ""}</div>`;
       }).join("");
       return;
     }
     const days = SHOP_RANGES[shopMode];
-    $("#shop-grid").innerHTML = (days ? `<div class="range-note"><b>${rangeLabel()}</b>${days.map(d => `<span><i>${DAYS[d].slice(0, 2)}</i> ${esc(byId[plan[d]].name)}</span>`).join("")}</div>` : "") + order.map(a => {
+    const bfNote = bfShopList().length ? (days ? `<div class="range-note"><b>Frühstück</b><span>Die Zutaten für ${bfShopList().length === 1 ? "das Frühstück" : "die Frühstücke"} stehen unter „Alles“ und „Nach Tagen“.</span></div>`
+      : `<div class="range-note"><b>Frühstück auf der Liste</b>${bfShopList().map(id => `<span>${esc(byId[id].name)} <button class="linkish" type="button" data-bf-unshop="${esc(id)}">entfernen</button></span>`).join("")}</div>`) : "";
+    $("#shop-grid").innerHTML = bfNote + (days ? `<div class="range-note"><b>${rangeLabel()}</b>${days.map(d => `<span><i>${DAYS[d].slice(0, 2)}</i> ${esc(byId[plan[d]].name)}</span>`).join("")}</div>` : "") + order.map(a => {
       const items = list.filter(i => i.aisle === a).sort((x, y) => x.name.localeCompare(y.name, "de"));
       if (!items.length) return "";
       const isP = a === "pantry";
@@ -1177,7 +1195,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     document.querySelectorAll("#bf-filter [data-bf]").forEach(b => b.setAttribute("aria-pressed", b.dataset.bf === bfFilter));
     $("#bf-grid").innerHTML = list.length ? list.map(r => `<article class="bf-card" data-open-bf="${esc(r.id)}">
         <div class="thumb" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</div>
-        <div><h3>${esc(r.name)}</h3><div class="meta">${r.own ? '<span class="mc-tag">Eigenes Rezept</span>' : ""}<span>${timeLabel(r)}</span>${(r.tags || []).includes("vorbereiten") ? "<span>am Vorabend</span>" : ""}</div></div>
+        <div><h3>${esc(r.name)}</h3><div class="meta">${r.own ? '<span class="mc-tag">Eigenes Rezept</span>' : ""}<span>${timeLabel(r)}</span>${(r.tags || []).includes("vorbereiten") ? "<span>am Vorabend</span>" : ""}${bfShop.includes(r.id) ? '<span class="on-list">auf der Einkaufsliste</span>' : ""}</div></div>
       </article>`).join("") : `<p style="color:var(--muted)">${bfFilter === "eigene" ? "Noch keine eigenen Rezepte. Tippe auf „+ Eigenes Rezept speichern“." : "Keine Rezepte in dieser Auswahl."}</p>`;
   }
   $("#bf-filter").addEventListener("click", e => { const b = e.target.closest("[data-bf]"); if (b) { bfFilter = b.dataset.bf; renderBreakfast(); } });
@@ -1227,6 +1245,17 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     });
   }
   $("#bf-add").addEventListener("click", () => openBfForm(null));
+  function setBfShop(list) { bfShop = list; store.set("bfShop", bfShop); Sync.put("bfShop", bfShop.length ? bfShop : null); renderShop(); renderBreakfast(); }
+  document.addEventListener("click", e => {
+    const add = e.target.closest("[data-bf-shop]"), rm = e.target.closest("[data-bf-unshop]");
+    if (add) {
+      const id = add.dataset.bfShop, on = bfShop.includes(id);
+      setBfShop(on ? bfShop.filter(x => x !== id) : bfShop.concat(id));
+      add.classList.toggle("on", !on); add.querySelector("span").textContent = on ? "Zur Einkaufsliste" : "Steht auf der Einkaufsliste · entfernen";
+      toast(on ? "Von der Einkaufsliste genommen" : "Zutaten stehen jetzt auf der Einkaufsliste");
+    }
+    if (rm) { setBfShop(bfShop.filter(x => x !== rm.dataset.bfUnshop)); toast("Von der Einkaufsliste genommen"); }
+  });
 
   // ---------- Tabs ----------
   const TABS = ["week", "discover", "breakfast", "shop"];
@@ -1352,10 +1381,11 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
         const r = await fetch(this.base() + ".json");
         if (!r.ok) throw new Error(r.status);
         const d = await r.json();
-        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast }); return; }
+        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop }); return; }
         if (d.plan.length === 7 && d.plan.every(id => byId[id])) plan = d.plan;
         checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
         if (d.ratings) { ratings = d.ratings; store.set("ratings", ratings); }
+        bfShop = Array.isArray(d.bfShop) ? d.bfShop : []; store.set("bfShop", bfShop);
         if (Array.isArray(d.myBreakfast)) { myBreakfast = d.myBreakfast; store.set("myBreakfast", myBreakfast); myBreakfast.forEach(r => { byId[r.id] = r; }); renderBreakfast(); }
         if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
         store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
@@ -1506,6 +1536,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
       <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button>${sourceBtns(r, true)}</div>
       ${r.course === "Frühstück" ? "" : `<h4>Einplanen für</h4>
       <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>`}
+      ${r.course === "Frühstück" ? `<div class="mini-row" style="margin-top:10px"><button class="mini${bfShop.includes(id) ? " on" : ""}" type="button" data-bf-shop="${esc(id)}">${CART_ICON}<span>${bfShop.includes(id) ? "Steht auf der Einkaufsliste · entfernen" : "Zur Einkaufsliste"}</span></button></div>` : ""}
       ${r.own ? `<div class="mini-row" style="margin-top:10px"><button class="mini" type="button" data-bf-edit="${esc(id)}">Bearbeiten</button><button class="mini" type="button" data-bf-del="${esc(id)}">Löschen</button></div>` : ""}
       <h4 id="d-ing">Zutaten für ${esc(peopleLabel())}</h4>
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(sc(q, u), u)}</span></li>`).join("")}</ul>
@@ -1519,7 +1550,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
       const day = e.target.closest("[data-day]"), pl = e.target.closest("[data-detail-play]");
       const ed = e.target.closest("[data-bf-edit]"), del = e.target.closest("[data-bf-del]");
       if (ed) { openBfForm(ed.dataset.bfEdit); return; }
-      if (del) { if (confirm("Dieses Rezept wirklich löschen?")) { myBreakfast = myBreakfast.filter(x => x.id !== del.dataset.bfDel); saveMyBreakfast(); $("#sheet-root").innerHTML = ""; toast("Rezept gelöscht"); } return; }
+      if (del) { if (confirm("Dieses Rezept wirklich löschen?")) { myBreakfast = myBreakfast.filter(x => x.id !== del.dataset.bfDel); setBfShop(bfShop.filter(x => x !== del.dataset.bfDel)); saveMyBreakfast(); $("#sheet-root").innerHTML = ""; toast("Rezept gelöscht"); } return; }
       if (day) { plan[+day.dataset.day] = id; renderWeek(); Sync.put("plan", plan); toast(`Für ${DAYS[+day.dataset.day]} eingeplant`); }
       if (pl) { $("#sheet-root").innerHTML = ""; openPlayer(r); return; }
       if (e.target.id === "sheet-bg" || e.target.id === "sheet-close") $("#sheet-root").innerHTML = "";
@@ -1643,7 +1674,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   if (linkWeek && linkWeek.length === 7 && linkWeek.every(id => byId[id])) {
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
     plan = linkWeek; checked = {}; inCart = {}; store.set("plan", plan); store.set("checked", checked); store.set("inCart", inCart);
-    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast }); toast("Woche übernommen"); }, 1500);
+    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop }); toast("Woche übernommen"); }, 1500);
   }
   let linkDb = null;
   try { linkDb = new URLSearchParams(location.search).get("db"); } catch (e) {}
