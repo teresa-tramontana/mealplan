@@ -1,9 +1,16 @@
-// Cloudflare Worker: liefert die fertige App (index.html, Bilder, Icons) aus.
-// Kein eigener Code nötig, Cloudflare zeigt einfach die Dateien an.
+// Cloudflare Worker: liefert die fertige App (index.html, Bilder, Icons) aus
+// und speichert unter /api/state die gemeinsamen Daten der Familie (worker.js).
 {
   "name": "familientisch",
+  "main": "worker.js",
   "compatibility_date": "2026-10-01",
   "assets": {
-    "directory": "."
-  }
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "FAMILIE", "class_name": "Familie" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Familie"] }]
 }

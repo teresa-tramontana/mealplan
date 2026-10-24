@@ -12,3 +12,4 @@ tools
 dist
 node_modules
 .wrangler
+worker.js

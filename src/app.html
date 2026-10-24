@@ -509,7 +509,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     <div class="brand">
       <h1>Familientisch</h1>
       <p>Abendessen für eure Familie · schnelle Familienküche und euer Master-Chef-Archiv</p>
-      <button class="sync" id="sync-status" type="button"><i></i><span>Nur auf diesem Handy</span></button>
+      <button class="sync" id="sync-status" type="button"><i></i><span>Verbinde …</span></button>
       <div class="people" id="people" role="group" aria-label="Für wie viele Personen kochen"></div>
     </div>
     <nav class="tabs" role="tablist">
@@ -1351,63 +1351,56 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     P.raf = requestAnimationFrame(tick);
   }
 
-  // ---------- Gemeinsam speichern (Google Firebase Realtime Database) ----------
-  // Die Datenbank-Adresse steht nicht im Code (die Seite ist öffentlich), sondern nur auf
-  // den Handys der Familie. Sie kommt per Einstellungen oder per Familien-Link (?db=...).
+  // ---------- Gemeinsam speichern (Cloudflare) ----------
+  // Alle Handys lesen und schreiben denselben Stand bei Cloudflare (worker.js). Die App läuft
+  // auch unter anderen Adressen (z. B. als Artifact), deshalb steht hier die volle Adresse.
+  const API = (/\.workers\.dev$/.test(location.hostname) ? location.origin : "https://familientisch.tramo.workers.dev") + "/api/state";
   const Sync = {
-    url: "", es: null, poll: 0, pullT: 0,
-    base() { return this.url ? this.url + "/familientisch" : ""; },
-    setUrl(u) {
-      u = (u || "").trim();
-      // Auch den ganzen Familien-Link annehmen und die Speicher-Adresse daraus holen
-      const m = u.match(/[?&]db=([^&#]+)/); if (m) { try { u = decodeURIComponent(m[1]); } catch (e) {} }
-      u = u.replace(/\/+$/, "");
-      if (u && !/^https:\/\/[a-z0-9-]+(\.[a-z0-9-]+)*\.(firebaseio\.com|firebasedatabase\.app)$/i.test(u)) return false;
-      this.url = u; store.set("syncUrl", u); this.start(); return true;
-    },
+    url: API, poll: 0, edits: 0, q: Promise.resolve(),
     status(kind, text) { const b = $("#sync-status"); b.className = "sync" + (kind ? " " + kind : ""); b.querySelector("span").textContent = text; },
-    async put(path, value) {
-      if (!this.url) return;
+    // Speichern und Abholen nacheinander, damit nichts überholt wird
+    queue(job) { this.q = this.q.then(job, job); return this.q; },
+    put(path, value) {
       const enc = path.split("/").filter(Boolean).map(encodeURIComponent).join("/");
-      try {
-        const r = await fetch(this.base() + (enc ? "/" + enc : "") + ".json", { method: "PUT", body: JSON.stringify(value) });
-        if (!r.ok) throw new Error(r.status);
-        this.status("on", "Mit der Familie verbunden");
-      } catch (e) { this.status("err", "Nicht gespeichert – kein Netz?"); }
+      this.edits++;
+      return this.queue(async () => {
+        try {
+          const r = await fetch(API + (enc ? "/" + enc : ""), { method: "PUT", body: JSON.stringify(value) });
+          if (!r.ok) throw new Error(r.status);
+          this.status("on", "Mit der Familie geteilt");
+        } catch (e) { this.status("err", "Nicht gespeichert – kein Netz?"); }
+      });
     },
-    async pull() {
-      if (!this.url) return;
-      try {
-        const r = await fetch(this.base() + ".json");
-        if (!r.ok) throw new Error(r.status);
-        const d = await r.json();
-        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop }); return; }
-        if (d.plan.length === 7 && d.plan.every(id => byId[id])) plan = d.plan;
-        checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
-        if (d.ratings) { ratings = d.ratings; store.set("ratings", ratings); }
-        bfShop = Array.isArray(d.bfShop) ? d.bfShop : []; store.set("bfShop", bfShop);
-        if (Array.isArray(d.myBreakfast)) { myBreakfast = d.myBreakfast; store.set("myBreakfast", myBreakfast); myBreakfast.forEach(r => { byId[r.id] = r; }); renderBreakfast(); }
-        if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
-        store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
-        renderWeek(); renderBoard(); renderFavCount();
-        this.status("on", "Mit der Familie verbunden");
-      } catch (e) { this.status("err", "Verbindung klappt nicht"); }
+    pull() {
+      return this.queue(async () => {
+        try {
+          const edits = this.edits;
+          const r = await fetch(API, { cache: "no-store" });
+          if (!r.ok) throw new Error(r.status);
+          const d = await r.json();
+          // Während des Abholens wurde hier etwas geändert: alten Stand nicht anzeigen, gleich nochmal holen
+          if (edits !== this.edits) { setTimeout(() => this.pull(), 500); return; }
+          // Noch nichts gespeichert: dieses Handy legt den ersten Stand an
+          if (!d || !Array.isArray(d.plan)) { this.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop }); return; }
+          if (d.plan.length === 7 && d.plan.every(id => byId[id])) { plan = d.plan; store.set("plan", plan); }
+          checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
+          if (d.ratings) { ratings = d.ratings; store.set("ratings", ratings); }
+          bfShop = Array.isArray(d.bfShop) ? d.bfShop : []; store.set("bfShop", bfShop);
+          if (Array.isArray(d.myBreakfast)) { myBreakfast = d.myBreakfast; store.set("myBreakfast", myBreakfast); myBreakfast.forEach(r => { byId[r.id] = r; }); renderBreakfast(); }
+          if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
+          store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
+          renderWeek(); renderBoard(); renderFavCount();
+          this.status("on", "Mit der Familie geteilt");
+        } catch (e) { this.status("err", "Verbindung klappt nicht"); }
+      });
     },
-    soon() { clearTimeout(this.pullT); this.pullT = setTimeout(() => this.pull(), 300); },
     start() {
-      try { this.es && this.es.close(); } catch (e) {}
-      clearInterval(this.poll); this.es = null;
-      if (!this.url) { this.status("", "Nur auf diesem Handy"); return; }
+      clearInterval(this.poll);
       this.status("", "Verbinde …");
       this.pull();
-      // Live-Updates: Firebase schickt Änderungen sofort. Zur Sicherheit zusätzlich alle 30 Sekunden nachsehen.
-      try {
-        this.es = new EventSource(this.base() + ".json");
-        ["put", "patch"].forEach(ev => this.es.addEventListener(ev, () => this.soon()));
-      } catch (e) {}
-      this.poll = setInterval(() => { if (!document.hidden) this.pull(); }, 30000);
-    },
-    familyLink() { return location.origin + location.pathname + "?db=" + encodeURIComponent(this.url); }
+      // Alle 15 Sekunden nachsehen, ob jemand anderes etwas geändert hat
+      this.poll = setInterval(() => { if (!document.hidden) this.pull(); }, 15000);
+    }
   };
   document.addEventListener("visibilitychange", () => { if (!document.hidden) Sync.pull(); });
 
@@ -1416,43 +1409,23 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   }
 
   function openSyncSheet() {
-    const on = !!Sync.url;
     $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet" role="dialog" aria-label="Mit der Familie teilen">
       <h2>Mit der Familie teilen</h2>
-      ${on ? `<p>Dieses Handy ist verbunden. Haken und getauschte Gerichte sind auf allen verbundenen Handys gleich.</p>
-        <p><b>Weiteres Handy verbinden:</b> Schick diesen Link an dich oder deine Familie und öffne ihn dort einmal.</p>
-        <div class="row" style="margin-bottom:14px"><button class="primary" id="sync-copy" type="button">Familien-Link kopieren</button><button class="ghost" id="sync-off" type="button">Trennen</button></div>
-        <input type="url" id="sync-link" readonly value="${esc(Sync.familyLink())}" aria-label="Familien-Link">`
-      : `<p><b>Du hast schon einen Familien-Link?</b> Dann füge ihn ganz unten ins Feld ein und tippe auf „Verbinden“.</p>
-        <p>Damit alle Handys dieselbe Liste sehen, braucht die App einen kleinen kostenlosen Speicher bei Google. Einmalig etwa 5 Minuten:</p>
-        <ol>
-          <li>Öffne <a href="https://console.firebase.google.com" target="_blank" rel="noopener">console.firebase.google.com</a> und melde dich mit Google an.</li>
-          <li>„Projekt erstellen“, Name z. B. <code>familientisch</code>. Google Analytics kannst du ausschalten.</li>
-          <li>Links im Menü: „Build“ → „Realtime Database“ → „Datenbank erstellen“. Standort Europa, dann „Im gesperrten Modus starten“.</li>
-          <li>Oben auf „Regeln“ klicken, alles ersetzen durch<br><code>{"rules":{"familientisch":{".read":true,".write":true}}}</code><br>und „Veröffentlichen“.</li>
-          <li>Oben steht die Adresse, sie endet auf <code>firebasedatabase.app</code>. Kopieren und hier einfügen:</li>
-        </ol>
-        <input type="url" id="sync-url" placeholder="Familien-Link oder Firebase-Adresse" autocomplete="off">
-        <div class="row"><button class="primary" id="sync-save" type="button">Verbinden</button></div>`}
+      <p>Alle, die diese App öffnen, sehen dasselbe: die Woche, die Haken auf der Einkaufsliste, Herzen, Bewertungen und eigene Frühstücksrezepte.</p>
+      <p>Gespeichert wird automatisch bei Cloudflare. Änderungen von anderen kommen nach spätestens 15 Sekunden an.</p>
+      <p>Ohne Internet wird nichts geteilt. Dann steht oben „kein Netz“.</p>
+      <div class="row"><button class="primary" id="sync-now" type="button">Jetzt abgleichen</button></div>
       <button class="ghost" id="sheet-close" type="button" style="margin-top:12px">Schließen</button></div></div>`;
-    const bg = $("#sheet-bg");
-    bg.addEventListener("click", async e => {
+    $("#sheet-bg").addEventListener("click", async e => {
       const id = e.target.id;
       if (id === "sheet-bg" || id === "sheet-close") { $("#sheet-root").innerHTML = ""; return; }
-      if (id === "sync-save") {
-        if (Sync.setUrl($("#sync-url").value)) { toast("Verbunden"); openSyncSheet(); }
-        else toast("Das ist keine Firebase-Adresse");
-      }
-      if (id === "sync-off") { Sync.setUrl(""); toast("Getrennt"); openSyncSheet(); }
-      if (id === "sync-copy") {
-        if (!(await copyText(Sync.familyLink(), "Link kopiert"))) { const i = $("#sync-link"); i.focus(); i.select(); toast("Link markiert – jetzt kopieren"); }
-      }
+      if (id === "sync-now") { await Sync.pull(); toast($("#sync-status").classList.contains("err") ? "Verbindung klappt nicht" : "Abgeglichen"); }
     });
   }
   $("#sync-status").addEventListener("click", openSyncSheet);
 
   // ---------- Herz, Teilen, Rezept-Detail ----------
-  const APP_URL = "https://teresa-tramontana.github.io/mealplan/";
+  const APP_URL = "https://familientisch.tramo.workers.dev/";
   const tint = r => `color-mix(in srgb, ${r.colors[0]} 26%, var(--surface))`;
   // ---------- Bewerten ----------
   const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2l2.7 5.5 6 .9-4.35 4.25 1 6L12 17l-5.35 2.85 1-6L3.3 9.6l6-.9z"/></svg>';
@@ -1674,17 +1647,13 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   if (linkWeek && linkWeek.length === 7 && linkWeek.every(id => byId[id])) {
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
     plan = linkWeek; checked = {}; inCart = {}; store.set("plan", plan); store.set("checked", checked); store.set("inCart", inCart);
-    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop }); toast("Woche übernommen"); }, 1500);
+    Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop });
+    setTimeout(() => { renderWeek(); toast("Woche übernommen"); }, 1500);
   }
-  let linkDb = null;
-  try { linkDb = new URLSearchParams(location.search).get("db"); } catch (e) {}
   const shared = location.hash.slice(1);
   if (byId[shared]) { openDetail(shared); try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {} }
-  if (linkDb) {
-    try { history.replaceState(null, "", location.pathname); } catch (e) {}
-    if (Sync.setUrl(linkDb)) toast("Mit der Familie verbunden");
-  } else {
-    Sync.setUrl(store.get("syncUrl", ""));
-  }
+  // Alte Familien-Links (?db=...) von früher: werden nicht mehr gebraucht
+  if (/[?&]db=/.test(location.search)) { try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {} }
+  Sync.start();
 })();
 </script>

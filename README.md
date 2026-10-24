@@ -13,9 +13,11 @@ Rezepte ändern: `src/recipes.js`; 20 Rezepte nach Simple Home Edit (übersetzt,
 
 ## Mit der Familie teilen
 
-Haken und getauschte Gerichte werden über eine kostenlose Google Firebase Realtime Database geteilt.
-Die Anleitung steht in der App (oben auf „Nur auf diesem Handy“ tippen). Die Datenbank-Adresse
-steht bewusst nicht im Code, sondern nur auf den verbundenen Handys (per Familien-Link `?db=...`).
+Läuft auf Cloudflare: https://familientisch.tramo.workers.dev
+
+Woche, Haken, Herzen, Bewertungen und eigene Frühstücksrezepte liegen in einer kleinen Datenbank
+bei Cloudflare (Durable Object, siehe `worker.js`). Alle, die die App öffnen, sehen denselben Stand.
+Hochladen: `npx wrangler deploy`.
 
 ## Wöchentliches Update
 
