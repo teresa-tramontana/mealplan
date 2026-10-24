@@ -13,7 +13,7 @@ Rezepte ändern: `src/recipes.js`; 20 Rezepte nach Simple Home Edit (übersetzt,
 
 ## Mit der Familie teilen
 
-Läuft auf Cloudflare: https://familientisch.tramo.workers.dev
+Läuft auf Cloudflare: https://familientisch.tramo.workers.dev (Familien-PIN nötig, einmal pro Gerät).
 
 Woche, Haken, Herzen, Bewertungen und eigene Frühstücksrezepte liegen in einer kleinen Datenbank
 bei Cloudflare (Durable Object, siehe `worker.js`). Alle, die die App öffnen, sehen denselben Stand.

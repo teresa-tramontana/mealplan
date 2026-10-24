@@ -1,5 +1,5 @@
 // Cloudflare Worker: liefert die fertige App (index.html, Bilder, Icons) aus
-// und speichert unter /api/state die gemeinsamen Daten der Familie (worker.js).
+// hinter einer PIN-Sperre und speichert unter /api/state die gemeinsamen Daten der Familie (worker.js).
 {
   "name": "familientisch",
   "main": "worker.js",
@@ -7,10 +7,15 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    "run_worker_first": ["/api/*"]
+    "run_worker_first": true
   },
   "durable_objects": {
-    "bindings": [{ "name": "FAMILIE", "class_name": "Familie" }]
+    "bindings": [{ "name": "FAMILIE", "class_name": "Familie" },
+      { "name": "PINSPERRE", "class_name": "PinSperre" }
+    ]
   },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Familie"] }]
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["Familie"] },
+    { "tag": "v2", "new_sqlite_classes": ["PinSperre"] }
+  ]
 }

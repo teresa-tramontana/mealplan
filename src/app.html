@@ -1376,6 +1376,8 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
         try {
           const edits = this.edits;
           const r = await fetch(API, { cache: "no-store" });
+          // PIN abgelaufen: Seite neu laden, dann fragt Cloudflare nach der PIN
+          if (r.status === 401 && API.startsWith(location.origin)) { location.reload(); return; }
           if (!r.ok) throw new Error(r.status);
           const d = await r.json();
           // Während des Abholens wurde hier etwas geändert: alten Stand nicht anzeigen, gleich nochmal holen
