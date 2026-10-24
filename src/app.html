@@ -104,6 +104,9 @@ header.top { display: flex; align-items: flex-end; justify-content: space-betwee
 .mini svg { width: 14px; height: 14px; }
 .mini:hover { border-color: var(--sage); }
 .mini.on { color: var(--heart); border-color: var(--heart); }
+.cook { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; font-size: 0.76rem; color: var(--muted); }
+.cook button { font: inherit; font-weight: 700; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 11px; cursor: pointer; }
+.cook button[aria-pressed="true"] { background: var(--sage); border-color: var(--sage); color: var(--surface); }
 .mini.wa svg { color: var(--wa); }
 
 /* Entdecken */
@@ -532,7 +535,6 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
       <div class="toolbar">
         <span class="label" id="week-label">Diese Woche</span>
         <button class="ghost" id="reshuffle">Neue Woche mischen</button>
-        <button class="ghost" id="send-week" type="button">Woche aufs andere Gerät</button>
       </div>
       <div class="days" id="days"></div>
     </section>
@@ -656,6 +658,9 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   const bfShopList = () => bfShop.filter(id => byId[id]);
   // Bewertungen: Geschmack und Einfachheit, je 1 bis 5 Sterne, plus Notiz
   let ratings = store.get("ratings", {});
+  // Wer kocht welches Gericht? (Rezept-id → Name)
+  const COOKS = ["David", "Theresa"];
+  let cooks = store.get("cooks", {});
   const favIds = () => Object.keys(favs).filter(id => favs[id] && byId[id]);
   // Wie gut passt ein Gericht zu euren Herz-Gerichten? (geteilte Merkmale im Schnitt)
   function similarity(r) {
@@ -828,7 +833,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
         <div class="dname">${i === today ? "Heute" : dateOf(i)}<b>${DAYS[i].slice(0, 2)}</b></div>
         <div class="thumb" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</div>
         <div class="info"><h3>${esc(r.name)}</h3>
-          <div class="meta">${mcTag(r)}<span>${esc(r.origin)}</span><span>${timeLabel(r)}</span><span>${r.steps.length} Schritte</span></div></div>
+          <div class="meta">${mcTag(r)}<span>${esc(r.origin)}</span><span>${timeLabel(r)}</span><span>${r.steps.length} Schritte</span></div>${cookRow(id)}</div>
         <div class="actions">
           <button class="icon-btn" data-info="${id}" aria-label="Zutaten und Mengen für ${esc(r.name)}" title="Zutaten & Mengen">${ICON.info}</button>
           <button class="icon-btn" data-swap="${i}" aria-label="Gericht für ${DAYS[i]} tauschen" title="Tauschen oder suchen">${ICON.swap}</button>
@@ -852,7 +857,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     const inf = e.target.closest("[data-info]");
     if (inf) openDetail(inf.dataset.info, "ing");
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); bfShop = []; store.set("bfShop", bfShop); renderBreakfast(); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); bfShop = []; store.set("bfShop", bfShop); renderBreakfast(); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop, cooks }); toast("Neue Woche ist geplant"); });
 
   // Wörter, die beim Suchen dasselbe meinen
   const SEARCH_SYN = [["huhn", "hendl", "hahnchen", "huhner", "chicken", "pute"], ["nudel", "pasta", "spaghetti", "penne", "fusilli", "tagliatelle", "orzo", "fleckerl", "nockerl"],
@@ -1393,15 +1398,17 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
           // Während des Abholens wurde hier etwas geändert: alten Stand nicht anzeigen, gleich nochmal holen
           if (edits !== this.edits) { setTimeout(() => this.pull(), 500); return; }
           // Noch nichts gespeichert: dieses Handy legt den ersten Stand an
-          if (!d || !Array.isArray(d.plan)) { this.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop }); return; }
+          if (!d || !Array.isArray(d.plan)) { this.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop, cooks }); return; }
           if (d.plan.length === 7 && d.plan.every(id => byId[id])) { plan = d.plan; store.set("plan", plan); }
-          checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
+          checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {}; cooks = d.cooks || {}; store.set("cooks", cooks);
           if (d.ratings) { ratings = d.ratings; store.set("ratings", ratings); }
           bfShop = Array.isArray(d.bfShop) ? d.bfShop : []; store.set("bfShop", bfShop);
           if (Array.isArray(d.myBreakfast)) { myBreakfast = d.myBreakfast; store.set("myBreakfast", myBreakfast); myBreakfast.forEach(r => { byId[r.id] = r; }); renderBreakfast(); }
           if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
           store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
           renderWeek(); renderBoard(); renderFavCount();
+          // Beim ersten Abholen kann sich die Woche geändert haben: nochmal zum heutigen Tag springen
+          if (!this.pulled) { this.pulled = true; requestAnimationFrame(() => scrollToToday(false)); }
           this.status("on", "Mit der Familie geteilt");
         } catch (e) { this.status("err", "Verbindung klappt nicht"); }
       });
@@ -1478,6 +1485,16 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   });
   document.addEventListener("change", e => { const n = e.target.closest("[data-rate-note]"); if (n) saveRating(n.dataset.rateNote, { note: n.value.trim().slice(0, 500) }); });
 
+  // ---------- Wer kocht? ----------
+  const cookRow = id => `<div class="cook" role="group" aria-label="Wer kocht?">Kocht:${COOKS.map(n => `<button type="button" data-cook="${esc(id)}" data-who="${n}" aria-pressed="${cooks[id] === n}">${n}</button>`).join("")}</div>`;
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-cook]"); if (!b) return;
+    const id = b.dataset.cook, who = cooks[id] === b.dataset.who ? null : b.dataset.who;
+    if (who) cooks[id] = who; else delete cooks[id];
+    store.set("cooks", cooks); Sync.put("cooks/" + id, who);
+    document.querySelectorAll(`[data-cook="${CSS.escape(id)}"]`).forEach(x => x.setAttribute("aria-pressed", cooks[id] === x.dataset.who));
+  });
+
   function favBtn(id, cls) {
     const on = !!favs[id];
     return `<button class="${cls}${on ? " on" : ""}" type="button" data-fav="${id}" aria-pressed="${on}" aria-label="${on ? "Herz entfernen" : "Herz geben"}">${on ? ICON.heartFill : ICON.heart}${cls === "mini" ? (on ? "Lieblingsgericht" : "Merken") : ""}</button>`;
@@ -1519,6 +1536,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
       <div class="d-hero" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r, true)}</div>
       <h2>${esc(r.name)}</h2>
       <div class="meta">${mcTag(r)}<span>${esc(r.origin)}</span><span>${timeLabel(r)}</span><span>${r.steps.length} Schritte</span>${r.course && r.course !== "Hauptspeise" ? `<span>${esc(r.course)}</span>` : ""}</div>
+      ${cookRow(id)}
       <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button>${sourceBtns(r, true)}</div>
       ${r.course === "Frühstück" ? "" : `<h4>Einplanen für</h4>
       <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>`}
@@ -1649,19 +1667,12 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
   const f = x => x.toLocaleDateString("de-DE", { day: "numeric", month: "short" });
   $("#week-label").textContent = `Woche ${f(mon)} – ${f(sun)}`;
-  // Woche per Link auf ein anderes Gerät bringen (ohne Familien-Verbindung)
-  $("#send-week").addEventListener("click", async () => {
-    const url = APP_URL + "?woche=" + plan.join(",");
-    const text = "Unser Wochenplan: " + plan.map((id, d) => DAYS[d].slice(0, 2) + " " + byId[id].name).join(", ");
-    if (navigator.share) { try { await navigator.share({ title: "Familientisch – Woche", text, url }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
-    if (!(await copyText(url, "Link kopiert – auf dem anderen Gerät öffnen"))) { const ta = $("#copy-fallback"); ta.hidden = false; ta.value = url; $("#tab-shop").click(); toast("Link unten in der Einkaufsliste markieren und kopieren"); }
-  });
   let linkWeek = null;
   try { linkWeek = (new URLSearchParams(location.search).get("woche") || "").split(",").filter(Boolean); } catch (e) {}
   if (linkWeek && linkWeek.length === 7 && linkWeek.every(id => byId[id])) {
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
     plan = linkWeek; checked = {}; inCart = {}; store.set("plan", plan); store.set("checked", checked); store.set("inCart", inCart);
-    Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop });
+    Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop, cooks });
     setTimeout(() => { renderWeek(); toast("Woche übernommen"); }, 1500);
   }
   const shared = location.hash.slice(1);
@@ -1675,7 +1686,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   if (OLD_HOST) {
     $("#move").hidden = false;
     $("#move-go").addEventListener("click", () => {
-      const data = { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop };
+      const data = { plan, checked, pantryBuy, favs, people, ratings, myBreakfast, bfShop, cooks };
       location.href = NEW_APP + "#import=" + encodeURIComponent(JSON.stringify(data));
     });
   }

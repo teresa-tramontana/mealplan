@@ -17,8 +17,9 @@ Läuft auf Cloudflare: https://familientisch.tramo.workers.dev (Familien-PIN nö
 
 Woche, Haken, Herzen, Bewertungen und eigene Frühstücksrezepte liegen in einer kleinen Datenbank
 bei Cloudflare (Durable Object, siehe `worker.js`). Alle, die die App öffnen, sehen denselben Stand.
-Hochladen: `npx wrangler deploy`.
+Hochladen: passiert automatisch bei jedem Push auf `main` (GitHub Action, braucht einmalig das
+Secret `CLOUDFLARE_API_TOKEN`). Von Hand: `npx wrangler deploy`. Details für Claude stehen in `CLAUDE.md`.
 
 ## Wöchentliches Update
 
-Jeden Sonntag früh legt eine Claude-Automatik 10 neue Gerichte an und holt neue Aktionen (`./build.sh`), dann wird auf `main` gepusht.
+Jeden Sonntag früh legt eine Claude-Automatik 10 neue Gerichte an und holt neue Aktionen (`./build.sh`), dann wird auf `main` gepusht und zu Cloudflare hochgeladen.
