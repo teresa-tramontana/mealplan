@@ -1845,9 +1845,9 @@
 "markt": "Gurkerl",
 "name": "Der Mann Butternussschnecke",
 "menge": "100 g",
-"preis": 2.09,
+"preis": 1.49,
 "statt": 2.99,
-"hinweis": "-30 %",
+"hinweis": "-50 %",
 "bis": "2026-10-24",
 "link": "https://www.gurkerl.at/47408-der-mann-butternussschnecke"
 },
@@ -1863,33 +1863,13 @@
 },
 {
 "markt": "Gurkerl",
-"name": "Ölz Landbrot Weizenmisch geschnitten",
+"name": "nöm Joghurt Natur 1% cremig gerührt XL",
 "menge": "500 g",
-"preis": 1.28,
-"statt": 4.29,
+"preis": 0.38,
+"statt": 1.29,
 "hinweis": "-70 %",
 "bis": "2026-10-25",
-"link": "https://www.gurkerl.at/41418-oelz-landbrot-weizenmisch-geschnitten"
-},
-{
-"markt": "Gurkerl",
-"name": "Schärdinger Bergkäse Hauchdünn 45% in Scheiben",
-"menge": "150 g",
-"preis": 2.46,
-"statt": 2.89,
-"hinweis": "-14 %",
-"bis": "2026-10-29",
-"link": "https://www.gurkerl.at/11654-schaerdinger-bergkaese-hauchduenn-45-in-scheiben"
-},
-{
-"markt": "Gurkerl",
-"name": "Yutto Super Sandwich",
-"menge": "0,75 kg",
-"preis": 0.9,
-"statt": 1.89,
-"hinweis": "-52 %",
-"bis": "2026-10-26",
-"link": "https://www.gurkerl.at/33006-yutto-super-sandwich"
+"link": "https://www.gurkerl.at/25007-noem-joghurt-natur-1-cremig-geruehrt-xl"
 },
 {
 "markt": "Gurkerl",
@@ -1903,6 +1883,26 @@
 },
 {
 "markt": "Gurkerl",
+"name": "Schärdinger Bergkäse Hauchdünn 45% in Scheiben",
+"menge": "150 g",
+"preis": 2.36,
+"statt": 2.89,
+"hinweis": "-18 %",
+"bis": "2026-10-29",
+"link": "https://www.gurkerl.at/11654-schaerdinger-bergkaese-hauchduenn-45-in-scheiben"
+},
+{
+"markt": "Gurkerl",
+"name": "Ölz Landbrot Weizenmisch geschnitten",
+"menge": "500 g",
+"preis": 1.28,
+"statt": 4.29,
+"hinweis": "-70 %",
+"bis": "2026-10-25",
+"link": "https://www.gurkerl.at/41418-oelz-landbrot-weizenmisch-geschnitten"
+},
+{
+"markt": "Gurkerl",
 "name": "Efko Baby Spinat",
 "menge": "250 g",
 "preis": 1.01,
@@ -1913,23 +1913,23 @@
 },
 {
 "markt": "Gurkerl",
-"name": "nöm Joghurt Natur 1% cremig gerührt XL",
+"name": "Ölz Butter Toast geschnitten",
 "menge": "500 g",
-"preis": 0.45,
-"statt": 1.29,
-"hinweis": "-65 %",
-"bis": "2026-10-25",
-"link": "https://www.gurkerl.at/25007-noem-joghurt-natur-1-cremig-geruehrt-xl"
+"preis": 3.39,
+"statt": 3.99,
+"hinweis": "-15 %",
+"bis": "2026-10-26",
+"link": "https://www.gurkerl.at/4468-oelz-butter-toast-geschnitten"
 },
 {
 "markt": "Gurkerl",
-"name": "Yutto Butter Toast",
-"menge": "500 g",
-"preis": 0.91,
-"statt": 1.29,
-"hinweis": "-29 %",
+"name": "Yutto Super Sandwich",
+"menge": "0,75 kg",
+"preis": 0.9,
+"statt": 1.89,
+"hinweis": "-52 %",
 "bis": "2026-10-26",
-"link": "https://www.gurkerl.at/33005-yutto-butter-toast"
+"link": "https://www.gurkerl.at/33006-yutto-super-sandwich"
 },
 {
 "markt": "Gurkerl",
@@ -1943,16 +1943,6 @@
 },
 {
 "markt": "Gurkerl",
-"name": "Ölz Riesen Toast geschnitten",
-"menge": "500 g",
-"preis": 3.39,
-"statt": 3.99,
-"hinweis": "-15 %",
-"bis": "2026-10-26",
-"link": "https://www.gurkerl.at/4500-oelz-riesen-toast-geschnitten"
-},
-{
-"markt": "Gurkerl",
 "name": "Miil Tierwohl haltbare Milch fettarm 1,5%",
 "menge": "1 l",
 "preis": 0.77,
@@ -1963,6 +1953,16 @@
 },
 {
 "markt": "Gurkerl",
+"name": "Ölz Riesen Toast geschnitten",
+"menge": "500 g",
+"preis": 3.39,
+"statt": 3.99,
+"hinweis": "-15 %",
+"bis": "2026-10-26",
+"link": "https://www.gurkerl.at/4500-oelz-riesen-toast-geschnitten"
+},
+{
+"markt": "Gurkerl",
 "name": "Danone Twix Karamell Joguhrt",
 "menge": "120 g",
 "preis": 0.85,
@@ -1970,16 +1970,6 @@
 "hinweis": "-28 %",
 "bis": "2026-10-27",
 "link": "https://www.gurkerl.at/39141-danone-twix-karamell-joguhrt"
-},
-{
-"markt": "Gurkerl",
-"name": "LAC laktosefreier Speisetopfen Magerstufe",
-"menge": "250 g",
-"preis": 1.15,
-"statt": 1.49,
-"hinweis": "-22 %",
-"bis": "2026-10-28",
-"link": "https://www.gurkerl.at/35681-lac-laktosefreier-speisetopfen-magerstufe"
 },
 {
 "markt": "Gurkerl",
@@ -2000,6 +1990,16 @@
 "hinweis": "-42 %",
 "bis": "2026-10-27",
 "link": "https://www.gurkerl.at/27739-schaerdinger-beerentraum-3-8"
+},
+{
+"markt": "Gurkerl",
+"name": "LAC laktosefreier Speisetopfen Magerstufe",
+"menge": "250 g",
+"preis": 1.15,
+"statt": 1.49,
+"hinweis": "-22 %",
+"bis": "2026-10-28",
+"link": "https://www.gurkerl.at/35681-lac-laktosefreier-speisetopfen-magerstufe"
 }
 ]
 }

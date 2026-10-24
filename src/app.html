@@ -1371,7 +1371,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   const OLD_HOST = !/\.workers\.dev$/.test(location.hostname) && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   const API = (OLD_HOST ? NEW_APP.slice(0, -1) : location.origin) + "/api/state";
   const Sync = {
-    url: API, poll: 0, edits: 0, q: Promise.resolve(),
+    url: API, poll: 0, edits: 0, last: "", q: Promise.resolve(),
     status(kind, text) { const b = $("#sync-status"); b.className = "sync" + (kind ? " " + kind : ""); b.querySelector("span").textContent = text; },
     // Speichern und Abholen nacheinander, damit nichts überholt wird
     queue(job) { this.q = this.q.then(job, job); return this.q; },
@@ -1394,7 +1394,10 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
           // PIN abgelaufen: Seite neu laden, dann fragt Cloudflare nach der PIN
           if (r.status === 401 && API.startsWith(location.origin)) { location.reload(); return; }
           if (!r.ok) throw new Error(r.status);
-          const d = await r.json();
+          const raw = await r.text();
+          // Nichts Neues seit dem letzten Abholen: nicht neu zeichnen (sonst blinkt der Bildschirm)
+          if (raw === this.last && edits === this.edits) { this.status("on", "Mit der Familie geteilt"); return; }
+          const d = JSON.parse(raw);
           // Während des Abholens wurde hier etwas geändert: alten Stand nicht anzeigen, gleich nochmal holen
           if (edits !== this.edits) { setTimeout(() => this.pull(), 500); return; }
           // Noch nichts gespeichert: dieses Handy legt den ersten Stand an
@@ -1406,6 +1409,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
           if (Array.isArray(d.myBreakfast)) { myBreakfast = d.myBreakfast; store.set("myBreakfast", myBreakfast); myBreakfast.forEach(r => { byId[r.id] = r; }); renderBreakfast(); }
           if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
           store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
+          this.last = raw;
           renderWeek(); renderBoard(); renderFavCount();
           // Beim ersten Abholen kann sich die Woche geändert haben: nochmal zum heutigen Tag springen
           if (!this.pulled) { this.pulled = true; requestAnimationFrame(() => scrollToToday(false)); }
