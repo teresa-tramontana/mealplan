@@ -483,6 +483,21 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
 .day-more[hidden] { display: none; }
 .day .day-more .day-share, .day .day-more .steps, .day .day-more .steps-reset { grid-column: auto; margin-top: 0; }
 @media (max-width: 560px) { .day-toggle, .day-more { grid-column: 1 / -1; } .day-toggle { margin-top: 0; } }
+
+/* Frühstück */
+.bf-head { display: flex; gap: 14px; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; margin-bottom: 14px; }
+.bf-head h2 { font-size: 1.6rem; margin: 0 0 4px; }
+.bf-head p { margin: 0; color: var(--muted); max-width: 46ch; }
+.bf-filter { margin-bottom: 16px; flex-wrap: wrap; }
+.bf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.bf-card { display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: center; background: var(--surface); padding: 12px 14px; cursor: pointer; }
+.bf-card h3 { font-size: 1.1rem; line-height: 1.25; margin: 0 0 4px; }
+.bf-card .thumb { width: 72px; height: 72px; }
+.bf-form label { display: grid; gap: 4px; font-weight: 700; font-size: 0.88rem; margin-bottom: 10px; }
+.bf-form input[type="text"], .bf-form input[type="number"], .bf-form input[type="url"], .bf-form textarea { font: inherit; font-weight: 400; font-size: 0.95rem; padding: 10px 12px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); width: 100%; } /* taste-skill-ignore: Formularfeld */
+.bf-checks { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+.bf-checks label { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; margin: 0; }
+@media (max-width: 760px) { .tabs button { font-size: 0.66rem; letter-spacing: 0.03em; } }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -497,6 +512,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     <nav class="tabs" role="tablist">
       <button id="tab-week" role="tab" aria-selected="true"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="tl">Woche</span></button>
       <button id="tab-discover" role="tab" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span class="tl">Entdecken</span></button>
+      <button id="tab-breakfast" role="tab" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3.5c0 1.2 1 1.2 1 2.5M12 3.5c0 1.2 1 1.2 1 2.5"/></svg><span class="tl">Frühstück</span></button>
       <button id="tab-shop" role="tab" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="9.5" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg><span class="tl">Einkauf</span><span class="count" id="shop-count"></span></button>
     </nav>
   </header>
@@ -532,6 +548,21 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
         <div class="filters" id="filters"></div>
         <div class="board" id="board"></div>
       </div>
+    </section>
+
+    <section id="view-breakfast" hidden>
+      <div class="bf-head">
+        <div><h2>Frühstück</h2><p>Für schnelle Morgen und gemütliche Wochenenden. Tippe auf ein Rezept für Zutaten und Schritte.</p></div>
+        <button class="primary" id="bf-add" type="button">+ Eigenes Rezept speichern</button>
+      </div>
+      <div class="seg bf-filter" id="bf-filter" role="group" aria-label="Frühstück filtern">
+        <button type="button" data-bf="alle" aria-pressed="true">Alle</button>
+        <button type="button" data-bf="süß" aria-pressed="false">Süß</button>
+        <button type="button" data-bf="pikant" aria-pressed="false">Pikant</button>
+        <button type="button" data-bf="vorbereiten" aria-pressed="false">Am Vorabend</button>
+        <button type="button" data-bf="eigene" aria-pressed="false">Eigene</button>
+      </div>
+      <div class="bf-grid" id="bf-grid"></div>
     </section>
 
     <section id="view-shop" hidden>
@@ -593,6 +624,11 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     r.steps.forEach(st => { st.text = huhn(st.text); if (st.items) st.items = st.items.map(huhn); });
   });
   const byId = Object.fromEntries(RECIPES.map(r => [r.id, r]));
+  // Frühstück: eigene Liste, kommt nicht in den Abendessen-Plan
+  const BF_BASE = typeof BREAKFAST !== "undefined" && Array.isArray(BREAKFAST) ? BREAKFAST : [];
+  let myBreakfast = [];
+  const bfAll = () => BF_BASE.concat(myBreakfast);
+  BF_BASE.forEach(r => { byId[r.id] = r; });
   const $ = s => document.querySelector(s);
   const store = {
     get(k, d) { try { const v = localStorage.getItem("ft-" + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
@@ -603,6 +639,8 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
   // Herz-Gerichte: Basis für neue Vorschläge
   let favs = store.get("favs", {});
+  myBreakfast = (() => { const m = store.get("myBreakfast", []); return Array.isArray(m) ? m : []; })();
+  myBreakfast.forEach(r => { byId[r.id] = r; });
   // Bewertungen: Geschmack und Einfachheit, je 1 bis 5 Sterne, plus Notiz
   let ratings = store.get("ratings", {});
   const favIds = () => Object.keys(favs).filter(id => favs[id] && byId[id]);
@@ -646,7 +684,8 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   const timeLabel = r => {
     if (!r.time) return "Zeit siehe Rezept";
     const t = r.time >= 90 ? `${Math.round(r.time / 30) / 2} Std.`.replace(".5 Std.", ",5 Std.") : `${r.time} Min.`;
-    return (r.mc ? "ca. " : "") + t + (r.wait ? ` + ${r.wait} Min. Ofen` : "");
+    const w = !r.wait ? "" : r.wait >= 240 ? " + über Nacht" : r.course === "Frühstück" && !(r.tags || []).includes("ofen") ? ` + ${r.wait} Min. ziehen lassen` : ` + ${r.wait} Min. Ofen`;
+    return (r.mc ? "ca. " : "") + t + w;
   };
   const HAS_PHOTO = new Set(typeof PHOTOS !== "undefined" ? PHOTOS : []);
   const mcTag = r => r.mc ? '<span class="mc-tag">Master Chef</span>' : r.source ? `<span class="mc-tag">nach ${esc(r.source.name)}</span>` : "";
@@ -800,7 +839,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     const inf = e.target.closest("[data-info]");
     if (inf) openDetail(inf.dataset.info, "ing");
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast }); toast("Neue Woche ist geplant"); });
 
   // Wörter, die beim Suchen dasselbe meinen
   const SEARCH_SYN = [["huhn", "hendl", "hahnchen", "huhner", "chicken", "pute"], ["nudel", "pasta", "spaghetti", "penne", "fusilli", "tagliatelle", "orzo", "fleckerl", "nockerl"],
@@ -1131,8 +1170,66 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     try { navigator.clipboard.writeText(txt).then(() => toast("Liste kopiert"), fallback); } catch (e) { fallback(); }
   });
 
+  // ---------- Frühstück ----------
+  let bfFilter = "alle";
+  function renderBreakfast() {
+    const list = myBreakfast.concat(BF_BASE).filter(r => bfFilter === "alle" || (bfFilter === "eigene" ? r.own : (r.tags || []).includes(bfFilter)));
+    document.querySelectorAll("#bf-filter [data-bf]").forEach(b => b.setAttribute("aria-pressed", b.dataset.bf === bfFilter));
+    $("#bf-grid").innerHTML = list.length ? list.map(r => `<article class="bf-card" data-open-bf="${esc(r.id)}">
+        <div class="thumb" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</div>
+        <div><h3>${esc(r.name)}</h3><div class="meta">${r.own ? '<span class="mc-tag">Eigenes Rezept</span>' : ""}<span>${timeLabel(r)}</span>${(r.tags || []).includes("vorbereiten") ? "<span>am Vorabend</span>" : ""}</div></div>
+      </article>`).join("") : `<p style="color:var(--muted)">${bfFilter === "eigene" ? "Noch keine eigenen Rezepte. Tippe auf „+ Eigenes Rezept speichern“." : "Keine Rezepte in dieser Auswahl."}</p>`;
+  }
+  $("#bf-filter").addEventListener("click", e => { const b = e.target.closest("[data-bf]"); if (b) { bfFilter = b.dataset.bf; renderBreakfast(); } });
+  $("#bf-grid").addEventListener("click", e => { const c = e.target.closest("[data-open-bf]"); if (c) openDetail(c.dataset.openBf); });
+  function saveMyBreakfast() {
+    store.set("myBreakfast", myBreakfast); Sync.put("myBreakfast", myBreakfast.length ? myBreakfast : null);
+    myBreakfast.forEach(r => { byId[r.id] = r; }); renderBreakfast();
+  }
+  // Zutaten-Zeile wie „200 g Haferflocken“ oder „2 Eier“ in Menge, Einheit und Name zerlegen
+  const BF_UNITS = "kg|g|ml|l|EL|TL|Prise|Prisen|Bund|Dose|Dosen|Packung|Packungen|Stk|Stück|Zehe|Zehen|Becher|Glas|Scheibe|Scheiben|Handvoll|Tasse|Tassen";
+  function parseIngLine(line) {
+    const m = line.trim().match(new RegExp("^(\\d+(?:[.,]\\d+)?|½|¼|¾)?\\s*(" + BF_UNITS + ")?\\.?\\s+(.+)$", "i"));
+    if (!m || !m[1]) return [line.trim(), 0, "", "veg"];
+    const q = { "½": 0.5, "¼": 0.25, "¾": 0.75 }[m[1]] ?? parseFloat(m[1].replace(",", "."));
+    return [m[3].trim(), q, m[2] || "Stk", /milch|joghurt|topfen|butter|ei\b|eier|käse|obers|rahm/i.test(m[3]) ? "fresh" : /flocken|mehl|zucker|zimt|salz|backpulver|honig|sirup|öl/i.test(m[3]) ? "pantry" : /brot|toast|semmel/i.test(m[3]) ? "bread" : "veg"];
+  }
+  const ingLine = i => (i[1] ? String(i[1]).replace(".", ",") + " " + (i[2] && i[2] !== "Stk" ? i[2] + " " : "") : "") + i[0];
+  const guessIcon = t => /ofen|back/i.test(t) ? "oven" : /pfanne|brat/i.test(t) ? "pan" : /koch|topf/i.test(t) ? "boil" : /schneid|hack|reib|schäl/i.test(t) ? "chop" : /servier|anricht/i.test(t) ? "serve" : "mix";
+  function openBfForm(editId) {
+    const r = editId ? myBreakfast.find(x => x.id === editId) : null;
+    $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet bf-form" role="dialog" aria-label="Frühstücksrezept speichern">
+      <h2>${r ? "Rezept bearbeiten" : "Eigenes Frühstück speichern"}</h2>
+      <label>Name<input type="text" id="bf-name" value="${esc(r ? r.name : "")}" placeholder="z. B. Omas Grießbrei"></label>
+      <label>Zeit in Minuten<input type="number" id="bf-time" min="1" max="240" value="${r ? r.time || "" : ""}" placeholder="10"></label>
+      <label>Zutaten für die ganze Familie, eine pro Zeile<textarea id="bf-ing" rows="5" placeholder="120 g Haferflocken&#10;250 ml Milch&#10;1 Apfel">${esc(r ? r.ingredients.map(ingLine).join("\n") : "")}</textarea></label>
+      <label>Schritte, einer pro Zeile<textarea id="bf-steps" rows="5" placeholder="Haferflocken und Milch verrühren.&#10;Über Nacht in den Kühlschrank stellen.">${esc(r ? r.steps.map(x => x.text).join("\n") : "")}</textarea></label>
+      <div class="bf-checks"><label><input type="radio" name="bf-kind" value="süß"${!r || r.tags.includes("süß") ? " checked" : ""}> süß</label><label><input type="radio" name="bf-kind" value="pikant"${r && r.tags.includes("pikant") ? " checked" : ""}> pikant</label><label><input type="checkbox" id="bf-prep"${r && r.tags.includes("vorbereiten") ? " checked" : ""}> am Vorabend vorbereiten</label></div>
+      <label>Link zum Original (optional)<input type="url" id="bf-link" value="${esc(r && r.source ? r.source.url : "")}" placeholder="https://"></label>
+      <div class="row" style="margin-top:12px"><button class="primary" id="bf-save" type="button">Speichern</button><button class="ghost" id="sheet-close" type="button">Abbrechen</button></div></div></div>`;
+    $("#sheet-bg").addEventListener("click", e => {
+      if (e.target.id === "sheet-bg" || e.target.id === "sheet-close") { $("#sheet-root").innerHTML = ""; return; }
+      if (e.target.id !== "bf-save") return;
+      const name = $("#bf-name").value.trim(), lines = $("#bf-steps").value.split("\n").map(x => x.trim()).filter(Boolean);
+      const ings = $("#bf-ing").value.split("\n").map(x => x.trim()).filter(Boolean).map(parseIngLine);
+      if (!name) { toast("Bitte gib dem Rezept einen Namen"); return; }
+      if (!lines.length) { toast("Bitte mindestens einen Schritt eintragen"); return; }
+      const link = $("#bf-link").value.trim(), kind = document.querySelector('input[name="bf-kind"]:checked').value;
+      const rec = { id: r ? r.id : "my" + Date.now().toString(36), name: name.slice(0, 120), origin: "Eigenes Rezept", flag: "", own: true, course: "Frühstück", week: false, kid: "",
+        time: Math.max(1, Math.min(240, parseInt($("#bf-time").value, 10) || 10)), colors: (r && r.colors) || [["#E9C98E", "#F4ECDF", "#C8743F", "#8FAE7F"], ["#D99C8A", "#F4ECDF", "#B5482F", "#E9C98E"], ["#E8D2B0", "#F3E6D3", "#8C5A3C", "#9FB07E"]][myBreakfast.length % 3],
+        tags: [kind].concat($("#bf-prep").checked ? ["vorbereiten"] : []), ingredients: ings,
+        steps: lines.slice(0, 20).map(t => ({ icon: guessIcon(t), text: t.slice(0, 600) })) };
+      if (/^https?:\/\//.test(link)) rec.source = { name: "Original", url: link };
+      delete rec._stepIngs;
+      myBreakfast = r ? myBreakfast.map(x => x.id === r.id ? rec : x) : myBreakfast.concat(rec);
+      byId[rec.id] = rec; saveMyBreakfast();
+      $("#sheet-root").innerHTML = ""; toast(r ? "Rezept geändert" : "Rezept gespeichert"); bfFilter = "alle"; renderBreakfast();
+    });
+  }
+  $("#bf-add").addEventListener("click", () => openBfForm(null));
+
   // ---------- Tabs ----------
-  const TABS = ["week", "discover", "shop"];
+  const TABS = ["week", "discover", "breakfast", "shop"];
   function showTab(t) {
     TABS.forEach(x => { $("#view-" + x).hidden = x !== t; $("#tab-" + x).setAttribute("aria-selected", x === t); });
     store.set("tab", t);
@@ -1255,10 +1352,11 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
         const r = await fetch(this.base() + ".json");
         if (!r.ok) throw new Error(r.status);
         const d = await r.json();
-        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people, ratings }); return; }
+        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast }); return; }
         if (d.plan.length === 7 && d.plan.every(id => byId[id])) plan = d.plan;
         checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
         if (d.ratings) { ratings = d.ratings; store.set("ratings", ratings); }
+        if (Array.isArray(d.myBreakfast)) { myBreakfast = d.myBreakfast; store.set("myBreakfast", myBreakfast); myBreakfast.forEach(r => { byId[r.id] = r; }); renderBreakfast(); }
         if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
         store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
         renderWeek(); renderBoard(); renderFavCount();
@@ -1406,8 +1504,9 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
       <h2>${esc(r.name)}</h2>
       <div class="meta">${mcTag(r)}<span>${esc(r.origin)}</span><span>${timeLabel(r)}</span><span>${r.steps.length} Schritte</span>${r.course && r.course !== "Hauptspeise" ? `<span>${esc(r.course)}</span>` : ""}</div>
       <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button>${sourceBtns(r, true)}</div>
-      <h4>Einplanen für</h4>
-      <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>
+      ${r.course === "Frühstück" ? "" : `<h4>Einplanen für</h4>
+      <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>`}
+      ${r.own ? `<div class="mini-row" style="margin-top:10px"><button class="mini" type="button" data-bf-edit="${esc(id)}">Bearbeiten</button><button class="mini" type="button" data-bf-del="${esc(id)}">Löschen</button></div>` : ""}
       <h4 id="d-ing">Zutaten für ${esc(peopleLabel())}</h4>
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(sc(q, u), u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
@@ -1418,6 +1517,9 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
       const day = e.target.closest("[data-day]"), pl = e.target.closest("[data-detail-play]");
+      const ed = e.target.closest("[data-bf-edit]"), del = e.target.closest("[data-bf-del]");
+      if (ed) { openBfForm(ed.dataset.bfEdit); return; }
+      if (del) { if (confirm("Dieses Rezept wirklich löschen?")) { myBreakfast = myBreakfast.filter(x => x.id !== del.dataset.bfDel); saveMyBreakfast(); $("#sheet-root").innerHTML = ""; toast("Rezept gelöscht"); } return; }
       if (day) { plan[+day.dataset.day] = id; renderWeek(); Sync.put("plan", plan); toast(`Für ${DAYS[+day.dataset.day]} eingeplant`); }
       if (pl) { $("#sheet-root").innerHTML = ""; openPlayer(r); return; }
       if (e.target.id === "sheet-bg" || e.target.id === "sheet-close") $("#sheet-root").innerHTML = "";
@@ -1522,6 +1624,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   buildDeck(); renderDeck(); renderBoard(); renderFavCount();
   setMode(store.get("mode", "swipe") === "board" ? "board" : "swipe");
   renderWeek();
+  renderBreakfast();
   showTab(TABS.includes(store.get("tab", "week")) ? store.get("tab", "week") : "week");
   requestAnimationFrame(() => setTimeout(() => scrollToToday(false), 50));
   const d = new Date(), mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
@@ -1540,7 +1643,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   if (linkWeek && linkWeek.length === 7 && linkWeek.every(id => byId[id])) {
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
     plan = linkWeek; checked = {}; inCart = {}; store.set("plan", plan); store.set("checked", checked); store.set("inCart", inCart);
-    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people, ratings }); toast("Woche übernommen"); }, 1500);
+    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast }); toast("Woche übernommen"); }, 1500);
   }
   let linkDb = null;
   try { linkDb = new URLSearchParams(location.search).get("db"); } catch (e) {}

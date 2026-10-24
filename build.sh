@@ -10,6 +10,8 @@ python3 - <<'PY'
 import json, os
 app = open("src/app.html", encoding="utf-8").read()
 rec = open("src/recipes.js", encoding="utf-8").read() + "\n" + open("src/simplehomeedit.js", encoding="utf-8").read()
+# Frühstücksrezepte (eigener Reiter, nicht im Abendessen-Plan)
+rec += "\nconst BREAKFAST = " + (open("src/breakfast.json", encoding="utf-8").read() if os.path.exists("src/breakfast.json") else "[]") + ";\n"
 # Rezepte nach Carolina Gelen (NYT Cooking), frei übertragen und für die Familie angepasst
 if os.path.exists("src/carolinagelen.json"):
     rec += "\nconst CAROLINA = " + open("src/carolinagelen.json", encoding="utf-8").read() + ";\nCAROLINA.forEach(r => RECIPES.push(Object.assign({ kid: \"\" }, r, { tags: r.tags.concat(\"carolinagelen\") })));\nRECIPES.forEach(r => { if (r.source && /Carolina Gelen/.test(r.source.name) && !r.tags.includes(\"carolinagelen\")) r.tags.push(\"carolinagelen\"); });\n"

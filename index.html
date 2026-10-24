@@ -500,6 +500,21 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
 .day-more[hidden] { display: none; }
 .day .day-more .day-share, .day .day-more .steps, .day .day-more .steps-reset { grid-column: auto; margin-top: 0; }
 @media (max-width: 560px) { .day-toggle, .day-more { grid-column: 1 / -1; } .day-toggle { margin-top: 0; } }
+
+/* Frühstück */
+.bf-head { display: flex; gap: 14px; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; margin-bottom: 14px; }
+.bf-head h2 { font-size: 1.6rem; margin: 0 0 4px; }
+.bf-head p { margin: 0; color: var(--muted); max-width: 46ch; }
+.bf-filter { margin-bottom: 16px; flex-wrap: wrap; }
+.bf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.bf-card { display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: center; background: var(--surface); padding: 12px 14px; cursor: pointer; }
+.bf-card h3 { font-size: 1.1rem; line-height: 1.25; margin: 0 0 4px; }
+.bf-card .thumb { width: 72px; height: 72px; }
+.bf-form label { display: grid; gap: 4px; font-weight: 700; font-size: 0.88rem; margin-bottom: 10px; }
+.bf-form input[type="text"], .bf-form input[type="number"], .bf-form input[type="url"], .bf-form textarea { font: inherit; font-weight: 400; font-size: 0.95rem; padding: 10px 12px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); width: 100%; } /* taste-skill-ignore: Formularfeld */
+.bf-checks { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+.bf-checks label { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; margin: 0; }
+@media (max-width: 760px) { .tabs button { font-size: 0.66rem; letter-spacing: 0.03em; } }
 </style>
 
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -514,6 +529,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
     <nav class="tabs" role="tablist">
       <button id="tab-week" role="tab" aria-selected="true"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="tl">Woche</span></button>
       <button id="tab-discover" role="tab" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg><span class="tl">Entdecken</span></button>
+      <button id="tab-breakfast" role="tab" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3.5c0 1.2 1 1.2 1 2.5M12 3.5c0 1.2 1 1.2 1 2.5"/></svg><span class="tl">Frühstück</span></button>
       <button id="tab-shop" role="tab" aria-selected="false"><svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="9.5" cy="20" r="1.2"/><circle cx="17" cy="20" r="1.2"/></svg><span class="tl">Einkauf</span><span class="count" id="shop-count"></span></button>
     </nav>
   </header>
@@ -549,6 +565,21 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
         <div class="filters" id="filters"></div>
         <div class="board" id="board"></div>
       </div>
+    </section>
+
+    <section id="view-breakfast" hidden>
+      <div class="bf-head">
+        <div><h2>Frühstück</h2><p>Für schnelle Morgen und gemütliche Wochenenden. Tippe auf ein Rezept für Zutaten und Schritte.</p></div>
+        <button class="primary" id="bf-add" type="button">+ Eigenes Rezept speichern</button>
+      </div>
+      <div class="seg bf-filter" id="bf-filter" role="group" aria-label="Frühstück filtern">
+        <button type="button" data-bf="alle" aria-pressed="true">Alle</button>
+        <button type="button" data-bf="süß" aria-pressed="false">Süß</button>
+        <button type="button" data-bf="pikant" aria-pressed="false">Pikant</button>
+        <button type="button" data-bf="vorbereiten" aria-pressed="false">Am Vorabend</button>
+        <button type="button" data-bf="eigene" aria-pressed="false">Eigene</button>
+      </div>
+      <div class="bf-grid" id="bf-grid"></div>
     </section>
 
     <section id="view-shop" hidden>
@@ -1895,6 +1926,947 @@ RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
     }
   ].forEach(add);
 })();
+
+const BREAKFAST = [
+ {
+  "id": "froatsapfel",
+  "name": "Overnight Oats mit Apfel und Zimt",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 5,
+  "colors": [
+   "#E9C98E",
+   "#F4ECDF",
+   "#C8743F",
+   "#8FAE7F"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "vorbereiten",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Feine Haferflocken",
+    120,
+    "g",
+    "dry"
+   ],
+   [
+    "Milch",
+    250,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Naturjoghurt",
+    150,
+    "g",
+    "fresh"
+   ],
+   [
+    "Apfel",
+    1,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Zimt",
+    0.5,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Ahornsirup",
+    1,
+    "TL",
+    "pantry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Rühre {Feine Haferflocken}, {Milch} und {Naturjoghurt} in einer Schüssel oder in 3 Gläsern mit Deckel gut zusammen."
+   },
+   {
+    "icon": "chop",
+    "text": "Wasche {Apfel}, viertle ihn, schneide das Kerngehäuse heraus und reibe ihn mit der Schale grob in die Haferflocken."
+   },
+   {
+    "icon": "mix",
+    "text": "Rühre {Zimt} und {Ahornsirup} unter."
+   },
+   {
+    "icon": "mix",
+    "text": "Deckel drauf und über Nacht in den Kühlschrank stellen, mindestens 8 Stunden. Die Haferflocken werden dabei weich und cremig."
+   },
+   {
+    "icon": "serve",
+    "text": "Morgens einmal umrühren. Ist es zu fest, gib einen Schuss Milch dazu. Kalt oder 30 Sekunden in der Mikrowelle lauwarm servieren."
+   }
+  ],
+  "wait": 480
+ },
+ {
+  "id": "froatsbeeren",
+  "name": "Beeren-Overnight-Oats im Glas",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 5,
+  "colors": [
+   "#D99C8A",
+   "#F4ECDF",
+   "#B5482F",
+   "#E9C98E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "vorbereiten",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Feine Haferflocken",
+    120,
+    "g",
+    "dry"
+   ],
+   [
+    "Milch",
+    200,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Griechischer Joghurt",
+    200,
+    "g",
+    "fresh"
+   ],
+   [
+    "Chiasamen",
+    1,
+    "EL",
+    "dry"
+   ],
+   [
+    "Beeren (frisch oder TK)",
+    200,
+    "g",
+    "frozen"
+   ],
+   [
+    "Banane",
+    1,
+    "Stk",
+    "veg"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Zerdrücke {Banane} in einer Schüssel mit einer Gabel zu Mus. Sie macht die Oats süß, ganz ohne Zucker."
+   },
+   {
+    "icon": "mix",
+    "text": "Rühre {Feine Haferflocken}, {Milch}, {Chiasamen} und die Hälfte von {Griechischer Joghurt} unter das Bananenmus."
+   },
+   {
+    "icon": "mix",
+    "text": "Verteile die Masse auf 3 Gläser. Gib den restlichen Joghurt als Schicht darauf und darüber {Beeren (frisch oder TK)}. TK-Beeren tauen über Nacht von selbst auf."
+   },
+   {
+    "icon": "mix",
+    "text": "Gläser verschließen und über Nacht in den Kühlschrank stellen, mindestens 6 Stunden."
+   },
+   {
+    "icon": "serve",
+    "text": "Morgens direkt aus dem Glas löffeln."
+   }
+  ],
+  "wait": 480
+ },
+ {
+  "id": "frbananenpancakes",
+  "name": "Bananen-Pancakes aus 3 Zutaten",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 15,
+  "colors": [
+   "#E8D2B0",
+   "#F3E6D3",
+   "#8C5A3C",
+   "#9FB07E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pfanne",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Reife Bananen",
+    2,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Eier",
+    2,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Feine Haferflocken",
+    60,
+    "g",
+    "dry"
+   ],
+   [
+    "Butter",
+    1,
+    "TL",
+    "fresh"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Schäle {Reife Bananen} und zerdrücke sie in einer Schüssel mit der Gabel, bis fast keine Stücke mehr da sind. Je brauner die Bananen, desto süßer."
+   },
+   {
+    "icon": "mix",
+    "text": "Schlage {Eier} dazu und rühre {Feine Haferflocken} unter. Lass den Teig 5 Minuten stehen, damit die Flocken quellen.",
+    "timer": 300
+   },
+   {
+    "icon": "pan",
+    "text": "Erhitze eine beschichtete Pfanne auf mittlerer Hitze und verstreiche {Butter} darin mit Küchenpapier."
+   },
+   {
+    "icon": "pan",
+    "text": "Gib pro Pancake 1 Esslöffel Teig in die Pfanne, mit etwas Abstand. Brate sie 2 Minuten, bis die Unterseite goldbraun ist und sich die Ränder fest anfühlen. Vorsichtig wenden und noch 1 Minute braten.",
+    "timer": 180
+   },
+   {
+    "icon": "serve",
+    "text": "Warm servieren, zum Beispiel mit Joghurt und Beeren."
+   }
+  ]
+ },
+ {
+  "id": "frjoghurtpancakes",
+  "name": "Fluffige Joghurt-Pancakes",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 20,
+  "colors": [
+   "#C69A6A",
+   "#F4F1EA",
+   "#7F9E5E",
+   "#E2D3BC"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pfanne",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Glattes Mehl",
+    200,
+    "g",
+    "pantry"
+   ],
+   [
+    "Backpulver",
+    2,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Eier",
+    2,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Naturjoghurt",
+    250,
+    "g",
+    "fresh"
+   ],
+   [
+    "Milch",
+    100,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Zucker",
+    1,
+    "EL",
+    "pantry"
+   ],
+   [
+    "Butter",
+    20,
+    "g",
+    "fresh"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Mische {Glattes Mehl}, {Backpulver}, {Zucker} und 1 Prise Salz in einer großen Schüssel."
+   },
+   {
+    "icon": "mix",
+    "text": "Verquirle {Eier}, {Naturjoghurt} und {Milch} in einer zweiten Schüssel. Gieße das zum Mehl und rühre nur kurz um, bis kein trockenes Mehl mehr zu sehen ist. Ein paar Klümpchen sind gut, so werden die Pancakes fluffig."
+   },
+   {
+    "icon": "pan",
+    "text": "Erhitze eine beschichtete Pfanne auf mittlerer Hitze und lass ein Stück von {Butter} darin schmelzen."
+   },
+   {
+    "icon": "pan",
+    "text": "Gib pro Pancake 2 Esslöffel Teig in die Pfanne. Wende ihn, wenn oben kleine Bläschen platzen, nach etwa 2 Minuten. Dann noch 1 bis 2 Minuten fertig braten, bis beide Seiten goldbraun sind.",
+    "timer": 240
+   },
+   {
+    "icon": "serve",
+    "text": "Fertige Pancakes im Ofen bei 80 Grad warm halten, bis alle fertig sind. Mit Obst, Joghurt oder etwas Ahornsirup servieren."
+   }
+  ]
+ },
+ {
+  "id": "frporridgebirne",
+  "name": "Cremiges Porridge mit Birne",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 10,
+  "colors": [
+   "#E9C98E",
+   "#F4ECDF",
+   "#C8743F",
+   "#8FAE7F"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "topf",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Feine Haferflocken",
+    120,
+    "g",
+    "dry"
+   ],
+   [
+    "Milch",
+    500,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Birne",
+    1,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Zimt",
+    0.5,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Gemahlene Nüsse",
+    2,
+    "EL",
+    "dry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "chop",
+    "text": "Wasche {Birne}, viertle sie, entferne das Kerngehäuse und schneide sie in kleine Würfel von etwa 1 cm."
+   },
+   {
+    "icon": "boil",
+    "text": "Gib {Feine Haferflocken}, {Milch}, die Hälfte der Birnenwürfel und {Zimt} in einen kleinen Topf. Bring alles auf mittlerer Hitze unter Rühren zum Köcheln."
+   },
+   {
+    "icon": "boil",
+    "text": "Lass das Porridge auf kleiner Flamme 5 Minuten köcheln und rühre dabei oft um, damit nichts anbrennt. Es ist fertig, wenn es dick und cremig ist.",
+    "timer": 300
+   },
+   {
+    "icon": "serve",
+    "text": "In Schüsseln füllen, die restlichen Birnenwürfel und {Gemahlene Nüsse} darüber streuen."
+   }
+  ]
+ },
+ {
+  "id": "frbirchermuesli",
+  "name": "Bircher Müsli",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 10,
+  "colors": [
+   "#D99C8A",
+   "#F4ECDF",
+   "#B5482F",
+   "#E9C98E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "vorbereiten",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Grobe Haferflocken",
+    100,
+    "g",
+    "dry"
+   ],
+   [
+    "Apfelsaft",
+    150,
+    "ml",
+    "dry"
+   ],
+   [
+    "Naturjoghurt",
+    200,
+    "g",
+    "fresh"
+   ],
+   [
+    "Äpfel",
+    2,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Zitrone",
+    0.5,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Gehackte Haselnüsse",
+    2,
+    "EL",
+    "dry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Gib {Grobe Haferflocken} in eine Schüssel und gieße {Apfelsaft} darüber. Mindestens 1 Stunde oder über Nacht im Kühlschrank quellen lassen.",
+    "timer": 3600
+   },
+   {
+    "icon": "chop",
+    "text": "Wasche {Äpfel}, entferne das Kerngehäuse und reibe sie mit der Schale grob. Presse {Zitrone} aus und mische den Saft gleich unter die Äpfel, damit sie nicht braun werden."
+   },
+   {
+    "icon": "mix",
+    "text": "Rühre die Äpfel und {Naturjoghurt} unter die eingeweichten Haferflocken."
+   },
+   {
+    "icon": "serve",
+    "text": "In Schüsseln verteilen und {Gehackte Haselnüsse} darüber streuen."
+   }
+  ],
+  "wait": 60
+ },
+ {
+  "id": "frfrenchtoast",
+  "name": "French Toast mit Beeren",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 15,
+  "colors": [
+   "#E8D2B0",
+   "#F3E6D3",
+   "#8C5A3C",
+   "#9FB07E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pfanne",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Toastbrot oder Brioche",
+    6,
+    "Scheibe",
+    "bread"
+   ],
+   [
+    "Eier",
+    3,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Milch",
+    150,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Zimt",
+    0.5,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Butter",
+    20,
+    "g",
+    "fresh"
+   ],
+   [
+    "Beeren (frisch oder TK)",
+    150,
+    "g",
+    "frozen"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Verquirle {Eier}, {Milch} und {Zimt} in einem tiefen Teller mit einer Gabel."
+   },
+   {
+    "icon": "mix",
+    "text": "Lege {Toastbrot oder Brioche} nacheinander kurz in die Eiermilch, etwa 10 Sekunden pro Seite, bis sich das Brot vollgesogen hat, aber nicht zerfällt."
+   },
+   {
+    "icon": "pan",
+    "text": "Lass {Butter} in einer großen Pfanne auf mittlerer Hitze schmelzen. Brate die Brotscheiben pro Seite 2 bis 3 Minuten, bis sie goldbraun sind.",
+    "timer": 300
+   },
+   {
+    "icon": "boil",
+    "text": "Erwärme in der Zwischenzeit {Beeren (frisch oder TK)} in einem kleinen Topf 3 Minuten, bis sie weich sind und Saft ziehen.",
+    "timer": 180
+   },
+   {
+    "icon": "serve",
+    "text": "French Toast mit den warmen Beeren servieren."
+   }
+  ]
+ },
+ {
+  "id": "freierspeis",
+  "name": "Eierspeis mit Schnittlauchbrot",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 10,
+  "colors": [
+   "#C69A6A",
+   "#F4F1EA",
+   "#7F9E5E",
+   "#E2D3BC"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pfanne",
+   "pikant"
+  ],
+  "ingredients": [
+   [
+    "Eier",
+    5,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Milch",
+    3,
+    "EL",
+    "fresh"
+   ],
+   [
+    "Butter",
+    20,
+    "g",
+    "fresh"
+   ],
+   [
+    "Schnittlauch",
+    0.5,
+    "Bund",
+    "veg"
+   ],
+   [
+    "Vollkornbrot",
+    3,
+    "Scheibe",
+    "bread"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Verquirle {Eier} und {Milch} mit 1 Prise Salz in einer Schüssel, bis keine Schlieren mehr da sind."
+   },
+   {
+    "icon": "chop",
+    "text": "Wasche {Schnittlauch}, schüttle ihn trocken und schneide ihn mit der Schere in feine Röllchen."
+   },
+   {
+    "icon": "pan",
+    "text": "Lass die Hälfte von {Butter} in einer Pfanne auf kleiner bis mittlerer Hitze schmelzen. Gieße die Eier hinein und schiebe sie mit einem Pfannenwender langsam von außen nach innen, etwa 3 Minuten. Nimm die Pfanne vom Herd, solange die Eier noch leicht glänzen, dann bleiben sie cremig.",
+    "timer": 180
+   },
+   {
+    "icon": "serve",
+    "text": "Bestreiche {Vollkornbrot} mit der restlichen Butter und streue den Schnittlauch darauf. Mit der Eierspeis servieren."
+   }
+  ]
+ },
+ {
+  "id": "frtopfenschicht",
+  "name": "Topfen-Beeren-Schichtglas",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 10,
+  "colors": [
+   "#E9C98E",
+   "#F4ECDF",
+   "#C8743F",
+   "#8FAE7F"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "kalt",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Topfen",
+    250,
+    "g",
+    "fresh"
+   ],
+   [
+    "Naturjoghurt",
+    150,
+    "g",
+    "fresh"
+   ],
+   [
+    "Vanillezucker",
+    1,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Beeren (frisch oder TK)",
+    200,
+    "g",
+    "frozen"
+   ],
+   [
+    "Knuspermüsli ohne Zucker",
+    60,
+    "g",
+    "dry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Rühre {Topfen}, {Naturjoghurt} und {Vanillezucker} in einer Schüssel cremig."
+   },
+   {
+    "icon": "chop",
+    "text": "Wasche {Beeren (frisch oder TK)} oder taue TK-Beeren kurz in der Mikrowelle an. Große Erdbeeren in Viertel schneiden."
+   },
+   {
+    "icon": "mix",
+    "text": "Schichte in 3 Gläser abwechselnd Topfencreme, Beeren und {Knuspermüsli ohne Zucker}. Oben mit Beeren abschließen."
+   },
+   {
+    "icon": "serve",
+    "text": "Sofort servieren, dann bleibt das Müsli knusprig."
+   }
+  ]
+ },
+ {
+  "id": "frbananenbrot",
+  "name": "Saftiges Bananenbrot",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 15,
+  "colors": [
+   "#D99C8A",
+   "#F4ECDF",
+   "#B5482F",
+   "#E9C98E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "ofen",
+   "vorbereiten",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Reife Bananen",
+    3,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Eier",
+    2,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Butter",
+    80,
+    "g",
+    "fresh"
+   ],
+   [
+    "Glattes Mehl",
+    200,
+    "g",
+    "pantry"
+   ],
+   [
+    "Backpulver",
+    2,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Zucker",
+    40,
+    "g",
+    "pantry"
+   ],
+   [
+    "Zimt",
+    1,
+    "TL",
+    "pantry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "oven",
+    "text": "Heize den Ofen auf 175 Grad Ober-/Unterhitze vor. Lege eine Kastenform mit Backpapier aus."
+   },
+   {
+    "icon": "mix",
+    "text": "Schmilz {Butter} in einem kleinen Topf und lass sie kurz abkühlen. Zerdrücke {Reife Bananen} in einer großen Schüssel mit der Gabel zu Mus."
+   },
+   {
+    "icon": "mix",
+    "text": "Rühre die Butter, {Eier} und {Zucker} unter die Bananen. Mische {Glattes Mehl}, {Backpulver}, {Zimt} und 1 Prise Salz und rühre es nur kurz unter, bis alles verbunden ist."
+   },
+   {
+    "icon": "oven",
+    "text": "Fülle den Teig in die Form und backe das Brot 50 bis 55 Minuten. Stich mit einem Holzspieß in die Mitte: Bleibt kein Teig daran kleben, ist es fertig.",
+    "timer": 3300
+   },
+   {
+    "icon": "serve",
+    "text": "Mindestens 15 Minuten in der Form abkühlen lassen, dann in Scheiben schneiden. Hält gut eingepackt 3 Tage."
+   }
+  ],
+  "wait": 55
+ },
+ {
+  "id": "freimuffins",
+  "name": "Pikante Ei-Muffins mit Spinat und Käse",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 15,
+  "colors": [
+   "#E8D2B0",
+   "#F3E6D3",
+   "#8C5A3C",
+   "#9FB07E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "ofen",
+   "pikant",
+   "vorbereiten"
+  ],
+  "ingredients": [
+   [
+    "Eier",
+    6,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Milch",
+    50,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Babyspinat",
+    60,
+    "g",
+    "veg"
+   ],
+   [
+    "Cherryparadeiser",
+    8,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Geriebener Käse",
+    60,
+    "g",
+    "fresh"
+   ],
+   [
+    "Öl für die Form",
+    1,
+    "TL",
+    "pantry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "oven",
+    "text": "Heize den Ofen auf 180 Grad Ober-/Unterhitze vor. Fette 9 Mulden einer Muffinform mit {Öl für die Form} ein."
+   },
+   {
+    "icon": "chop",
+    "text": "Hacke {Babyspinat} grob. Wasche {Cherryparadeiser} und schneide sie in Viertel."
+   },
+   {
+    "icon": "mix",
+    "text": "Verquirle {Eier} und {Milch} mit 1 Prise Salz in einem Messbecher. Rühre Spinat und die Hälfte von {Geriebener Käse} unter."
+   },
+   {
+    "icon": "mix",
+    "text": "Verteile die Paradeiser auf die Mulden und gieße die Eiermasse darüber, jede Mulde zu drei Vierteln voll. Streue den restlichen Käse darauf."
+   },
+   {
+    "icon": "oven",
+    "text": "Backe die Muffins 18 bis 20 Minuten, bis sie aufgegangen und in der Mitte fest sind.",
+    "timer": 1200
+   },
+   {
+    "icon": "serve",
+    "text": "5 Minuten abkühlen lassen, dann mit einem Messer vom Rand lösen. Halten im Kühlschrank 3 Tage und schmecken auch kalt."
+   }
+  ],
+  "wait": 20
+ },
+ {
+  "id": "fravocadobrot",
+  "name": "Avocado-Brot mit weichem Ei",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 12,
+  "colors": [
+   "#C69A6A",
+   "#F4F1EA",
+   "#7F9E5E",
+   "#E2D3BC"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pikant",
+   "topf"
+  ],
+  "ingredients": [
+   [
+    "Eier",
+    3,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Reife Avocado",
+    1,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Zitrone",
+    0.5,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Vollkornbrot",
+    3,
+    "Scheibe",
+    "bread"
+   ],
+   [
+    "Kresse",
+    0.5,
+    "Packung",
+    "veg"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "boil",
+    "text": "Bring in einem kleinen Topf Wasser zum Kochen. Lege {Eier} mit einem Löffel vorsichtig hinein und koche sie 7 Minuten, dann sind sie wachsweich. Mit kaltem Wasser abschrecken.",
+    "timer": 420
+   },
+   {
+    "icon": "mix",
+    "text": "Halbiere {Reife Avocado}, entferne den Kern und löffle das Fruchtfleisch in eine Schüssel. Zerdrücke es mit der Gabel mit dem Saft von {Zitrone} und 1 Prise Salz."
+   },
+   {
+    "icon": "chop",
+    "text": "Toaste {Vollkornbrot} und bestreiche es dick mit der Avocado."
+   },
+   {
+    "icon": "serve",
+    "text": "Schäle die Eier, halbiere sie und lege sie auf die Brote. Mit {Kresse} bestreuen."
+   }
+  ]
+ }
+];
 
 const CAROLINA = [
  {
@@ -8527,8 +9499,198 @@ const MASTERCHEF = [
 ];
 const PHOTOS = ["bacalhau", "blechhuhn", "burritobowl", "couscous", "dal", "eiernockerl", "erbsenpasta", "falafel", "fischstaebchen", "friedrice", "kaiserschmarrn", "koettbullar", "kokoscurry", "lachs", "laibchen", "macncheese", "orzo", "padthai", "pajeon", "palatschinken", "polenta", "quesadilla", "smorrebrod", "sommerrolle", "souvlaki", "teriyaki", "thai"];
 const ANGEBOTE = {
-"stand": "2026-10-22",
+"stand": "2026-10-24",
 "angebote": [
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel-Birne-Kirsche",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
+},
+{
+"markt": "BILLA",
+"name": "Fruchtbar Bio Herznudeln",
+"menge": "300 g",
+"preis": 1.19,
+"statt": 2.37,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
+},
+{
+"markt": "BILLA",
+"name": "Alnatura Apfel mit Banane & Dinkel",
+"menge": "190 g",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Super Soft Sandwich",
+"menge": "750 g",
+"preis": 2.99,
+"statt": 3.69,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-super-soft-sandwich-00403275"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Dinkelvollkornweckerl",
+"menge": "100 g",
+"preis": 1.03,
+"statt": 1.28,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-dinkelvollkornweckerl-00846484"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Buttertoast",
+"menge": "250 g",
+"preis": 2.79,
+"statt": 3.19,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-buttertoast-00421631"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Semmelwürfel",
+"menge": "250 g",
+"preis": 1.29,
+"statt": 1.61,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-semmelwuerfel-00343035"
+},
+{
+"markt": "BILLA",
+"name": "Finn Crisp Original",
+"menge": "200 g",
+"preis": 2.19,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/finn-crisp-original-00415098"
+},
+{
+"markt": "BILLA",
+"name": "Milka Choco Brownie",
+"menge": "150 g",
+"preis": 2.49,
+"statt": 3.55,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-choco-brownie-00405070"
+},
+{
+"markt": "BILLA",
+"name": "Apfelkrapfen",
+"menge": "100 g",
+"preis": 1.19,
+"statt": 1.39,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/apfelkrapfen-00671253"
+},
+{
+"markt": "BILLA",
+"name": "Ölz Mini Marmor Kuchen",
+"menge": "130 g",
+"preis": 1.99,
+"statt": 2.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/oelz-mini-marmor-kuchen-00678932"
+},
+{
+"markt": "BILLA",
+"name": "Erdbeer-Vanilleplunder",
+"menge": "1 stk",
+"preis": 0.99,
+"statt": 1.49,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/erdbeervanilleplunder-00874580"
+},
+{
+"markt": "BILLA",
+"name": "Milka Cake & Choc",
+"menge": "175 g",
+"preis": 2.49,
+"statt": 3.55,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-cake-und-choc-00728445"
+},
+{
+"markt": "BILLA",
+"name": "Milka Choc&Choc",
+"menge": "175 g",
+"preis": 2.49,
+"statt": 3.55,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-chocundchoc-00342389"
+},
+{
+"markt": "BILLA",
+"name": "Dinkel-Marille Krapfen",
+"menge": "90 g",
+"preis": 1.2,
+"statt": 1.35,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/dinkelmarille-krapfen-00720240"
+},
+{
+"markt": "BILLA",
+"name": "Milka Soft Moo",
+"menge": "140 g",
+"preis": 2.49,
+"statt": 3.55,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/milka-soft-moo-00292485"
+},
+{
+"markt": "BILLA",
+"name": "Krapfen Erdbeer",
+"menge": "90 g",
+"preis": 1.0,
+"statt": 1.19,
+"hinweis": "ab 4 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/krapfen-erdbeer-00703852"
+},
+{
+"markt": "BILLA",
+"name": "Schwarzwälderkirschtorte",
+"menge": "1 stk",
+"preis": 8.99,
+"statt": 9.99,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/schwarzwaelderkirschtorte-00748922"
+},
+{
+"markt": "BILLA",
+"name": "Tag & Nachtschnitte",
+"menge": "1 stk",
+"preis": 3.19,
+"statt": 3.69,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/tag-und-nachtschnitte-00920526"
+},
 {
 "markt": "BILLA",
 "name": "Alnatura Feigen",
@@ -8648,456 +9810,6 @@ const ANGEBOTE = {
 "hinweis": "",
 "bis": null,
 "link": "https://shop.billa.at/produkte/billa-bio-gojibeeren-00876548"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel-Birne-Kirsche",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfelbirnekirsche-00948018"
-},
-{
-"markt": "BILLA",
-"name": "Fruchtbar Bio Herznudeln",
-"menge": "300 g",
-"preis": 1.19,
-"statt": 2.37,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fruchtbar-bio-herznudeln-00722516"
-},
-{
-"markt": "BILLA",
-"name": "Alnatura Apfel mit Banane & Dinkel",
-"menge": "190 g",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/alnatura-apfel-mit-banane-und-dinkel-00317505"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Super Soft Sandwich",
-"menge": "750 g",
-"preis": 2.99,
-"statt": 3.69,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-super-soft-sandwich-00403275"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Dinkelvollkornweckerl",
-"menge": "100 g",
-"preis": 1.03,
-"statt": 1.28,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-dinkelvollkornweckerl-00846484"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Buttertoast",
-"menge": "250 g",
-"preis": 2.79,
-"statt": 3.19,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-buttertoast-00421631"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Semmelwürfel",
-"menge": "250 g",
-"preis": 1.29,
-"statt": 1.61,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-semmelwuerfel-00343035"
-},
-{
-"markt": "BILLA",
-"name": "Finn Crisp Original",
-"menge": "200 g",
-"preis": 2.19,
-"statt": 2.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/finn-crisp-original-00415098"
-},
-{
-"markt": "BILLA",
-"name": "Apfelkrapfen",
-"menge": "100 g",
-"preis": 1.19,
-"statt": 1.39,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/apfelkrapfen-00671253"
-},
-{
-"markt": "BILLA",
-"name": "Ölz Mini Marmor Kuchen",
-"menge": "130 g",
-"preis": 1.99,
-"statt": 2.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/oelz-mini-marmor-kuchen-00678932"
-},
-{
-"markt": "BILLA",
-"name": "Erdbeer-Vanilleplunder",
-"menge": "1 stk",
-"preis": 0.99,
-"statt": 1.49,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/erdbeervanilleplunder-00874580"
-},
-{
-"markt": "BILLA",
-"name": "Dinkel-Marille Krapfen",
-"menge": "90 g",
-"preis": 1.2,
-"statt": 1.35,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/dinkelmarille-krapfen-00720240"
-},
-{
-"markt": "BILLA",
-"name": "Krapfen Erdbeer",
-"menge": "90 g",
-"preis": 1.0,
-"statt": 1.19,
-"hinweis": "ab 4 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/krapfen-erdbeer-00703852"
-},
-{
-"markt": "BILLA",
-"name": "Schwarzwälderkirschtorte",
-"menge": "1 stk",
-"preis": 8.99,
-"statt": 9.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/schwarzwaelderkirschtorte-00748922"
-},
-{
-"markt": "BILLA",
-"name": "Tag & Nachtschnitte",
-"menge": "1 stk",
-"preis": 3.19,
-"statt": 3.69,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/tag-und-nachtschnitte-00920526"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Feine Speckwürfel",
-"menge": "150 g",
-"preis": 2.99,
-"statt": 3.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-feine-speckwuerfel-00436925"
-},
-{
-"markt": "BILLA",
-"name": "Berger Backofenschinken",
-"menge": "1000 g",
-"preis": 18.9,
-"statt": 24.5,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/berger-backofenschinken-00440171"
-},
-{
-"markt": "BILLA",
-"name": "Berger Farmerschinken",
-"menge": "1000 g",
-"preis": 18.9,
-"statt": 27.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/berger-farmerschinken-00305138"
-},
-{
-"markt": "BILLA",
-"name": "Puten Extrawurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
-},
-{
-"markt": "BILLA",
-"name": "Berger Putenschinken Variation",
-"menge": "180 g",
-"preis": 3.49,
-"statt": 4.69,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/berger-putenschinken-variation-00725422"
-},
-{
-"markt": "BILLA",
-"name": "Reiter Schwarzwälder Wurst",
-"menge": "1000 g",
-"preis": 21.9,
-"statt": 29.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/reiter-schwarzwaelder-wurst-00440006"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Bauernblutwurst",
-"menge": "300 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
-},
-{
-"markt": "BILLA",
-"name": "Puten Pikantwurst",
-"menge": "1000 g",
-"preis": 15.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Debreziner",
-"menge": "240 g",
-"preis": 3.69,
-"statt": 4.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-debreziner-00498698"
-},
-{
-"markt": "BILLA",
-"name": "Tannenhof Schwarzwälder Schinken",
-"menge": "1000 g",
-"preis": 21.9,
-"statt": 25.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/tannenhof-schwarzwaelder-schinken-00439969"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Pariserkranzl",
-"menge": "250 g",
-"preis": 3.19,
-"statt": 3.79,
-"hinweis": "ab 2 Stk",
-"bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Prater Stelze geschnitten",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.59,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Polnische Spezial Gebraten",
-"menge": "1000 g",
-"preis": 29.9,
-"statt": 32.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-polnische-spezial-gebraten-00440054"
-},
-{
-"markt": "BILLA",
-"name": "Radatz Pusztawürstel",
-"menge": "250 g",
-"preis": 4.29,
-"statt": 5.49,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Kaminwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
-},
-{
-"markt": "BILLA",
-"name": "Wiesbauer Gipfel Stangerl",
-"menge": "125 g",
-"preis": 2.19,
-"statt": 2.89,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Tiroler Chiliwurzerl",
-"menge": "100 g",
-"preis": 2.29,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst Pikant",
-"menge": "1000 g",
-"preis": 14.9,
-"statt": 19.9,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
-},
-{
-"markt": "BILLA",
-"name": "Handl Tyrol Milde Tyrolini 4x40g",
-"menge": "160 g",
-"preis": 3.99,
-"statt": 4.49,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
-},
-{
-"markt": "BILLA",
-"name": "Staudinger Holzofen Käsewurst",
-"menge": "1000 g",
-"preis": 18.9,
-"statt": 25.9,
-"hinweis": "ab 0.100 Kilo",
-"bis": null,
-"link": "https://shop.billa.at/produkte/staudinger-holzofen-kaesewurst-0031877"
-},
-{
-"markt": "BILLA",
-"name": "Krainer",
-"menge": "300 g",
-"preis": 4.49,
-"statt": 5.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/krainer-00435839"
-},
-{
-"markt": "BILLA",
-"name": "Gebratene Käsewurst",
-"menge": "80 g",
-"preis": 2.99,
-"statt": 3.69,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
-},
-{
-"markt": "BILLA",
-"name": "Hühner Käsekrainer",
-"menge": "250 g",
-"preis": 3.99,
-"statt": 4.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
-},
-{
-"markt": "BILLA",
-"name": "Greisinger Münchner Weisswurst mit Senf",
-"menge": "351 g",
-"preis": 3.49,
-"statt": 4.79,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/greisinger-muenchner-weisswurst-mit-senf-00340361"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Mageres Faschiertes gemischt Fair zum Tier",
-"menge": "350 g",
-"preis": 3.99,
-"statt": 5.68,
-"hinweis": "ab 2 Tassen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-mageres-faschiertes-gemischt-fair-zum-tier-00756256"
-},
-{
-"markt": "BILLA",
-"name": "Fair zum Tier Extrawurst geschnitten",
-"menge": "100 g",
-"preis": 1.49,
-"statt": 1.99,
-"hinweis": "",
-"bis": null,
-"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-geschnitten-00761647"
-},
-{
-"markt": "BILLA",
-"name": "Hofstädter Knusperbraten",
-"menge": "100 g",
-"preis": 2.49,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hofstaedter-knusperbraten-00767632"
-},
-{
-"markt": "BILLA",
-"name": "Frierss Zirbenrauchschinken geschnitten",
-"menge": "100 g",
-"preis": 2.49,
-"statt": 2.99,
-"hinweis": "ab 2 Packungen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/frierss-zirbenrauchschinken-geschnitten-00779311"
-},
-{
-"markt": "BILLA",
-"name": "Hoftstädter Fair zum Tier Hendl Unterkeulen",
-"menge": "500 g",
-"preis": 4.49,
-"statt": 5.99,
-"hinweis": "ab 2 Tassen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/hoftstaedter-fair-zum-tier-hendl-unterkeulen-00863110"
 },
 {
 "markt": "BILLA",
@@ -9501,6 +10213,16 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
+"name": "Flora ungesalzen",
+"menge": "250 g",
+"preis": 1.59,
+"statt": 1.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/flora-ungesalzen-00491470"
+},
+{
+"markt": "BILLA",
 "name": "BILLA Bio Edelschimmelkäse",
 "menge": "150 g",
 "preis": 1.99,
@@ -9691,303 +10413,303 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Schärdinger Teebutter mit Süßrahm",
-"menge": "250 g",
-"preis": 1.89,
-"statt": 2.56,
+"name": "Handl Tyrol Feine Speckwürfel",
+"menge": "150 g",
+"preis": 2.99,
+"statt": 3.99,
 "hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/schaerdinger-teebutter-mit-suessrahm-00420701"
+"link": "https://shop.billa.at/produkte/handl-tyrol-feine-speckwuerfel-00436925"
 },
 {
 "markt": "BILLA",
-"name": "Ja! Natürlich Natives Olivenöl Extra",
-"menge": "0.75 liter",
-"preis": 11.99,
-"statt": 14.99,
-"hinweis": "ab 2 Flaschen",
+"name": "Berger Backofenschinken",
+"menge": "1000 g",
+"preis": 18.9,
+"statt": 24.5,
+"hinweis": "ab 0.100 Kilo",
 "bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-natives-olivenoel-extra-00865820"
+"link": "https://shop.billa.at/produkte/berger-backofenschinken-00440171"
 },
 {
 "markt": "BILLA",
-"name": "Mutti Tomaten Polpa",
-"menge": "400 g",
-"preis": 1.32,
-"statt": 1.99,
-"hinweis": "Bei 3 Dosen je",
+"name": "Berger Farmerschinken",
+"menge": "1000 g",
+"preis": 18.9,
+"statt": 27.9,
+"hinweis": "ab 0.100 Kilo",
 "bis": null,
-"link": "https://shop.billa.at/produkte/mutti-tomaten-polpa-0014294"
+"link": "https://shop.billa.at/produkte/berger-farmerschinken-00305138"
 },
 {
 "markt": "BILLA",
-"name": "Barilla Pesto alla Genovese",
-"menge": "190 g",
-"preis": 2.69,
-"statt": 3.69,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-pesto-alla-genovese-00418972"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Pesto Rosso",
-"menge": "200 g",
-"preis": 2.69,
-"statt": 3.69,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-pesto-rosso-00434405"
-},
-{
-"markt": "BILLA",
-"name": "Kotányi Zimt Ganz",
-"menge": "1 stk",
-"preis": 1.99,
-"statt": 2.99,
-"hinweis": "ab 2 Briefe",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kotanyi-zimt-ganz-002721"
-},
-{
-"markt": "BILLA",
-"name": "Argeta Huhn Aufstrich",
-"menge": "95 g",
-"preis": 1.12,
-"statt": 1.69,
-"hinweis": "Bei 3 Dosen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/argeta-huhn-aufstrich-00502460"
-},
-{
-"markt": "BILLA",
-"name": "Vier Diamanten Thunfisch Naturell",
-"menge": "195 g",
-"preis": 2.69,
-"statt": 3.49,
-"hinweis": "ab 3 Dosen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/vier-diamanten-thunfisch-naturell-00415575"
-},
-{
-"markt": "BILLA",
-"name": "Ja! Natürlich Sauerkraut",
-"menge": "500 g",
-"preis": 1.99,
-"statt": 2.49,
+"name": "Puten Extrawurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
 "hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/ja-natuerlich-sauerkraut-00403098"
+"link": "https://shop.billa.at/produkte/puten-extrawurst-00593375"
 },
 {
 "markt": "BILLA",
-"name": "Argeta Thunfisch Aufstrich",
-"menge": "95 g",
-"preis": 1.12,
-"statt": 1.69,
-"hinweis": "Bei 3 Dosen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/argeta-thunfisch-aufstrich-00911425"
-},
-{
-"markt": "BILLA",
-"name": "Il Conte di Roma Kapern",
-"menge": "65 g",
-"preis": 1.49,
-"statt": 2.49,
+"name": "Berger Putenschinken Variation",
+"menge": "180 g",
+"preis": 3.49,
+"statt": 4.69,
 "hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/il-conte-di-roma-kapern-00569006"
+"link": "https://shop.billa.at/produkte/berger-putenschinken-variation-00725422"
 },
 {
 "markt": "BILLA",
-"name": "Kotányi Nelken Ganz",
-"menge": "1 stk",
-"preis": 1.99,
-"statt": 2.99,
-"hinweis": "ab 2 Briefe",
+"name": "Reiter Schwarzwälder Wurst",
+"menge": "1000 g",
+"preis": 21.9,
+"statt": 29.9,
+"hinweis": "ab 0.100 Kilo",
 "bis": null,
-"link": "https://shop.billa.at/produkte/kotanyi-nelken-ganz-002747"
+"link": "https://shop.billa.at/produkte/reiter-schwarzwaelder-wurst-00440006"
 },
 {
 "markt": "BILLA",
-"name": "Weinviertler Selchfleischaufstrich",
-"menge": "150 g",
-"preis": 3.84,
+"name": "Radatz Bauernblutwurst",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-bauernblutwurst-00370569"
+},
+{
+"markt": "BILLA",
+"name": "Puten Pikantwurst",
+"menge": "1000 g",
+"preis": 15.9,
+"statt": 19.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/puten-pikantwurst-00593772"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Debreziner",
+"menge": "240 g",
+"preis": 3.69,
+"statt": 4.69,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-debreziner-00498698"
+},
+{
+"markt": "BILLA",
+"name": "Tannenhof Schwarzwälder Schinken",
+"menge": "1000 g",
+"preis": 21.9,
+"statt": 25.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/tannenhof-schwarzwaelder-schinken-00439969"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Pariserkranzl",
+"menge": "250 g",
+"preis": 3.19,
+"statt": 3.79,
+"hinweis": "ab 2 Stk",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-pariserkranzl-00287700"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Prater Stelze geschnitten",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.59,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-prater-stelze-geschnitten-00570454"
+},
+{
+"markt": "BILLA",
+"name": "Wiesbauer Polnische Spezial Gebraten",
+"menge": "1000 g",
+"preis": 29.9,
+"statt": 32.9,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-polnische-spezial-gebraten-00440054"
+},
+{
+"markt": "BILLA",
+"name": "Radatz Pusztawürstel",
+"menge": "250 g",
+"preis": 4.29,
 "statt": 5.49,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/radatz-pusztawuerstel-00282719"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Kaminwurzerl",
+"menge": "100 g",
+"preis": 2.29,
+"statt": 2.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-kaminwurzerl-00200094"
+},
+{
+"markt": "BILLA",
+"name": "Fair zum Tier Extrawurst",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
 "hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/weinviertler-selchfleischaufstrich-00873571"
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-00714105"
 },
 {
 "markt": "BILLA",
-"name": "Machland Delikatessgurken",
-"menge": "670 g",
-"preis": 1.99,
+"name": "Wiesbauer Gipfel Stangerl",
+"menge": "125 g",
+"preis": 2.19,
+"statt": 2.89,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/wiesbauer-gipfel-stangerl-00293304"
+},
+{
+"markt": "BILLA",
+"name": "Handl Tyrol Tiroler Chiliwurzerl",
+"menge": "100 g",
+"preis": 2.29,
 "statt": 2.99,
-"hinweis": "ab 2 Gläser",
+"hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/machland-delikatessgurken-0041205"
+"link": "https://shop.billa.at/produkte/handl-tyrol-tiroler-chiliwurzerl-00202785"
 },
 {
 "markt": "BILLA",
-"name": "Vier Diamanten Thunfisch in Öl",
-"menge": "195 g",
-"preis": 2.69,
-"statt": 3.49,
-"hinweis": "ab 3 Dosen",
+"name": "Fair zum Tier Extrawurst Pikant",
+"menge": "1000 g",
+"preis": 14.9,
+"statt": 19.9,
+"hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/vier-diamanten-thunfisch-in-oel-001294"
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-pikant-00715084"
 },
 {
 "markt": "BILLA",
-"name": "Lorenz Studentenfutter Cashew Cranberry Mix",
-"menge": "150 g",
+"name": "Handl Tyrol Milde Tyrolini 4x40g",
+"menge": "160 g",
+"preis": 3.99,
+"statt": 4.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/handl-tyrol-milde-tyrolini-4x40g-00570495"
+},
+{
+"markt": "BILLA",
+"name": "Staudinger Holzofen Käsewurst",
+"menge": "1000 g",
+"preis": 18.9,
+"statt": 25.9,
+"hinweis": "ab 0.100 Kilo",
+"bis": null,
+"link": "https://shop.billa.at/produkte/staudinger-holzofen-kaesewurst-0031877"
+},
+{
+"markt": "BILLA",
+"name": "Krainer",
+"menge": "300 g",
+"preis": 4.49,
+"statt": 5.99,
+"hinweis": "ab 2 Packungen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/krainer-00435839"
+},
+{
+"markt": "BILLA",
+"name": "Gebratene Käsewurst",
+"menge": "80 g",
 "preis": 2.99,
 "statt": 3.69,
 "hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/lorenz-studentenfutter-cashew-cranberry-mix-00668636"
+"link": "https://shop.billa.at/produkte/gebratene-kaesewurst-00651416"
 },
 {
 "markt": "BILLA",
-"name": "Kotányi Lorbeerblätter",
-"menge": "1 stk",
-"preis": 1.99,
-"statt": 2.99,
-"hinweis": "ab 2 Briefe",
+"name": "Hühner Käsekrainer",
+"menge": "250 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/kotanyi-lorbeerblaetter-002752"
+"link": "https://shop.billa.at/produkte/huehner-kaesekrainer-00751770"
 },
 {
 "markt": "BILLA",
-"name": "Kotányi Zimt Gemahlen",
-"menge": "1 stk",
-"preis": 1.99,
-"statt": 2.99,
-"hinweis": "ab 2 Briefe",
+"name": "Greisinger Münchner Weisswurst mit Senf",
+"menge": "351 g",
+"preis": 3.49,
+"statt": 4.79,
+"hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/kotanyi-zimt-gemahlen-002778"
+"link": "https://shop.billa.at/produkte/greisinger-muenchner-weisswurst-mit-senf-00340361"
 },
 {
 "markt": "BILLA",
-"name": "Argeta Huhn Pikant Aufstrich",
-"menge": "95 g",
-"preis": 1.12,
-"statt": 1.69,
-"hinweis": "Bei 3 Dosen je",
+"name": "Hofstädter Mageres Faschiertes gemischt Fair zum Tier",
+"menge": "350 g",
+"preis": 3.99,
+"statt": 5.68,
+"hinweis": "ab 2 Tassen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/argeta-huhn-pikant-aufstrich-00911670"
+"link": "https://shop.billa.at/produkte/hofstaedter-mageres-faschiertes-gemischt-fair-zum-tier-00756256"
 },
 {
 "markt": "BILLA",
-"name": "Barilla Pesto Basilikum Vegan",
-"menge": "195 g",
-"preis": 2.69,
-"statt": 3.69,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-pesto-basilikum-vegan-00649890"
-},
-{
-"markt": "BILLA",
-"name": "Garofalo Rigatoni",
-"menge": "500 g",
-"preis": 1.26,
-"statt": 1.89,
-"hinweis": "Bei 3 Beutel je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/garofalo-rigatoni-00872269"
-},
-{
-"markt": "BILLA",
-"name": "Chaokoh Kokosmilch",
-"menge": "250 ml",
-"preis": 1.29,
-"statt": 2.59,
+"name": "Fair zum Tier Extrawurst geschnitten",
+"menge": "100 g",
+"preis": 1.49,
+"statt": 1.99,
 "hinweis": "",
 "bis": null,
-"link": "https://shop.billa.at/produkte/chaokoh-kokosmilch-00426256"
+"link": "https://shop.billa.at/produkte/fair-zum-tier-extrawurst-geschnitten-00761647"
 },
 {
 "markt": "BILLA",
-"name": "Machland Cornichons",
-"menge": "330 g",
-"preis": 1.99,
+"name": "Hofstädter Knusperbraten",
+"menge": "100 g",
+"preis": 2.49,
 "statt": 2.99,
-"hinweis": "ab 2 Gläser",
+"hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/machland-cornichons-004393"
+"link": "https://shop.billa.at/produkte/hofstaedter-knusperbraten-00767632"
 },
 {
 "markt": "BILLA",
-"name": "Vier Diamanten Thunfisch In Olivenöl",
-"menge": "185 g",
-"preis": 2.69,
-"statt": 3.49,
-"hinweis": "ab 3 Dosen",
-"bis": null,
-"link": "https://shop.billa.at/produkte/vier-diamanten-thunfisch-in-olivenoel-00386471"
-},
-{
-"markt": "BILLA",
-"name": "Barilla Pesto alla Calabrese",
-"menge": "190 g",
-"preis": 2.69,
-"statt": 3.69,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/barilla-pesto-alla-calabrese-00418970"
-},
-{
-"markt": "BILLA",
-"name": "Pesto Ricotta e Noci",
-"menge": "190 g",
-"preis": 2.69,
-"statt": 3.69,
-"hinweis": "ab 2 Gläser",
-"bis": null,
-"link": "https://shop.billa.at/produkte/pesto-ricotta-e-noci-00418971"
-},
-{
-"markt": "BILLA",
-"name": "Dr. Oetker Kakaoglasur",
-"menge": "200 g",
-"preis": 2.69,
+"name": "Frierss Zirbenrauchschinken geschnitten",
+"menge": "100 g",
+"preis": 2.49,
 "statt": 2.99,
-"hinweis": "ab 2 Becher",
+"hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/dr-oetker-kakaoglasur-00409667"
+"link": "https://shop.billa.at/produkte/frierss-zirbenrauchschinken-geschnitten-00779311"
 },
 {
 "markt": "BILLA",
-"name": "Garofalo Gnocchi Sardi",
-"menge": "500 g",
-"preis": 1.26,
-"statt": 1.89,
-"hinweis": "Bei 3 Packungen je",
+"name": "Hofstädter Fair zum Tier Bauern Presswurst",
+"menge": "300 g",
+"preis": 3.99,
+"statt": 4.99,
+"hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/garofalo-gnocchi-sardi-00715091"
-},
-{
-"markt": "BILLA",
-"name": "Garofalo Cappelletti",
-"menge": "500 g",
-"preis": 1.26,
-"statt": 1.89,
-"hinweis": "Bei 3 Packungen je",
-"bis": null,
-"link": "https://shop.billa.at/produkte/garofalo-cappelletti-00715093"
-},
-{
-"markt": "BILLA",
-"name": "Kotányi Muskatnuss Gemahlen",
-"menge": "1 stk",
-"preis": 1.99,
-"statt": 2.99,
-"hinweis": "ab 2 Briefe",
-"bis": null,
-"link": "https://shop.billa.at/produkte/kotanyi-muskatnuss-gemahlen-0010917"
+"link": "https://shop.billa.at/produkte/hofstaedter-fair-zum-tier-bauern-presswurst-00865933"
 },
 {
 "markt": "BILLA",
@@ -10181,6 +10903,16 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
+"name": "Bio Dunglbrot",
+"menge": "650 g",
+"preis": 3.06,
+"statt": 4.37,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/bio-dunglbrot-00254263"
+},
+{
+"markt": "BILLA",
 "name": "Kelly's Linsenchips Meersalz",
 "menge": "90 g",
 "preis": 1.99,
@@ -10271,18 +11003,298 @@ const ANGEBOTE = {
 },
 {
 "markt": "BILLA",
-"name": "Kelly's Ofen Chips Paprika",
-"menge": "125 g",
-"preis": 2.19,
+"name": "Ja! Natürlich Natives Olivenöl Extra",
+"menge": "0.75 liter",
+"preis": 11.99,
+"statt": 14.99,
+"hinweis": "ab 2 Flaschen",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-natives-olivenoel-extra-00865820"
+},
+{
+"markt": "BILLA",
+"name": "Mutti Tomaten Polpa",
+"menge": "400 g",
+"preis": 1.32,
+"statt": 1.99,
+"hinweis": "Bei 3 Dosen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/mutti-tomaten-polpa-0014294"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Pesto alla Genovese",
+"menge": "190 g",
+"preis": 2.69,
+"statt": 3.69,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-pesto-alla-genovese-00418972"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Pesto Rosso",
+"menge": "200 g",
+"preis": 2.69,
+"statt": 3.69,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-pesto-rosso-00434405"
+},
+{
+"markt": "BILLA",
+"name": "Kotányi Zimt Ganz",
+"menge": "1 stk",
+"preis": 1.99,
 "statt": 2.99,
+"hinweis": "ab 2 Briefe",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kotanyi-zimt-ganz-002721"
+},
+{
+"markt": "BILLA",
+"name": "Argeta Huhn Aufstrich",
+"menge": "95 g",
+"preis": 1.12,
+"statt": 1.69,
+"hinweis": "Bei 3 Dosen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/argeta-huhn-aufstrich-00502460"
+},
+{
+"markt": "BILLA",
+"name": "Ja! Natürlich Sauerkraut",
+"menge": "500 g",
+"preis": 1.99,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/ja-natuerlich-sauerkraut-00403098"
+},
+{
+"markt": "BILLA",
+"name": "Argeta Thunfisch Aufstrich",
+"menge": "95 g",
+"preis": 1.12,
+"statt": 1.69,
+"hinweis": "Bei 3 Dosen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/argeta-thunfisch-aufstrich-00911425"
+},
+{
+"markt": "BILLA",
+"name": "Il Conte di Roma Kapern",
+"menge": "65 g",
+"preis": 1.49,
+"statt": 2.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/il-conte-di-roma-kapern-00569006"
+},
+{
+"markt": "BILLA",
+"name": "Kotányi Nelken Ganz",
+"menge": "1 stk",
+"preis": 1.99,
+"statt": 2.99,
+"hinweis": "ab 2 Briefe",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kotanyi-nelken-ganz-002747"
+},
+{
+"markt": "BILLA",
+"name": "Weinviertler Selchfleischaufstrich",
+"menge": "150 g",
+"preis": 3.84,
+"statt": 5.49,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/weinviertler-selchfleischaufstrich-00873571"
+},
+{
+"markt": "BILLA",
+"name": "Machland Delikatessgurken",
+"menge": "670 g",
+"preis": 1.99,
+"statt": 2.99,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/machland-delikatessgurken-0041205"
+},
+{
+"markt": "BILLA",
+"name": "Lorenz Studentenfutter Cashew Cranberry Mix",
+"menge": "150 g",
+"preis": 2.99,
+"statt": 3.69,
 "hinweis": "ab 2 Packungen",
 "bis": null,
-"link": "https://shop.billa.at/produkte/kellys-ofen-chips-paprika-00574893"
+"link": "https://shop.billa.at/produkte/lorenz-studentenfutter-cashew-cranberry-mix-00668636"
+},
+{
+"markt": "BILLA",
+"name": "Kotányi Lorbeerblätter",
+"menge": "1 stk",
+"preis": 1.99,
+"statt": 2.99,
+"hinweis": "ab 2 Briefe",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kotanyi-lorbeerblaetter-002752"
+},
+{
+"markt": "BILLA",
+"name": "Kotányi Zimt Gemahlen",
+"menge": "1 stk",
+"preis": 1.99,
+"statt": 2.99,
+"hinweis": "ab 2 Briefe",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kotanyi-zimt-gemahlen-002778"
+},
+{
+"markt": "BILLA",
+"name": "Argeta Huhn Pikant Aufstrich",
+"menge": "95 g",
+"preis": 1.12,
+"statt": 1.69,
+"hinweis": "Bei 3 Dosen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/argeta-huhn-pikant-aufstrich-00911670"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Pesto Basilikum Vegan",
+"menge": "195 g",
+"preis": 2.69,
+"statt": 3.69,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-pesto-basilikum-vegan-00649890"
+},
+{
+"markt": "BILLA",
+"name": "Garofalo Rigatoni",
+"menge": "500 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Beutel je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/garofalo-rigatoni-00872269"
+},
+{
+"markt": "BILLA",
+"name": "Chaokoh Kokosmilch",
+"menge": "250 ml",
+"preis": 1.29,
+"statt": 2.59,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/chaokoh-kokosmilch-00426256"
+},
+{
+"markt": "BILLA",
+"name": "Machland Cornichons",
+"menge": "330 g",
+"preis": 1.99,
+"statt": 2.99,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/machland-cornichons-004393"
+},
+{
+"markt": "BILLA",
+"name": "Barilla Pesto alla Calabrese",
+"menge": "190 g",
+"preis": 2.69,
+"statt": 3.69,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/barilla-pesto-alla-calabrese-00418970"
+},
+{
+"markt": "BILLA",
+"name": "Pesto Ricotta e Noci",
+"menge": "190 g",
+"preis": 2.69,
+"statt": 3.69,
+"hinweis": "ab 2 Gläser",
+"bis": null,
+"link": "https://shop.billa.at/produkte/pesto-ricotta-e-noci-00418971"
+},
+{
+"markt": "BILLA",
+"name": "Dr. Oetker Kakaoglasur",
+"menge": "200 g",
+"preis": 2.69,
+"statt": 2.99,
+"hinweis": "ab 2 Becher",
+"bis": null,
+"link": "https://shop.billa.at/produkte/dr-oetker-kakaoglasur-00409667"
+},
+{
+"markt": "BILLA",
+"name": "Garofalo Gnocchi Sardi",
+"menge": "500 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/garofalo-gnocchi-sardi-00715091"
+},
+{
+"markt": "BILLA",
+"name": "Garofalo Cappelletti",
+"menge": "500 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Packungen je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/garofalo-cappelletti-00715093"
+},
+{
+"markt": "BILLA",
+"name": "Kotányi Muskatnuss Gemahlen",
+"menge": "1 stk",
+"preis": 1.99,
+"statt": 2.99,
+"hinweis": "ab 2 Briefe",
+"bis": null,
+"link": "https://shop.billa.at/produkte/kotanyi-muskatnuss-gemahlen-0010917"
+},
+{
+"markt": "BILLA",
+"name": "Garofalo Spaghetti",
+"menge": "500 g",
+"preis": 1.26,
+"statt": 1.89,
+"hinweis": "Bei 3 Beutel je",
+"bis": null,
+"link": "https://shop.billa.at/produkte/garofalo-spaghetti-00900338"
+},
+{
+"markt": "BILLA",
+"name": "Vegeta Würzmischung",
+"menge": "500 g",
+"preis": 3.99,
+"statt": 4.79,
+"hinweis": "",
+"bis": null,
+"link": "https://shop.billa.at/produkte/vegeta-wuerzmischung-00426102"
+},
+{
+"markt": "BILLA",
+"name": "Dr. Oetker Glasur Weiße Schoko",
+"menge": "200 g",
+"preis": 2.69,
+"statt": 2.99,
+"hinweis": "ab 2 Becher",
+"bis": null,
+"link": "https://shop.billa.at/produkte/dr-oetker-glasur-weisse-schoko-00832528"
 },
 {
 "markt": "BILLA",
 "name": "Knorr Bitte zu Tisch ABC Suppe",
-"menge": "1",
+"menge": "109 g",
 "preis": 0.79,
 "statt": 1.19,
 "hinweis": "Bei 3 Beutel je",
@@ -10311,86 +11323,6 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Michi Bauers Braunschweiger Kraut",
-"menge": "ca. 1,62 kg",
-"preis": 1.61,
-"statt": 2.42,
-"hinweis": "-33 %",
-"bis": "2026-10-26",
-"link": "https://www.gurkerl.at/7717-michi-bauers-braunschweiger-kraut"
-},
-{
-"markt": "Gurkerl",
-"name": "Marchfelder BIO Snackkarotten",
-"menge": "200 g",
-"preis": 1.88,
-"statt": 2.09,
-"hinweis": "-10 % für dich",
-"bis": null,
-"link": "https://www.gurkerl.at/31574-marchfelder-bio-snackkarotten"
-},
-{
-"markt": "Gurkerl",
-"name": "BIO Avocado Hass, reif lose",
-"menge": "1 Stk",
-"preis": 2.6,
-"statt": 2.89,
-"hinweis": "-10 % für dich",
-"bis": null,
-"link": "https://www.gurkerl.at/50163-bio-avocado-hass-reif-lose"
-},
-{
-"markt": "Gurkerl",
-"name": "Endiviensalat",
-"menge": "1 Stk",
-"preis": 1.59,
-"statt": 2.19,
-"hinweis": "-27 %",
-"bis": "2026-10-26",
-"link": "https://www.gurkerl.at/23760-endiviensalat"
-},
-{
-"markt": "Gurkerl",
-"name": "BIO Süßkartoffel",
-"menge": "ca. 0,55 kg",
-"preis": 2.46,
-"statt": 2.74,
-"hinweis": "-10 % für dich",
-"bis": null,
-"link": "https://www.gurkerl.at/19039-bio-suesskartoffel"
-},
-{
-"markt": "Gurkerl",
-"name": "BIO Apfel Gala, lose",
-"menge": "ca. 140 g",
-"preis": 0.45,
-"statt": 0.5,
-"hinweis": "-10 % für dich",
-"bis": null,
-"link": "https://www.gurkerl.at/19924-bio-apfel-gala-lose"
-},
-{
-"markt": "Gurkerl",
-"name": "Michi Bauers Butternuss Kürbis",
-"menge": "ca. 2,4 kg",
-"preis": 2.85,
-"statt": 3.81,
-"hinweis": "-25 %",
-"bis": "2026-10-26",
-"link": "https://www.gurkerl.at/7733-michi-bauers-butternuss-kuerbis"
-},
-{
-"markt": "Gurkerl",
-"name": "Ölz Landbrot Weizenmisch geschnitten",
-"menge": "500 g",
-"preis": 3.43,
-"statt": 4.29,
-"hinweis": "-20 %",
-"bis": "2026-10-23",
-"link": "https://www.gurkerl.at/41418-oelz-landbrot-weizenmisch-geschnitten"
-},
-{
-"markt": "Gurkerl",
 "name": "Atelier Délices Mini Vanille Krapfen",
 "menge": "210 g",
 "preis": 5.27,
@@ -10398,26 +11330,6 @@ const ANGEBOTE = {
 "hinweis": "-20 %",
 "bis": "2026-10-24",
 "link": "https://www.gurkerl.at/48934-atelier-delices-mini-vanille-krapfen"
-},
-{
-"markt": "Gurkerl",
-"name": "BE-SANE Haselnuss Kuchen Getreidefrei",
-"menge": "180 g",
-"preis": 5.59,
-"statt": 6.99,
-"hinweis": "-20 %",
-"bis": "2026-10-24",
-"link": "https://www.gurkerl.at/44789-be-sane-haselnuss-kuchen-getreidefrei"
-},
-{
-"markt": "Gurkerl",
-"name": "Atelier Délices Mini Eclair",
-"menge": "140 g",
-"preis": 4.39,
-"statt": 5.49,
-"hinweis": "-20 %",
-"bis": "2026-10-24",
-"link": "https://www.gurkerl.at/48933-atelier-delices-mini-eclair"
 },
 {
 "markt": "Gurkerl",
@@ -10431,113 +11343,143 @@ const ANGEBOTE = {
 },
 {
 "markt": "Gurkerl",
-"name": "Le Conserve della Nonna Fagioli Corona",
-"menge": "360 g",
-"preis": 2.23,
-"statt": 3.89,
-"hinweis": "-42 %",
-"bis": "2026-11-30",
-"link": "https://www.gurkerl.at/43012-le-conserve-della-nonna-fagioli-corona"
+"name": "Süßes von Ulreich Kokosstangerl",
+"menge": "200 g",
+"preis": 5.05,
+"statt": 6.99,
+"hinweis": "-27 %",
+"bis": "2026-10-29",
+"link": "https://www.gurkerl.at/21085-suesses-von-ulreich-kokosstangerl"
 },
 {
 "markt": "Gurkerl",
-"name": "Miil Fettarme Milch 1,5%",
-"menge": "1 l",
-"preis": 0.38,
-"statt": 1.29,
-"hinweis": "-70 %",
-"bis": "2026-10-23",
-"link": "https://www.gurkerl.at/14685-miil-fettarme-milch-1-5"
-},
-{
-"markt": "Gurkerl",
-"name": "Frische Austern + Austernmesser",
-"menge": "6 Stk",
-"preis": 7.73,
-"statt": 9.99,
-"hinweis": "-22 %",
-"bis": "2026-10-23",
-"link": "https://www.gurkerl.at/31350-frische-austern-austernmesser"
-},
-{
-"markt": "Gurkerl",
-"name": "Schaumrollen",
-"menge": "160 g",
-"preis": 3.55,
-"statt": 5.69,
-"hinweis": "-37 %",
-"bis": "2026-10-23",
-"link": "https://www.gurkerl.at/47996-schaumrollen"
-},
-{
-"markt": "Gurkerl",
-"name": "Keltenhof Mischsalat \"Venetia\"",
-"menge": "250 g",
-"preis": 3.74,
-"statt": 4.99,
-"hinweis": "-25 %",
-"bis": "2026-10-23",
-"link": "https://www.gurkerl.at/43224-keltenhof-mischsalat-venetia"
-},
-{
-"markt": "Gurkerl",
-"name": "Ölz Krustenbrot geschnitten",
+"name": "Ölz Landbrot Weizenmisch geschnitten",
 "menge": "500 g",
-"preis": 1.11,
-"statt": 2.89,
-"hinweis": "-61 %",
-"bis": "2026-10-22",
-"link": "https://www.gurkerl.at/4481-oelz-krustenbrot-geschnitten"
-},
-{
-"markt": "Gurkerl",
-"name": "O'mellis Melonenmix Becher",
-"menge": "210 g",
-"preis": 2.18,
-"statt": 5.99,
-"hinweis": "-63 %",
-"bis": "2026-10-22",
-"link": "https://www.gurkerl.at/49093-o-mellis-melonenmix-becher"
-},
-{
-"markt": "Gurkerl",
-"name": "Pumpkin Organics Bluey BIO Brötchen ab 3 Jahren",
-"menge": "300 g",
-"preis": 1.1,
-"statt": 3.69,
-"hinweis": "-70 %",
-"bis": "2026-11-11",
-"link": "https://www.gurkerl.at/47725-pumpkin-organics-bluey-bio-broetchen-ab-3-jahren"
-},
-{
-"markt": "Gurkerl",
-"name": "Feel Food BIO Red Lentil Dal VEGAN",
-"menge": "95 g",
-"preis": 1.25,
-"statt": 4.19,
-"hinweis": "-70 %",
-"bis": "2026-10-30",
-"link": "https://www.gurkerl.at/30582-feel-food-bio-red-lentil-dal-vegan"
-},
-{
-"markt": "Gurkerl",
-"name": "AMA Neuburger geschnitten",
-"menge": "150 g",
-"preis": 1.04,
-"statt": 3.49,
-"hinweis": "-70 %",
+"preis": 1.74,
+"statt": 4.29,
+"hinweis": "-59 %",
 "bis": "2026-10-25",
-"link": "https://www.gurkerl.at/49830-ama-neuburger-geschnitten"
+"link": "https://www.gurkerl.at/41418-oelz-landbrot-weizenmisch-geschnitten"
 },
 {
 "markt": "Gurkerl",
-"name": "Herzmuscheln",
+"name": "Yutto Butter Toast",
 "menge": "500 g",
-"preis": 6.1,
-"statt": 8.49,
+"preis": 0.91,
+"statt": 1.29,
+"hinweis": "-29 %",
+"bis": "2026-10-26",
+"link": "https://www.gurkerl.at/33005-yutto-butter-toast"
+},
+{
+"markt": "Gurkerl",
+"name": "Efko Baby Spinat",
+"menge": "250 g",
+"preis": 1.4,
+"statt": 3.39,
+"hinweis": "-58 %",
+"bis": "2026-10-25",
+"link": "https://www.gurkerl.at/14225-efko-baby-spinat"
+},
+{
+"markt": "Gurkerl",
+"name": "Yutto Super Sandwich",
+"menge": "0,75 kg",
+"preis": 1.06,
+"statt": 1.89,
+"hinweis": "-43 %",
+"bis": "2026-10-26",
+"link": "https://www.gurkerl.at/33006-yutto-super-sandwich"
+},
+{
+"markt": "Gurkerl",
+"name": "nöm Joghurt Natur 1% cremig gerührt XL",
+"menge": "500 g",
+"preis": 0.65,
+"statt": 1.29,
+"hinweis": "-49 %",
+"bis": "2026-10-25",
+"link": "https://www.gurkerl.at/25007-noem-joghurt-natur-1-cremig-geruehrt-xl"
+},
+{
+"markt": "Gurkerl",
+"name": "Itineraire des Saveurs Camembert de Normandie au lait cru",
+"menge": "250 g",
+"preis": 4.26,
+"statt": 6.39,
+"hinweis": "-33 %",
+"bis": "2026-10-26",
+"link": "https://www.gurkerl.at/28817-itineraire-des-saveurs-camembert-de-normandie-au-lait-cru"
+},
+{
+"markt": "Gurkerl",
+"name": "Steirerhuhn AMA Innenfilet gewürzt",
+"menge": "ca. 0,52 kg",
+"preis": 3.96,
+"statt": 9.41,
+"hinweis": "-57 %",
+"bis": "2026-10-25",
+"link": "https://www.gurkerl.at/32788-steirerhuhn-ama-innenfilet-gewuerzt"
+},
+{
+"markt": "Gurkerl",
+"name": "Original Trzesniewski Erbse mit Karotte VEGAN",
+"menge": "180 g",
+"preis": 5.69,
+"statt": 9.99,
+"hinweis": "-43 %",
+"bis": "2026-10-26",
+"link": "https://www.gurkerl.at/25871-original-trzesniewski-erbse-mit-karotte-vegan"
+},
+{
+"markt": "Gurkerl",
+"name": "Miil Tierwohl haltbare Milch fettarm 1,5%",
+"menge": "1 l",
+"preis": 0.77,
+"statt": 1.09,
+"hinweis": "-29 %",
+"bis": "2026-11-06",
+"link": "https://www.gurkerl.at/49155-miil-tierwohl-haltbare-milch-fettarm-1-5"
+},
+{
+"markt": "Gurkerl",
+"name": "Schärdinger Beerentraum 3,8%",
+"menge": "400 g",
+"preis": 0.8,
+"statt": 1.39,
+"hinweis": "-42 %",
+"bis": "2026-10-27",
+"link": "https://www.gurkerl.at/27739-schaerdinger-beerentraum-3-8"
+},
+{
+"markt": "Gurkerl",
+"name": "Danone Twix Karamell Joguhrt",
+"menge": "120 g",
+"preis": 0.85,
+"statt": 1.19,
 "hinweis": "-28 %",
-"bis": "2026-10-23",
-"link": "https://www.gurkerl.at/32401-herzmuscheln"
+"bis": "2026-10-27",
+"link": "https://www.gurkerl.at/39141-danone-twix-karamell-joguhrt"
+},
+{
+"markt": "Gurkerl",
+"name": "Yutto Vollkorn Toast",
+"menge": "500 g",
+"preis": 0.62,
+"statt": 0.99,
+"hinweis": "-37 %",
+"bis": "2026-10-26",
+"link": "https://www.gurkerl.at/33004-yutto-vollkorn-toast"
+},
+{
+"markt": "Gurkerl",
+"name": "LAC laktosefreier Speisetopfen Magerstufe",
+"menge": "250 g",
+"preis": 1.12,
+"statt": 1.49,
+"hinweis": "-24 %",
+"bis": "2026-10-28",
+"link": "https://www.gurkerl.at/35681-lac-laktosefreier-speisetopfen-magerstufe"
 }
 ]
 };
@@ -10639,6 +11581,11 @@ const ANGEBOTE = {
     r.steps.forEach(st => { st.text = huhn(st.text); if (st.items) st.items = st.items.map(huhn); });
   });
   const byId = Object.fromEntries(RECIPES.map(r => [r.id, r]));
+  // Frühstück: eigene Liste, kommt nicht in den Abendessen-Plan
+  const BF_BASE = typeof BREAKFAST !== "undefined" && Array.isArray(BREAKFAST) ? BREAKFAST : [];
+  let myBreakfast = [];
+  const bfAll = () => BF_BASE.concat(myBreakfast);
+  BF_BASE.forEach(r => { byId[r.id] = r; });
   const $ = s => document.querySelector(s);
   const store = {
     get(k, d) { try { const v = localStorage.getItem("ft-" + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
@@ -10649,6 +11596,8 @@ const ANGEBOTE = {
   function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
   // Herz-Gerichte: Basis für neue Vorschläge
   let favs = store.get("favs", {});
+  myBreakfast = (() => { const m = store.get("myBreakfast", []); return Array.isArray(m) ? m : []; })();
+  myBreakfast.forEach(r => { byId[r.id] = r; });
   // Bewertungen: Geschmack und Einfachheit, je 1 bis 5 Sterne, plus Notiz
   let ratings = store.get("ratings", {});
   const favIds = () => Object.keys(favs).filter(id => favs[id] && byId[id]);
@@ -10692,7 +11641,8 @@ const ANGEBOTE = {
   const timeLabel = r => {
     if (!r.time) return "Zeit siehe Rezept";
     const t = r.time >= 90 ? `${Math.round(r.time / 30) / 2} Std.`.replace(".5 Std.", ",5 Std.") : `${r.time} Min.`;
-    return (r.mc ? "ca. " : "") + t + (r.wait ? ` + ${r.wait} Min. Ofen` : "");
+    const w = !r.wait ? "" : r.wait >= 240 ? " + über Nacht" : r.course === "Frühstück" && !(r.tags || []).includes("ofen") ? ` + ${r.wait} Min. ziehen lassen` : ` + ${r.wait} Min. Ofen`;
+    return (r.mc ? "ca. " : "") + t + w;
   };
   const HAS_PHOTO = new Set(typeof PHOTOS !== "undefined" ? PHOTOS : []);
   const mcTag = r => r.mc ? '<span class="mc-tag">Master Chef</span>' : r.source ? `<span class="mc-tag">nach ${esc(r.source.name)}</span>` : "";
@@ -10846,7 +11796,7 @@ const ANGEBOTE = {
     const inf = e.target.closest("[data-info]");
     if (inf) openDetail(inf.dataset.info, "ing");
   });
-  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings }); toast("Neue Woche ist geplant"); });
+  $("#reshuffle").addEventListener("click", () => { plan = newWeek(); checked = {}; store.set("checked", checked); inCart = {}; store.set("inCart", inCart); stepsDone = {}; store.set("stepsDone", stepsDone); renderWeek(); Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast }); toast("Neue Woche ist geplant"); });
 
   // Wörter, die beim Suchen dasselbe meinen
   const SEARCH_SYN = [["huhn", "hendl", "hahnchen", "huhner", "chicken", "pute"], ["nudel", "pasta", "spaghetti", "penne", "fusilli", "tagliatelle", "orzo", "fleckerl", "nockerl"],
@@ -11177,8 +12127,66 @@ const ANGEBOTE = {
     try { navigator.clipboard.writeText(txt).then(() => toast("Liste kopiert"), fallback); } catch (e) { fallback(); }
   });
 
+  // ---------- Frühstück ----------
+  let bfFilter = "alle";
+  function renderBreakfast() {
+    const list = myBreakfast.concat(BF_BASE).filter(r => bfFilter === "alle" || (bfFilter === "eigene" ? r.own : (r.tags || []).includes(bfFilter)));
+    document.querySelectorAll("#bf-filter [data-bf]").forEach(b => b.setAttribute("aria-pressed", b.dataset.bf === bfFilter));
+    $("#bf-grid").innerHTML = list.length ? list.map(r => `<article class="bf-card" data-open-bf="${esc(r.id)}">
+        <div class="thumb" style="--tint:${tint(r)}">${plateSVG(r)}${photo(r)}</div>
+        <div><h3>${esc(r.name)}</h3><div class="meta">${r.own ? '<span class="mc-tag">Eigenes Rezept</span>' : ""}<span>${timeLabel(r)}</span>${(r.tags || []).includes("vorbereiten") ? "<span>am Vorabend</span>" : ""}</div></div>
+      </article>`).join("") : `<p style="color:var(--muted)">${bfFilter === "eigene" ? "Noch keine eigenen Rezepte. Tippe auf „+ Eigenes Rezept speichern“." : "Keine Rezepte in dieser Auswahl."}</p>`;
+  }
+  $("#bf-filter").addEventListener("click", e => { const b = e.target.closest("[data-bf]"); if (b) { bfFilter = b.dataset.bf; renderBreakfast(); } });
+  $("#bf-grid").addEventListener("click", e => { const c = e.target.closest("[data-open-bf]"); if (c) openDetail(c.dataset.openBf); });
+  function saveMyBreakfast() {
+    store.set("myBreakfast", myBreakfast); Sync.put("myBreakfast", myBreakfast.length ? myBreakfast : null);
+    myBreakfast.forEach(r => { byId[r.id] = r; }); renderBreakfast();
+  }
+  // Zutaten-Zeile wie „200 g Haferflocken“ oder „2 Eier“ in Menge, Einheit und Name zerlegen
+  const BF_UNITS = "kg|g|ml|l|EL|TL|Prise|Prisen|Bund|Dose|Dosen|Packung|Packungen|Stk|Stück|Zehe|Zehen|Becher|Glas|Scheibe|Scheiben|Handvoll|Tasse|Tassen";
+  function parseIngLine(line) {
+    const m = line.trim().match(new RegExp("^(\\d+(?:[.,]\\d+)?|½|¼|¾)?\\s*(" + BF_UNITS + ")?\\.?\\s+(.+)$", "i"));
+    if (!m || !m[1]) return [line.trim(), 0, "", "veg"];
+    const q = { "½": 0.5, "¼": 0.25, "¾": 0.75 }[m[1]] ?? parseFloat(m[1].replace(",", "."));
+    return [m[3].trim(), q, m[2] || "Stk", /milch|joghurt|topfen|butter|ei\b|eier|käse|obers|rahm/i.test(m[3]) ? "fresh" : /flocken|mehl|zucker|zimt|salz|backpulver|honig|sirup|öl/i.test(m[3]) ? "pantry" : /brot|toast|semmel/i.test(m[3]) ? "bread" : "veg"];
+  }
+  const ingLine = i => (i[1] ? String(i[1]).replace(".", ",") + " " + (i[2] && i[2] !== "Stk" ? i[2] + " " : "") : "") + i[0];
+  const guessIcon = t => /ofen|back/i.test(t) ? "oven" : /pfanne|brat/i.test(t) ? "pan" : /koch|topf/i.test(t) ? "boil" : /schneid|hack|reib|schäl/i.test(t) ? "chop" : /servier|anricht/i.test(t) ? "serve" : "mix";
+  function openBfForm(editId) {
+    const r = editId ? myBreakfast.find(x => x.id === editId) : null;
+    $("#sheet-root").innerHTML = `<div class="sheet-bg" id="sheet-bg"><div class="sheet bf-form" role="dialog" aria-label="Frühstücksrezept speichern">
+      <h2>${r ? "Rezept bearbeiten" : "Eigenes Frühstück speichern"}</h2>
+      <label>Name<input type="text" id="bf-name" value="${esc(r ? r.name : "")}" placeholder="z. B. Omas Grießbrei"></label>
+      <label>Zeit in Minuten<input type="number" id="bf-time" min="1" max="240" value="${r ? r.time || "" : ""}" placeholder="10"></label>
+      <label>Zutaten für die ganze Familie, eine pro Zeile<textarea id="bf-ing" rows="5" placeholder="120 g Haferflocken&#10;250 ml Milch&#10;1 Apfel">${esc(r ? r.ingredients.map(ingLine).join("\n") : "")}</textarea></label>
+      <label>Schritte, einer pro Zeile<textarea id="bf-steps" rows="5" placeholder="Haferflocken und Milch verrühren.&#10;Über Nacht in den Kühlschrank stellen.">${esc(r ? r.steps.map(x => x.text).join("\n") : "")}</textarea></label>
+      <div class="bf-checks"><label><input type="radio" name="bf-kind" value="süß"${!r || r.tags.includes("süß") ? " checked" : ""}> süß</label><label><input type="radio" name="bf-kind" value="pikant"${r && r.tags.includes("pikant") ? " checked" : ""}> pikant</label><label><input type="checkbox" id="bf-prep"${r && r.tags.includes("vorbereiten") ? " checked" : ""}> am Vorabend vorbereiten</label></div>
+      <label>Link zum Original (optional)<input type="url" id="bf-link" value="${esc(r && r.source ? r.source.url : "")}" placeholder="https://"></label>
+      <div class="row" style="margin-top:12px"><button class="primary" id="bf-save" type="button">Speichern</button><button class="ghost" id="sheet-close" type="button">Abbrechen</button></div></div></div>`;
+    $("#sheet-bg").addEventListener("click", e => {
+      if (e.target.id === "sheet-bg" || e.target.id === "sheet-close") { $("#sheet-root").innerHTML = ""; return; }
+      if (e.target.id !== "bf-save") return;
+      const name = $("#bf-name").value.trim(), lines = $("#bf-steps").value.split("\n").map(x => x.trim()).filter(Boolean);
+      const ings = $("#bf-ing").value.split("\n").map(x => x.trim()).filter(Boolean).map(parseIngLine);
+      if (!name) { toast("Bitte gib dem Rezept einen Namen"); return; }
+      if (!lines.length) { toast("Bitte mindestens einen Schritt eintragen"); return; }
+      const link = $("#bf-link").value.trim(), kind = document.querySelector('input[name="bf-kind"]:checked').value;
+      const rec = { id: r ? r.id : "my" + Date.now().toString(36), name: name.slice(0, 120), origin: "Eigenes Rezept", flag: "", own: true, course: "Frühstück", week: false, kid: "",
+        time: Math.max(1, Math.min(240, parseInt($("#bf-time").value, 10) || 10)), colors: (r && r.colors) || [["#E9C98E", "#F4ECDF", "#C8743F", "#8FAE7F"], ["#D99C8A", "#F4ECDF", "#B5482F", "#E9C98E"], ["#E8D2B0", "#F3E6D3", "#8C5A3C", "#9FB07E"]][myBreakfast.length % 3],
+        tags: [kind].concat($("#bf-prep").checked ? ["vorbereiten"] : []), ingredients: ings,
+        steps: lines.slice(0, 20).map(t => ({ icon: guessIcon(t), text: t.slice(0, 600) })) };
+      if (/^https?:\/\//.test(link)) rec.source = { name: "Original", url: link };
+      delete rec._stepIngs;
+      myBreakfast = r ? myBreakfast.map(x => x.id === r.id ? rec : x) : myBreakfast.concat(rec);
+      byId[rec.id] = rec; saveMyBreakfast();
+      $("#sheet-root").innerHTML = ""; toast(r ? "Rezept geändert" : "Rezept gespeichert"); bfFilter = "alle"; renderBreakfast();
+    });
+  }
+  $("#bf-add").addEventListener("click", () => openBfForm(null));
+
   // ---------- Tabs ----------
-  const TABS = ["week", "discover", "shop"];
+  const TABS = ["week", "discover", "breakfast", "shop"];
   function showTab(t) {
     TABS.forEach(x => { $("#view-" + x).hidden = x !== t; $("#tab-" + x).setAttribute("aria-selected", x === t); });
     store.set("tab", t);
@@ -11301,10 +12309,11 @@ const ANGEBOTE = {
         const r = await fetch(this.base() + ".json");
         if (!r.ok) throw new Error(r.status);
         const d = await r.json();
-        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people, ratings }); return; }
+        if (!d || !Array.isArray(d.plan)) { await this.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast }); return; }
         if (d.plan.length === 7 && d.plan.every(id => byId[id])) plan = d.plan;
         checked = d.checked || {}; pantryBuy = d.pantryBuy || {}; favs = d.favs || {};
         if (d.ratings) { ratings = d.ratings; store.set("ratings", ratings); }
+        if (Array.isArray(d.myBreakfast)) { myBreakfast = d.myBreakfast; store.set("myBreakfast", myBreakfast); myBreakfast.forEach(r => { byId[r.id] = r; }); renderBreakfast(); }
         if (d.people && d.people.adults >= 0 && d.people.kids >= 0) { people = d.people; store.set("people", people); renderPeople(); }
         store.set("checked", checked); store.set("pantryBuy", pantryBuy); store.set("favs", favs);
         renderWeek(); renderBoard(); renderFavCount();
@@ -11452,8 +12461,9 @@ const ANGEBOTE = {
       <h2>${esc(r.name)}</h2>
       <div class="meta">${mcTag(r)}<span>${esc(r.origin)}</span><span>${timeLabel(r)}</span><span>${r.steps.length} Schritte</span>${r.course && r.course !== "Hauptspeise" ? `<span>${esc(r.course)}</span>` : ""}</div>
       <div class="mini-row">${favBtn(id, "mini")}${shareBtn(r)}<button class="mini" type="button" data-detail-play="${id}">${ICON.play}Koch-Video</button>${sourceBtns(r, true)}</div>
-      <h4>Einplanen für</h4>
-      <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>
+      ${r.course === "Frühstück" ? "" : `<h4>Einplanen für</h4>
+      <div class="daypick">${DAYS.map((d, i) => `<button type="button" data-day="${i}" aria-label="Für ${d} einplanen">${d.slice(0, 2)}</button>`).join("")}</div>`}
+      ${r.own ? `<div class="mini-row" style="margin-top:10px"><button class="mini" type="button" data-bf-edit="${esc(id)}">Bearbeiten</button><button class="mini" type="button" data-bf-del="${esc(id)}">Löschen</button></div>` : ""}
       <h4 id="d-ing">Zutaten für ${esc(peopleLabel())}</h4>
       <ul class="ing">${r.ingredients.map(([n, q, u]) => `<li>${esc(n)}<span>${fmtQty(sc(q, u), u)}</span></li>`).join("")}</ul>
       <h4>So geht's</h4>
@@ -11464,6 +12474,9 @@ const ANGEBOTE = {
       <button class="ghost" id="sheet-close" type="button" style="margin-top:14px">Schließen</button></div></div>`;
     $("#sheet-bg").addEventListener("click", e => {
       const day = e.target.closest("[data-day]"), pl = e.target.closest("[data-detail-play]");
+      const ed = e.target.closest("[data-bf-edit]"), del = e.target.closest("[data-bf-del]");
+      if (ed) { openBfForm(ed.dataset.bfEdit); return; }
+      if (del) { if (confirm("Dieses Rezept wirklich löschen?")) { myBreakfast = myBreakfast.filter(x => x.id !== del.dataset.bfDel); saveMyBreakfast(); $("#sheet-root").innerHTML = ""; toast("Rezept gelöscht"); } return; }
       if (day) { plan[+day.dataset.day] = id; renderWeek(); Sync.put("plan", plan); toast(`Für ${DAYS[+day.dataset.day]} eingeplant`); }
       if (pl) { $("#sheet-root").innerHTML = ""; openPlayer(r); return; }
       if (e.target.id === "sheet-bg" || e.target.id === "sheet-close") $("#sheet-root").innerHTML = "";
@@ -11568,6 +12581,7 @@ const ANGEBOTE = {
   buildDeck(); renderDeck(); renderBoard(); renderFavCount();
   setMode(store.get("mode", "swipe") === "board" ? "board" : "swipe");
   renderWeek();
+  renderBreakfast();
   showTab(TABS.includes(store.get("tab", "week")) ? store.get("tab", "week") : "week");
   requestAnimationFrame(() => setTimeout(() => scrollToToday(false), 50));
   const d = new Date(), mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
@@ -11586,7 +12600,7 @@ const ANGEBOTE = {
   if (linkWeek && linkWeek.length === 7 && linkWeek.every(id => byId[id])) {
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
     plan = linkWeek; checked = {}; inCart = {}; store.set("plan", plan); store.set("checked", checked); store.set("inCart", inCart);
-    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people, ratings }); toast("Woche übernommen"); }, 1500);
+    setTimeout(() => { renderWeek(); if (Sync.url) Sync.put("", { plan, checked, pantryBuy, favs, people, ratings, myBreakfast }); toast("Woche übernommen"); }, 1500);
   }
   let linkDb = null;
   try { linkDb = new URLSearchParams(location.search).get("db"); } catch (e) {}

@@ -1,0 +1,940 @@
+[
+ {
+  "id": "froatsapfel",
+  "name": "Overnight Oats mit Apfel und Zimt",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 5,
+  "colors": [
+   "#E9C98E",
+   "#F4ECDF",
+   "#C8743F",
+   "#8FAE7F"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "vorbereiten",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Feine Haferflocken",
+    120,
+    "g",
+    "dry"
+   ],
+   [
+    "Milch",
+    250,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Naturjoghurt",
+    150,
+    "g",
+    "fresh"
+   ],
+   [
+    "Apfel",
+    1,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Zimt",
+    0.5,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Ahornsirup",
+    1,
+    "TL",
+    "pantry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Rühre {Feine Haferflocken}, {Milch} und {Naturjoghurt} in einer Schüssel oder in 3 Gläsern mit Deckel gut zusammen."
+   },
+   {
+    "icon": "chop",
+    "text": "Wasche {Apfel}, viertle ihn, schneide das Kerngehäuse heraus und reibe ihn mit der Schale grob in die Haferflocken."
+   },
+   {
+    "icon": "mix",
+    "text": "Rühre {Zimt} und {Ahornsirup} unter."
+   },
+   {
+    "icon": "mix",
+    "text": "Deckel drauf und über Nacht in den Kühlschrank stellen, mindestens 8 Stunden. Die Haferflocken werden dabei weich und cremig."
+   },
+   {
+    "icon": "serve",
+    "text": "Morgens einmal umrühren. Ist es zu fest, gib einen Schuss Milch dazu. Kalt oder 30 Sekunden in der Mikrowelle lauwarm servieren."
+   }
+  ],
+  "wait": 480
+ },
+ {
+  "id": "froatsbeeren",
+  "name": "Beeren-Overnight-Oats im Glas",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 5,
+  "colors": [
+   "#D99C8A",
+   "#F4ECDF",
+   "#B5482F",
+   "#E9C98E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "vorbereiten",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Feine Haferflocken",
+    120,
+    "g",
+    "dry"
+   ],
+   [
+    "Milch",
+    200,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Griechischer Joghurt",
+    200,
+    "g",
+    "fresh"
+   ],
+   [
+    "Chiasamen",
+    1,
+    "EL",
+    "dry"
+   ],
+   [
+    "Beeren (frisch oder TK)",
+    200,
+    "g",
+    "frozen"
+   ],
+   [
+    "Banane",
+    1,
+    "Stk",
+    "veg"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Zerdrücke {Banane} in einer Schüssel mit einer Gabel zu Mus. Sie macht die Oats süß, ganz ohne Zucker."
+   },
+   {
+    "icon": "mix",
+    "text": "Rühre {Feine Haferflocken}, {Milch}, {Chiasamen} und die Hälfte von {Griechischer Joghurt} unter das Bananenmus."
+   },
+   {
+    "icon": "mix",
+    "text": "Verteile die Masse auf 3 Gläser. Gib den restlichen Joghurt als Schicht darauf und darüber {Beeren (frisch oder TK)}. TK-Beeren tauen über Nacht von selbst auf."
+   },
+   {
+    "icon": "mix",
+    "text": "Gläser verschließen und über Nacht in den Kühlschrank stellen, mindestens 6 Stunden."
+   },
+   {
+    "icon": "serve",
+    "text": "Morgens direkt aus dem Glas löffeln."
+   }
+  ],
+  "wait": 480
+ },
+ {
+  "id": "frbananenpancakes",
+  "name": "Bananen-Pancakes aus 3 Zutaten",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 15,
+  "colors": [
+   "#E8D2B0",
+   "#F3E6D3",
+   "#8C5A3C",
+   "#9FB07E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pfanne",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Reife Bananen",
+    2,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Eier",
+    2,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Feine Haferflocken",
+    60,
+    "g",
+    "dry"
+   ],
+   [
+    "Butter",
+    1,
+    "TL",
+    "fresh"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Schäle {Reife Bananen} und zerdrücke sie in einer Schüssel mit der Gabel, bis fast keine Stücke mehr da sind. Je brauner die Bananen, desto süßer."
+   },
+   {
+    "icon": "mix",
+    "text": "Schlage {Eier} dazu und rühre {Feine Haferflocken} unter. Lass den Teig 5 Minuten stehen, damit die Flocken quellen.",
+    "timer": 300
+   },
+   {
+    "icon": "pan",
+    "text": "Erhitze eine beschichtete Pfanne auf mittlerer Hitze und verstreiche {Butter} darin mit Küchenpapier."
+   },
+   {
+    "icon": "pan",
+    "text": "Gib pro Pancake 1 Esslöffel Teig in die Pfanne, mit etwas Abstand. Brate sie 2 Minuten, bis die Unterseite goldbraun ist und sich die Ränder fest anfühlen. Vorsichtig wenden und noch 1 Minute braten.",
+    "timer": 180
+   },
+   {
+    "icon": "serve",
+    "text": "Warm servieren, zum Beispiel mit Joghurt und Beeren."
+   }
+  ]
+ },
+ {
+  "id": "frjoghurtpancakes",
+  "name": "Fluffige Joghurt-Pancakes",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 20,
+  "colors": [
+   "#C69A6A",
+   "#F4F1EA",
+   "#7F9E5E",
+   "#E2D3BC"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pfanne",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Glattes Mehl",
+    200,
+    "g",
+    "pantry"
+   ],
+   [
+    "Backpulver",
+    2,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Eier",
+    2,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Naturjoghurt",
+    250,
+    "g",
+    "fresh"
+   ],
+   [
+    "Milch",
+    100,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Zucker",
+    1,
+    "EL",
+    "pantry"
+   ],
+   [
+    "Butter",
+    20,
+    "g",
+    "fresh"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Mische {Glattes Mehl}, {Backpulver}, {Zucker} und 1 Prise Salz in einer großen Schüssel."
+   },
+   {
+    "icon": "mix",
+    "text": "Verquirle {Eier}, {Naturjoghurt} und {Milch} in einer zweiten Schüssel. Gieße das zum Mehl und rühre nur kurz um, bis kein trockenes Mehl mehr zu sehen ist. Ein paar Klümpchen sind gut, so werden die Pancakes fluffig."
+   },
+   {
+    "icon": "pan",
+    "text": "Erhitze eine beschichtete Pfanne auf mittlerer Hitze und lass ein Stück von {Butter} darin schmelzen."
+   },
+   {
+    "icon": "pan",
+    "text": "Gib pro Pancake 2 Esslöffel Teig in die Pfanne. Wende ihn, wenn oben kleine Bläschen platzen, nach etwa 2 Minuten. Dann noch 1 bis 2 Minuten fertig braten, bis beide Seiten goldbraun sind.",
+    "timer": 240
+   },
+   {
+    "icon": "serve",
+    "text": "Fertige Pancakes im Ofen bei 80 Grad warm halten, bis alle fertig sind. Mit Obst, Joghurt oder etwas Ahornsirup servieren."
+   }
+  ]
+ },
+ {
+  "id": "frporridgebirne",
+  "name": "Cremiges Porridge mit Birne",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 10,
+  "colors": [
+   "#E9C98E",
+   "#F4ECDF",
+   "#C8743F",
+   "#8FAE7F"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "topf",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Feine Haferflocken",
+    120,
+    "g",
+    "dry"
+   ],
+   [
+    "Milch",
+    500,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Birne",
+    1,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Zimt",
+    0.5,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Gemahlene Nüsse",
+    2,
+    "EL",
+    "dry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "chop",
+    "text": "Wasche {Birne}, viertle sie, entferne das Kerngehäuse und schneide sie in kleine Würfel von etwa 1 cm."
+   },
+   {
+    "icon": "boil",
+    "text": "Gib {Feine Haferflocken}, {Milch}, die Hälfte der Birnenwürfel und {Zimt} in einen kleinen Topf. Bring alles auf mittlerer Hitze unter Rühren zum Köcheln."
+   },
+   {
+    "icon": "boil",
+    "text": "Lass das Porridge auf kleiner Flamme 5 Minuten köcheln und rühre dabei oft um, damit nichts anbrennt. Es ist fertig, wenn es dick und cremig ist.",
+    "timer": 300
+   },
+   {
+    "icon": "serve",
+    "text": "In Schüsseln füllen, die restlichen Birnenwürfel und {Gemahlene Nüsse} darüber streuen."
+   }
+  ]
+ },
+ {
+  "id": "frbirchermuesli",
+  "name": "Bircher Müsli",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 10,
+  "colors": [
+   "#D99C8A",
+   "#F4ECDF",
+   "#B5482F",
+   "#E9C98E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "vorbereiten",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Grobe Haferflocken",
+    100,
+    "g",
+    "dry"
+   ],
+   [
+    "Apfelsaft",
+    150,
+    "ml",
+    "dry"
+   ],
+   [
+    "Naturjoghurt",
+    200,
+    "g",
+    "fresh"
+   ],
+   [
+    "Äpfel",
+    2,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Zitrone",
+    0.5,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Gehackte Haselnüsse",
+    2,
+    "EL",
+    "dry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Gib {Grobe Haferflocken} in eine Schüssel und gieße {Apfelsaft} darüber. Mindestens 1 Stunde oder über Nacht im Kühlschrank quellen lassen.",
+    "timer": 3600
+   },
+   {
+    "icon": "chop",
+    "text": "Wasche {Äpfel}, entferne das Kerngehäuse und reibe sie mit der Schale grob. Presse {Zitrone} aus und mische den Saft gleich unter die Äpfel, damit sie nicht braun werden."
+   },
+   {
+    "icon": "mix",
+    "text": "Rühre die Äpfel und {Naturjoghurt} unter die eingeweichten Haferflocken."
+   },
+   {
+    "icon": "serve",
+    "text": "In Schüsseln verteilen und {Gehackte Haselnüsse} darüber streuen."
+   }
+  ],
+  "wait": 60
+ },
+ {
+  "id": "frfrenchtoast",
+  "name": "French Toast mit Beeren",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 15,
+  "colors": [
+   "#E8D2B0",
+   "#F3E6D3",
+   "#8C5A3C",
+   "#9FB07E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pfanne",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Toastbrot oder Brioche",
+    6,
+    "Scheibe",
+    "bread"
+   ],
+   [
+    "Eier",
+    3,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Milch",
+    150,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Zimt",
+    0.5,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Butter",
+    20,
+    "g",
+    "fresh"
+   ],
+   [
+    "Beeren (frisch oder TK)",
+    150,
+    "g",
+    "frozen"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Verquirle {Eier}, {Milch} und {Zimt} in einem tiefen Teller mit einer Gabel."
+   },
+   {
+    "icon": "mix",
+    "text": "Lege {Toastbrot oder Brioche} nacheinander kurz in die Eiermilch, etwa 10 Sekunden pro Seite, bis sich das Brot vollgesogen hat, aber nicht zerfällt."
+   },
+   {
+    "icon": "pan",
+    "text": "Lass {Butter} in einer großen Pfanne auf mittlerer Hitze schmelzen. Brate die Brotscheiben pro Seite 2 bis 3 Minuten, bis sie goldbraun sind.",
+    "timer": 300
+   },
+   {
+    "icon": "boil",
+    "text": "Erwärme in der Zwischenzeit {Beeren (frisch oder TK)} in einem kleinen Topf 3 Minuten, bis sie weich sind und Saft ziehen.",
+    "timer": 180
+   },
+   {
+    "icon": "serve",
+    "text": "French Toast mit den warmen Beeren servieren."
+   }
+  ]
+ },
+ {
+  "id": "freierspeis",
+  "name": "Eierspeis mit Schnittlauchbrot",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 10,
+  "colors": [
+   "#C69A6A",
+   "#F4F1EA",
+   "#7F9E5E",
+   "#E2D3BC"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pfanne",
+   "pikant"
+  ],
+  "ingredients": [
+   [
+    "Eier",
+    5,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Milch",
+    3,
+    "EL",
+    "fresh"
+   ],
+   [
+    "Butter",
+    20,
+    "g",
+    "fresh"
+   ],
+   [
+    "Schnittlauch",
+    0.5,
+    "Bund",
+    "veg"
+   ],
+   [
+    "Vollkornbrot",
+    3,
+    "Scheibe",
+    "bread"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Verquirle {Eier} und {Milch} mit 1 Prise Salz in einer Schüssel, bis keine Schlieren mehr da sind."
+   },
+   {
+    "icon": "chop",
+    "text": "Wasche {Schnittlauch}, schüttle ihn trocken und schneide ihn mit der Schere in feine Röllchen."
+   },
+   {
+    "icon": "pan",
+    "text": "Lass die Hälfte von {Butter} in einer Pfanne auf kleiner bis mittlerer Hitze schmelzen. Gieße die Eier hinein und schiebe sie mit einem Pfannenwender langsam von außen nach innen, etwa 3 Minuten. Nimm die Pfanne vom Herd, solange die Eier noch leicht glänzen, dann bleiben sie cremig.",
+    "timer": 180
+   },
+   {
+    "icon": "serve",
+    "text": "Bestreiche {Vollkornbrot} mit der restlichen Butter und streue den Schnittlauch darauf. Mit der Eierspeis servieren."
+   }
+  ]
+ },
+ {
+  "id": "frtopfenschicht",
+  "name": "Topfen-Beeren-Schichtglas",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 10,
+  "colors": [
+   "#E9C98E",
+   "#F4ECDF",
+   "#C8743F",
+   "#8FAE7F"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "kalt",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Topfen",
+    250,
+    "g",
+    "fresh"
+   ],
+   [
+    "Naturjoghurt",
+    150,
+    "g",
+    "fresh"
+   ],
+   [
+    "Vanillezucker",
+    1,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Beeren (frisch oder TK)",
+    200,
+    "g",
+    "frozen"
+   ],
+   [
+    "Knuspermüsli ohne Zucker",
+    60,
+    "g",
+    "dry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "mix",
+    "text": "Rühre {Topfen}, {Naturjoghurt} und {Vanillezucker} in einer Schüssel cremig."
+   },
+   {
+    "icon": "chop",
+    "text": "Wasche {Beeren (frisch oder TK)} oder taue TK-Beeren kurz in der Mikrowelle an. Große Erdbeeren in Viertel schneiden."
+   },
+   {
+    "icon": "mix",
+    "text": "Schichte in 3 Gläser abwechselnd Topfencreme, Beeren und {Knuspermüsli ohne Zucker}. Oben mit Beeren abschließen."
+   },
+   {
+    "icon": "serve",
+    "text": "Sofort servieren, dann bleibt das Müsli knusprig."
+   }
+  ]
+ },
+ {
+  "id": "frbananenbrot",
+  "name": "Saftiges Bananenbrot",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 15,
+  "colors": [
+   "#D99C8A",
+   "#F4ECDF",
+   "#B5482F",
+   "#E9C98E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "ofen",
+   "vorbereiten",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Reife Bananen",
+    3,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Eier",
+    2,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Butter",
+    80,
+    "g",
+    "fresh"
+   ],
+   [
+    "Glattes Mehl",
+    200,
+    "g",
+    "pantry"
+   ],
+   [
+    "Backpulver",
+    2,
+    "TL",
+    "pantry"
+   ],
+   [
+    "Zucker",
+    40,
+    "g",
+    "pantry"
+   ],
+   [
+    "Zimt",
+    1,
+    "TL",
+    "pantry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "oven",
+    "text": "Heize den Ofen auf 175 Grad Ober-/Unterhitze vor. Lege eine Kastenform mit Backpapier aus."
+   },
+   {
+    "icon": "mix",
+    "text": "Schmilz {Butter} in einem kleinen Topf und lass sie kurz abkühlen. Zerdrücke {Reife Bananen} in einer großen Schüssel mit der Gabel zu Mus."
+   },
+   {
+    "icon": "mix",
+    "text": "Rühre die Butter, {Eier} und {Zucker} unter die Bananen. Mische {Glattes Mehl}, {Backpulver}, {Zimt} und 1 Prise Salz und rühre es nur kurz unter, bis alles verbunden ist."
+   },
+   {
+    "icon": "oven",
+    "text": "Fülle den Teig in die Form und backe das Brot 50 bis 55 Minuten. Stich mit einem Holzspieß in die Mitte: Bleibt kein Teig daran kleben, ist es fertig.",
+    "timer": 3300
+   },
+   {
+    "icon": "serve",
+    "text": "Mindestens 15 Minuten in der Form abkühlen lassen, dann in Scheiben schneiden. Hält gut eingepackt 3 Tage."
+   }
+  ],
+  "wait": 55
+ },
+ {
+  "id": "freimuffins",
+  "name": "Pikante Ei-Muffins mit Spinat und Käse",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 15,
+  "colors": [
+   "#E8D2B0",
+   "#F3E6D3",
+   "#8C5A3C",
+   "#9FB07E"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "ofen",
+   "pikant",
+   "vorbereiten"
+  ],
+  "ingredients": [
+   [
+    "Eier",
+    6,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Milch",
+    50,
+    "ml",
+    "fresh"
+   ],
+   [
+    "Babyspinat",
+    60,
+    "g",
+    "veg"
+   ],
+   [
+    "Cherryparadeiser",
+    8,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Geriebener Käse",
+    60,
+    "g",
+    "fresh"
+   ],
+   [
+    "Öl für die Form",
+    1,
+    "TL",
+    "pantry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "oven",
+    "text": "Heize den Ofen auf 180 Grad Ober-/Unterhitze vor. Fette 9 Mulden einer Muffinform mit {Öl für die Form} ein."
+   },
+   {
+    "icon": "chop",
+    "text": "Hacke {Babyspinat} grob. Wasche {Cherryparadeiser} und schneide sie in Viertel."
+   },
+   {
+    "icon": "mix",
+    "text": "Verquirle {Eier} und {Milch} mit 1 Prise Salz in einem Messbecher. Rühre Spinat und die Hälfte von {Geriebener Käse} unter."
+   },
+   {
+    "icon": "mix",
+    "text": "Verteile die Paradeiser auf die Mulden und gieße die Eiermasse darüber, jede Mulde zu drei Vierteln voll. Streue den restlichen Käse darauf."
+   },
+   {
+    "icon": "oven",
+    "text": "Backe die Muffins 18 bis 20 Minuten, bis sie aufgegangen und in der Mitte fest sind.",
+    "timer": 1200
+   },
+   {
+    "icon": "serve",
+    "text": "5 Minuten abkühlen lassen, dann mit einem Messer vom Rand lösen. Halten im Kühlschrank 3 Tage und schmecken auch kalt."
+   }
+  ],
+  "wait": 20
+ },
+ {
+  "id": "fravocadobrot",
+  "name": "Avocado-Brot mit weichem Ei",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 12,
+  "colors": [
+   "#C69A6A",
+   "#F4F1EA",
+   "#7F9E5E",
+   "#E2D3BC"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "pikant",
+   "topf"
+  ],
+  "ingredients": [
+   [
+    "Eier",
+    3,
+    "Stk",
+    "fresh"
+   ],
+   [
+    "Reife Avocado",
+    1,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Zitrone",
+    0.5,
+    "Stk",
+    "veg"
+   ],
+   [
+    "Vollkornbrot",
+    3,
+    "Scheibe",
+    "bread"
+   ],
+   [
+    "Kresse",
+    0.5,
+    "Packung",
+    "veg"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "boil",
+    "text": "Bring in einem kleinen Topf Wasser zum Kochen. Lege {Eier} mit einem Löffel vorsichtig hinein und koche sie 7 Minuten, dann sind sie wachsweich. Mit kaltem Wasser abschrecken.",
+    "timer": 420
+   },
+   {
+    "icon": "mix",
+    "text": "Halbiere {Reife Avocado}, entferne den Kern und löffle das Fruchtfleisch in eine Schüssel. Zerdrücke es mit der Gabel mit dem Saft von {Zitrone} und 1 Prise Salz."
+   },
+   {
+    "icon": "chop",
+    "text": "Toaste {Vollkornbrot} und bestreiche es dick mit der Avocado."
+   },
+   {
+    "icon": "serve",
+    "text": "Schäle die Eier, halbiere sie und lege sie auf die Brote. Mit {Kresse} bestreuen."
+   }
+  ]
+ }
+]
