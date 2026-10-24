@@ -659,7 +659,7 @@ ol.steps-check li.done .amt, ol.steps-check li.done .need { color: var(--muted);
   // Bewertungen: Geschmack und Einfachheit, je 1 bis 5 Sterne, plus Notiz
   let ratings = store.get("ratings", {});
   // Wer kocht welches Gericht? (Rezept-id → Name)
-  const COOKS = ["David", "Theresa"];
+  const COOKS = ["David", "Tesi"];
   let cooks = store.get("cooks", {});
   const favIds = () => Object.keys(favs).filter(id => favs[id] && byId[id]);
   // Wie gut passt ein Gericht zu euren Herz-Gerichten? (geteilte Merkmale im Schnitt)
