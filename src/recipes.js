@@ -989,6 +989,157 @@ const RECIPES = [
       { icon: "chop", text: "Schneide in der Zwischenzeit {Frühlingszwiebeln} in feine Ringe." },
       { icon: "serve", text: "Verteile Hendl und Erdäpfel auf Teller oder Schüsseln. Streue die Frühlingszwiebeln und {Sesam} darüber." }
     ]
+  },
+  {
+    id: "groestl", name: "Tiroler Gröstl mit Spiegelei", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#C69A6A", "#F4ECDF", "#E9C98E", "#8FAE7F"], kid: "",
+    ingredients: [
+      ["Speckige Erdäpfel", 700, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Selchfleisch oder Kochschinken", 200, "g", "meat"], ["Eier", 3, "Stk", "fresh"], ["Butterschmalz", 2, "EL", "pantry"], ["Kümmel", 0.5, "TL", "pantry"], ["Petersilie", 0.5, "Bund", "veg"]
+    ],
+    steps: [
+      { icon: "boil", text: "Wasche {Speckige Erdäpfel} und koche sie mit Schale in einem Topf mit Salzwasser 20 Minuten, bis du sie mit einem Messer leicht anstechen kannst. Abgießen und kurz ausdampfen lassen.", timer: 1200 },
+      { icon: "chop", text: "Schäle die Erdäpfel, solange sie noch warm sind, und schneide sie in 5 mm dicke Scheiben. Schäle {Zwiebel} und schneide sie in feine Streifen. Schneide {Selchfleisch oder Kochschinken} in kleine Würfel von etwa 1 cm." },
+      { icon: "pan", text: "Erhitze {Butterschmalz} in einer großen Pfanne auf mittlerer bis starker Hitze. Brate die Erdäpfel 8 Minuten, ohne viel zu rühren, bis sie unten goldbraun und knusprig sind. Dann wenden.", timer: 480 },
+      { icon: "pan", text: "Gib Zwiebel, Fleisch und {Kümmel} dazu und brate alles weitere 5 Minuten, bis die Zwiebel weich und das Fleisch leicht gebräunt ist. Mit Salz und Pfeffer würzen.", timer: 300 },
+      { icon: "pan", text: "Schiebe das Gröstl an den Rand oder halte es warm. Brate {Eier} in einer zweiten kleinen Pfanne mit etwas Fett 3 Minuten als Spiegeleier, bis das Eiweiß fest ist.", timer: 180 },
+      { icon: "serve", text: "Hacke {Petersilie} fein. Gröstl auf Teller verteilen, je ein Spiegelei darauflegen und mit Petersilie bestreuen." }
+    ]
+  },
+  {
+    id: "faschiertesauflauf", name: "Erdäpfel-Faschiertes-Auflauf mit Käsehaube", origin: "Österreich", flag: "AT", time: 25, wait: 30,
+    colors: ["#B5482F", "#F3E6D3", "#E9C98E", "#7F9E5E"], kid: "",
+    ingredients: [
+      ["Mehlige Erdäpfel", 700, "g", "veg"], ["Gemischtes Faschiertes", 400, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Karotte", 1, "Stk", "veg"], ["Passierte Paradeiser", 400, "g", "dry"], ["Milch", 150, "ml", "fresh"], ["Butter", 20, "g", "fresh"], ["Geriebener Käse", 100, "g", "fresh"], ["Olivenöl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Schäle {Mehlige Erdäpfel}, schneide sie in grobe Stücke und koche sie in Salzwasser 15 Minuten, bis sie ganz weich sind.", timer: 900 },
+      { icon: "chop", text: "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor. Schäle {Zwiebel} und hacke sie fein. Schäle {Karotte} und reibe sie fein." },
+      { icon: "pan", text: "Erhitze {Olivenöl} in einer großen Pfanne auf starker Hitze. Brate {Gemischtes Faschiertes} 5 Minuten krümelig, bis kein Rosa mehr zu sehen ist. Gib Zwiebel und Karotte dazu und brate sie 3 Minuten mit.", timer: 480 },
+      { icon: "boil", text: "Gieße {Passierte Paradeiser} dazu, würze mit Salz und Pfeffer und lass die Sauce 5 Minuten bei mittlerer Hitze einköcheln.", timer: 300 },
+      { icon: "mix", text: "Gieße die Erdäpfel ab und stampfe sie mit {Milch} und {Butter} zu einem glatten Püree. Mit Salz und einer Prise Muskat abschmecken." },
+      { icon: "oven", text: "Fülle das Faschierte in eine Auflaufform, streiche das Püree darauf und streue {Geriebener Käse} darüber. 25 bis 30 Minuten backen, bis der Käse goldbraun ist.", timer: 1800 },
+      { icon: "serve", text: "5 Minuten ruhen lassen, dann mit einem großen Löffel portionieren. Dazu passt grüner Salat." }
+    ]
+  },
+  {
+    id: "champignonhuhn", name: "Huhn in Champignonrahm mit Spätzle", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#D9BC94", "#F4F1EA", "#8C5A3C", "#9FB07E"], kid: "",
+    ingredients: [
+      ["Hühnerbrust", 450, "g", "meat"], ["Champignons", 250, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Spätzle (Kühlregal)", 500, "g", "fresh"], ["Schlagobers", 200, "ml", "fresh"], ["Hühnersuppe oder Gemüsebrühe", 150, "ml", "pantry"], ["Butter", 20, "g", "fresh"], ["Öl", 1, "EL", "pantry"], ["Petersilie", 0.5, "Bund", "veg"]
+    ],
+    steps: [
+      { icon: "chop", text: "Schneide {Hühnerbrust} in mundgerechte Streifen von etwa 1 cm Breite. Putze {Champignons} mit Küchenpapier und schneide sie in Scheiben. Schäle {Zwiebel} und hacke sie fein." },
+      { icon: "pan", text: "Erhitze {Öl} in einer großen Pfanne auf starker Hitze. Brate das Huhn 5 Minuten rundum an, bis es außen goldbraun und innen nicht mehr rosa ist. Herausnehmen und auf einen Teller legen.", timer: 300 },
+      { icon: "pan", text: "Gib Zwiebel und Champignons in dieselbe Pfanne und brate sie auf mittlerer Hitze 5 Minuten, bis die Pilze Farbe bekommen und das Wasser verdampft ist.", timer: 300 },
+      { icon: "boil", text: "Gieße {Hühnersuppe oder Gemüsebrühe} und {Schlagobers} dazu und lass die Sauce 4 Minuten köcheln, bis sie leicht dick ist. Gib das Huhn zurück und würze mit Salz und Pfeffer.", timer: 240 },
+      { icon: "pan", text: "Lass {Butter} in einer zweiten Pfanne schmelzen und schwenke {Spätzle (Kühlregal)} darin 4 Minuten, bis sie heiß sind und leicht knusprig werden.", timer: 240 },
+      { icon: "serve", text: "Hacke {Petersilie} fein. Spätzle auf Teller verteilen, Champignonrahm darübergeben und mit Petersilie bestreuen." }
+    ]
+  },
+  {
+    id: "topfenknoedel", name: "Topfenknödel mit Butterbröseln und Zwetschkenröster", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#E9C98E", "#F4ECDF", "#8C3A5B", "#D99C8A"], kid: "",
+    ingredients: [
+      ["Topfen (20 %)", 500, "g", "fresh"], ["Eier", 2, "Stk", "fresh"], ["Weizengrieß", 100, "g", "dry"], ["Semmelbrösel", 120, "g", "bread"], ["Butter", 80, "g", "fresh"], ["Zucker", 2, "EL", "pantry"], ["Zwetschkenröster (Glas)", 1, "Glas", "dry"], ["Zimt", 0.5, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "mix", text: "Verrühre {Topfen (20 %)}, {Eier}, {Weizengrieß} und 1 Prise Salz in einer Schüssel zu einem glatten Teig. 15 Minuten im Kühlschrank rasten lassen, damit der Grieß quillt.", timer: 900 },
+      { icon: "boil", text: "Bring in einem großen Topf reichlich Wasser mit 1 Prise Salz zum Kochen." },
+      { icon: "pan", text: "Lass {Butter} in einer Pfanne auf mittlerer Hitze schmelzen. Röste {Semmelbrösel} darin unter Rühren 4 Minuten, bis sie goldbraun sind. Rühre {Zucker} und {Zimt} unter und nimm die Pfanne vom Herd.", timer: 240 },
+      { icon: "chop", text: "Forme mit nassen Händen aus dem Teig 9 bis 10 Knödel, etwa so groß wie ein Tischtennisball." },
+      { icon: "boil", text: "Lege die Knödel ins Wasser, schalte auf kleine Flamme und lass sie 10 Minuten leicht ziehen, nicht sprudelnd kochen. Sie sind fertig, wenn sie oben schwimmen.", timer: 600 },
+      { icon: "serve", text: "Hebe die Knödel mit einem Schaumlöffel heraus und wälze sie in den Butterbröseln. Erwärme {Zwetschkenröster (Glas)} kurz und serviere ihn dazu." }
+    ]
+  },
+  {
+    id: "gefuelltezucchini", name: "Gefüllte Zucchini mit Faschiertem und Reis", origin: "Österreich", flag: "AT", time: 25, wait: 25,
+    colors: ["#7F9E5E", "#F3E6D3", "#B5482F", "#E9C98E"], kid: "",
+    ingredients: [
+      ["Zucchini", 3, "Stk", "veg"], ["Rinderfaschiertes", 300, "g", "meat"], ["Langkornreis", 100, "g", "dry"], ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"], ["Passierte Paradeiser", 400, "g", "dry"], ["Geriebener Käse", 80, "g", "fresh"], ["Olivenöl", 1, "EL", "pantry"], ["Oregano", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "rice", text: "Koche {Langkornreis} nach Packungsangabe in leicht gesalzenem Wasser, etwa 12 Minuten. Heize den Ofen auf 200 Grad Ober-/Unterhitze vor.", timer: 720 },
+      { icon: "chop", text: "Halbiere {Zucchini} der Länge nach und kratze das weiche Innere mit einem Teelöffel heraus, sodass ein 1 cm dicker Rand bleibt. Hacke das Innere fein. Schäle {Zwiebel} und hacke sie fein, presse {Knoblauch}." },
+      { icon: "pan", text: "Erhitze {Olivenöl} in einer Pfanne auf starker Hitze. Brate {Rinderfaschiertes} 4 Minuten krümelig an, gib Zwiebel, Knoblauch und das gehackte Zucchini-Innere dazu und brate alles 4 Minuten weiter.", timer: 480 },
+      { icon: "mix", text: "Mische den Reis und {Oregano} unter das Faschierte und würze kräftig mit Salz und Pfeffer." },
+      { icon: "oven", text: "Gieße {Passierte Paradeiser} in eine Auflaufform und würze sie mit etwas Salz. Lege die Zucchinihälften hinein, fülle sie mit der Masse und streue {Geriebener Käse} darauf. 25 Minuten backen, bis die Zucchini weich und der Käse goldbraun ist.", timer: 1500 },
+      { icon: "serve", text: "Je eine oder zwei Hälften mit etwas Paradeisersauce auf die Teller geben." }
+    ]
+  },
+  {
+    id: "bratwuerstel", name: "Bratwürstel mit Sauerkraut und Erdäpfelpüree", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#C8743F", "#F4ECDF", "#E8D2B0", "#9FB07E"], kid: "",
+    ingredients: [
+      ["Bratwürstel", 6, "Stk", "meat"], ["Sauerkraut", 500, "g", "fresh"], ["Mehlige Erdäpfel", 700, "g", "veg"], ["Milch", 150, "ml", "fresh"], ["Butter", 30, "g", "fresh"], ["Zwiebel", 1, "Stk", "veg"], ["Öl", 1, "EL", "pantry"], ["Kümmel", 0.5, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Schäle {Mehlige Erdäpfel}, schneide sie in grobe Stücke und koche sie in Salzwasser 18 Minuten, bis sie ganz weich sind.", timer: 1080 },
+      { icon: "chop", text: "Schäle {Zwiebel} und schneide sie in feine Würfel. Lass {Sauerkraut} in einem Sieb abtropfen, wenn sehr viel Saft dabei ist." },
+      { icon: "boil", text: "Brate die Zwiebel in einem Topf mit der Hälfte von {Butter} 3 Minuten glasig. Gib Sauerkraut, {Kümmel} und 100 ml Wasser dazu und lass es mit Deckel auf kleiner Flamme 15 Minuten dünsten.", timer: 900 },
+      { icon: "pan", text: "Erhitze {Öl} in einer Pfanne auf mittlerer Hitze. Brate {Bratwürstel} 10 bis 12 Minuten und wende sie immer wieder, bis sie rundum braun und durch sind.", timer: 720 },
+      { icon: "mix", text: "Gieße die Erdäpfel ab. Erwärme {Milch} kurz und stampfe die Erdäpfel mit Milch und der restlichen Butter zu einem cremigen Püree. Mit Salz abschmecken." },
+      { icon: "serve", text: "Püree, Sauerkraut und Würstel auf die Teller verteilen. Fürs schnellere Essen die Würstel in Scheiben schneiden." }
+    ]
+  },
+  {
+    id: "kuerbislasagne", name: "Kürbis-Ricotta-Lasagne", origin: "Italien", flag: "IT", time: 25, wait: 35,
+    colors: ["#E39B4F", "#F4ECDF", "#7F9E5E", "#E9C98E"], kid: "",
+    ingredients: [
+      ["Hokkaido-Kürbis", 800, "g", "veg"], ["Ricotta", 250, "g", "fresh"], ["Lasagneblätter", 250, "g", "dry"], ["Babyspinat", 100, "g", "veg"], ["Milch", 300, "ml", "fresh"], ["Mozzarella", 125, "g", "fresh"], ["Parmesan", 40, "g", "fresh"], ["Olivenöl", 2, "EL", "pantry"], ["Muskatnuss", 0, "", "pantry"]
+    ],
+    steps: [
+      { icon: "oven", text: "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor. Wasche {Hokkaido-Kürbis}, halbiere ihn, kratze die Kerne heraus und schneide ihn mit Schale in 1 cm große Würfel." },
+      { icon: "boil", text: "Gib die Kürbiswürfel mit {Olivenöl} und 150 ml Wasser in einen breiten Topf. Mit Deckel auf mittlerer Hitze 12 Minuten weich dünsten, dann mit dem Stabmixer oder einer Gabel grob zerdrücken. Mit Salz würzen.", timer: 720 },
+      { icon: "mix", text: "Verrühre {Ricotta} mit {Milch}, einer Prise {Muskatnuss} und Salz zu einer cremigen Sauce. Hacke {Babyspinat} grob und mische ihn unter das Kürbismus." },
+      { icon: "mix", text: "Streiche in einer Auflaufform etwas Ricottasauce auf den Boden. Schichte dann abwechselnd {Lasagneblätter}, Kürbis und Ricottasauce, drei Lagen. Oben mit Ricottasauce abschließen." },
+      { icon: "oven", text: "Zupfe {Mozzarella} in kleine Stücke, verteile ihn darauf und reibe {Parmesan} darüber. 30 bis 35 Minuten backen, bis die Nudeln weich sind und oben alles goldbraun blubbert.", timer: 2100 },
+      { icon: "serve", text: "10 Minuten ruhen lassen, dann schneiden. So fällt die Lasagne nicht auseinander." }
+    ]
+  },
+  {
+    id: "oyakodon", name: "Oyakodon – Huhn mit Ei auf Reis", origin: "Japan", flag: "JP", time: 25,
+    colors: ["#E9C98E", "#F5F1E8", "#8FAE7F", "#C8743F"], kid: "",
+    ingredients: [
+      ["Sushi- oder Jasminreis", 250, "g", "dry"], ["Hühneroberkeulen ohne Haut", 400, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Eier", 4, "Stk", "fresh"], ["Sojasauce (salzreduziert)", 2, "EL", "pantry"], ["Honig", 1, "TL", "pantry"], ["Gemüsebrühe", 200, "ml", "pantry"], ["Frühlingszwiebel", 1, "Stk", "veg"]
+    ],
+    steps: [
+      { icon: "rice", text: "Wasche {Sushi- oder Jasminreis} in einem Sieb, bis das Wasser klar ist. Koche ihn mit der eineinhalbfachen Menge Wasser auf und lass ihn mit Deckel auf kleinster Flamme 15 Minuten quellen.", timer: 900 },
+      { icon: "chop", text: "Schneide {Hühneroberkeulen ohne Haut} in kleine Stücke von etwa 2 cm. Schäle {Zwiebel} und schneide sie in dünne Streifen." },
+      { icon: "boil", text: "Gib {Gemüsebrühe}, {Sojasauce (salzreduziert)} und {Honig} in eine breite Pfanne mit Deckel und bring alles zum Köcheln. Lege Zwiebel und Huhn hinein und lass es 8 Minuten zugedeckt köcheln, bis das Huhn durch ist.", timer: 480 },
+      { icon: "mix", text: "Verquirle {Eier} in einer Schüssel nur kurz mit der Gabel, es dürfen noch Streifen von Eiweiß zu sehen sein." },
+      { icon: "pan", text: "Gieße die Eier gleichmäßig über das Huhn, lege den Deckel auf und lass alles auf kleiner Flamme 2 bis 3 Minuten stocken, bis das Ei fast fest, aber noch saftig ist.", timer: 180 },
+      { icon: "serve", text: "Schneide {Frühlingszwiebel} in feine Ringe. Reis in Schüsseln füllen, Huhn mit Ei und etwas Sud darübergeben und mit Frühlingszwiebel bestreuen." }
+    ]
+  },
+  {
+    id: "shepherdspie", name: "Shepherd's Pie mit Faschiertem und Erbsen", origin: "Großbritannien", flag: "GB", time: 25, wait: 25,
+    colors: ["#C69A6A", "#F4F1EA", "#7F9E5E", "#E2D3BC"], kid: "",
+    ingredients: [
+      ["Mehlige Erdäpfel", 800, "g", "veg"], ["Rinderfaschiertes", 400, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Karotten", 2, "Stk", "veg"], ["Erbsen", 150, "g", "frozen"], ["Tomatenmark", 1, "EL", "pantry"], ["Rindssuppe oder Gemüsebrühe", 200, "ml", "pantry"], ["Milch", 150, "ml", "fresh"], ["Butter", 30, "g", "fresh"], ["Geriebener Käse", 60, "g", "fresh"]
+    ],
+    steps: [
+      { icon: "boil", text: "Schäle {Mehlige Erdäpfel}, schneide sie in grobe Stücke und koche sie in Salzwasser 15 Minuten, bis sie ganz weich sind.", timer: 900 },
+      { icon: "chop", text: "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor. Schäle {Zwiebel} und hacke sie fein. Schäle {Karotten} und schneide sie in kleine Würfel von etwa 5 mm." },
+      { icon: "pan", text: "Brate {Rinderfaschiertes} in einer großen Pfanne auf starker Hitze 5 Minuten krümelig. Gib Zwiebel und Karotten dazu und brate sie 3 Minuten mit. Rühre {Tomatenmark} ein und brate es 1 Minute mit.", timer: 540 },
+      { icon: "boil", text: "Gieße {Rindssuppe oder Gemüsebrühe} dazu und lass alles 8 Minuten köcheln, bis die Sauce dick ist. Rühre {Erbsen} unter und würze mit Salz und Pfeffer.", timer: 480 },
+      { icon: "mix", text: "Gieße die Erdäpfel ab und stampfe sie mit {Milch} und {Butter} zu einem glatten Püree." },
+      { icon: "oven", text: "Fülle das Faschierte in eine Auflaufform, verteile das Püree darauf und ziehe mit einer Gabel Rillen hinein. Streue {Geriebener Käse} darüber und backe alles 20 bis 25 Minuten, bis die Oberfläche goldbraun ist.", timer: 1500 },
+      { icon: "serve", text: "5 Minuten stehen lassen, dann mit einem großen Löffel auf die Teller geben." }
+    ]
+  },
+  {
+    id: "tajine", name: "Milde Huhn-Tajine mit Karotten und Couscous", origin: "Marokko", flag: "MA", time: 30,
+    colors: ["#D98E5A", "#F4E4C4", "#E9C98E", "#8FAE7F"], kid: "",
+    ingredients: [
+      ["Hühneroberkeulen ohne Haut", 500, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Karotten", 3, "Stk", "veg"], ["Kichererbsen (Dose)", 1, "Dose", "dry"], ["Getrocknete Marillen", 60, "g", "dry"], ["Gemüsebrühe", 300, "ml", "pantry"], ["Kreuzkümmel", 1, "TL", "pantry"], ["Zimt", 0.5, "TL", "pantry"], ["Couscous", 200, "g", "dry"], ["Olivenöl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Schneide {Hühneroberkeulen ohne Haut} in Stücke von etwa 3 cm. Schäle {Zwiebel} und hacke sie fein. Schäle {Karotten} und schneide sie in 1 cm dicke Scheiben. Schneide {Getrocknete Marillen} in kleine Stücke." },
+      { icon: "pan", text: "Erhitze {Olivenöl} in einem breiten Topf auf mittlerer bis starker Hitze. Brate das Huhn 5 Minuten rundum an. Gib Zwiebel, {Kreuzkümmel} und {Zimt} dazu und brate alles 2 Minuten, bis es duftet.", timer: 420 },
+      { icon: "boil", text: "Gib Karotten, Marillen und {Gemüsebrühe} dazu. Gieße {Kichererbsen (Dose)} in ein Sieb, spüle sie ab und gib sie auch in den Topf. Mit Deckel auf kleiner Flamme 15 Minuten schmoren, bis die Karotten weich sind.", timer: 900 },
+      { icon: "boil", text: "Bring in der Zwischenzeit 250 ml Wasser mit 1 Prise Salz zum Kochen. Gieße es über {Couscous} in einer Schüssel, decke sie mit einem Teller ab und lass den Couscous 5 Minuten quellen. Dann mit einer Gabel auflockern.", timer: 300 },
+      { icon: "serve", text: "Tajine mit Salz abschmecken und mit dem Couscous servieren. Wer mag, streut gehackte Petersilie oder Koriander darüber." }
+    ]
   }
 ];
 
@@ -1030,6 +1181,7 @@ const TAGS = {
   putenschnitzel: ["fleisch", "ofen", "österreichisch", "fingerfood"], zucchinipesto: ["vegetarisch", "pasta", "mediterran"],
   bulgogi: ["faschiert", "pfanne", "asiatisch"], gnocchipfanne: ["vegetarisch", "pfanne", "mediterran"],
   minitacos: ["huhn", "pfanne", "fingerfood"], butterchicken: ["huhn", "topf", "orientalisch", "rahm"],
-  misoahornhendl: ["huhn", "ofen", "asiatisch", "onepot"]
+  misoahornhendl: ["huhn", "ofen", "asiatisch", "onepot"],
+  groestl: ["fleisch", "pfanne", "österreichisch", "ei"], faschiertesauflauf: ["faschiert", "ofen", "auflauf", "österreichisch"], champignonhuhn: ["huhn", "pfanne", "österreichisch", "rahm"], topfenknoedel: ["vegetarisch", "süß", "topf", "österreichisch"], gefuelltezucchini: ["faschiert", "ofen", "österreichisch"], bratwuerstel: ["fleisch", "pfanne", "österreichisch"], kuerbislasagne: ["vegetarisch", "ofen", "auflauf", "mediterran", "pasta"], oyakodon: ["huhn", "asiatisch", "reis", "ei", "bowl"], shepherdspie: ["faschiert", "ofen", "auflauf"], tajine: ["huhn", "topf", "orientalisch"]
 };
 RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
