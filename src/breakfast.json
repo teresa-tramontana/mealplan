@@ -936,5 +936,138 @@
     "text": "Schäle die Eier, halbiere sie und lege sie auf die Brote. Mit {Kresse} bestreuen."
    }
   ]
+ },
+ {
+  "id": "frgranola",
+  "name": "Knuspriges Honig-Granola mit Amaranth und Pekannüssen",
+  "origin": "Frühstück",
+  "flag": "",
+  "time": 20,
+  "wait": 40,
+  "colors": [
+   "#C69A6A",
+   "#F4ECDF",
+   "#E9C98E",
+   "#8C5A3C"
+  ],
+  "kid": "",
+  "course": "Frühstück",
+  "week": false,
+  "tags": [
+   "ofen",
+   "vorbereiten",
+   "süß"
+  ],
+  "ingredients": [
+   [
+    "Gepuffter Amaranth",
+    150,
+    "g",
+    "dry"
+   ],
+   [
+    "Gepuffte Quinoa",
+    150,
+    "g",
+    "dry"
+   ],
+   [
+    "Gepuffter Buchweizen",
+    150,
+    "g",
+    "dry"
+   ],
+   [
+    "Haferflocken (oder halb Einkorn-, halb Buchweizenflocken)",
+    150,
+    "g",
+    "dry"
+   ],
+   [
+    "Sesam",
+    150,
+    "g",
+    "dry"
+   ],
+   [
+    "Kokoschips",
+    200,
+    "g",
+    "dry"
+   ],
+   [
+    "Pekannüsse",
+    150,
+    "g",
+    "dry"
+   ],
+   [
+    "Zimt",
+    1,
+    "Prise",
+    "pantry"
+   ],
+   [
+    "Meersalz",
+    1,
+    "Prise",
+    "pantry"
+   ],
+   [
+    "Vanilleschote (oder ½ TL gemahlene Vanille)",
+    0.5,
+    "Stk",
+    "pantry"
+   ],
+   [
+    "Honig",
+    250,
+    "g",
+    "pantry"
+   ],
+   [
+    "Olivenöl",
+    120,
+    "ml",
+    "pantry"
+   ]
+  ],
+  "steps": [
+   {
+    "icon": "oven",
+    "text": "Heize den Ofen auf 160 Grad Ober-/Unterhitze vor. Lege zwei Backbleche mit Backpapier aus. Auf zwei Blechen wird das Granola viel knuspriger als auf einem."
+   },
+   {
+    "icon": "chop",
+    "text": "Hacke {Pekannüsse} grob, damit keine ganzen Nüsse im Granola sind."
+   },
+   {
+    "icon": "mix",
+    "text": "Gib {Gepuffter Amaranth}, {Gepuffte Quinoa}, {Gepuffter Buchweizen}, {Haferflocken (oder halb Einkorn-, halb Buchweizenflocken)}, {Sesam}, {Kokoschips}, die Nüsse, {Zimt} und {Meersalz} in eine sehr große Schüssel und mische alles gut durch."
+   },
+   {
+    "icon": "boil",
+    "text": "Gib {Honig} in einen kleinen Topf. Schneide {Vanilleschote (oder ½ TL gemahlene Vanille)} der Länge nach auf, kratze das Mark mit dem Messerrücken heraus und gib Mark und Schote in den Honig. Erwärme alles auf kleiner Flamme 3 bis 4 Minuten, bis der Honig flüssig ist und nach Vanille duftet. Nicht kochen lassen. Dann die Schote herausnehmen.",
+    "timer": 240
+   },
+   {
+    "icon": "mix",
+    "text": "Gieße den warmen Honig und {Olivenöl} über die trockenen Zutaten und rühre so lange mit einem großen Löffel, bis alles gleichmäßig glänzt und nichts Trockenes mehr am Boden liegt."
+   },
+   {
+    "icon": "oven",
+    "text": "Verteile die Masse dünn auf die beiden Bleche. Backe ein Blech nach dem anderen auf der mittleren Schiene: zuerst 9 bis 10 Minuten, dann herausnehmen, alles mit einem Pfannenwender wenden und durchmischen.",
+    "timer": 600
+   },
+   {
+    "icon": "oven",
+    "text": "Schiebe das Blech wieder hinein und backe es noch einmal 9 bis 10 Minuten, bis das Granola schön goldbraun ist. Pass am Ende gut auf, an den Rändern wird es schnell zu dunkel. Danach das zweite Blech genauso backen.",
+    "timer": 600
+   },
+   {
+    "icon": "serve",
+    "text": "Lass das Granola auf den Blechen vollständig auskühlen, erst dann wird es richtig knusprig. Fülle es gleich in große Schraubgläser oder Dosen. Gut verschlossen hält es mehrere Wochen. Schmeckt mit Joghurt, Milch und frischem Obst."
+   }
+  ]
  }
 ]
