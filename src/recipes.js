@@ -1140,6 +1140,160 @@ const RECIPES = [
       { icon: "boil", text: "Bring in der Zwischenzeit 250 ml Wasser mit 1 Prise Salz zum Kochen. Gieße es über {Couscous} in einer Schüssel, decke sie mit einem Teller ab und lass den Couscous 5 Minuten quellen. Dann mit einer Gabel auflockern.", timer: 300 },
       { icon: "serve", text: "Tajine mit Salz abschmecken und mit dem Couscous servieren. Wer mag, streut gehackte Petersilie oder Koriander darüber." }
     ]
+  },
+  {
+    id: "rahmschnitzel", name: "Rahmschnitzel mit Butterreis", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D9BC94", "#F4F1EA", "#8C5A3C", "#9FB07E"], kid: "",
+    ingredients: [
+      ["Schweinsschnitzel", 450, "g", "meat"], ["Glattes Mehl", 2, "EL", "pantry"], ["Zwiebel", 1, "Stk", "veg"], ["Schlagobers", 200, "ml", "fresh"], ["Rindssuppe oder Gemüsebrühe", 150, "ml", "pantry"], ["Langkornreis", 200, "g", "dry"], ["Butter", 30, "g", "fresh"], ["Öl", 2, "EL", "pantry"], ["Petersilie", 0.5, "Bund", "veg"]
+    ],
+    steps: [
+      { icon: "rice", text: "Koche {Langkornreis} nach Packungsangabe in Salzwasser, etwa 12 Minuten. Abgießen und die Hälfte von {Butter} unterrühren.", timer: 720 },
+      { icon: "chop", text: "Leg {Schweinsschnitzel} zwischen zwei Lagen Frischhaltefolie und klopf sie mit einem Topf oder Fleischklopfer etwa 5 mm dünn. Salze und pfeffere sie und wende sie in {Glattes Mehl}. Schäle {Zwiebel} und hacke sie fein." },
+      { icon: "pan", text: "Erhitze {Öl} in einer großen Pfanne auf starker Hitze. Brate die Schnitzel pro Seite 2 Minuten, bis sie goldbraun sind. Leg sie auf einen Teller und deck sie ab.", timer: 240 },
+      { icon: "pan", text: "Schalte auf mittlere Hitze. Lass die restliche Butter in der Pfanne schmelzen und brate die Zwiebel 3 Minuten glasig. Rühr dabei den Bratensatz vom Pfannenboden los.", timer: 180 },
+      { icon: "boil", text: "Gieß {Rindssuppe oder Gemüsebrühe} und {Schlagobers} dazu und lass die Sauce 4 Minuten köcheln, bis sie leicht dick ist. Mit Salz und Pfeffer abschmecken.", timer: 240 },
+      { icon: "pan", text: "Leg die Schnitzel mit dem ausgetretenen Saft zurück in die Sauce und lass sie 1 Minute darin ziehen, nicht mehr kochen, sonst werden sie zäh.", timer: 60 },
+      { icon: "serve", text: "Hacke {Petersilie} fein. Schnitzel mit viel Rahmsauce und dem Butterreis anrichten und mit Petersilie bestreuen." }
+    ]
+  },
+  {
+    id: "linsenwuerstel", name: "Steirisches Linsengemüse mit Frankfurtern", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#8C5A3C", "#F3E9D8", "#C8743F", "#9FB07E"], kid: "",
+    ingredients: [
+      ["Braune Linsen (Dose)", 2, "Dose", "dry"], ["Frankfurter Würstel", 4, "Stk", "meat"], ["Karotten", 2, "Stk", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Speckwürfel", 80, "g", "meat"], ["Glattes Mehl", 1, "EL", "pantry"], ["Rindssuppe oder Gemüsebrühe", 300, "ml", "pantry"], ["Apfelessig", 1, "EL", "pantry"], ["Schlagobers", 80, "ml", "fresh"], ["Brot", 3, "Scheibe", "bread"]
+    ],
+    steps: [
+      { icon: "chop", text: "Schäle {Zwiebel} und hacke sie fein. Schäle {Karotten} und schneide sie in kleine Würfel von etwa 5 mm. Gieß {Braune Linsen (Dose)} in ein Sieb und spül sie kurz ab." },
+      { icon: "pan", text: "Brate {Speckwürfel} in einem mittleren Topf auf mittlerer Hitze 3 Minuten, bis sie Fett abgeben. Gib Zwiebel und Karotten dazu und brate alles 4 Minuten, bis die Zwiebel glasig ist.", timer: 420 },
+      { icon: "mix", text: "Streu {Glattes Mehl} darüber und rühr 1 Minute um. Gieß dann {Rindssuppe oder Gemüsebrühe} unter Rühren dazu, damit keine Klümpchen entstehen." },
+      { icon: "boil", text: "Gib die Linsen dazu und lass alles 10 Minuten bei kleiner Hitze köcheln, bis die Karotten weich sind. Rühr {Schlagobers} und {Apfelessig} ein und schmeck mit Salz und Pfeffer ab.", timer: 600 },
+      { icon: "boil", text: "Leg {Frankfurter Würstel} für die letzten 5 Minuten oben auf die Linsen und lass sie mit Deckel heiß werden. Nicht kochen, sonst platzen sie.", timer: 300 },
+      { icon: "serve", text: "Linsen in tiefe Teller geben, die Würstel darauflegen und {Brot} dazu servieren. Fürs leichtere Essen die Würstel in Scheiben schneiden." }
+    ]
+  },
+  {
+    id: "ofenchampignons", name: "Knusprige Ofen-Champignons mit Sauce Tartare und Erdäpfelsalat", origin: "Österreich", flag: "AT", time: 30, wait: 20,
+    colors: ["#E9C98E", "#F4ECDF", "#B0784F", "#8FAE7F"], kid: "",
+    ingredients: [
+      ["Große Champignons", 400, "g", "veg"], ["Eier", 2, "Stk", "fresh"], ["Glattes Mehl", 4, "EL", "pantry"], ["Semmelbrösel", 100, "g", "bread"], ["Öl", 4, "EL", "pantry"], ["Speckige Erdäpfel", 600, "g", "veg"], ["Rote Zwiebel", 0.5, "Stk", "veg"], ["Essig", 3, "EL", "pantry"], ["Mayonnaise", 4, "EL", "pantry"], ["Joghurt", 4, "EL", "fresh"], ["Essiggurkerl", 3, "Stk", "dry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Koche {Speckige Erdäpfel} mit Schale in Salzwasser 20 Minuten, bis sie weich sind. Heize den Ofen auf 220 Grad Ober-/Unterhitze vor und leg ein Blech mit Backpapier aus.", timer: 1200 },
+      { icon: "chop", text: "Putze {Große Champignons} mit Küchenpapier und schneide die Stiele kurz ab. Große Pilze halbierst du." },
+      { icon: "mix", text: "Stell drei tiefe Teller auf: {Glattes Mehl}, verquirlte {Eier} mit einer Prise Salz und {Semmelbrösel}. Wende jeden Pilz erst in Mehl, dann im Ei, dann in den Bröseln und drück sie gut an." },
+      { icon: "oven", text: "Leg die Pilze aufs Blech, träufle {Öl} darüber und backe sie 18 bis 20 Minuten, bis die Panier goldbraun und knusprig ist. Nach der Hälfte wenden.", timer: 1200 },
+      { icon: "chop", text: "Schäle die warmen Erdäpfel und schneide sie in dünne Scheiben. Schneide {Rote Zwiebel} sehr fein. Mische beides mit {Essig}, 4 EL warmem Wasser, Salz und Pfeffer und lass den Salat ziehen." },
+      { icon: "mix", text: "Hacke {Essiggurkerl} fein und verrühre sie mit {Mayonnaise} und {Joghurt} zur Sauce Tartare." },
+      { icon: "serve", text: "Champignons mit Sauce Tartare und Erdäpfelsalat servieren." }
+    ]
+  },
+  {
+    id: "zwiebelrostbraten", name: "Zwiebelrostbraten mit Bratkartoffeln", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#7A4E33", "#EBE6DA", "#C69A6A", "#9FB07E"], kid: "",
+    ingredients: [
+      ["Rumpsteak", 450, "g", "meat"], ["Zwiebeln", 3, "Stk", "veg"], ["Glattes Mehl", 3, "EL", "pantry"], ["Speckige Erdäpfel", 600, "g", "veg"], ["Rindssuppe", 200, "ml", "pantry"], ["Butter", 20, "g", "fresh"], ["Öl", 6, "EL", "pantry"], ["Senf", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Wasche {Speckige Erdäpfel}, schneide sie mit Schale in 5 mm dünne Scheiben und tupfe sie trocken. Schäle {Zwiebeln} und schneide sie in hauchdünne Ringe." },
+      { icon: "pan", text: "Erhitze die Hälfte von {Öl} in einer großen Pfanne auf mittlerer Hitze. Brate die Erdäpfelscheiben 15 Minuten, wende sie immer wieder, bis sie goldbraun und weich sind. Salzen.", timer: 900 },
+      { icon: "pan", text: "Wende die Zwiebelringe in {Glattes Mehl} und schüttle das überschüssige Mehl ab. Brate sie in einer zweiten Pfanne mit dem restlichen Öl auf mittlerer Hitze 6 Minuten unter Wenden goldbraun und knusprig. Auf Küchenpapier legen und salzen.", timer: 360 },
+      { icon: "chop", text: "Schneide den Fettrand von {Rumpsteak} alle 2 cm ein, damit sich das Fleisch nicht wölbt. Bestreiche es dünn mit {Senf} und pfeffere es." },
+      { icon: "pan", text: "Brate die Steaks in der Zwiebelpfanne auf starker Hitze pro Seite 2 bis 3 Minuten. Herausnehmen, salzen und 3 Minuten ruhen lassen.", timer: 300 },
+      { icon: "boil", text: "Gieß {Rindssuppe} in die Pfanne, kratze den Bratensatz los und lass den Saft 3 Minuten einkochen. Rühr {Butter} ein.", timer: 180 },
+      { icon: "serve", text: "Steaks in Streifen schneiden, mit dem Saft übergießen, die Röstzwiebeln obendrauf geben und mit den Bratkartoffeln servieren." }
+    ]
+  },
+  {
+    id: "topfenspinatstrudel", name: "Topfen-Spinat-Strudel", origin: "Österreich", flag: "AT", time: 20, wait: 30,
+    colors: ["#7F9E5E", "#F4ECDF", "#E9C98E", "#C8743F"], kid: "",
+    ingredients: [
+      ["Strudelteig (Kühlregal)", 1, "Packung", "fresh"], ["Blattspinat (TK)", 300, "g", "frozen"], ["Topfen", 250, "g", "fresh"], ["Feta", 100, "g", "fresh"], ["Eier", 2, "Stk", "fresh"], ["Knoblauch", 1, "Zehe", "veg"], ["Butter", 40, "g", "fresh"], ["Muskatnuss", 0, "", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Taue {Blattspinat (TK)} in einem Topf auf kleiner Hitze 5 Minuten auf. Gib ihn in ein Sieb und drück ihn mit einem Löffel kräftig aus, damit der Strudel nicht matschig wird.", timer: 300 },
+      { icon: "oven", text: "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor und leg ein Blech mit Backpapier aus. Schmilz {Butter} in einem kleinen Topf." },
+      { icon: "mix", text: "Hacke den Spinat grob. Presse {Knoblauch} dazu. Verrühre {Topfen}, eines der {Eier}, den Spinat und zerbröselten {Feta}. Mit Salz, Pfeffer und etwas {Muskatnuss} würzen." },
+      { icon: "mix", text: "Leg zwei Blätter von {Strudelteig (Kühlregal)} übereinander auf ein Küchentuch und bestreiche sie mit flüssiger Butter. Verteile die Füllung auf dem unteren Drittel und lass rundum 3 cm Rand frei." },
+      { icon: "mix", text: "Schlag die Seitenränder ein und roll den Strudel mithilfe des Tuchs auf. Leg ihn mit der Naht nach unten aufs Blech. Verquirle das zweite Ei und bestreiche den Strudel damit." },
+      { icon: "oven", text: "Backe den Strudel 25 bis 30 Minuten, bis er goldbraun und knusprig ist.", timer: 1800 },
+      { icon: "serve", text: "5 Minuten abkühlen lassen, dann mit einem scharfen Messer in Stücke schneiden. Dazu passt grüner Salat." }
+    ]
+  },
+  {
+    id: "kaspressknoedel", name: "Kaspressknödel mit Krautsalat", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#E9C98E", "#F4ECDF", "#7F9E5E", "#C8743F"], kid: "",
+    ingredients: [
+      ["Knödelbrot", 200, "g", "bread"], ["Milch", 200, "ml", "fresh"], ["Eier", 2, "Stk", "fresh"], ["Bergkäse", 150, "g", "fresh"], ["Zwiebel", 1, "Stk", "veg"], ["Schnittlauch", 0.5, "Bund", "veg"], ["Butterschmalz", 3, "EL", "pantry"], ["Weißkraut", 300, "g", "veg"], ["Apfelessig", 3, "EL", "pantry"], ["Öl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Hobel oder schneide {Weißkraut} in ganz feine Streifen. Mische es mit 1 TL Salz und knete es mit den Händen 2 Minuten, bis es weich wird. Rühre {Apfelessig} und {Öl} unter und lass den Salat ziehen." },
+      { icon: "mix", text: "Erwärme {Milch} kurz und gieß sie über {Knödelbrot} in einer Schüssel. 10 Minuten durchziehen lassen.", timer: 600 },
+      { icon: "chop", text: "Schäle {Zwiebel} und hacke sie fein. Reibe {Bergkäse} grob. Schneide {Schnittlauch} in feine Röllchen." },
+      { icon: "mix", text: "Gib Zwiebel, Käse, Schnittlauch, {Eier} und eine Prise Salz zum Brot und knete alles gut durch. Forme mit nassen Händen 9 flache Laibchen von etwa 2 cm Dicke." },
+      { icon: "pan", text: "Erhitze {Butterschmalz} in einer großen Pfanne auf mittlerer Hitze. Brate die Knödel pro Seite 4 Minuten, bis sie goldbraun sind und der Käse innen schmilzt.", timer: 480 },
+      { icon: "serve", text: "Kaspressknödel mit dem Krautsalat servieren." }
+    ]
+  },
+  {
+    id: "kuerbiscurry", name: "Kürbis-Kokos-Curry mit Kichererbsen", origin: "Indien", flag: "IN", time: 25,
+    colors: ["#E39B4F", "#F4ECDF", "#8FAE7F", "#E9C98E"], kid: "",
+    ingredients: [
+      ["Hokkaido-Kürbis", 600, "g", "veg"], ["Kichererbsen (Dose)", 1, "Dose", "dry"], ["Kokosmilch", 400, "ml", "dry"], ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 2, "Zehe", "veg"], ["Ingwer", 1, "cm", "veg"], ["Milde Currypaste oder Currypulver", 2, "TL", "pantry"], ["Babyspinat", 80, "g", "veg"], ["Basmatireis", 200, "g", "dry"], ["Öl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "rice", text: "Koche {Basmatireis} nach Packungsangabe, etwa 12 Minuten.", timer: 720 },
+      { icon: "chop", text: "Wasche {Hokkaido-Kürbis}, entkerne ihn und schneide ihn mit Schale in 2 cm große Würfel. Schäle {Zwiebel} und hacke sie fein. Presse {Knoblauch}. Schäle {Ingwer} mit einem Teelöffel und reibe ihn fein." },
+      { icon: "pan", text: "Erhitze {Öl} in einem großen Topf auf mittlerer Hitze. Brate Zwiebel 3 Minuten glasig, dann Knoblauch, Ingwer und {Milde Currypaste oder Currypulver} 1 Minute mit, bis es duftet.", timer: 240 },
+      { icon: "boil", text: "Gib die Kürbiswürfel und {Kokosmilch} dazu. Gieß {Kichererbsen (Dose)} ab, spül sie und gib sie auch in den Topf. Mit Deckel 15 Minuten köcheln lassen, bis der Kürbis weich ist.", timer: 900 },
+      { icon: "mix", text: "Rühr {Babyspinat} unter, bis er zusammenfällt, und schmeck das Curry mit Salz ab." },
+      { icon: "serve", text: "Curry mit dem Reis servieren." }
+    ]
+  },
+  {
+    id: "carbonara", name: "Spaghetti Carbonara", origin: "Italien", flag: "IT", time: 20,
+    colors: ["#E9C98E", "#F4F1EA", "#8C5A3C", "#E2D3BC"], kid: "",
+    ingredients: [
+      ["Spaghetti", 320, "g", "dry"], ["Speckwürfel oder Guanciale", 120, "g", "meat"], ["Eier", 3, "Stk", "fresh"], ["Parmesan", 60, "g", "fresh"], ["Pfeffer", 0, "", "pantry"]
+    ],
+    steps: [
+      { icon: "boil", text: "Bring in einem großen Topf reichlich Wasser zum Kochen und salze es. Koche {Spaghetti} nach Packungsangabe, etwa 9 Minuten, bis sie al dente sind.", timer: 540 },
+      { icon: "pan", text: "Brate in der Zwischenzeit {Speckwürfel oder Guanciale} in einer großen Pfanne ohne Öl auf mittlerer Hitze 5 Minuten, bis sie knusprig sind. Dann die Pfanne vom Herd nehmen.", timer: 300 },
+      { icon: "mix", text: "Reibe {Parmesan} fein und verquirle ihn mit {Eier} und viel {Pfeffer} in einer Schüssel zu einer dicken Creme." },
+      { icon: "mix", text: "Nimm vor dem Abgießen eine Tasse Nudelwasser ab. Gib die abgetropften Spaghetti zum Speck in die Pfanne und lass sie 30 Sekunden abkühlen." },
+      { icon: "pan", text: "Gieß die Eiercreme und 4 EL Nudelwasser darüber und schwenke alles auf ganz kleiner Hitze 1 bis 2 Minuten, bis eine cremige Sauce entsteht und das Ei gestockt, aber nicht bröselig ist. Ist es zu dick, mehr Nudelwasser dazu.", timer: 120 },
+      { icon: "serve", text: "Sofort servieren, mit etwas Parmesan und Pfeffer obendrauf." }
+    ]
+  },
+  {
+    id: "katsuhuhn", name: "Knuspriges Katsu-Huhn mit Reis und Krautsalat", origin: "Japan", flag: "JP", time: 30,
+    colors: ["#C8743F", "#F5F1E8", "#8FAE7F", "#E9C98E"], kid: "",
+    ingredients: [
+      ["Hühnerbrust", 450, "g", "meat"], ["Eier", 1, "Stk", "fresh"], ["Glattes Mehl", 3, "EL", "pantry"], ["Panko-Brösel", 100, "g", "dry"], ["Öl", 6, "EL", "pantry"], ["Sushi- oder Jasminreis", 200, "g", "dry"], ["Weißkraut", 200, "g", "veg"], ["Ketchup", 3, "EL", "pantry"], ["Sojasauce (salzreduziert)", 2, "EL", "pantry"], ["Honig", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "rice", text: "Wasche {Sushi- oder Jasminreis} in einem Sieb, koche ihn mit der eineinhalbfachen Menge Wasser auf und lass ihn mit Deckel auf kleinster Flamme 15 Minuten quellen.", timer: 900 },
+      { icon: "chop", text: "Schneide {Hühnerbrust} waagrecht in zwei dünne Hälften und klopfe sie auf etwa 1 cm flach. Salzen. Hobel {Weißkraut} in hauchdünne Streifen." },
+      { icon: "mix", text: "Stell drei Teller auf: {Glattes Mehl}, verquirltes {Eier} und {Panko-Brösel}. Wende das Huhn nacheinander darin und drück die Brösel gut an." },
+      { icon: "pan", text: "Erhitze {Öl} in einer großen Pfanne auf mittlerer Hitze. Brate das Huhn pro Seite 4 Minuten, bis es goldbraun ist und innen nicht mehr rosa. Auf Küchenpapier abtropfen lassen.", timer: 480 },
+      { icon: "mix", text: "Verrühre {Ketchup}, {Sojasauce (salzreduziert)} und {Honig} zu einer Katsu-Sauce." },
+      { icon: "serve", text: "Schneide das Huhn in Streifen. Mit Reis und Krautsalat anrichten und die Sauce darüberträufeln." }
+    ]
+  },
+  {
+    id: "tortilla", name: "Spanische Tortilla mit Erdäpfeln und Zwiebeln", origin: "Spanien", flag: "ES", time: 30, wait: 10,
+    colors: ["#E9C98E", "#F4ECDF", "#C8743F", "#8FAE7F"], kid: "",
+    ingredients: [
+      ["Festkochende Erdäpfel", 600, "g", "veg"], ["Zwiebel", 1, "Stk", "veg"], ["Eier", 6, "Stk", "fresh"], ["Olivenöl", 6, "EL", "pantry"], ["Gemischter Salat", 1, "Stk", "veg"]
+    ],
+    steps: [
+      { icon: "chop", text: "Schäle {Festkochende Erdäpfel}, viertle sie und schneide sie in 3 mm dünne Scheiben. Schäle {Zwiebel} und schneide sie in feine Streifen." },
+      { icon: "pan", text: "Erhitze {Olivenöl} in einer beschichteten Pfanne (ca. 24 cm) auf mittlerer Hitze. Gib Erdäpfel und Zwiebel dazu, salze sie und lass sie mit Deckel 15 Minuten weich schmoren. Ab und zu wenden, sie sollen weich, aber nicht braun werden.", timer: 900 },
+      { icon: "mix", text: "Verquirle {Eier} mit einer Prise Salz in einer großen Schüssel. Gib die Erdäpfel aus der Pfanne dazu, das Öl bleibt in der Pfanne. 5 Minuten ziehen lassen.", timer: 300 },
+      { icon: "pan", text: "Gieß die Masse zurück in die Pfanne und lass sie auf kleiner Hitze mit Deckel 8 Minuten stocken, bis der Rand fest ist.", timer: 480 },
+      { icon: "pan", text: "Leg einen großen Teller auf die Pfanne, dreh beides mit Schwung um und lass die Tortilla zurück in die Pfanne gleiten. Noch 3 Minuten braten, bis sie innen fest ist.", timer: 180 },
+      { icon: "serve", text: "Kurz ruhen lassen, in Stücke schneiden und mit {Gemischter Salat} servieren. Schmeckt warm und kalt." }
+    ]
   }
 ];
 
@@ -1182,6 +1336,7 @@ const TAGS = {
   bulgogi: ["faschiert", "pfanne", "asiatisch"], gnocchipfanne: ["vegetarisch", "pfanne", "mediterran"],
   minitacos: ["huhn", "pfanne", "fingerfood"], butterchicken: ["huhn", "topf", "orientalisch", "rahm"],
   misoahornhendl: ["huhn", "ofen", "asiatisch", "onepot"],
-  groestl: ["fleisch", "pfanne", "österreichisch", "ei"], faschiertesauflauf: ["faschiert", "ofen", "auflauf", "österreichisch"], champignonhuhn: ["huhn", "pfanne", "österreichisch", "rahm"], topfenknoedel: ["vegetarisch", "süß", "topf", "österreichisch"], gefuelltezucchini: ["faschiert", "ofen", "österreichisch"], bratwuerstel: ["fleisch", "pfanne", "österreichisch"], kuerbislasagne: ["vegetarisch", "ofen", "auflauf", "mediterran", "pasta"], oyakodon: ["huhn", "asiatisch", "reis", "ei", "bowl"], shepherdspie: ["faschiert", "ofen", "auflauf"], tajine: ["huhn", "topf", "orientalisch"]
+  groestl: ["fleisch", "pfanne", "österreichisch", "ei"], faschiertesauflauf: ["faschiert", "ofen", "auflauf", "österreichisch"], champignonhuhn: ["huhn", "pfanne", "österreichisch", "rahm"], topfenknoedel: ["vegetarisch", "süß", "topf", "österreichisch"], gefuelltezucchini: ["faschiert", "ofen", "österreichisch"], bratwuerstel: ["fleisch", "pfanne", "österreichisch"], kuerbislasagne: ["vegetarisch", "ofen", "auflauf", "mediterran", "pasta"], oyakodon: ["huhn", "asiatisch", "reis", "ei", "bowl"], shepherdspie: ["faschiert", "ofen", "auflauf"], tajine: ["huhn", "topf", "orientalisch"],
+  rahmschnitzel: ["fleisch", "pfanne", "österreichisch", "rahm", "reis"], linsenwuerstel: ["fleisch", "topf", "österreichisch", "onepot"], ofenchampignons: ["vegetarisch", "ofen", "österreichisch", "fingerfood"], zwiebelrostbraten: ["fleisch", "pfanne", "österreichisch"], topfenspinatstrudel: ["vegetarisch", "ofen", "österreichisch"], kaspressknoedel: ["vegetarisch", "pfanne", "österreichisch", "fingerfood"], kuerbiscurry: ["vegetarisch", "topf", "orientalisch", "reis", "onepot"], carbonara: ["fleisch", "pasta", "mediterran", "ei"], katsuhuhn: ["huhn", "pfanne", "asiatisch", "reis"], tortilla: ["vegetarisch", "pfanne", "ei", "mediterran"]
 };
 RECIPES.forEach(r => { r.tags = TAGS[r.id] || []; });
