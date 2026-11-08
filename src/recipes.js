@@ -1294,6 +1294,160 @@ const RECIPES = [
       { icon: "pan", text: "Leg einen großen Teller auf die Pfanne, dreh beides mit Schwung um und lass die Tortilla zurück in die Pfanne gleiten. Noch 3 Minuten braten, bis sie innen fest ist.", timer: 180 },
       { icon: "serve", text: "Kurz ruhen lassen, in Stücke schneiden und mit {Gemischter Salat} servieren. Schmeckt warm und kalt." }
     ]
+  },
+  {
+    id: "cremespinat", name: "Cremespinat mit Spiegelei und Röstkartoffeln", origin: "Österreich", flag: "AT", time: 25,
+    colors: ["#7F9E5E", "#F4ECDF", "#E9C98E", "#C8743F"], kid: "",
+    ingredients: [
+      ["Blattspinat (TK)", 450, "g", "frozen"], ["Speckige Erdäpfel", 600, "g", "veg"], ["Eier", 3, "Stk", "fresh"], ["Zwiebel", 1, "Stk", "veg"], ["Knoblauch", 1, "Zehe", "veg"], ["Schlagobers", 100, "ml", "fresh"], ["Butter", 20, "g", "fresh"], ["Öl", 3, "EL", "pantry"], ["Muskatnuss", 0, "", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Wasche {Speckige Erdäpfel} und schneide sie mit Schale in 1 cm große Würfel. Schäle {Zwiebel} und hacke sie fein. Presse {Knoblauch}." },
+      { icon: "pan", text: "Erhitze {Öl} in einer großen Pfanne auf mittlerer Hitze. Brate die Erdäpfelwürfel 15 bis 18 Minuten, wende sie alle paar Minuten, bis sie rundum goldbraun und innen weich sind. Salzen.", timer: 1020 },
+      { icon: "pan", text: "Lass in der Zwischenzeit {Butter} in einem Topf auf mittlerer Hitze schmelzen und schwitze Zwiebel und Knoblauch 3 Minuten glasig.", timer: 180 },
+      { icon: "boil", text: "Gib {Blattspinat (TK)} und 3 EL Wasser dazu und lass ihn mit Deckel 8 Minuten auftauen und heiß werden. Rühre ab und zu um.", timer: 480 },
+      { icon: "mix", text: "Gieß {Schlagobers} dazu und püriere den Spinat mit dem Stabmixer cremig. Mit Salz und etwas {Muskatnuss} abschmecken." },
+      { icon: "pan", text: "Schiebe die Erdäpfel an den Rand der Pfanne und brate {Eier} daneben 3 Minuten als Spiegeleier, bis das Eiweiß ganz fest ist.", timer: 180 },
+      { icon: "serve", text: "Cremespinat auf die Teller geben, Spiegelei darauflegen und die Röstkartoffeln daneben." }
+    ]
+  },
+  {
+    id: "ofenbackhuhn", name: "Knuspriges Ofen-Backhuhn mit Erdäpfel-Vogerlsalat", origin: "Österreich", flag: "AT", time: 25, wait: 35,
+    colors: ["#C8743F", "#F4ECDF", "#8FAE7F", "#E9C98E"], kid: "",
+    ingredients: [
+      ["Hühnerunterkeulen", 8, "Stk", "meat"], ["Eier", 2, "Stk", "fresh"], ["Glattes Mehl", 4, "EL", "pantry"], ["Semmelbrösel", 120, "g", "bread"], ["Öl", 4, "EL", "pantry"], ["Speckige Erdäpfel", 500, "g", "veg"], ["Vogerlsalat", 100, "g", "veg"], ["Rote Zwiebel", 0.5, "Stk", "veg"], ["Apfelessig", 3, "EL", "pantry"], ["Zitrone", 1, "Stk", "veg"]
+    ],
+    steps: [
+      { icon: "boil", text: "Koche {Speckige Erdäpfel} mit Schale in Salzwasser 20 Minuten, bis sie weich sind. Heize den Ofen auf 200 Grad Umluft vor und lege ein Blech mit Backpapier aus.", timer: 1200 },
+      { icon: "chop", text: "Tupfe {Hühnerunterkeulen} trocken und salze sie rundum." },
+      { icon: "mix", text: "Stell drei tiefe Teller auf: {Glattes Mehl}, verquirlte {Eier} und {Semmelbrösel}. Wende jede Keule in Mehl, dann im Ei, dann in den Bröseln und drück die Panier gut an." },
+      { icon: "oven", text: "Leg die Keulen aufs Blech, träufle {Öl} darüber und backe sie 35 Minuten, bis die Panier goldbraun ist und beim Einstechen klarer Saft austritt. Nach 20 Minuten einmal wenden.", timer: 2100 },
+      { icon: "chop", text: "Schäle die warmen Erdäpfel und schneide sie in dünne Scheiben. Hacke {Rote Zwiebel} sehr fein. Mische beides mit {Apfelessig}, 4 EL warmem Wasser, Salz und Pfeffer und lass den Salat 10 Minuten ziehen." },
+      { icon: "mix", text: "Wasche {Vogerlsalat} gut, schleudere ihn trocken und heb ihn erst kurz vor dem Essen unter den Erdäpfelsalat." },
+      { icon: "serve", text: "Schneide {Zitrone} in Spalten und serviere das Backhuhn mit dem Salat und den Zitronenspalten." }
+    ]
+  },
+  {
+    id: "lauchnudelauflauf", name: "Schinken-Lauch-Nudelauflauf", origin: "Österreich", flag: "AT", time: 20, wait: 25,
+    colors: ["#E9C98E", "#F3E6D3", "#9FB07E", "#D99C8A"], kid: "",
+    ingredients: [
+      ["Penne", 300, "g", "dry"], ["Lauch", 1, "Stk", "veg"], ["Kochschinken", 150, "g", "meat"], ["Schlagobers", 200, "ml", "fresh"], ["Milch", 150, "ml", "fresh"], ["Eier", 2, "Stk", "fresh"], ["Geriebener Käse", 100, "g", "fresh"], ["Butter", 1, "EL", "fresh"]
+    ],
+    steps: [
+      { icon: "boil", text: "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor. Koche {Penne} in Salzwasser 2 Minuten kürzer als auf der Packung steht, dann abgießen.", timer: 480 },
+      { icon: "chop", text: "Schneide {Lauch} längs auf, wasch ihn gut zwischen den Blättern und schneide ihn in feine Ringe. Schneide {Kochschinken} in kleine Streifen." },
+      { icon: "pan", text: "Lass {Butter} in einer Pfanne auf mittlerer Hitze schmelzen und dünste den Lauch 5 Minuten, bis er weich ist.", timer: 300 },
+      { icon: "mix", text: "Verquirle {Schlagobers}, {Milch}, {Eier} und die Hälfte von {Geriebener Käse} mit Salz und Pfeffer in einer Schüssel." },
+      { icon: "mix", text: "Mische Nudeln, Lauch und Schinken in einer Auflaufform. Gieß die Eiermilch darüber und streu den restlichen Käse darauf." },
+      { icon: "oven", text: "Backe den Auflauf 25 Minuten, bis die Eiermilch gestockt und der Käse goldbraun ist.", timer: 1500 },
+      { icon: "serve", text: "5 Minuten ruhen lassen, dann portionieren. Dazu passt grüner Salat." }
+    ]
+  },
+  {
+    id: "schupfnudeln", name: "Schupfnudeln mit Sauerkraut und Speck", origin: "Österreich", flag: "AT", time: 20,
+    colors: ["#E8D2B0", "#F4ECDF", "#C69A6A", "#9FB07E"], kid: "",
+    ingredients: [
+      ["Schupfnudeln (Kühlregal)", 500, "g", "fresh"], ["Sauerkraut", 400, "g", "fresh"], ["Speckwürfel", 100, "g", "meat"], ["Zwiebel", 1, "Stk", "veg"], ["Butterschmalz", 2, "EL", "pantry"], ["Kümmel", 0.5, "TL", "pantry"], ["Schnittlauch", 0.5, "Bund", "veg"]
+    ],
+    steps: [
+      { icon: "chop", text: "Schäle {Zwiebel} und schneide sie in feine Streifen. Lass {Sauerkraut} in einem Sieb abtropfen und drück es leicht aus." },
+      { icon: "pan", text: "Erhitze {Butterschmalz} in einer großen Pfanne auf mittlerer bis starker Hitze. Brate {Schupfnudeln (Kühlregal)} 6 Minuten, wende sie öfter, bis sie rundum goldbraun sind. Aus der Pfanne nehmen.", timer: 360 },
+      { icon: "pan", text: "Brate {Speckwürfel} und Zwiebel in derselben Pfanne 4 Minuten, bis der Speck knusprig und die Zwiebel weich ist.", timer: 240 },
+      { icon: "pan", text: "Gib Sauerkraut und {Kümmel} dazu und brate alles 4 Minuten mit, bis das Kraut heiß ist. Dann die Schupfnudeln wieder dazugeben und 2 Minuten durchschwenken.", timer: 360 },
+      { icon: "serve", text: "Schneide {Schnittlauch} in Röllchen und streue ihn über die Schupfnudeln." }
+    ]
+  },
+  {
+    id: "forellemuellerin", name: "Forelle Müllerin mit Petersilerdäpfeln", origin: "Österreich", flag: "AT", time: 30,
+    colors: ["#D9BC94", "#F4F1EA", "#7F9E5E", "#E9C98E"], kid: "",
+    ingredients: [
+      ["Forellenfilets mit Haut", 4, "Stk", "meat"], ["Glattes Mehl", 3, "EL", "pantry"], ["Speckige Erdäpfel", 700, "g", "veg"], ["Butter", 50, "g", "fresh"], ["Öl", 2, "EL", "pantry"], ["Zitrone", 1, "Stk", "veg"], ["Petersilie", 1, "Bund", "veg"]
+    ],
+    steps: [
+      { icon: "boil", text: "Schäle {Speckige Erdäpfel}, schneide große Stücke halb und koche sie in Salzwasser 18 Minuten, bis sie weich sind.", timer: 1080 },
+      { icon: "chop", text: "Hacke {Petersilie} fein. Schneide {Zitrone} halb: eine Hälfte in Spalten, die andere auspressen." },
+      { icon: "mix", text: "Tupfe {Forellenfilets mit Haut} trocken, prüfe sie mit den Fingern auf Gräten und zieh sie mit einer Pinzette heraus. Salze sie und wende sie in {Glattes Mehl}, überschüssiges Mehl abklopfen." },
+      { icon: "pan", text: "Erhitze {Öl} in einer großen Pfanne auf mittlerer bis starker Hitze. Lege die Filets mit der Hautseite nach unten hinein und brate sie 3 Minuten, bis die Haut knusprig ist. Wenden und noch 1 Minute braten.", timer: 240 },
+      { icon: "pan", text: "Nimm den Fisch heraus. Lass {Butter} in der Pfanne aufschäumen, bis sie hellbraun ist und nussig riecht, und rühr Zitronensaft und die Hälfte der Petersilie ein.", timer: 60 },
+      { icon: "mix", text: "Gieß die Erdäpfel ab und schwenk sie mit der restlichen Petersilie und einem Löffel der braunen Butter." },
+      { icon: "serve", text: "Forelle mit der Petersilbutter übergießen und mit Erdäpfeln und Zitronenspalten servieren." }
+    ]
+  },
+  {
+    id: "wuerstelschlafrock", name: "Würstel im Schlafrock mit Gurkensalat", origin: "Österreich", flag: "AT", time: 15, wait: 20,
+    colors: ["#E9C98E", "#F4ECDF", "#C8743F", "#8FAE7F"], kid: "",
+    ingredients: [
+      ["Blätterteig (Kühlregal)", 1, "Packung", "fresh"], ["Frankfurter Würstel", 6, "Stk", "meat"], ["Geriebener Käse", 60, "g", "fresh"], ["Eier", 1, "Stk", "fresh"], ["Salatgurke", 1, "Stk", "veg"], ["Sauerrahm", 100, "g", "fresh"], ["Dille", 0.5, "Bund", "veg"], ["Apfelessig", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "oven", text: "Heize den Ofen auf 200 Grad Ober-/Unterhitze vor und lege ein Blech mit Backpapier aus." },
+      { icon: "chop", text: "Roll {Blätterteig (Kühlregal)} aus und schneide ihn in 6 gleich breite Streifen. Streu {Geriebener Käse} darauf." },
+      { icon: "mix", text: "Wickle {Frankfurter Würstel} jeweils schräg in einen Teigstreifen, sodass sich die Ränder etwas überlappen. Leg sie mit dem Teigende nach unten aufs Blech." },
+      { icon: "oven", text: "Verquirle {Eier} und bestreiche den Teig damit. Backe die Würstel 18 bis 20 Minuten, bis der Teig aufgegangen und goldbraun ist.", timer: 1200 },
+      { icon: "chop", text: "Hobel {Salatgurke} in dünne Scheiben. Hacke {Dille} fein." },
+      { icon: "mix", text: "Verrühre {Sauerrahm}, {Apfelessig}, Dille, Salz und eine Prise Zucker und mische die Gurken darunter." },
+      { icon: "serve", text: "Würstel im Schlafrock kurz abkühlen lassen und mit dem Gurkensalat servieren. Dazu passt Senf oder Ketchup." }
+    ]
+  },
+  {
+    id: "thaibasilhuhn", name: "Mildes Thai-Basilikum-Huhn mit Reis", origin: "Thailand", flag: "TH", time: 20,
+    colors: ["#8FAE7F", "#F5F1E8", "#C8743F", "#E9C98E"], kid: "",
+    ingredients: [
+      ["Jasminreis", 250, "g", "dry"], ["Hühnerfaschiertes oder Hühnerbrust", 450, "g", "meat"], ["Fisolen", 150, "g", "veg"], ["Knoblauch", 2, "Zehe", "veg"], ["Sojasauce (salzreduziert)", 2, "EL", "pantry"], ["Austernsauce", 1, "EL", "pantry"], ["Brauner Zucker", 1, "TL", "pantry"], ["Thai-Basilikum oder Basilikum", 1, "Bund", "veg"], ["Öl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "rice", text: "Wasch {Jasminreis} in einem Sieb, koche ihn mit der eineinhalbfachen Menge Wasser auf und lass ihn mit Deckel auf kleinster Flamme 15 Minuten quellen.", timer: 900 },
+      { icon: "chop", text: "Hacke {Hühnerfaschiertes oder Hühnerbrust} fein, wenn du Brust nimmst. Schneide {Fisolen} in 2 cm lange Stücke. Hacke {Knoblauch} fein." },
+      { icon: "mix", text: "Verrühre {Sojasauce (salzreduziert)}, {Austernsauce}, {Brauner Zucker} und 2 EL Wasser in einer Tasse." },
+      { icon: "pan", text: "Erhitze {Öl} in einer großen Pfanne oder einem Wok auf starker Hitze. Brate Knoblauch und Fisolen 2 Minuten, dann das Huhn dazu und 5 Minuten krümelig braten, bis es nicht mehr rosa ist.", timer: 420 },
+      { icon: "pan", text: "Gieß die Sauce dazu und lass alles 1 Minute einkochen, bis es glänzt. Zupf die Blätter von {Thai-Basilikum oder Basilikum} und rühr sie unter, bis sie zusammenfallen.", timer: 60 },
+      { icon: "serve", text: "Mit dem Reis servieren. Wer es scharf mag, gibt bei sich Chiliflocken dazu." }
+    ]
+  },
+  {
+    id: "sorrentina", name: "Gnocchi alla Sorrentina", origin: "Italien", flag: "IT", time: 20, wait: 15,
+    colors: ["#C9503A", "#F4ECDF", "#E9C98E", "#8FAE7F"], kid: "",
+    ingredients: [
+      ["Gnocchi (Kühlregal)", 800, "g", "fresh"], ["Passierte Paradeiser", 500, "g", "dry"], ["Knoblauch", 1, "Zehe", "veg"], ["Olivenöl", 2, "EL", "pantry"], ["Mozzarella", 2, "Stk", "fresh"], ["Parmesan", 40, "g", "fresh"], ["Basilikum", 0.5, "Bund", "veg"], ["Oregano", 1, "TL", "pantry"]
+    ],
+    steps: [
+      { icon: "oven", text: "Heize den Ofen auf 220 Grad Ober-/Unterhitze vor." },
+      { icon: "boil", text: "Erhitze {Olivenöl} in einem Topf auf mittlerer Hitze. Presse {Knoblauch} hinein und brate ihn 1 Minute, bis er duftet. Gieß {Passierte Paradeiser} dazu, würze mit {Oregano} und Salz und lass die Sauce 8 Minuten köcheln.", timer: 540 },
+      { icon: "boil", text: "Koche {Gnocchi (Kühlregal)} in Salzwasser, bis sie an der Oberfläche schwimmen, etwa 2 Minuten. Mit einem Schaumlöffel herausheben.", timer: 120 },
+      { icon: "mix", text: "Mische die Gnocchi mit der Sauce und den Blättern von {Basilikum} und fülle alles in eine Auflaufform." },
+      { icon: "oven", text: "Zupfe {Mozzarella} in Stücke, verteile ihn darauf und reibe {Parmesan} darüber. Backe die Gnocchi 12 bis 15 Minuten, bis der Käse geschmolzen ist und braune Stellen hat.", timer: 900 },
+      { icon: "serve", text: "Kurz abkühlen lassen und direkt aus der Form servieren." }
+    ]
+  },
+  {
+    id: "kofta", name: "Kofta-Spieße mit Hummus und Fladenbrot", origin: "Libanon", flag: "LB", time: 30,
+    colors: ["#B5482F", "#F4ECDF", "#E9C98E", "#7F9E5E"], kid: "",
+    ingredients: [
+      ["Lammfaschiertes oder Rinderfaschiertes", 450, "g", "meat"], ["Zwiebel", 0.5, "Stk", "veg"], ["Petersilie", 0.5, "Bund", "veg"], ["Kreuzkümmel", 1, "TL", "pantry"], ["Zimt", 0.25, "TL", "pantry"], ["Hummus", 200, "g", "fresh"], ["Fladenbrot", 1, "Stk", "bread"], ["Gurke", 1, "Stk", "veg"], ["Cherryparadeiser", 200, "g", "veg"], ["Naturjoghurt", 150, "g", "fresh"], ["Öl", 1, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "chop", text: "Reibe {Zwiebel} fein auf der Reibe. Hacke {Petersilie} fein." },
+      { icon: "mix", text: "Knete {Lammfaschiertes oder Rinderfaschiertes} mit Zwiebel, der Hälfte der Petersilie, {Kreuzkümmel}, {Zimt} und 1 TL Salz gut durch. Forme mit nassen Händen 10 längliche Würstchen von etwa 10 cm." },
+      { icon: "pan", text: "Erhitze {Öl} in einer großen Pfanne auf mittlerer bis starker Hitze. Brate die Kofta 8 bis 10 Minuten und wende sie immer wieder, bis sie rundum braun und innen durch sind.", timer: 600 },
+      { icon: "chop", text: "Schneide {Gurke} in Würfel und {Cherryparadeiser} in Viertel. Mische beides mit der restlichen Petersilie und einer Prise Salz." },
+      { icon: "oven", text: "Wärme {Fladenbrot} 3 Minuten im Ofen oder in einer trockenen Pfanne auf und schneide es in Stücke.", timer: 180 },
+      { icon: "serve", text: "Streiche {Hummus} auf die Teller, leg die Kofta darauf und serviere Salat, {Naturjoghurt} und Fladenbrot dazu." }
+    ]
+  },
+  {
+    id: "tomatenei", name: "Chinesisches Tomaten-Ei mit Reis", origin: "China", flag: "CN", time: 20,
+    colors: ["#D9573E", "#F5F1E8", "#E9C98E", "#8FAE7F"], kid: "",
+    ingredients: [
+      ["Jasminreis", 250, "g", "dry"], ["Eier", 6, "Stk", "fresh"], ["Reife Paradeiser", 4, "Stk", "veg"], ["Frühlingszwiebeln", 2, "Stk", "veg"], ["Ketchup", 2, "EL", "pantry"], ["Sojasauce (salzreduziert)", 1, "TL", "pantry"], ["Zucker", 1, "TL", "pantry"], ["Öl", 2, "EL", "pantry"]
+    ],
+    steps: [
+      { icon: "rice", text: "Wasch {Jasminreis} in einem Sieb, koche ihn mit der eineinhalbfachen Menge Wasser auf und lass ihn mit Deckel auf kleinster Flamme 15 Minuten quellen.", timer: 900 },
+      { icon: "chop", text: "Schneide {Reife Paradeiser} in Spalten. Schneide {Frühlingszwiebeln} in Ringe und trenne das Weiße vom Grünen. Verquirle {Eier} mit einer Prise Salz." },
+      { icon: "pan", text: "Erhitze die Hälfte von {Öl} in einer Pfanne auf mittlerer Hitze. Gieß die Eier hinein und schieb sie langsam zusammen, bis sie gerade gestockt, aber noch weich sind. Herausnehmen.", timer: 120 },
+      { icon: "pan", text: "Erhitze das restliche Öl und brate das Weiße der Frühlingszwiebeln 30 Sekunden. Gib die Paradeiser dazu und brate sie 4 Minuten, bis sie weich werden und Saft ziehen.", timer: 270 },
+      { icon: "mix", text: "Rühre {Ketchup}, {Sojasauce (salzreduziert)}, {Zucker} und 3 EL Wasser ein und lass alles 1 Minute köcheln. Gib die Eier zurück und mische sie vorsichtig unter.", timer: 60 },
+      { icon: "serve", text: "Über den Reis geben und mit dem Grün der Frühlingszwiebeln bestreuen." }
+    ]
   }
 ];
 
@@ -1306,6 +1460,7 @@ const TAGS = {
   thai: ["huhn", "reis", "asiatisch", "pfanne"], pajeon: ["vegetarisch", "pfanne", "asiatisch", "fingerfood"],
   couscous: ["vegetarisch", "orientalisch", "pfanne"], lohikeitto: ["fisch", "suppe", "nordisch", "topf"],
   erbsenpasta: ["vegetarisch", "pasta", "mediterran"], tortilla: ["vegetarisch", "ei", "pfanne", "mediterran"],
+  cremespinat: ["vegetarisch", "pfanne", "österreichisch", "ei"], ofenbackhuhn: ["huhn", "ofen", "österreichisch", "fingerfood"], lauchnudelauflauf: ["fleisch", "ofen", "auflauf", "österreichisch", "pasta", "rahm"], schupfnudeln: ["fleisch", "pfanne", "österreichisch"], forellemuellerin: ["fisch", "pfanne", "österreichisch"], wuerstelschlafrock: ["fleisch", "ofen", "österreichisch", "fingerfood"], thaibasilhuhn: ["huhn", "pfanne", "asiatisch", "reis"], sorrentina: ["vegetarisch", "ofen", "auflauf", "mediterran"], kofta: ["faschiert", "pfanne", "orientalisch", "fingerfood"], tomatenei: ["vegetarisch", "pfanne", "asiatisch", "reis", "ei"],
   frittata: ["vegetarisch", "ei", "ofen", "fingerfood"], fischstaebchen: ["fisch", "pfanne", "fingerfood"],
   friedrice: ["huhn", "reis", "asiatisch", "pfanne"], kuerbissuppe: ["vegetarisch", "suppe", "asiatisch", "topf"],
   falafel: ["vegetarisch", "ofen", "orientalisch", "fingerfood"], koettbullar: ["fleisch", "pfanne", "nordisch"],
